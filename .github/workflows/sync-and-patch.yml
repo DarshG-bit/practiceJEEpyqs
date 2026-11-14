@@ -1,0 +1,66 @@
+name: Daily Sync and Auto-Patch
+
+on:
+  schedule:
+    # Runs everyday at 04:00 UTC (09:30 AM IST)
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    # Allows you to trigger the sync manually anytime with 1 click from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync-and-patch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Fork Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git Identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch and Merge Upstream
+        run: |
+          # The creator's upstream repository is tracked as 'upstream'
+          # If upstream remote is not added yet, add it:
+          if ! git remote | grep -q "upstream"; then
+            UPSTREAM_URL=$(gh repo view --json parent -q ".parent.url" 2>/dev/null || echo "")
+            if [ -z "$UPSTREAM_URL" ]; then
+              echo "Parent fork detected via GitHub CLI or default upstream."
+            else
+              git remote add upstream "$UPSTREAM_URL.git"
+            fi
+          fi
+          
+          # Fetch upstream changes
+          git fetch upstream main || git fetch upstream master || true
+          
+          # Merge changes from upstream (accepting upstream updates)
+          git merge -X theirs upstream/main --no-edit -m "chore: sync latest questions from upstream" || \
+          git merge -X theirs upstream/master --no-edit -m "chore: sync latest questions from upstream" || true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run 1-Step Automated Patcher
+        run: |
+          python patch_all.py
+
+      - name: Commit and Push Patched Files
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes detected after patcher run."
+          else
+            git commit -m "chore: apply custom patches (dark mode, option alignment, PDF notes) [skip ci]"
+            git push origin main || git push origin master
+          fi
