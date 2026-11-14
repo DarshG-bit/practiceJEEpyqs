@@ -80,14 +80,17 @@ def fix_option_images_in_file(content):
 # 3. TYPE NOTES: 'SAVE AS PDF' & PRINT PAGINATION
 # -------------------------------------------------------------
 PERFECT_PRINT_CSS = """
-/* --- Clean Print & Save as PDF Styling --- */
+/* --- Clean Print & Save as PDF Styling (Workbook layout) --- */
 @media print {
-  @page { margin: 8mm 10mm; size: A4 portrait; }
+  @page {
+    margin: 8mm 10mm;
+    size: A4 portrait;
+  }
   body {
     background: #fff !important;
     color: #000 !important;
-    font-size: 13pt !important;
-    line-height: 1.5 !important;
+    font-size: 13.5pt !important;
+    line-height: 1.55 !important;
     padding-bottom: 0 !important;
   }
   .page {
@@ -107,12 +110,17 @@ PERFECT_PRINT_CSS = """
 
   /* HEADINGS */
   h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
-  h2 { font-size: 16pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h2 { font-size: 15.5pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
   h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
   p { font-size: 12.5pt !important; margin: 4px 0 !important; }
 
   /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
   body.one section.typ:not(.pick) {
+    display: none !important;
+  }
+  
+  /* CREATOR SKIP CLASS FOR MAIN PDF */
+  section.typ.pr-skip {
     display: none !important;
   }
 
@@ -155,22 +163,22 @@ PERFECT_PRINT_CSS = """
     color: #000 !important;
   }
 
-  /* EDITABLE BOXES / USER WRITTEN NOTES */
+  /* EDITABLE BOXES / USER WRITTEN NOTES: SPACIOUS WORKBOOK FEEL */
   .ed {
     border: 1.5px solid #64748b !important;
     background: #fff !important;
     color: #000 !important;
-    min-height: 60px !important;
-    font-size: 12.5pt !important;
+    min-height: 85px !important;
+    font-size: 13pt !important;
     line-height: 1.6 !important;
-    padding: 8px 10px !important;
+    padding: 10px 12px !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
     white-space: pre-wrap !important;
+    border-radius: 6px !important;
   }
 }
 """
-
 UNBLOCK_PDF_SCRIPT = """
 <script>
 // Unblock both 'Save my notes as PDF' and individual 'Save this type as PDF'
@@ -234,26 +242,36 @@ UNBLOCK_PDF_SCRIPT = """
 def patch_type_notes(content):
     modified = False
     
-    # 1. Clean up existing corrupted or old print styles
+    # 1. Unblock .sh (Show completed notes)
+    pattern_sh = r"if\s*\(!any\)\s*\{\s*alert\([^)]+\);\s*return\s*;?\s*\}"
+    if re.search(pattern_sh, content):
+        content = re.sub(pattern_sh, "/* unblocked show */", content)
+        modified = True
+        
+    # 2. Unblock .tpdf (Save specific type as PDF)
+    pattern_tpdf = r"if\s*\(!hasWork\(s\)\)\s*\{\s*alert\([^)]+\);\s*return\s*;?\s*\}"
+    if re.search(pattern_tpdf, content):
+        content = re.sub(pattern_tpdf, "/* unblocked tpdf */", content)
+        modified = True
+        
+    # 3. Unblock #pdf (Save my notes as PDF)
+    pattern_pdf = r"if\s*\(!n\)\s*\{\s*endPrint\(\);\s*alert\([^)]+\);\s*return\s*;?\s*\}"
+    if re.search(pattern_pdf, content):
+        content = re.sub(pattern_pdf, "/* unblocked pdf */ if(!n){secs.forEach(function(s){s.classList.remove('pr-skip')});}", content)
+        modified = True
+    
+    # 4. Clean and upgrade Print CSS
     if "@media print" in content:
-        # Replace existing print block or inject our perfect print CSS
-        pattern = r'@media\s*print\s*\{.*?\}(?:\s*\}\s*)?'
-        # Replace the first print media block or append clean version
-        if "/* --- Clean Print & Save as PDF Styling --- */" not in content:
-            content = re.sub(r'/\* --- Save as PDF Print Styling --- \*/.*?\}', '', content, flags=re.DOTALL)
-            content = content.replace("</style>", PERFECT_PRINT_CSS + "\n</style>", 1)
+        if "/* --- Clean Print & Save as PDF Styling (Workbook layout) --- */" not in content:
+            content = re.sub(r'@media\s*print\s*\{.*?\}\s*\}', PERFECT_PRINT_CSS, content, flags=re.DOTALL)
             modified = True
     else:
-        content = content.replace("</style>", PERFECT_PRINT_CSS + "\n</style>", 1)
-        modified = True
-        
-    # 2. Add unblock PDF script if missing
-    if "setupPdfBtn" not in content and "</body>" in content:
-        content = content.replace("</body>", UNBLOCK_PDF_SCRIPT + "\n</body>", 1)
-        modified = True
+        pos_style = content.rfind("</style>")
+        if pos_style != -1:
+            content = content[:pos_style] + PERFECT_PRINT_CSS + "\n</style>" + content[pos_style+8:]
+            modified = True
         
     return content, modified
-
 # -------------------------------------------------------------
 # 4. COMPREHENSIVE DARK MODE
 # -------------------------------------------------------------
@@ -995,8 +1013,10 @@ def patch_dark_mode(content):
                 
     # 4. Toggle JS listener
     if "initThemeToggle" not in content and "</body>" in content:
-        content = content.replace("</body>", THEME_TOGGLE_JS + "\n</body>", 1)
-        modified = True
+        pos_b = content.rfind("</body>")
+        if pos_b != -1:
+            content = content[:pos_b] + THEME_TOGGLE_JS + "\n</body>" + content[pos_b+7:]
+            modified = True
         
     return content, modified
 

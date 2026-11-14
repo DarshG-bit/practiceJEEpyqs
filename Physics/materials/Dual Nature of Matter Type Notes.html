@@ -1,12 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
-<script>
-  (function(){
-    var t = localStorage.getItem('jee_theme');
-    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
-</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Dual Nature of Matter - Type Notes</title><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Dual Nature of Matter - Type Notes</title><style>
 :root{--ink:#1d2433;--mut:#5a6478;--line:#dfe4ee;--bg:#eef1f7;--acc:#1f4e8c}*{box-sizing:border-box}
 body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.55}
 .top{background:var(--acc);color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}.top h1{margin:0;font-size:18px;flex:1;min-width:160px}.top a{color:#fff;font-size:14px}
@@ -24,8 +16,13 @@ p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
 .how{background:#f7f9fd;border:1px solid var(--line);border-radius:8px;padding:6px 14px}
 @media(max-width:640px){.gt td:first-child{width:100%}.gt .ed{min-height:110px}.gt,.gt tbody,.gt tr,.gt td{display:block;width:100%}.gt tr{border:1px solid #c5ccda;margin:8px 0;border-radius:6px;overflow:hidden}.gt td{border:0;border-bottom:1px solid #e3e8f1}.gt td:first-child{background:#f1f5fb;font-weight:600}.gt tr:first-child td{background:inherit}.gt tr:first-child td:first-child{background:#f1f5fb}.page{padding:12px}}
 #sym{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#1f4e8c;padding:6px 8px;display:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}#sym.on{display:block}#sym button.w{padding:0 10px}#sym button{display:inline-block;min-width:40px;height:40px;margin:0 3px 0 0;font-size:18px;border:0;border-radius:6px;background:#fff;color:#1d2433;cursor:pointer}#sym>span{color:#cfe0fa;font-size:12px;margin-right:8px}@media(max-width:480px){#sym>span{display:none}}body.symon{padding-bottom:60px}
+
+/* --- Clean Print & Save as PDF Styling (Workbook layout) --- */
 @media print {
-  @page { margin: 8mm 10mm; size: A4 portrait; }
+  @page {
+    margin: 8mm 10mm;
+    size: A4 portrait;
+  }
   body {
     background: #fff !important;
     color: #000 !important;
@@ -41,43 +38,59 @@ p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
     border: none !important;
     box-shadow: none !important;
   }
+  
+  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
   .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
   .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
     display: none !important;
   }
-  h1.t { font-size: 22pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
-  h2 { font-size: 16pt !important; margin: 16px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; }
-  h3 { font-size: 14pt !important; margin: 12px 0 4px !important; break-after: avoid !important; }
-  p { font-size: 13pt !important; margin: 4px 0 !important; }
-  
+
+  /* HEADINGS */
+  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
+  h2 { font-size: 15.5pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
+  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
+
+  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
   body.one section.typ:not(.pick) {
     display: none !important;
   }
   
+  /* CREATOR SKIP CLASS FOR MAIN PDF */
+  section.typ.pr-skip {
+    display: none !important;
+  }
+
+  /* EACH TYPE STARTS ON A NEW PAGE */
   section.typ {
     border-top: 2.5px solid #1f4e8c !important;
     padding-top: 10px !important;
-    margin-top: 16px !important;
+    margin-top: 14px !important;
     break-inside: auto !important;
+    page-break-inside: auto !important;
   }
   section.typ ~ section.typ {
     break-before: page !important;
+    page-break-before: page !important;
   }
-  
+
+  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
   .gt, table {
     width: 100% !important;
     border-collapse: collapse !important;
     break-inside: auto !important;
-    margin: 10px 0 !important;
-    font-size: 13pt !important;
+    page-break-inside: auto !important;
+    margin: 8px 0 !important;
+    font-size: 12.5pt !important;
   }
   .gt tr, tr {
     break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
   .gt td, td, th {
     border: 1.5px solid #64748b !important;
     padding: 8px 10px !important;
-    font-size: 13pt !important;
+    font-size: 12.5pt !important;
     color: #000 !important;
     background: #fff !important;
   }
@@ -86,19 +99,232 @@ p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
     font-weight: 700 !important;
     color: #000 !important;
   }
+
+  /* EDITABLE BOXES / USER WRITTEN NOTES: SPACIOUS WORKBOOK FEEL */
   .ed {
     border: 1.5px solid #64748b !important;
-    background: #fafafa !important;
+    background: #fff !important;
     color: #000 !important;
     min-height: 85px !important;
     font-size: 13pt !important;
     line-height: 1.6 !important;
     padding: 10px 12px !important;
     break-inside: avoid !important;
+    page-break-inside: avoid !important;
     white-space: pre-wrap !important;
     border-radius: 6px !important;
   }
-}.top,.btn,.noprint,.how,details,#types,#types+ul{display:none!important}body{background:#fff}.page{border:0}.ed{border:1px solid #999;min-height:60px!important}.typ{break-inside:auto}.typ h2{break-after:avoid}.typ.pr-skip{display:none!important}body.one .typ:not(.pick){display:none!important}}
+}
+
+
+/* Responsive Wrapped Symbol Bar (#sym) */
+#sym {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1000 !important;
+  background: #1f4e8c;
+  padding: 8px 12px !important;
+  display: none;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 5px 6px !important;
+  max-height: 90px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+#sym.on {
+  display: flex !important;
+}
+body {
+  overflow-x: hidden !important;
+}
+body.symon {
+  padding-bottom: 96px !important;
+}
+
+/* =================== COMPREHENSIVE DARK MODE (TYPE NOTES) =================== */
+[data-theme="dark"] {
+  --ink: #f8fafc;
+  --mut: #94a3b8;
+  --line: #334155;
+  --bg: #0f172a;
+  --acc: #60a5fa;
+}
+
+[data-theme="dark"] body {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] a {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] .page {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .top {
+  background: #091e3a !important;
+  border-bottom: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] h1.t,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+  color: #60a5fa !important;
+}
+
+[data-theme="dark"] .how {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .how b {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how ol,
+[data-theme="dark"] .how li {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .sm {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] details {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .btn {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #334155 !important;
+}
+[data-theme="dark"] .btn.pri {
+  background: #2563eb !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .btn.pri:hover {
+  background: #1d4ed8 !important;
+}
+
+[data-theme="dark"] .ed {
+  background: #0f172a !important;
+  border: 1px solid #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .ed:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px #1e3a8a !important;
+}
+
+[data-theme="dark"] .gt {
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .gt td {
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  background: #0f172a !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .rev {
+  background: #064e3b !important;
+  border-color: #10b981 !important;
+  color: #ecfdf5 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #6ee7b7 !important;
+}
+
+[data-theme="dark"] math,
+[data-theme="dark"] math * {
+  color: #f8fafc !important;
+  fill: #f8fafc !important;
+}
+
+[data-theme="dark"] #sym {
+  background: #091e3a !important;
+  border-top: 1px solid #334155 !important;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+[data-theme="dark"] #sym > span {
+  color: #93c5fd !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] #sym button {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #475569 !important;
+}
+[data-theme="dark"] #sym button:hover {
+  background: #334155 !important;
+  border-color: #60a5fa !important;
+  color: #60a5fa !important;
+}
+[data-theme="dark"] #sym button.w {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border-color: #3b82f6 !important;
+}
+
+.theme-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: inherit;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
+[data-theme="dark"] .theme-btn {
+  background: #1e293b;
+  border: 1px solid #475569;
+  color: #f8fafc;
+}
+[data-theme="dark"] .theme-btn:hover { background: #334155; }
+
 
 /* =================== COMPREHENSIVE DARK MODE =================== */
 [data-theme="dark"] {
@@ -744,98 +970,15 @@ body {
   background: #334155;
 }
 
-
-/* --- Clean Print & Save as PDF Styling --- */
-@media print {
-  @page { margin: 8mm 10mm; size: A4 portrait; }
-  body {
-    background: #fff !important;
-    color: #000 !important;
-    font-size: 13pt !important;
-    line-height: 1.5 !important;
-    padding-bottom: 0 !important;
-  }
-  .page {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  
-  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
-  .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
-  .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
-    display: none !important;
-  }
-
-  /* HEADINGS */
-  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
-  h2 { font-size: 16pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
-  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
-  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
-
-  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
-  body.one section.typ:not(.pick) {
-    display: none !important;
-  }
-
-  /* EACH TYPE STARTS ON A NEW PAGE */
-  section.typ {
-    border-top: 2.5px solid #1f4e8c !important;
-    padding-top: 10px !important;
-    margin-top: 14px !important;
-    break-inside: auto !important;
-    page-break-inside: auto !important;
-  }
-  section.typ ~ section.typ {
-    break-before: page !important;
-    page-break-before: page !important;
-  }
-
-  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
-  .gt, table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    break-inside: auto !important;
-    page-break-inside: auto !important;
-    margin: 8px 0 !important;
-    font-size: 12.5pt !important;
-  }
-  .gt tr, tr {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-  .gt td, td, th {
-    border: 1.5px solid #64748b !important;
-    padding: 8px 10px !important;
-    font-size: 12.5pt !important;
-    color: #000 !important;
-    background: #fff !important;
-  }
-  .gt tr:first-child td, .gt td:first-child {
-    background: #f1f5fb !important;
-    font-weight: 700 !important;
-    color: #000 !important;
-  }
-
-  /* EDITABLE BOXES / USER WRITTEN NOTES */
-  .ed {
-    border: 1.5px solid #64748b !important;
-    background: #fff !important;
-    color: #000 !important;
-    min-height: 60px !important;
-    font-size: 12.5pt !important;
-    line-height: 1.6 !important;
-    padding: 8px 10px !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    white-space: pre-wrap !important;
-  }
-}
-
-</style></head><body><div class="top"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button><h1>Dual Nature of Matter &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Dual%20Nature%20of%20Matter%20PYQ%20Practice.html">Back to practice</a><a href="Dual%20Nature%20of%20Matter%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> DUAL NATURE OF MATTER – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. de Broglie wavelength: comparing particles (same energy, potential, momentum or wavelength)</a></li><li><a href="#T2">Type 2. Photoelectric effect with two conditions: ratios and unknowns from two wavelengths, frequencies or metals</a></li><li><a href="#T3">Type 3. Photoelectric effect with one condition: maximum kinetic energy, threshold and stopping potential</a></li><li><a href="#T4">Type 4. Photoelectric effect: concepts and statements</a></li><li><a href="#T5">Type 5. de Broglie wavelength of a single particle: dependence on energy, voltage and temperature</a></li><li><a href="#T6">Type 6. Matter waves with motion: particles in fields, collisions and fission</a></li><li><a href="#T7">Type 7. Photon versus matter wave: same energy or same wavelength</a></li><li><a href="#T8">Type 8. Photoelectric graphs: stopping potential, kinetic energy and current</a></li><li><a href="#T9">Type 9. Photon number, power and intensity</a></li><li><a href="#T10">Type 10. Radiation pressure and photon momentum</a></li><li><a href="#T11">Type 11. Davisson–Germer, X-ray cut-off and photoelectron wavelength</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. de Broglie wavelength: comparing particles (same energy, potential, momentum or wavelength) <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">26 questions on the sheet (Q1–26)  ·  Sub-topics: A1 same kinetic energy · A2 same accelerating potential · A3 same wavelength or momentum</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>de Broglie wavelength</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>In terms of kinetic energy <math displaystyle="true"><mrow><mi>K</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Accelerated from rest through a potential <math displaystyle="true"><mrow><mi>V</mi></mrow></math> (charge <math displaystyle="true"><mrow><mi>q</mi></mrow></math>)</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Same kinetic energy: wavelength ratio</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Same potential: wavelength ratio</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Same wavelength: momentum and kinetic energy</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr><tr><td><p>Masses and charges to remember</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>Momentum gained through potential <math displaystyle="true"><mrow><mi>V</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>Electron accelerated through <math displaystyle="true"><mrow><mi>V</mi></mrow></math> volts</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is the wavelength of a heavier particle shorter at the same energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr><tr><td><p>What does &#x27;same de Broglie wavelength&#x27; tell you about momentum?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></td></tr><tr><td><p>Does the charge matter when the kinetic energies are equal?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_13"></div></td></tr><tr><td><p>How are the wavelengths ordered for the same energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_14"></div></td></tr><tr><td><p>What is the wavelength of a neutron compared with a proton at the same energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_15"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_16"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;A proton and an electron (or an <math displaystyle="true"><mrow><mi>α</mi></mrow></math>-particle) have the same kinetic energy / are accelerated through the same potential&#x27;; compare the wavelengths.</p><p style="padding-left:14px">•  &#x27;The same de Broglie wavelength&#x27;: the ratio of kinetic energies, velocities or masses is asked.</p><p style="padding-left:14px">•  &#x27;Arrange <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mi>e</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mi>p</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mi>α</mi></mrow></msub></mrow></math> in order&#x27; or &#x27;the ratio of their wavelengths is <math displaystyle="true"><mrow><mn>1</mn><mo>:</mo><msqrt><mrow><mi>m</mi></mrow></msqrt></mrow></math>, find <math displaystyle="true"><mrow><mi>m</mi></mrow></math>&#x27;.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>de Broglie wavelength</p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mi>p</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mi>m</mi><mi>v</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>In terms of kinetic energy <math displaystyle="true"><mrow><mi>K</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><msqrt><mrow><mn>2</mn><mi>m</mi><mi>K</mi></mrow></msqrt></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Accelerated from rest through a potential <math displaystyle="true"><mrow><mi>V</mi></mrow></math> (charge <math displaystyle="true"><mrow><mi>q</mi></mrow></math>)</p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><msqrt><mrow><mn>2</mn><mi>m</mi><mi>q</mi><mi>V</mi></mrow></msqrt></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Same kinetic energy: wavelength ratio</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>=</mo><msqrt><mrow><mfrac><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Same potential: wavelength ratio</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>=</mo><msqrt><mrow><mfrac><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub><msub><mrow><mi>q</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub><msub><mrow><mi>q</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Same wavelength: momentum and kinetic energy</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>p</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><msub><mrow><mi>p</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math> and <math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>K</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>K</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Masses and charges to remember</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub><mo>≈</mo><mn>1836</mn><mspace width="0.3em"></mspace><msub><mrow><mi>m</mi></mrow><mrow><mi>e</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mi>α</mi></mrow></msub><mo>≈</mo><mn>4</mn><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mi>d</mi></mrow></msub><mo>≈</mo><mn>2</mn><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>q</mi></mrow><mrow><mi>α</mi></mrow></msub><mo>=</mo><mn>2</mn><mi>e</mi></mrow></math></p></td></tr><tr><td><p>Momentum gained through potential <math displaystyle="true"><mrow><mi>V</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>p</mi><mo>=</mo><msqrt><mrow><mn>2</mn><mi>m</mi><mi>q</mi><mi>V</mi></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Electron accelerated through <math displaystyle="true"><mrow><mi>V</mi></mrow></math> volts</p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mn>1.227</mn></mrow><mrow><msqrt><mrow><mi>V</mi></mrow></msqrt></mrow></mfrac><mspace width="0.3em"></mspace><mtext>nm</mtext><mo>=</mo><mfrac><mrow><mn>12.27</mn></mrow><mrow><msqrt><mrow><mi>V</mi></mrow></msqrt></mrow></mfrac><mspace width="0.3em"></mspace><mtext>Å</mtext></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is the wavelength of a heavier particle shorter at the same energy?</p></td><td><p>At fixed <math displaystyle="true"><mrow><mi>K</mi></mrow></math> the momentum <math displaystyle="true"><mrow><mi>p</mi><mo>=</mo><msqrt><mrow><mn>2</mn><mi>m</mi><mi>K</mi></mrow></msqrt></mrow></math> grows with the mass, and <math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mi>h</mi><mo>/</mo><mi>p</mi></mrow></math> falls.</p></td></tr><tr><td><p>What does &#x27;same de Broglie wavelength&#x27; tell you about momentum?</p></td><td><p>The momenta are equal, whatever the masses. The lighter particle then has the larger speed and the larger kinetic energy.</p></td></tr><tr><td><p>Does the charge matter when the kinetic energies are equal?</p></td><td><p>No: with the same <math displaystyle="true"><mrow><mi>K</mi></mrow></math> only the mass enters. With the same accelerating potential the charge enters through <math displaystyle="true"><mrow><mi>q</mi><mi>V</mi></mrow></math>.</p></td></tr><tr><td><p>How are the wavelengths ordered for the same energy?</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mi>e</mi></mrow></msub><mo>&gt;</mo><msub><mrow><mi>λ</mi></mrow><mrow><mi>p</mi></mrow></msub><mo>&gt;</mo><msub><mrow><mi>λ</mi></mrow><mrow><mi>d</mi></mrow></msub><mo>&gt;</mo><msub><mrow><mi>λ</mi></mrow><mrow><mi>α</mi></mrow></msub></mrow></math>, since <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mi>e</mi></mrow></msub><mo>&lt;</mo><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub><mo>&lt;</mo><msub><mrow><mi>m</mi></mrow><mrow><mi>d</mi></mrow></msub><mo>&lt;</mo><msub><mrow><mi>m</mi></mrow><mrow><mi>α</mi></mrow></msub></mrow></math>.</p></td></tr><tr><td><p>What is the wavelength of a neutron compared with a proton at the same energy?</p></td><td><p>Equal, because their masses are practically equal.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>λ</mi><mo>∝</mo><mn>1</mn><mo>/</mo><mi>m</mi></mrow></math> instead of <math displaystyle="true"><mrow><mn>1</mn><mo>/</mo><msqrt><mrow><mi>m</mi></mrow></msqrt></mrow></math> for the same energy.</p><p style="padding-left:14px">•  Forgetting the charge (<math displaystyle="true"><mrow><msub><mrow><mi>q</mi></mrow><mrow><mi>α</mi></mrow></msub><mo>=</mo><mn>2</mn><mi>e</mi></mrow></math>) when the particles are accelerated through a potential.</p><p style="padding-left:14px">•  Taking the ratio of <math displaystyle="true"><mrow><mi>K</mi></mrow></math> as <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>/</mo><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math> for the same wavelength; it is <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>/</mo><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></math>.</p><p style="padding-left:14px">•  Using the electron mass for the proton or the number 1836 for the <math displaystyle="true"><mrow><mi>α</mi></mrow></math>-particle.</p></div></section>
+</style><script>
+  (function() {
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head><body><div class="top"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button><h1>Dual Nature of Matter &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Dual%20Nature%20of%20Matter%20PYQ%20Practice.html">Back to practice</a><a href="Dual%20Nature%20of%20Matter%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> DUAL NATURE OF MATTER – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. de Broglie wavelength: comparing particles (same energy, potential, momentum or wavelength)</a></li><li><a href="#T2">Type 2. Photoelectric effect with two conditions: ratios and unknowns from two wavelengths, frequencies or metals</a></li><li><a href="#T3">Type 3. Photoelectric effect with one condition: maximum kinetic energy, threshold and stopping potential</a></li><li><a href="#T4">Type 4. Photoelectric effect: concepts and statements</a></li><li><a href="#T5">Type 5. de Broglie wavelength of a single particle: dependence on energy, voltage and temperature</a></li><li><a href="#T6">Type 6. Matter waves with motion: particles in fields, collisions and fission</a></li><li><a href="#T7">Type 7. Photon versus matter wave: same energy or same wavelength</a></li><li><a href="#T8">Type 8. Photoelectric graphs: stopping potential, kinetic energy and current</a></li><li><a href="#T9">Type 9. Photon number, power and intensity</a></li><li><a href="#T10">Type 10. Radiation pressure and photon momentum</a></li><li><a href="#T11">Type 11. Davisson–Germer, X-ray cut-off and photoelectron wavelength</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. de Broglie wavelength: comparing particles (same energy, potential, momentum or wavelength) <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">26 questions on the sheet (Q1–26)  ·  Sub-topics: A1 same kinetic energy · A2 same accelerating potential · A3 same wavelength or momentum</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>de Broglie wavelength</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>In terms of kinetic energy <math displaystyle="true"><mrow><mi>K</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Accelerated from rest through a potential <math displaystyle="true"><mrow><mi>V</mi></mrow></math> (charge <math displaystyle="true"><mrow><mi>q</mi></mrow></math>)</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Same kinetic energy: wavelength ratio</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Same potential: wavelength ratio</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Same wavelength: momentum and kinetic energy</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr><tr><td><p>Masses and charges to remember</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>Momentum gained through potential <math displaystyle="true"><mrow><mi>V</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>Electron accelerated through <math displaystyle="true"><mrow><mi>V</mi></mrow></math> volts</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is the wavelength of a heavier particle shorter at the same energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr><tr><td><p>What does &#x27;same de Broglie wavelength&#x27; tell you about momentum?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></td></tr><tr><td><p>Does the charge matter when the kinetic energies are equal?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_13"></div></td></tr><tr><td><p>How are the wavelengths ordered for the same energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_14"></div></td></tr><tr><td><p>What is the wavelength of a neutron compared with a proton at the same energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_15"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_16"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;A proton and an electron (or an <math displaystyle="true"><mrow><mi>α</mi></mrow></math>-particle) have the same kinetic energy / are accelerated through the same potential&#x27;; compare the wavelengths.</p><p style="padding-left:14px">•  &#x27;The same de Broglie wavelength&#x27;: the ratio of kinetic energies, velocities or masses is asked.</p><p style="padding-left:14px">•  &#x27;Arrange <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mi>e</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mi>p</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mi>α</mi></mrow></msub></mrow></math> in order&#x27; or &#x27;the ratio of their wavelengths is <math displaystyle="true"><mrow><mn>1</mn><mo>:</mo><msqrt><mrow><mi>m</mi></mrow></msqrt></mrow></math>, find <math displaystyle="true"><mrow><mi>m</mi></mrow></math>&#x27;.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>de Broglie wavelength</p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mi>p</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mi>m</mi><mi>v</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>In terms of kinetic energy <math displaystyle="true"><mrow><mi>K</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><msqrt><mrow><mn>2</mn><mi>m</mi><mi>K</mi></mrow></msqrt></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Accelerated from rest through a potential <math displaystyle="true"><mrow><mi>V</mi></mrow></math> (charge <math displaystyle="true"><mrow><mi>q</mi></mrow></math>)</p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><msqrt><mrow><mn>2</mn><mi>m</mi><mi>q</mi><mi>V</mi></mrow></msqrt></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Same kinetic energy: wavelength ratio</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>=</mo><msqrt><mrow><mfrac><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Same potential: wavelength ratio</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>=</mo><msqrt><mrow><mfrac><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub><msub><mrow><mi>q</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub><msub><mrow><mi>q</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Same wavelength: momentum and kinetic energy</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>p</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><msub><mrow><mi>p</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math> and <math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>K</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>K</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Masses and charges to remember</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub><mo>≈</mo><mn>1836</mn><mspace width="0.3em"></mspace><msub><mrow><mi>m</mi></mrow><mrow><mi>e</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mi>α</mi></mrow></msub><mo>≈</mo><mn>4</mn><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mi>d</mi></mrow></msub><mo>≈</mo><mn>2</mn><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>q</mi></mrow><mrow><mi>α</mi></mrow></msub><mo>=</mo><mn>2</mn><mi>e</mi></mrow></math></p></td></tr><tr><td><p>Momentum gained through potential <math displaystyle="true"><mrow><mi>V</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>p</mi><mo>=</mo><msqrt><mrow><mn>2</mn><mi>m</mi><mi>q</mi><mi>V</mi></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Electron accelerated through <math displaystyle="true"><mrow><mi>V</mi></mrow></math> volts</p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mn>1.227</mn></mrow><mrow><msqrt><mrow><mi>V</mi></mrow></msqrt></mrow></mfrac><mspace width="0.3em"></mspace><mtext>nm</mtext><mo>=</mo><mfrac><mrow><mn>12.27</mn></mrow><mrow><msqrt><mrow><mi>V</mi></mrow></msqrt></mrow></mfrac><mspace width="0.3em"></mspace><mtext>Å</mtext></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is the wavelength of a heavier particle shorter at the same energy?</p></td><td><p>At fixed <math displaystyle="true"><mrow><mi>K</mi></mrow></math> the momentum <math displaystyle="true"><mrow><mi>p</mi><mo>=</mo><msqrt><mrow><mn>2</mn><mi>m</mi><mi>K</mi></mrow></msqrt></mrow></math> grows with the mass, and <math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mi>h</mi><mo>/</mo><mi>p</mi></mrow></math> falls.</p></td></tr><tr><td><p>What does &#x27;same de Broglie wavelength&#x27; tell you about momentum?</p></td><td><p>The momenta are equal, whatever the masses. The lighter particle then has the larger speed and the larger kinetic energy.</p></td></tr><tr><td><p>Does the charge matter when the kinetic energies are equal?</p></td><td><p>No: with the same <math displaystyle="true"><mrow><mi>K</mi></mrow></math> only the mass enters. With the same accelerating potential the charge enters through <math displaystyle="true"><mrow><mi>q</mi><mi>V</mi></mrow></math>.</p></td></tr><tr><td><p>How are the wavelengths ordered for the same energy?</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mi>e</mi></mrow></msub><mo>&gt;</mo><msub><mrow><mi>λ</mi></mrow><mrow><mi>p</mi></mrow></msub><mo>&gt;</mo><msub><mrow><mi>λ</mi></mrow><mrow><mi>d</mi></mrow></msub><mo>&gt;</mo><msub><mrow><mi>λ</mi></mrow><mrow><mi>α</mi></mrow></msub></mrow></math>, since <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mi>e</mi></mrow></msub><mo>&lt;</mo><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub><mo>&lt;</mo><msub><mrow><mi>m</mi></mrow><mrow><mi>d</mi></mrow></msub><mo>&lt;</mo><msub><mrow><mi>m</mi></mrow><mrow><mi>α</mi></mrow></msub></mrow></math>.</p></td></tr><tr><td><p>What is the wavelength of a neutron compared with a proton at the same energy?</p></td><td><p>Equal, because their masses are practically equal.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>λ</mi><mo>∝</mo><mn>1</mn><mo>/</mo><mi>m</mi></mrow></math> instead of <math displaystyle="true"><mrow><mn>1</mn><mo>/</mo><msqrt><mrow><mi>m</mi></mrow></msqrt></mrow></math> for the same energy.</p><p style="padding-left:14px">•  Forgetting the charge (<math displaystyle="true"><mrow><msub><mrow><mi>q</mi></mrow><mrow><mi>α</mi></mrow></msub><mo>=</mo><mn>2</mn><mi>e</mi></mrow></math>) when the particles are accelerated through a potential.</p><p style="padding-left:14px">•  Taking the ratio of <math displaystyle="true"><mrow><mi>K</mi></mrow></math> as <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>/</mo><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math> for the same wavelength; it is <math displaystyle="true"><mrow><msub><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>/</mo><msub><mrow><mi>m</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></math>.</p><p style="padding-left:14px">•  Using the electron mass for the proton or the number 1836 for the <math displaystyle="true"><mrow><mi>α</mi></mrow></math>-particle.</p></div></section>
 <section class="typ" id="T2" data-k="2"><h2>Type 2. Photoelectric effect with two conditions: ratios and unknowns from two wavelengths, frequencies or metals <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">23 questions on the sheet (Q27–49)  ·  Sub-topics: B1 two stopping potentials · B2 two kinetic energies · B3 photoelectron speeds and short frequency questions</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Einstein&#x27;s photoelectric equation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></td></tr><tr><td><p>Two cases: eliminate <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_19"></div></td></tr><tr><td><p>Threshold wavelength</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_20"></div></td></tr><tr><td><p>Maximum speed</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_21"></div></td></tr><tr><td><p>Photon energies <math displaystyle="true"><mrow><mi>a</mi><mi>ϕ</mi></mrow></math> and <math displaystyle="true"><mrow><mi>b</mi><mi>ϕ</mi></mrow></math> (or frequencies <math displaystyle="true"><mrow><mi>a</mi><msub><mrow><mi>ν</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> and <math displaystyle="true"><mrow><mi>b</mi><msub><mrow><mi>ν</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math>)</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_22"></div></td></tr><tr><td><p>Kinetic energy ratio, wavelengths <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><mn>3</mn><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_23"></div></td></tr><tr><td><p>Energy in eV with <math displaystyle="true"><mrow><mi>h</mi><mi>c</mi><mo>=</mo><mn>1240</mn></mrow></math> eV nm</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_24"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why can the work function be found from two readings?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_25"></div></td></tr><tr><td><p>If the frequency falls below the threshold and the intensity is doubled, how many electrons are emitted?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_26"></div></td></tr><tr><td><p>Does doubling the frequency double the kinetic energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_27"></div></td></tr><tr><td><p>How are the speeds of photoelectrons compared?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_28"></div></td></tr><tr><td><p>What if the photon energy is exactly <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_29"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_30"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;When the wavelength is changed from <math displaystyle="true"><mrow><mi>λ</mi></mrow></math> to <math displaystyle="true"><mrow><mn>3</mn><mi>λ</mi></mrow></math> the stopping potential changes from <math displaystyle="true"><mrow><mn>8</mn></mrow></math> V to <math displaystyle="true"><mrow><mn>2</mn></mrow></math> V; find the threshold wavelength.&#x27;</p><p style="padding-left:14px">•  &#x27;The kinetic energy becomes three times (or doubles) when the wavelength is changed; find the work function.&#x27;</p><p style="padding-left:14px">•  &#x27;Photon energies equal to twice and ten times the work function; find the ratio of the maximum speeds.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Einstein&#x27;s photoelectric equation</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mi>h</mi><mi>ν</mi><mo>−</mo><mi>ϕ</mi><mo>=</mo><mfrac><mrow><mi>h</mi><mi>c</mi></mrow><mrow><mi>λ</mi></mrow></mfrac><mo>−</mo><mi>ϕ</mi><mo>=</mo><mi>e</mi><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math></p></td></tr><tr><td><p>Two cases: eliminate <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>e</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>01</mn></mrow></msub><mo>−</mo><msub><mrow><mi>V</mi></mrow><mrow><mn>02</mn></mrow></msub></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>h</mi><mi>c</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfrac><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Threshold wavelength</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>=</mo><mfrac><mrow><mi>h</mi><mi>c</mi></mrow><mrow><mi>ϕ</mi></mrow></mfrac></mrow></math>; emission needs <math displaystyle="true"><mrow><mi>λ</mi><mo>≤</mo><msub><mrow><mi>λ</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math></p></td></tr><tr><td><p>Maximum speed</p></td><td><p><math displaystyle="true"><mrow><mi>v</mi><mo>=</mo><msqrt><mrow><mfrac><mrow><mn>2</mn><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>E</mi><mo>−</mo><mi>ϕ</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>m</mi></mrow></mfrac></mrow></msqrt></mrow></math>, so <math displaystyle="true"><mrow><mi>v</mi><mo>∝</mo><msqrt><mrow><mi>E</mi><mo>−</mo><mi>ϕ</mi></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Photon energies <math displaystyle="true"><mrow><mi>a</mi><mi>ϕ</mi></mrow></math> and <math displaystyle="true"><mrow><mi>b</mi><mi>ϕ</mi></mrow></math> (or frequencies <math displaystyle="true"><mrow><mi>a</mi><msub><mrow><mi>ν</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> and <math displaystyle="true"><mrow><mi>b</mi><msub><mrow><mi>ν</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math>)</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>v</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>v</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>=</mo><msqrt><mrow><mfrac><mrow><mi>a</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>b</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Kinetic energy ratio, wavelengths <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><mn>3</mn><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math></p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><mfrac><mrow><mi>h</mi><mi>c</mi></mrow><mrow><mn>3</mn><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>−</mo><mi>ϕ</mi><mo>&lt;</mo><mfrac><mrow><msub><mrow><mi>K</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><mn>3</mn></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Energy in eV with <math displaystyle="true"><mrow><mi>h</mi><mi>c</mi><mo>=</mo><mn>1240</mn></mrow></math> eV nm</p></td><td><p><math displaystyle="true"><mrow><mi>E</mi><mo>=</mo><mfrac><mrow><mn>1240</mn></mrow><mrow><mi>λ</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mtext>nm</mtext></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac><mspace width="0.3em"></mspace><mtext>eV</mtext></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why can the work function be found from two readings?</p></td><td><p>Each reading gives <math displaystyle="true"><mrow><mi>K</mi><mo>=</mo><mi>h</mi><mi>ν</mi><mo>−</mo><mi>ϕ</mi></mrow></math>; subtracting removes <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math> and leaves <math displaystyle="true"><mrow><mi>h</mi></mrow></math> (or a combination of the given quantities).</p></td></tr><tr><td><p>If the frequency falls below the threshold and the intensity is doubled, how many electrons are emitted?</p></td><td><p>None. Intensity cannot make up for a photon energy below <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math>.</p></td></tr><tr><td><p>Does doubling the frequency double the kinetic energy?</p></td><td><p>No: <math displaystyle="true"><mrow><mi>K</mi><mo>=</mo><mi>h</mi><mi>ν</mi><mo>−</mo><mi>ϕ</mi></mrow></math>, so <math displaystyle="true"><mrow><mi>K</mi></mrow></math> more than doubles (the constant <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math> is subtracted once).</p></td></tr><tr><td><p>How are the speeds of photoelectrons compared?</p></td><td><p>Through <math displaystyle="true"><mrow><msqrt><mrow><mi>E</mi><mo>−</mo><mi>ϕ</mi></mrow></msqrt></mrow></math>, not through <math displaystyle="true"><mrow><mi>E</mi></mrow></math> itself.</p></td></tr><tr><td><p>What if the photon energy is exactly <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math>?</p></td><td><p>The electron just escapes with zero kinetic energy.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Comparing <math displaystyle="true"><mrow><mi>E</mi></mrow></math> instead of <math displaystyle="true"><mrow><mi>E</mi><mo>−</mo><mi>ϕ</mi></mrow></math> when finding the ratio of speeds.</p><p style="padding-left:14px">•  Writing the speed ratio as the ratio of kinetic energies, without the square root.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>=</mo><mn>3</mn><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></math> for <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><mn>3</mn><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math>, which reverses the answer.</p><p style="padding-left:14px">•  Forgetting that a stopping potential of <math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> means <math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mi>e</mi><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> (not <math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> in joules).</p></div></section>
 <section class="typ" id="T3" data-k="3"><h2>Type 3. Photoelectric effect with one condition: maximum kinetic energy, threshold and stopping potential <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">20 questions on the sheet (Q50–69)  ·  Sub-topics: C1 K_max, stopping potential and work function · C2 threshold and colour of light · C3 light-wave field, atomic transition or magnetic field</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_31"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Photoelectric equation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_32"></div></td></tr><tr><td><p>Photon energy in eV</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_33"></div></td></tr><tr><td><p>Threshold frequency and wavelength</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_34"></div></td></tr><tr><td><p>Stopping potential</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_35"></div></td></tr><tr><td><p>Visible range</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_36"></div></td></tr><tr><td><p>Photon energy of a light wave <math displaystyle="true"><mrow><mi>E</mi><mo>=</mo><msub><mrow><mi>E</mi></mrow><mrow><mn>0</mn></mrow></msub><mi mathvariant="normal">sin</mi><mi>ω</mi><mi>t</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_37"></div></td></tr><tr><td><p>Bohr transition emitting a photon</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_38"></div></td></tr><tr><td><p>Radius of the circular path of a photoelectron</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_39"></div></td></tr><tr><td><p>Wave number to wavelength</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_40"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How is the stopping potential related to the kinetic energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_41"></div></td></tr><tr><td><p>Why does a 10 W infra-red lamp and a 75 W infra-red lamp both fail below the threshold?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_42"></div></td></tr><tr><td><p>A light wave is given by <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mi>ω</mi><mi>t</mi></mrow></math>. What is its photon energy?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_43"></div></td></tr><tr><td><p>If two frequencies are present in the wave, which one decides <math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_44"></div></td></tr><tr><td><p>What happens when <math displaystyle="true"><mrow><mi>λ</mi><mo>&gt;</mo><msub><mrow><mi>λ</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_45"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_46"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 3</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  A single photon energy or wavelength, a work function, and <math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> or <math displaystyle="true"><mrow><mi>λ</mi></mrow></math> asked.</p><p style="padding-left:14px">•  &#x27;The threshold frequency of a metal of work function <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math>&#x27; or &#x27;longest wavelength that can eject electrons&#x27;.</p><p style="padding-left:14px">•  Light given as <math displaystyle="true"><mrow><mi>E</mi><mo>=</mo><msub><mrow><mi>E</mi></mrow><mrow><mn>0</mn></mrow></msub><mi mathvariant="normal">sin</mi><mi>ω</mi><mi>t</mi></mrow></math>, a transition into <math displaystyle="true"><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math>, or electrons bent in a magnetic field.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Photoelectric equation</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mi>h</mi><mi>ν</mi><mo>−</mo><mi>ϕ</mi><mo>=</mo><mi>e</mi><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math></p></td></tr><tr><td><p>Photon energy in eV</p></td><td><p><math displaystyle="true"><mrow><mi>E</mi><mo>=</mo><mfrac><mrow><mi>h</mi><mi>c</mi></mrow><mrow><mi>λ</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>1240</mn></mrow><mrow><mi>λ</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mtext>nm</mtext></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac><mspace width="0.3em"></mspace><mtext>eV</mtext><mo>=</mo><mfrac><mrow><mn>12375</mn></mrow><mrow><mi>λ</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mtext>Å</mtext></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac><mspace width="0.3em"></mspace><mtext>eV</mtext></mrow></math></p></td></tr><tr><td><p>Threshold frequency and wavelength</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>ν</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>=</mo><mfrac><mrow><mi>ϕ</mi></mrow><mrow><mi>h</mi></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>=</mo><mfrac><mrow><mi>h</mi><mi>c</mi></mrow><mrow><mi>ϕ</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Stopping potential</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>=</mo><mfrac><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><mrow><mi>e</mi></mrow></mfrac></mrow></math>; <math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> in volts equals <math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math> in eV</p></td></tr><tr><td><p>Visible range</p></td><td><p><math displaystyle="true"><mrow><mn>400</mn></mrow></math> nm (violet, <math displaystyle="true"><mrow><mn>3.1</mn></mrow></math> eV) to <math displaystyle="true"><mrow><mn>700</mn></mrow></math> nm (red, <math displaystyle="true"><mrow><mn>1.8</mn></mrow></math> eV)</p></td></tr><tr><td><p>Photon energy of a light wave <math displaystyle="true"><mrow><mi>E</mi><mo>=</mo><msub><mrow><mi>E</mi></mrow><mrow><mn>0</mn></mrow></msub><mi mathvariant="normal">sin</mi><mi>ω</mi><mi>t</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>E</mi><mo>=</mo><mi mathvariant="normal">ℏ</mi><mi>ω</mi><mo>=</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><mi>ω</mi></mrow></math> (not <math displaystyle="true"><mrow><mi>h</mi><mi>ω</mi></mrow></math>)</p></td></tr><tr><td><p>Bohr transition emitting a photon</p></td><td><p><math displaystyle="true"><mrow><mi>E</mi><mo>=</mo><mn>13.6</mn><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><msubsup><mrow><mi>n</mi></mrow><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></mfrac><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><msubsup><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> eV</p></td></tr><tr><td><p>Radius of the circular path of a photoelectron</p></td><td><p><math displaystyle="true"><mrow><mi>r</mi><mo>=</mo><mfrac><mrow><msqrt><mrow><mn>2</mn><mi>m</mi><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></msqrt></mrow><mrow><mi>e</mi><mi>B</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Wave number to wavelength</p></td><td><p><math displaystyle="true"><mrow><mi>k</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mrow><mi>λ</mi></mrow></mfrac></mrow></math>, so <math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mrow><mi>k</mi></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How is the stopping potential related to the kinetic energy?</p></td><td><p><math displaystyle="true"><mrow><mi>e</mi><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>=</mo><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math>: the retarding field removes all the kinetic energy of the fastest electron.</p></td></tr><tr><td><p>Why does a 10 W infra-red lamp and a 75 W infra-red lamp both fail below the threshold?</p></td><td><p>Photon energy depends on the frequency, not on the power; infra-red photons have energy below <math displaystyle="true"><mrow><mi>ϕ</mi></mrow></math>.</p></td></tr><tr><td><p>A light wave is given by <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mi>ω</mi><mi>t</mi></mrow></math>. What is its photon energy?</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">ℏ</mi><mi>ω</mi></mrow></math> with <math displaystyle="true"><mrow><mi>ω</mi></mrow></math> the coefficient of <math displaystyle="true"><mrow><mi>t</mi></mrow></math> (rad/s); using <math displaystyle="true"><mrow><mi>h</mi><mi>ω</mi></mrow></math> is a common error.</p></td></tr><tr><td><p>If two frequencies are present in the wave, which one decides <math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math>?</p></td><td><p>The larger frequency.</p></td></tr><tr><td><p>What happens when <math displaystyle="true"><mrow><mi>λ</mi><mo>&gt;</mo><msub><mrow><mi>λ</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math>?</p></td><td><p>No photoelectrons are emitted.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>h</mi><mi>ω</mi></mrow></math> instead of <math displaystyle="true"><mrow><mi mathvariant="normal">ℏ</mi><mi>ω</mi><mo>=</mo><mi>h</mi><mi>ω</mi><mo>/</mo><mn>2</mn><mi>π</mi></mrow></math> for angular frequency.</p><p style="padding-left:14px">•  Forgetting to convert Å to nm (or eV to J) before substituting.</p><p style="padding-left:14px">•  Taking the energy of the electron captured in a transition as its kinetic energy only; add the binding energy.</p><p style="padding-left:14px">•  Reading the wavelength straight from the phase of a wave: <math displaystyle="true"><mrow><mi>k</mi><mo>=</mo><mn>2</mn><mi>π</mi><mo>/</mo><mi>λ</mi></mrow></math>.</p></div></section>
 <section class="typ" id="T4" data-k="4"><h2>Type 4. Photoelectric effect: concepts and statements <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">14 questions on the sheet (Q70–83)  ·  Sub-topics: D1 stopping potential, intensity and frequency · D2 which observations or phenomena are correct</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_47"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>What decides the stopping potential</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_48"></div></td></tr><tr><td><p>Effect of intensity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_49"></div></td></tr><tr><td><p>Threshold frequency</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_50"></div></td></tr><tr><td><p><math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math> against <math displaystyle="true"><mrow><mi>ν</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_51"></div></td></tr><tr><td><p><math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> against <math displaystyle="true"><mrow><mi>ν</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_52"></div></td></tr><tr><td><p><math displaystyle="true"><mrow><msubsup><mrow><mi>v</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></math> against <math displaystyle="true"><mrow><mi>ν</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_53"></div></td></tr><tr><td><p>Time lag</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_54"></div></td></tr><tr><td><p>Number of photons for fixed power</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_55"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does the wave theory fail for the photoelectric effect?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_56"></div></td></tr><tr><td><p>Does increasing the intensity increase the stopping potential?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_57"></div></td></tr><tr><td><p>Does a negative potential on the emitter suppress emission?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_58"></div></td></tr><tr><td><p>Does the number of photons rise with frequency at fixed power?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_59"></div></td></tr><tr><td><p>What is the minimum frequency for emission?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_60"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_61"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 4</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  Assertion–Reason or Statement I and II about the photoelectric effect.</p><p style="padding-left:14px">•  &#x27;Which of the following statements is not true about the stopping potential?&#x27;</p><p style="padding-left:14px">•  A list A to E of observations; choose the correct set.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>What decides the stopping potential</p></td><td><p><math displaystyle="true"><mrow><mi>e</mi><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>=</mo><mi>h</mi><mi>ν</mi><mo>−</mo><mi>ϕ</mi></mrow></math>: frequency and material only</p></td></tr><tr><td><p>Effect of intensity</p></td><td><p>Saturation current <math displaystyle="true"><mrow><mo>∝</mo></mrow></math> intensity; <math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> and <math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math> unchanged</p></td></tr><tr><td><p>Threshold frequency</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>ν</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>=</mo><mfrac><mrow><mi>ϕ</mi></mrow><mrow><mi>h</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p><math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math> against <math displaystyle="true"><mrow><mi>ν</mi></mrow></math></p></td><td><p>A straight line of slope <math displaystyle="true"><mrow><mi>h</mi></mrow></math></p></td></tr><tr><td><p><math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> against <math displaystyle="true"><mrow><mi>ν</mi></mrow></math></p></td><td><p>A straight line of slope <math displaystyle="true"><mrow><mi>h</mi><mo>/</mo><mi>e</mi></mrow></math></p></td></tr><tr><td><p><math displaystyle="true"><mrow><msubsup><mrow><mi>v</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></math> against <math displaystyle="true"><mrow><mi>ν</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><msubsup><mrow><mi>v</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msubsup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>h</mi></mrow><mrow><mi>m</mi></mrow></mfrac><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>ν</mi><mo>−</mo><msub><mrow><mi>ν</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, linear</p></td></tr><tr><td><p>Time lag</p></td><td><p>None (about <math displaystyle="true"><mrow><msup><mrow><mn>10</mn></mrow><mrow><mo>−</mo><mn>9</mn></mrow></msup></mrow></math> s): emission is instantaneous</p></td></tr><tr><td><p>Number of photons for fixed power</p></td><td><p><math displaystyle="true"><mrow><mi>N</mi><mo>=</mo><mfrac><mrow><mi>P</mi></mrow><mrow><mi>h</mi><mi>ν</mi></mrow></mfrac></mrow></math>: increases when frequency decreases</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does the wave theory fail for the photoelectric effect?</p></td><td><p>It predicts that <math displaystyle="true"><mrow><msub><mrow><mi>K</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></math> grows with intensity, no threshold frequency and a time lag; none is observed.</p></td></tr><tr><td><p>Does increasing the intensity increase the stopping potential?</p></td><td><p>No. It increases the number of photons and so the saturation current.</p></td></tr><tr><td><p>Does a negative potential on the emitter suppress emission?</p></td><td><p>A sufficiently negative potential on the collector stops the current; the stopping potential varies linearly with frequency.</p></td></tr><tr><td><p>Does the number of photons rise with frequency at fixed power?</p></td><td><p>No, it falls: each photon carries more energy.</p></td></tr><tr><td><p>What is the minimum frequency for emission?</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>ν</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>=</mo><mi>ϕ</mi><mo>/</mo><mi>h</mi></mrow></math>, independent of intensity.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Assuming a brighter light raises the stopping potential.</p><p style="padding-left:14px">•  Assuming a minimum intensity (not frequency) is needed.</p><p style="padding-left:14px">•  Reading &#x27;not true&#x27; statements as &#x27;true&#x27;.</p><p style="padding-left:14px">•  Confusing the number of photons with their energy.</p></div></section>
@@ -855,66 +998,7 @@ function san(n){var o='';[].forEach.call(n.childNodes,function(c){if(c.nodeType=
  if(t=='br')o+='<br>';else if(t=='sub'||t=='sup')o+='<'+t+'>'+san(c)+'</'+t+'>';
  else if(t=='span'&&/^(fr|n|d)$/.test(c.className))o+='<span class="'+c.className+'">'+san(c)+'</span>';
  else if(t=='div'||t=='p')o+=(o?'<br>':'')+san(c);else o+=san(c)}});return o}
-function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'
-<script>
-// Unblock both 'Save my notes as PDF' and individual 'Save this type as PDF'
-(function(){
-  function setupPdfBtns() {
-    // 1. Main PDF button (Save all notes)
-    var btn = document.getElementById('pdf') || document.getElementById('savepdf');
-    if (btn) {
-      btn.onclick = function(e) {
-        if (e) e.preventDefault();
-        document.body.classList.remove('one');
-        var secs = [].slice.call(document.querySelectorAll('section.typ'));
-        secs.forEach(function(s) {
-          s.classList.remove('pick', 'pr-skip');
-          s.style.display = 'block';
-        });
-        var h = document.querySelector('h1.t');
-        document.title = (h ? h.innerText : 'Type Notes');
-        window.print();
-      };
-    }
-
-    // 2. Individual type PDF buttons (.tpdf)
-    var typeBtns = document.querySelectorAll('.tpdf');
-    typeBtns.forEach(function(tp) {
-      tp.onclick = function(e) {
-        if (e) e.preventDefault();
-        var sec = tp.closest('section.typ');
-        if (!sec) return;
-        document.body.classList.add('one');
-        document.querySelectorAll('section.typ').forEach(function(s) {
-          s.classList.remove('pick');
-        });
-        sec.classList.add('pick');
-        var h = document.querySelector('h1.t');
-        var k = sec.dataset.k || sec.id || '';
-        document.title = (h ? h.innerText : 'Type Notes') + ' - Type ' + k;
-        window.print();
-      };
-    });
-
-    // 3. Reset state after printing
-    window.addEventListener('afterprint', function() {
-      document.body.classList.remove('one');
-      document.querySelectorAll('section.typ').forEach(function(s) {
-        s.classList.remove('pick', 'pr-skip');
-        s.style.display = 'block';
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupPdfBtns);
-  } else {
-    setupPdfBtns();
-  }
-})();
-</script>
-
-</body>','text/html').body)}
+function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'</body>','text/html').body)}
 var eds=[].slice.call(document.querySelectorAll('.ed'));
 function txt(e){return e.textContent.replace(/​/g,'').trim()}
 function apply(){eds.forEach(function(t){t.innerHTML=clean(S.ta[t.dataset.id]||'')});
@@ -954,7 +1038,7 @@ window.addEventListener('afterprint',endPrint);
 function doPrint(){setTimeout(function(){window.print()},50)}
 document.getElementById('pdf').onclick=function(){var secs=[].slice.call(document.querySelectorAll('section.typ')),n=0;
  secs.forEach(function(s){if(hasWork(s))n++;else s.classList.add('pr-skip')});
- /* unblocked main pdf */
+ /* unblocked pdf */ if(!n){secs.forEach(function(s){s.classList.remove('pr-skip')});}
  document.title=KEY.replace(/^tn_/,'')+' - my Type Notes';doPrint()};
 [].forEach.call(document.querySelectorAll('section.typ'),function(s){s.querySelector('.tpdf').onclick=function(){
  /* unblocked tpdf */

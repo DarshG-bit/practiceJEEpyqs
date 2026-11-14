@@ -1,12 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
-<script>
-  (function(){
-    var t = localStorage.getItem('jee_theme');
-    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
-</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Limits - Type Notes</title><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Limits - Type Notes</title><style>
 :root{--ink:#1d2433;--mut:#5a6478;--line:#dfe4ee;--bg:#eef1f7;--acc:#1f4e8c}*{box-sizing:border-box}
 body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.55}
 .top{background:var(--acc);color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}.top h1{margin:0;font-size:18px;flex:1;min-width:160px}.top a{color:#fff;font-size:14px}
@@ -24,8 +16,13 @@ p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
 .how{background:#f7f9fd;border:1px solid var(--line);border-radius:8px;padding:6px 14px}
 @media(max-width:640px){.gt td:first-child{width:100%}.gt .ed{min-height:110px}.gt,.gt tbody,.gt tr,.gt td{display:block;width:100%}.gt tr{border:1px solid #c5ccda;margin:8px 0;border-radius:6px;overflow:hidden}.gt td{border:0;border-bottom:1px solid #e3e8f1}.gt td:first-child{background:#f1f5fb;font-weight:600}.gt tr:first-child td{background:inherit}.gt tr:first-child td:first-child{background:#f1f5fb}.page{padding:12px}}
 #sym{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#1f4e8c;padding:6px 8px;display:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}#sym.on{display:block}#sym button.w{padding:0 10px}#sym button{display:inline-block;min-width:40px;height:40px;margin:0 3px 0 0;font-size:18px;border:0;border-radius:6px;background:#fff;color:#1d2433;cursor:pointer}#sym>span{color:#cfe0fa;font-size:12px;margin-right:8px}@media(max-width:480px){#sym>span{display:none}}body.symon{padding-bottom:60px}
+
+/* --- Clean Print & Save as PDF Styling (Workbook layout) --- */
 @media print {
-  @page { margin: 8mm 10mm; size: A4 portrait; }
+  @page {
+    margin: 8mm 10mm;
+    size: A4 portrait;
+  }
   body {
     background: #fff !important;
     color: #000 !important;
@@ -41,43 +38,59 @@ p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
     border: none !important;
     box-shadow: none !important;
   }
+  
+  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
   .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
   .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
     display: none !important;
   }
-  h1.t { font-size: 22pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
-  h2 { font-size: 16pt !important; margin: 16px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; }
-  h3 { font-size: 14pt !important; margin: 12px 0 4px !important; break-after: avoid !important; }
-  p { font-size: 13pt !important; margin: 4px 0 !important; }
-  
+
+  /* HEADINGS */
+  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
+  h2 { font-size: 15.5pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
+  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
+
+  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
   body.one section.typ:not(.pick) {
     display: none !important;
   }
   
+  /* CREATOR SKIP CLASS FOR MAIN PDF */
+  section.typ.pr-skip {
+    display: none !important;
+  }
+
+  /* EACH TYPE STARTS ON A NEW PAGE */
   section.typ {
     border-top: 2.5px solid #1f4e8c !important;
     padding-top: 10px !important;
-    margin-top: 16px !important;
+    margin-top: 14px !important;
     break-inside: auto !important;
+    page-break-inside: auto !important;
   }
   section.typ ~ section.typ {
     break-before: page !important;
+    page-break-before: page !important;
   }
-  
+
+  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
   .gt, table {
     width: 100% !important;
     border-collapse: collapse !important;
     break-inside: auto !important;
-    margin: 10px 0 !important;
-    font-size: 13pt !important;
+    page-break-inside: auto !important;
+    margin: 8px 0 !important;
+    font-size: 12.5pt !important;
   }
   .gt tr, tr {
     break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
   .gt td, td, th {
     border: 1.5px solid #64748b !important;
     padding: 8px 10px !important;
-    font-size: 13pt !important;
+    font-size: 12.5pt !important;
     color: #000 !important;
     background: #fff !important;
   }
@@ -86,19 +99,232 @@ p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
     font-weight: 700 !important;
     color: #000 !important;
   }
+
+  /* EDITABLE BOXES / USER WRITTEN NOTES: SPACIOUS WORKBOOK FEEL */
   .ed {
     border: 1.5px solid #64748b !important;
-    background: #fafafa !important;
+    background: #fff !important;
     color: #000 !important;
     min-height: 85px !important;
     font-size: 13pt !important;
     line-height: 1.6 !important;
     padding: 10px 12px !important;
     break-inside: avoid !important;
+    page-break-inside: avoid !important;
     white-space: pre-wrap !important;
     border-radius: 6px !important;
   }
-}.top,.btn,.noprint,.how,details,#types,#types+ul{display:none!important}body{background:#fff}.page{border:0}.ed{border:1px solid #999;min-height:60px!important}.typ{break-inside:auto}.typ h2{break-after:avoid}.typ.pr-skip{display:none!important}body.one .typ:not(.pick){display:none!important}}
+}
+
+
+/* Responsive Wrapped Symbol Bar (#sym) */
+#sym {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1000 !important;
+  background: #1f4e8c;
+  padding: 8px 12px !important;
+  display: none;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 5px 6px !important;
+  max-height: 90px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+#sym.on {
+  display: flex !important;
+}
+body {
+  overflow-x: hidden !important;
+}
+body.symon {
+  padding-bottom: 96px !important;
+}
+
+/* =================== COMPREHENSIVE DARK MODE (TYPE NOTES) =================== */
+[data-theme="dark"] {
+  --ink: #f8fafc;
+  --mut: #94a3b8;
+  --line: #334155;
+  --bg: #0f172a;
+  --acc: #60a5fa;
+}
+
+[data-theme="dark"] body {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] a {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] .page {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .top {
+  background: #091e3a !important;
+  border-bottom: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] h1.t,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+  color: #60a5fa !important;
+}
+
+[data-theme="dark"] .how {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .how b {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how ol,
+[data-theme="dark"] .how li {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .sm {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] details {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .btn {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #334155 !important;
+}
+[data-theme="dark"] .btn.pri {
+  background: #2563eb !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .btn.pri:hover {
+  background: #1d4ed8 !important;
+}
+
+[data-theme="dark"] .ed {
+  background: #0f172a !important;
+  border: 1px solid #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .ed:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px #1e3a8a !important;
+}
+
+[data-theme="dark"] .gt {
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .gt td {
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  background: #0f172a !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .rev {
+  background: #064e3b !important;
+  border-color: #10b981 !important;
+  color: #ecfdf5 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #6ee7b7 !important;
+}
+
+[data-theme="dark"] math,
+[data-theme="dark"] math * {
+  color: #f8fafc !important;
+  fill: #f8fafc !important;
+}
+
+[data-theme="dark"] #sym {
+  background: #091e3a !important;
+  border-top: 1px solid #334155 !important;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+[data-theme="dark"] #sym > span {
+  color: #93c5fd !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] #sym button {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #475569 !important;
+}
+[data-theme="dark"] #sym button:hover {
+  background: #334155 !important;
+  border-color: #60a5fa !important;
+  color: #60a5fa !important;
+}
+[data-theme="dark"] #sym button.w {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border-color: #3b82f6 !important;
+}
+
+.theme-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: inherit;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
+[data-theme="dark"] .theme-btn {
+  background: #1e293b;
+  border: 1px solid #475569;
+  color: #f8fafc;
+}
+[data-theme="dark"] .theme-btn:hover { background: #334155; }
+
 
 /* =================== COMPREHENSIVE DARK MODE =================== */
 [data-theme="dark"] {
@@ -744,98 +970,15 @@ body {
   background: #334155;
 }
 
-
-/* --- Clean Print & Save as PDF Styling --- */
-@media print {
-  @page { margin: 8mm 10mm; size: A4 portrait; }
-  body {
-    background: #fff !important;
-    color: #000 !important;
-    font-size: 13pt !important;
-    line-height: 1.5 !important;
-    padding-bottom: 0 !important;
-  }
-  .page {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  
-  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
-  .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
-  .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
-    display: none !important;
-  }
-
-  /* HEADINGS */
-  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
-  h2 { font-size: 16pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
-  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
-  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
-
-  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
-  body.one section.typ:not(.pick) {
-    display: none !important;
-  }
-
-  /* EACH TYPE STARTS ON A NEW PAGE */
-  section.typ {
-    border-top: 2.5px solid #1f4e8c !important;
-    padding-top: 10px !important;
-    margin-top: 14px !important;
-    break-inside: auto !important;
-    page-break-inside: auto !important;
-  }
-  section.typ ~ section.typ {
-    break-before: page !important;
-    page-break-before: page !important;
-  }
-
-  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
-  .gt, table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    break-inside: auto !important;
-    page-break-inside: auto !important;
-    margin: 8px 0 !important;
-    font-size: 12.5pt !important;
-  }
-  .gt tr, tr {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-  .gt td, td, th {
-    border: 1.5px solid #64748b !important;
-    padding: 8px 10px !important;
-    font-size: 12.5pt !important;
-    color: #000 !important;
-    background: #fff !important;
-  }
-  .gt tr:first-child td, .gt td:first-child {
-    background: #f1f5fb !important;
-    font-weight: 700 !important;
-    color: #000 !important;
-  }
-
-  /* EDITABLE BOXES / USER WRITTEN NOTES */
-  .ed {
-    border: 1.5px solid #64748b !important;
-    background: #fff !important;
-    color: #000 !important;
-    min-height: 60px !important;
-    font-size: 12.5pt !important;
-    line-height: 1.6 !important;
-    padding: 8px 10px !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    white-space: pre-wrap !important;
-  }
-}
-
-</style></head><body><div class="top"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button><h1>Limits &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Limits%20PYQ%20Practice.html">Back to practice</a><a href="Limits%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> LIMITS – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Exponential, logarithmic and 1^∞ limits, and limits at infinity</a></li><li><a href="#T2">Type 2. Standard trigonometric and inverse-trigonometric limits</a></li><li><a href="#T3">Type 3. Finding constants from a finite-limit condition</a></li><li><a href="#T4">Type 4. Functional and derivative-based limits (f differentiable, integrals)</a></li><li><a href="#T5">Type 5. Greatest integer, fractional part, piecewise functions and existence of a limit</a></li><li><a href="#T6">Type 6. Algebraic limits: factorisation and rationalisation</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Exponential, logarithmic and 1^∞ limits, and limits at infinity <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">23 questions on the sheet (Q1–23)  ·  Sub-topics: A1 <math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> forms and exponential-power limits · A2 exponential, log and inverse-trig limits by expansion · A3 limits at infinity: sums, products and radicals</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p><math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> form</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Standard</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Expansion</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>At infinity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I do a <math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> limit?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>What if the base is not near 1 in form?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr><tr><td><p>How do I handle <math displaystyle="true"><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow></math> with radicals?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;<math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">lim</mi></mrow><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></msub><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">cos</mi><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi mathvariant="normal">cot</mi><mi>x</mi></mrow></msup></mrow></math> (or <math displaystyle="true"><mrow><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">tan</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>π</mi></mrow><mrow><mn>4</mn></mrow></mfrac><mo>+</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></msup></mrow></math>) is equal to&#x27;.</p><p style="padding-left:14px">•  A power whose base tends to 1 and whose exponent tends to <math displaystyle="true"><mrow><mi>∞</mi></mrow></math>.</p><p style="padding-left:14px">•  <math displaystyle="true"><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow></math> or <math displaystyle="true"><mrow><mi>n</mi><mo>→</mo><mi>∞</mi></mrow></math> with radicals, sums or products of many terms.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p><math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> form</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">lim</mi><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>u</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>v</mi></mrow></msup><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mi mathvariant="normal">lim</mi><mi>u</mi><mi>v</mi></mrow></msup></mrow></math> when <math displaystyle="true"><mrow><mi>u</mi><mo>→</mo><mn>0</mn></mrow></math>, <math displaystyle="true"><mrow><mi>v</mi><mo>→</mo><mi>∞</mi></mrow></math></p></td></tr><tr><td><p>Standard</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi></mrow></msup><mo>−</mo><mn>1</mn></mrow><mrow><mi>x</mi></mrow></mfrac><mo>→</mo><mn>1</mn><mo>,</mo><mspace width="0.3em"></mspace><mfrac><mrow><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>x</mi></mrow></mfrac><mo>→</mo><mn>1</mn></mrow></math></p></td></tr><tr><td><p>Expansion</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi></mrow></msup><mo>=</mo><mn>1</mn><mo>+</mo><mi>x</mi><mo>+</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn></mrow></mfrac><mo>+</mo><mo>⋯</mo><mo>,</mo><mspace width="0.3em"></mspace><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>x</mi><mo>−</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn></mrow></mfrac><mo>+</mo><mo>⋯</mo></mrow></math></p></td></tr><tr><td><p>At infinity</p></td><td><p>divide by the highest power; <math displaystyle="true"><mrow><msqrt><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi></mrow></msqrt><mo>−</mo><mi>x</mi><mo>→</mo><mfrac><mrow><mi>b</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I do a <math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> limit?</p></td><td><p>Write base <math displaystyle="true"><mrow><mo>=</mo><mn>1</mn><mo>+</mo><mi>u</mi></mrow></math>, find <math displaystyle="true"><mrow><mi mathvariant="normal">lim</mi><mi>u</mi><mi>v</mi></mrow></math> and put it in the exponent of <math displaystyle="true"><mrow><mi>e</mi></mrow></math>.</p></td></tr><tr><td><p>What if the base is not near 1 in form?</p></td><td><p>Write it as <math displaystyle="true"><mrow><mn>1</mn><mo>+</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mtext>base</mtext><mo>−</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> and compute base <math displaystyle="true"><mrow><mo>−</mo><mn>1</mn></mrow></math> as a ratio first.</p></td></tr><tr><td><p>How do I handle <math displaystyle="true"><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow></math> with radicals?</p></td><td><p>Rationalise, then divide numerator and denominator by the highest power of <math displaystyle="true"><mrow><mi>x</mi></mrow></math>.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Forgetting to subtract 1 from the base before multiplying by the exponent.</p><p style="padding-left:14px">•  Cancelling <math displaystyle="true"><mrow><mi>∞</mi><mo>−</mo><mi>∞</mi></mrow></math> without rationalising.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi></mrow></msup><mo>≈</mo><mn>1</mn><mo>+</mo><mi>x</mi></mrow></math> when the denominator needs <math displaystyle="true"><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow></math> terms.</p></div></section>
+</style><script>
+  (function() {
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head><body><div class="top"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button><h1>Limits &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Limits%20PYQ%20Practice.html">Back to practice</a><a href="Limits%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> LIMITS – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Exponential, logarithmic and 1^∞ limits, and limits at infinity</a></li><li><a href="#T2">Type 2. Standard trigonometric and inverse-trigonometric limits</a></li><li><a href="#T3">Type 3. Finding constants from a finite-limit condition</a></li><li><a href="#T4">Type 4. Functional and derivative-based limits (f differentiable, integrals)</a></li><li><a href="#T5">Type 5. Greatest integer, fractional part, piecewise functions and existence of a limit</a></li><li><a href="#T6">Type 6. Algebraic limits: factorisation and rationalisation</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Exponential, logarithmic and 1^∞ limits, and limits at infinity <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">23 questions on the sheet (Q1–23)  ·  Sub-topics: A1 <math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> forms and exponential-power limits · A2 exponential, log and inverse-trig limits by expansion · A3 limits at infinity: sums, products and radicals</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p><math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> form</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Standard</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Expansion</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>At infinity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I do a <math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> limit?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>What if the base is not near 1 in form?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr><tr><td><p>How do I handle <math displaystyle="true"><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow></math> with radicals?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;<math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">lim</mi></mrow><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></msub><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">cos</mi><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi mathvariant="normal">cot</mi><mi>x</mi></mrow></msup></mrow></math> (or <math displaystyle="true"><mrow><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">tan</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>π</mi></mrow><mrow><mn>4</mn></mrow></mfrac><mo>+</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></msup></mrow></math>) is equal to&#x27;.</p><p style="padding-left:14px">•  A power whose base tends to 1 and whose exponent tends to <math displaystyle="true"><mrow><mi>∞</mi></mrow></math>.</p><p style="padding-left:14px">•  <math displaystyle="true"><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow></math> or <math displaystyle="true"><mrow><mi>n</mi><mo>→</mo><mi>∞</mi></mrow></math> with radicals, sums or products of many terms.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p><math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> form</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">lim</mi><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>u</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>v</mi></mrow></msup><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mi mathvariant="normal">lim</mi><mi>u</mi><mi>v</mi></mrow></msup></mrow></math> when <math displaystyle="true"><mrow><mi>u</mi><mo>→</mo><mn>0</mn></mrow></math>, <math displaystyle="true"><mrow><mi>v</mi><mo>→</mo><mi>∞</mi></mrow></math></p></td></tr><tr><td><p>Standard</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi></mrow></msup><mo>−</mo><mn>1</mn></mrow><mrow><mi>x</mi></mrow></mfrac><mo>→</mo><mn>1</mn><mo>,</mo><mspace width="0.3em"></mspace><mfrac><mrow><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>x</mi></mrow></mfrac><mo>→</mo><mn>1</mn></mrow></math></p></td></tr><tr><td><p>Expansion</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi></mrow></msup><mo>=</mo><mn>1</mn><mo>+</mo><mi>x</mi><mo>+</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn></mrow></mfrac><mo>+</mo><mo>⋯</mo><mo>,</mo><mspace width="0.3em"></mspace><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>x</mi><mo>−</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn></mrow></mfrac><mo>+</mo><mo>⋯</mo></mrow></math></p></td></tr><tr><td><p>At infinity</p></td><td><p>divide by the highest power; <math displaystyle="true"><mrow><msqrt><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi></mrow></msqrt><mo>−</mo><mi>x</mi><mo>→</mo><mfrac><mrow><mi>b</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I do a <math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mi>∞</mi></mrow></msup></mrow></math> limit?</p></td><td><p>Write base <math displaystyle="true"><mrow><mo>=</mo><mn>1</mn><mo>+</mo><mi>u</mi></mrow></math>, find <math displaystyle="true"><mrow><mi mathvariant="normal">lim</mi><mi>u</mi><mi>v</mi></mrow></math> and put it in the exponent of <math displaystyle="true"><mrow><mi>e</mi></mrow></math>.</p></td></tr><tr><td><p>What if the base is not near 1 in form?</p></td><td><p>Write it as <math displaystyle="true"><mrow><mn>1</mn><mo>+</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mtext>base</mtext><mo>−</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> and compute base <math displaystyle="true"><mrow><mo>−</mo><mn>1</mn></mrow></math> as a ratio first.</p></td></tr><tr><td><p>How do I handle <math displaystyle="true"><mrow><mi>x</mi><mo>→</mo><mi>∞</mi></mrow></math> with radicals?</p></td><td><p>Rationalise, then divide numerator and denominator by the highest power of <math displaystyle="true"><mrow><mi>x</mi></mrow></math>.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Forgetting to subtract 1 from the base before multiplying by the exponent.</p><p style="padding-left:14px">•  Cancelling <math displaystyle="true"><mrow><mi>∞</mi><mo>−</mo><mi>∞</mi></mrow></math> without rationalising.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi></mrow></msup><mo>≈</mo><mn>1</mn><mo>+</mo><mi>x</mi></mrow></math> when the denominator needs <math displaystyle="true"><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow></math> terms.</p></div></section>
 <section class="typ" id="T2" data-k="2"><h2>Type 2. Standard trigonometric and inverse-trigonometric limits <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">21 questions on the sheet (Q24–44)  ·  Sub-topics: B1 direct trigonometric ratios and <math displaystyle="true"><mrow><mn>1</mn><mo>−</mo><mi mathvariant="normal">cos</mi></mrow></math> forms · B2 trigonometric limits with radicals and products · B3 mixed standard limits</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_10"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Basic</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_11"></div></td></tr><tr><td><p>Shift</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_12"></div></td></tr><tr><td><p>Identities</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_13"></div></td></tr><tr><td><p>Rationalise</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_14"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I use <math displaystyle="true"><mrow><mfrac><mrow><mi mathvariant="normal">sin</mi><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac><mo>→</mo><mn>1</mn></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div></td></tr><tr><td><p>What if the limit point is not 0?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>How do I treat <math displaystyle="true"><mrow><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>4</mn></mrow></msup><mi>x</mi></mrow></math> inside <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>π</mi><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>4</mn></mrow></msup><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;<math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">lim</mi></mrow><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></msub><mfrac><mrow><msup><mrow><mi mathvariant="normal">sin</mi></mrow><mrow><mn>2</mn></mrow></msup><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>π</mi><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>4</mn></mrow></msup><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>4</mn></mrow></msup></mrow></mfrac></mrow></math> (or <math displaystyle="true"><mrow><mi mathvariant="normal">lim</mi><mfrac><mrow><mi mathvariant="normal">tan</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>π</mi><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>θ</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi mathvariant="normal">sin</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>2</mn><mi>π</mi><msup><mrow><mi mathvariant="normal">sin</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>θ</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac></mrow></math>) is equal to&#x27;.</p><p style="padding-left:14px">•  A ratio with <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi></mrow></math>, <math displaystyle="true"><mrow><mi mathvariant="normal">tan</mi></mrow></math>, <math displaystyle="true"><mrow><mi mathvariant="normal">cos</mi></mrow></math> or their inverses at 0, <math displaystyle="true"><mrow><mfrac><mrow><mi>π</mi></mrow><mrow><mn>4</mn></mrow></mfrac></mrow></math> or 1.</p><p style="padding-left:14px">•  A radical or product of cosines next to a trigonometric ratio.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Basic</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi mathvariant="normal">sin</mi><mi>x</mi></mrow><mrow><mi>x</mi></mrow></mfrac><mo>→</mo><mn>1</mn><mo>,</mo><mspace width="0.3em"></mspace><mfrac><mrow><mi mathvariant="normal">tan</mi><mi>x</mi></mrow><mrow><mi>x</mi></mrow></mfrac><mo>→</mo><mn>1</mn><mo>,</mo><mspace width="0.3em"></mspace><mfrac><mrow><mn>1</mn><mo>−</mo><mi mathvariant="normal">cos</mi><mi>x</mi></mrow><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac><mo>→</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Shift</p></td><td><p>put <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>h</mi></mrow></math> and let <math displaystyle="true"><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></math></p></td></tr><tr><td><p>Identities</p></td><td><p><math displaystyle="true"><mrow><mn>1</mn><mo>−</mo><mi mathvariant="normal">cos</mi><mi>x</mi><mo>=</mo><mn>2</mn><msup><mrow><mi mathvariant="normal">sin</mi></mrow><mrow><mn>2</mn></mrow></msup><mfrac><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>,</mo><mspace width="0.3em"></mspace><mi mathvariant="normal">sin</mi><mn>2</mn><mi>x</mi><mo>=</mo><mn>2</mn><mi mathvariant="normal">sin</mi><mi>x</mi><mi mathvariant="normal">cos</mi><mi>x</mi></mrow></math></p></td></tr><tr><td><p>Rationalise</p></td><td><p><math displaystyle="true"><mrow><msqrt><mrow><mi>A</mi></mrow></msqrt><mo>−</mo><msqrt><mrow><mi>B</mi></mrow></msqrt><mo>=</mo><mfrac><mrow><mi>A</mi><mo>−</mo><mi>B</mi></mrow><mrow><msqrt><mrow><mi>A</mi></mrow></msqrt><mo>+</mo><msqrt><mrow><mi>B</mi></mrow></msqrt></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I use <math displaystyle="true"><mrow><mfrac><mrow><mi mathvariant="normal">sin</mi><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac><mo>→</mo><mn>1</mn></mrow></math>?</p></td><td><p>Check <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>→</mo><mn>0</mn></mrow></math>, then multiply and divide by <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>.</p></td></tr><tr><td><p>What if the limit point is not 0?</p></td><td><p>Substitute <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>h</mi></mrow></math>, expand <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>+</mo><mi>h</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> and use <math displaystyle="true"><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></math>.</p></td></tr><tr><td><p>How do I treat <math displaystyle="true"><mrow><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>4</mn></mrow></msup><mi>x</mi></mrow></math> inside <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>π</mi><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>4</mn></mrow></msup><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><p>Use <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>π</mi><mo>−</mo><mi>θ</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi mathvariant="normal">sin</mi><mi>θ</mi></mrow></math> with <math displaystyle="true"><mrow><mi>θ</mi><mo>=</mo><mi>π</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>−</mo><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>4</mn></mrow></msup><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, then reduce <math displaystyle="true"><mrow><mn>1</mn><mo>−</mo><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>4</mn></mrow></msup><mi>x</mi></mrow></math>.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Applying <math displaystyle="true"><mrow><mfrac><mrow><mi mathvariant="normal">sin</mi><mi>x</mi></mrow><mrow><mi>x</mi></mrow></mfrac><mo>→</mo><mn>1</mn></mrow></math> when the argument does not tend to 0.</p><p style="padding-left:14px">•  Dropping the factor 2 in <math displaystyle="true"><mrow><mn>1</mn><mo>−</mo><mi mathvariant="normal">cos</mi><mi>x</mi><mo>=</mo><mn>2</mn><msup><mrow><mi mathvariant="normal">sin</mi></mrow><mrow><mn>2</mn></mrow></msup><mfrac><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math>.</p><p style="padding-left:14px">•  Forgetting to rationalise a radical before using the standard limit.</p></div></section>
 <section class="typ" id="T3" data-k="3"><h2>Type 3. Finding constants from a finite-limit condition <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">18 questions on the sheet (Q45–62)  ·  Sub-topics: C1 trigonometric and polynomial ratios · C2 expansions of exponential, log and sin terms · C3 constants from roots of an equation</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_19"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Finite <math displaystyle="true"><mrow><mfrac><mrow><mn>0</mn></mrow><mrow><mn>0</mn></mrow></mfrac></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_20"></div></td></tr><tr><td><p>Series</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_21"></div></td></tr><tr><td><p>More</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_22"></div></td></tr><tr><td><p>Matching</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_23"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I get the equations?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_24"></div></td></tr><tr><td><p>How many equations do I need?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_25"></div></td></tr><tr><td><p>What if the constants are linked to roots?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_26"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_27"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 3</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;If <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">lim</mi></mrow><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></msub><mfrac><mrow><mi mathvariant="normal">cos</mi><mn>2</mn><mi>x</mi><mo>+</mo><mi>a</mi><mi mathvariant="normal">cos</mi><mn>4</mn><mi>x</mi><mo>−</mo><mi>b</mi></mrow><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>4</mn></mrow></msup></mrow></mfrac></mrow></math> is finite, then <math displaystyle="true"><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></math> is equal to&#x27;.</p><p style="padding-left:14px">•  The limit is given as a number (or &#x27;exists&#x27;) and <math displaystyle="true"><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo>,</mo><mi>γ</mi><mo>,</mo><mi>λ</mi><mo>,</mo><mi>μ</mi></mrow></math> are unknown.</p><p style="padding-left:14px">•  The answer is a combination such as <math displaystyle="true"><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></math>, <math displaystyle="true"><mrow><mn>16</mn><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msup><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>b</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>c</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> or <math displaystyle="true"><mrow><mi>α</mi><mo>+</mo><mi>β</mi><mo>+</mo><mi>γ</mi></mrow></math>.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Finite <math displaystyle="true"><mrow><mfrac><mrow><mn>0</mn></mrow><mrow><mn>0</mn></mrow></mfrac></mrow></math></p></td><td><p>coefficients of all powers below the denominator&#x27;s order are 0</p></td></tr><tr><td><p>Series</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">cos</mi><mi>x</mi><mo>=</mo><mn>1</mn><mo>−</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>4</mn></mrow></msup></mrow><mrow><mn>24</mn></mrow></mfrac><mo>,</mo><mspace width="0.3em"></mspace><mi mathvariant="normal">sin</mi><mi>x</mi><mo>=</mo><mi>x</mi><mo>−</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow><mrow><mn>6</mn></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>More</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi></mrow></msup><mo>=</mo><mn>1</mn><mo>+</mo><mi>x</mi><mo>+</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow><mrow><mn>6</mn></mrow></mfrac><mo>,</mo><mspace width="0.3em"></mspace><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>x</mi><mo>−</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow><mrow><mn>3</mn></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Matching</p></td><td><p>the leading coefficient equals the given limit</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I get the equations?</p></td><td><p>Expand every term to the order of the denominator, collect powers of <math displaystyle="true"><mrow><mi>x</mi></mrow></math>, and set each lower coefficient to 0.</p></td></tr><tr><td><p>How many equations do I need?</p></td><td><p>One for each unknown: the vanishing coefficients plus the one equal to the limit.</p></td></tr><tr><td><p>What if the constants are linked to roots?</p></td><td><p>Use sum and product of roots to rewrite the expression, then reduce it with the standard limit.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Stopping the expansion one order too early.</p><p style="padding-left:14px">•  Sign slips in <math displaystyle="true"><mrow><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> and <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mo>−</mo><mi>x</mi></mrow></msup></mrow></math> expansions.</p><p style="padding-left:14px">•  Not using the &#x27;finite&#x27; condition to kill the lower powers.</p></div></section>
 <section class="typ" id="T4" data-k="4"><h2>Type 4. Functional and derivative-based limits (f differentiable, integrals) <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">18 questions on the sheet (Q63–80)  ·  Sub-topics: D1 limits with a differentiable <math displaystyle="true"><mrow><mi>f</mi></mrow></math> given by derivative values · D2 limits involving an integral</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_28"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Definition</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_29"></div></td></tr><tr><td><p>Leibniz</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_30"></div></td></tr><tr><td><p>L&#x27;Hôpital</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_31"></div></td></tr><tr><td><p>Add and subtract</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_32"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I use <math displaystyle="true"><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> in a limit?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_33"></div></td></tr><tr><td><p>How do I do an integral limit?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_34"></div></td></tr><tr><td><p>What if <math displaystyle="true"><mrow><mi>f</mi></mrow></math> is only given by an equation?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_35"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_36"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 4</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Let <math displaystyle="true"><mrow><mi>f</mi></mrow></math> be differentiable with <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>2</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mn>4</mn></mrow></math>, <math displaystyle="true"><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>2</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mn>1</mn></mrow></math>. Then <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">lim</mi></mrow><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></msub><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>2</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mn>4</mn><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></mfrac></mrow></math> is&#x27;.</p><p style="padding-left:14px">•  The limit contains <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> with <math displaystyle="true"><mrow><mi>f</mi></mrow></math> unknown but <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, <math displaystyle="true"><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> given.</p><p style="padding-left:14px">•  A definite integral with a variable limit divided by a power of <math displaystyle="true"><mrow><mi>x</mi></mrow></math>.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Definition</p></td><td><p><math displaystyle="true"><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><msub><mrow><mi mathvariant="normal">lim</mi></mrow><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></msub><mfrac><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Leibniz</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><msubsup><mo>∫</mo><mrow><mi>g</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>h</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></msubsup><mrow><mi>F</mi></mrow></mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>t</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mi>F</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>h</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>h</mi><mo>′</mo><mo>−</mo><mi>F</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>g</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>g</mi><mo>′</mo></mrow></math></p></td></tr><tr><td><p>L&#x27;Hôpital</p></td><td><p>for <math displaystyle="true"><mrow><mfrac><mrow><mn>0</mn></mrow><mrow><mn>0</mn></mrow></mfrac></mrow></math> differentiate numerator and denominator</p></td></tr><tr><td><p>Add and subtract</p></td><td><p>insert <math displaystyle="true"><mrow><mo>±</mo><mi>a</mi><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> to build <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I use <math displaystyle="true"><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> in a limit?</p></td><td><p>Add and subtract a term so the numerator becomes <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> times a constant, plus a term that cancels.</p></td></tr><tr><td><p>How do I do an integral limit?</p></td><td><p>Check it is <math displaystyle="true"><mrow><mfrac><mrow><mn>0</mn></mrow><mrow><mn>0</mn></mrow></mfrac></mrow></math>, apply Leibniz to the numerator, and repeat until the denominator is nonzero.</p></td></tr><tr><td><p>What if <math displaystyle="true"><mrow><mi>f</mi></mrow></math> is only given by an equation?</p></td><td><p>Differentiate or use the limit definition to get a differential equation for <math displaystyle="true"><mrow><mi>f</mi></mrow></math>.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> where only <math displaystyle="true"><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> is known.</p><p style="padding-left:14px">•  Missing <math displaystyle="true"><mrow><mi>h</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> in Leibniz&#x27;s rule.</p><p style="padding-left:14px">•  Using L&#x27;Hôpital when the form is not <math displaystyle="true"><mrow><mfrac><mrow><mn>0</mn></mrow><mrow><mn>0</mn></mrow></mfrac></mrow></math> or <math displaystyle="true"><mrow><mfrac><mrow><mi>∞</mi></mrow><mrow><mi>∞</mi></mrow></mfrac></mrow></math>.</p></div></section>
@@ -850,66 +993,7 @@ function san(n){var o='';[].forEach.call(n.childNodes,function(c){if(c.nodeType=
  if(t=='br')o+='<br>';else if(t=='sub'||t=='sup')o+='<'+t+'>'+san(c)+'</'+t+'>';
  else if(t=='span'&&/^(fr|n|d)$/.test(c.className))o+='<span class="'+c.className+'">'+san(c)+'</span>';
  else if(t=='div'||t=='p')o+=(o?'<br>':'')+san(c);else o+=san(c)}});return o}
-function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'
-<script>
-// Unblock both 'Save my notes as PDF' and individual 'Save this type as PDF'
-(function(){
-  function setupPdfBtns() {
-    // 1. Main PDF button (Save all notes)
-    var btn = document.getElementById('pdf') || document.getElementById('savepdf');
-    if (btn) {
-      btn.onclick = function(e) {
-        if (e) e.preventDefault();
-        document.body.classList.remove('one');
-        var secs = [].slice.call(document.querySelectorAll('section.typ'));
-        secs.forEach(function(s) {
-          s.classList.remove('pick', 'pr-skip');
-          s.style.display = 'block';
-        });
-        var h = document.querySelector('h1.t');
-        document.title = (h ? h.innerText : 'Type Notes');
-        window.print();
-      };
-    }
-
-    // 2. Individual type PDF buttons (.tpdf)
-    var typeBtns = document.querySelectorAll('.tpdf');
-    typeBtns.forEach(function(tp) {
-      tp.onclick = function(e) {
-        if (e) e.preventDefault();
-        var sec = tp.closest('section.typ');
-        if (!sec) return;
-        document.body.classList.add('one');
-        document.querySelectorAll('section.typ').forEach(function(s) {
-          s.classList.remove('pick');
-        });
-        sec.classList.add('pick');
-        var h = document.querySelector('h1.t');
-        var k = sec.dataset.k || sec.id || '';
-        document.title = (h ? h.innerText : 'Type Notes') + ' - Type ' + k;
-        window.print();
-      };
-    });
-
-    // 3. Reset state after printing
-    window.addEventListener('afterprint', function() {
-      document.body.classList.remove('one');
-      document.querySelectorAll('section.typ').forEach(function(s) {
-        s.classList.remove('pick', 'pr-skip');
-        s.style.display = 'block';
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupPdfBtns);
-  } else {
-    setupPdfBtns();
-  }
-})();
-</script>
-
-</body>','text/html').body)}
+function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'</body>','text/html').body)}
 var eds=[].slice.call(document.querySelectorAll('.ed'));
 function txt(e){return e.textContent.replace(/​/g,'').trim()}
 function apply(){eds.forEach(function(t){t.innerHTML=clean(S.ta[t.dataset.id]||'')});
@@ -949,7 +1033,7 @@ window.addEventListener('afterprint',endPrint);
 function doPrint(){setTimeout(function(){window.print()},50)}
 document.getElementById('pdf').onclick=function(){var secs=[].slice.call(document.querySelectorAll('section.typ')),n=0;
  secs.forEach(function(s){if(hasWork(s))n++;else s.classList.add('pr-skip')});
- /* unblocked main pdf */
+ /* unblocked pdf */ if(!n){secs.forEach(function(s){s.classList.remove('pr-skip')});}
  document.title=KEY.replace(/^tn_/,'')+' - my Type Notes';doPrint()};
 [].forEach.call(document.querySelectorAll('section.typ'),function(s){s.querySelector('.tpdf').onclick=function(){
  /* unblocked tpdf */
