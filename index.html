@@ -1,4 +1,9 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JEE Main PYQ Practice &middot; 2019&ndash;2025</title>
 <script>
   (function(){
     var t = localStorage.getItem('jee_theme');
@@ -6,13 +11,312 @@
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   })();
-</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JEE Main PYQ Practice</title><style>body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:17px;color:#1d2433;background:#eef1f7}
-header{background:#1f4e8c;color:#fff;padding:22px 20px}header h1{margin:0;font-size:26px}header p{margin:6px 0 0;opacity:.9;font-size:15px}header a{color:#cfe0fa;font-size:14px;text-decoration:none;display:inline-block;margin-bottom:8px}
-main{max-width:980px;margin:0 auto;padding:16px 14px 60px}#q{width:100%;padding:10px 14px;font-size:16px;border:2px solid #b9c3d6;border-radius:10px;margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.card{display:flex;flex-direction:column;gap:4px;background:#fff;border:1px solid #dfe4ee;border-radius:12px;padding:14px 16px;text-decoration:none;color:inherit}
-a.card:hover{border-color:#1f4e8c;box-shadow:0 2px 8px rgba(31,78,140,.15)}.card b{font-size:18px;color:#1f4e8c}.card span{font-size:14px;color:#5a6478}.card i{font-style:normal;font-size:14px;color:#1b7a3a;margin-top:6px;font-weight:600}
-.lk{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.lk a{font-size:14px;color:#1f4e8c;border:1px solid #9bb4de;border-radius:16px;padding:4px 12px;text-decoration:none;background:#f4f8ff}.lk a.go{background:#1f4e8c;color:#fff;border-color:#1f4e8c;font-weight:600}.card.soon{opacity:.6;background:#f7f9fd}.hide{display:none}.note{font-size:14px;color:#5a6478;margin-top:18px}
+</script>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Calibri, "Segoe UI", Arial, sans-serif;
+  font-size: 17px;
+  color: #1d2433;
+  background: #eef1f7;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+header {
+  background: #1f4e8c;
+  color: #fff;
+  padding: 28px 24px 24px;
+  border-bottom: 1px solid #163a69;
+}
+header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+header .subtitle {
+  margin: 8px 0 0;
+  font-size: 16px;
+  color: #e0e9f8;
+  line-height: 1.5;
+  max-width: 700px;
+}
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Container */
+main {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 28px 20px 80px;
+}
+
+/* 3 Large Hero Subject Cards */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 24px;
+  margin: 20px 0 32px;
+}
+
+.subject-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1.5px solid #dfe4ee;
+  border-radius: 18px;
+  padding: 28px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+.subject-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.subject-card.maths { border-top: 5px solid #2563eb; }
+.subject-card.physics { border-top: 5px solid #7c3aed; }
+.subject-card.chemistry { border-top: 5px solid #059669; }
+
+.subject-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.subject-icon {
+  font-size: 34px;
+  line-height: 1;
+}
+.subject-badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+.subject-card.maths .subject-badge { background: #eff6ff; color: #1d4ed8; }
+.subject-card.physics .subject-badge { background: #f5f3ff; color: #6d28d9; }
+.subject-card.chemistry .subject-badge { background: #ecfdf5; color: #047857; }
+
+.subject-card h2 {
+  margin: 0 0 8px;
+  font-size: 25px;
+  font-weight: 700;
+}
+.subject-card.maths h2 { color: #1e40af; }
+.subject-card.physics h2 { color: #5b21b6; }
+.subject-card.chemistry h2 { color: #065f46; }
+
+.subject-desc {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.subject-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.meta-tag {
+  font-size: 12.5px;
+  padding: 4px 10px;
+  background: #f1f5f9;
+  color: #334155;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.subject-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+.subject-card.maths .subject-cta { background: #2563eb; color: #ffffff; }
+.subject-card.maths:hover .subject-cta { background: #1d4ed8; }
+
+.subject-card.physics .subject-cta { background: #7c3aed; color: #ffffff; }
+.subject-card.physics:hover .subject-cta { background: #6d28d9; }
+
+.subject-card.chemistry .subject-cta { background: #059669; color: #ffffff; }
+.subject-card.chemistry:hover .subject-cta { background: #047857; }
+
+.cta-arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Student Features Row */
+.student-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 12px 0 28px;
+}
+.feat-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #dfe4ee;
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+.feat-icon {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.feat-body b {
+  display: block;
+  font-size: 15px;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+.feat-body p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* Footer Note */
+.note {
+  background: #eaf1fb;
+  border: 1px solid #c7d8f3;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #1f4e8c;
+  line-height: 1.55;
+  margin-top: 24px;
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
+
+/* =================== COMPREHENSIVE HIGH-CONTRAST DARK MODE =================== */
+[data-theme="dark"] body {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] header {
+  background: #091e3a !important;
+  border-bottom: 1px solid #334155 !important;
+}
+[data-theme="dark"] header h1 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] header .subtitle {
+  color: #e2e8f0 !important;
+  opacity: 1 !important;
+}
+[data-theme="dark"] .badge {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #93c5fd !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-theme="dark"] .theme-btn {
+  background: #1e293b !important;
+  border: 1px solid #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #334155 !important;
+}
+
+/* Cards Dark Mode */
+[data-theme="dark"] .subject-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+}
+[data-theme="dark"] .subject-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .subject-card.maths { border-top: 5px solid #3b82f6 !important; }
+[data-theme="dark"] .subject-card.physics { border-top: 5px solid #a855f7 !important; }
+[data-theme="dark"] .subject-card.chemistry { border-top: 5px solid #10b981 !important; }
+
+[data-theme="dark"] .subject-card.maths .subject-badge { background: #1e3a8a !important; color: #93c5fd !important; }
+[data-theme="dark"] .subject-card.physics .subject-badge { background: #3b0764 !important; color: #d8b4fe !important; }
+[data-theme="dark"] .subject-card.chemistry .subject-badge { background: #064e3b !important; color: #6ee7b7 !important; }
+
+[data-theme="dark"] .subject-card.maths h2 { color: #60a5fa !important; }
+[data-theme="dark"] .subject-card.physics h2 { color: #c084fc !important; }
+[data-theme="dark"] .subject-card.chemistry h2 { color: #34d399 !important; }
+
+[data-theme="dark"] .subject-desc {
+  color: #cbd5e1 !important; /* Crisp, high-contrast text, NOT faded! */
+}
+[data-theme="dark"] .meta-tag {
+  background: #0f172a !important;
+  color: #cbd5e1 !important;
+  border: 1px solid #334155 !important;
+}
+
+/* Features Dark Mode */
+[data-theme="dark"] .feat-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .feat-body b {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .feat-body p {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .note {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+
 /* =================== COMPREHENSIVE DARK MODE =================== */
 [data-theme="dark"] {
   --ink: #f8fafc;
@@ -632,6 +936,72 @@ body {
   border-color: #3b82f6 !important;
 }
 
+
+/* 14. SUBJECT SWITCHER POPUP & SIDEBAR (#sw, #swb, .sj) */
+[data-theme="dark"] #sw {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45) !important;
+}
+[data-theme="dark"] #sw h2 {
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] #sw .x {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] #sw a.sj {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+[data-theme="dark"] #sw a.sj b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] #sw a.sj span {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] #sw a.sj:hover {
+  background: #1e3a8a !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] #sw a.all {
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #sw a.all:hover {
+  color: #bfdbfe !important;
+}
+[data-theme="dark"] #swb {
+  background: #1e293b !important;
+  border: 1px solid #475569 !important;
+  color: #f8fafc !important;
+}
+
+/* 15. HIGH-CONTRAST TEXT ENHANCEMENTS */
+[data-theme="dark"] header p,
+[data-theme="dark"] .top p {
+  color: #e2e8f0 !important;
+  opacity: 1 !important;
+}
+[data-theme="dark"] .note {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] #q::placeholder {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .lg {
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .lg ul,
+[data-theme="dark"] .lg li {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #cbd5e1 !important;
+}
+
 .theme-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -657,8 +1027,105 @@ body {
   background: #334155;
 }
 
-</style></head><body><header><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button></div>
-<h1>JEE Main PYQ Practice</h1><p>Chapter-wise timed practice with previous-year questions (2019&ndash;2025). Pick a subject to begin.</p></header><main><div class="grid"><a class="card" href="Maths/index.html"><b>Maths</b><span>5 chapters ready</span><i>Open &rsaquo;</i></a><a class="card" href="Physics/index.html"><b>Physics</b><span>14 chapters ready</span><i>Open &rsaquo;</i></a><a class="card" href="Chemistry/index.html"><b>Chemistry</b><span>7 chapters ready</span><i>Open &rsaquo;</i></a></div><p class="note">Each practice page runs in your browser. Your attempts and starred questions are saved on this device. Nothing is sent anywhere and no score is calculated.</p></main>
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+    <span class="badge">JEE Main PYQ 2019&ndash;2025</span>
+    <button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button>
+  </div>
+  <h1>JEE Main PYQ Practice</h1>
+  <p class="subtitle">Chapter-wise timed practice with questions categorized by question pattern, accompanied by active-recall Type Notes workbooks.</p>
+</header>
+
+<main>
+  <div class="subject-grid">
+    <!-- Mathematics -->
+    <a class="subject-card maths" href="Maths/index.html">
+      <div class="subject-header">
+        <div class="subject-icon">📐</div>
+        <div class="subject-badge">5 Chapters Ready</div>
+      </div>
+      <h2>Mathematics</h2>
+      <p class="subject-desc">Matrices, Determinants, Limits, Continuity &amp; Differentiability, Application of Derivatives.</p>
+      <div class="subject-meta">
+        <span class="meta-tag">750+ PYQs</span>
+        <span class="meta-tag">Full MathML Formulas</span>
+        <span class="meta-tag">Type Notes Workbooks</span>
+      </div>
+      <div class="subject-cta">
+        <span>Explore Maths Chapters</span>
+        <span class="cta-arrow">&rsaquo;</span>
+      </div>
+    </a>
+
+    <!-- Physics -->
+    <a class="subject-card physics" href="Physics/index.html">
+      <div class="subject-header">
+        <div class="subject-icon">⚡</div>
+        <div class="subject-badge">14 Chapters Ready</div>
+      </div>
+      <h2>Physics</h2>
+      <p class="subject-desc">Electrostatics, Current, Magnetism, AC, EMI, Ray Optics, Modern Physics, Atoms, Nuclei, Semiconductors.</p>
+      <div class="subject-meta">
+        <span class="meta-tag">1400+ PYQs</span>
+        <span class="meta-tag">Class 12 Syllabus</span>
+        <span class="meta-tag">Symbol Bar Enabled</span>
+      </div>
+      <div class="subject-cta">
+        <span>Explore Physics Chapters</span>
+        <span class="cta-arrow">&rsaquo;</span>
+      </div>
+    </a>
+
+    <!-- Chemistry -->
+    <a class="subject-card chemistry" href="Chemistry/index.html">
+      <div class="subject-header">
+        <div class="subject-icon">🧪</div>
+        <div class="subject-badge">7 Chapters Ready</div>
+      </div>
+      <h2>Chemistry</h2>
+      <p class="subject-desc">General Organic Chemistry, Biomolecules, Chemical Kinetics, Electrochemistry, Coordination, Solutions, d &amp; f block.</p>
+      <div class="subject-meta">
+        <span class="meta-tag">850+ PYQs</span>
+        <span class="meta-tag">Reaction Patterns</span>
+        <span class="meta-tag">Mechanism Breakdown</span>
+      </div>
+      <div class="subject-cta">
+        <span>Explore Chemistry Chapters</span>
+        <span class="cta-arrow">&rsaquo;</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="student-features">
+    <div class="feat-card">
+      <div class="feat-icon">⏱️</div>
+      <div class="feat-body">
+        <b>Timed Type-Wise Practice</b>
+        <p>Questions categorized by pattern with realistic JEE Main timer targets so you build exam speed.</p>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📝</div>
+      <div class="feat-body">
+        <b>Active Recall Type Notes</b>
+        <p>Fill in formulas and concepts from memory before checking completed notes; export your workbook as PDF.</p>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔒</div>
+      <div class="feat-body">
+        <b>100% Private &amp; Offline</b>
+        <p>Attempts, starred questions, and notes are saved on this device. Zero logins, zero lag, no tracking.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">💡 <b>How to get top marks with this tool:</b> Work through one question type at a time. Write your notes in the Type Notes tab, do the timed questions, and star tricky questions for quick revision before your mock tests.</p>
+</main>
+
 <script>
 function initThemeToggle() {
   function applyTheme(dark) {
@@ -691,5 +1158,5 @@ if (document.readyState === 'loading') {
   initThemeToggle();
 }
 </script>
-
-</body></html>
+</body>
+</html>
