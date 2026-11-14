@@ -342,6 +342,138 @@ a.card:hover{border-color:#1f4e8c;box-shadow:0 2px 8px rgba(31,78,140,.15)}.card
   border-color: #475569 !important;
 }
 
+
+/* 11. CHAPTER INDEX & SUBJECT INDEX PAGES */
+[data-theme="dark"] header {
+  background: #0b1329 !important;
+  border-bottom: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] header h1 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] header p {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] header a {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] #q {
+  background: #1e293b !important;
+  border: 1.5px solid #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] #q::placeholder {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .lg {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .lg ul, [data-theme="dark"] .lg li {
+  color: #cbd5e1 !important;
+}
+
+/* Chapter strips: sleek dark card instead of bright pastel */
+[data-theme="dark"] .strip,
+[data-theme="dark"] .strip.cA,
+[data-theme="dark"] .strip.cB,
+[data-theme="dark"] .strip.cC,
+[data-theme="dark"] .strip.cD {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+[data-theme="dark"] .strip.cA { border-left: 6px solid #22c55e !important; }
+[data-theme="dark"] .strip.cB { border-left: 6px solid #84cc16 !important; }
+[data-theme="dark"] .strip.cC { border-left: 6px solid #f97316 !important; }
+[data-theme="dark"] .strip.cD { border-left: 6px solid #64748b !important; }
+
+[data-theme="dark"] .strip .no {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .strip .gl {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #f8fafc !important;
+}
+
+/* Chips inside strip */
+[data-theme="dark"] .tg em {
+  background: #0f172a !important;
+  border-color: #475569 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .tg em.pH {
+  background: #14532d !important;
+  color: #86efac !important;
+  border-color: #16a34a !important;
+}
+[data-theme="dark"] .tg em.pM {
+  background: #713f12 !important;
+  color: #fde047 !important;
+  border-color: #ca8a04 !important;
+}
+[data-theme="dark"] .tg em.pL {
+  background: #334155 !important;
+  color: #cbd5e1 !important;
+  border-color: #475569 !important;
+}
+
+/* Action buttons on strips */
+[data-theme="dark"] .lk a {
+  background: #0f172a !important;
+  border: 1px solid #475569 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .lk a:hover {
+  background: #1e3a8a !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #2563eb !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #1d4ed8 !important;
+}
+
+/* Root index cards */
+[data-theme="dark"] .card {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .card b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .card span {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .card i {
+  color: #38bdf8 !important;
+}
+[data-theme="dark"] a.card:hover {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+}
+
 .theme-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -363,8 +495,15 @@ a.card:hover{border-color:#1f4e8c;box-shadow:0 2px 8px rgba(31,78,140,.15)}.card
   color: #f8fafc;
 }
 
-</style></head><body><header><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button></div>
-<h1>JEE Main PYQ Practice</h1><p>Chapter-wise timed practice with previous-year questions (2019&ndash;2025). Pick a subject to begin.</p></header><main><div class="grid"><a class="card" href="Maths/index.html"><b>Maths</b><span>5 chapters ready</span><i>Open &rsaquo;</i></a><div class="card soon" ><b>Physics</b><span>Coming soon</span></div><a class="card" href="Chemistry/index.html"><b>Chemistry</b><span>6 chapters ready</span><i>Open &rsaquo;</i></a></div><p class="note">Each practice page runs in your browser. Your attempts and starred questions are saved on this device. Nothing is sent anywhere and no score is calculated.</p></main>
+</style></head><body><header>
+  <div style="display:flex;justify-content:space-between;align-items:center;max-width:980px;margin:0 auto;gap:16px;">
+    <div>
+      <h1 style="margin:0;font-size:26px;">JEE Main PYQ Practice</h1>
+      <p style="margin:6px 0 0;font-size:15px;opacity:.9;">Chapter-wise timed practice with previous-year questions (2019&ndash;2025). Pick a subject to begin.</p>
+    </div>
+    <button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button>
+  </div>
+</header><main><div class="grid"><a class="card" href="Maths/index.html"><b>Maths</b><span>5 chapters ready</span><i>Open &rsaquo;</i></a><a class="card" href="Physics/index.html"><b>Physics</b><span>14 chapters ready</span><i>Open &rsaquo;</i></a><a class="card" href="Chemistry/index.html"><b>Chemistry</b><span>8 chapters ready</span><i>Open &rsaquo;</i></a></div><p class="note">Each practice page runs in your browser. Your attempts and starred questions are saved on this device. Nothing is sent anywhere and no score is calculated.</p></main>
 <script>
 function initThemeToggle() {
   function applyTheme(dark) {
