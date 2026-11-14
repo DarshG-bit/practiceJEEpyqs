@@ -3,9 +3,9 @@ Automated 1-Step Patcher for JEE PYQ Practice
 Applies all custom improvements:
   1. Automated Pre-Patch Backup
   2. Question Option Alignment & Image Redistribution
-  3. Type Notes 'Save as PDF' & Optimized Print Pagination
-  4. Comprehensive Dark Mode (Theme Toggle, White MathML, Protected Diagrams, Inverted Palette & Footbar)
-  5. Chapter Index Full-Width Cards & Class A/B/C/D Badges
+  3. Type Notes 'Save as PDF' & Optimized Print Pagination (No wasted space, row breaks, per-type page breaks)
+  4. Comprehensive Dark Mode (Pills, Filter Boxes, MathML, Diagrams, Question Palette, Navigation)
+  5. Subject & Chapter Index Styling (Search box, Legend, Dark Strip Cards with Class Accents)
 """
 
 import os
@@ -50,7 +50,7 @@ def fix_option_images_in_file(content):
             opt_imgs.append(imgs)
             
         total_imgs = sum(len(imgs) for imgs in opt_imgs)
-        # Bug case: 4 images total, but dumped into D, or 0 in A/B and stacked in C/D
+        # Bug: 4 images dumped into D, or 0 in A/B and stacked in C/D
         if total_imgs == 4 and (len(opt_imgs[0]) == 0 or len(opt_imgs[1]) == 0):
             all_found_imgs = []
             for imgs in opt_imgs:
@@ -79,175 +79,125 @@ def fix_option_images_in_file(content):
 # -------------------------------------------------------------
 # 3. TYPE NOTES: 'SAVE AS PDF' & PRINT PAGINATION
 # -------------------------------------------------------------
-PDF_PRINT_CSS = """
-/* --- Save as PDF Print Styling --- */
+PERFECT_PRINT_CSS = """
+/* --- Clean Print & Save as PDF Styling --- */
 @media print {
-  body { margin: 10mm; font-size: 11pt; color: #000 !important; background: #fff !important; }
-  .no-print, header, .hdr, .banner, #back, .btn, button, .top-links, 
-/* 11. CHAPTER INDEX & SUBJECT INDEX PAGES */
-[data-theme="dark"] header {
-  background: #0b1329 !important;
-  border-bottom: 1px solid #334155 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] header h1 {
-  color: #60a5fa !important;
-}
-[data-theme="dark"] header p {
-  color: #94a3b8 !important;
-}
-[data-theme="dark"] header a {
-  color: #93c5fd !important;
-}
+  @page { margin: 12mm 15mm; size: A4 portrait; }
+  body { background: #fff !important; color: #000 !important; font-size: 11pt !important; line-height: 1.45 !important; }
+  .page { border: none !important; box-shadow: none !important; padding: 0 !important; max-width: 100% !important; margin: 0 !important; }
+  
+  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
+  .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
+  .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
+    display: none !important;
+  }
 
-[data-theme="dark"] #q {
-  background: #1e293b !important;
-  border: 1.5px solid #475569 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] #q::placeholder {
-  color: #94a3b8 !important;
-}
+  /* HEADINGS */
+  h1.t { font-size: 18pt !important; margin: 0 0 12px !important; color: #1f4e8c !important; }
+  h2 { font-size: 14pt !important; margin: 16px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h3 { font-size: 12pt !important; margin: 12px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
+  p { margin: 4px 0 !important; }
 
-[data-theme="dark"] .lg {
-  background: #1e293b !important;
-  border: 1px solid #334155 !important;
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .lg b {
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .lg ul, [data-theme="dark"] .lg li {
-  color: #cbd5e1 !important;
-}
+  /* EACH TYPE STARTS ON A NEW PAGE */
+  section.typ {
+    border-top: 2px solid #1f4e8c !important;
+    padding-top: 10px !important;
+    margin-top: 14px !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+  section.typ ~ section.typ {
+    break-before: page !important;
+    page-break-before: page !important;
+  }
 
-/* Chapter strips: sleek dark card instead of bright pastel */
-[data-theme="dark"] .strip,
-[data-theme="dark"] .strip.cA,
-[data-theme="dark"] .strip.cB,
-[data-theme="dark"] .strip.cC,
-[data-theme="dark"] .strip.cD {
-  background: #1e293b !important;
-  border: 1px solid #334155 !important;
-  color: #f8fafc !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
-}
-[data-theme="dark"] .strip.cA { border-left: 6px solid #22c55e !important; }
-[data-theme="dark"] .strip.cB { border-left: 6px solid #84cc16 !important; }
-[data-theme="dark"] .strip.cC { border-left: 6px solid #f97316 !important; }
-[data-theme="dark"] .strip.cD { border-left: 6px solid #64748b !important; }
+  /* TABLES: ROW-LEVEL BREAKING (NO WASTED SPACE ON PREVIOUS PAGE) */
+  .gt, table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin: 8px 0 !important;
+  }
+  .gt tr, tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .gt td, td, th {
+    border: 1px solid #94a3b8 !important;
+    padding: 6px 8px !important;
+    font-size: 10.5pt !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .gt tr:first-child td {
+    background: #f1f5fb !important;
+    font-weight: 700 !important;
+  }
 
-[data-theme="dark"] .strip .no {
-  color: #94a3b8 !important;
+  /* EDITABLE BOXES / USER WRITTEN NOTES */
+  .ed {
+    border: 1px solid #94a3b8 !important;
+    background: #fff !important;
+    color: #000 !important;
+    min-height: 48px !important;
+    font-size: 10.5pt !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    white-space: pre-wrap !important;
+  }
 }
-[data-theme="dark"] .strip .mid b {
-  color: #60a5fa !important;
-}
-[data-theme="dark"] .strip .mid span {
-  color: #94a3b8 !important;
-}
-[data-theme="dark"] .strip .gl {
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .strip .gl b {
-  color: #f8fafc !important;
-}
+"""
 
-/* Chips inside strip */
-[data-theme="dark"] .tg em {
-  background: #0f172a !important;
-  border-color: #475569 !important;
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .tg em.pH {
-  background: #14532d !important;
-  color: #86efac !important;
-  border-color: #16a34a !important;
-}
-[data-theme="dark"] .tg em.pM {
-  background: #713f12 !important;
-  color: #fde047 !important;
-  border-color: #ca8a04 !important;
-}
-[data-theme="dark"] .tg em.pL {
-  background: #334155 !important;
-  color: #cbd5e1 !important;
-  border-color: #475569 !important;
-}
-
-/* Action buttons on strips */
-[data-theme="dark"] .lk a {
-  background: #0f172a !important;
-  border: 1px solid #475569 !important;
-  color: #93c5fd !important;
-}
-[data-theme="dark"] .lk a:hover {
-  background: #1e3a8a !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .lk a.go {
-  background: #2563eb !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .lk a.go:hover {
-  background: #1d4ed8 !important;
-}
-
-/* Root index cards */
-[data-theme="dark"] .card {
-  background: #1e293b !important;
-  border: 1px solid #334155 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .card b {
-  color: #60a5fa !important;
-}
-[data-theme="dark"] .card span {
-  color: #94a3b8 !important;
-}
-[data-theme="dark"] .card i {
-  color: #38bdf8 !important;
-}
-[data-theme="dark"] a.card:hover {
-  border-color: #3b82f6 !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
-}
-
-.theme-btn { display: none !important; }
-  table { width: 100% !important; border-collapse: collapse !important; break-inside: auto !important; }
-  tr { break-inside: avoid !important; page-break-inside: avoid !important; }
-  td, th { border: 1px solid #94a3b8 !important; padding: 6px 8px !important; }
-  section.typ { break-after: auto; }
-  section.typ ~ section.typ { break-before: page !important; }
-  .box, textarea { border: 1px solid #cbd5e1 !important; color: #000 !important; }
-}
+UNBLOCK_PDF_SCRIPT = """
+<script>
+// Unblock Save as PDF button so it always prints cleanly
+(function(){
+  function setupPdfBtn() {
+    var btn = document.getElementById('pdf') || document.getElementById('savepdf');
+    if (btn) {
+      btn.onclick = function(e) {
+        if (e) e.preventDefault();
+        var secs = [].slice.call(document.querySelectorAll('section.typ'));
+        secs.forEach(function(s) {
+          s.classList.remove('pr-skip');
+          s.style.display = 'block';
+        });
+        document.body.classList.remove('one');
+        window.print();
+      };
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupPdfBtn);
+  } else {
+    setupPdfBtn();
+  }
+})();
+</script>
 """
 
 def patch_type_notes(content):
     modified = False
     
-    if "/* --- Save as PDF Print Styling --- */" not in content and "</style>" in content:
-        content = content.replace("</style>", PDF_PRINT_CSS + "\n</style>", 1)
+    # 1. Clean up existing corrupted or old print styles
+    if "@media print" in content:
+        # Replace existing print block or inject our perfect print CSS
+        pattern = r'@media\s*print\s*\{.*?\}(?:\s*\}\s*)?'
+        # Replace the first print media block or append clean version
+        if "/* --- Clean Print & Save as PDF Styling --- */" not in content:
+            content = re.sub(r'/\* --- Save as PDF Print Styling --- \*/.*?\}', '', content, flags=re.DOTALL)
+            content = content.replace("</style>", PERFECT_PRINT_CSS + "\n</style>", 1)
+            modified = True
+    else:
+        content = content.replace("</style>", PERFECT_PRINT_CSS + "\n</style>", 1)
         modified = True
         
-    pdf_btn_html = ' <button class="btn" type="button" onclick="window.print()" id="savepdf" style="margin-left:6px;background:#1e40af;color:#fff;border:none;border-radius:6px;padding:6px 14px;font-weight:600;cursor:pointer;">📄 Save as PDF</button>'
-    if 'id="savepdf"' not in content:
-        target_patterns = [
-            r'(<button[^>]*id=["\']save["\'][^>]*>.*?</button>)',
-            r'(<button[^>]*onclick=["\']save[^>]*>.*?</button>)',
-            r'(Save my notes to a file</button>)',
-            r'(Load notes from a file</button>)'
-        ]
-        for pat in target_patterns:
-            m = re.search(pat, content, re.IGNORECASE)
-            if m:
-                insert_pos = m.end()
-                content = content[:insert_pos] + pdf_btn_html + content[insert_pos:]
-                modified = True
-                break
-                
+    # 2. Add unblock PDF script if missing
+    if "setupPdfBtn" not in content and "</body>" in content:
+        content = content.replace("</body>", UNBLOCK_PDF_SCRIPT + "\n</body>", 1)
+        modified = True
+        
     return content, modified
 
 # -------------------------------------------------------------
@@ -328,7 +278,8 @@ DARK_MODE_CSS = """
 [data-theme="dark"] #typelist .cnt {
   color: #94a3b8 !important;
 }
-[data-theme="dark"] #typelist .all span {
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .all span {
   color: #60a5fa !important;
   text-decoration: underline !important;
 }
@@ -592,25 +543,188 @@ DARK_MODE_CSS = """
   border-color: #475569 !important;
 }
 
+/* 11. CHAPTER INDEX & SUBJECT INDEX PAGES */
+[data-theme="dark"] header {
+  background: #0b1329 !important;
+  border-bottom: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] header h1 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] header p {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] header a {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] #q {
+  background: #1e293b !important;
+  border: 1.5px solid #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] #q::placeholder {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .lg {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .lg ul, [data-theme="dark"] .lg li {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .strip,
+[data-theme="dark"] .strip.cA,
+[data-theme="dark"] .strip.cB,
+[data-theme="dark"] .strip.cC,
+[data-theme="dark"] .strip.cD {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+[data-theme="dark"] .strip.cA { border-left: 6px solid #22c55e !important; }
+[data-theme="dark"] .strip.cB { border-left: 6px solid #84cc16 !important; }
+[data-theme="dark"] .strip.cC { border-left: 6px solid #f97316 !important; }
+[data-theme="dark"] .strip.cD { border-left: 6px solid #64748b !important; }
+
+[data-theme="dark"] .strip .no {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .strip .gl {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .tg em {
+  background: #0f172a !important;
+  border-color: #475569 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .tg em.pH {
+  background: #14532d !important;
+  color: #86efac !important;
+  border-color: #16a34a !important;
+}
+[data-theme="dark"] .tg em.pM {
+  background: #713f12 !important;
+  color: #fde047 !important;
+  border-color: #ca8a04 !important;
+}
+[data-theme="dark"] .tg em.pL {
+  background: #334155 !important;
+  color: #cbd5e1 !important;
+  border-color: #475569 !important;
+}
+
+[data-theme="dark"] .lk a {
+  background: #0f172a !important;
+  border: 1px solid #475569 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .lk a:hover {
+  background: #1e3a8a !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #2563eb !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #1d4ed8 !important;
+}
+
+/* 12. FILTER GROUPS & DIFFICULTY PILLS (.gf, .tc, .pill) */
+[data-theme="dark"] .selsum {
+  background: #1e3a8a !important;
+  border: 2px solid #3b82f6 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .gf {
+  background: #1e293b !important;
+  border: 2px solid #3b82f6 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .gf .gft {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .gf .gfn {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .tc {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .tc .th span {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .tc .tcnt {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .tc.zero .th span {
+  color: #64748b !important;
+}
+[data-theme="dark"] .grp .gl {
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] #typelist .pill input+span {
+  background: #0f172a !important;
+  border: 2px solid #475569 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span {
+  background: #1e40af !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #bfdbfe !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #94a3b8 !important;
+}
+
 .theme-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: inherit;
-  border-radius: 18px;
-  padding: 4px 12px;
+  border-radius: 20px;
+  padding: 6px 14px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 .theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
 [data-theme="dark"] .theme-btn {
-  background: #334155;
-  border-color: #475569;
+  background: #1e293b;
+  border: 1px solid #475569;
   color: #f8fafc;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #334155;
 }
 """
 
@@ -657,10 +771,23 @@ def patch_dark_mode(content):
         content = content.replace("<head>", "<head>\n" + HEAD_PREVENT_FLICKER, 1)
         modified = True
         
-    # 2. Dark mode CSS
-    if "COMPREHENSIVE DARK MODE" not in content and "</style>" in content:
-        content = content.replace("</style>", DARK_MODE_CSS + "\n</style>", 1)
-        modified = True
+    # 2. Dark mode CSS (Replace existing dark mode block or inject)
+    if "COMPREHENSIVE DARK MODE" in content:
+        # Check if the new filter rules are present
+        if "FILTER GROUPS & DIFFICULTY PILLS" not in content:
+            # Replace old DARK MODE CSS with the comprehensive updated one
+            pattern = r'/\* =+ COMPREHENSIVE DARK MODE =+ \*/.*?\[data-theme="dark"\] \.theme-btn:hover\s*\{[^}]+\}'
+            if re.search(pattern, content, re.DOTALL):
+                content = re.sub(pattern, DARK_MODE_CSS.strip(), content, flags=re.DOTALL)
+                modified = True
+            else:
+                # If pattern didn't match cleanly, inject before </style>
+                content = content.replace("</style>", DARK_MODE_CSS + "\n</style>", 1)
+                modified = True
+    else:
+        if "</style>" in content:
+            content = content.replace("</style>", DARK_MODE_CSS + "\n</style>", 1)
+            modified = True
         
     # 3. Add toggle button in start screen or header if missing
     if 'class="theme-btn"' not in content:
