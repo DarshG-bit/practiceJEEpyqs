@@ -26,25 +26,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Fetch and Merge Upstream
+      - name: Fetch Latest Files from Creator (rupinderiitb)
         run: |
-          # The creator's upstream repository is tracked as 'upstream'
-          # If upstream remote is not added yet, add it:
-          if ! git remote | grep -q "upstream"; then
-            UPSTREAM_URL=$(gh repo view --json parent -q ".parent.url" 2>/dev/null || echo "")
-            if [ -z "$UPSTREAM_URL" ]; then
-              echo "Parent fork detected via GitHub CLI or default upstream."
-            else
-              git remote add upstream "$UPSTREAM_URL.git"
-            fi
-          fi
-          
-          # Fetch upstream changes
-          git fetch upstream main || git fetch upstream master || true
-          
-          # Merge changes from upstream (accepting upstream updates)
-          git merge -X theirs upstream/main --no-edit -m "chore: sync latest questions from upstream" || \
-          git merge -X theirs upstream/master --no-edit -m "chore: sync latest questions from upstream" || true
+          git remote add upstream https://github.com/rupinderiitb/practicemakesperfect.git 2>/dev/null || true
+          git fetch upstream main
+          # Cleanly pull updated chapters and questions from upstream
+          git checkout upstream/main -- Chemistry Maths Physics index.html 2>/dev/null || true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -59,8 +46,8 @@ jobs:
         run: |
           git add -A
           if git diff --staged --quiet; then
-            echo "No changes detected after patcher run."
+            echo "No changes detected. Repository is already up-to-date."
           else
-            git commit -m "chore: apply custom patches (dark mode, option alignment, PDF notes) [skip ci]"
-            git push origin main || git push origin master
+            git commit -m "chore: sync latest questions from creator and auto-patch [skip ci]"
+            git push origin main
           fi
