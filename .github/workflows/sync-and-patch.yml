@@ -31,7 +31,7 @@ jobs:
           git remote add upstream https://github.com/rupinderiitb/practicemakesperfect.git 2>/dev/null || true
           git fetch upstream main
           # Cleanly pull updated chapters and questions from upstream
-          git checkout upstream/main -- Chemistry Maths Physics index.html 2>/dev/null || true
+          git checkout upstream/main -- Chemistry Maths Physics 2>/dev/null || true
 
       - name: Set up Python
         uses: actions/setup-python@v5

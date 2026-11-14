@@ -1,3 +1,4 @@
+import json
 """
 Automated 1-Step Patcher for JEE PYQ Practice
 Applies all custom improvements:
@@ -1089,6 +1090,57 @@ def patch_dark_mode(content):
 # -------------------------------------------------------------
 # MAIN PATCHER RUNNER
 # -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# 5. DYNAMIC HOME PORTAL & RANDOM TEST POOL SYNC
+# -------------------------------------------------------------
+def update_index_portal():
+    index_path = os.path.join(ROOT_DIR, "index.html")
+    if not os.path.exists(index_path):
+        return
+        
+    with open(index_path, "r", encoding="utf-8", errors="ignore") as f:
+        html = f.read()
+        
+    subjects = ["Maths", "Physics", "Chemistry"]
+    counts = {}
+    all_chapters = []
+    
+    for s in subjects:
+        s_dir = os.path.join(ROOT_DIR, s)
+        if os.path.exists(s_dir):
+            files = [f for f in os.listdir(s_dir) if f.endswith("PYQ Practice.html")]
+            counts[s] = len(files)
+            for file in sorted(files):
+                name = file.replace(" PYQ Practice.html", "")
+                all_chapters.append({
+                    "name": name,
+                    "subject": s,
+                    "url": f"{s}/{file}".replace("\\", "/")
+                })
+        else:
+            counts[s] = 0
+            
+    # Update badges on subject cards
+    html = re.sub(r'(<a class="subject-card maths".*?<div class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Maths", 0)} Chapters Ready', html, flags=re.DOTALL)
+    html = re.sub(r'(<a class="subject-card physics".*?<div class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Physics", 0)} Chapters Ready', html, flags=re.DOTALL)
+    html = re.sub(r'(<a class="subject-card chemistry".*?<div class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Chemistry", 0)} Chapters Ready', html, flags=re.DOTALL)
+    
+    # Update modal pill counts
+    html = re.sub(r'All Subjects \(\d+\)', f'All Subjects ({len(all_chapters)})', html)
+    html = re.sub(r'Physics \(\d+\)', f'Physics ({counts.get("Physics", 0)})', html)
+    html = re.sub(r'Chemistry \(\d+\)', f'Chemistry ({counts.get("Chemistry", 0)})', html)
+    html = re.sub(r'Maths \(\d+\)', f'Maths ({counts.get("Maths", 0)})', html)
+    
+    # Update CHAPTER_POOL array
+    pool_json = json.dumps(all_chapters, indent=2)
+    html = re.sub(r'var CHAPTER_POOL = \[.*?\];', f'var CHAPTER_POOL = {pool_json};', html, flags=re.DOTALL)
+    
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(html)
+        
+    print(f"  [Portal Updated]  index.html (Maths: {counts.get('Maths',0)}, Physics: {counts.get('Physics',0)}, Chemistry: {counts.get('Chemistry',0)}, Total: {len(all_chapters)})")
+
 def run_all_patches():
     print("=" * 60)
     print("JEE PYQ Practice - 1-Step Automated Patcher")
@@ -1141,6 +1193,7 @@ def run_all_patches():
                 total_modified += 1
                 
     print("=" * 60)
+    update_index_portal()
     print(f"Patching complete! Scanned: {total_scanned} files | Updated: {total_modified} files")
     print("Pristine copies are safely archived in the 'backup/' directory.")
     print("=" * 60)
