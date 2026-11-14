@@ -24,150 +24,81 @@ p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
 .how{background:#f7f9fd;border:1px solid var(--line);border-radius:8px;padding:6px 14px}
 @media(max-width:640px){.gt td:first-child{width:100%}.gt .ed{min-height:110px}.gt,.gt tbody,.gt tr,.gt td{display:block;width:100%}.gt tr{border:1px solid #c5ccda;margin:8px 0;border-radius:6px;overflow:hidden}.gt td{border:0;border-bottom:1px solid #e3e8f1}.gt td:first-child{background:#f1f5fb;font-weight:600}.gt tr:first-child td{background:inherit}.gt tr:first-child td:first-child{background:#f1f5fb}.page{padding:12px}}
 #sym{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#1f4e8c;padding:6px 8px;display:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}#sym.on{display:block}#sym button.w{padding:0 10px}#sym button{display:inline-block;min-width:40px;height:40px;margin:0 3px 0 0;font-size:18px;border:0;border-radius:6px;background:#fff;color:#1d2433;cursor:pointer}#sym>span{color:#cfe0fa;font-size:12px;margin-right:8px}@media(max-width:480px){#sym>span{display:none}}body.symon{padding-bottom:60px}
-@media print{#sym{display:none!important}.top,.btn,.noprint,.how,details,#types,#types+ul{display:none!important}body{background:#fff}.page{border:0}.ed{border:1px solid #999;min-height:60px!important}.typ{break-inside:auto}.typ h2{break-after:avoid}.typ.pr-skip{display:none!important}body.one .typ:not(.pick){display:none!important}}
-
-
-  .no-print, header, .hdr, .banner, #back, .btn, button, .top-links, 
-/* 11. CHAPTER INDEX & SUBJECT INDEX PAGES */
-[data-theme="dark"] header {
-  background: #0b1329 !important;
-  border-bottom: 1px solid #334155 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] header h1 {
-  color: #60a5fa !important;
-}
-[data-theme="dark"] header p {
-  color: #94a3b8 !important;
-}
-[data-theme="dark"] header a {
-  color: #93c5fd !important;
-}
-
-[data-theme="dark"] #q {
-  background: #1e293b !important;
-  border: 1.5px solid #475569 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] #q::placeholder {
-  color: #94a3b8 !important;
-}
-
-[data-theme="dark"] .lg {
-  background: #1e293b !important;
-  border: 1px solid #334155 !important;
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .lg b {
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .lg ul, [data-theme="dark"] .lg li {
-  color: #cbd5e1 !important;
-}
-
-/* Chapter strips: sleek dark card instead of bright pastel */
-[data-theme="dark"] .strip,
-[data-theme="dark"] .strip.cA,
-[data-theme="dark"] .strip.cB,
-[data-theme="dark"] .strip.cC,
-[data-theme="dark"] .strip.cD {
-  background: #1e293b !important;
-  border: 1px solid #334155 !important;
-  color: #f8fafc !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
-}
-[data-theme="dark"] .strip.cA { border-left: 6px solid #22c55e !important; }
-[data-theme="dark"] .strip.cB { border-left: 6px solid #84cc16 !important; }
-[data-theme="dark"] .strip.cC { border-left: 6px solid #f97316 !important; }
-[data-theme="dark"] .strip.cD { border-left: 6px solid #64748b !important; }
-
-[data-theme="dark"] .strip .no {
-  color: #94a3b8 !important;
-}
-[data-theme="dark"] .strip .mid b {
-  color: #60a5fa !important;
-}
-[data-theme="dark"] .strip .mid span {
-  color: #94a3b8 !important;
-}
-[data-theme="dark"] .strip .gl {
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .strip .gl b {
-  color: #f8fafc !important;
-}
-
-/* Chips inside strip */
-[data-theme="dark"] .tg em {
-  background: #0f172a !important;
-  border-color: #475569 !important;
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .tg em.pH {
-  background: #14532d !important;
-  color: #86efac !important;
-  border-color: #16a34a !important;
-}
-[data-theme="dark"] .tg em.pM {
-  background: #713f12 !important;
-  color: #fde047 !important;
-  border-color: #ca8a04 !important;
-}
-[data-theme="dark"] .tg em.pL {
-  background: #334155 !important;
-  color: #cbd5e1 !important;
-  border-color: #475569 !important;
-}
-
-/* Action buttons on strips */
-[data-theme="dark"] .lk a {
-  background: #0f172a !important;
-  border: 1px solid #475569 !important;
-  color: #93c5fd !important;
-}
-[data-theme="dark"] .lk a:hover {
-  background: #1e3a8a !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .lk a.go {
-  background: #2563eb !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .lk a.go:hover {
-  background: #1d4ed8 !important;
-}
-
-/* Root index cards */
-[data-theme="dark"] .card {
-  background: #1e293b !important;
-  border: 1px solid #334155 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .card b {
-  color: #60a5fa !important;
-}
-[data-theme="dark"] .card span {
-  color: #94a3b8 !important;
-}
-[data-theme="dark"] .card i {
-  color: #38bdf8 !important;
-}
-[data-theme="dark"] a.card:hover {
-  border-color: #3b82f6 !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
-}
-
-.theme-btn { display: none !important; }
-  table { width: 100% !important; border-collapse: collapse !important; break-inside: auto !important; }
-  tr { break-inside: avoid !important; page-break-inside: avoid !important; }
-  td, th { border: 1px solid #94a3b8 !important; padding: 6px 8px !important; }
-  section.typ { break-after: auto; }
-  section.typ ~ section.typ { break-before: page !important; }
-  .box, textarea { border: 1px solid #cbd5e1 !important; color: #000 !important; }
-}
-
+@media print {
+  @page { margin: 8mm 10mm; size: A4 portrait; }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 13.5pt !important;
+    line-height: 1.55 !important;
+    padding-bottom: 0 !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
+  .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
+    display: none !important;
+  }
+  h1.t { font-size: 22pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
+  h2 { font-size: 16pt !important; margin: 16px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; }
+  h3 { font-size: 14pt !important; margin: 12px 0 4px !important; break-after: avoid !important; }
+  p { font-size: 13pt !important; margin: 4px 0 !important; }
+  
+  body.one section.typ:not(.pick) {
+    display: none !important;
+  }
+  
+  section.typ {
+    border-top: 2.5px solid #1f4e8c !important;
+    padding-top: 10px !important;
+    margin-top: 16px !important;
+    break-inside: auto !important;
+  }
+  section.typ ~ section.typ {
+    break-before: page !important;
+  }
+  
+  .gt, table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    break-inside: auto !important;
+    margin: 10px 0 !important;
+    font-size: 13pt !important;
+  }
+  .gt tr, tr {
+    break-inside: avoid !important;
+  }
+  .gt td, td, th {
+    border: 1.5px solid #64748b !important;
+    padding: 8px 10px !important;
+    font-size: 13pt !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .gt tr:first-child td, .gt td:first-child {
+    background: #f1f5fb !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+  }
+  .ed {
+    border: 1.5px solid #64748b !important;
+    background: #fafafa !important;
+    color: #000 !important;
+    min-height: 85px !important;
+    font-size: 13pt !important;
+    line-height: 1.6 !important;
+    padding: 10px 12px !important;
+    break-inside: avoid !important;
+    white-space: pre-wrap !important;
+    border-radius: 6px !important;
+  }
+}.top,.btn,.noprint,.how,details,#types,#types+ul{display:none!important}body{background:#fff}.page{border:0}.ed{border:1px solid #999;min-height:60px!important}.typ{break-inside:auto}.typ h2{break-after:avoid}.typ.pr-skip{display:none!important}body.one .typ:not(.pick){display:none!important}}
 
 /* =================== COMPREHENSIVE DARK MODE =================== */
 [data-theme="dark"] {
@@ -813,6 +744,7 @@ body {
   background: #334155;
 }
 
+
 /* --- Clean Print & Save as PDF Styling --- */
 @media print {
   @page { margin: 8mm 10mm; size: A4 portrait; }
@@ -902,8 +834,8 @@ body {
     white-space: pre-wrap !important;
   }
 }
-</style></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button></div>
-<h1>General Organic Chemistry &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../General%20Organic%20Chemistry%20PYQ%20Practice.html">Back to practice</a><a href="General%20Organic%20Chemistry%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> GENERAL ORGANIC CHEMISTRY – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Isomerism: structural, geometrical, optical and conformational</a></li><li><a href="#T2">Type 2. IUPAC naming, structures from names, classification and bond counting</a></li><li><a href="#T3">Type 3. Purification of organic compounds: chromatography and separation methods</a></li><li><a href="#T4">Type 4. Quantitative analysis: Dumas, Kjeldahl, Carius and sulphur estimation</a></li><li><a href="#T5">Type 5. Acidity and basicity orders</a></li><li><a href="#T6">Type 6. Aromaticity, resonance and reactivity of conjugated systems</a></li><li><a href="#T7">Type 7. Stability of carbocations, carbanions and radicals</a></li><li><a href="#T8">Type 8. Qualitative analysis: Lassaigne&#x27;s test</a></li><li><a href="#T9">Type 9. Electronic effects: inductive, mesomeric, hyperconjugation and directing groups</a></li><li><a href="#T10">Type 10. Nucleophiles and electrophiles (attacking reagents)</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Isomerism: structural, geometrical, optical and conformational <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">49 questions on the sheet (Q1–49)  ·  Sub-topics: A1 structural isomerism and enol content · A2 geometrical isomerism · A3 optical isomerism · A4 conformations</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Stereoisomers with <math displaystyle="true"><mrow><mi>n</mi></mrow></math> different chiral centres</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Geometrical isomers of <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>-</mo><mi mathvariant="normal">CH</mi><mo>=</mo><mi mathvariant="normal">CH</mi><mo>-</mo><mi mathvariant="normal">R</mi><mo>&#x27;</mo></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Optical purity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Dihedral angles in ethane</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Stability order of n-butane conformers</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Enol content</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count structural isomers without missing any?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>When is a molecule chiral?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>Why do some molecules with chiral centres have fewer than <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> stereoisomers?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>What decides the stability of a conformation?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr><tr><td><p>What do metamerism and functional group isomerism mean?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_13"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The question asks &#x27;how many isomers&#x27;, &#x27;how many stereoisomers&#x27; or &#x27;which shows geometrical (optical) isomerism&#x27;.</p><p style="padding-left:14px">•  A Newman projection or a name such as eclipsed, staggered, gauche, anti, skew is given and the stability or dihedral angle is asked.</p><p style="padding-left:14px">•  The structure has a carbonyl group and the &#x27;enol content&#x27; or tautomer is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Stereoisomers with <math displaystyle="true"><mrow><mi>n</mi></mrow></math> different chiral centres</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> (fewer if the molecule has a plane of symmetry: meso forms)</p></td></tr><tr><td><p>Geometrical isomers of <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mo>=</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mo>−</mo><mi mathvariant="normal">R</mi><mo>′</mo></mrow></math></p></td><td><p>2 (cis and trans) if <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>≠</mo><mi mathvariant="normal">R</mi><mo>′</mo></mrow></math> at each end carbon</p></td></tr><tr><td><p>Optical purity</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mtext>observed&#160;rotation</mtext></mrow><mrow><mtext>specific&#160;rotation&#160;of&#160;the&#160;pure&#160;isomer</mtext></mrow></mfrac><mo>×</mo><mn>100</mn></mrow></math></p></td></tr><tr><td><p>Dihedral angles in ethane</p></td><td><p>staggered <math displaystyle="true"><mrow><msup><mrow><mn>60</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> (most stable); eclipsed <math displaystyle="true"><mrow><msup><mrow><mn>0</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> (least stable)</p></td></tr><tr><td><p>Stability order of n-butane conformers</p></td><td><p>anti &gt; gauche &gt; partially eclipsed &gt; fully eclipsed</p></td></tr><tr><td><p>Enol content</p></td><td><p>highest in <math displaystyle="true"><mrow><mi>β</mi></mrow></math>-diketones (hydrogen bonding and conjugation): <math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count structural isomers without missing any?</p></td><td><p>Start with the straight chain, then shorten it by one carbon and place the branch at every non-equivalent position; repeat for each shorter chain.</p></td></tr><tr><td><p>When is a molecule chiral?</p></td><td><p>When it has no plane or centre of symmetry; the usual sign is a carbon attached to four different groups.</p></td></tr><tr><td><p>Why do some molecules with chiral centres have fewer than <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> stereoisomers?</p></td><td><p>If the two ends of the molecule are identical, a meso form appears and the number drops (for example 1,2-dimethylcyclopropane has 3, not 4).</p></td></tr><tr><td><p>What decides the stability of a conformation?</p></td><td><p>Torsional strain (eclipsing) and steric strain (bulky groups close together); there is no angle strain in an acyclic compound.</p></td></tr><tr><td><p>What do metamerism and functional group isomerism mean?</p></td><td><p>Metamers differ in the groups on either side of a functional atom (ethers, ketones); functional group isomers have different functional groups (alcohol and ether of <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">C</mi></mrow><mrow><mn>2</mn></mrow></msub><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>6</mn></mrow></msub><mi mathvariant="normal">O</mi></mrow></math>).</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting a carbon with two identical groups as a chiral centre.</p><p style="padding-left:14px">•  Forgetting that a double bond shows geometrical isomerism only if both ends have two different groups.</p><p style="padding-left:14px">•  Counting an enantiomer pair twice, or missing the meso form.</p><p style="padding-left:14px">•  Missing isomers that differ only in the position of the double bond or substituent.</p></div></section>
+
+</style></head><body><div class="top"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button><h1>General Organic Chemistry &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../General%20Organic%20Chemistry%20PYQ%20Practice.html">Back to practice</a><a href="General%20Organic%20Chemistry%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> GENERAL ORGANIC CHEMISTRY – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Isomerism: structural, geometrical, optical and conformational</a></li><li><a href="#T2">Type 2. IUPAC naming, structures from names, classification and bond counting</a></li><li><a href="#T3">Type 3. Purification of organic compounds: chromatography and separation methods</a></li><li><a href="#T4">Type 4. Quantitative analysis: Dumas, Kjeldahl, Carius and sulphur estimation</a></li><li><a href="#T5">Type 5. Acidity and basicity orders</a></li><li><a href="#T6">Type 6. Aromaticity, resonance and reactivity of conjugated systems</a></li><li><a href="#T7">Type 7. Stability of carbocations, carbanions and radicals</a></li><li><a href="#T8">Type 8. Qualitative analysis: Lassaigne&#x27;s test</a></li><li><a href="#T9">Type 9. Electronic effects: inductive, mesomeric, hyperconjugation and directing groups</a></li><li><a href="#T10">Type 10. Nucleophiles and electrophiles (attacking reagents)</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Isomerism: structural, geometrical, optical and conformational <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">49 questions on the sheet (Q1–49)  ·  Sub-topics: A1 structural isomerism and enol content · A2 geometrical isomerism · A3 optical isomerism · A4 conformations</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Stereoisomers with <math displaystyle="true"><mrow><mi>n</mi></mrow></math> different chiral centres</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Geometrical isomers of <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>-</mo><mi mathvariant="normal">CH</mi><mo>=</mo><mi mathvariant="normal">CH</mi><mo>-</mo><mi mathvariant="normal">R</mi><mo>&#x27;</mo></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Optical purity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Dihedral angles in ethane</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Stability order of n-butane conformers</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Enol content</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count structural isomers without missing any?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>When is a molecule chiral?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>Why do some molecules with chiral centres have fewer than <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> stereoisomers?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>What decides the stability of a conformation?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr><tr><td><p>What do metamerism and functional group isomerism mean?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_13"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The question asks &#x27;how many isomers&#x27;, &#x27;how many stereoisomers&#x27; or &#x27;which shows geometrical (optical) isomerism&#x27;.</p><p style="padding-left:14px">•  A Newman projection or a name such as eclipsed, staggered, gauche, anti, skew is given and the stability or dihedral angle is asked.</p><p style="padding-left:14px">•  The structure has a carbonyl group and the &#x27;enol content&#x27; or tautomer is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Stereoisomers with <math displaystyle="true"><mrow><mi>n</mi></mrow></math> different chiral centres</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> (fewer if the molecule has a plane of symmetry: meso forms)</p></td></tr><tr><td><p>Geometrical isomers of <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mo>=</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mo>−</mo><mi mathvariant="normal">R</mi><mo>′</mo></mrow></math></p></td><td><p>2 (cis and trans) if <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>≠</mo><mi mathvariant="normal">R</mi><mo>′</mo></mrow></math> at each end carbon</p></td></tr><tr><td><p>Optical purity</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mtext>observed&#160;rotation</mtext></mrow><mrow><mtext>specific&#160;rotation&#160;of&#160;the&#160;pure&#160;isomer</mtext></mrow></mfrac><mo>×</mo><mn>100</mn></mrow></math></p></td></tr><tr><td><p>Dihedral angles in ethane</p></td><td><p>staggered <math displaystyle="true"><mrow><msup><mrow><mn>60</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> (most stable); eclipsed <math displaystyle="true"><mrow><msup><mrow><mn>0</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> (least stable)</p></td></tr><tr><td><p>Stability order of n-butane conformers</p></td><td><p>anti &gt; gauche &gt; partially eclipsed &gt; fully eclipsed</p></td></tr><tr><td><p>Enol content</p></td><td><p>highest in <math displaystyle="true"><mrow><mi>β</mi></mrow></math>-diketones (hydrogen bonding and conjugation): <math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count structural isomers without missing any?</p></td><td><p>Start with the straight chain, then shorten it by one carbon and place the branch at every non-equivalent position; repeat for each shorter chain.</p></td></tr><tr><td><p>When is a molecule chiral?</p></td><td><p>When it has no plane or centre of symmetry; the usual sign is a carbon attached to four different groups.</p></td></tr><tr><td><p>Why do some molecules with chiral centres have fewer than <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> stereoisomers?</p></td><td><p>If the two ends of the molecule are identical, a meso form appears and the number drops (for example 1,2-dimethylcyclopropane has 3, not 4).</p></td></tr><tr><td><p>What decides the stability of a conformation?</p></td><td><p>Torsional strain (eclipsing) and steric strain (bulky groups close together); there is no angle strain in an acyclic compound.</p></td></tr><tr><td><p>What do metamerism and functional group isomerism mean?</p></td><td><p>Metamers differ in the groups on either side of a functional atom (ethers, ketones); functional group isomers have different functional groups (alcohol and ether of <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">C</mi></mrow><mrow><mn>2</mn></mrow></msub><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>6</mn></mrow></msub><mi mathvariant="normal">O</mi></mrow></math>).</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting a carbon with two identical groups as a chiral centre.</p><p style="padding-left:14px">•  Forgetting that a double bond shows geometrical isomerism only if both ends have two different groups.</p><p style="padding-left:14px">•  Counting an enantiomer pair twice, or missing the meso form.</p><p style="padding-left:14px">•  Missing isomers that differ only in the position of the double bond or substituent.</p></div></section>
 <section class="typ" id="T2" data-k="2"><h2>Type 2. IUPAC naming, structures from names, classification and bond counting <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">49 questions on the sheet (Q50–98)  ·  Sub-topics: B1 name of a given structure · B2 structure from a name, common names, priority · B3 classification, hybridisation and <math displaystyle="true"><mrow><mi>σ</mi></mrow></math>/<math displaystyle="true"><mrow><mi>π</mi></mrow></math> counting</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_14"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Bonds</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div></td></tr><tr><td><p>Hybridisation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>Priority of functional groups (high to low)</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr><tr><td><p>Prefixes only (never the suffix)</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></td></tr><tr><td><p>Alphabetical order</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_19"></div></td></tr><tr><td><p>Carbon classes</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_20"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What are the steps to name a compound?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_21"></div></td></tr><tr><td><p>How do I choose between two numbering directions?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_22"></div></td></tr><tr><td><p>What is the trick for <math displaystyle="true"><mrow><mi>σ</mi></mrow></math> and <math displaystyle="true"><mrow><mi>π</mi></mrow></math> bond counting questions?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_23"></div></td></tr><tr><td><p>How do I decide hybridisation quickly?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_24"></div></td></tr><tr><td><p>Which compounds are &#x27;benzenoid&#x27;?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_25"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_26"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  A structure is drawn and &#x27;the IUPAC name is&#x27; is asked, or a name is given and the structure has to be picked from four pictures.</p><p style="padding-left:14px">•  A functional group priority order or a common name (catechol, mesityl oxide, ethylidene chloride) is asked.</p><p style="padding-left:14px">•  Number of <math displaystyle="true"><mrow><mi>σ</mi></mrow></math> and <math displaystyle="true"><mrow><mi>π</mi></mrow></math> bonds, hybridisation of marked carbons, or number of <math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math>, <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> carbons is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Bonds</p></td><td><p>single <math displaystyle="true"><mrow><mo>=</mo><mn>1</mn><mi>σ</mi></mrow></math>; double <math displaystyle="true"><mrow><mo>=</mo><mn>1</mn><mi>σ</mi><mo>+</mo><mn>1</mn><mi>π</mi></mrow></math>; triple <math displaystyle="true"><mrow><mo>=</mo><mn>1</mn><mi>σ</mi><mo>+</mo><mn>2</mn><mi>π</mi></mrow></math></p></td></tr><tr><td><p>Hybridisation</p></td><td><p>4 electron regions: <math displaystyle="true"><mrow><mi>s</mi><msup><mrow><mi>p</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow></math>; 3 regions: <math displaystyle="true"><mrow><mi>s</mi><msup><mrow><mi>p</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math>; 2 regions: <math displaystyle="true"><mrow><mi>s</mi><mi>p</mi></mrow></math></p></td></tr><tr><td><p>Priority of functional groups (high to low)</p></td><td><p><math displaystyle="true"><mrow><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">H</mi><mo>&gt;</mo><mo>−</mo><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>3</mn></mrow></msub><mi mathvariant="normal">H</mi><mo>&gt;</mo><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">R</mi><mo>&gt;</mo><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mo>&gt;</mo><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">N</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>&gt;</mo><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">N</mi><mo>&gt;</mo><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mi mathvariant="normal">O</mi><mo>&gt;</mo><mo>&gt;</mo><mi mathvariant="normal">C</mi><mo>=</mo><mi mathvariant="normal">O</mi><mo>&gt;</mo><mo>−</mo><mi mathvariant="normal">O</mi><mi mathvariant="normal">H</mi><mo>&gt;</mo><mo>−</mo><mi mathvariant="normal">N</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>&gt;</mo><mi mathvariant="normal">C</mi><mo>=</mo><mi mathvariant="normal">C</mi><mo>&gt;</mo><mi mathvariant="normal">C</mi><mo>≡</mo><mi mathvariant="normal">C</mi></mrow></math></p></td></tr><tr><td><p>Prefixes only (never the suffix)</p></td><td><p><math displaystyle="true"><mrow><mo>−</mo><mi mathvariant="normal">B</mi><mi mathvariant="normal">r</mi><mo>,</mo><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mo>,</mo><mo>−</mo><mi mathvariant="normal">N</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>,</mo><mo>−</mo><mi mathvariant="normal">O</mi><mi mathvariant="normal">R</mi><mo>,</mo><mo>−</mo><mi mathvariant="normal">R</mi></mrow></math></p></td></tr><tr><td><p>Alphabetical order</p></td><td><p>substituents are alphabetised ignoring di, tri, tetra</p></td></tr><tr><td><p>Carbon classes</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>1</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math>, <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math>, <math displaystyle="true"><mrow><msup><mrow><mn>3</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> by the number of carbons attached to the carbon</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What are the steps to name a compound?</p></td><td><p>Find the principal functional group, the longest chain that contains it, number from the end that gives it the lowest locant, then add substituents alphabetically.</p></td></tr><tr><td><p>How do I choose between two numbering directions?</p></td><td><p>First give the lowest locants to the principal group, then to multiple bonds, then to substituents together, then to the one first in alphabetical order.</p></td></tr><tr><td><p>What is the trick for <math displaystyle="true"><mrow><mi>σ</mi></mrow></math> and <math displaystyle="true"><mrow><mi>π</mi></mrow></math> bond counting questions?</p></td><td><p>Draw the full structure; count all bonds, then count one <math displaystyle="true"><mrow><mi>π</mi></mrow></math> for each double bond and two for each triple bond.</p></td></tr><tr><td><p>How do I decide hybridisation quickly?</p></td><td><p>Count sigma bonds plus lone pairs on the atom; or use the bond types: all single bonds is <math displaystyle="true"><mrow><mi>s</mi><msup><mrow><mi>p</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow></math>, one double bond is <math displaystyle="true"><mrow><mi>s</mi><msup><mrow><mi>p</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math>, one triple or two double bonds is <math displaystyle="true"><mrow><mi>s</mi><mi>p</mi></mrow></math>.</p></td></tr><tr><td><p>Which compounds are &#x27;benzenoid&#x27;?</p></td><td><p>Those containing a benzene ring; aromatic compounds without a benzene ring (like furan, thiophene) are non-benzenoid.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Numbering from the wrong end so that the functional group does not get the lowest locant.</p><p style="padding-left:14px">•  Choosing the longest chain when a chain that contains the functional group is available.</p><p style="padding-left:14px">•  Counting only <math displaystyle="true"><mrow><mi>σ</mi></mrow></math> or only <math displaystyle="true"><mrow><mi>π</mi></mrow></math> bonds when the total is asked.</p><p style="padding-left:14px">•  Treating <math displaystyle="true"><mrow><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mi mathvariant="normal">O</mi></mrow></math> as a substituent (formyl) when it can be the principal group.</p></div></section>
 <section class="typ" id="T3" data-k="3"><h2>Type 3. Purification of organic compounds: chromatography and separation methods <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">46 questions on the sheet (Q99–144)  ·  Sub-topics: C1 chromatography (TLC, column, paper, <math displaystyle="true"><mrow><msub><mrow><mi>R</mi></mrow><mrow><mi>f</mi></mrow></msub></mrow></math>) · C2 choosing a method (distillation, crystallisation, extraction, sublimation)</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_27"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Retardation factor</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_28"></div></td></tr><tr><td><p>Range of <math displaystyle="true"><mrow><msub><mrow><mi>R</mi></mrow><mrow><mi>f</mi></mrow></msub></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_29"></div></td></tr><tr><td><p>Order of elution in a column</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_30"></div></td></tr><tr><td><p>Steam distillation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_31"></div></td></tr><tr><td><p>Reduced pressure distillation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_32"></div></td></tr><tr><td><p>Fractional distillation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_33"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I choose the purification method?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_34"></div></td></tr><tr><td><p>How do I read a TLC plate?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_35"></div></td></tr><tr><td><p>What principle does column chromatography use?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_36"></div></td></tr><tr><td><p>How is differential extraction done?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_37"></div></td></tr><tr><td><p>Why is a solid sublimed?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_38"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_39"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 3</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  A mixture and a separation technique have to be matched, or the best method for a given mixture is asked.</p><p style="padding-left:14px">•  A chromatogram is drawn with spots at marked distances and <math displaystyle="true"><mrow><msub><mrow><mi>R</mi></mrow><mrow><mi>f</mi></mrow></msub></mrow></math> or the order of elution is asked.</p><p style="padding-left:14px">•  A statement about the principle of a technique (differential adsorption, partition, solubility) is to be judged.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Retardation factor</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>R</mi></mrow><mrow><mi>f</mi></mrow></msub><mo>=</mo><mfrac><mrow><mtext>distance&#160;moved&#160;by&#160;the&#160;compound</mtext></mrow><mrow><mtext>distance&#160;moved&#160;by&#160;the&#160;solvent&#160;front</mtext></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Range of <math displaystyle="true"><mrow><msub><mrow><mi>R</mi></mrow><mrow><mi>f</mi></mrow></msub></mrow></math></p></td><td><p>always less than <math displaystyle="true"><mrow><mn>1</mn></mrow></math> and has no units</p></td></tr><tr><td><p>Order of elution in a column</p></td><td><p>less polar compounds are adsorbed less and come out first</p></td></tr><tr><td><p>Steam distillation</p></td><td><p>for steam-volatile, water-immiscible compounds (aniline, essential oils)</p></td></tr><tr><td><p>Reduced pressure distillation</p></td><td><p>for liquids that decompose near their boiling point (glycerol)</p></td></tr><tr><td><p>Fractional distillation</p></td><td><p>for liquids with a small difference in boiling points (below about <math displaystyle="true"><mrow><mn>30</mn><mspace width="0.3em"></mspace><mi mathvariant="normal">K</mi></mrow></math>)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I choose the purification method?</p></td><td><p>Match the property: boiling point difference (distillation), decomposition (reduced pressure), steam volatility (steam distillation), solubility (crystallisation, extraction), sublimation (naphthalene, camphor).</p></td></tr><tr><td><p>How do I read a TLC plate?</p></td><td><p>Measure from the baseline to the centre of each spot and to the solvent front; the more polar compound travels less and has the lower <math displaystyle="true"><mrow><msub><mrow><mi>R</mi></mrow><mrow><mi>f</mi></mrow></msub></mrow></math>.</p></td></tr><tr><td><p>What principle does column chromatography use?</p></td><td><p>Differential adsorption on silica gel or alumina; paper chromatography uses partition.</p></td></tr><tr><td><p>How is differential extraction done?</p></td><td><p>By shaking with an immiscible solvent in which the compound is more soluble; acidic, basic and neutral compounds are separated by adjusting the pH.</p></td></tr><tr><td><p>Why is a solid sublimed?</p></td><td><p>When it passes directly to vapour on heating and the impurities do not.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Measuring <math displaystyle="true"><mrow><msub><mrow><mi>R</mi></mrow><mrow><mi>f</mi></mrow></msub></mrow></math> from the bottom of the plate instead of from the baseline.</p><p style="padding-left:14px">•  Using simple distillation for liquids with close boiling points.</p><p style="padding-left:14px">•  Taking <math displaystyle="true"><mrow><msub><mrow><mi>R</mi></mrow><mrow><mi>f</mi></mrow></msub></mrow></math> greater than <math displaystyle="true"><mrow><mn>1</mn></mrow></math> or giving a unit.</p><p style="padding-left:14px">•  Confusing adsorption (surface) with absorption.</p></div></section>
 <section class="typ" id="T4" data-k="4"><h2>Type 4. Quantitative analysis: Dumas, Kjeldahl, Carius and sulphur estimation <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">41 questions on the sheet (Q145–185)  ·  Sub-topics: D1 nitrogen: Dumas and Kjeldahl · D2 halogens and sulphur: Carius method</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_40"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Dumas: percentage of N</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_41"></div></td></tr><tr><td><p>Volume at STP</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_42"></div></td></tr><tr><td><p>Kjeldahl: percentage of N</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_43"></div></td></tr><tr><td><p>Carius: percentage of halogen</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_44"></div></td></tr><tr><td><p>Molar masses to remember</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_45"></div></td></tr><tr><td><p>Percentage of sulphur</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_46"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I solve a Dumas question?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_47"></div></td></tr><tr><td><p>Why does Kjeldahl&#x27;s method fail for some compounds?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_48"></div></td></tr><tr><td><p>What is the role of <math displaystyle="true"><mrow><mi mathvariant="normal">CuS</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math> and <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">K</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math> in Kjeldahl&#x27;s method?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_49"></div></td></tr><tr><td><p>How is sulphur estimated in the Carius method?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_50"></div></td></tr><tr><td><p>How do I avoid unit slips?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_51"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_52"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 4</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The mass of an organic compound and the mass of AgX or <math displaystyle="true"><mrow><mi mathvariant="normal">B</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math> (or the volume of <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math>) are given and a percentage is asked.</p><p style="padding-left:14px">•  The volume of acid neutralised by the ammonia from a Kjeldahl digestion is given.</p><p style="padding-left:14px">•  A theory question asks the role of a reagent or which compounds the Kjeldahl method fails for.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Dumas: percentage of N</p></td><td><p><math displaystyle="true"><mrow><mo>%</mo><mspace width="0.3em"></mspace><mi mathvariant="normal">N</mi><mo>=</mo><mfrac><mrow><mn>28</mn><mo>×</mo><msub><mrow><mi>V</mi></mrow><mrow><mi>S</mi><mi>T</mi><mi>P</mi></mrow></msub><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">L</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mn>22400</mn><mo>×</mo><mi>m</mi></mrow></mfrac><mo>×</mo><mn>100</mn></mrow></math></p></td></tr><tr><td><p>Volume at STP</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>V</mi></mrow><mrow><mi>S</mi><mi>T</mi><mi>P</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>P</mi><mspace width="0.3em"></mspace><mi>V</mi><mspace width="0.3em"></mspace><mn>273</mn></mrow><mrow><mn>760</mn><mspace width="0.3em"></mspace><mi>T</mi></mrow></mfrac></mrow></math> (<math displaystyle="true"><mrow><mi>P</mi></mrow></math> in mm Hg, aqueous tension subtracted if given)</p></td></tr><tr><td><p>Kjeldahl: percentage of N</p></td><td><p><math displaystyle="true"><mrow><mo>%</mo><mspace width="0.3em"></mspace><mi mathvariant="normal">N</mi><mo>=</mo><mfrac><mrow><mn>1.4</mn><mo>×</mo><msub><mrow><mi>N</mi></mrow><mrow><mtext>acid</mtext></mrow></msub><mo>×</mo><msub><mrow><mi>V</mi></mrow><mrow><mtext>acid</mtext></mrow></msub></mrow><mrow><mi>m</mi></mrow></mfrac></mrow></math> (normality <math displaystyle="true"><mrow><mo>=</mo><mn>2</mn><mo>×</mo><mi>M</mi></mrow></math> for <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math>)</p></td></tr><tr><td><p>Carius: percentage of halogen</p></td><td><p><math displaystyle="true"><mrow><mo>%</mo><mspace width="0.3em"></mspace><mi>X</mi><mo>=</mo><mfrac><mrow><mtext>atomic&#160;mass&#160;of&#160;</mtext><mi>X</mi></mrow><mrow><mtext>molar&#160;mass&#160;of&#160;AgX</mtext></mrow></mfrac><mo>×</mo><mfrac><mrow><mi>m</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">X</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>m</mi></mrow></mfrac><mo>×</mo><mn>100</mn></mrow></math></p></td></tr><tr><td><p>Molar masses to remember</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mo>=</mo><mn>143.5</mn></mrow></math>, <math displaystyle="true"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">B</mi><mi mathvariant="normal">r</mi><mo>=</mo><mn>188</mn></mrow></math>, <math displaystyle="true"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">I</mi><mo>=</mo><mn>235</mn></mrow></math>, <math displaystyle="true"><mrow><mi mathvariant="normal">B</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub><mo>=</mo><mn>233</mn></mrow></math></p></td></tr><tr><td><p>Percentage of sulphur</p></td><td><p><math displaystyle="true"><mrow><mo>%</mo><mspace width="0.3em"></mspace><mi mathvariant="normal">S</mi><mo>=</mo><mfrac><mrow><mn>32</mn></mrow><mrow><mn>233</mn></mrow></mfrac><mo>×</mo><mfrac><mrow><mi>m</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">B</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>m</mi></mrow></mfrac><mo>×</mo><mn>100</mn></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I solve a Dumas question?</p></td><td><p>Convert the volume of <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math> to STP, find the mass of nitrogen from <math displaystyle="true"><mrow><mn>28</mn><mo>/</mo><mn>22400</mn></mrow></math> g per mL, and divide by the mass of the compound.</p></td></tr><tr><td><p>Why does Kjeldahl&#x27;s method fail for some compounds?</p></td><td><p>Nitrogen in nitro, azo compounds and ring nitrogen (pyridine) is not converted to ammonium sulphate.</p></td></tr><tr><td><p>What is the role of <math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math> and <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">K</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math> in Kjeldahl&#x27;s method?</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math> is a catalyst; <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">K</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math> raises the boiling point of the acid.</p></td></tr><tr><td><p>How is sulphur estimated in the Carius method?</p></td><td><p>Fuming <math displaystyle="true"><mrow><mi mathvariant="normal">H</mi><mi mathvariant="normal">N</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>3</mn></mrow></msub></mrow></math> oxidises sulphur to <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math>, which is precipitated as <math displaystyle="true"><mrow><mi mathvariant="normal">B</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math>.</p></td></tr><tr><td><p>How do I avoid unit slips?</p></td><td><p>Keep the mass in grams and the volume in mL, and check that the answer is below 100%.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Forgetting to convert the gas volume to STP in Dumas problems.</p><p style="padding-left:14px">•  Using molarity instead of normality for <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">S</mi><msub><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mn>4</mn></mrow></msub></mrow></math> in Kjeldahl problems.</p><p style="padding-left:14px">•  Using the molar mass of AgX instead of the atomic mass of X (or the reverse).</p><p style="padding-left:14px">•  Mixing mg and g, giving a percentage above 100.</p></div></section>
@@ -923,42 +855,6 @@ function san(n){var o='';[].forEach.call(n.childNodes,function(c){if(c.nodeType=
  else if(t=='span'&&/^(fr|n|d)$/.test(c.className))o+='<span class="'+c.className+'">'+san(c)+'</span>';
  else if(t=='div'||t=='p')o+=(o?'<br>':'')+san(c);else o+=san(c)}});return o}
 function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'
-<script>
-function initThemeToggle() {
-  function applyTheme(dark) {
-    if (dark) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('jee_theme', 'dark');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('jee_theme', 'light');
-    }
-    var btns = document.querySelectorAll('.theme-btn');
-    btns.forEach(function(b) {
-      b.innerHTML = dark ? '☀️ Light' : '🌙 Dark';
-    });
-  }
-  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
-    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  applyTheme(isDark);
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.theme-btn');
-    if (btn) {
-      var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      applyTheme(!currentlyDark);
-    }
-  });
-}
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initThemeToggle);
-} else {
-  initThemeToggle();
-}
-</script>
-
-
-
-
 <script>
 // Unblock both 'Save my notes as PDF' and individual 'Save this type as PDF'
 (function(){
@@ -1016,6 +912,7 @@ if (document.readyState === 'loading') {
   }
 })();
 </script>
+
 </body>','text/html').body)}
 var eds=[].slice.call(document.querySelectorAll('.ed'));
 function txt(e){return e.textContent.replace(/​/g,'').trim()}
@@ -1043,7 +940,7 @@ eds.forEach(function(t){t.addEventListener('input',function(){store(t)});
     sel.removeAllRanges();sel.addRange(r)}}})});
 [].forEach.call(document.querySelectorAll('section.typ'),function(s){var k=s.dataset.k;
  s.querySelector('.sh').onclick=function(){var any=[].some.call(s.querySelectorAll('.ed'),function(t){return txt(t)||t.querySelector('.fr')});
-  if(!any){alert('You have not filled anything in this type yet. Try from memory first - it works much better. Then press the button again.');return}
+  /* unblocked show */
   S.rev[k]=1;save();setRev(s,true);s.querySelector('.rev').scrollIntoView({behavior:'smooth',block:'nearest'})};
  s.querySelector('.hd').onclick=function(){S.rev[k]=0;save();setRev(s,false)};
  s.querySelector('.rs').onclick=function(){if(!confirm('Clear your answers for this type and hide its completed notes?'))return;
@@ -1056,10 +953,10 @@ window.addEventListener('afterprint',endPrint);
 function doPrint(){setTimeout(function(){window.print()},50)}
 document.getElementById('pdf').onclick=function(){var secs=[].slice.call(document.querySelectorAll('section.typ')),n=0;
  secs.forEach(function(s){if(hasWork(s))n++;else s.classList.add('pr-skip')});
- if(!n){endPrint();alert('You have not written anything yet. Write in the boxes of a type first, then save as PDF.');return}
+ /* unblocked main pdf */
  document.title=KEY.replace(/^tn_/,'')+' - my Type Notes';doPrint()};
 [].forEach.call(document.querySelectorAll('section.typ'),function(s){s.querySelector('.tpdf').onclick=function(){
- if(!hasWork(s)){alert('You have not written anything in this type yet.');return}
+ /* unblocked tpdf */
  document.body.classList.add('one');s.classList.add('pick');document.title=KEY.replace(/^tn_/,'')+' - my Type Notes - Type '+s.dataset.k;doPrint()}});
 document.getElementById('sv').onclick=function(){var b=new Blob([JSON.stringify({v:2,notes:KEY,data:S})],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=KEY.replace(/[^A-Za-z0-9]+/g,'_')+'.json';document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},500)};
 document.getElementById('ld').onclick=function(){document.getElementById('lf').click()};
@@ -1094,4 +991,36 @@ function hide(e){if(!e.target.closest('.ed')&&!e.target.closest('#sym')){bar.cla
 document.addEventListener('mousedown',hide);document.addEventListener('touchstart',hide,{passive:true});
 apply();
 })();
-</script></body></html>
+</script><script>
+function initThemeToggle() {
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jee_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jee_theme', 'light');
+    }
+    var btns = document.querySelectorAll('.theme-btn');
+    btns.forEach(function(b) {
+      b.innerHTML = dark ? '☀️ Light' : '🌙 Dark';
+    });
+  }
+  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
+    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  applyTheme(isDark);
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.theme-btn');
+    if (btn) {
+      var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      applyTheme(!currentlyDark);
+    }
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
+}
+</script>
+</body></html>
