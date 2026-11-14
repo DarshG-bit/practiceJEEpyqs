@@ -82,9 +82,22 @@ def fix_option_images_in_file(content):
 PERFECT_PRINT_CSS = """
 /* --- Clean Print & Save as PDF Styling --- */
 @media print {
-  @page { margin: 12mm 15mm; size: A4 portrait; }
-  body { background: #fff !important; color: #000 !important; font-size: 11pt !important; line-height: 1.45 !important; }
-  .page { border: none !important; box-shadow: none !important; padding: 0 !important; max-width: 100% !important; margin: 0 !important; }
+  @page { margin: 8mm 10mm; size: A4 portrait; }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 13pt !important;
+    line-height: 1.5 !important;
+    padding-bottom: 0 !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
   
   /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
   .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
@@ -93,14 +106,19 @@ PERFECT_PRINT_CSS = """
   }
 
   /* HEADINGS */
-  h1.t { font-size: 18pt !important; margin: 0 0 12px !important; color: #1f4e8c !important; }
-  h2 { font-size: 14pt !important; margin: 16px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
-  h3 { font-size: 12pt !important; margin: 12px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
-  p { margin: 4px 0 !important; }
+  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
+  h2 { font-size: 16pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
+  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
+
+  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
+  body.one section.typ:not(.pick) {
+    display: none !important;
+  }
 
   /* EACH TYPE STARTS ON A NEW PAGE */
   section.typ {
-    border-top: 2px solid #1f4e8c !important;
+    border-top: 2.5px solid #1f4e8c !important;
     padding-top: 10px !important;
     margin-top: 14px !important;
     break-inside: auto !important;
@@ -111,37 +129,41 @@ PERFECT_PRINT_CSS = """
     page-break-before: page !important;
   }
 
-  /* TABLES: ROW-LEVEL BREAKING (NO WASTED SPACE ON PREVIOUS PAGE) */
+  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
   .gt, table {
     width: 100% !important;
     border-collapse: collapse !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
     margin: 8px 0 !important;
+    font-size: 12.5pt !important;
   }
   .gt tr, tr {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
   .gt td, td, th {
-    border: 1px solid #94a3b8 !important;
-    padding: 6px 8px !important;
-    font-size: 10.5pt !important;
+    border: 1.5px solid #64748b !important;
+    padding: 8px 10px !important;
+    font-size: 12.5pt !important;
     color: #000 !important;
     background: #fff !important;
   }
-  .gt tr:first-child td {
+  .gt tr:first-child td, .gt td:first-child {
     background: #f1f5fb !important;
     font-weight: 700 !important;
+    color: #000 !important;
   }
 
   /* EDITABLE BOXES / USER WRITTEN NOTES */
   .ed {
-    border: 1px solid #94a3b8 !important;
+    border: 1.5px solid #64748b !important;
     background: #fff !important;
     color: #000 !important;
-    min-height: 48px !important;
-    font-size: 10.5pt !important;
+    min-height: 60px !important;
+    font-size: 12.5pt !important;
+    line-height: 1.6 !important;
+    padding: 8px 10px !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
     white-space: pre-wrap !important;
@@ -151,27 +173,59 @@ PERFECT_PRINT_CSS = """
 
 UNBLOCK_PDF_SCRIPT = """
 <script>
-// Unblock Save as PDF button so it always prints cleanly
+// Unblock both 'Save my notes as PDF' and individual 'Save this type as PDF'
 (function(){
-  function setupPdfBtn() {
+  function setupPdfBtns() {
+    // 1. Main PDF button (Save all notes)
     var btn = document.getElementById('pdf') || document.getElementById('savepdf');
     if (btn) {
       btn.onclick = function(e) {
         if (e) e.preventDefault();
+        document.body.classList.remove('one');
         var secs = [].slice.call(document.querySelectorAll('section.typ'));
         secs.forEach(function(s) {
-          s.classList.remove('pr-skip');
+          s.classList.remove('pick', 'pr-skip');
           s.style.display = 'block';
         });
-        document.body.classList.remove('one');
+        var h = document.querySelector('h1.t');
+        document.title = (h ? h.innerText : 'Type Notes');
         window.print();
       };
     }
+
+    // 2. Individual type PDF buttons (.tpdf)
+    var typeBtns = document.querySelectorAll('.tpdf');
+    typeBtns.forEach(function(tp) {
+      tp.onclick = function(e) {
+        if (e) e.preventDefault();
+        var sec = tp.closest('section.typ');
+        if (!sec) return;
+        document.body.classList.add('one');
+        document.querySelectorAll('section.typ').forEach(function(s) {
+          s.classList.remove('pick');
+        });
+        sec.classList.add('pick');
+        var h = document.querySelector('h1.t');
+        var k = sec.dataset.k || sec.id || '';
+        document.title = (h ? h.innerText : 'Type Notes') + ' - Type ' + k;
+        window.print();
+      };
+    });
+
+    // 3. Reset state after printing
+    window.addEventListener('afterprint', function() {
+      document.body.classList.remove('one');
+      document.querySelectorAll('section.typ').forEach(function(s) {
+        s.classList.remove('pick', 'pr-skip');
+        s.style.display = 'block';
+      });
+    });
   }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupPdfBtn);
+    document.addEventListener('DOMContentLoaded', setupPdfBtns);
   } else {
-    setupPdfBtn();
+    setupPdfBtns();
   }
 })();
 </script>
@@ -702,6 +756,136 @@ DARK_MODE_CSS = """
   color: #94a3b8 !important;
 }
 
+
+/* 13. TYPE NOTES PAGES (.page, .how, .ed, .gt, details, #sym) */
+[data-theme="dark"] .page {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .how {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .how h3 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how ol,
+[data-theme="dark"] .how li {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .ed {
+  background: #0f172a !important;
+  border: 1px solid #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .ed:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px #1e3a8a !important;
+}
+
+[data-theme="dark"] .gt {
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .gt td {
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  background: #0f172a !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .rev {
+  background: #064e3b !important;
+  border-color: #10b981 !important;
+  color: #ecfdf5 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #6ee7b7 !important;
+}
+
+[data-theme="dark"] .top {
+  background: #091e3a !important;
+  border-bottom: 1px solid #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] .btn {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #334155 !important;
+}
+[data-theme="dark"] .btn.pri {
+  background: #2563eb !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .btn.pri:hover {
+  background: #1d4ed8 !important;
+}
+
+[data-theme="dark"] .sm {
+  color: #94a3b8 !important;
+}
+
+/* Scientific Symbol Bar (#sym) */
+#sym {
+  display: flex !important;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+body {
+  padding-bottom: 60px !important;
+}
+[data-theme="dark"] #sym {
+  background: #091e3a !important;
+  border-top: 1px solid #334155 !important;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+[data-theme="dark"] #sym > span {
+  color: #93c5fd !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] #sym button {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #475569 !important;
+}
+[data-theme="dark"] #sym button:hover {
+  background: #334155 !important;
+  border-color: #60a5fa !important;
+  color: #60a5fa !important;
+}
+[data-theme="dark"] #sym button.w {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border-color: #3b82f6 !important;
+}
+
 .theme-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -774,7 +958,7 @@ def patch_dark_mode(content):
     # 2. Dark mode CSS (Replace existing dark mode block or inject)
     if "COMPREHENSIVE DARK MODE" in content:
         # Check if the new filter rules are present
-        if "FILTER GROUPS & DIFFICULTY PILLS" not in content:
+        if "13. TYPE NOTES PAGES" not in content:
             # Replace old DARK MODE CSS with the comprehensive updated one
             pattern = r'/\* =+ COMPREHENSIVE DARK MODE =+ \*/.*?\[data-theme="dark"\] \.theme-btn:hover\s*\{[^}]+\}'
             if re.search(pattern, content, re.DOTALL):
