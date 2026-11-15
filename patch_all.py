@@ -336,7 +336,7 @@ DARK_MODE_CSS = """
   --mut: #a1a1aa;
   --line: #222222;
   --bg: #000000;
-  --accl: #172554;
+  --accl: #081a36;
   --accb: #3b82f6;
   --hdr: #000000;
   --hdrtx: #ffffff;
@@ -379,7 +379,7 @@ DARK_MODE_CSS = """
   color: #ffffff !important;
 }
 [data-theme="dark"] .banner a {
-  color: #60a5fa !important;
+  color: #3b82f6 !important;
   text-decoration: underline !important;
 }
 
@@ -397,7 +397,7 @@ DARK_MODE_CSS = """
 }
 [data-theme="dark"] #typelist .all span,
 [data-theme="dark"] .all span {
-  color: #60a5fa !important;
+  color: #3b82f6 !important;
   text-decoration: underline !important;
 }
 [data-theme="dark"] #typelist hr {
@@ -458,9 +458,9 @@ DARK_MODE_CSS = """
 
 /* #typeln (Subheader Bar) */
 [data-theme="dark"] #typeln {
-  background: #0c1929 !important;
-  color: #93c5fd !important;
-  border: 1px solid #1e3a8a !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #222224 !important;
   font-weight: 600 !important;
 }
 
@@ -597,7 +597,7 @@ DARK_MODE_CSS = """
   color: #a1a1aa !important;
 }
 [data-theme="dark"] .side .tname {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .pbtn {
   background: #18181b !important;
@@ -667,7 +667,7 @@ DARK_MODE_CSS = """
   color: #f4f4f5 !important;
 }
 [data-theme="dark"] header h1 {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] header p {
   color: #a1a1aa !important;
@@ -716,7 +716,7 @@ DARK_MODE_CSS = """
   color: #71717a !important;
 }
 [data-theme="dark"] .strip .mid b {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .strip .mid span {
   color: #a1a1aa !important;
@@ -755,7 +755,7 @@ DARK_MODE_CSS = """
   color: #93c5fd !important;
 }
 [data-theme="dark"] .lk a:hover {
-  background: #172554 !important;
+  background: #18181b !important;
   border-color: #3b82f6 !important;
   color: #ffffff !important;
 }
@@ -780,7 +780,7 @@ DARK_MODE_CSS = """
   color: #ffffff !important;
 }
 [data-theme="dark"] .gf .gft {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .gf .gfn {
   color: #a1a1aa !important;
@@ -833,7 +833,7 @@ DARK_MODE_CSS = """
   color: #d4d4d8 !important;
 }
 [data-theme="dark"] .how h3 {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .how p,
 [data-theme="dark"] .how ol,
@@ -848,7 +848,7 @@ DARK_MODE_CSS = """
 }
 [data-theme="dark"] .ed:focus {
   border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 2px #1e3a8a !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4) !important;
 }
 
 [data-theme="dark"] .gt {
@@ -943,7 +943,7 @@ body {
   color: #60a5fa !important;
 }
 [data-theme="dark"] #sym button.w {
-  background: #172554 !important;
+  background: #18181b !important;
   color: #93c5fd !important;
   border-color: #3b82f6 !important;
 }
@@ -955,7 +955,7 @@ body {
   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.8) !important;
 }
 [data-theme="dark"] #sw h2 {
-  color: #60a5fa !important;
+  color: #ffffff !important;
   font-weight: 700 !important;
 }
 [data-theme="dark"] #sw .x {
@@ -968,13 +968,13 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
 [data-theme="dark"] #sw a.sj b {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] #sw a.sj span {
   color: #d4d4d8 !important;
 }
 [data-theme="dark"] #sw a.sj:hover {
-  background: #172554 !important;
+  background: #18181b !important;
   border-color: #3b82f6 !important;
 }
 [data-theme="dark"] #sw a.all {
@@ -1057,10 +1057,7 @@ body {
   border-color: #60a5fa !important;
 }
 [data-theme="dark"] .qpreset.active {
-  background: #172554 !important;
-  border-color: #60a5fa !important;
-  color: #93c5fd !important;
-}
+  background: #2563eb !important; border-color: #2563eb !important; color: #ffffff !important; }
 [data-theme="dark"] #custom_qc {
   background: #000000 !important;
   border-color: #2e2e2e !important;
@@ -1082,11 +1079,11 @@ body {
 [data-theme="dark"] .subject-card.maths { border-top: 5px solid #3b82f6 !important; }
 [data-theme="dark"] .subject-card.physics { border-top: 5px solid #a855f7 !important; }
 [data-theme="dark"] .subject-card.chemistry { border-top: 5px solid #10b981 !important; }
-[data-theme="dark"] .subject-card.maths .subject-badge { background: #172554 !important; color: #93c5fd !important; }
+[data-theme="dark"] .subject-card.maths .subject-badge { background: #18181b !important; color: #93c5fd !important; }
 [data-theme="dark"] .subject-card.physics .subject-badge { background: #2e1065 !important; color: #d8b4fe !important; }
 [data-theme="dark"] .subject-card.chemistry .subject-badge { background: #022c22 !important; color: #6ee7b7 !important; }
 [data-theme="dark"] .subject-card h2 { color: #ffffff !important; }
-[data-theme="dark"] .subject-card.maths h2 { color: #60a5fa !important; }
+[data-theme="dark"] .subject-card.maths h2 { color: #ffffff !important; }
 [data-theme="dark"] .subject-card.physics h2 { color: #c084fc !important; }
 [data-theme="dark"] .subject-card.chemistry h2 { color: #34d399 !important; }
 [data-theme="dark"] .subject-desc { color: #d4d4d8 !important; }
@@ -1103,11 +1100,11 @@ body {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9) !important;
 }
 [data-theme="dark"] .random-badge {
-  background: #172554 !important;
+  background: #18181b !important;
   color: #93c5fd !important;
 }
 [data-theme="dark"] .random-title {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .random-desc {
   color: #d4d4d8 !important;
@@ -1123,7 +1120,7 @@ body {
   color: #f4f4f5 !important;
 }
 [data-theme="dark"] .modal-header h3 {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .modal-close {
   color: #a1a1aa !important;
@@ -1135,7 +1132,7 @@ body {
   color: #d4d4d8 !important;
 }
 [data-theme="dark"] .modal-section-title {
-  color: #60a5fa !important;
+  color: #a1a1aa !important;
 }
 [data-theme="dark"] .pool-opt {
   background: #000000 !important;
@@ -1147,10 +1144,7 @@ body {
   border-color: #3b82f6 !important;
 }
 [data-theme="dark"] .pool-opt.active {
-  background: #172554 !important;
-  border-color: #60a5fa !important;
-  color: #93c5fd !important;
-}
+  background: #2563eb !important; border-color: #2563eb !important; color: #ffffff !important; }
 [data-theme="dark"] .pill-btn {
   background: #000000 !important;
   border-color: #27272a !important;
@@ -1161,10 +1155,7 @@ body {
   border-color: #3b82f6 !important;
 }
 [data-theme="dark"] .pill-btn.active {
-  background: #172554 !important;
-  border-color: #60a5fa !important;
-  color: #93c5fd !important;
-}
+  background: #2563eb !important; border-color: #2563eb !important; color: #ffffff !important; }
 [data-theme="dark"] .pill-btn input[type=number] {
   background: #0a0a0a !important;
   border-color: #2e2e2e !important;
@@ -1347,7 +1338,7 @@ body {
 }
 [data-theme="dark"] .cbt-score-tag {
   background: #081a36 !important;
-  color: #60a5fa !important;
+  color: #93c5fd !important;
 }
 .cbt-score-title {
   margin: 10px 0 4px;
@@ -1629,7 +1620,32 @@ body {
   background: #18181b !important;
   border-color: #3f3f46 !important;
   color: #ffffff !important;
-}"""
+}
+
+/* Impeccable Browser Surface Polish */
+[data-theme="dark"] ::selection {
+  background: rgba(59, 130, 246, 0.35) !important;
+  color: #ffffff !important;
+}
+::selection {
+  background: rgba(37, 99, 235, 0.25);
+  color: inherit;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+[data-theme="dark"] * {
+  scrollbar-color: #27272a transparent;
+}
+:focus-visible {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+}
+.tm, .btn, .o, .ol, .kbd-key, .cbt-metric-num, .cbt-big-score, .cbt-summary-table td b, .metric-value, .ch-stats-row {
+  font-variant-numeric: tabular-nums;
+}
+"""
 
 THEME_TOGGLE_JS = """
 <script>
@@ -1913,6 +1929,10 @@ def run_all_patches():
                 with open(file_path, "w", encoding="utf-8") as f:
                     f.write(content)
                 total_modified += 1
+            original_content = None
+            content = None
+            import gc
+            gc.collect()
                 
     print("=" * 60)
     update_index_portal()

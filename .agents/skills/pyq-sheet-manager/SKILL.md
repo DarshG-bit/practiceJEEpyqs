@@ -15,13 +15,15 @@ This skill documents the architecture, maintenance workflows, quality standards,
 
 ---
 
-## 1. Project Architecture
+## 1. Project Architecture & Design System
 
 The application is a pure, zero-dependency client-side web application designed to run 100% offline or hosted on GitHub Pages:
 
 ```text
 practiceJEEpyqs-main/
-├── index.html                      # Centralized Aspirant Dashboard & Mock Test Launcher
+├── PRODUCT.md                      # Canonical product truth (Users, Positioning, Principles)
+├── DESIGN.md                       # Canonical design system tokens (Operate mode, AMOLED)
+├── index.html                      # Redesigned Aspirant Dashboard & Interactive Chapter Explorer
 ├── patch_all.py                    # 1-step automated patcher for all 83 workspace files
 ├── Maths/                          # Mathematics (5 Chapters)
 │   ├── <Chapter> PYQ Practice.html # Interactive practice & CBT sheet with base64 diagrams
@@ -31,7 +33,8 @@ practiceJEEpyqs-main/
 ├── Chemistry/                      # Chemistry (8 Chapters)
 └── .agents/
     └── skills/
-        └── pyq-sheet-manager/
+        ├── impeccable/             # Frontend design & craftsmanship engine
+        └── pyq-sheet-manager/      # Workspace runbook and quality verification
             ├── SKILL.md            # This runbook
             └── scripts/
                 └── verify_amoled.py # Quality validation script
@@ -39,20 +42,24 @@ practiceJEEpyqs-main/
 
 ---
 
-## 2. Design Invariants & Standards
+## 2. Design Invariants & Standards (Impeccable Operate Mode)
 
 Every file in the repository must strictly follow these rules:
 
 ### A. True AMOLED Black (`#000000`)
-- **Pitch Black Backgrounds**: The dark mode background must be `#000000` so OLED display diodes turn off 100%.
-- **Zero Navy Blue**: Never use navy-blue or slate-blue (`#1e293b`, `#0f172a`, etc.) for dark mode containers or surfaces.
+- **Pitch Black Backgrounds**: The dark mode background must be strictly `#000000` so OLED display diodes turn off 100%.
+- **Zero Navy Blue**: Zero tolerance for navy-blue or slate-blue tints (`#1e293b`, `#0f172a`, `#172554`, `#1e3a8a`) in dark mode.
 - **Elevated Surfaces**: Modals, cards, and dropdowns use `#0a0a0c` or `#111114`.
 - **Borders & Dividers**: Crisp dark borders use `#222224` or `#27272a`.
-- **Text & Headings**: Main headings use `#ffffff` (crisp white), body text uses `#e4e4e7`, and muted subtext uses `#94a3b8`.
+- **Text & Headings**: Main headings use `#ffffff` (crisp white), body text uses `#e4e4e7`, and muted subtext uses `#a1a1aa`.
 
-### B. "De-AI" Professional Aesthetic
-- **No Gimmicks**: Avoid AI-style decorative emojis (`🚀`, `💡`, `🎲`).
-- **Restrained Accents**: Use focused primary blue (`#2563eb` / dark `#3b82f6`) and green (`#16a34a`). Avoid neon glowing borders, heavy drop shadows, or gradient text.
+### B. Typography & Browser Surfaces
+- **No Eyebrows/Kickers**: Delete small all-caps kickers above headings; let the heading carry its own weight.
+- **Workhorse Stack**: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif`.
+- **Tabular Figures**: `font-variant-numeric: tabular-nums` applied to timers, scores, question counts, and statistics to prevent layout shifts.
+- **Themed Selection & Scrollbars**: Custom `::selection` and themed thin scrollbars matching the color mode.
+- **Accessible Contrast**: WCAG AA compliant contrast (≥4.5:1 for body text, ≥3:1 for large text).
+- **No Emojis**: Clean SVG icons and geometric vector symbols only.
 
 ### C. Official NTA CBT Exam Simulation
 - **Two Distinct Modes**:
@@ -108,7 +115,10 @@ The portal stores student progress in browser `localStorage`. Do not rename or w
    python -m py_compile patch_all.py
    python patch_all.py
    ```
-3. Verify changes with `verify_amoled.py`.
+3. Verify changes with `verify_amoled.py` and Impeccable detector:
+   ```powershell
+   .agents/skills/impeccable/scripts/impeccable.cmd detect --json index.html
+   ```
 4. Update this `SKILL.md` to reflect the updated customization.
 5. Commit and push:
    ```powershell
