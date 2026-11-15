@@ -769,1303 +769,426 @@
     cursor: pointer;
   }
   
-/* =================== TRUE AMOLED BLACK DARK MODE =================== */
+
+/* =================== ELEVATED SLATE DARK THEME & MODERN DESIGN =================== */
+:root {
+  --bg-base: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-input: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+}
+
 [data-theme="dark"] {
-  --ink: #ffffff;
-  --mut: #a1a1aa;
-  --line: #222222;
-  --bg: #000000;
-  --accl: #081a36;
+  --ink: #f8fafc;
+  --mut: #94a3b8;
+  --line: #1e293b;
+  --bg: #090d16;
+  --surface: #0f172a;
+  --surface-card: #0f172a;
+  --surface-elevated: #141d2e;
+  --accl: #172554;
   --accb: #3b82f6;
-  --hdr: #000000;
-  --hdrtx: #ffffff;
-  --tmbg: rgba(255, 255, 255, 0.08);
-  --hdrline: #222222;
+  --hdr: #090d16;
+  --hdrtx: #f8fafc;
+  --tmbg: rgba(255, 255, 255, 0.06);
+  --hdrline: #1e293b;
+  --border-subtle: #1e293b;
+  --border-input: #2d3c5e;
 }
 
 [data-theme="dark"] body {
-  background: #000000 !important;
-  color: #f4f4f5 !important;
+  background: #090d16 !important;
+  color: #f1f5f9 !important;
 }
 
 [data-theme="dark"] a {
-  color: #3b82f6 !important;
-}
-
-/* 1. START PANEL & GENERAL PANELS */
-[data-theme="dark"] .panel,
-[data-theme="dark"] .main,
-[data-theme="dark"] #done,
-[data-theme="dark"] .sec,
-[data-theme="dark"] .card {
-  background: #0a0a0a !important;
-  border-color: #222222 !important;
-  color: #f4f4f5 !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.8) !important;
-}
-
-[data-theme="dark"] .panel h2,
-[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 {
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .banner {
-  background: #000000 !important;
-  border-color: #262626 !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .banner b {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .banner a {
-  color: #3b82f6 !important;
-  text-decoration: underline !important;
-}
-
-[data-theme="dark"] .tbox {
-  background: #000000 !important;
-  border-color: #262626 !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .panel label,
-[data-theme="dark"] label.rad {
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] #typelist .cnt {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] #typelist .all span,
-[data-theme="dark"] .all span {
-  color: #3b82f6 !important;
-  text-decoration: underline !important;
-}
-[data-theme="dark"] #typelist hr {
-  border-color: #222222 !important;
-}
-[data-theme="dark"] .tin input,
-[data-theme="dark"] .panel input[type=number],
-[data-theme="dark"] .num,
-[data-theme="dark"] input[type=text],
-[data-theme="dark"] textarea {
-  background: #000000 !important;
-  border-color: #2e2e2e !important;
-  color: #ffffff !important;
-}
-
-/* 2. TOP HEADER BAR */
-[data-theme="dark"] .top {
-  background: #000000 !important;
-  border-bottom: 1px solid #222222 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .top h1 {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .top .tm {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-/* 3. QUESTION HEADER & BLUE SUBHEADER BAR */
-[data-theme="dark"] .qhead {
-  background: #000000 !important;
-  border-color: #222222 !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .qhead b,
-[data-theme="dark"] #qno {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .qhead small,
-[data-theme="dark"] .qt {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] #qtime {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-}
-[data-theme="dark"] .starbtn {
-  background: #0a0a0a !important;
-  border-color: #2e2e2e !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .starbtn.on {
-  background: #2e1a05 !important;
-  border-color: #d97706 !important;
-  color: #fbbf24 !important;
-}
-
-/* #typeln (Subheader Bar) */
-[data-theme="dark"] #typeln {
-  background: #000000 !important;
-  color: #ffffff !important;
-  border: 1px solid #222224 !important;
-  font-weight: 600 !important;
-}
-
-[data-theme="dark"] .src {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .stem {
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .stem p {
-  color: #f4f4f5 !important;
-}
-
-/* 4. MATH EQUATIONS - PURE WHITE */
-[data-theme="dark"] math,
-[data-theme="dark"] math * {
-  color: #ffffff !important;
-  fill: #ffffff !important;
-}
-
-/* 5. DIAGRAMS / IMAGES - WHITE CONTAINER */
-[data-theme="dark"] img,
-[data-theme="dark"] .fig {
-  background: #ffffff !important;
-  border-radius: 8px !important;
-  padding: 6px !important;
-  border: 1px solid #333333 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7) !important;
-  display: inline-block !important;
-}
-
-/* 6. OPTIONS */
-[data-theme="dark"] .o {
-  background: #0d0d0d !important;
-  border: 1.5px solid #262626 !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .o:hover {
-  background: #171717 !important;
-  border-color: #3f3f46 !important;
-}
-[data-theme="dark"] .o .ol {
-  background: #171717 !important;
-  color: #a1a1aa !important;
-  border: 1px solid #27272a !important;
-}
-[data-theme="dark"] .o.sel {
-  background: #0f1d38 !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .o.sel .ol {
-  background: #2563eb !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .o.ok {
-  background: #042414 !important;
-  border-color: #10b981 !important;
-  color: #ecfdf5 !important;
-}
-[data-theme="dark"] .o.ok .ol {
-  background: #10b981 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .o.bad {
-  background: #330808 !important;
-  border-color: #ef4444 !important;
-  color: #fef2f2 !important;
-}
-[data-theme="dark"] .o.bad .ol {
-  background: #ef4444 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .o.dead {
-  opacity: 0.3 !important;
-}
-
-/* Feedback & numerical checking */
-[data-theme="dark"] .num.ok { background: #042414 !important; border-color: #10b981 !important; color: #ecfdf5 !important; }
-[data-theme="dark"] .num.bad { background: #330808 !important; border-color: #ef4444 !important; color: #fef2f2 !important; }
-[data-theme="dark"] .chkres.r { background: #042414 !important; color: #a7f3d0 !important; border-color: #059669 !important; }
-[data-theme="dark"] .chkres.w { background: #330808 !important; color: #fecaca !important; border-color: #dc2626 !important; }
-[data-theme="dark"] .chkres.h { background: #0d0d0d !important; color: #d4d4d8 !important; border-color: #27272a !important; }
-
-/* 7. BOTTOM NAVIGATION BAR */
-[data-theme="dark"] .foot {
-  background: #000000 !important;
-  border-top: 1px solid #222222 !important;
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.7) !important;
-}
-[data-theme="dark"] .foot .btn {
-  background: #121212 !important;
-  color: #f4f4f5 !important;
-  border-color: #27272a !important;
-}
-[data-theme="dark"] .foot .btn:hover {
-  background: #222222 !important;
-}
-[data-theme="dark"] .foot .btn:disabled {
-  opacity: 0.25 !important;
-  background: #0a0a0a !important;
-  color: #52525b !important;
-  border-color: #18181b !important;
-}
-[data-theme="dark"] .btn.pur {
-  background: #7c3aed !important;
-  border-color: #8b5cf6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .btn.grn {
-  background: #16a34a !important;
-  border-color: #22c55e !important;
-  color: #ffffff !important;
-}
-
-/* 8. RIGHT SIDE QUESTION PALETTE */
-[data-theme="dark"] .side {
-  background: #0a0a0a !important;
-  border: 1px solid #222222 !important;
-  color: #f4f4f5 !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.7) !important;
-}
-[data-theme="dark"] .side::-webkit-scrollbar {
-  width: 8px !important;
-}
-[data-theme="dark"] .side::-webkit-scrollbar-track {
-  background: #0a0a0a !important;
-}
-[data-theme="dark"] .side::-webkit-scrollbar-thumb {
-  background: #27272a !important;
-  border-radius: 4px !important;
-}
-[data-theme="dark"] .side h3 {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .side .tname {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .pbtn {
-  background: #18181b !important;
-  border-color: #27272a !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .pbtn:hover {
-  background: #27272a !important;
-}
-[data-theme="dark"] .pbtn.cur {
-  outline: 2px solid #38bdf8 !important;
-  outline-offset: 1px !important;
-}
-[data-theme="dark"] .pbtn.ans {
-  background: #15803d !important;
-  border-color: #22c55e !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .pbtn.rev {
-  background: #7e22ce !important;
-  border-color: #a855f7 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .pbtn.r_ans {
-  background: #7e22ce !important;
-  border-color: #22c55e !important;
-  color: #ffffff !important;
-}
-
-/* 9. TABLES & HISTORY */
-[data-theme="dark"] table {
-  background: #000000 !important;
-  color: #f4f4f5 !important;
-  border-color: #222222 !important;
-}
-[data-theme="dark"] th {
-  background: #0d0d0d !important;
-  color: #93c5fd !important;
-  border-color: #222222 !important;
-}
-[data-theme="dark"] td {
-  border-color: #222222 !important;
-}
-[data-theme="dark"] .actr {
-  background: #000000 !important;
-}
-
-/* 10. SUMMARY / REVIEW SCREEN */
-[data-theme="dark"] .tag.E { background: #042414 !important; color: #a7f3d0 !important; }
-[data-theme="dark"] .tag.M { background: #2e1a05 !important; color: #fde68a !important; }
-[data-theme="dark"] .tag.D { background: #330808 !important; color: #fecaca !important; }
-[data-theme="dark"] .qcard {
-  background: #0d0d0d !important;
-  border-color: #222222 !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .flt select {
-  background: #000000 !important;
-  color: #f4f4f5 !important;
-  border-color: #2e2e2e !important;
-}
-
-/* 11. CHAPTER INDEX & SUBJECT INDEX PAGES */
-[data-theme="dark"] header {
-  background: #000000 !important;
-  border-bottom: 1px solid #222222 !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] header h1 {
-  color: #ffffff !important;
-}
-[data-theme="dark"] header p {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] header a {
-  color: #93c5fd !important;
-}
-
-[data-theme="dark"] #q {
-  background: #0a0a0a !important;
-  border: 1.5px solid #2e2e2e !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] #q::placeholder {
-  color: #71717a !important;
-}
-
-[data-theme="dark"] .lg {
-  background: #0d0d0d !important;
-  border: 1px solid #222222 !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .lg b {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .lg ul, [data-theme="dark"] .lg li {
-  color: #d4d4d8 !important;
-}
-
-[data-theme="dark"] .strip,
-[data-theme="dark"] .strip.cA,
-[data-theme="dark"] .strip.cB,
-[data-theme="dark"] .strip.cC,
-[data-theme="dark"] .strip.cD {
-  background: #0a0a0a !important;
-  border: 1px solid #222222 !important;
-  color: #f4f4f5 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
-}
-[data-theme="dark"] .strip.cA { border-left: 6px solid #22c55e !important; }
-[data-theme="dark"] .strip.cB { border-left: 6px solid #84cc16 !important; }
-[data-theme="dark"] .strip.cC { border-left: 6px solid #f97316 !important; }
-[data-theme="dark"] .strip.cD { border-left: 6px solid #71717a !important; }
-
-[data-theme="dark"] .strip .no {
-  color: #71717a !important;
-}
-[data-theme="dark"] .strip .mid b {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .strip .mid span {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .strip .gl {
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .strip .gl b {
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .tg em {
-  background: #000000 !important;
-  border-color: #27272a !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .tg em.pH {
-  background: #052e16 !important;
-  color: #86efac !important;
-  border-color: #16a34a !important;
-}
-[data-theme="dark"] .tg em.pM {
-  background: #422006 !important;
-  color: #fde047 !important;
-  border-color: #ca8a04 !important;
-}
-[data-theme="dark"] .tg em.pL {
-  background: #18181b !important;
-  color: #d4d4d8 !important;
-  border-color: #27272a !important;
-}
-
-[data-theme="dark"] .lk a {
-  background: #000000 !important;
-  border: 1px solid #27272a !important;
-  color: #93c5fd !important;
-}
-[data-theme="dark"] .lk a:hover {
-  background: #18181b !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .lk a.go {
-  background: #2563eb !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .lk a.go:hover {
-  background: #1d4ed8 !important;
-}
-
-/* 12. FILTER GROUPS & DIFFICULTY PILLS (.gf, .tc, .pill) */
-[data-theme="dark"] .selsum {
-  background: #0c1929 !important;
-  border: 2px solid #2563eb !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .gf {
-  background: #0a0a0a !important;
-  border: 2px solid #2563eb !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .gf .gft {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .gf .gfn {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .tc {
-  background: #0a0a0a !important;
-  border: 1px solid #222222 !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .tc .th span {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .tc .tcnt {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .tc.zero .th span {
-  color: #52525b !important;
-}
-[data-theme="dark"] .grp .gl {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] #typelist .pill input+span {
-  background: #000000 !important;
-  border: 2px solid #27272a !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] #typelist .pill input:checked+span {
-  background: #1e40af !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] #typelist .pill input:checked+span .cc {
-  color: #bfdbfe !important;
-}
-[data-theme="dark"] #typelist .pill .cc {
-  color: #a1a1aa !important;
-}
-
-/* 13. TYPE NOTES PAGES (.page, .how, .ed, .gt, details, #sym) */
-[data-theme="dark"] .page {
-  background: #0a0a0a !important;
-  border-color: #222222 !important;
-  color: #f4f4f5 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7) !important;
-}
-
-[data-theme="dark"] .how {
-  background: #000000 !important;
-  border: 1px solid #222222 !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .how h3 {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .how p,
-[data-theme="dark"] .how ol,
-[data-theme="dark"] .how li {
-  color: #d4d4d8 !important;
-}
-
-[data-theme="dark"] .ed {
-  background: #000000 !important;
-  border: 1px solid #2e2e2e !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .ed:focus {
-  border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4) !important;
-}
-
-[data-theme="dark"] .gt {
-  border-color: #222222 !important;
-}
-[data-theme="dark"] .gt td {
-  border-color: #222222 !important;
-  color: #f4f4f5 !important;
-  background: #000000 !important;
-}
-[data-theme="dark"] .gt tr:first-child td {
-  background: #0d0d0d !important;
-  color: #93c5fd !important;
-}
-[data-theme="dark"] .gt td:first-child {
-  background: #0d0d0d !important;
-  color: #f4f4f5 !important;
-}
-
-[data-theme="dark"] .rev {
-  background: #042414 !important;
-  border-color: #10b981 !important;
-  color: #ecfdf5 !important;
-}
-[data-theme="dark"] .rev h4 {
-  color: #6ee7b7 !important;
-}
-
-[data-theme="dark"] .top {
-  background: #000000 !important;
-  border-bottom: 1px solid #222222 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .top h1 {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .top a {
-  color: #93c5fd !important;
-}
-
-[data-theme="dark"] .btn {
-  background: #121212 !important;
-  border-color: #27272a !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .btn:hover {
-  background: #222222 !important;
-}
-[data-theme="dark"] .btn.pri {
-  background: #2563eb !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .btn.pri:hover {
-  background: #1d4ed8 !important;
-}
-
-[data-theme="dark"] .sm {
-  color: #a1a1aa !important;
-}
-
-/* Scientific Symbol Bar (#sym) */
-#sym {
-  display: flex !important;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-}
-body {
-  padding-bottom: 60px !important;
-}
-[data-theme="dark"] #sym {
-  background: #000000 !important;
-  border-top: 1px solid #222222 !important;
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.7) !important;
-}
-[data-theme="dark"] #sym > span {
-  color: #93c5fd !important;
-  font-weight: 700 !important;
-}
-[data-theme="dark"] #sym button {
-  background: #121212 !important;
-  color: #f4f4f5 !important;
-  border: 1px solid #27272a !important;
-}
-[data-theme="dark"] #sym button:hover {
-  background: #222222 !important;
-  border-color: #60a5fa !important;
   color: #60a5fa !important;
 }
-[data-theme="dark"] #sym button.w {
-  background: #18181b !important;
-  color: #93c5fd !important;
-  border-color: #3b82f6 !important;
-}
 
-/* 14. SUBJECT SWITCHER POPUP & SIDEBAR (#sw, #swb, .sj) */
-[data-theme="dark"] #sw {
-  background: #0a0a0a !important;
-  border: 1px solid #222222 !important;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.8) !important;
-}
-[data-theme="dark"] #sw h2 {
+/* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
+[data-theme="dark"] a.act-btn.primary,
+[data-theme="dark"] .act-btn.primary,
+[data-theme="dark"] a.btn.pri,
+[data-theme="dark"] .btn.pri,
+[data-theme="dark"] .btn-cbt-launch,
+[data-theme="dark"] .btn-modal-start,
+[data-theme="dark"] .start-exam-btn {
   color: #ffffff !important;
-  font-weight: 700 !important;
-}
-[data-theme="dark"] #sw .x {
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] #sw a.sj {
-  background: #000000 !important;
-  border-color: #222222 !important;
-  color: #f4f4f5 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
-}
-[data-theme="dark"] #sw a.sj b {
-  color: #ffffff !important;
-}
-[data-theme="dark"] #sw a.sj span {
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] #sw a.sj:hover {
-  background: #18181b !important;
-  border-color: #3b82f6 !important;
-}
-[data-theme="dark"] #sw a.all {
-  color: #93c5fd !important;
-}
-[data-theme="dark"] #sw a.all:hover {
-  color: #bfdbfe !important;
-}
-[data-theme="dark"] #swb {
-  background: #0a0a0a !important;
-  border: 1px solid #27272a !important;
-  color: #f4f4f5 !important;
-}
-
-/* 15. HIGH-CONTRAST TEXT ENHANCEMENTS */
-[data-theme="dark"] header p,
-[data-theme="dark"] .top p {
-  color: #e4e4e7 !important;
-  opacity: 1 !important;
-}
-[data-theme="dark"] .note {
-  background: #000000 !important;
-  border: 1px solid #222222 !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] #q::placeholder {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .lg {
-  color: #e4e4e7 !important;
-}
-[data-theme="dark"] .lg ul,
-[data-theme="dark"] .lg li {
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .strip .mid span,
-[data-theme="dark"] .strip .gl {
-  color: #d4d4d8 !important;
-}
-
-/* 16. QUESTION COUNT SELECTION BOX & PRESETS */
-#qcount_box {
-  margin-bottom: 14px;
-}
-.qpreset {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 12px;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 8px;
-  background: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
-  color: #334155;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.qpreset:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-}
-.qpreset.active {
-  border-color: #2563eb;
-  background: #eff6ff;
-  color: #1d4ed8;
-  font-weight: 700;
-}
-[data-theme="dark"] #qcount_box {
-  background: #000000 !important;
-  border-color: #262626 !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .qpreset {
-  background: #0a0a0a !important;
-  border-color: #27272a !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .qpreset:hover {
-  background: #18181b !important;
-  border-color: #60a5fa !important;
-}
-[data-theme="dark"] .qpreset.active {
-  background: #2563eb !important; border-color: #2563eb !important; color: #ffffff !important; }
-[data-theme="dark"] #custom_qc {
-  background: #000000 !important;
-  border-color: #2e2e2e !important;
-  color: #ffffff !important;
-}
-
-/* 17. AMOLED CARDS & MODAL (HOME & PORTALS) */
-[data-theme="dark"] .subject-card {
-  background: #0a0a0a !important;
-  border-color: #222222 !important;
-  color: #f4f4f5 !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7) !important;
-}
-[data-theme="dark"] .subject-card:hover {
-  background: #111111 !important;
-  border-color: #333333 !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9) !important;
-}
-[data-theme="dark"] .subject-card.maths { border-top: 5px solid #3b82f6 !important; }
-[data-theme="dark"] .subject-card.physics { border-top: 5px solid #a855f7 !important; }
-[data-theme="dark"] .subject-card.chemistry { border-top: 5px solid #10b981 !important; }
-[data-theme="dark"] .subject-card.maths .subject-badge { background: #18181b !important; color: #93c5fd !important; }
-[data-theme="dark"] .subject-card.physics .subject-badge { background: #2e1065 !important; color: #d8b4fe !important; }
-[data-theme="dark"] .subject-card.chemistry .subject-badge { background: #022c22 !important; color: #6ee7b7 !important; }
-[data-theme="dark"] .subject-card h2 { color: #ffffff !important; }
-[data-theme="dark"] .subject-card.maths h2 { color: #ffffff !important; }
-[data-theme="dark"] .subject-card.physics h2 { color: #c084fc !important; }
-[data-theme="dark"] .subject-card.chemistry h2 { color: #34d399 !important; }
-[data-theme="dark"] .subject-desc { color: #d4d4d8 !important; }
-[data-theme="dark"] .subject-footer { color: #a1a1aa !important; border-top-color: #222222 !important; }
-
-[data-theme="dark"] .random-btn {
-  background: #0a0a0a !important;
+  background: #2563eb !important;
   border-color: #2563eb !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7) !important;
+  font-weight: 600 !important;
 }
-[data-theme="dark"] .random-btn:hover {
-  background: #111111 !important;
-  border-color: #3b82f6 !important;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9) !important;
-}
-[data-theme="dark"] .random-badge {
-  background: #18181b !important;
-  color: #93c5fd !important;
-}
-[data-theme="dark"] .random-title {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .random-desc {
-  color: #d4d4d8 !important;
-}
-
-[data-theme="dark"] .modal-overlay {
-  background: rgba(0, 0, 0, 0.85) !important;
-}
-[data-theme="dark"] .modal-box {
-  background: #0a0a0a !important;
-  border: 1px solid #27272a !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9) !important;
-  color: #f4f4f5 !important;
-}
-[data-theme="dark"] .modal-header h3 {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .modal-close {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .modal-close:hover {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .modal-desc {
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .modal-section-title {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .pool-opt {
-  background: #000000 !important;
-  border-color: #27272a !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .pool-opt:hover {
-  background: #18181b !important;
-  border-color: #3b82f6 !important;
-}
-[data-theme="dark"] .pool-opt.active {
-  background: #2563eb !important; border-color: #2563eb !important; color: #ffffff !important; }
-[data-theme="dark"] .pill-btn {
-  background: #000000 !important;
-  border-color: #27272a !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .pill-btn:hover {
-  background: #18181b !important;
-  border-color: #3b82f6 !important;
-}
-[data-theme="dark"] .pill-btn.active {
-  background: #2563eb !important; border-color: #2563eb !important; color: #ffffff !important; }
-[data-theme="dark"] .pill-btn input[type=number] {
-  background: #0a0a0a !important;
-  border-color: #2e2e2e !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .btn-cancel {
-  background: #000000 !important;
-  border: 1px solid #27272a !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .btn-cancel:hover {
-  background: #18181b !important;
+[data-theme="dark"] a.act-btn.primary:hover,
+[data-theme="dark"] .act-btn.primary:hover,
+[data-theme="dark"] a.btn.pri:hover,
+[data-theme="dark"] .btn.pri:hover {
+  background: #1d4ed8 !important;
   color: #ffffff !important;
 }
 
-.theme-btn {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: inherit;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
+/* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
+.panel {
+  max-width: 960px !important;
+  margin: 28px auto !important;
+  padding: 28px 36px !important;
+  border-radius: 16px !important;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
-.theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
-[data-theme="dark"] .theme-btn {
-  background: #121212;
-  border: 1px solid #27272a;
-  color: #f4f4f5;
-}
-[data-theme="dark"] .theme-btn:hover {
-  background: #222222;
+[data-theme="dark"] .panel {
+  background: #0f172a !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
-
-/* ==========================================================================
-   CBT EXAM MODE & VISUAL MODERNIZATION STYLING
-   ========================================================================== */
-.mode-card.active {
-  border-color: #2563eb !important;
-  background: #eff6ff !important;
+/* Visible Typing Boxes in Dark Mode (solves Pic 6) */
+[data-theme="dark"] .ed,
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input.num,
+[data-theme="dark"] .tin input {
+  background: #141d2e !important;
+  border: 1.5px solid #2d3c5e !important;
+  color: #f8fafc !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  padding: 8px 12px !important;
 }
-.mode-card {
-  user-select: none;
-}
-[data-theme="dark"] .mode-card {
-  background: #0a0a0c !important;
-  border-color: #222224 !important;
-}
-[data-theme="dark"] #mode_card_cbt.active {
-  background: #081a36 !important;
+[data-theme="dark"] .ed:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] input[type="number"]:focus,
+[data-theme="dark"] input.num:focus,
+[data-theme="dark"] .tin input:focus {
   border-color: #3b82f6 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
-[data-theme="dark"] #mode_card_practice.active {
-  background: #18181b !important;
-  border-color: #3f3f46 !important;
+
+/* Table borders and cell styling */
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+  border-color: #1e293b !important;
 }
-[data-theme="dark"] .mode-card div div:first-child span:first-child {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .mode-card div div:last-child {
+[data-theme="dark"] th {
+  background: #141d2e !important;
   color: #94a3b8 !important;
 }
 
-/* Exam Progress Bar at Top */
-#examProgressBar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 3.5px;
-  background: #2563eb;
-  width: 0%;
-  transition: width 0.3s ease, background-color 0.3s ease;
-  z-index: 100;
+/* Question stems and options */
+[data-theme="dark"] .stem {
+  color: #f8fafc !important;
 }
-[data-theme="dark"] #examProgressBar {
-  background: #3b82f6;
+[data-theme="dark"] .o {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .o:hover {
+  background: #141d2e !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .o.sel {
+  background: #172554 !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tbox {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
 }
 
-/* CBT Mode Palette Styling (Official NTA JEE Colors) */
-.cbt-mode .chk {
-  display: none !important;
-}
-.cbt-mode #savecur {
-  display: none !important;
-}
-.cbt-mode #nav button.an {
-  background: #16a34a !important;
-  color: #ffffff !important;
-  border-radius: 4px !important;
-}
-.cbt-mode #nav button.na {
-  background: #ef4444 !important;
-  color: #ffffff !important;
-  border-radius: 4px !important;
-}
-.cbt-mode #nav button.nv {
-  background: #e2e8f0 !important;
-  color: #475569 !important;
-  border-radius: 4px !important;
-}
-[data-theme="dark"] .cbt-mode #nav button.nv {
-  background: #1c1c1f !important;
-  color: #94a3b8 !important;
-  border-color: #2a2a2e !important;
-}
-.cbt-mode #nav button.mk {
-  background: #9333ea !important;
-  color: #ffffff !important;
-  border-radius: 50% !important;
-}
-.cbt-mode #nav button.am {
-  background: #9333ea !important;
-  color: #ffffff !important;
-  position: relative !important;
-  border-radius: 50% !important;
-}
-.cbt-mode #nav button.am::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  width: 7px;
-  height: 7px;
-  background: #16a34a;
-  border-radius: 50%;
-  border: 1.5px solid #ffffff;
-}
-
-/* Option Elimination (Right click / Alt click) */
-.o.eliminated {
-  opacity: 0.35 !important;
-  text-decoration: line-through !important;
-  pointer-events: auto !important;
-  background: rgba(0,0,0,0.04) !important;
-}
-[data-theme="dark"] .o.eliminated {
-  background: rgba(255,255,255,0.04) !important;
-}
-
-/* Enhanced Post-Exam Scorecard & Review Cards */
-.cbt-scorecard {
-  margin: 10px 0 30px;
-}
-.cbt-score-hero {
+/* Modern Attempt Cards (solves Pic 4 & Pic 8) */
+.attempts-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  background: var(--surface, #ffffff);
-  border: 1px solid var(--border, #e2e8f0);
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+.att-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 24px 28px;
-  margin-bottom: 20px;
+  background: #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.att-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+[data-theme="dark"] .att-card {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+[data-theme="dark"] .att-card:hover {
+  border-color: #334155 !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4) !important;
+}
+.att-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 8px;
 }
-[data-theme="dark"] .cbt-score-hero {
-  background: #0a0a0c !important;
-  border-color: #222224 !important;
-}
-.cbt-score-left {
-  flex: 1;
-  min-width: 260px;
-}
-.cbt-score-tag {
-  font-size: 11.5px;
+.att-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #2563eb;
-  background: #eff6ff;
-  padding: 3px 8px;
-  border-radius: 4px;
 }
-[data-theme="dark"] .cbt-score-tag {
-  background: #081a36 !important;
-  color: #93c5fd !important;
+.att-badge.cbt {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
 }
-.cbt-score-title {
-  margin: 10px 0 4px;
-  font-size: 24px;
-  font-weight: 800;
+[data-theme="dark"] .att-badge.cbt {
+  background: #1e3a8a !important;
+  color: #93c5fa !important;
+  border-color: #2563eb !important;
 }
-[data-theme="dark"] .cbt-score-title {
-  color: #ffffff !important;
+.att-badge.practice {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
 }
-.cbt-score-meta {
-  color: #64748b;
+[data-theme="dark"] .att-badge.practice {
+  background: #064e3b !important;
+  color: #86efac !important;
+  border-color: #059669 !important;
+}
+.att-date {
   font-size: 13px;
-  margin: 0;
-}
-[data-theme="dark"] .cbt-score-meta {
-  color: #94a3b8 !important;
-}
-.cbt-big-score {
-  font-size: 34px;
-  font-weight: 900;
-  color: #16a34a;
-}
-.cbt-big-score.neg {
-  color: #ef4444;
-}
-.cbt-big-score small {
-  font-size: 18px;
-  font-weight: 500;
   color: #64748b;
+  font-weight: 500;
 }
-[data-theme="dark"] .cbt-big-score small {
+[data-theme="dark"] .att-date {
   color: #94a3b8 !important;
 }
-
-/* SVG Donut Chart */
-.cbt-donut-wrap {
+.att-stats-row {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13.5px;
+  color: #334155;
+  padding: 6px 0;
 }
-.cbt-donut-svg {
-  width: 95px;
-  height: 95px;
-  transform: rotate(-90deg);
-}
-.cbt-donut-legend {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: 12.5px;
-  font-weight: 600;
-}
-[data-theme="dark"] .cbt-donut-legend {
+[data-theme="dark"] .att-stats-row {
   color: #cbd5e1 !important;
 }
-.cbt-donut-legend-item {
+.att-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
-}
-.cbt-donut-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
-}
-
-/* Metrics Grid */
-.cbt-metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 12px;
-  margin-bottom: 24px;
-}
-.cbt-metric-item {
-  background: var(--surface, #ffffff);
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: 8px;
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-[data-theme="dark"] .cbt-metric-item {
-  background: #0a0a0c !important;
-  border-color: #222224 !important;
-}
-.cbt-metric-lbl {
-  font-size: 11.5px;
-  color: #64748b;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-[data-theme="dark"] .cbt-metric-lbl {
-  color: #94a3b8 !important;
-}
-.cbt-metric-num {
-  font-size: 20px;
-  font-weight: 800;
-}
-[data-theme="dark"] .cbt-metric-num {
-  color: #ffffff !important;
-}
-
-/* Question Review Filters */
-.review-filter-pills {
-  display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
 }
-.rf-pill {
-  border: 1px solid var(--border, #cbd5e1);
-  background: var(--surface, #f8fafc);
-  padding: 6px 14px;
-  border-radius: 20px;
+[data-theme="dark"] .att-actions {
+  border-top-color: #1e293b !important;
+}
+.att-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  color: inherit;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-theme="dark"] .rf-pill {
-  background: #0a0a0c !important;
-  border-color: #222224 !important;
-  color: #94a3b8 !important;
+.att-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
 }
-.rf-pill.active {
-  border-color: #2563eb !important;
+[data-theme="dark"] .att-btn {
+  background: #141d2e !important;
+  border-color: #2d3c5e !important;
+  color: #e2e8f0 !important;
+}
+[data-theme="dark"] .att-btn:hover {
+  background: #1e293b !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+.att-btn.continue {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+.att-btn.continue:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}
+[data-theme="dark"] .att-btn.continue {
   background: #2563eb !important;
   color: #ffffff !important;
+  border-color: #3b82f6 !important;
 }
-.review-card {
-  background: var(--surface, #ffffff);
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: 10px;
-  padding: 18px;
-  margin-bottom: 14px;
+.att-btn.review {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
 }
-[data-theme="dark"] .review-card {
-  background: #0a0a0c !important;
-  border-color: #222224 !important;
+.att-btn.review:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
 }
-.review-header {
-  display: flex;
+[data-theme="dark"] .att-btn.review {
+  background: #172554 !important;
+  color: #93c5fd !important;
+  border-color: #1d4ed8 !important;
+}
+.att-btn.delete {
+  color: #dc2626;
+  border-color: #fca5a5;
+  background: #fff;
+  margin-left: auto;
+}
+.att-btn.delete:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+[data-theme="dark"] .att-btn.delete {
+  background: #200f14 !important;
+  border-color: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+.btn-export-all {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1e293b;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.review-pill {
-  font-size: 12px;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 4px;
+.btn-export-all:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
 }
-.review-pill.corr {
-  background: #dcfce7;
-  color: #15803d;
+[data-theme="dark"] .btn-export-all {
+  background: #141d2e !important;
+  border-color: #2d3c5e !important;
+  color: #f1f5f9 !important;
 }
-.review-pill.inc {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-.review-pill.unatt {
-  background: #f1f5f9;
-  color: #64748b;
-}
-[data-theme="dark"] .review-pill.corr {
-  background: #052e16;
-  color: #4ade80;
-}
-[data-theme="dark"] .review-pill.inc {
-  background: #450a0a;
-  color: #f87171;
-}
-[data-theme="dark"] .review-pill.unatt {
-  background: #18181b;
-  color: #94a3b8;
+[data-theme="dark"] .btn-export-all:hover {
+  background: #1e293b !important;
+  border-color: #3b82f6 !important;
 }
 
-[data-theme="dark"] .review-answers-box {
-  background: #111114 !important;
-  color: #e4e4e7 !important;
-}
-
-[data-theme="dark"] .review-opts div[style*="background:#f8fafc"] {
-  background: #111114 !important;
-  border-color: #222224 !important;
-  color: #e4e4e7 !important;
-}
-
-[data-theme="dark"] .review-opts div[style*="background:#dcfce7"] {
-  background: #052e16 !important;
-  border-color: #16a34a !important;
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .review-opts div[style*="background:#fee2e2"] {
-  background: #450a0a !important;
-  border-color: #ef4444 !important;
-  color: #ffffff !important;
-}
-
-/* Modals (CBT Submit & Hotkeys) */
-.cbt-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
+/* Question Types & Type Notes Pills (solves Pic 5) */
+.sub-pill-btn {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  padding: 16px;
-  backdrop-filter: blur(2px);
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.cbt-modal-box {
+.sub-pill-btn:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+  transform: translateY(-1px);
+}
+[data-theme="dark"] .sub-pill-btn {
+  color: #93c5fd !important;
+  background: #141d2e !important;
+  border: 1px solid #2d3c5e !important;
+}
+[data-theme="dark"] .sub-pill-btn:hover {
+  background: #1e293b !important;
+  border-color: #3b82f6 !important;
+  color: #60a5fa !important;
+}
+
+/* Theme Toggle Button Outline Styling (solves Pic 17) */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: #ffffff;
-  border-radius: 12px;
-  padding: 24px;
-  max-width: 480px;
-  width: 100%;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-[data-theme="dark"] .cbt-modal-box {
-  background: #0a0a0c !important;
-  border-color: #27272a !important;
-  color: #ffffff !important;
-}
-.cbt-summary-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 14px 0 20px;
-  font-size: 14px;
-}
-.cbt-summary-table td {
-  padding: 8px 6px;
-  border-bottom: 1px solid #e2e8f0;
-}
-[data-theme="dark"] .cbt-summary-table td {
-  border-bottom-color: #222224 !important;
-}
-.cbt-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-  margin-right: 6px;
-}
-.cbt-dot.green { background: #16a34a; }
-.cbt-dot.red { background: #ef4444; }
-.cbt-dot.purple { background: #9333ea; }
-.cbt-dot.purple-green { background: #9333ea; border: 2px solid #16a34a; }
-.cbt-dot.gray { background: #94a3b8; }
-
-/* Hotkeys Modal */
-.hotkeys-table {
-  width: 100%;
+  border: 1.5px solid #cbd5e1;
+  color: #334155;
+  border-radius: 20px;
+  padding: 6px 14px;
   font-size: 13px;
-  border-collapse: collapse;
-  margin-top: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
-.hotkeys-table td {
-  padding: 6px 4px;
-  border-bottom: 1px solid #e2e8f0;
-}
-[data-theme="dark"] .hotkeys-table td {
-  border-bottom-color: #222224 !important;
-}
-.kbd-key {
-  display: inline-block;
-  padding: 2px 7px;
-  font-family: monospace;
-  font-size: 12px;
+.theme-btn:hover {
   background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-  color: #0f172a;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
 }
-[data-theme="dark"] .kbd-key {
-  background: #18181b !important;
-  border-color: #3f3f46 !important;
-  color: #ffffff !important;
+[data-theme="dark"] .theme-btn {
+  background: #141d2e !important;
+  border-color: #2d3c5e !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #1e293b !important;
+  border-color: #3b82f6 !important;
 }
 
-/* Impeccable Browser Surface Polish */
-[data-theme="dark"] ::selection {
-  background: rgba(59, 130, 246, 0.35) !important;
-  color: #ffffff !important;
+/* CBT Answer Suppression (solves User Item 8: no instant answer in CBT mode) */
+.cbt-mode .chk,
+.cbt-mode .chkb,
+.cbt-mode .shb,
+.cbt-mode .chkres,
+.cbt-mode .show-sol,
+.cbt-mode .btn-check-all,
+.cbt-mode .sol-box {
+  display: none !important;
 }
+
+/* Active Session Banner */
+[data-theme="dark"] #pend {
+  background: #172554 !important;
+  border-color: #2563eb !important;
+  color: #e2e8f0 !important;
+}
+
 ::selection {
   background: rgba(37, 99, 235, 0.25);
   color: inherit;
@@ -2075,7 +1198,7 @@ body {
   scrollbar-color: #cbd5e1 transparent;
 }
 [data-theme="dark"] * {
-  scrollbar-color: #27272a transparent;
+  scrollbar-color: #334155 transparent;
 }
 :focus-visible {
   outline: 2px solid #3b82f6 !important;
@@ -2091,14 +1214,18 @@ body {
 <header>
   <div class="header-inner">
     <div class="brand-group">
-      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button></div>
-<h1 class="brand-title">JEE Main PYQ Practice Portal</h1>
+      <h1 class="brand-title">JEE Main PYQ Practice Portal</h1>
       <p class="brand-desc">Authentic NTA CBT Exam Simulation &amp; Chapter-wise Active Recall Banks</p>
     </div>
     <div class="header-controls">
+      <button id="btnOpenHistory" class="btn-history-nav" type="button" title="View complete test history">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Test History</span>
+      </button>
       <button id="openRandomModal" class="btn-cbt-launch" type="button">Simulate Exam</button>
-      <button class="theme-toggle-btn theme-btn" type="button" aria-label="Toggle visual theme">
-        <span id="themeBtnText">Theme</span>
+      <button id="themeToggleBtn" class="theme-btn" type="button" aria-label="Toggle visual theme">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <span id="themeBtnText">Dark</span>
       </button>
     </div>
   </div>
@@ -2186,18 +1313,52 @@ body {
   <section class="explorer-section">
     <div class="explorer-header">
       <div class="explorer-title">
-        <h2>Chapter Practice Banks</h2>
+        <h2 id="explorerSectionHeading">Chapter Practice Banks</h2>
+        <p class="explorer-sub" id="explorerSectionSub">Select a subject to explore its chapters and question banks</p>
       </div>
     </div>
     
+    <!-- Subject Selection Cards (Subject-First Architecture) -->
+    <div class="subject-hero-grid" id="subjectHeroGrid">
+      <button type="button" class="subject-hero-card maths active" data-sub="Maths">
+        <div class="sub-hero-icon">📐</div>
+        <div class="sub-hero-info">
+          <span class="sub-hero-title">Mathematics</span>
+          <span class="sub-hero-count">5 Chapters Ready</span>
+        </div>
+        <span class="sub-hero-arrow">&rarr;</span>
+      </button>
+
+      <button type="button" class="subject-hero-card physics" data-sub="Physics">
+        <div class="sub-hero-icon">⚡</div>
+        <div class="sub-hero-info">
+          <span class="sub-hero-title">Physics</span>
+          <span class="sub-hero-count">14 Chapters Ready</span>
+        </div>
+        <span class="sub-hero-arrow">&rarr;</span>
+      </button>
+
+      <button type="button" class="subject-hero-card chemistry" data-sub="Chemistry">
+        <div class="sub-hero-icon">🧪</div>
+        <div class="sub-hero-info">
+          <span class="sub-hero-title">Chemistry</span>
+          <span class="sub-hero-count">8 Chapters Ready</span>
+        </div>
+        <span class="sub-hero-arrow">&rarr;</span>
+      </button>
+
+      <button type="button" class="subject-hero-card all" data-sub="all">
+        <div class="sub-hero-icon">🌐</div>
+        <div class="sub-hero-info">
+          <span class="sub-hero-title">All Subjects</span>
+          <span class="sub-hero-count">27 Chapters</span>
+        </div>
+        <span class="sub-hero-arrow">&rarr;</span>
+      </button>
+    </div>
+
     <div class="explorer-controls">
       <input type="text" id="chapterSearch" class="search-input" placeholder="Search chapters, topics, formulas..." aria-label="Search chapters">
-      <div class="filter-tabs" id="subjectFilterTabs">
-        <button type="button" class="tab-btn active" data-sub="all">All (27)</button>
-        <button type="button" class="tab-btn" data-sub="Maths">Mathematics (5)</button>
-        <button type="button" class="tab-btn" data-sub="Physics">Physics (14)</button>
-        <button type="button" class="tab-btn" data-sub="Chemistry">Chemistry (8)</button>
-      </div>
     </div>
 
     <!-- Dynamic Chapters Grid -->
@@ -2206,6 +1367,44 @@ body {
 </main>
 
 <!-- Modal for Simulated Mock / Practice Test -->
+
+<!-- Universal Test History Modal -->
+<div id="testHistoryModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="histModalTitle">
+  <div class="modal-box history-modal-box" style="max-width:760px;max-height:85vh;display:flex;flex-direction:column;">
+    <div class="modal-header">
+      <div>
+        <h3 id="histModalTitle" style="margin:0;font-size:20px;font-weight:700;">Comprehensive Test History</h3>
+        <p style="margin:4px 0 0;font-size:13px;color:var(--text-muted);">All completed CBT exams &amp; practice sets across Mathematics, Physics, and Chemistry</p>
+      </div>
+      <button id="closeHistModal" class="modal-close" type="button" aria-label="Close dialog">&times;</button>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="hist-summary-bar" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;padding:12px;background:var(--surface-elevated);border-radius:10px;border:1px solid var(--border-subtle);text-align:center;">
+      <div>
+        <div style="font-size:22px;font-weight:800;color:var(--primary-blue);" id="uHistTotalTests">0</div>
+        <div style="font-size:12px;color:var(--text-muted);font-weight:600;margin-top:2px;">Tests Taken</div>
+      </div>
+      <div>
+        <div style="font-size:22px;font-weight:800;color:var(--text-main);" id="uHistTotalQuestions">0</div>
+        <div style="font-size:12px;color:var(--text-muted);font-weight:600;margin-top:2px;">Questions Answered</div>
+      </div>
+      <div>
+        <div style="font-size:22px;font-weight:800;color:#16a34a;" id="uHistAvgAcc">0%</div>
+        <div style="font-size:12px;color:var(--text-muted);font-weight:600;margin-top:2px;">Average Accuracy</div>
+      </div>
+    </div>
+
+    <!-- Scrollable History List -->
+    <div class="hist-list-container" id="uHistList" style="flex:1;overflow-y:auto;padding-right:4px;display:flex;flex-direction:column;gap:10px;min-height:160px;max-height:48vh;"></div>
+
+    <div class="modal-actions" style="border-top:1px solid var(--border-subtle);padding-top:16px;margin-top:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <button type="button" id="btnExportFullHistory" class="btn-export-all" style="margin-top:0;">📥 Export All History (.json)</button>
+      <button type="button" id="btnClearFullHistory" class="att-btn delete" style="margin-left:0;">🗑️ Clear Test History</button>
+    </div>
+  </div>
+</div>
+
 <div id="randomModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
     <div class="modal-header">
@@ -2255,6 +1454,12 @@ body {
       <button type="button" class="preset-btn" data-t="90">90 Minutes</button>
       <button type="button" class="preset-btn" data-t="180">180 Minutes (Full Exam)</button>
       <button type="button" class="preset-btn" data-t="free">Untimed</button>
+      <button type="button" class="preset-btn" data-t="custom" id="btnCustomTimePreset">Custom Time</button>
+    </div>
+    <div id="customDurationBox" style="display:none;align-items:center;gap:10px;margin-top:10px;padding:10px 14px;background:var(--surface-elevated);border-radius:10px;border:1.5px solid var(--border-subtle);">
+      <label for="customMinutesInput" style="font-size:13.5px;font-weight:600;color:var(--text-main);">Enter Custom Duration:</label>
+      <input type="number" id="customMinutesInput" min="1" max="600" value="45" style="width:90px;padding:6px 10px;border-radius:6px;border:1.5px solid var(--border-input);background:var(--surface-card);color:var(--text-main);font-size:14px;font-weight:700;text-align:center;">
+      <span style="font-size:13px;color:var(--text-muted);font-weight:500;">minutes</span>
     </div>
 
     <div class="modal-actions">
@@ -2402,67 +1607,6 @@ var CHAPTER_POOL = [
     "url": "Chemistry/d and f Block Elements PYQ Practice.html"
   }
 ];
-
-(function(){
-  // 1. Theme Toggle Engine
-  function initTheme() {
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    updateThemeBtn(isDark);
-    
-    document.addEventListener('click', function(e){
-      var btn = e.target.closest('.theme-btn');
-      if (btn) {
-        var current = document.documentElement.getAttribute('data-theme') === 'dark';
-        var next = !current;
-        if (next) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          localStorage.setItem('jee_theme', 'dark');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-          localStorage.setItem('jee_theme', 'light');
-        }
-        updateThemeBtn(next);
-      }
-    });
-  }
-
-  function updateThemeBtn(dark) {
-    var textEl = document.getElementById('themeBtnText');
-    if (textEl) {
-      textEl.textContent = dark ? 'Light Mode' : 'Dark Mode';
-    }
-  }
-
-  initTheme();
-
-  // 2. Render Chapters Grid
-  var currentFilter = 'all';
-  var currentSearch = '';
-
-  function renderGrid() {
-    var container = document.getElementById('chaptersGrid');
-    if (!container) return;
-
-    var filtered = CHAPTER_POOL.filter(function(ch){
-      var matchSub = (currentFilter === 'all' || ch.subject === currentFilter);
-      var q = currentSearch.toLowerCase().trim();
-      var matchSearch = !q || ch.name.toLowerCase().includes(q) || (ch.desc && ch.desc.toLowerCase().includes(q));
-      return matchSub && matchSearch;
-    });
-
-    if (filtered.length === 0) {
-      container.innerHTML = '<div style="grid-column:1/-1;padding:32px;text-align:center;color:var(--text-muted);font-size:14px;">No chapters found matching your search.</div>';
-      return;
-    }
-
-    var html = '';
-    filtered.forEach(function(ch){
-      var testKey = 'pyq_' + ch.name + ' PYQ Test';
-      var histKey = 'pyqh_' + ch.name + ' PYQ Test';
-      var starKey = 'pyqs_' + ch.name + ' PYQ Test';
-      var wrongKey = 'pyqw_' + ch.name + ' PYQ Test';
-
-      var hist = [];
       try { hist = JSON.parse(localStorage.getItem(histKey) || '[]'); } catch(e){}
       var stars = {};
       try { stars = JSON.parse(localStorage.getItem(starKey) || '{}'); } catch(e){}
@@ -2482,10 +1626,10 @@ var CHAPTER_POOL = [
         statBadges += '<span class="ch-stat-badge">' + attempts + ' attempt' + (attempts > 1 ? 's' : '') + '</span>';
       }
       if (lastAcc) {
-        statBadges += '<span class="ch-stat-badge score">' + lastAcc + '</span>';
+        statBadges += '<span class="ch-stat-badge score" style="color:#16a34a;font-weight:700;">' + lastAcc + '</span>';
       }
       if (wrongCount > 0) {
-        statBadges += '<span class="ch-stat-badge mistakes">' + wrongCount + ' mistakes</span>';
+        statBadges += '<span class="ch-stat-badge mistakes" style="color:#dc2626;">' + wrongCount + ' mistakes</span>';
       }
       if (starCount > 0) {
         statBadges += '<span class="ch-stat-badge">&#9733; ' + starCount + '</span>';
@@ -2509,11 +1653,11 @@ var CHAPTER_POOL = [
           '<div class="ch-stats-row">' + statBadges + '</div>' +
         '</div>' +
         '<div class="ch-actions">' +
-          '<a href="' + ch.url + '?mode=cbt" class="act-btn primary">CBT Exam</a>' +
+          '<a href="' + ch.url + '?mode=cbt" class="act-btn primary" style="color:#ffffff !important;font-weight:700;">CBT Exam</a>' +
           '<a href="' + ch.url + '?mode=practice" class="act-btn secondary">Practice</a>' +
-          '<div class="sub-links-row">' +
-            '<a href="' + matTypes + '" class="sub-link">Question Types &rarr;</a>' +
-            '<a href="' + matNotes + '" class="sub-link">Type Notes &rarr;</a>' +
+          '<div class="sub-links-row" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">' +
+            '<a href="' + matTypes + '" class="sub-pill-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>Question Types</a>' +
+            '<a href="' + matNotes + '" class="sub-pill-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Type Notes</a>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -2522,29 +1666,42 @@ var CHAPTER_POOL = [
     container.innerHTML = html;
   }
 
-  // Filter tabs
-  var tabs = document.querySelectorAll('.tab-btn');
-  tabs.forEach(function(tab){
-    tab.onclick = function(){
-      tabs.forEach(function(t){ t.classList.remove('active'); });
-      tab.classList.add('active');
-      currentFilter = tab.dataset.sub;
+  // Subject First Selection Cards (User Item 15)
+  var subjectCards = document.querySelectorAll('.subject-hero-card');
+  subjectCards.forEach(function(card){
+    card.onclick = function(){
+      subjectCards.forEach(function(c){ c.classList.remove('active'); });
+      card.classList.add('active');
+      currentFilter = card.dataset.sub;
+      var heading = document.getElementById('explorerSectionHeading');
+      var sub = document.getElementById('explorerSectionSub');
+      if (currentFilter === 'Maths') {
+        if (heading) heading.textContent = 'Mathematics Question Banks';
+        if (sub) sub.textContent = '5 ready chapters with verified previous-year question banks';
+      } else if (currentFilter === 'Physics') {
+        if (heading) heading.textContent = 'Physics Question Banks';
+        if (sub) sub.textContent = '14 ready chapters covering mechanics, electromagnetism & modern physics';
+      } else if (currentFilter === 'Chemistry') {
+        if (heading) heading.textContent = 'Chemistry Question Banks';
+        if (sub) sub.textContent = '8 ready chapters across physical, organic & inorganic chemistry';
+      } else {
+        if (heading) heading.textContent = 'All Chapter Practice Banks (27)';
+        if (sub) sub.textContent = 'Comprehensive syllabus coverage across all subjects';
+      }
       renderGrid();
     };
   });
 
-  // Search input
-  var sIn = document.getElementById('chapterSearch');
-  if (sIn) {
-    sIn.oninput = function(){
-      currentSearch = sIn.value;
+  // Search input live filtering
+  var searchInput = document.getElementById('chapterSearch');
+  if (searchInput) {
+    searchInput.oninput = function(){
+      currentSearch = searchInput.value;
       renderGrid();
     };
   }
 
-  renderGrid();
-
-  // 3. Centralized Dashboard Stats Aggregation
+  // 3. Centralized Preparation Dashboard Metrics
   function updateDashboard() {
     var totalAttempted = 0;
     var totalCorrectFirst = 0;
@@ -2552,11 +1709,9 @@ var CHAPTER_POOL = [
     var totalTimeSeconds = 0;
     var totalStarred = 0;
     var totalMistakes = 0;
-
     var completedChapters = { Maths: 0, Physics: 0, Chemistry: 0 };
-    var priorityMistakes = [];
-
     var activeSession = null;
+    var priorityMistakes = [];
 
     CHAPTER_POOL.forEach(function(ch){
       var testKey = 'pyq_' + ch.name + ' PYQ Test';
@@ -2564,19 +1719,20 @@ var CHAPTER_POOL = [
       var starKey = 'pyqs_' + ch.name + ' PYQ Test';
       var wrongKey = 'pyqw_' + ch.name + ' PYQ Test';
 
-      // Check active pending test
+      // Check for active unfinished session
       var pendRaw = localStorage.getItem(testKey);
       if (pendRaw && !activeSession) {
         try {
-          var pData = JSON.parse(pendRaw);
-          if (pData && pData.NS && pData.NS.length) {
+          var p = JSON.parse(pendRaw);
+          if (p && p.started && p.NS && p.NS.length) {
             activeSession = {
               chapter: ch.name,
+              subject: ch.subject,
               url: ch.url,
-              totalQ: pData.NS.length,
-              curQ: (pData.NS.indexOf(pData.cur) + 1) || 1,
-              timeTaken: pData.total || 0,
-              limit: pData.LIMIT || 0
+              curQ: (p.cur != null ? p.cur + 1 : 1),
+              totalQ: p.NS.length,
+              timeTaken: p.total || 0,
+              limit: p.LIMIT || 0
             };
           }
         } catch(e){}
@@ -2672,6 +1828,7 @@ var CHAPTER_POOL = [
   }
 
   updateDashboard();
+  renderGrid();
 
   // Reset Progress Button
   var rBtn = document.getElementById('resetStatsBtn');
@@ -2692,7 +1849,7 @@ var CHAPTER_POOL = [
     };
   }
 
-  // 4. Modal Launcher Controller
+  // 4. Modal Launcher Controller & Custom Duration
   var modal = document.getElementById('randomModal');
   var openBtn = document.getElementById('openRandomModal');
   var closeBtn = document.getElementById('closeRandomModal');
@@ -2711,8 +1868,9 @@ var CHAPTER_POOL = [
   if (cancelBtn) cancelBtn.onclick = closeModal;
 
   document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-      closeModal();
+    if (e.key === 'Escape') {
+      if (modal && modal.classList.contains('active')) closeModal();
+      if (histModal && histModal.classList.contains('active')) closeHistory();
     }
   });
 
@@ -2735,6 +1893,16 @@ var CHAPTER_POOL = [
       btn.onclick = function(){
         btns.forEach(function(b){ b.classList.remove('active'); });
         btn.classList.add('active');
+        if (groupId === 'modalTPresetBtns') {
+          var customBox = document.getElementById('customDurationBox');
+          if (btn.dataset.t === 'custom') {
+            if (customBox) customBox.style.display = 'flex';
+            var cin = document.getElementById('customMinutesInput');
+            if (cin) cin.focus();
+          } else {
+            if (customBox) customBox.style.display = 'none';
+          }
+        }
       };
     });
   }
@@ -2765,6 +1933,12 @@ var CHAPTER_POOL = [
       var activeTBtn = document.querySelector('#modalTPresetBtns .preset-btn.active');
       var selT = activeTBtn ? activeTBtn.dataset.t : '60';
 
+      if (selT === 'custom') {
+        var cIn = document.getElementById('customMinutesInput');
+        var cVal = cIn ? parseInt(cIn.value, 10) : 45;
+        selT = (cVal > 0 ? cVal : 45);
+      }
+
       var targetUrl = chosen.url + '?mode=' + encodeURIComponent(selMode) +
         '&q=' + encodeURIComponent(selQ) +
         '&t=' + encodeURIComponent(selT) +
@@ -2774,42 +1948,148 @@ var CHAPTER_POOL = [
       window.location.href = targetUrl;
     };
   }
+
+  // 5. Universal Test History Controller (User Items 19 & 20)
+  var histModal = document.getElementById('testHistoryModal');
+  var openHistBtn = document.getElementById('btnOpenHistory');
+  var closeHistBtn = document.getElementById('closeHistModal');
+
+  function openHistory() {
+    if (histModal) {
+      histModal.classList.add('active');
+      renderUniversalHistory();
+    }
+  }
+  function closeHistory() {
+    if (histModal) histModal.classList.remove('active');
+  }
+
+  if (openHistBtn) openHistBtn.onclick = openHistory;
+  if (closeHistBtn) closeHistBtn.onclick = closeHistory;
+
+  function renderUniversalHistory() {
+    var listEl = document.getElementById('uHistList');
+    if (!listEl) return;
+
+    var allAttempts = [];
+    for (var k = 0; k < localStorage.length; k++) {
+      var key = localStorage.key(k);
+      if (key && key.indexOf('pyqh_') === 0) {
+        try {
+          var arr = JSON.parse(localStorage.getItem(key) || '[]');
+          var chapterName = key.replace('pyqh_', '').replace(' PYQ Test', '');
+          var chObj = CHAPTER_POOL.find(function(c){ return c.name === chapterName; });
+          var subj = chObj ? chObj.subject : 'JEE';
+          var url = chObj ? chObj.url : '#';
+          arr.forEach(function(att) {
+            att._chapter = chapterName;
+            att._subject = subj;
+            att._url = url;
+            allAttempts.push(att);
+          });
+        } catch(e){}
+      }
+    }
+
+    allAttempts.sort(function(a, b){ return (b.t || 0) - (a.t || 0); });
+
+    var totalTests = allAttempts.length;
+    var totalAns = 0;
+    var accSum = 0;
+    allAttempts.forEach(function(a){
+      var ans = (a.NS || []).filter(function(n){ return a.S && a.S[n]; }).length;
+      totalAns += ans;
+      var acc = a.accuracy !== undefined ? a.accuracy : (ans > 0 ? Math.round((a.correct || 0)/ans * 100) : 0);
+      accSum += acc;
+    });
+    var avgAcc = totalTests > 0 ? Math.round(accSum / totalTests) : 0;
+
+    var elTests = document.getElementById('uHistTotalTests');
+    var elQ = document.getElementById('uHistTotalQuestions');
+    var elAcc = document.getElementById('uHistAvgAcc');
+    if (elTests) elTests.textContent = totalTests;
+    if (elQ) elQ.textContent = totalAns;
+    if (elAcc) elAcc.textContent = avgAcc + '%';
+
+    if (allAttempts.length === 0) {
+      listEl.innerHTML = '<div style="padding:48px 20px;text-align:center;color:var(--text-muted);font-size:14.5px;">No test attempts recorded yet.<br><span style="font-size:13px;opacity:0.8;">Take a CBT Exam or Practice Test from the chapters below to view your score history!</span></div>';
+      return;
+    }
+
+    var html = '';
+    allAttempts.forEach(function(a) {
+      var isCBT = !!(a.isCBT || (a.mode === 'cbt') || (a.label && a.label.indexOf('CBT') !== -1));
+      var badgeClass = isCBT ? 'cbt' : 'practice';
+      var badgeLabel = isCBT ? '🏛️ CBT Exam' : '📚 Practice Test';
+      var dateStr = a.t ? new Date(a.t).toLocaleString() : 'Recent';
+      var ansCount = (a.NS || []).filter(function(n){ return a.S && a.S[n]; }).length;
+      var totalQ = (a.NS || []).length;
+      var timeStr = Math.floor((a.total || 0) / 60) + 'm ' + ((a.total || 0) % 60) + 's';
+
+      var scoreHtml = '';
+      if (a.score !== undefined) {
+        scoreHtml = '<span style="font-weight:700;color:' + (a.score >= 0 ? '#16a34a' : '#dc2626') + ';">Marks: ' + a.score + ' / ' + (a.maxScore || (totalQ * 4)) + ' (' + (a.accuracy || 0) + '% Acc)</span>';
+      }
+
+      html += '<div class="att-card" style="margin-bottom:8px;">' +
+        '<div class="att-header">' +
+          '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+            '<span class="ch-subject-tag ' + (a._subject || '').toLowerCase() + '">' + a._subject + '</span>' +
+            '<b style="font-size:14px;color:var(--text-main);">' + a._chapter + '</b>' +
+            '<span class="att-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
+          '</div>' +
+          scoreHtml +
+        '</div>' +
+        '<div class="att-stats-row">' +
+          '<span>📅 ' + dateStr + '</span>' +
+          '<span><b>Answered:</b> ' + ansCount + ' / ' + totalQ + '</span>' +
+          '<span>⏱️ ' + timeStr + '</span>' +
+        '</div>' +
+        '<div class="att-actions">' +
+          '<a href="' + a._url + '?mode=' + (isCBT ? 'cbt' : 'practice') + '" class="att-btn review" style="text-decoration:none;">Open Chapter &rarr;</a>' +
+        '</div>' +
+      '</div>';
+    });
+    listEl.innerHTML = html;
+  }
+
+  var expHistBtn = document.getElementById('btnExportFullHistory');
+  if (expHistBtn) {
+    expHistBtn.onclick = function() {
+      var allData = {};
+      for (var k = 0; k < localStorage.length; k++) {
+        var key = localStorage.key(k);
+        if (key && (key.indexOf('pyqh_') === 0 || key.indexOf('pyqs_') === 0 || key.indexOf('pyqw_') === 0)) {
+          try { allData[key] = JSON.parse(localStorage.getItem(key)); } catch(e){}
+        }
+      }
+      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allData, null, 2));
+      var dlAnchor = document.createElement('a');
+      dlAnchor.setAttribute("href", dataStr);
+      dlAnchor.setAttribute("download", "JEE_Main_Full_Test_History_" + new Date().toISOString().slice(0,10) + ".json");
+      document.body.appendChild(dlAnchor);
+      dlAnchor.click();
+      dlAnchor.remove();
+    };
+  }
+
+  var clrHistBtn = document.getElementById('btnClearFullHistory');
+  if (clrHistBtn) {
+    clrHistBtn.onclick = function() {
+      if (confirm('Clear all test attempt histories across all chapters? Your starred bookmarks and mistake records will be preserved.')) {
+        var toDel = [];
+        for (var k = 0; k < localStorage.length; k++) {
+          var key = localStorage.key(k);
+          if (key && key.indexOf('pyqh_') === 0) toDel.push(key);
+        }
+        toDel.forEach(function(k){ localStorage.removeItem(k); });
+        renderUniversalHistory();
+        updateDashboard();
+        renderGrid();
+      }
+    };
+  }
 })();
 </script>
 
-
-<script>
-function initThemeToggle() {
-  function applyTheme(dark) {
-    if (dark) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('jee_theme', 'dark');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('jee_theme', 'light');
-    }
-    var btns = document.querySelectorAll('.theme-btn');
-    btns.forEach(function(b) {
-      b.innerHTML = dark ? '☀️ Light' : '🌙 Dark';
-    });
-  }
-  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
-    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  applyTheme(isDark);
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.theme-btn');
-    if (btn) {
-      var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      applyTheme(!currentlyDark);
-    }
-  });
-}
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initThemeToggle);
-} else {
-  initThemeToggle();
-}
-</script>
-
-</body>
-</html>
+</body></html>

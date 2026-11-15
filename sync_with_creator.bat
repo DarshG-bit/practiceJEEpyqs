@@ -1,32 +1,28 @@
 @echo off
-title Sync with Rupinder (Original Creator)
-cd /d "%~dp0"
-echo ============================================================
-echo Fetching latest updates from rupinderiitb/practicemakesperfect...
-echo ============================================================
+echo ========================================================
+echo JEE Main PYQ Practice - Sync with Original Creator Repo
+echo ========================================================
 echo.
-
-set GIT_CMD=git
-where git >nul 2>nul
-if %errorlevel% neq 0 (
-    set "GIT_CMD=C:\Program Files\Git\cmd\git.exe"
+echo Fetching latest updates from upstream (rupinderiitb/practicemakesperfect)...
+git fetch upstream main
+if errorlevel 1 (
+    echo [ERROR] Failed to fetch from upstream. Check your internet connection.
+    pause
+    exit /b %errorlevel%
 )
-
-"%GIT_CMD%" fetch upstream main
 echo.
-echo Pulling new questions and chapters from creator...
-"%GIT_CMD%" checkout upstream/main -- Chemistry Maths Physics
+echo Merging upstream changes into your local branch...
+git merge upstream/main -m "Merge upstream updates from original repo"
+if errorlevel 1 (
+    echo [NOTICE] Merge conflict or automatic merge paused.
+    echo Please resolve any conflicts or press any key to continue.
+    pause
+)
 echo.
-echo Running 1-step patcher (Dark Mode, PDF Notes, Option Fixes, Random Test Pool)...
+echo Re-running automated patcher to keep all enhancements, dark mode & portal synced...
 python patch_all.py
 echo.
-echo Pushing updated and patched files to your website...
-"%GIT_CMD%" add -A
-"%GIT_CMD%" commit -m "chore: sync latest questions from creator and auto-patch"
-"%GIT_CMD%" push origin main
-echo.
-echo ============================================================
-echo DONE! All new questions synced, patched, and live!
-echo Website: https://darshg-bit.github.io/practiceJEEpyqs/
-echo ============================================================
+echo ========================================================
+echo Sync completed successfully!
+echo ========================================================
 pause
