@@ -1113,6 +1113,8 @@
   --hdrline: #222224;
   --border-subtle: #222224;
   --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
 }
 
 [data-theme="dark"] body {
@@ -1163,6 +1165,137 @@
   max-width: 1140px !important;
 }
 
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
 /* Visible Typing Boxes in Dark Mode (solves Pic 6) */
 [data-theme="dark"] .ed,
 [data-theme="dark"] div[contenteditable="true"],
@@ -1210,10 +1343,6 @@
 [data-theme="dark"] .o.sel {
   background: rgba(37, 99, 235, 0.18) !important;
   border-color: #3b82f6 !important;
-}
-[data-theme="dark"] .tbox {
-  background: #0e0e11 !important;
-  border-color: #222224 !important;
 }
 
 /* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
@@ -1314,21 +1443,13 @@
 }
 [data-theme="dark"] .theme-btn {
   background: #111114 !important;
-  border-color: #222224 !important;
-  color: #ffffff !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .theme-btn:hover {
   background: #18181c !important;
-  border-color: #2e2e34 !important;
-}
-
-/* Active Session Banner */
-[data-theme="dark"] #pend {
-  background: rgba(37, 99, 235, 0.15) !important;
   border-color: #3b82f6 !important;
-  color: #ffffff !important;
 }
-
 </style>
 </head>
 <body>
@@ -2422,6 +2543,108 @@
   updateDashboard();
   renderChapterGrid();
 })();
+
+  // Universal Export / Import All Progress Data
+  var btnExpAll = document.getElementById('btnExportAllData');
+  var btnImpAll = document.getElementById('btnImportAllData');
+  var fileInpAll = document.getElementById('inputImportAllData');
+
+  if (btnExpAll) {
+    btnExpAll.onclick = function() {
+      var backup = {
+        version: 2,
+        exportedAt: new Date().toISOString(),
+        platform: "JEE Main PYQ Practice Platform",
+        data: {}
+      };
+      var totalItems = 0;
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key && (key.indexOf('pyq_') === 0 || key.indexOf('pyqh_') === 0 || key.indexOf('pyqs_') === 0 || key.indexOf('pyqw_') === 0 || key === 'jee_theme')) {
+          try {
+            var raw = localStorage.getItem(key);
+            backup.data[key] = JSON.parse(raw);
+          } catch(e) {
+            backup.data[key] = localStorage.getItem(key);
+          }
+          totalItems++;
+        }
+      }
+      var dateStr = new Date().toISOString().slice(0, 10);
+      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backup, null, 2));
+      var a = document.createElement('a');
+      a.setAttribute('href', dataStr);
+      a.setAttribute('download', 'JEE_Main_PYQ_Complete_Backup_' + dateStr + '.json');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+  }
+
+  if (btnImpAll && fileInpAll) {
+    btnImpAll.onclick = function() { fileInpAll.click(); };
+    fileInpAll.onchange = function(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          var parsed = JSON.parse(evt.target.result);
+          var payload = parsed.data || parsed;
+          var count = 0;
+          Object.keys(payload).forEach(function(k) {
+            if (k.indexOf('pyq_') === 0 || k.indexOf('pyqh_') === 0 || k.indexOf('pyqs_') === 0 || k.indexOf('pyqw_') === 0 || k === 'jee_theme') {
+              var val = payload[k];
+              if (typeof val === 'object') {
+                localStorage.setItem(k, JSON.stringify(val));
+              } else {
+                localStorage.setItem(k, String(val));
+              }
+              count++;
+            }
+          });
+          alert('Backup restored successfully! Loaded ' + count + ' progress records across all chapters.');
+          renderDashboard();
+          renderChapters();
+        } catch(err) {
+          alert('Could not parse backup file. Please select a valid JSON backup file.');
+        }
+      };
+      reader.readAsText(file);
+      fileInpAll.value = '';
+    };
+  }
+
+  // Hero Box Buttons
+  var btnHeroSim = document.getElementById('btnHeroSimulate');
+  if (btnHeroSim) {
+    btnHeroSim.onclick = function() {
+      if (typeof openSimulateModal === 'function') {
+        openSimulateModal();
+        var allPill = document.querySelector('.modal-pill[data-field="subject"][data-val="all"]');
+        if (allPill) allPill.click();
+      }
+    };
+  }
+  var btnHeroBr = document.getElementById('btnHeroBrowse');
+  if (btnHeroBr) {
+    btnHeroBr.onclick = function() {
+      var sec = document.getElementById('chapterBanksSection');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    };
+  }
+
+  // Quick Subject Filter Pills
+  var qPills = document.querySelectorAll('.qfilter-pill');
+  qPills.forEach(function(p) {
+    p.onclick = function() {
+      qPills.forEach(function(x){ x.classList.remove('active'); });
+      p.classList.add('active');
+      activeSubjectFilter = p.getAttribute('data-subject') || 'all';
+      renderChapters();
+    };
+  });
+
 </script>
 
 </body>

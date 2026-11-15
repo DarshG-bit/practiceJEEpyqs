@@ -359,6 +359,8 @@ DARK_MODE_CSS = """
   --hdrline: #222224;
   --border-subtle: #222224;
   --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
 }
 
 [data-theme="dark"] body {
@@ -409,6 +411,137 @@ DARK_MODE_CSS = """
   max-width: 1140px !important;
 }
 
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
 /* Visible Typing Boxes in Dark Mode (solves Pic 6) */
 [data-theme="dark"] .ed,
 [data-theme="dark"] div[contenteditable="true"],
@@ -456,10 +589,6 @@ DARK_MODE_CSS = """
 [data-theme="dark"] .o.sel {
   background: rgba(37, 99, 235, 0.18) !important;
   border-color: #3b82f6 !important;
-}
-[data-theme="dark"] .tbox {
-  background: #0e0e11 !important;
-  border-color: #222224 !important;
 }
 
 /* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
@@ -560,20 +689,14 @@ DARK_MODE_CSS = """
 }
 [data-theme="dark"] .theme-btn {
   background: #111114 !important;
-  border-color: #222224 !important;
-  color: #ffffff !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .theme-btn:hover {
   background: #18181c !important;
-  border-color: #2e2e34 !important;
+  border-color: #3b82f6 !important;
 }
 
-/* Active Session Banner */
-[data-theme="dark"] #pend {
-  background: rgba(37, 99, 235, 0.15) !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
 """
 
 THEME_TOGGLE_JS = """
@@ -627,34 +750,33 @@ def patch_dark_mode(content, filename=""):
         content = content.replace("<head>", "<head>\n" + HEAD_PREVENT_FLICKER, 1)
         modified = True
         
-    # 2. Elevated Slate Dark mode CSS
-    pattern_legacy_tn = r'/\* =+ COMPREHENSIVE DARK MODE \(TYPE NOTES\) =+ \*/.*?\[data-theme=[\'"]dark[\'"]\] \.theme-btn:hover\s*\{[^}]+\}\s*'
+    # 2. Elevated Slate / AMOLED Dark mode CSS
+    pattern_legacy_tn = r"""/\* =+ COMPREHENSIVE DARK MODE \(TYPE NOTES\) =+ \*/.*?\[data-theme=['"]dark['"]\] \.theme-btn:hover\s*\{[^}]+\}\s*"""
     if re.search(pattern_legacy_tn, content, re.DOTALL):
         content = re.sub(pattern_legacy_tn, "", content, flags=re.DOTALL)
         modified = True
 
-    if "ELEVATED SLATE DARK THEME" in content:
-        idx_start = content.find("/* =================== ELEVATED SLATE DARK THEME")
-        idx_style = content.find("</style>", idx_start)
-        if idx_start != -1 and idx_style != -1:
-            existing_block = content[idx_start:idx_style].strip()
-            if existing_block != DARK_MODE_CSS.strip():
-                content = content[:idx_start] + DARK_MODE_CSS.strip() + "\n" + content[idx_style:]
-                modified = True
-    elif "TRUE AMOLED BLACK DARK MODE" in content:
-        idx_start = content.find("/* =================== TRUE AMOLED BLACK DARK MODE")
-        idx_style = content.find("</style>", idx_start)
-        if idx_start != -1 and idx_style != -1:
-            content = content[:idx_start] + DARK_MODE_CSS.strip() + "\n" + content[idx_style:]
-            modified = True
-    elif "COMPREHENSIVE HIGH-CONTRAST DARK MODE" in content:
-        idx_start = content.find("/* =================== COMPREHENSIVE HIGH-CONTRAST DARK MODE")
-        idx_style = content.find("</style>", idx_start)
-        if idx_start != -1 and idx_style != -1:
-            content = content[:idx_start] + DARK_MODE_CSS.strip() + "\n" + content[idx_style:]
-            modified = True
-    else:
-        pattern = r'/\* =+ COMPREHENSIVE DARK MODE =+ \*/.*?\[data-theme=[\'"]dark[\'"]\] \.theme-btn:hover\s*\{[^}]+\}'
+    markers = [
+        "/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE",
+        "/* =================== TRUE AMOLED BLACK DARK MODE",
+        "/* =================== ELEVATED SLATE DARK THEME",
+        "/* =================== COMPREHENSIVE HIGH-CONTRAST DARK MODE",
+        "/* =================== COMPREHENSIVE DARK MODE"
+    ]
+    replaced = False
+    for marker in markers:
+        if marker in content:
+            idx_start = content.find(marker)
+            idx_style = content.find("</style>", idx_start)
+            if idx_start != -1 and idx_style != -1:
+                existing_block = content[idx_start:idx_style].strip()
+                if existing_block != DARK_MODE_CSS.strip():
+                    content = content[:idx_start] + DARK_MODE_CSS.strip() + "\n" + content[idx_style:]
+                    modified = True
+                replaced = True
+                break
+    if not replaced:
+        pattern = r"""/\* =+ COMPREHENSIVE DARK MODE =+ \*/.*?\[data-theme=['"]dark['"]\] \.theme-btn:hover\s*\{[^}]+\}"""
         if re.search(pattern, content, re.DOTALL):
             content = re.sub(pattern, lambda m: DARK_MODE_CSS.strip(), content, flags=re.DOTALL)
             modified = True
@@ -670,7 +792,7 @@ def patch_dark_mode(content, filename=""):
     if not is_index:
         pattern_btn = r'<button class="theme-btn"[^>]*>.*?</button>'
         if re.search(pattern_btn, content):
-            if ('🌙 Dark' in content or '☀️ Light' in content) or ('viewBox' not in content):
+            if ('\U0001f319 Dark' in content or '\u2600\ufe0f Light' in content) or ('viewBox' not in content):
                 content = re.sub(pattern_btn, lambda m: svg_btn_html, content)
                 modified = True
         elif 'class="theme-btn"' not in content:

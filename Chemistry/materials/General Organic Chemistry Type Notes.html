@@ -182,6 +182,8 @@ body.symon {
   --hdrline: #222224;
   --border-subtle: #222224;
   --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
 }
 
 [data-theme="dark"] body {
@@ -232,6 +234,137 @@ body.symon {
   max-width: 1140px !important;
 }
 
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
 /* Visible Typing Boxes in Dark Mode (solves Pic 6) */
 [data-theme="dark"] .ed,
 [data-theme="dark"] div[contenteditable="true"],
@@ -279,10 +412,6 @@ body.symon {
 [data-theme="dark"] .o.sel {
   background: rgba(37, 99, 235, 0.18) !important;
   border-color: #3b82f6 !important;
-}
-[data-theme="dark"] .tbox {
-  background: #0e0e11 !important;
-  border-color: #222224 !important;
 }
 
 /* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
@@ -383,19 +512,12 @@ body.symon {
 }
 [data-theme="dark"] .theme-btn {
   background: #111114 !important;
-  border-color: #222224 !important;
-  color: #ffffff !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .theme-btn:hover {
   background: #18181c !important;
-  border-color: #2e2e34 !important;
-}
-
-/* Active Session Banner */
-[data-theme="dark"] #pend {
-  background: rgba(37, 99, 235, 0.15) !important;
   border-color: #3b82f6 !important;
-  color: #ffffff !important;
 }
 </style></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
 <h1>General Organic Chemistry &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../General%20Organic%20Chemistry%20PYQ%20Practice.html">Back to practice</a><a href="General%20Organic%20Chemistry%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> GENERAL ORGANIC CHEMISTRY – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Isomerism: structural, geometrical, optical and conformational</a></li><li><a href="#T2">Type 2. IUPAC naming, structures from names, classification and bond counting</a></li><li><a href="#T3">Type 3. Purification of organic compounds: chromatography and separation methods</a></li><li><a href="#T4">Type 4. Quantitative analysis: Dumas, Kjeldahl, Carius and sulphur estimation</a></li><li><a href="#T5">Type 5. Acidity and basicity orders</a></li><li><a href="#T6">Type 6. Aromaticity, resonance and reactivity of conjugated systems</a></li><li><a href="#T7">Type 7. Stability of carbocations, carbanions and radicals</a></li><li><a href="#T8">Type 8. Qualitative analysis: Lassaigne&#x27;s test</a></li><li><a href="#T9">Type 9. Electronic effects: inductive, mesomeric, hyperconjugation and directing groups</a></li><li><a href="#T10">Type 10. Nucleophiles and electrophiles (attacking reagents)</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Isomerism: structural, geometrical, optical and conformational <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">49 questions on the sheet (Q1–49)  ·  Sub-topics: A1 structural isomerism and enol content · A2 geometrical isomerism · A3 optical isomerism · A4 conformations</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Stereoisomers with <math displaystyle="true"><mrow><mi>n</mi></mrow></math> different chiral centres</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Geometrical isomers of <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>-</mo><mi mathvariant="normal">CH</mi><mo>=</mo><mi mathvariant="normal">CH</mi><mo>-</mo><mi mathvariant="normal">R</mi><mo>&#x27;</mo></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Optical purity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Dihedral angles in ethane</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Stability order of n-butane conformers</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Enol content</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count structural isomers without missing any?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>When is a molecule chiral?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>Why do some molecules with chiral centres have fewer than <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> stereoisomers?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>What decides the stability of a conformation?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr><tr><td><p>What do metamerism and functional group isomerism mean?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_13"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The question asks &#x27;how many isomers&#x27;, &#x27;how many stereoisomers&#x27; or &#x27;which shows geometrical (optical) isomerism&#x27;.</p><p style="padding-left:14px">•  A Newman projection or a name such as eclipsed, staggered, gauche, anti, skew is given and the stability or dihedral angle is asked.</p><p style="padding-left:14px">•  The structure has a carbonyl group and the &#x27;enol content&#x27; or tautomer is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Stereoisomers with <math displaystyle="true"><mrow><mi>n</mi></mrow></math> different chiral centres</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> (fewer if the molecule has a plane of symmetry: meso forms)</p></td></tr><tr><td><p>Geometrical isomers of <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mo>=</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mo>−</mo><mi mathvariant="normal">R</mi><mo>′</mo></mrow></math></p></td><td><p>2 (cis and trans) if <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>≠</mo><mi mathvariant="normal">R</mi><mo>′</mo></mrow></math> at each end carbon</p></td></tr><tr><td><p>Optical purity</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mtext>observed&#160;rotation</mtext></mrow><mrow><mtext>specific&#160;rotation&#160;of&#160;the&#160;pure&#160;isomer</mtext></mrow></mfrac><mo>×</mo><mn>100</mn></mrow></math></p></td></tr><tr><td><p>Dihedral angles in ethane</p></td><td><p>staggered <math displaystyle="true"><mrow><msup><mrow><mn>60</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> (most stable); eclipsed <math displaystyle="true"><mrow><msup><mrow><mn>0</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> (least stable)</p></td></tr><tr><td><p>Stability order of n-butane conformers</p></td><td><p>anti &gt; gauche &gt; partially eclipsed &gt; fully eclipsed</p></td></tr><tr><td><p>Enol content</p></td><td><p>highest in <math displaystyle="true"><mrow><mi>β</mi></mrow></math>-diketones (hydrogen bonding and conjugation): <math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count structural isomers without missing any?</p></td><td><p>Start with the straight chain, then shorten it by one carbon and place the branch at every non-equivalent position; repeat for each shorter chain.</p></td></tr><tr><td><p>When is a molecule chiral?</p></td><td><p>When it has no plane or centre of symmetry; the usual sign is a carbon attached to four different groups.</p></td></tr><tr><td><p>Why do some molecules with chiral centres have fewer than <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> stereoisomers?</p></td><td><p>If the two ends of the molecule are identical, a meso form appears and the number drops (for example 1,2-dimethylcyclopropane has 3, not 4).</p></td></tr><tr><td><p>What decides the stability of a conformation?</p></td><td><p>Torsional strain (eclipsing) and steric strain (bulky groups close together); there is no angle strain in an acyclic compound.</p></td></tr><tr><td><p>What do metamerism and functional group isomerism mean?</p></td><td><p>Metamers differ in the groups on either side of a functional atom (ethers, ketones); functional group isomers have different functional groups (alcohol and ether of <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">C</mi></mrow><mrow><mn>2</mn></mrow></msub><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>6</mn></mrow></msub><mi mathvariant="normal">O</mi></mrow></math>).</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting a carbon with two identical groups as a chiral centre.</p><p style="padding-left:14px">•  Forgetting that a double bond shows geometrical isomerism only if both ends have two different groups.</p><p style="padding-left:14px">•  Counting an enantiomer pair twice, or missing the meso form.</p><p style="padding-left:14px">•  Missing isomers that differ only in the position of the double bond or substituent.</p></div></section>

@@ -97,6 +97,13 @@ Every file in the repository must strictly follow these rules:
 
 ---
 
+### F. Master Backup & Full Progress Portability
+- **Universal Export / Import All Data**: Available directly from the Home Portal overview toolbar.
+  - *Export*: Generates a single `JEE_Main_PYQ_Complete_Backup_<date>.json` containing all `pyq_*`, `pyqh_*`, `pyqs_*`, `pyqw_*`, and `jee_theme` states.
+  - *Import*: Reads and validates backup JSON files, restores progress across all 27 chapters, and dynamically refreshes dashboard meters and charts without page reload.
+
+---
+
 ## 3. Aspirant Data & Storage Schema
 
 The portal stores student progress in browser `localStorage`. Do not rename or wipe these keys during script or sheet updates:

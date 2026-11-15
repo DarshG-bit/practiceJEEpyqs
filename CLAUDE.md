@@ -110,6 +110,16 @@ The platform provides access to hundreds of real JEE Main previous year question
 
 ---
 
+### Step 10: Subject Portals (3 Big Hero Boxes), Master Export/Import & Dark Mode White-Box Elimination
+- **User Feedback & Problem Analysis**:
+  - *Syllabus Navigation Regression*: The user could not navigate to `Maths/index.html`, `Physics/index.html`, or `Chemistry/index.html` (which contain the official color-coded chapters: `cA`, `cB`, `cC`, `cD`, and priority tags `pH`, `pM`, `pL`).
+  - *Fix*: Replaced the flat tabs with **3 Big Hero Subject Boxes** (Mathematics, Physics, Chemistry) that link directly to each subject index, plus **1 Long Box underneath** for All 3 Subjects (27 Chapters) with quick simulation and browse triggers.
+  - *Master Backup / Restore*: Added **Export All Data** and **Import Data** on the home portal toolbar to download/restore a single JSON backup across all 27 chapters.
+  - *Pic 2 Dark Mode Contrast*: Fixed unreadable subtext (`Across 27 chapters`, `Target: >= 80% for 99th %ile`, `Active testing time`, etc.) by setting `--text-muted: #a1a1aa !important;` and `--text-secondary: #e4e4e7 !important;`.
+  - *Pic 3 Dark Mode White Box Error*: Fixed question type containers (`.tc`, `.gf`, `.sec`, `.kc`, `.selsum`, and `#typelist .pill input+span`) rendering with white backgrounds in dark mode by applying elevated `#0a0a0c` surfaces and `#222224` borders across all 83 files.
+
+---
+
 ## 3. Repository Architecture & File Layout
 
 ```text
