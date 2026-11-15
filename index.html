@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JEE Main PYQ Practice &middot; 2019&ndash;2025</title>
+<title>JEE Main PYQ Platform &middot; 2019&ndash;2025</title>
 <script>
   (function(){
     var t = localStorage.getItem('jee_theme');
@@ -13,221 +13,497 @@
   })();
 </script>
 <style>
+/* ==========================================================================
+   ACADEMIC & PROFESSIONAL DESIGN SYSTEM (LIGHT & TRUE AMOLED DARK MODE)
+   ========================================================================== */
 * { box-sizing: border-box; }
+:root {
+  --bg-page: #f8fafc;
+  --surface: #ffffff;
+  --surface-subtle: #f1f5f9;
+  --border: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary: #1d4ed8;
+  --primary-hover: #1e40af;
+  --accent-maths: #2563eb;
+  --accent-physics: #7c3aed;
+  --accent-chem: #059669;
+  --radius-card: 14px;
+  --radius-btn: 8px;
+  --radius-pill: 6px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --bg-page: #000000;
+  --surface: #0a0a0c;
+  --surface-subtle: #111114;
+  --border: #222224;
+  --border-subtle: #2d2d30;
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --accent-maths: #3b82f6;
+  --accent-physics: #8b5cf6;
+  --accent-chem: #10b981;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.8);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
 body {
   margin: 0;
-  font-family: Calibri, "Segoe UI", Arial, sans-serif;
-  font-size: 17px;
-  color: #1d2433;
-  background: #eef1f7;
-  line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15.5px;
+  color: var(--text-main);
+  background: var(--bg-page);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Header */
+/* Top Brand Header */
 header {
-  background: #1f4e8c;
-  color: #fff;
-  padding: 26px 24px 22px;
-  border-bottom: 1px solid #163a69;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 22px 28px 20px;
+  border-bottom: 1px solid #1e293b;
+}
+[data-theme="dark"] header {
+  background: #000000;
+  border-bottom: 1px solid #222224;
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.brand-badge {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #93c5fd;
 }
 header h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
 }
 header .subtitle {
-  margin: 8px 0 0;
-  font-size: 15.5px;
-  color: #e0e9f8;
-  line-height: 1.5;
-  max-width: 700px;
-}
-.badge {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  margin: 6px 0 0;
+  font-size: 14.5px;
+  color: #94a3b8;
+  max-width: 720px;
+  line-height: 1.45;
 }
 
-/* Container */
+/* Theme Toggle Button */
+.theme-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: var(--radius-btn);
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* Main Container */
 main {
   max-width: 1060px;
   margin: 0 auto;
   padding: 24px 20px 80px;
 }
 
-/* 3 Large Hero Subject Cards (No Icons) */
+/* ==========================================================================
+   ASPIRANT PREPARATION DASHBOARD
+   ========================================================================== */
+.dashboard-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.dash-title-group h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.2px;
+}
+.dash-title-group .dash-subtitle {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+.dash-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dash-btn {
+  padding: 8px 14px;
+  border-radius: var(--radius-btn);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  border: 1px solid transparent;
+}
+.dash-btn.primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+.dash-btn.primary:hover {
+  background: var(--primary-hover);
+}
+.dash-btn.secondary {
+  background: var(--surface-subtle);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+.dash-btn.secondary:hover {
+  background: var(--border);
+}
+
+/* Active Session Resume Card */
+.active-session-card {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+[data-theme="dark"] .active-session-card {
+  background: #081a36;
+  border-color: #1e3a8a;
+}
+.active-session-info {
+  flex: 1;
+  min-width: 240px;
+}
+.active-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.active-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.active-meta {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.active-resume-btn {
+  padding: 8px 16px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: var(--radius-btn);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.active-resume-btn:hover {
+  background: #1d4ed8;
+}
+
+/* 4 Metrics Grid */
+.dash-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.metric-card {
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.metric-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.metric-val {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+.metric-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Breakdown Panels: Subject Progress & Priority Revision */
+.dash-breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 768px) {
+  .dash-breakdown-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.dash-panel {
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.panel-heading {
+  margin: 0 0 12px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.subject-prog-item {
+  margin-bottom: 12px;
+}
+.subject-prog-item:last-child {
+  margin-bottom: 0;
+}
+.prog-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.prog-name {
+  color: var(--text-main);
+}
+.prog-stat {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.prog-bar-bg {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.prog-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+.prog-bar-fill.maths { background: var(--accent-maths); }
+.prog-bar-fill.physics { background: var(--accent-physics); }
+.prog-bar-fill.chemistry { background: var(--accent-chem); }
+
+/* Priority Revision List */
+.priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.priority-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: border-color 0.15s ease;
+}
+.priority-item:hover {
+  border-color: var(--primary);
+}
+.priority-ch-name {
+  font-weight: 600;
+}
+.priority-badge {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #fee2e2;
+  color: #991b1b;
+}
+[data-theme="dark"] .priority-badge {
+  background: #381216;
+  color: #fca5a5;
+}
+.empty-state {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   SUBJECT CARDS SECTION (CLEAN & PROFESSIONAL)
+   ========================================================================== */
 .subject-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 24px;
-  margin: 16px 0 28px;
+  gap: 20px;
+  margin-bottom: 28px;
 }
-
 .subject-card {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border: 1.5px solid #dfe4ee;
-  border-radius: 18px;
-  padding: 26px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 22px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: var(--shadow-sm);
   position: relative;
-  overflow: hidden;
 }
 .subject-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-subtle);
 }
-
-.subject-card.maths { border-top: 5px solid #2563eb; }
-.subject-card.physics { border-top: 5px solid #7c3aed; }
-.subject-card.chemistry { border-top: 5px solid #059669; }
+.subject-card.maths { border-top: 4px solid var(--accent-maths); }
+.subject-card.physics { border-top: 4px solid var(--accent-physics); }
+.subject-card.chemistry { border-top: 4px solid var(--accent-chem); }
 
 .subject-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
-
 .subject-card h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 700;
+  color: var(--text-main);
 }
-.subject-card.maths h2 { color: #1e40af; }
-.subject-card.physics h2 { color: #5b21b6; }
-.subject-card.chemistry h2 { color: #065f46; }
-
 .subject-badge {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  padding: 5px 12px;
-  border-radius: 20px;
-  white-space: nowrap;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
 }
-.subject-card.maths .subject-badge { background: #eff6ff; color: #1d4ed8; }
-.subject-card.physics .subject-badge { background: #f5f3ff; color: #6d28d9; }
-.subject-card.chemistry .subject-badge { background: #ecfdf5; color: #047857; }
-
 .subject-desc {
-  font-size: 14.5px;
-  color: #475569;
-  line-height: 1.55;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
   margin: 0 0 16px;
   flex: 1;
 }
-
 .subject-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
+  gap: 6px;
+  margin-bottom: 18px;
 }
 .meta-tag {
-  font-size: 12.5px;
-  padding: 4px 10px;
-  background: #f1f5f9;
-  color: #334155;
-  border-radius: 6px;
+  font-size: 11.5px;
+  padding: 3px 8px;
+  background: var(--surface-subtle);
+  color: var(--text-muted);
+  border-radius: 4px;
   font-weight: 600;
+  border: 1px solid var(--border);
 }
-
 .subject-cta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 700;
-  padding: 12px 18px;
-  border-radius: 12px;
-  transition: all 0.2s ease;
+  padding: 10px 14px;
+  border-radius: var(--radius-btn);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  transition: all 0.15s ease;
 }
-.subject-card.maths .subject-cta { background: #2563eb; color: #ffffff; }
-.subject-card.maths:hover .subject-cta { background: #1d4ed8; }
-
-.subject-card.physics .subject-cta { background: #7c3aed; color: #ffffff; }
-.subject-card.physics:hover .subject-cta { background: #6d28d9; }
-
-.subject-card.chemistry .subject-cta { background: #059669; color: #ffffff; }
-.subject-card.chemistry:hover .subject-cta { background: #047857; }
-
+.subject-card:hover .subject-cta {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
 .cta-arrow {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1;
 }
 
-/* Bottom Random Test Section */
-.random-section {
-  display: flex;
-  justify-content: center;
-  margin: 12px 0 28px;
+/* Examination Strategy Note */
+.strategy-note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.strategy-note b {
+  color: var(--text-main);
 }
 
-.random-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 680px;
-  padding: 22px 28px;
-  background: #ffffff;
-  border: 2px dashed #3b82f6;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  font-family: inherit;
-  text-align: center;
-}
-.random-btn:hover {
-  transform: translateY(-3px);
-  background: #eff6ff;
-  border-color: #2563eb;
-  border-style: solid;
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.16);
-}
-
-.random-badge {
-  display: inline-block;
-  background: #dbeafe;
-  color: #1d4ed8;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  margin-bottom: 8px;
-}
-
-.random-title {
-  font-size: 21px;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.random-desc {
-  font-size: 14px;
-  color: #475569;
-  line-height: 1.45;
-}
-
-/* Modal Popup */
+/* ==========================================================================
+   MODAL DIALOG (RANDOM TEST / CBT SIMULATION)
+   ========================================================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -245,193 +521,157 @@ main {
 .modal-overlay.open {
   display: flex;
 }
-
 .modal-box {
-  background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 20px;
-  padding: 28px 24px;
-  max-width: 500px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  max-width: 580px;
   width: 100%;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   position: relative;
-  animation: popIn 0.2s ease-out;
 }
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.94); }
-  to { opacity: 1; transform: scale(1); }
-}
-
 .modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .modal-header h3 {
   margin: 0;
-  font-size: 22px;
-  color: #1e293b;
+  font-size: 20px;
+  color: var(--text-main);
   font-weight: 700;
 }
 .modal-close {
   background: none;
   border: none;
-  font-size: 26px;
-  color: #64748b;
+  font-size: 24px;
+  color: var(--text-muted);
   cursor: pointer;
   line-height: 1;
   padding: 0;
 }
-.modal-close:hover { color: #0f172a; }
-
+.modal-close:hover { color: var(--text-main); }
 .modal-desc {
-  font-size: 14.5px;
-  color: #475569;
-  margin: 0 0 18px;
-  line-height: 1.5;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin: 0 0 16px;
+  line-height: 1.45;
+}
+.modal-section-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 12px 0 6px;
 }
 
+/* Subject Pool Options */
 .pool-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 22px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 .pool-opt {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 12px;
-  background: #f8fafc;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: var(--surface-subtle);
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 14.5px;
-  font-weight: 600;
-  color: #334155;
-}
-.pool-opt:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-}
-.pool-opt.active {
-  border-color: #2563eb;
-  background: #eff6ff;
-  color: #1d4ed8;
-}
-.pool-opt input {
-  margin: 0;
-  cursor: pointer;
-}
-
-.modal-actions {
-  display: flex;
-  gap: 12px;
-}
-.btn-launch {
-  flex: 1;
-  padding: 13px 20px;
-  background: #2563eb;
-  color: #ffffff;
-  border: none;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
-}
-.btn-launch:hover { background: #1d4ed8; }
-
-.btn-cancel {
-  padding: 13px 18px;
-  background: #f1f5f9;
-  color: #475569;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
-}
-.btn-cancel:hover { background: #e2e8f0; }
-
-/* Note */
-.note {
-  background: #eaf1fb;
-  border: 1px solid #c7d8f3;
-  border-radius: 12px;
-  padding: 14px 18px;
-  font-size: 14px;
-  color: #1f4e8c;
-  line-height: 1.55;
-  margin-top: 20px;
-}
-
-/* Theme Toggle Button */
-.theme-btn {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #ffffff;
-  border-radius: 20px;
-  padding: 6px 14px;
+  transition: all 0.15s ease;
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
+  color: var(--text-main);
 }
-.theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
+.pool-opt:hover {
+  background: var(--border);
+}
+.pool-opt.active {
+  border-color: var(--primary);
+  background: #eff6ff;
+  color: var(--primary);
+}
+[data-theme="dark"] .pool-opt.active {
+  background: #081a36;
+  border-color: var(--primary);
+  color: #93c5fd;
+}
 
-/* Modal Sections & Pills */
-.modal-box {
-  max-width: 580px !important;
-}
-.modal-section-title {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 12px 0 6px;
-}
+/* Modal Pills */
 .modal-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 4px;
+  gap: 6px;
+  margin-bottom: 10px;
 }
 .pill-btn {
   display: inline-flex;
   align-items: center;
-  padding: 6px 12px;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 10px;
-  background: #f8fafc;
-  font-size: 13.5px;
+  padding: 6px 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface-subtle);
+  font-size: 13px;
   font-weight: 600;
-  color: #334155;
+  color: var(--text-main);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 .pill-btn input[type=radio] {
   display: none;
 }
 .pill-btn:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
+  background: var(--border);
 }
 .pill-btn.active {
-  border-color: #2563eb;
+  border-color: var(--primary);
   background: #eff6ff;
-  color: #1d4ed8;
-  font-weight: 700;
+  color: var(--primary);
 }
+[data-theme="dark"] .pill-btn.active {
+  background: #081a36;
+  border-color: var(--primary);
+  color: #93c5fd;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.btn-launch {
+  flex: 1;
+  padding: 11px 18px;
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-btn);
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+.btn-launch:hover { background: var(--primary-hover); }
+.btn-cancel {
+  padding: 11px 16px;
+  background: var(--surface-subtle);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+.btn-cancel:hover { background: var(--border); }
+
 /* =================== TRUE AMOLED BLACK DARK MODE =================== */
 [data-theme="dark"] {
   --ink: #ffffff;
@@ -452,7 +692,7 @@ main {
 }
 
 [data-theme="dark"] a {
-  color: #60a5fa !important;
+  color: #3b82f6 !important;
 }
 
 /* 1. START PANEL & GENERAL PANELS */
@@ -469,7 +709,7 @@ main {
 
 [data-theme="dark"] .panel h2,
 [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .banner {
@@ -1306,20 +1546,529 @@ body {
 [data-theme="dark"] .theme-btn:hover {
   background: #222222;
 }
+
+
+/* ==========================================================================
+   CBT EXAM MODE & VISUAL MODERNIZATION STYLING
+   ========================================================================== */
+.mode-card.active {
+  border-color: #2563eb !important;
+  background: #eff6ff !important;
+}
+.mode-card {
+  user-select: none;
+}
+[data-theme="dark"] .mode-card {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+[data-theme="dark"] #mode_card_cbt.active {
+  background: #081a36 !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] #mode_card_practice.active {
+  background: #18181b !important;
+  border-color: #3f3f46 !important;
+}
+[data-theme="dark"] .mode-card div div:first-child span:first-child {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .mode-card div div:last-child {
+  color: #94a3b8 !important;
+}
+
+/* Exam Progress Bar at Top */
+#examProgressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: #2563eb;
+  width: 0%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  z-index: 100;
+}
+[data-theme="dark"] #examProgressBar {
+  background: #3b82f6;
+}
+
+/* CBT Mode Palette Styling (Official NTA JEE Colors) */
+.cbt-mode .chk {
+  display: none !important;
+}
+.cbt-mode #savecur {
+  display: none !important;
+}
+.cbt-mode #nav button.an {
+  background: #16a34a !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+}
+.cbt-mode #nav button.na {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+}
+.cbt-mode #nav button.nv {
+  background: #e2e8f0 !important;
+  color: #475569 !important;
+  border-radius: 4px !important;
+}
+[data-theme="dark"] .cbt-mode #nav button.nv {
+  background: #1c1c1f !important;
+  color: #94a3b8 !important;
+  border-color: #2a2a2e !important;
+}
+.cbt-mode #nav button.mk {
+  background: #9333ea !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+}
+.cbt-mode #nav button.am {
+  background: #9333ea !important;
+  color: #ffffff !important;
+  position: relative !important;
+  border-radius: 50% !important;
+}
+.cbt-mode #nav button.am::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 7px;
+  height: 7px;
+  background: #16a34a;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+}
+
+/* Option Elimination (Right click / Alt click) */
+.o.eliminated {
+  opacity: 0.35 !important;
+  text-decoration: line-through !important;
+  pointer-events: auto !important;
+  background: rgba(0,0,0,0.04) !important;
+}
+[data-theme="dark"] .o.eliminated {
+  background: rgba(255,255,255,0.04) !important;
+}
+
+/* Enhanced Post-Exam Scorecard & Review Cards */
+.cbt-scorecard {
+  margin: 10px 0 30px;
+}
+.cbt-score-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+[data-theme="dark"] .cbt-score-hero {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.cbt-score-left {
+  flex: 1;
+  min-width: 260px;
+}
+.cbt-score-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+[data-theme="dark"] .cbt-score-tag {
+  background: #081a36 !important;
+  color: #60a5fa !important;
+}
+.cbt-score-title {
+  margin: 10px 0 4px;
+  font-size: 24px;
+  font-weight: 800;
+}
+[data-theme="dark"] .cbt-score-title {
+  color: #ffffff !important;
+}
+.cbt-score-meta {
+  color: #64748b;
+  font-size: 13px;
+  margin: 0;
+}
+[data-theme="dark"] .cbt-score-meta {
+  color: #94a3b8 !important;
+}
+.cbt-big-score {
+  font-size: 34px;
+  font-weight: 900;
+  color: #16a34a;
+}
+.cbt-big-score.neg {
+  color: #ef4444;
+}
+.cbt-big-score small {
+  font-size: 18px;
+  font-weight: 500;
+  color: #64748b;
+}
+[data-theme="dark"] .cbt-big-score small {
+  color: #94a3b8 !important;
+}
+
+/* SVG Donut Chart */
+.cbt-donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cbt-donut-svg {
+  width: 95px;
+  height: 95px;
+  transform: rotate(-90deg);
+}
+.cbt-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+[data-theme="dark"] .cbt-donut-legend {
+  color: #cbd5e1 !important;
+}
+.cbt-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cbt-donut-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+/* Metrics Grid */
+.cbt-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.cbt-metric-item {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+[data-theme="dark"] .cbt-metric-item {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.cbt-metric-lbl {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+[data-theme="dark"] .cbt-metric-lbl {
+  color: #94a3b8 !important;
+}
+.cbt-metric-num {
+  font-size: 20px;
+  font-weight: 800;
+}
+[data-theme="dark"] .cbt-metric-num {
+  color: #ffffff !important;
+}
+
+/* Question Review Filters */
+.review-filter-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.rf-pill {
+  border: 1px solid var(--border, #cbd5e1);
+  background: var(--surface, #f8fafc);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: inherit;
+}
+[data-theme="dark"] .rf-pill {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #94a3b8 !important;
+}
+.rf-pill.active {
+  border-color: #2563eb !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+.review-card {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+[data-theme="dark"] .review-card {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.review-pill {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.review-pill.corr {
+  background: #dcfce7;
+  color: #15803d;
+}
+.review-pill.inc {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.review-pill.unatt {
+  background: #f1f5f9;
+  color: #64748b;
+}
+[data-theme="dark"] .review-pill.corr {
+  background: #052e16;
+  color: #4ade80;
+}
+[data-theme="dark"] .review-pill.inc {
+  background: #450a0a;
+  color: #f87171;
+}
+[data-theme="dark"] .review-pill.unatt {
+  background: #18181b;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .review-answers-box {
+  background: #111114 !important;
+  color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#f8fafc"] {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#dcfce7"] {
+  background: #052e16 !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#fee2e2"] {
+  background: #450a0a !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+/* Modals (CBT Submit & Hotkeys) */
+.cbt-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+  backdrop-filter: blur(2px);
+}
+.cbt-modal-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .cbt-modal-box {
+  background: #0a0a0c !important;
+  border-color: #27272a !important;
+  color: #ffffff !important;
+}
+.cbt-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 20px;
+  font-size: 14px;
+}
+.cbt-summary-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #e2e8f0;
+}
+[data-theme="dark"] .cbt-summary-table td {
+  border-bottom-color: #222224 !important;
+}
+.cbt-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+.cbt-dot.green { background: #16a34a; }
+.cbt-dot.red { background: #ef4444; }
+.cbt-dot.purple { background: #9333ea; }
+.cbt-dot.purple-green { background: #9333ea; border: 2px solid #16a34a; }
+.cbt-dot.gray { background: #94a3b8; }
+
+/* Hotkeys Modal */
+.hotkeys-table {
+  width: 100%;
+  font-size: 13px;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.hotkeys-table td {
+  padding: 6px 4px;
+  border-bottom: 1px solid #e2e8f0;
+}
+[data-theme="dark"] .hotkeys-table td {
+  border-bottom-color: #222224 !important;
+}
+.kbd-key {
+  display: inline-block;
+  padding: 2px 7px;
+  font-family: monospace;
+  font-size: 12px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  color: #0f172a;
+}
+[data-theme="dark"] .kbd-key {
+  background: #18181b !important;
+  border-color: #3f3f46 !important;
+  color: #ffffff !important;
+}
 </style>
 </head>
 <body>
 <header>
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-    <span class="badge">JEE Main PYQ 2019&ndash;2025</span>
-    <button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button>
+  <div class="header-top">
+    <span class="brand-badge">JEE Main Archive &middot; 2019&ndash;2025</span>
+    <button class="theme-btn" type="button" title="Toggle theme">Dark</button>
   </div>
-  <h1>JEE Main PYQ Practice</h1>
-  <p class="subtitle">Chapter-wise timed practice categorized by question pattern, accompanied by active-recall Type Notes workbooks.</p>
+  <h1>JEE Main PYQ Platform</h1>
+  <p class="subtitle">Official previous-year questions organized by pattern and difficulty, with authentic CBT exam simulation and structured active-recall workbooks.</p>
 </header>
 
 <main>
-  <!-- 3 Big Subject Cards (No Icons) -->
+  <!-- Centralized Aspirant Dashboard -->
+  <section id="aspirantDashboard" class="dashboard-section">
+    <div class="dash-header">
+      <div class="dash-title-group">
+        <h2>Preparation Overview</h2>
+        <span class="dash-subtitle">Aggregated progress &amp; performance across all 27 chapters</span>
+      </div>
+      <div class="dash-actions">
+        <button id="openRandomModal" class="dash-btn primary" type="button">Take Practice / Mock Test</button>
+        <button id="resetStatsBtn" class="dash-btn secondary" type="button" title="Clear your progress history">Reset Progress</button>
+      </div>
+    </div>
+
+    <!-- Active Session Banner (hidden by default) -->
+    <div id="activeSessionBanner" class="active-session-card" style="display:none;">
+      <div class="active-session-info">
+        <span class="active-tag">Active Test in Progress</span>
+        <h3 id="activeSessionTitle" class="active-title">Electrochemistry PYQ Practice</h3>
+        <p id="activeSessionMeta" class="active-meta">14 of 25 questions answered &middot; 22 mins remaining</p>
+      </div>
+      <a id="activeSessionLink" href="#" class="active-resume-btn">Resume Test &rarr;</a>
+    </div>
+
+    <!-- 4 Key Metrics -->
+    <div class="dash-metrics-grid">
+      <div class="metric-card">
+        <span class="metric-label">Questions Attempted</span>
+        <div class="metric-val" id="metricTotalQ">0</div>
+        <span class="metric-sub" id="metricTotalQSub">Across 0 chapters</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">First-Try Accuracy</span>
+        <div class="metric-val" id="metricAccuracy">--</div>
+        <span class="metric-sub" id="metricAccuracySub">0 correct on 1st attempt</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Study Time Logged</span>
+        <div class="metric-val" id="metricTime">0m</div>
+        <span class="metric-sub" id="metricTimeSub">Avg 0s per question</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Revision Bank</span>
+        <div class="metric-val" id="metricRevision">0</div>
+        <span class="metric-sub" id="metricRevisionSub">0 starred &middot; 0 mistakes</span>
+      </div>
+    </div>
+
+    <!-- Breakdown Panels: Subject Progress & Priority Revision -->
+    <div class="dash-breakdown-grid">
+      <div class="dash-panel">
+        <h3 class="panel-heading">Subject Progress</h3>
+        <div class="subject-prog-item">
+          <div class="prog-labels">
+            <span class="prog-name">Mathematics</span>
+            <span class="prog-stat" id="mathsStat">0 / 750+ PYQs (0%)</span>
+          </div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill maths" id="mathsBar" style="width:0%"></div></div>
+        </div>
+        <div class="subject-prog-item">
+          <div class="prog-labels">
+            <span class="prog-name">Physics</span>
+            <span class="prog-stat" id="physicsStat">0 / 1400+ PYQs (0%)</span>
+          </div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill physics" id="physicsBar" style="width:0%"></div></div>
+        </div>
+        <div class="subject-prog-item">
+          <div class="prog-labels">
+            <span class="prog-name">Chemistry</span>
+            <span class="prog-stat" id="chemStat">0 / 850+ PYQs (0%)</span>
+          </div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill chemistry" id="chemBar" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="dash-panel">
+        <h3 class="panel-heading">Priority Revision Areas</h3>
+        <div id="priorityList" class="priority-list">
+          <p class="empty-state">No mistakes recorded yet. Take chapter tests to identify weak areas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Big Subject Cards -->
   <div class="subject-grid">
     <!-- Mathematics -->
     <a class="subject-card maths" href="Maths/index.html">
@@ -1334,7 +2083,7 @@ body {
         <span class="meta-tag">Type Notes Workbooks</span>
       </div>
       <div class="subject-cta">
-        <span>Explore Maths Chapters</span>
+        <span>Explore Mathematics Chapters</span>
         <span class="cta-arrow">&rsaquo;</span>
       </div>
     </a>
@@ -1376,29 +2125,35 @@ body {
     </a>
   </div>
 
-  <!-- Bottom Random Test Button -->
-  <div class="random-section">
-    <button id="openRandomModal" class="random-btn" type="button">
-      <span class="random-badge">🎲 Random Test Generator</span>
-      <span class="random-title">Take a Random Chapter Test &rsaquo;</span>
-      <span class="random-desc">Surprise yourself with a random chapter from 27 topics across Physics, Chemistry, and Maths</span>
-    </button>
+  <div class="strategy-note">
+    <b>Examination Strategy:</b> Work through one question type at a time. Write key derivations in the Type Notes workbook, execute timed practice sets under Real CBT Exam conditions, and flag questions for high-yield revision before major mock tests.
   </div>
-
-  <p class="note">💡 <b>Exam Strategy:</b> Work through one question type at a time. Write your notes in the Type Notes tab, do the timed questions, and star tricky questions for quick revision before your mock tests.</p>
 </main>
 
-<!-- Modal for Random Test Selection -->
+<!-- Modal for Simulated Mock / Practice Test -->
 <div id="randomModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
     <div class="modal-header">
-      <h3 id="modalTitle">🎲 Random Test Generator</h3>
+      <h3 id="modalTitle">Simulate Examination or Practice Test</h3>
       <button id="closeRandomModal" class="modal-close" type="button" aria-label="Close dialog">&times;</button>
     </div>
-    <p class="modal-desc">Simulate actual JEE test conditions! Choose your subject, question count, and timer targets:</p>
+    <p class="modal-desc">Configure your simulated examination settings across all 27 chapter banks:</p>
     
-    <!-- 1. Subject Pool -->
-    <label class="modal-section-title">1. Choose Subject Pool:</label>
+    <!-- 1. Test Mode -->
+    <label class="modal-section-title">1. Test Mode:</label>
+    <div class="modal-pills" id="modalModePills">
+      <label class="pill-btn active">
+        <input type="radio" name="modalTestMode" value="cbt" checked>
+        <span>Real CBT Exam Simulation (+4 / &minus;1)</span>
+      </label>
+      <label class="pill-btn">
+        <input type="radio" name="modalTestMode" value="practice">
+        <span>Practice &amp; Learn Mode (Instant Check)</span>
+      </label>
+    </div>
+
+    <!-- 2. Subject Pool -->
+    <label class="modal-section-title">2. Choose Subject Pool:</label>
     <div class="pool-options">
       <label class="pool-opt active">
         <input type="radio" name="subjectPool" value="all" checked>
@@ -1418,8 +2173,8 @@ body {
       </label>
     </div>
 
-    <!-- 2. Number of Questions -->
-    <label class="modal-section-title">2. Number of Questions:</label>
+    <!-- 3. Number of Questions -->
+    <label class="modal-section-title">3. Number of Questions:</label>
     <div class="modal-pills" id="modalQPills">
       <label class="pill-btn">
         <input type="radio" name="modalQCount" value="15">
@@ -1439,12 +2194,12 @@ body {
       </label>
       <label class="pill-btn" id="pillCustomQ">
         <input type="radio" name="modalQCount" value="custom">
-        <span>Custom: <input type="number" id="modalCustomQ" min="1" max="150" value="20" style="width:50px;padding:2px 4px;font-size:13px;border-radius:4px;border:1px solid #94a3b8;text-align:center"> qs</span>
+        <span>Custom: <input type="number" id="modalCustomQ" min="1" max="150" value="20" style="width:48px;padding:2px 4px;font-size:12.5px;border-radius:4px;border:1px solid #94a3b8;text-align:center"> qs</span>
       </label>
     </div>
 
-    <!-- 3. Practice Time -->
-    <label class="modal-section-title">3. Practice Time Limit:</label>
+    <!-- 4. Practice Time Limit -->
+    <label class="modal-section-title">4. Practice Time Limit:</label>
     <div class="modal-pills" id="modalTPills">
       <label class="pill-btn">
         <input type="radio" name="modalTime" value="30">
@@ -1464,19 +2219,18 @@ body {
       </label>
       <label class="pill-btn" id="pillCustomT">
         <input type="radio" name="modalTime" value="custom">
-        <span>Custom: <input type="number" id="modalCustomT" min="5" max="360" value="45" style="width:50px;padding:2px 4px;font-size:13px;border-radius:4px;border:1px solid #94a3b8;text-align:center"> min</span>
+        <span>Custom: <input type="number" id="modalCustomT" min="5" max="360" value="45" style="width:48px;padding:2px 4px;font-size:12.5px;border-radius:4px;border:1px solid #94a3b8;text-align:center"> min</span>
       </label>
     </div>
 
-    <div class="modal-actions" style="margin-top:22px">
-      <button id="launchRandomTest" class="btn-launch" type="button">🚀 Launch Random Test</button>
+    <div class="modal-actions">
+      <button id="launchRandomTest" class="btn-launch" type="button">Start Examination</button>
       <button id="cancelRandomModal" class="btn-cancel" type="button">Cancel</button>
     </div>
   </div>
 </div>
 
 <script>
-// Available Chapters Pool
 var CHAPTER_POOL = [
   {
     "name": "Application of Derivatives",
@@ -1615,99 +2369,289 @@ var CHAPTER_POOL = [
   }
 ];
 
-// Random Test Modal Logic
-(function(){
-  var openBtn = document.getElementById('openRandomModal');
+// ==========================================================================
+// CENTRALIZED ASPIRANT DASHBOARD ENGINE
+// ==========================================================================
+function loadDashboardStats() {
+  if (!CHAPTER_POOL || !CHAPTER_POOL.length) return;
+  var totalAttempted = 0;
+  var totalCorrectFirst = 0;
+  var totalChecked = 0;
+  var totalTimeSec = 0;
+  var totalStarred = 0;
+  var totalMistakes = 0;
+  var chaptersPracticed = 0;
+  var subjStats = {
+    Maths: { attempted: 0, total: 750 },
+    Physics: { attempted: 0, total: 1400 },
+    Chemistry: { attempted: 0, total: 850 }
+  };
+  var activeSession = null;
+  var weakChapters = [];
+
+  CHAPTER_POOL.forEach(function(ch) {
+    var id = ch.name + ' PYQ Test';
+    var kh = 'pyqh_' + id;
+    var ks = 'pyq_' + id;
+    var kt = 'pyqs_' + id;
+    var kw = 'pyqw_' + id;
+
+    // 1. Check Active Session
+    if (!activeSession) {
+      try {
+        var pend = JSON.parse(localStorage.getItem(ks));
+        if (pend && pend.started && !pend.submitted && pend.NS && pend.NS.length) {
+          var doneCount = Object.keys(pend.S || {}).length;
+          var leftSec = pend.LIMIT ? Math.max(0, pend.LIMIT - (pend.total || 0)) : null;
+          activeSession = {
+            name: ch.name,
+            subject: ch.subject,
+            url: ch.url,
+            done: doneCount,
+            total: pend.NS.length,
+            leftSec: leftSec
+          };
+        }
+      } catch(e) {}
+    }
+
+    // 2. Check Starred Questions
+    try {
+      var stars = JSON.parse(localStorage.getItem(kt) || '{}');
+      totalStarred += Object.keys(stars).length;
+    } catch(e) {}
+
+    // 3. Check Mistakes Registry
+    try {
+      var wr = JSON.parse(localStorage.getItem(kw) || '{}');
+      var wrCount = Object.keys(wr).length;
+      totalMistakes += wrCount;
+      if (wrCount > 0) {
+        weakChapters.push({ name: ch.name, subject: ch.subject, url: ch.url, count: wrCount });
+      }
+    } catch(e) {}
+
+    // 4. Check Attempt History
+    try {
+      var hist = JSON.parse(localStorage.getItem(kh) || '[]');
+      if (hist && hist.length > 0) {
+        chaptersPracticed++;
+        var chAttempted = {};
+        hist.forEach(function(att) {
+          totalTimeSec += (att.total || 0);
+          (att.NS || []).forEach(function(qn) {
+            if (att.S && att.S[qn]) chAttempted[qn] = 1;
+          });
+          // Check accuracy
+          if (att.isCBT && typeof att.correct === 'number') {
+            totalChecked += (att.correct + (att.wrong || 0));
+            totalCorrectFirst += att.correct;
+          } else if (att.X) {
+            Object.keys(att.X).forEach(function(qn) {
+              var rec = att.X[qn];
+              if (rec && rec.k) {
+                totalChecked++;
+                if (rec.f === 'r') totalCorrectFirst++;
+              }
+            });
+          }
+        });
+        var attCount = Object.keys(chAttempted).length;
+        totalAttempted += attCount;
+        if (subjStats[ch.subject]) {
+          subjStats[ch.subject].attempted += attCount;
+        }
+      }
+    } catch(e) {}
+  });
+
+  // Update UI Elements
+  // Active Banner
+  var actBanner = document.getElementById('activeSessionBanner');
+  if (actBanner) {
+    if (activeSession) {
+      actBanner.style.display = 'flex';
+      document.getElementById('activeSessionTitle').textContent = activeSession.name + ' (' + activeSession.subject + ')';
+      var timeMsg = activeSession.leftSec !== null ? Math.round(activeSession.leftSec / 60) + ' mins remaining' : 'No time limit';
+      document.getElementById('activeSessionMeta').textContent = activeSession.done + ' of ' + activeSession.total + ' questions answered &middot; ' + timeMsg;
+      document.getElementById('activeSessionLink').href = encodeURI(activeSession.url);
+    } else {
+      actBanner.style.display = 'none';
+    }
+  }
+
+  // 4 Metrics
+  document.getElementById('metricTotalQ').textContent = totalAttempted;
+  document.getElementById('metricTotalQSub').textContent = 'Across ' + chaptersPracticed + ' of 27 chapters';
+
+  var accVal = totalChecked > 0 ? Math.round((totalCorrectFirst / totalChecked) * 100) + '%' : '--';
+  document.getElementById('metricAccuracy').textContent = accVal;
+  document.getElementById('metricAccuracySub').textContent = totalCorrectFirst + ' correct of ' + totalChecked + ' evaluated';
+
+  var h = Math.floor(totalTimeSec / 3600);
+  var m = Math.floor((totalTimeSec % 3600) / 60);
+  var timeStr = h > 0 ? (h + 'h ' + m + 'm') : (m + 'm');
+  document.getElementById('metricTime').textContent = timeStr;
+  var avgSec = totalAttempted > 0 ? Math.round(totalTimeSec / totalAttempted) : 0;
+  document.getElementById('metricTimeSub').textContent = 'Avg ' + (avgSec > 60 ? Math.round(avgSec/60)+'m' : avgSec+'s') + ' per question';
+
+  document.getElementById('metricRevision').textContent = (totalStarred + totalMistakes);
+  document.getElementById('metricRevisionSub').textContent = totalStarred + ' starred &middot; ' + totalMistakes + ' mistakes';
+
+  // Subject Progress Bars
+  ['Maths', 'Physics', 'Chemistry'].forEach(function(s) {
+    var st = subjStats[s];
+    var pct = Math.min(100, Math.round((st.attempted / st.total) * 100));
+    var statEl = document.getElementById(s === 'Maths' ? 'mathsStat' : (s === 'Physics' ? 'physicsStat' : 'chemStat'));
+    var barEl = document.getElementById(s === 'Maths' ? 'mathsBar' : (s === 'Physics' ? 'physicsBar' : 'chemBar'));
+    if (statEl) statEl.textContent = st.attempted + ' / ' + st.total + '+ PYQs (' + pct + '%)';
+    if (barEl) barEl.style.width = pct + '%';
+  });
+
+  // Priority Revision Areas
+  var pList = document.getElementById('priorityList');
+  if (pList) {
+    if (weakChapters.length > 0) {
+      weakChapters.sort(function(a, b) { return b.count - a.count; });
+      var html = '';
+      weakChapters.slice(0, 4).forEach(function(item) {
+        html += '<a class="priority-item" href="' + encodeURI(item.url) + '?filter=wrong">' +
+          '<span class="priority-ch-name">' + item.name + '</span>' +
+          '<span class="priority-badge">' + item.count + ' mistakes</span></a>';
+      });
+      pList.innerHTML = html;
+    } else {
+      pList.innerHTML = '<p class="empty-state">Zero unresolved mistakes recorded. Practice chapters under CBT conditions to track weak areas.</p>';
+    }
+  }
+}
+
+// Reset Progress Handler
+document.getElementById('resetStatsBtn').onclick = function() {
+  if (confirm('Reset your practice history and dashboard stats across all chapters?\n\nThis will clear saved attempts and mistake logs, but your starred questions will be kept.')) {
+    CHAPTER_POOL.forEach(function(ch) {
+      var id = ch.name + ' PYQ Test';
+      localStorage.removeItem('pyqh_' + id);
+      localStorage.removeItem('pyq_' + id);
+      localStorage.removeItem('pyqw_' + id);
+    });
+    loadDashboardStats();
+    alert('Practice stats have been reset.');
+  }
+};
+
+// ==========================================================================
+// MODAL CONTROLS & TEST LAUNCHER
+// ==========================================================================
+(function() {
   var modal = document.getElementById('randomModal');
+  var openBtn = document.getElementById('openRandomModal');
   var closeBtn = document.getElementById('closeRandomModal');
   var cancelBtn = document.getElementById('cancelRandomModal');
   var launchBtn = document.getElementById('launchRandomTest');
-  var opts = document.querySelectorAll('.pool-opt');
 
-  function openModal() { modal.classList.add('open'); }
-  function closeModal() { modal.classList.remove('open'); }
+  function openM() {
+    if (modal) modal.classList.add('open');
+  }
+  function closeM() {
+    if (modal) modal.classList.remove('open');
+  }
 
-  if (openBtn) openBtn.onclick = openModal;
-  if (closeBtn) closeBtn.onclick = closeModal;
-  if (cancelBtn) cancelBtn.onclick = closeModal;
+  if (openBtn) openBtn.onclick = openM;
+  if (closeBtn) closeBtn.onclick = closeM;
+  if (cancelBtn) cancelBtn.onclick = closeM;
 
-  modal.onclick = function(e) {
-    if (e.target === modal) closeModal();
-  };
-
-  opts.forEach(function(opt) {
-    opt.onclick = function() {
-      opts.forEach(function(o){ o.classList.remove('active'); });
-      opt.classList.add('active');
-      var r = opt.querySelector('input');
-      if (r) r.checked = true;
+  if (modal) {
+    modal.onclick = function(e) {
+      if (e.target === modal) closeM();
     };
-  });
+  }
 
-  // Pill selection listeners for QCount and Time
-  function setupPillGroup(containerId, inputName) {
-    var c = document.getElementById(containerId);
-    if (!c) return;
-    var labels = c.querySelectorAll('.pill-btn');
-    labels.forEach(function(lbl){
-      lbl.onclick = function(){
-        labels.forEach(function(l){ l.classList.remove('active'); });
-        lbl.classList.add('active');
-        var rad = lbl.querySelector('input[type=radio]');
+  // Generic Pill Selector Helper
+  function bindPillGroup(containerId) {
+    var box = document.getElementById(containerId);
+    if (!box) return;
+    var pills = box.querySelectorAll('.pill-btn');
+    pills.forEach(function(pill) {
+      pill.onclick = function() {
+        pills.forEach(function(p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+        var rad = pill.querySelector('input[type=radio]');
         if (rad) rad.checked = true;
       };
     });
   }
-  setupPillGroup('modalQPills', 'modalQCount');
-  setupPillGroup('modalTPills', 'modalTime');
 
-  var qIn = document.getElementById('modalCustomQ');
-  if (qIn) {
-    qIn.onfocus = function(){
+  bindPillGroup('modalModePills');
+  bindPillGroup('modalQPills');
+  bindPillGroup('modalTPills');
+
+  // Custom Input Focus
+  var customQIn = document.getElementById('modalCustomQ');
+  if (customQIn) {
+    customQIn.onfocus = function() {
       var p = document.getElementById('pillCustomQ');
       if (p) p.click();
     };
   }
-  var tIn = document.getElementById('modalCustomT');
-  if (tIn) {
-    tIn.onfocus = function(){
+  var customTIn = document.getElementById('modalCustomT');
+  if (customTIn) {
+    customTIn.onfocus = function() {
       var p = document.getElementById('pillCustomT');
       if (p) p.click();
     };
   }
 
+  // Pool Radio Options
+  var poolOpts = document.querySelectorAll('.pool-opt');
+  poolOpts.forEach(function(opt) {
+    opt.onclick = function() {
+      poolOpts.forEach(function(o) { o.classList.remove('active'); });
+      opt.classList.add('active');
+      var rad = opt.querySelector('input[type=radio]');
+      if (rad) rad.checked = true;
+    };
+  });
+
+  // Launch Test
   if (launchBtn) {
     launchBtn.onclick = function() {
-      var sel = document.querySelector('input[name="subjectPool"]:checked');
-      var poolVal = sel ? sel.value : 'all';
-      var eligible = CHAPTER_POOL;
-      if (poolVal !== 'all') {
-        eligible = CHAPTER_POOL.filter(function(c){ return c.subject === poolVal; });
-      }
-      if (!eligible.length) eligible = CHAPTER_POOL;
-      var picked = eligible[Math.floor(Math.random() * eligible.length)];
+      var poolRad = document.querySelector('input[name="subjectPool"]:checked');
+      var poolVal = poolRad ? poolRad.value : 'all';
 
-      // Read question count
+      var filtered = CHAPTER_POOL.filter(function(ch) {
+        return poolVal === 'all' || ch.subject === poolVal;
+      });
+
+      if (!filtered.length) {
+        alert('No chapters found for the selected subject.');
+        return;
+      }
+
+      var picked = filtered[Math.floor(Math.random() * filtered.length)];
+
       var qRad = document.querySelector('input[name="modalQCount"]:checked');
       var qVal = qRad ? qRad.value : '25';
       if (qVal === 'custom') {
-        qVal = (qIn && qIn.value) ? qIn.value : '25';
+        qVal = (customQIn && customQIn.value) ? customQIn.value : '20';
       }
 
-      // Read time
       var tRad = document.querySelector('input[name="modalTime"]:checked');
       var tVal = tRad ? tRad.value : '60';
       if (tVal === 'custom') {
-        tVal = (tIn && tIn.value) ? tIn.value : '60';
+        tVal = (customTIn && customTIn.value) ? customTIn.value : '45';
       }
 
-      var targetUrl = encodeURI(picked.url) + '?q=' + encodeURIComponent(qVal) + '&t=' + encodeURIComponent(tVal) + '&autostart=1';
+      var modeRad = document.querySelector('input[name="modalTestMode"]:checked');
+      var modeVal = modeRad ? modeRad.value : 'cbt';
+
+      var targetUrl = encodeURI(picked.url) + '?q=' + encodeURIComponent(qVal) + '&t=' + encodeURIComponent(tVal) + '&mode=' + encodeURIComponent(modeVal) + '&autostart=1';
       window.location.href = targetUrl;
     };
   }
 })();
 
-// Dark Mode Toggle Logic
+// Theme Toggle
 function initThemeToggle() {
   function applyTheme(dark) {
     if (dark) {
@@ -1719,7 +2663,7 @@ function initThemeToggle() {
     }
     var btns = document.querySelectorAll('.theme-btn');
     btns.forEach(function(b) {
-      b.innerHTML = dark ? '☀️ Light' : '🌙 Dark';
+      b.innerHTML = dark ? 'Light' : 'Dark';
     });
   }
   var isDark = localStorage.getItem('jee_theme') === 'dark' || 
@@ -1733,10 +2677,15 @@ function initThemeToggle() {
     }
   });
 }
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initThemeToggle);
+  document.addEventListener('DOMContentLoaded', function() {
+    initThemeToggle();
+    loadDashboardStats();
+  });
 } else {
   initThemeToggle();
+  loadDashboardStats();
 }
 </script>
 </body>

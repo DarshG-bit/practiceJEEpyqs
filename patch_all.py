@@ -350,7 +350,7 @@ DARK_MODE_CSS = """
 }
 
 [data-theme="dark"] a {
-  color: #60a5fa !important;
+  color: #3b82f6 !important;
 }
 
 /* 1. START PANEL & GENERAL PANELS */
@@ -367,7 +367,7 @@ DARK_MODE_CSS = """
 
 [data-theme="dark"] .panel h2,
 [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .banner {
@@ -1204,7 +1204,432 @@ body {
 [data-theme="dark"] .theme-btn:hover {
   background: #222222;
 }
-"""
+
+
+/* ==========================================================================
+   CBT EXAM MODE & VISUAL MODERNIZATION STYLING
+   ========================================================================== */
+.mode-card.active {
+  border-color: #2563eb !important;
+  background: #eff6ff !important;
+}
+.mode-card {
+  user-select: none;
+}
+[data-theme="dark"] .mode-card {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+[data-theme="dark"] #mode_card_cbt.active {
+  background: #081a36 !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] #mode_card_practice.active {
+  background: #18181b !important;
+  border-color: #3f3f46 !important;
+}
+[data-theme="dark"] .mode-card div div:first-child span:first-child {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .mode-card div div:last-child {
+  color: #94a3b8 !important;
+}
+
+/* Exam Progress Bar at Top */
+#examProgressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: #2563eb;
+  width: 0%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  z-index: 100;
+}
+[data-theme="dark"] #examProgressBar {
+  background: #3b82f6;
+}
+
+/* CBT Mode Palette Styling (Official NTA JEE Colors) */
+.cbt-mode .chk {
+  display: none !important;
+}
+.cbt-mode #savecur {
+  display: none !important;
+}
+.cbt-mode #nav button.an {
+  background: #16a34a !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+}
+.cbt-mode #nav button.na {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+}
+.cbt-mode #nav button.nv {
+  background: #e2e8f0 !important;
+  color: #475569 !important;
+  border-radius: 4px !important;
+}
+[data-theme="dark"] .cbt-mode #nav button.nv {
+  background: #1c1c1f !important;
+  color: #94a3b8 !important;
+  border-color: #2a2a2e !important;
+}
+.cbt-mode #nav button.mk {
+  background: #9333ea !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+}
+.cbt-mode #nav button.am {
+  background: #9333ea !important;
+  color: #ffffff !important;
+  position: relative !important;
+  border-radius: 50% !important;
+}
+.cbt-mode #nav button.am::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 7px;
+  height: 7px;
+  background: #16a34a;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+}
+
+/* Option Elimination (Right click / Alt click) */
+.o.eliminated {
+  opacity: 0.35 !important;
+  text-decoration: line-through !important;
+  pointer-events: auto !important;
+  background: rgba(0,0,0,0.04) !important;
+}
+[data-theme="dark"] .o.eliminated {
+  background: rgba(255,255,255,0.04) !important;
+}
+
+/* Enhanced Post-Exam Scorecard & Review Cards */
+.cbt-scorecard {
+  margin: 10px 0 30px;
+}
+.cbt-score-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+[data-theme="dark"] .cbt-score-hero {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.cbt-score-left {
+  flex: 1;
+  min-width: 260px;
+}
+.cbt-score-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+[data-theme="dark"] .cbt-score-tag {
+  background: #081a36 !important;
+  color: #60a5fa !important;
+}
+.cbt-score-title {
+  margin: 10px 0 4px;
+  font-size: 24px;
+  font-weight: 800;
+}
+[data-theme="dark"] .cbt-score-title {
+  color: #ffffff !important;
+}
+.cbt-score-meta {
+  color: #64748b;
+  font-size: 13px;
+  margin: 0;
+}
+[data-theme="dark"] .cbt-score-meta {
+  color: #94a3b8 !important;
+}
+.cbt-big-score {
+  font-size: 34px;
+  font-weight: 900;
+  color: #16a34a;
+}
+.cbt-big-score.neg {
+  color: #ef4444;
+}
+.cbt-big-score small {
+  font-size: 18px;
+  font-weight: 500;
+  color: #64748b;
+}
+[data-theme="dark"] .cbt-big-score small {
+  color: #94a3b8 !important;
+}
+
+/* SVG Donut Chart */
+.cbt-donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cbt-donut-svg {
+  width: 95px;
+  height: 95px;
+  transform: rotate(-90deg);
+}
+.cbt-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+[data-theme="dark"] .cbt-donut-legend {
+  color: #cbd5e1 !important;
+}
+.cbt-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cbt-donut-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+/* Metrics Grid */
+.cbt-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.cbt-metric-item {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+[data-theme="dark"] .cbt-metric-item {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.cbt-metric-lbl {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+[data-theme="dark"] .cbt-metric-lbl {
+  color: #94a3b8 !important;
+}
+.cbt-metric-num {
+  font-size: 20px;
+  font-weight: 800;
+}
+[data-theme="dark"] .cbt-metric-num {
+  color: #ffffff !important;
+}
+
+/* Question Review Filters */
+.review-filter-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.rf-pill {
+  border: 1px solid var(--border, #cbd5e1);
+  background: var(--surface, #f8fafc);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: inherit;
+}
+[data-theme="dark"] .rf-pill {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #94a3b8 !important;
+}
+.rf-pill.active {
+  border-color: #2563eb !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+.review-card {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+[data-theme="dark"] .review-card {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.review-pill {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.review-pill.corr {
+  background: #dcfce7;
+  color: #15803d;
+}
+.review-pill.inc {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.review-pill.unatt {
+  background: #f1f5f9;
+  color: #64748b;
+}
+[data-theme="dark"] .review-pill.corr {
+  background: #052e16;
+  color: #4ade80;
+}
+[data-theme="dark"] .review-pill.inc {
+  background: #450a0a;
+  color: #f87171;
+}
+[data-theme="dark"] .review-pill.unatt {
+  background: #18181b;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .review-answers-box {
+  background: #111114 !important;
+  color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#f8fafc"] {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#dcfce7"] {
+  background: #052e16 !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#fee2e2"] {
+  background: #450a0a !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+/* Modals (CBT Submit & Hotkeys) */
+.cbt-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+  backdrop-filter: blur(2px);
+}
+.cbt-modal-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .cbt-modal-box {
+  background: #0a0a0c !important;
+  border-color: #27272a !important;
+  color: #ffffff !important;
+}
+.cbt-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 20px;
+  font-size: 14px;
+}
+.cbt-summary-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #e2e8f0;
+}
+[data-theme="dark"] .cbt-summary-table td {
+  border-bottom-color: #222224 !important;
+}
+.cbt-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+.cbt-dot.green { background: #16a34a; }
+.cbt-dot.red { background: #ef4444; }
+.cbt-dot.purple { background: #9333ea; }
+.cbt-dot.purple-green { background: #9333ea; border: 2px solid #16a34a; }
+.cbt-dot.gray { background: #94a3b8; }
+
+/* Hotkeys Modal */
+.hotkeys-table {
+  width: 100%;
+  font-size: 13px;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.hotkeys-table td {
+  padding: 6px 4px;
+  border-bottom: 1px solid #e2e8f0;
+}
+[data-theme="dark"] .hotkeys-table td {
+  border-bottom-color: #222224 !important;
+}
+.kbd-key {
+  display: inline-block;
+  padding: 2px 7px;
+  font-family: monospace;
+  font-size: 12px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  color: #0f172a;
+}
+[data-theme="dark"] .kbd-key {
+  background: #18181b !important;
+  border-color: #3f3f46 !important;
+  color: #ffffff !important;
+}"""
 
 THEME_TOGGLE_JS = """
 <script>
@@ -1311,7 +1736,35 @@ def patch_dark_mode(content):
 # -------------------------------------------------------------
 # 6. QUESTION COUNT SELECTION & TIMED SAMPLING
 # -------------------------------------------------------------
-QCOUNT_HTML = """<label>Number of questions</label>
+# -------------------------------------------------------------
+# 6. CBT EXAM MODE & QUESTION COUNT SELECTION
+# -------------------------------------------------------------
+TEST_MODE_AND_QCOUNT_HTML = """<label>Test &amp; Practice Mode</label>
+<div class="tbox" id="test_mode_box" style="margin-bottom:14px;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;">
+    <label class="mode-card active" id="mode_card_cbt" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid #2563eb;border-radius:10px;background:#eff6ff;cursor:pointer;transition:all 0.15s ease;">
+      <input type="radio" name="test_mode" value="cbt" checked style="margin-top:3px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:#1e40af;">
+          <span>Real CBT Exam Mode</span>
+          <span style="font-size:11px;background:#2563eb;color:#ffffff;padding:1px 6px;border-radius:4px;font-weight:600;">NTA Pattern</span>
+        </div>
+        <div style="font-size:12.5px;color:#475569;margin-top:3px;line-height:1.4;">Official test conditions. No instant answers or solutions. Marking: +4 / &minus;1. Full score breakdown post-submission.</div>
+      </div>
+    </label>
+    <label class="mode-card" id="mode_card_practice" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid #cbd5e1;border-radius:10px;background:#f8fafc;cursor:pointer;transition:all 0.15s ease;">
+      <input type="radio" name="test_mode" value="practice" style="margin-top:3px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:#334155;">
+          <span>Practice &amp; Learn Mode</span>
+          <span style="font-size:11px;background:#64748b;color:#ffffff;padding:1px 6px;border-radius:4px;font-weight:600;">Interactive</span>
+        </div>
+        <div style="font-size:12.5px;color:#475569;margin-top:3px;line-height:1.4;">Check answers per question instantly, retry wrong options, and inspect solutions anytime during practice.</div>
+      </div>
+    </label>
+  </div>
+</div>
+<label>Number of questions</label>
 <div class="tbox" id="qcount_box">
   <label class="rad"><input type="radio" name="qc_mode" value="all" checked> <span>All selected questions (<span id="total_q_avail">0</span> available)</span></label>
   <label class="rad" style="margin-top:6px;"><input type="radio" name="qc_mode" value="custom"> <span>Random sample of:</span></label>
@@ -1327,203 +1780,35 @@ QCOUNT_HTML = """<label>Number of questions</label>
   <div class="tnote" id="qc_note" style="margin-left:26px;margin-top:4px;">Questions will be picked uniformly at random from your selected types/filters.</div>
 </div>"""
 
-NEW_SUG_JS = """function sug(){refreshTypes();var l=scopeList(),n=l.length,e=META.exp||{},ss=$('selsum');
- var qTotSpan=$('total_q_avail');if(qTotSpan)qTotSpan.textContent=n;
- var qcMode=document.querySelector('input[name=qc_mode]:checked');
- var isCustom=qcMode&&qcMode.value==='custom';
- var cIn=$('custom_qc');
- var cnum=isCustom?(parseInt(cIn?cIn.value:25)||25):n;
- var effN=Math.min(cnum,n);
- var avgSec=n?(sumExp(l)/n):120;
- var totalSec=isCustom?Math.round(avgSec*effN):sumExp(l);
- var m=Math.max(1,Math.round(totalSec/60));
- $('mins').value=m;$('go').disabled=!n;
- if(n){
-  ss.className='selsum';
-  if(isCustom&&effN<n){
-   ss.innerHTML='<b>'+effN+' of '+n+' questions selected (Random Sample)</b> &middot; about '+durTxt(totalSec);
-  }else{
-   ss.innerHTML='<b>'+n+' question'+(n>1?'s':'')+' selected</b> &middot; about '+durTxt(sumExp(l));
-  }
- }else{
-  ss.className='selsum warn';ss.innerHTML='<b>No questions match your choices.</b><br>Tick at least one question type, and at least one difficulty level and one format.';
- }
- if(n){
-  var s=isCustom?
-   ('Suggested for '+effN+' sampled questions (from '+n+' available): '+durTxt(totalSec)):
-   ('Suggested for '+n+' question'+(n>1?'s':'')+': '+durTxt(sumExp(l)));
-  s+=', adding up the expected time of each question (Easy '+fm(e.E||0)+', Medium '+fm(e.M||0)+', Difficult '+fm(e.D||0)+'). You can change it.';
-  $('sug').textContent=s;
- }else{
-  $('sug').textContent='Choose your questions above first.';
- }
-}"""
-
-NEW_GO_JS = """$('go').onclick=function(){NS=scopeList();if(!NS.length)return;
- var qcMode=document.querySelector('input[name=qc_mode]:checked');
- if(qcMode&&qcMode.value==='custom'){
-  var cIn=$('custom_qc');
-  var cnum=parseInt(cIn?cIn.value:25)||25;
-  if(cnum<NS.length){
-   var shuffled=NS.slice();
-   for(var i=shuffled.length-1;i>0;i--){
-    var j=Math.floor(Math.random()*(i+1));
-    var tmp=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=tmp;
-   }
-   NS=shuffled.slice(0,cnum);
-   NS.sort(function(a,b){return parseInt(a)-parseInt(b);});
-  }
- }
- label=scopeLabel()+' ('+NS.length+')';S={};M={};V={};T={};C={};X={};total=0;cur=NS[0];
- var tmode=document.querySelector('input[name=tm]:checked').value;LIMIT=tmode=='free'?0:Math.max(60,Math.round(parseFloat($('mins').value||0)*60));started=true;enter()};"""
-
-INIT_QCOUNT_SCRIPT = """<script>
-(function(){
-  function initQCount(){
-    var qcRadios = document.querySelectorAll('input[name=qc_mode]');
-    var customQcIn = document.getElementById('custom_qc');
-    var presets = document.querySelectorAll('.qpreset');
-
-    function updatePresetButtons(val) {
-      presets.forEach(function(btn){
-        if(btn.dataset.q === String(val)) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-    }
-
-    presets.forEach(function(btn){
-      btn.onclick = function(){
-        var q = btn.dataset.q;
-        if (customQcIn) customQcIn.value = q;
-        var rad = document.querySelector('input[name=qc_mode][value=custom]');
-        if (rad) rad.checked = true;
-        updatePresetButtons(q);
-        if (typeof sug === 'function') sug();
-      };
-    });
-
-    qcRadios.forEach(function(r){
-      r.onchange = function(){
-        if (r.value === 'all') {
-          presets.forEach(function(b){ b.classList.remove('active'); });
-        } else {
-          if (customQcIn) updatePresetButtons(customQcIn.value);
-        }
-        if (typeof sug === 'function') sug();
-      };
-    });
-
-    if (customQcIn) {
-      customQcIn.onfocus = function(){
-        var rad = document.querySelector('input[name=qc_mode][value=custom]');
-        if (rad) rad.checked = true;
-        updatePresetButtons(customQcIn.value);
-        if (typeof sug === 'function') sug();
-      };
-      customQcIn.oninput = function(){
-        var rad = document.querySelector('input[name=qc_mode][value=custom]');
-        if (rad) rad.checked = true;
-        updatePresetButtons(customQcIn.value);
-        if (typeof sug === 'function') sug();
-      };
-    }
-
-    // URL Query Parameters Handling: ?q=25&t=45&autostart=1
-    var params = new URLSearchParams(window.location.search);
-    var qParam = params.get('q');
-    var tParam = params.get('t');
-    var auto = params.get('autostart');
-
-    if (qParam) {
-      if (qParam === 'all') {
-        var radAll = document.querySelector('input[name=qc_mode][value=all]');
-        if (radAll) radAll.checked = true;
-        presets.forEach(function(b){ b.classList.remove('active'); });
-      } else {
-        var qNum = parseInt(qParam);
-        if (!isNaN(qNum) && qNum > 0) {
-          if (customQcIn) customQcIn.value = qNum;
-          var radCust = document.querySelector('input[name=qc_mode][value=custom]');
-          if (radCust) radCust.checked = true;
-          updatePresetButtons(qNum);
-        }
-      }
-    }
-
-    if (typeof sug === 'function') sug();
-
-    if (tParam) {
-      if (tParam === 'free') {
-        var radFree = document.querySelector('input[name=tm][value=free]');
-        if (radFree) radFree.checked = true;
-      } else {
-        var tNum = parseFloat(tParam);
-        if (!isNaN(tNum) && tNum > 0) {
-          var radTimed = document.querySelector('input[name=tm][value=timed]');
-          if (radTimed) radTimed.checked = true;
-          var minsIn = document.getElementById('mins');
-          if (minsIn) minsIn.value = tNum;
-        }
-      }
-    }
-
-    if (auto === '1') {
-      setTimeout(function(){
-        var goBtn = document.getElementById('go');
-        if (goBtn && !goBtn.disabled) {
-          goBtn.click();
-        }
-      }, 220);
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initQCount);
-  } else {
-    initQCount();
-  }
-})();
-</script>"""
+ENHANCED_PRACTICE_SCRIPT = '<script>\n(function(){\n  // 1. Mode and Q-Count Controller\n  var modeCards = document.querySelectorAll(\'.mode-card\');\n  var qcRadios = document.querySelectorAll(\'input[name=qc_mode]\');\n  var customQcIn = document.getElementById(\'custom_qc\');\n  var presets = document.querySelectorAll(\'.qpreset\');\n\n  function updatePresetButtons(val) {\n    presets.forEach(function(btn){\n      if(btn.dataset.q === String(val)) {\n        btn.classList.add(\'active\');\n      } else {\n        btn.classList.remove(\'active\');\n      }\n    });\n  }\n\n  presets.forEach(function(btn){\n    btn.onclick = function(){\n      var q = btn.dataset.q;\n      if (customQcIn) customQcIn.value = q;\n      var rad = document.querySelector(\'input[name=qc_mode][value=custom]\');\n      if (rad) rad.checked = true;\n      updatePresetButtons(q);\n      if (typeof sug === \'function\') sug();\n    };\n  });\n\n  qcRadios.forEach(function(r){\n    r.onchange = function(){\n      if (r.value === \'all\') {\n        presets.forEach(function(b){ b.classList.remove(\'active\'); });\n      } else {\n        if (customQcIn) updatePresetButtons(customQcIn.value);\n      }\n      if (typeof sug === \'function\') sug();\n    };\n  });\n\n  if (customQcIn) {\n    customQcIn.onfocus = function(){\n      var rad = document.querySelector(\'input[name=qc_mode][value=custom]\');\n      if (rad) rad.checked = true;\n      updatePresetButtons(customQcIn.value);\n      if (typeof sug === \'function\') sug();\n    };\n    customQcIn.oninput = function(){\n      var rad = document.querySelector(\'input[name=qc_mode][value=custom]\');\n      if (rad) rad.checked = true;\n      updatePresetButtons(customQcIn.value);\n      if (typeof sug === \'function\') sug();\n    };\n  }\n\n  // Mode Cards Selection\n  modeCards.forEach(function(card){\n    card.onclick = function(){\n      modeCards.forEach(function(c){ c.classList.remove(\'active\'); });\n      card.classList.add(\'active\');\n      var rad = card.querySelector(\'input[type=radio]\');\n      if (rad) rad.checked = true;\n    };\n  });\n\n  // URL Query Parameters Handling (autostart, mode, filter, q, t)\n  function handleUrlParams() {\n    var params = new URLSearchParams(window.location.search);\n    var mode = params.get(\'mode\');\n    if (mode === \'practice\') {\n      var pCard = document.getElementById(\'mode_card_practice\');\n      if (pCard) pCard.click();\n    } else if (mode === \'cbt\') {\n      var cCard = document.getElementById(\'mode_card_cbt\');\n      if (cCard) cCard.click();\n    }\n\n    var filter = params.get(\'filter\');\n    if (filter === \'wrong\') {\n      var wBox = document.getElementById(\'onlywrong\');\n      if (wBox) { wBox.checked = true; if (typeof sug === \'function\') sug(); }\n    } else if (filter === \'star\') {\n      var sBox = document.getElementById(\'onlystar\');\n      if (sBox) { sBox.checked = true; if (typeof sug === \'function\') sug(); }\n    }\n\n    var qParam = params.get(\'q\');\n    if (qParam) {\n      if (qParam === \'all\') {\n        var aRad = document.querySelector(\'input[name=qc_mode][value=all]\');\n        if (aRad) aRad.checked = true;\n        presets.forEach(function(b){ b.classList.remove(\'active\'); });\n      } else {\n        var num = parseInt(qParam);\n        if (num > 0) {\n          if (customQcIn) customQcIn.value = num;\n          var cRad = document.querySelector(\'input[name=qc_mode][value=custom]\');\n          if (cRad) cRad.checked = true;\n          updatePresetButtons(num);\n        }\n      }\n      if (typeof sug === \'function\') sug();\n    }\n\n    var tParam = params.get(\'t\');\n    if (tParam) {\n      if (tParam === \'free\') {\n        var fRad = document.querySelector(\'input[name=tm][value=free]\');\n        if (fRad) fRad.checked = true;\n      } else {\n        var tnum = parseInt(tParam);\n        if (tnum > 0) {\n          var tRad = document.querySelector(\'input[name=tm][value=timed]\');\n          if (tRad) tRad.checked = true;\n          var mIn = document.getElementById(\'mins\');\n          if (mIn) mIn.value = tnum;\n        }\n      }\n    }\n\n    if (params.get(\'autostart\') === \'1\') {\n      setTimeout(function(){\n        var goBtn = document.getElementById(\'go\');\n        if (goBtn && !goBtn.disabled) goBtn.click();\n      }, 200);\n    }\n  }\n\n  handleUrlParams();\n\n  // 2. Fullscreen & Header Controls Setup\n  var examEl = document.getElementById(\'exam\');\n  if (examEl) {\n    // Inject Progress Bar\n    var pBar = document.createElement(\'div\');\n    pBar.id = \'examProgressBar\';\n    examEl.appendChild(pBar);\n\n    var topEl = examEl.querySelector(\'.top\');\n    if (topEl) {\n      topEl.style.position = \'relative\';\n\n      var badge = document.createElement(\'span\');\n      badge.id = \'examModeBadge\';\n      badge.style.cssText = \'font-size:12px;font-weight:700;padding:3px 8px;border-radius:4px;background:#2563eb;color:#ffffff;margin-left:12px;white-space:nowrap;\';\n      badge.textContent = \'CBT Mode\';\n      topEl.insertBefore(badge, topEl.querySelector(\'.tm\'));\n\n      var fsBtn = document.createElement(\'button\');\n      fsBtn.className = \'btn\';\n      fsBtn.id = \'btnFullscreen\';\n      fsBtn.type = \'button\';\n      fsBtn.title = \'Toggle Fullscreen Mode (Hotkey: F)\';\n      fsBtn.style.cssText = \'margin-left:auto;margin-right:8px;font-size:13px;padding:5px 10px;\';\n      fsBtn.textContent = \'Fullscreen\';\n      fsBtn.onclick = function() {\n        if (!document.fullscreenElement) {\n          document.documentElement.requestFullscreen().catch(function(){});\n          fsBtn.textContent = \'Exit Fullscreen\';\n        } else {\n          if (document.exitFullscreen) document.exitFullscreen();\n          fsBtn.textContent = \'Fullscreen\';\n        }\n      };\n      topEl.insertBefore(fsBtn, topEl.querySelector(\'#submit\'));\n\n      var hkBtn = document.createElement(\'button\');\n      hkBtn.className = \'btn\';\n      hkBtn.id = \'btnHotkeys\';\n      hkBtn.type = \'button\';\n      hkBtn.title = \'Keyboard Shortcuts (Hotkey: ?)\';\n      hkBtn.style.cssText = \'font-size:13px;padding:5px 9px;margin-right:8px;\';\n      hkBtn.textContent = \'⌨\';\n      hkBtn.onclick = function() {\n        var modal = document.getElementById(\'hotkeysModal\');\n        if (modal) modal.style.display = modal.style.display === \'flex\' ? \'none\' : \'flex\';\n      };\n      topEl.insertBefore(hkBtn, topEl.querySelector(\'#submit\'));\n    }\n\n    // Inject Hotkeys Dialog\n    var hkModal = document.createElement(\'div\');\n    hkModal.id = \'hotkeysModal\';\n    hkModal.className = \'cbt-modal-backdrop\';\n    hkModal.style.display = \'none\';\n    hkModal.innerHTML = \'<div class="cbt-modal-box">\' +\n      \'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">\' +\n        \'<h3 style="margin:0;font-size:18px;">Keyboard Shortcuts</h3>\' +\n        \'<button type="button" class="btn" onclick="document.getElementById(\\\'hotkeysModal\\\').style.display=\\\'none\\\'" style="padding:2px 8px;font-size:16px;">&times;</button>\' +\n      \'</div>\' +\n      \'<table class="hotkeys-table">\' +\n        \'<tr><td><span class="kbd-key">1</span> &ndash; <span class="kbd-key">4</span> / <span class="kbd-key">A</span> &ndash; <span class="kbd-key">D</span></td><td>Select option A, B, C, or D</td></tr>\' +\n        \'<tr><td><span class="kbd-key">&rarr;</span> / <span class="kbd-key">N</span> / <span class="kbd-key">Enter</span></td><td>Save &amp; Next question</td></tr>\' +\n        \'<tr><td><span class="kbd-key">&larr;</span> / <span class="kbd-key">P</span></td><td>Previous question</td></tr>\' +\n        \'<tr><td><span class="kbd-key">M</span></td><td>Mark for Review &amp; Next</td></tr>\' +\n        \'<tr><td><span class="kbd-key">C</span> / <span class="kbd-key">Backspace</span></td><td>Clear response</td></tr>\' +\n        \'<tr><td><span class="kbd-key">S</span></td><td>Star question for later</td></tr>\' +\n        \'<tr><td><span class="kbd-key">F</span></td><td>Toggle Fullscreen Exam Mode</td></tr>\' +\n        \'<tr><td><span class="kbd-key">?</span></td><td>Open / Close this shortcuts helper</td></tr>\' +\n      \'</table>\' +\n      \'<button type="button" class="btn" onclick="document.getElementById(\\\'hotkeysModal\\\').style.display=\\\'none\\\'" style="margin-top:16px;width:100%;padding:8px;">Close Shortcuts</button>\' +\n    \'</div>\';\n    document.body.appendChild(hkModal);\n\n    // Inject CBT Submit Modal\n    var submitModal = document.createElement(\'div\');\n    submitModal.id = \'cbtSubmitModal\';\n    submitModal.className = \'cbt-modal-backdrop\';\n    submitModal.style.display = \'none\';\n    submitModal.innerHTML = \'<div class="cbt-modal-box">\' +\n      \'<h3 style="margin:0 0 8px;font-size:19px;">Submit Examination</h3>\' +\n      \'<p style="margin:0 0 12px;font-size:13.5px;color:#64748b;">Review your question status summary before final submission:</p>\' +\n      \'<table class="cbt-summary-table">\' +\n        \'<tr><td>Total Questions</td><td><b id="cbtSumTot">0</b></td></tr>\' +\n        \'<tr><td><span class="cbt-dot green"></span> Answered</td><td><b id="cbtSumAns" style="color:#16a34a">0</b></td></tr>\' +\n        \'<tr><td><span class="cbt-dot red"></span> Not Answered</td><td><b id="cbtSumNotAns" style="color:#ef4444">0</b></td></tr>\' +\n        \'<tr><td><span class="cbt-dot purple"></span> Marked for Review</td><td><b id="cbtSumMark" style="color:#9333ea">0</b></td></tr>\' +\n        \'<tr><td><span class="cbt-dot purple-green"></span> Answered &amp; Marked (Evaluated)</td><td><b id="cbtSumAnsMark" style="color:#9333ea">0</b></td></tr>\' +\n        \'<tr><td><span class="cbt-dot gray"></span> Not Visited</td><td><b id="cbtSumNotVis" style="color:#64748b">0</b></td></tr>\' +\n      \'</table>\' +\n      \'<div style="display:flex;gap:10px;">\' +\n        \'<button type="button" class="btn" id="cbtConfirmSubmit" style="flex:1;background:#2563eb;color:#fff;font-weight:700;padding:10px;">Confirm &amp; Submit</button>\' +\n        \'<button type="button" class="btn" id="cbtCancelSubmit" style="padding:10px 14px;">Return to Exam</button>\' +\n      \'</div>\' +\n    \'</div>\';\n    document.body.appendChild(submitModal);\n\n    document.getElementById(\'cbtCancelSubmit\').onclick = function(){\n      submitModal.style.display = \'none\';\n    };\n    document.getElementById(\'cbtConfirmSubmit\').onclick = function(){\n      submitModal.style.display = \'none\';\n      if (typeof origFinish === \'function\') origFinish();\n    };\n  }\n\n  // Option Elimination (Right click / Alt click)\n  document.addEventListener(\'contextmenu\', function(e){\n    var opt = e.target.closest(\'.o\');\n    if (opt && document.body.classList.contains(\'cbt-mode\')) {\n      e.preventDefault();\n      opt.classList.toggle(\'eliminated\');\n    }\n  });\n\n  // Global Keyboard Navigation\n  document.addEventListener(\'keydown\', function(e){\n    if (!examEl || examEl.hidden) return;\n    if (e.target.tagName === \'INPUT\' || e.target.tagName === \'TEXTAREA\') {\n      if (e.key === \'Enter\') {\n        var nxt = document.getElementById(\'svn\');\n        if (nxt) nxt.click();\n      }\n      return;\n    }\n    var k = e.key.toUpperCase();\n    if (k === \'1\' || k === \'A\') { selectOpt(\'A\'); }\n    else if (k === \'2\' || k === \'B\') { selectOpt(\'B\'); }\n    else if (k === \'3\' || k === \'C\') { selectOpt(\'C\'); }\n    else if (k === \'4\' || k === \'D\') { selectOpt(\'D\'); }\n    else if (k === \'ARROWLEFT\' || k === \'P\') {\n      var prev = document.getElementById(\'prev\');\n      if (prev && !prev.disabled) prev.click();\n    }\n    else if (k === \'ARROWRIGHT\' || k === \'N\' || e.key === \'Enter\') {\n      var svn = document.getElementById(\'svn\');\n      if (svn) svn.click();\n    }\n    else if (k === \'M\') {\n      var mkn = document.getElementById(\'mkn\');\n      if (mkn) mkn.click();\n    }\n    else if (k === \'C\' || k === \'BACKSPACE\' || k === \'DELETE\') {\n      var clr = document.getElementById(\'clr\');\n      if (clr) clr.click();\n    }\n    else if (k === \'S\') {\n      var star = document.getElementById(\'star\');\n      if (star) star.click();\n    }\n    else if (k === \'F\') {\n      var fs = document.getElementById(\'btnFullscreen\');\n      if (fs) fs.click();\n    }\n    else if (e.key === \'?\') {\n      var hk = document.getElementById(\'btnHotkeys\');\n      if (hk) hk.click();\n    }\n  });\n\n  function selectOpt(letter) {\n    if (typeof cur === \'undefined\') return;\n    var qv = document.getElementById(\'qv\' + cur);\n    if (!qv) return;\n    var opt = qv.querySelector(\'.o[data-l="\' + letter + \'"]\');\n    if (opt) opt.click();\n  }\n\n  // 3. Progress Bar Tracking\n  setInterval(function(){\n    if (typeof started === \'undefined\' || !started || typeof submitted === \'undefined\' || submitted) return;\n    var pBar = document.getElementById(\'examProgressBar\');\n    if (!pBar) return;\n    if (typeof LIMIT !== \'undefined\' && LIMIT > 0 && typeof total !== \'undefined\') {\n      var pct = Math.min(100, (total / LIMIT) * 100);\n      pBar.style.width = pct + \'%\';\n      var rem = LIMIT - total;\n      if (rem <= 300) {\n        pBar.style.backgroundColor = \'#ef4444\';\n      } else if (rem <= 900) {\n        pBar.style.backgroundColor = \'#f59e0b\';\n      } else {\n        pBar.style.backgroundColor = \'#2563eb\';\n      }\n    } else if (typeof NS !== \'undefined\' && NS.length > 0 && typeof cur !== \'undefined\') {\n      var idx = NS.indexOf(cur);\n      pBar.style.width = (((idx + 1) / NS.length) * 100) + \'%\';\n      pBar.style.backgroundColor = \'#2563eb\';\n    }\n  }, 1000);\n\n  // 4. Override enter() to handle CBT mode class & badge\n  var origEnter = window.enter;\n  window.enter = function() {\n    var modeRad = document.querySelector(\'input[name=test_mode]:checked\');\n    window.isCBT = !modeRad || modeRad.value === \'cbt\';\n    document.body.classList.toggle(\'cbt-mode\', window.isCBT);\n\n    var badge = document.getElementById(\'examModeBadge\');\n    if (badge) {\n      badge.textContent = window.isCBT ? \'CBT Exam Mode\' : \'Practice Mode\';\n      badge.style.background = window.isCBT ? \'#2563eb\' : \'#059669\';\n    }\n\n    if (typeof origEnter === \'function\') origEnter();\n  };\n\n  // 5. Override Submit Click for CBT Modal\n  var subBtn = document.getElementById(\'submit\');\n  if (subBtn) {\n    subBtn.onclick = function() {\n      if (!window.isCBT) {\n        var an = 0, mk = 0;\n        NS.forEach(function(n){ if (S[n]) an++; if (M[n]) mk++; });\n        if (confirm(\'Answered: \' + an + \'\\nNot answered: \' + (NS.length - an) + \'\\nMarked for review: \' + mk + \'\\n\\nSubmit?\')) {\n          if (typeof origFinish === \'function\') origFinish();\n        }\n        return;\n      }\n\n      var counts = { nv: 0, na: 0, an: 0, mk: 0, am: 0 };\n      NS.forEach(function(n){ counts[stat(n)]++; });\n\n      document.getElementById(\'cbtSumTot\').textContent = NS.length;\n      document.getElementById(\'cbtSumAns\').textContent = counts.an;\n      document.getElementById(\'cbtSumNotAns\').textContent = counts.na;\n      document.getElementById(\'cbtSumMark\').textContent = counts.mk;\n      document.getElementById(\'cbtSumAnsMark\').textContent = counts.am;\n      document.getElementById(\'cbtSumNotVis\').textContent = counts.nv;\n\n      var sm = document.getElementById(\'cbtSubmitModal\');\n      if (sm) sm.style.display = \'flex\';\n    };\n  }\n\n  // 6. Override finish() to compute NTA Marking Scheme (+4 / -1)\n  window.origFinish = window.finish;\n  window.finish = function() {\n    if (submitted) return;\n    submitted = true;\n\n    // Grade exam\n    var correctCount = 0;\n    var wrongCount = 0;\n    var unattemptedCount = 0;\n\n    NS.forEach(function(n){\n      var ans = S[n];\n      if (ans) {\n        var isOk = (typeof same === \'function\') ? same(n, ans) : false;\n        if (isOk) {\n          correctCount++;\n          C[n] = \'r\';\n          delete WR[n];\n        } else {\n          wrongCount++;\n          C[n] = \'w\';\n          WR[n] = 1;\n        }\n      } else {\n        unattemptedCount++;\n      }\n    });\n\n    if (typeof sv === \'function\' && typeof KW !== \'undefined\') sv(KW, WR);\n\n    var totalMarks = (correctCount * 4) - (wrongCount * 1);\n    var maxMarks = NS.length * 4;\n    var acc = (correctCount + wrongCount > 0) ? Math.round((correctCount / (correctCount + wrongCount)) * 100) : 0;\n\n    var A = {\n      t: Date.now(),\n      label: label,\n      NS: NS,\n      S: S,\n      M: M,\n      V: V,\n      T: T,\n      C: C,\n      X: X,\n      cur: cur,\n      total: total,\n      LIMIT: LIMIT,\n      isCBT: !!window.isCBT,\n      score: totalMarks,\n      maxScore: maxMarks,\n      correct: correctCount,\n      wrong: wrongCount,\n      unattempted: unattemptedCount,\n      accuracy: acc\n    };\n\n    HIST.unshift(A);\n    HIST = HIST.slice(0, 25);\n    if (typeof sv === \'function\' && typeof KH !== \'undefined\') sv(KH, HIST);\n    try { localStorage.removeItem(KS); } catch(e) {}\n\n    renderEnhancedSummary(A);\n  };\n\n  // Override summary() to also use modern scorecard for historical view\n  window.origSummary = window.summary;\n  window.summary = function(A, old) {\n    if (A) A.isEarlier = !!old;\n    renderEnhancedSummary(A);\n  };\n\n  // 7. Render Enhanced Summary & Question Review with Options and Solutions\n  window.renderEnhancedSummary = function(A) {\n    var examDiv = document.getElementById(\'exam\');\n    var startDiv = document.getElementById(\'start\');\n    var doneDiv = document.getElementById(\'done\');\n    if (examDiv) examDiv.hidden = true;\n    if (startDiv) startDiv.hidden = true;\n    if (!doneDiv) return;\n    doneDiv.hidden = false;\n\n    var ns = A.NS || [];\n    var corr = A.correct || 0;\n    var wrong = A.wrong || 0;\n    var unatt = A.unattempted || 0;\n    var totalQ = ns.length;\n    var score = typeof A.score === \'number\' ? A.score : ((corr * 4) - wrong);\n    var maxScore = A.maxScore || (totalQ * 4);\n    var acc = A.accuracy || (corr + wrong > 0 ? Math.round((corr / (corr + wrong)) * 100) : 0);\n\n    // SVG Donut calculation\n    var R = 44;\n    var C_circ = 2 * Math.PI * R;\n    var fCorr = totalQ > 0 ? (corr / totalQ) : 0;\n    var fWrong = totalQ > 0 ? (wrong / totalQ) : 0;\n    var fUnatt = totalQ > 0 ? (unatt / totalQ) : 0;\n\n    var lCorr = fCorr * C_circ;\n    var lWrong = fWrong * C_circ;\n    var lUnatt = fUnatt * C_circ;\n\n    var oCorr = 0;\n    var oWrong = -lCorr;\n    var oUnatt = -(lCorr + lWrong);\n\n    var tt = 0;\n    ns.forEach(function(n){ tt += (A.T && A.T[n]) || 0; });\n    var avgSec = totalQ > 0 ? Math.round(tt / totalQ) : 0;\n\n    var chName = (typeof META !== \'undefined\' && META.chapter) ? META.chapter : \'Chapter PYQ Examination\';\n    var isNeg = score < 0;\n\n    var tagTitle = A.isEarlier ? \'Past Attempt Review\' : (A.isCBT ? \'NTA CBT Simulation Scorecard\' : \'Practice Set Completed\');\n\n    var h = \'<div class="cbt-scorecard">\' +\n      \'<div class="cbt-score-hero">\' +\n        \'<div class="cbt-score-left">\' +\n          \'<span class="cbt-score-tag">\' + tagTitle + \'</span>\' +\n          \'<h2 class="cbt-score-title">\' + chName + \'</h2>\' +\n          \'<p class="cbt-score-meta">\' + (A.label || \'\') + \' &middot; \' + new Date(A.t).toLocaleString() + \'</p>\' +\n          \'<div style="display:flex;align-items:baseline;gap:8px;margin-top:14px;">\' +\n            \'<div class="cbt-big-score\' + (isNeg ? \' neg\' : \'\') + \'">\' + (score > 0 ? \'+\' : \'\') + score + \' <small>/ \' + maxScore + \'</small></div>\' +\n            \'<span style="font-size:13px;font-weight:700;padding:3px 9px;border-radius:4px;background:#e0f2fe;color:#0369a1;">\' + acc + \'% Accuracy</span>\' +\n          \'</div>\' +\n        \'</div>\' +\n        \'<div class="cbt-donut-wrap">\' +\n          \'<svg class="cbt-donut-svg" viewBox="0 0 100 100">\' +\n            \'<circle cx="50" cy="50" r="\' + R + \'" fill="none" stroke="#222224" stroke-width="12"/>\' +\n            (lCorr > 0 ? \'<circle cx="50" cy="50" r="\' + R + \'" fill="none" stroke="#16a34a" stroke-width="12" stroke-dasharray="\' + lCorr + \' \' + C_circ + \'" stroke-dashoffset="\' + oCorr + \'"/>\' : \'\') +\n            (lWrong > 0 ? \'<circle cx="50" cy="50" r="\' + R + \'" fill="none" stroke="#ef4444" stroke-width="12" stroke-dasharray="\' + lWrong + \' \' + C_circ + \'" stroke-dashoffset="\' + oWrong + \'"/>\' : \'\') +\n            (lUnatt > 0 ? \'<circle cx="50" cy="50" r="\' + R + \'" fill="none" stroke="#94a3b8" stroke-width="12" stroke-dasharray="\' + lUnatt + \' \' + C_circ + \'" stroke-dashoffset="\' + oUnatt + \'"/>\' : \'\') +\n          \'</svg>\' +\n          \'<div class="cbt-donut-legend">\' +\n            \'<div class="cbt-donut-legend-item"><span class="cbt-donut-dot" style="background:#16a34a"></span> Correct: \' + corr + \'</div>\' +\n            \'<div class="cbt-donut-legend-item"><span class="cbt-donut-dot" style="background:#ef4444"></span> Incorrect: \' + wrong + \'</div>\' +\n            \'<div class="cbt-donut-legend-item"><span class="cbt-donut-dot" style="background:#94a3b8"></span> Unattempted: \' + unatt + \'</div>\' +\n          \'</div>\' +\n        \'</div>\' +\n      \'</div>\' +\n\n      \'<div class="cbt-metrics-grid">\' +\n        \'<div class="cbt-metric-item"><span class="cbt-metric-lbl">Total Questions</span><span class="cbt-metric-num">\' + totalQ + \'</span></div>\' +\n        \'<div class="cbt-metric-item"><span class="cbt-metric-lbl">Correct (+4)</span><span class="cbt-metric-num" style="color:#16a34a">+\' + (corr * 4) + \'</span></div>\' +\n        \'<div class="cbt-metric-item"><span class="cbt-metric-lbl">Negative (-1)</span><span class="cbt-metric-num" style="color:#ef4444">-\' + wrong + \'</span></div>\' +\n        \'<div class="cbt-metric-item"><span class="cbt-metric-lbl">Net Marks</span><span class="cbt-metric-num" style="color:\' + (score >= 0 ? \'#16a34a\' : \'#ef4444\') + \'">\' + score + \'</span></div>\' +\n        \'<div class="cbt-metric-item"><span class="cbt-metric-lbl">Time Taken</span><span class="cbt-metric-num">\' + (typeof fmt === \'function\' ? fmt(tt) : tt + \'s\') + \'</span></div>\' +\n        \'<div class="cbt-metric-item"><span class="cbt-metric-lbl">Avg / Question</span><span class="cbt-metric-num">\' + avgSec + \'s</span></div>\' +\n      \'</div>\' +\n\n      \'<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">\' +\n        \'<button type="button" class="btn" onclick="location.reload()" style="padding:9px 16px;background:#2563eb;color:#fff;font-weight:700;">Retake Chapter Practice</button>\' +\n        \'<a href="index.html" class="btn" style="padding:9px 16px;text-decoration:none;display:inline-flex;align-items:center;">&lsaquo; Subject Chapters</a>\' +\n        \'<a href="../index.html" class="btn" style="padding:9px 16px;text-decoration:none;display:inline-flex;align-items:center;">Home Portal</a>\' +\n      \'</div>\' +\n\n      \'<h3 style="margin:24px 0 12px;font-size:18px;">Detailed Solutions &amp; Question Review</h3>\' +\n      \'<div class="review-filter-pills" id="reviewFilterPills">\' +\n        \'<button type="button" class="rf-pill active" data-f="all">All Questions (\' + totalQ + \')</button>\' +\n        \'<button type="button" class="rf-pill" data-f="inc">Incorrect Only (\' + wrong + \')</button>\' +\n        \'<button type="button" class="rf-pill" data-f="corr">Correct Only (\' + corr + \')</button>\' +\n        \'<button type="button" class="rf-pill" data-f="unatt">Unattempted (\' + unatt + \')</button>\' +\n      \'</div>\' +\n      \'<div id="reviewQuestionsList"></div>\' +\n    \'</div>\';\n\n    doneDiv.innerHTML = h;\n\n    // Render Question Review Cards\n    var qListEl = document.getElementById(\'reviewQuestionsList\');\n    var cardsHtml = \'\';\n\n    ns.forEach(function(n, idx){\n      var qv = document.getElementById(\'qv\' + n);\n      if (!qv) return;\n\n      var userAns = (A.S && A.S[n]) || \'\';\n      var correctAns = (typeof META !== \'undefined\' && META.ans) ? String(META.ans[n]) : \'\';\n      var isOk = userAns && ((typeof same === \'function\') ? same(n, userAns) : (userAns === correctAns));\n      var isUnatt = !userAns;\n\n      var tag = isOk ? \'corr\' : (isUnatt ? \'unatt\' : \'inc\');\n      var pillText = isOk ? \'+4 Correct\' : (isUnatt ? \'0 Unattempted\' : \'-1 Incorrect\');\n\n      var stemEl = qv.querySelector(\'.stem\');\n      var stemHtml = stemEl ? stemEl.innerHTML : \'\';\n      var srcEl = qv.querySelector(\'.src\');\n      var srcText = srcEl ? srcEl.textContent : \'\';\n\n      // Find Type Name from META\n      var typeName = \'\';\n      var typeId = qv.dataset.type;\n      if (typeof META !== \'undefined\' && META.types) {\n        META.types.forEach(function(t){\n          if (String(t.id) === String(typeId)) typeName = t.name;\n        });\n      }\n\n      // Format Options for Review\n      var optsHtml = \'\';\n      var optsEl = qv.querySelector(\'.opts\');\n      if (optsEl) {\n        optsHtml = \'<div class="review-opts" style="display:flex;flex-direction:column;gap:6px;margin:10px 0;">\';\n        var oDivs = optsEl.querySelectorAll(\'.o\');\n        oDivs.forEach(function(o){\n          var letCode = o.dataset.l || \'\';\n          var isThisCorrect = (letCode.toUpperCase() === correctAns.toUpperCase());\n          var isThisUser = (letCode.toUpperCase() === String(userAns).toUpperCase());\n          var border = \'1px solid #cbd5e1\';\n          var bg = \'#f8fafc\';\n          var badge = \'\';\n\n          if (isThisCorrect) {\n            border = \'2px solid #16a34a\';\n            bg = \'#dcfce7\';\n            badge = \'<span style="margin-left:auto;font-size:11px;font-weight:700;color:#15803d;background:#bbf7d0;padding:1px 6px;border-radius:3px;">Correct Key</span>\';\n          }\n          if (isThisUser && !isThisCorrect) {\n            border = \'2px solid #ef4444\';\n            bg = \'#fee2e2\';\n            badge = \'<span style="margin-left:auto;font-size:11px;font-weight:700;color:#b91c1c;background:#fecaca;padding:1px 6px;border-radius:3px;">Your Choice</span>\';\n          } else if (isThisUser && isThisCorrect) {\n            badge = \'<span style="margin-left:auto;font-size:11px;font-weight:700;color:#15803d;background:#bbf7d0;padding:1px 6px;border-radius:3px;">Your Choice (Correct)</span>\';\n          }\n\n          var oc = o.querySelector(\'.oc\');\n          var ocHtml = oc ? oc.innerHTML : \'\';\n\n          optsHtml += \'<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;border:\' + border + \';background:\' + bg + \';">\' +\n            \'<span style="font-weight:800;font-size:13px;width:20px;">\' + letCode + \'</span>\' +\n            \'<div style="flex:1;font-size:13.5px;">\' + ocHtml + \'</div>\' +\n            badge +\n          \'</div>\';\n        });\n        optsHtml += \'</div>\';\n      }\n\n      cardsHtml += \'<div class="review-card" data-tag="\' + tag + \'">\' +\n        \'<div class="review-header">\' +\n          \'<div style="font-weight:700;font-size:14.5px;">Q.\' + (idx + 1) + \' <span style="color:#64748b;font-size:12.5px;font-weight:400;margin-left:6px;">\' + srcText + \'</span></div>\' +\n          \'<span class="review-pill \' + tag + \'">\' + pillText + \'</span>\' +\n        \'</div>\' +\n        (typeName ? \'<div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:8px;">Type: \' + typeName + \'</div>\' : \'\') +\n        \'<div class="stem-content" style="margin-bottom:12px;">\' + stemHtml + \'</div>\' +\n        optsHtml +\n        \'<div class="review-answers-box" style="margin-top:12px;padding:10px 12px;background:#f1f5f9;border-radius:6px;font-size:13.5px;">\' +\n          \'<div><b>Your Response:</b> \' + (userAns ? \'<span style="color:\' + (isOk ? \'#16a34a\' : \'#ef4444\') + \';font-weight:700">\' + userAns + \'</span>\' : \'<span style="color:#64748b;font-style:italic">Not Attempted</span>\') + \'</div>\' +\n          \'<div style="margin-top:4px;"><b>Official Key / Correct Answer:</b> <span style="color:#16a34a;font-weight:700">\' + correctAns + \'</span></div>\' +\n        \'</div>\' +\n      \'</div>\';\n    });\n\n    if (qListEl) qListEl.innerHTML = cardsHtml;\n\n    // Filter pills click handling\n    var rfPills = document.querySelectorAll(\'.rf-pill\');\n    rfPills.forEach(function(pill){\n      pill.onclick = function(){\n        rfPills.forEach(function(p){ p.classList.remove(\'active\'); });\n        pill.classList.add(\'active\');\n        var f = pill.dataset.f;\n        var rCards = document.querySelectorAll(\'.review-card\');\n        rCards.forEach(function(card){\n          if (f === \'all\' || card.dataset.tag === f) {\n            card.style.display = \'block\';\n          } else {\n            card.style.display = \'none\';\n          }\n        });\n      };\n    });\n\n    window.scrollTo({ top: 0, behavior: \'smooth\' });\n  };\n})();\n</script>'
 
 def patch_practice_sheet(content):
     modified = False
     
-    # 1. Inject QCOUNT_HTML before <label>Practice time</label>
-    if 'id="qcount_box"' not in content and '<label>Practice time</label>' in content:
-        content = content.replace('<label>Practice time</label>', QCOUNT_HTML + '\n<label>Practice time</label>', 1)
-        modified = True
-        
-    # 2. Replace sug() function
-    if 'isCustom&&effN<n' not in content:
-        sug_pattern = r'function sug\(\)\{.*?\}\s*function stat\(n\)'
-        if re.search(sug_pattern, content, re.DOTALL):
-            content = re.sub(sug_pattern, NEW_SUG_JS + '\nfunction stat(n)', content, flags=re.DOTALL)
+    # 1. Inject or update TEST_MODE_AND_QCOUNT_HTML before <label>Practice time</label>
+    if 'id="test_mode_box"' not in content:
+        pattern_qc = r'<label>Number of questions</label>\s*<div class="tbox" id="qcount_box">.*?</div>\s*(?=<label>Practice time</label>)'
+        if re.search(pattern_qc, content, re.DOTALL):
+            content = re.sub(pattern_qc, TEST_MODE_AND_QCOUNT_HTML + '\n', content, flags=re.DOTALL)
             modified = True
-        
-    # 3. Replace $('go').onclick
-    if 'var qcMode=document.querySelector' not in content:
-        go_pattern = r'\$\(\'go\'\)\.onclick\s*=\s*function\(\)\{.*?\};\s*\$\(\'savecur\'\)'
-        if re.search(go_pattern, content, re.DOTALL):
-            content = re.sub(go_pattern, NEW_GO_JS + '\n$(\'savecur\')', content, flags=re.DOTALL)
+        elif '<label>Practice time</label>' in content:
+            content = content.replace('<label>Practice time</label>', TEST_MODE_AND_QCOUNT_HTML + '\n<label>Practice time</label>', 1)
             modified = True
-        
-    # 4. Inject initQCount before rfind("</body>")
-    if 'initQCount' not in content and '</body>' in content:
-        pos_b = content.rfind('</body>')
-        if pos_b != -1:
-            content = content[:pos_b] + INIT_QCOUNT_SCRIPT + '\n</body>' + content[pos_b+7:]
+            
+    # 2. Inject or update ENHANCED_PRACTICE_SCRIPT before </body>
+    if 'cbtSubmitModal' not in content:
+        pattern_script = r'<script>\s*\(function\(\)\{\s*function initQCount\(\)\{.*?</script>'
+        if re.search(pattern_script, content, re.DOTALL):
+            content = re.sub(pattern_script, lambda m: ENHANCED_PRACTICE_SCRIPT, content, flags=re.DOTALL)
+            modified = True
+        elif '</body>' in content:
+            pos_b = content.rfind('</body>')
+            content = content[:pos_b] + ENHANCED_PRACTICE_SCRIPT + '\n</body>' + content[pos_b+7:]
             modified = True
             
     return content, modified
 
-# -------------------------------------------------------------
-# MAIN PATCHER RUNNER
-# -------------------------------------------------------------
 
-# -------------------------------------------------------------
 # 5. DYNAMIC HOME PORTAL & RANDOM TEST POOL SYNC
 # -------------------------------------------------------------
 def update_index_portal():

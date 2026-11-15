@@ -173,7 +173,7 @@ body.symon {
 }
 
 [data-theme="dark"] a {
-  color: #60a5fa !important;
+  color: #3b82f6 !important;
 }
 
 /* 1. START PANEL & GENERAL PANELS */
@@ -190,7 +190,7 @@ body.symon {
 
 [data-theme="dark"] .panel h2,
 [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 {
-  color: #60a5fa !important;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .banner {
@@ -1028,6 +1028,431 @@ body {
   background: #222222;
 }
 
+
+/* ==========================================================================
+   CBT EXAM MODE & VISUAL MODERNIZATION STYLING
+   ========================================================================== */
+.mode-card.active {
+  border-color: #2563eb !important;
+  background: #eff6ff !important;
+}
+.mode-card {
+  user-select: none;
+}
+[data-theme="dark"] .mode-card {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+[data-theme="dark"] #mode_card_cbt.active {
+  background: #081a36 !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] #mode_card_practice.active {
+  background: #18181b !important;
+  border-color: #3f3f46 !important;
+}
+[data-theme="dark"] .mode-card div div:first-child span:first-child {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .mode-card div div:last-child {
+  color: #94a3b8 !important;
+}
+
+/* Exam Progress Bar at Top */
+#examProgressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: #2563eb;
+  width: 0%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  z-index: 100;
+}
+[data-theme="dark"] #examProgressBar {
+  background: #3b82f6;
+}
+
+/* CBT Mode Palette Styling (Official NTA JEE Colors) */
+.cbt-mode .chk {
+  display: none !important;
+}
+.cbt-mode #savecur {
+  display: none !important;
+}
+.cbt-mode #nav button.an {
+  background: #16a34a !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+}
+.cbt-mode #nav button.na {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+}
+.cbt-mode #nav button.nv {
+  background: #e2e8f0 !important;
+  color: #475569 !important;
+  border-radius: 4px !important;
+}
+[data-theme="dark"] .cbt-mode #nav button.nv {
+  background: #1c1c1f !important;
+  color: #94a3b8 !important;
+  border-color: #2a2a2e !important;
+}
+.cbt-mode #nav button.mk {
+  background: #9333ea !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+}
+.cbt-mode #nav button.am {
+  background: #9333ea !important;
+  color: #ffffff !important;
+  position: relative !important;
+  border-radius: 50% !important;
+}
+.cbt-mode #nav button.am::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 7px;
+  height: 7px;
+  background: #16a34a;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+}
+
+/* Option Elimination (Right click / Alt click) */
+.o.eliminated {
+  opacity: 0.35 !important;
+  text-decoration: line-through !important;
+  pointer-events: auto !important;
+  background: rgba(0,0,0,0.04) !important;
+}
+[data-theme="dark"] .o.eliminated {
+  background: rgba(255,255,255,0.04) !important;
+}
+
+/* Enhanced Post-Exam Scorecard & Review Cards */
+.cbt-scorecard {
+  margin: 10px 0 30px;
+}
+.cbt-score-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+[data-theme="dark"] .cbt-score-hero {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.cbt-score-left {
+  flex: 1;
+  min-width: 260px;
+}
+.cbt-score-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+[data-theme="dark"] .cbt-score-tag {
+  background: #081a36 !important;
+  color: #60a5fa !important;
+}
+.cbt-score-title {
+  margin: 10px 0 4px;
+  font-size: 24px;
+  font-weight: 800;
+}
+[data-theme="dark"] .cbt-score-title {
+  color: #ffffff !important;
+}
+.cbt-score-meta {
+  color: #64748b;
+  font-size: 13px;
+  margin: 0;
+}
+[data-theme="dark"] .cbt-score-meta {
+  color: #94a3b8 !important;
+}
+.cbt-big-score {
+  font-size: 34px;
+  font-weight: 900;
+  color: #16a34a;
+}
+.cbt-big-score.neg {
+  color: #ef4444;
+}
+.cbt-big-score small {
+  font-size: 18px;
+  font-weight: 500;
+  color: #64748b;
+}
+[data-theme="dark"] .cbt-big-score small {
+  color: #94a3b8 !important;
+}
+
+/* SVG Donut Chart */
+.cbt-donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cbt-donut-svg {
+  width: 95px;
+  height: 95px;
+  transform: rotate(-90deg);
+}
+.cbt-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+[data-theme="dark"] .cbt-donut-legend {
+  color: #cbd5e1 !important;
+}
+.cbt-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cbt-donut-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+/* Metrics Grid */
+.cbt-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.cbt-metric-item {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+[data-theme="dark"] .cbt-metric-item {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.cbt-metric-lbl {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+[data-theme="dark"] .cbt-metric-lbl {
+  color: #94a3b8 !important;
+}
+.cbt-metric-num {
+  font-size: 20px;
+  font-weight: 800;
+}
+[data-theme="dark"] .cbt-metric-num {
+  color: #ffffff !important;
+}
+
+/* Question Review Filters */
+.review-filter-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.rf-pill {
+  border: 1px solid var(--border, #cbd5e1);
+  background: var(--surface, #f8fafc);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: inherit;
+}
+[data-theme="dark"] .rf-pill {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #94a3b8 !important;
+}
+.rf-pill.active {
+  border-color: #2563eb !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+.review-card {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+[data-theme="dark"] .review-card {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+}
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.review-pill {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.review-pill.corr {
+  background: #dcfce7;
+  color: #15803d;
+}
+.review-pill.inc {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.review-pill.unatt {
+  background: #f1f5f9;
+  color: #64748b;
+}
+[data-theme="dark"] .review-pill.corr {
+  background: #052e16;
+  color: #4ade80;
+}
+[data-theme="dark"] .review-pill.inc {
+  background: #450a0a;
+  color: #f87171;
+}
+[data-theme="dark"] .review-pill.unatt {
+  background: #18181b;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .review-answers-box {
+  background: #111114 !important;
+  color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#f8fafc"] {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#dcfce7"] {
+  background: #052e16 !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .review-opts div[style*="background:#fee2e2"] {
+  background: #450a0a !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+/* Modals (CBT Submit & Hotkeys) */
+.cbt-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+  backdrop-filter: blur(2px);
+}
+.cbt-modal-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .cbt-modal-box {
+  background: #0a0a0c !important;
+  border-color: #27272a !important;
+  color: #ffffff !important;
+}
+.cbt-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 20px;
+  font-size: 14px;
+}
+.cbt-summary-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #e2e8f0;
+}
+[data-theme="dark"] .cbt-summary-table td {
+  border-bottom-color: #222224 !important;
+}
+.cbt-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+.cbt-dot.green { background: #16a34a; }
+.cbt-dot.red { background: #ef4444; }
+.cbt-dot.purple { background: #9333ea; }
+.cbt-dot.purple-green { background: #9333ea; border: 2px solid #16a34a; }
+.cbt-dot.gray { background: #94a3b8; }
+
+/* Hotkeys Modal */
+.hotkeys-table {
+  width: 100%;
+  font-size: 13px;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.hotkeys-table td {
+  padding: 6px 4px;
+  border-bottom: 1px solid #e2e8f0;
+}
+[data-theme="dark"] .hotkeys-table td {
+  border-bottom-color: #222224 !important;
+}
+.kbd-key {
+  display: inline-block;
+  padding: 2px 7px;
+  font-family: monospace;
+  font-size: 12px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  color: #0f172a;
+}
+[data-theme="dark"] .kbd-key {
+  background: #18181b !important;
+  border-color: #3f3f46 !important;
+  color: #ffffff !important;
+}
 </style></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button></div>
 <h1>Magnetic Properties of Matter &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Magnetic%20Properties%20of%20Matter%20PYQ%20Practice.html">Back to practice</a><a href="Magnetic%20Properties%20of%20Matter%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> MAGNETIC PROPERTIES OF MATTER – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Dia-, para- and ferromagnetism: properties, domains, Curie&#x27;s law and hysteresis</a></li><li><a href="#T2">Type 2. Susceptibility, permeability and the field in solenoids and toroids filled with a material</a></li><li><a href="#T3">Type 3. Earth&#x27;s magnetic field: dip, apparent dip and the oscillation magnetometer</a></li><li><a href="#T4">Type 4. Links to induction: motional emf in the earth&#x27;s field, eddy currents and mutual flux</a></li><li><a href="#T5">Type 5. Bar magnet as a magnetic dipole: torque, work, oscillation and the neutral point</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Dia-, para- and ferromagnetism: properties, domains, Curie&#x27;s law and hysteresis <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">16 questions on the sheet (Q1–16)  ·  Sub-topics: A1 properties of dia-, para- and ferromagnetic materials: domains and statements · A2 Curie&#x27;s law: magnetisation and susceptibility against temperature · A3 hysteresis loop, retentivity and coercivity: soft iron and electromagnets</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Susceptibility</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Diamagnetic</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Curie&#x27;s law</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Retentivity, coercivity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Which materials move towards the stronger part of the field?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>What happens to a ferromagnet above the Curie temperature?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr><tr><td><p>Why is soft iron used for an electromagnet?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Given below are two statements: the diamagnetic property depends on temperature ... the induced dipole moment is opposite to the magnetising field.&#x27;</p><p style="padding-left:14px">•  &#x27;In a ferromagnetic material below the Curie temperature, a domain is defined as ...&#x27;</p><p style="padding-left:14px">•  &#x27;A paramagnetic sample shows a magnetisation of <math displaystyle="true"><mrow><mn>6</mn></mrow></math> A/m at <math displaystyle="true"><mrow><mn>0.4</mn></mrow></math> T and <math displaystyle="true"><mrow><mn>4</mn></mrow></math> K: the magnetisation at <math displaystyle="true"><mrow><mn>0.3</mn></mrow></math> T and <math displaystyle="true"><mrow><mn>24</mn></mrow></math> K.&#x27;</p><p style="padding-left:14px">•  &#x27;The figure gives the <math displaystyle="true"><mrow><mi>B</mi></mrow></math>–<math displaystyle="true"><mrow><mi>H</mi></mrow></math> variation of a ferromagnetic material: the retentivity, coercivity and saturation.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Susceptibility</p></td><td><p><math displaystyle="true"><mrow><mi>χ</mi><mo>=</mo><mfrac><mrow><mi>M</mi></mrow><mrow><mi>H</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Diamagnetic</p></td><td><p><math displaystyle="true"><mrow><mo>−</mo><mn>1</mn><mo>≤</mo><mi>χ</mi><mo>&lt;</mo><mn>0</mn></mrow></math>, independent of <math displaystyle="true"><mrow><mi>T</mi></mrow></math></p></td></tr><tr><td><p>Curie&#x27;s law</p></td><td><p><math displaystyle="true"><mrow><mi>χ</mi><mo>∝</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>T</mi></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><mi>M</mi><mo>∝</mo><mfrac><mrow><mi>B</mi></mrow><mrow><mi>T</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Retentivity, coercivity</p></td><td><p><math displaystyle="true"><mrow><mi>B</mi></mrow></math> at <math displaystyle="true"><mrow><mi>H</mi><mo>=</mo><mn>0</mn></mrow></math>; <math displaystyle="true"><mrow><mi>H</mi></mrow></math> at <math displaystyle="true"><mrow><mi>B</mi><mo>=</mo><mn>0</mn></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Which materials move towards the stronger part of the field?</p></td><td><p>Paramagnetic and ferromagnetic ones; diamagnetic ones move to the weaker part.</p></td></tr><tr><td><p>What happens to a ferromagnet above the Curie temperature?</p></td><td><p>It becomes paramagnetic, because the domains are destroyed.</p></td></tr><tr><td><p>Why is soft iron used for an electromagnet?</p></td><td><p>It has high permeability and low retentivity, so it is magnetised and demagnetised easily.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Saying that diamagnetism depends on temperature.</p><p style="padding-left:14px">•  Calling paramagnetic attraction &#x27;strong&#x27;; it is weak.</p><p style="padding-left:14px">•  Mixing up retentivity (on the <math displaystyle="true"><mrow><mi>B</mi></mrow></math> axis) and coercivity (on the <math displaystyle="true"><mrow><mi>H</mi></mrow></math> axis).</p></div></section>
 <section class="typ" id="T2" data-k="2"><h2>Type 2. Susceptibility, permeability and the field in solenoids and toroids filled with a material <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">14 questions on the sheet (Q17–30)  ·  Sub-topics: B1 susceptibility and permeability: <math displaystyle="true"><mrow><mi>μ</mi><mo>=</mo><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>χ</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> and the percentage increase in <math displaystyle="true"><mrow><mi>B</mi></mrow></math> · B2 solenoid and toroid: <math displaystyle="true"><mrow><mi>H</mi><mo>=</mo><mi>n</mi><mi>I</mi></mrow></math> and the demagnetising current · B3 energy in a solenoid with a core and susceptibility from a dipole moment</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_10"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Permeability</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_11"></div></td></tr><tr><td><p>Percentage increase in <math displaystyle="true"><mrow><mi>B</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_12"></div></td></tr><tr><td><p>Magnetic intensity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_13"></div></td></tr><tr><td><p>Magnetisation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_14"></div></td></tr><tr><td><p>Energy of a solenoid</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Does <math displaystyle="true"><mrow><mi>H</mi></mrow></math> depend on the material?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>Why is the increase in <math displaystyle="true"><mrow><mi>B</mi></mrow></math> equal to <math displaystyle="true"><mrow><mi>χ</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;The susceptibility of a paramagnetic material is <math displaystyle="true"><mrow><mn>99</mn></mrow></math>: the permeability in Wb/A m.&#x27;</p><p style="padding-left:14px">•  &#x27;The space within a toroid is filled with aluminium, <math displaystyle="true"><mrow><mi>χ</mi><mo>=</mo><mn>2.2</mn><mo>×</mo><msup><mrow><mn>10</mn></mrow><mrow><mo>−</mo><mn>5</mn></mrow></msup></mrow></math>: the percentage increase in the field.&#x27;</p><p style="padding-left:14px">•  &#x27;The coercivity of a magnet is <math displaystyle="true"><mrow><mn>5</mn><mo>×</mo><msup><mrow><mn>10</mn></mrow><mrow><mn>3</mn></mrow></msup></mrow></math> A/m: the current in a solenoid of <math displaystyle="true"><mrow><mn>30</mn></mrow></math> cm and <math displaystyle="true"><mrow><mn>150</mn></mrow></math> turns to demagnetise it.&#x27;</p><p style="padding-left:14px">•  &#x27;A paramagnetic cube of side <math displaystyle="true"><mrow><mn>1</mn></mrow></math> cm has a dipole moment <math displaystyle="true"><mrow><mn>20</mn><mo>×</mo><msup><mrow><mn>10</mn></mrow><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow></math> J/T in <math displaystyle="true"><mrow><mi>H</mi><mo>=</mo><mn>60</mn><mo>×</mo><msup><mrow><mn>10</mn></mrow><mrow><mn>3</mn></mrow></msup></mrow></math> A/m: the susceptibility.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Permeability</p></td><td><p><math displaystyle="true"><mrow><mi>μ</mi><mo>=</mo><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>χ</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><msub><mrow><mi>μ</mi></mrow><mrow><mi>r</mi></mrow></msub></mrow></math></p></td></tr><tr><td><p>Percentage increase in <math displaystyle="true"><mrow><mi>B</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mn>100</mn><mspace width="0.3em"></mspace><mi>χ</mi><mspace width="0.3em"></mspace><mo>%</mo></mrow></math></p></td></tr><tr><td><p>Magnetic intensity</p></td><td><p><math displaystyle="true"><mrow><mi>H</mi><mo>=</mo><mi>n</mi><mi>I</mi><mo>=</mo><mfrac><mrow><mi>N</mi><mi>I</mi></mrow><mrow><mi>l</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Magnetisation</p></td><td><p><math displaystyle="true"><mrow><mi>M</mi><mo>=</mo><mfrac><mrow><mi>m</mi></mrow><mrow><mi>V</mi></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><mi>χ</mi><mo>=</mo><mfrac><mrow><mi>M</mi></mrow><mrow><mi>H</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Energy of a solenoid</p></td><td><p><math displaystyle="true"><mrow><mi>U</mi><mo>=</mo><mfrac><mrow><msup><mrow><mi>B</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn><mi>μ</mi></mrow></mfrac><mspace width="0.3em"></mspace><mi>A</mi><mi>l</mi></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Does <math displaystyle="true"><mrow><mi>H</mi></mrow></math> depend on the material?</p></td><td><p>No, <math displaystyle="true"><mrow><mi>H</mi><mo>=</mo><mi>n</mi><mi>I</mi></mrow></math> depends only on the current and the turns.</p></td></tr><tr><td><p>Why is the increase in <math displaystyle="true"><mrow><mi>B</mi></mrow></math> equal to <math displaystyle="true"><mrow><mi>χ</mi></mrow></math>?</p></td><td><p>Because <math displaystyle="true"><mrow><mi>B</mi><mo>=</mo><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>χ</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>H</mi></mrow></math> against <math displaystyle="true"><mrow><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>H</mi></mrow></math> for air.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>μ</mi><mo>=</mo><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>χ</mi></mrow></math> instead of <math displaystyle="true"><mrow><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>+</mo><mi>χ</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>.</p><p style="padding-left:14px">•  Using the turns <math displaystyle="true"><mrow><mi>N</mi></mrow></math> instead of the turns per metre <math displaystyle="true"><mrow><mi>n</mi></mrow></math> in <math displaystyle="true"><mrow><mi>H</mi><mo>=</mo><mi>n</mi><mi>I</mi></mrow></math>.</p><p style="padding-left:14px">•  Forgetting to convert turns per cm to turns per m.</p></div></section>
