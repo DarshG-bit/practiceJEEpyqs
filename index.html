@@ -1571,41 +1571,104 @@
     </div>
   </section>
 
-  <!-- Subject-First Chapter Navigation & Explorer (User Item 15 / Pic 7) -->
-  <section class="explorer-section">
-    <div class="explorer-header">
-      <h2>Chapter Practice Banks</h2>
+  <!-- 3 Big Subject Hero Cards (Lead to Chapter Indexes with Color Codes) -->
+  <section class="subject-portals-section" aria-label="Subject Syllabus Indexes">
+    <div class="subject-portals-header">
+      <h2>Subject Syllabus Portals</h2>
+      <span style="font-size:12.5px;color:var(--text-muted);">Dedicated chapter indexes with official class difficulty color codes</span>
     </div>
 
-    <!-- Subject Selection Cards (User Item 15: choose subject then topic) -->
-    <div class="subject-tabs-container">
-      <div class="subject-tab-card active" data-subject="all">
-        <div class="tab-card-top">
-          <span class="tab-card-title">All Subjects</span>
-          <span class="tab-card-count">27 Chapters</span>
+    <!-- 3 Big Boxes like the original implementation -->
+    <div class="subject-hero-grid">
+      <!-- 1. Mathematics -->
+      <a href="Maths/index.html" class="subject-hero-card maths">
+        <div>
+          <div class="hero-card-header">
+            <h3 class="hero-subj-title">Mathematics</h3>
+            <span class="hero-card-badge maths">5 Chapters &bull; 580+ PYQs</span>
+          </div>
+          <p class="hero-card-desc">Calculus, Matrices, Determinants, Limits &amp; Applications with official difficulty ratings.</p>
+          <div class="hero-card-chips">
+            <span class="hero-card-chip">Class A/B/C Color Codes</span>
+            <span class="hero-card-chip">Priority High/Med/Low</span>
+            <span class="hero-card-chip">Formula Strips</span>
+          </div>
         </div>
-        <div class="tab-card-desc">Complete JEE Main syllabus pool</div>
+        <div class="hero-card-cta maths">
+          <span>Explore Mathematics Index</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- 2. Physics -->
+      <a href="Physics/index.html" class="subject-hero-card physics">
+        <div>
+          <div class="hero-card-header">
+            <h3 class="hero-subj-title">Physics</h3>
+            <span class="hero-card-badge physics">14 Chapters &bull; 1,400+ PYQs</span>
+          </div>
+          <p class="hero-card-desc">Mechanics, Electromagnetism, Optics, Modern Physics, Thermal &amp; Waves with diagrams.</p>
+          <div class="hero-card-chips">
+            <span class="hero-card-chip">Class A/B/C Color Codes</span>
+            <span class="hero-card-chip">Priority High/Med/Low</span>
+            <span class="hero-card-chip">Circuit &amp; Ray Diagrams</span>
+          </div>
+        </div>
+        <div class="hero-card-cta physics">
+          <span>Explore Physics Index</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- 3. Chemistry -->
+      <a href="Chemistry/index.html" class="subject-hero-card chemistry">
+        <div>
+          <div class="hero-card-header">
+            <h3 class="hero-subj-title">Chemistry</h3>
+            <span class="hero-card-badge chemistry">8 Chapters &bull; 850+ PYQs</span>
+          </div>
+          <p class="hero-card-desc">General Organic Chemistry, Kinetics, Coordination, Electrochemistry &amp; Solutions.</p>
+          <div class="hero-card-chips">
+            <span class="hero-card-chip">Class A/B/C Color Codes</span>
+            <span class="hero-card-chip">Priority High/Med/Low</span>
+            <span class="hero-card-chip">Reaction Mechanisms</span>
+          </div>
+        </div>
+        <div class="hero-card-cta chemistry">
+          <span>Explore Chemistry Index</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- Long Box Underneath for All 3 Subjects -->
+    <div class="all-subjects-hero-box" id="allSubjectsHero">
+      <div class="all-hero-left">
+        <div class="all-hero-badge">All 3 Subjects &bull; Complete 27 Chapter Bank</div>
+        <h3 class="all-hero-title">Practice or Simulate Across Complete JEE Main Syllabus</h3>
+        <p class="all-hero-desc">Full active recall practice, question sampling, or an authentic NTA Computer-Based Test simulation across all 3 subjects.</p>
       </div>
-      <div class="subject-tab-card" data-subject="Maths">
-        <div class="tab-card-top">
-          <span class="tab-card-title">Mathematics</span>
-          <span class="tab-card-count">5 Chapters</span>
-        </div>
-        <div class="tab-card-desc">Calculus, Matrices &amp; Determinants</div>
+      <div class="all-hero-actions">
+        <button type="button" class="btn-hero-sim" id="btnHeroSimulate">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Simulate All 3 Subjects Exam &rarr;</span>
+        </button>
+        <button type="button" class="btn-hero-browse" id="btnHeroBrowse">
+          <span>Browse 27 Chapters &darr;</span>
+        </button>
       </div>
-      <div class="subject-tab-card" data-subject="Physics">
-        <div class="tab-card-top">
-          <span class="tab-card-title">Physics</span>
-          <span class="tab-card-count">14 Chapters</span>
-        </div>
-        <div class="tab-card-desc">Mechanics, Electromagnetism &amp; Optics</div>
-      </div>
-      <div class="subject-tab-card" data-subject="Chemistry">
-        <div class="tab-card-top">
-          <span class="tab-card-title">Chemistry</span>
-          <span class="tab-card-count">8 Chapters</span>
-        </div>
-        <div class="tab-card-desc">Organic, Physical &amp; Inorganic</div>
+    </div>
+  </section>
+
+  <!-- Interactive Chapter Practice Banks Section -->
+  <section class="explorer-section" id="chapterBanksSection">
+    <div class="explorer-header">
+      <h2>Chapter Practice Banks</h2>
+      <div class="quick-filter-pills" id="subjectFilterPills">
+        <button type="button" class="qfilter-pill active" data-subject="all">All (27)</button>
+        <button type="button" class="qfilter-pill" data-subject="Maths">Mathematics (5)</button>
+        <button type="button" class="qfilter-pill" data-subject="Physics">Physics (14)</button>
+        <button type="button" class="qfilter-pill" data-subject="Chemistry">Chemistry (8)</button>
       </div>
     </div>
 
