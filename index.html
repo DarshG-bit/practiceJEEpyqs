@@ -1210,6 +1210,58 @@ body {
   color: #cbd5e1 !important;
 }
 
+/* 16. QUESTION COUNT SELECTION BOX & PRESETS */
+#qcount_box {
+  margin-bottom: 14px;
+}
+.qpreset {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.qpreset:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+.qpreset.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+[data-theme="dark"] #qcount_box {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .qpreset {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .qpreset:hover {
+  background: #334155 !important;
+  border-color: #60a5fa !important;
+}
+[data-theme="dark"] .qpreset.active {
+  background: #1e3a8a !important;
+  border-color: #60a5fa !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #custom_qc {
+  background: #0f172a !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+}
+
 .theme-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -1233,6 +1285,74 @@ body {
 }
 [data-theme="dark"] .theme-btn:hover {
   background: #334155;
+}
+
+
+/* Modal Sections & Pills */
+.modal-box {
+  max-width: 580px !important;
+}
+.modal-section-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 12px 0 6px;
+}
+.modal-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 4px;
+}
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.pill-btn input[type=radio] {
+  display: none;
+}
+.pill-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+.pill-btn.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .modal-section-title {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .pill-btn {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .pill-btn:hover {
+  background: #1e3a8a !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .pill-btn.active {
+  background: #1e3a8a !important;
+  border-color: #60a5fa !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .pill-btn input[type=number] {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
 }
 
 </style>
@@ -1321,11 +1441,13 @@ body {
 <div id="randomModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
     <div class="modal-header">
-      <h3 id="modalTitle">🎲 Random Chapter Test</h3>
+      <h3 id="modalTitle">🎲 Random Test Generator</h3>
       <button id="closeRandomModal" class="modal-close" type="button" aria-label="Close dialog">&times;</button>
     </div>
-    <p class="modal-desc">Simulate actual JEE randomness! Pick a subject pool or test yourself across all 27 chapters:</p>
+    <p class="modal-desc">Simulate actual JEE test conditions! Choose your subject, question count, and timer targets:</p>
     
+    <!-- 1. Subject Pool -->
+    <label class="modal-section-title">1. Choose Subject Pool:</label>
     <div class="pool-options">
       <label class="pool-opt active">
         <input type="radio" name="subjectPool" value="all" checked>
@@ -1345,7 +1467,57 @@ body {
       </label>
     </div>
 
-    <div class="modal-actions">
+    <!-- 2. Number of Questions -->
+    <label class="modal-section-title">2. Number of Questions:</label>
+    <div class="modal-pills" id="modalQPills">
+      <label class="pill-btn">
+        <input type="radio" name="modalQCount" value="15">
+        <span>15 Questions (~30 min)</span>
+      </label>
+      <label class="pill-btn active">
+        <input type="radio" name="modalQCount" value="25" checked>
+        <span>25 Questions (Exam Sprint)</span>
+      </label>
+      <label class="pill-btn">
+        <input type="radio" name="modalQCount" value="30">
+        <span>30 Questions (~60 min)</span>
+      </label>
+      <label class="pill-btn">
+        <input type="radio" name="modalQCount" value="all">
+        <span>All in Chapter</span>
+      </label>
+      <label class="pill-btn" id="pillCustomQ">
+        <input type="radio" name="modalQCount" value="custom">
+        <span>Custom: <input type="number" id="modalCustomQ" min="1" max="150" value="20" style="width:50px;padding:2px 4px;font-size:13px;border-radius:4px;border:1px solid #94a3b8;text-align:center"> qs</span>
+      </label>
+    </div>
+
+    <!-- 3. Practice Time -->
+    <label class="modal-section-title">3. Practice Time Limit:</label>
+    <div class="modal-pills" id="modalTPills">
+      <label class="pill-btn">
+        <input type="radio" name="modalTime" value="30">
+        <span>30 Minutes</span>
+      </label>
+      <label class="pill-btn">
+        <input type="radio" name="modalTime" value="45">
+        <span>45 Minutes</span>
+      </label>
+      <label class="pill-btn active">
+        <input type="radio" name="modalTime" value="60" checked>
+        <span>60 Minutes (Standard)</span>
+      </label>
+      <label class="pill-btn">
+        <input type="radio" name="modalTime" value="free">
+        <span>No Time Limit</span>
+      </label>
+      <label class="pill-btn" id="pillCustomT">
+        <input type="radio" name="modalTime" value="custom">
+        <span>Custom: <input type="number" id="modalCustomT" min="5" max="360" value="45" style="width:50px;padding:2px 4px;font-size:13px;border-radius:4px;border:1px solid #94a3b8;text-align:center"> min</span>
+      </label>
+    </div>
+
+    <div class="modal-actions" style="margin-top:22px">
       <button id="launchRandomTest" class="btn-launch" type="button">🚀 Launch Random Test</button>
       <button id="cancelRandomModal" class="btn-cancel" type="button">Cancel</button>
     </div>
@@ -1521,6 +1693,38 @@ var CHAPTER_POOL = [
     };
   });
 
+  // Pill selection listeners for QCount and Time
+  function setupPillGroup(containerId, inputName) {
+    var c = document.getElementById(containerId);
+    if (!c) return;
+    var labels = c.querySelectorAll('.pill-btn');
+    labels.forEach(function(lbl){
+      lbl.onclick = function(){
+        labels.forEach(function(l){ l.classList.remove('active'); });
+        lbl.classList.add('active');
+        var rad = lbl.querySelector('input[type=radio]');
+        if (rad) rad.checked = true;
+      };
+    });
+  }
+  setupPillGroup('modalQPills', 'modalQCount');
+  setupPillGroup('modalTPills', 'modalTime');
+
+  var qIn = document.getElementById('modalCustomQ');
+  if (qIn) {
+    qIn.onfocus = function(){
+      var p = document.getElementById('pillCustomQ');
+      if (p) p.click();
+    };
+  }
+  var tIn = document.getElementById('modalCustomT');
+  if (tIn) {
+    tIn.onfocus = function(){
+      var p = document.getElementById('pillCustomT');
+      if (p) p.click();
+    };
+  }
+
   if (launchBtn) {
     launchBtn.onclick = function() {
       var sel = document.querySelector('input[name="subjectPool"]:checked');
@@ -1531,7 +1735,23 @@ var CHAPTER_POOL = [
       }
       if (!eligible.length) eligible = CHAPTER_POOL;
       var picked = eligible[Math.floor(Math.random() * eligible.length)];
-      window.location.href = picked.url;
+
+      // Read question count
+      var qRad = document.querySelector('input[name="modalQCount"]:checked');
+      var qVal = qRad ? qRad.value : '25';
+      if (qVal === 'custom') {
+        qVal = (qIn && qIn.value) ? qIn.value : '25';
+      }
+
+      // Read time
+      var tRad = document.querySelector('input[name="modalTime"]:checked');
+      var tVal = tRad ? tRad.value : '60';
+      if (tVal === 'custom') {
+        tVal = (tIn && tIn.value) ? tIn.value : '60';
+      }
+
+      var targetUrl = encodeURI(picked.url) + '?q=' + encodeURIComponent(qVal) + '&t=' + encodeURIComponent(tVal) + '&autostart=1';
+      window.location.href = targetUrl;
     };
   }
 })();

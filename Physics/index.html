@@ -698,6 +698,58 @@ body {
   color: #cbd5e1 !important;
 }
 
+/* 16. QUESTION COUNT SELECTION BOX & PRESETS */
+#qcount_box {
+  margin-bottom: 14px;
+}
+.qpreset {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.qpreset:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+.qpreset.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+[data-theme="dark"] #qcount_box {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .qpreset {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .qpreset:hover {
+  background: #334155 !important;
+  border-color: #60a5fa !important;
+}
+[data-theme="dark"] .qpreset.active {
+  background: #1e3a8a !important;
+  border-color: #60a5fa !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #custom_qc {
+  background: #0f172a !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+}
+
 .theme-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);

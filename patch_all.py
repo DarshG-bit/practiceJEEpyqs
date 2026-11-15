@@ -971,6 +971,58 @@ body {
   color: #cbd5e1 !important;
 }
 
+/* 16. QUESTION COUNT SELECTION BOX & PRESETS */
+#qcount_box {
+  margin-bottom: 14px;
+}
+.qpreset {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.qpreset:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+.qpreset.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+[data-theme="dark"] #qcount_box {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+[data-theme="dark"] .qpreset {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .qpreset:hover {
+  background: #334155 !important;
+  border-color: #60a5fa !important;
+}
+[data-theme="dark"] .qpreset.active {
+  background: #1e3a8a !important;
+  border-color: #60a5fa !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #custom_qc {
+  background: #0f172a !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+}
+
 .theme-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -1042,10 +1094,10 @@ def patch_dark_mode(content):
         
     # 2. Dark mode CSS (Replace existing dark mode block or inject)
     if "COMPREHENSIVE DARK MODE" in content:
-        # Check if the new filter rules are present
-        if "14. SUBJECT SWITCHER" not in content:
+        # Check if the new question count rules are present
+        if "16. QUESTION COUNT" not in content:
             # Replace old DARK MODE CSS with the comprehensive updated one
-            pattern = r'/\* =+ COMPREHENSIVE DARK MODE =+ \*/.*?\[data-theme="dark"\] \.theme-btn:hover\s*\{[^}]+\}'
+            pattern = r'/\* =+ COMPREHENSIVE DARK MODE =+ \*/.*?\[data-theme=[\'"]dark[\'"]\] \.theme-btn:hover\s*\{[^}]+\}'
             if re.search(pattern, content, re.DOTALL):
                 content = re.sub(pattern, DARK_MODE_CSS.strip(), content, flags=re.DOTALL)
                 modified = True
@@ -1085,6 +1137,217 @@ def patch_dark_mode(content):
             content = content[:pos_b] + THEME_TOGGLE_JS + "\n</body>" + content[pos_b+7:]
             modified = True
         
+    return content, modified
+
+# -------------------------------------------------------------
+# 6. QUESTION COUNT SELECTION & TIMED SAMPLING
+# -------------------------------------------------------------
+QCOUNT_HTML = """<label>Number of questions</label>
+<div class="tbox" id="qcount_box">
+  <label class="rad"><input type="radio" name="qc_mode" value="all" checked> <span>All selected questions (<span id="total_q_avail">0</span> available)</span></label>
+  <label class="rad" style="margin-top:6px;"><input type="radio" name="qc_mode" value="custom"> <span>Random sample of:</span></label>
+  <div class="tin" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0 6px 26px;">
+    <input type="number" id="custom_qc" min="1" max="500" value="25" style="width:65px;padding:3px 6px;font-size:14px;border-radius:6px;border:1.5px solid #cbd5e1;text-align:center"> questions randomly picked from your selection
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px 26px;">
+    <button type="button" class="qpreset" data-q="15">15 qs (~30 min)</button>
+    <button type="button" class="qpreset active" data-q="25">25 qs (Exam Sprint)</button>
+    <button type="button" class="qpreset" data-q="30">30 qs (~60 min)</button>
+    <button type="button" class="qpreset" data-q="50">50 qs</button>
+  </div>
+  <div class="tnote" id="qc_note" style="margin-left:26px;margin-top:4px;">Questions will be picked uniformly at random from your selected types/filters.</div>
+</div>"""
+
+NEW_SUG_JS = """function sug(){refreshTypes();var l=scopeList(),n=l.length,e=META.exp||{},ss=$('selsum');
+ var qTotSpan=$('total_q_avail');if(qTotSpan)qTotSpan.textContent=n;
+ var qcMode=document.querySelector('input[name=qc_mode]:checked');
+ var isCustom=qcMode&&qcMode.value==='custom';
+ var cIn=$('custom_qc');
+ var cnum=isCustom?(parseInt(cIn?cIn.value:25)||25):n;
+ var effN=Math.min(cnum,n);
+ var avgSec=n?(sumExp(l)/n):120;
+ var totalSec=isCustom?Math.round(avgSec*effN):sumExp(l);
+ var m=Math.max(1,Math.round(totalSec/60));
+ $('mins').value=m;$('go').disabled=!n;
+ if(n){
+  ss.className='selsum';
+  if(isCustom&&effN<n){
+   ss.innerHTML='<b>'+effN+' of '+n+' questions selected (Random Sample)</b> &middot; about '+durTxt(totalSec);
+  }else{
+   ss.innerHTML='<b>'+n+' question'+(n>1?'s':'')+' selected</b> &middot; about '+durTxt(sumExp(l));
+  }
+ }else{
+  ss.className='selsum warn';ss.innerHTML='<b>No questions match your choices.</b><br>Tick at least one question type, and at least one difficulty level and one format.';
+ }
+ if(n){
+  var s=isCustom?
+   ('Suggested for '+effN+' sampled questions (from '+n+' available): '+durTxt(totalSec)):
+   ('Suggested for '+n+' question'+(n>1?'s':'')+': '+durTxt(sumExp(l)));
+  s+=', adding up the expected time of each question (Easy '+fm(e.E||0)+', Medium '+fm(e.M||0)+', Difficult '+fm(e.D||0)+'). You can change it.';
+  $('sug').textContent=s;
+ }else{
+  $('sug').textContent='Choose your questions above first.';
+ }
+}"""
+
+NEW_GO_JS = """$('go').onclick=function(){NS=scopeList();if(!NS.length)return;
+ var qcMode=document.querySelector('input[name=qc_mode]:checked');
+ if(qcMode&&qcMode.value==='custom'){
+  var cIn=$('custom_qc');
+  var cnum=parseInt(cIn?cIn.value:25)||25;
+  if(cnum<NS.length){
+   var shuffled=NS.slice();
+   for(var i=shuffled.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var tmp=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=tmp;
+   }
+   NS=shuffled.slice(0,cnum);
+   NS.sort(function(a,b){return parseInt(a)-parseInt(b);});
+  }
+ }
+ label=scopeLabel()+' ('+NS.length+')';S={};M={};V={};T={};C={};X={};total=0;cur=NS[0];
+ var tmode=document.querySelector('input[name=tm]:checked').value;LIMIT=tmode=='free'?0:Math.max(60,Math.round(parseFloat($('mins').value||0)*60));started=true;enter()};"""
+
+INIT_QCOUNT_SCRIPT = """<script>
+(function(){
+  function initQCount(){
+    var qcRadios = document.querySelectorAll('input[name=qc_mode]');
+    var customQcIn = document.getElementById('custom_qc');
+    var presets = document.querySelectorAll('.qpreset');
+
+    function updatePresetButtons(val) {
+      presets.forEach(function(btn){
+        if(btn.dataset.q === String(val)) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    presets.forEach(function(btn){
+      btn.onclick = function(){
+        var q = btn.dataset.q;
+        if (customQcIn) customQcIn.value = q;
+        var rad = document.querySelector('input[name=qc_mode][value=custom]');
+        if (rad) rad.checked = true;
+        updatePresetButtons(q);
+        if (typeof sug === 'function') sug();
+      };
+    });
+
+    qcRadios.forEach(function(r){
+      r.onchange = function(){
+        if (r.value === 'all') {
+          presets.forEach(function(b){ b.classList.remove('active'); });
+        } else {
+          if (customQcIn) updatePresetButtons(customQcIn.value);
+        }
+        if (typeof sug === 'function') sug();
+      };
+    });
+
+    if (customQcIn) {
+      customQcIn.onfocus = function(){
+        var rad = document.querySelector('input[name=qc_mode][value=custom]');
+        if (rad) rad.checked = true;
+        updatePresetButtons(customQcIn.value);
+        if (typeof sug === 'function') sug();
+      };
+      customQcIn.oninput = function(){
+        var rad = document.querySelector('input[name=qc_mode][value=custom]');
+        if (rad) rad.checked = true;
+        updatePresetButtons(customQcIn.value);
+        if (typeof sug === 'function') sug();
+      };
+    }
+
+    // URL Query Parameters Handling: ?q=25&t=45&autostart=1
+    var params = new URLSearchParams(window.location.search);
+    var qParam = params.get('q');
+    var tParam = params.get('t');
+    var auto = params.get('autostart');
+
+    if (qParam) {
+      if (qParam === 'all') {
+        var radAll = document.querySelector('input[name=qc_mode][value=all]');
+        if (radAll) radAll.checked = true;
+        presets.forEach(function(b){ b.classList.remove('active'); });
+      } else {
+        var qNum = parseInt(qParam);
+        if (!isNaN(qNum) && qNum > 0) {
+          if (customQcIn) customQcIn.value = qNum;
+          var radCust = document.querySelector('input[name=qc_mode][value=custom]');
+          if (radCust) radCust.checked = true;
+          updatePresetButtons(qNum);
+        }
+      }
+    }
+
+    if (typeof sug === 'function') sug();
+
+    if (tParam) {
+      if (tParam === 'free') {
+        var radFree = document.querySelector('input[name=tm][value=free]');
+        if (radFree) radFree.checked = true;
+      } else {
+        var tNum = parseFloat(tParam);
+        if (!isNaN(tNum) && tNum > 0) {
+          var radTimed = document.querySelector('input[name=tm][value=timed]');
+          if (radTimed) radTimed.checked = true;
+          var minsIn = document.getElementById('mins');
+          if (minsIn) minsIn.value = tNum;
+        }
+      }
+    }
+
+    if (auto === '1') {
+      setTimeout(function(){
+        var goBtn = document.getElementById('go');
+        if (goBtn && !goBtn.disabled) {
+          goBtn.click();
+        }
+      }, 220);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQCount);
+  } else {
+    initQCount();
+  }
+})();
+</script>"""
+
+def patch_practice_sheet(content):
+    modified = False
+    
+    # 1. Inject QCOUNT_HTML before <label>Practice time</label>
+    if 'id="qcount_box"' not in content and '<label>Practice time</label>' in content:
+        content = content.replace('<label>Practice time</label>', QCOUNT_HTML + '\n<label>Practice time</label>', 1)
+        modified = True
+        
+    # 2. Replace sug() function
+    if 'isCustom&&effN<n' not in content:
+        sug_pattern = r'function sug\(\)\{.*?\}\s*function stat\(n\)'
+        if re.search(sug_pattern, content, re.DOTALL):
+            content = re.sub(sug_pattern, NEW_SUG_JS + '\nfunction stat(n)', content, flags=re.DOTALL)
+            modified = True
+        
+    # 3. Replace $('go').onclick
+    if 'var qcMode=document.querySelector' not in content:
+        go_pattern = r'\$\(\'go\'\)\.onclick\s*=\s*function\(\)\{.*?\};\s*\$\(\'savecur\'\)'
+        if re.search(go_pattern, content, re.DOTALL):
+            content = re.sub(go_pattern, NEW_GO_JS + '\n$(\'savecur\')', content, flags=re.DOTALL)
+            modified = True
+        
+    # 4. Inject initQCount before rfind("</body>")
+    if 'initQCount' not in content and '</body>' in content:
+        pos_b = content.rfind('</body>')
+        if pos_b != -1:
+            content = content[:pos_b] + INIT_QCOUNT_SCRIPT + '\n</body>' + content[pos_b+7:]
+            modified = True
+            
     return content, modified
 
 # -------------------------------------------------------------
@@ -1166,12 +1429,17 @@ def run_all_patches():
             content = original_content
             file_changed = False
             
-            # 1. Option Fixes for PYQ practice files
+            # 1. Option Fixes & Question Count Sampling for PYQ practice files
             if "PYQ Practice.html" in file:
                 content, opt_mod = fix_option_images_in_file(content)
                 if opt_mod:
                     file_changed = True
                     print(f"  [Options Fixed]   {os.path.relpath(file_path, ROOT_DIR)}")
+                    
+                content, qc_mod = patch_practice_sheet(content)
+                if qc_mod:
+                    file_changed = True
+                    print(f"  [Q-Count Added]   {os.path.relpath(file_path, ROOT_DIR)}")
                     
             # 2. Type Notes PDF & Pagination
             if "Type Notes.html" in file:
