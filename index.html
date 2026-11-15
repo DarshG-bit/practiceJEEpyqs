@@ -1,2714 +1,2158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JEE Main PYQ Practice Portal — Authentic CBT Exam &amp; Chapter Banks</title>
-  
-  <script>
-    (function(){
-      var t = localStorage.getItem('jee_theme');
-      if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
-    })();
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JEE Main PYQ Practice Portal &mdash; Authentic CBT Exam &amp; Chapter Banks</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+<script>
+  (function(){
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<style>
+/* ==========================================================================
+   DESIGN TOKENS & RESET (ALIGNED STRICTLY TO DESIGN.MD & CRAFT-FLOOR)
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <style>
-  /* ==========================================================================
-     ELEVATED APPLE & IMPECCABLE DESIGN SYSTEM: JEE PYQ PRACTICE PORTAL
-     Mode: Operate | True AMOLED Black (#000000) Canvas | 0% Navy Blue
-     ========================================================================== */
-  *, *::before, *::after { box-sizing: border-box; }
-
-  :root {
-    --bg-page: #f8fafc;
-    --surface: #ffffff;
-    --surface-elevated: #f1f5f9;
-    --surface-input: #ffffff;
-    --border: #e2e8f0;
-    --border-subtle: #cbd5e1;
-    --border-focus: #2563eb;
-    
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --text-muted: #475569;
-    
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
-    --primary-light: #eff6ff;
-    
-    --accent-maths: #2563eb;
-    --accent-physics: #6366f1;
-    --accent-chem: #059669;
-    
-    --success: #16a34a;
-    --success-bg: #dcfce7;
-    --warning: #b45309;
-    --warning-bg: #fef3c7;
-    --error: #b91c1c;
-    --error-bg: #fee2e2;
-
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-pill: 9999px;
-    
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
-  }
-
-  [data-theme="dark"] {
-    --bg-page: #000000;
-    --surface: #0a0a0c;
-    --surface-elevated: #111114;
-    --surface-input: #121215;
-    --border: #222224;
-    --border-subtle: #27272a;
-    --border-focus: #3b82f6;
-    
-    --text-primary: #ffffff;
-    --text-secondary: #e4e4e7;
-    --text-muted: #a1a1aa;
-    
-    --primary: #2563eb;
-    --primary-hover: #3b82f6;
-    --primary-light: rgba(37, 99, 235, 0.15);
-    
-    --accent-maths: #3b82f6;
-    --accent-physics: #818cf8;
-    --accent-chem: #10b981;
-    
-    --success: #22c55e;
-    --success-bg: #052e16;
-    --warning: #f59e0b;
-    --warning-bg: #3b2003;
-    --error: #f87171;
-    --error-bg: #450a0a;
-  }
-
-  /* Browser Surfaces */
-  ::selection {
-    background: rgba(37, 99, 235, 0.25);
-    color: inherit;
-  }
-  [data-theme="dark"] ::selection {
-    background: rgba(59, 130, 246, 0.35);
-    color: #ffffff;
-  }
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-subtle) transparent;
-  }
-  :focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
-
-  body {
-    margin: 0;
-    font-family: var(--font-sans);
-    font-size: 14.5px;
-    color: var(--text-primary);
-    background: var(--bg-page);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-
-  /* Top Navigation & Glassmorphic Brand Header */
-  header {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-  [data-theme="dark"] header {
-    background: rgba(0, 0, 0, 0.92);
-    border-bottom: 1px solid var(--border);
-  }
-  .header-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-  }
-  .brand-group {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .brand-title {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .brand-badge {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: var(--radius-pill);
-    background: var(--primary-light);
-    color: var(--primary);
-    border: 1px solid rgba(37, 99, 235, 0.2);
-  }
-  [data-theme="dark"] .brand-badge {
-    color: #93c5fd;
-    border-color: rgba(147, 197, 253, 0.3);
-  }
-  .brand-desc {
-    margin: 0;
-    font-size: 12.5px;
-    color: var(--text-muted);
-  }
-  .header-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn-history-nav {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    border-radius: var(--radius-md);
-    padding: 8px 14px;
-    font-size: 13.5px;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    transition: all 0.15s ease;
-  }
-  .btn-history-nav:hover {
-    border-color: var(--border-subtle);
-    transform: translateY(-1px);
-  }
-  .btn-history-nav:active {
-    transform: scale(0.98);
-  }
-  .btn-cbt-launch {
-    background: var(--primary);
-    color: #ffffff !important;
-    border: 1px solid transparent;
-    border-radius: var(--radius-md);
-    padding: 8px 16px;
-    font-size: 13.5px;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    transition: all 0.15s ease;
-  }
-  .btn-cbt-launch:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
-  }
-  .btn-cbt-launch:active {
-    transform: scale(0.98);
-  }
-  .theme-btn {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    border-radius: var(--radius-md);
-    padding: 8px 13px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    transition: all 0.15s ease;
-  }
-  .theme-btn:hover {
-    border-color: var(--border-subtle);
-    transform: translateY(-1px);
-  }
-  .theme-btn:active {
-    transform: scale(0.98);
-  }
-
-  /* Main Viewport Container */
-  main {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 24px 20px 80px;
-  }
-
-  /* ==========================================================================
-     ASPIRANT DASHBOARD
-     ========================================================================== */
-  .dashboard-panel {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 24px 26px;
-    margin-bottom: 28px;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-  .dash-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  .dash-title-wrap h2 {
-    margin: 0 0 3px;
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  .dash-title-wrap p {
-    margin: 0;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-  .dash-buttons {
-    display: flex;
-    gap: 8px;
-  }
-  .btn-clear-data {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    border-radius: var(--radius-md);
-    padding: 7px 12px;
-    font-size: 12.5px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .btn-clear-data:hover {
-    color: #991b1b;
-    border-color: #dc2626;
-    background: var(--error-bg);
-  }
-
-  /* Active Session Recovery Banner */
-  .active-session-card {
-    background: var(--primary-light);
-    border: 1px solid var(--primary);
-    border-radius: var(--radius-md);
-    padding: 14px 18px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  [data-theme="dark"] .active-session-card {
-    background: rgba(37, 99, 235, 0.12);
-    border-color: #3b82f6;
-  }
-  .session-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .session-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: var(--radius-pill);
-    background: #16a34a;
-    flex-shrink: 0;
-  }
-  .session-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-  .session-meta {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    font-variant-numeric: tabular-nums;
-  }
-  .session-actions {
-    display: flex;
-    gap: 8px;
-  }
-  .btn-resume {
-    background: var(--primary);
-    color: #ffffff !important;
-    border: none;
-    border-radius: var(--radius-sm);
-    padding: 6px 14px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.15s ease;
-  }
-  .btn-resume:hover {
-    background: var(--primary-hover);
-  }
-  .btn-discard-session {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    border-radius: var(--radius-sm);
-    padding: 6px 10px;
-    font-size: 12px;
-    cursor: pointer;
-  }
-  .btn-discard-session:hover {
-    color: var(--error);
-    border-color: var(--error);
-  }
-
-  /* 4 Metric Stats Grid */
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  .metric-card {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 16px 18px;
-    transition: all 0.15s ease;
-  }
-  .metric-card:hover {
-    border-color: var(--border-subtle);
-  }
-  .metric-label {
-    font-size: 11.5px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
-  .metric-val {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    color: var(--text-primary);
-    font-variant-numeric: tabular-nums;
-    margin-bottom: 4px;
-  }
-  .metric-sub {
-    font-size: 12px;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .metric-sub .badge-star {
-    color: var(--warning);
-    font-weight: 600;
-  }
-  .metric-sub .badge-mistake {
-    color: var(--error);
-    font-weight: 600;
-  }
-
-  /* Subject Coverage Meters */
-  .subject-progress-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 14px;
-    padding-top: 18px;
-    border-top: 1px solid var(--border);
-  }
-  .subj-meter-card {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .subj-meter-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    font-weight: 600;
-  }
-  .subj-meter-header .subj-name {
-    color: var(--text-secondary);
-  }
-  .subj-meter-header .subj-fraction {
-    color: var(--text-muted);
-    font-variant-numeric: tabular-nums;
-  }
-  .progress-bar-bg {
-    height: 6px;
-    background: var(--border);
-    border-radius: var(--radius-pill);
-    overflow: hidden;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    border-radius: var(--radius-pill);
-    transition: width 0.4s ease;
-  }
-  .progress-bar-fill.maths { background: var(--accent-maths); }
-  .progress-bar-fill.physics { background: var(--accent-physics); }
-  .progress-bar-fill.chem { background: var(--accent-chem); }
-
-  /* ==========================================================================
-     SUBJECT FIRST NAVIGATION & EXPLORER (User Item 15)
-     ========================================================================== */
-  .explorer-section {
-    margin-top: 24px;
-  }
-  .explorer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .explorer-header h2 {
-    margin: 0;
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  /* Subject Selection Hero Tabs (Item 15) */
-  .subject-tabs-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .subject-tab-card {
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 14px 16px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    transition: all 0.15s ease;
-    user-select: none;
-  }
-  .subject-tab-card:hover {
-    border-color: var(--border-subtle);
-    transform: translateY(-1px);
-  }
-  .subject-tab-card:active {
-    transform: scale(0.98);
-  }
-  .subject-tab-card.active {
-    border-color: var(--primary);
-  }
-  .tab-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .tab-card-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .tab-card-count {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: var(--radius-pill);
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-variant-numeric: tabular-nums;
-  }
-  .tab-card-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  /* Search & Toolbar */
-  .toolbar-wrap {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .search-box-wrap {
-    flex: 1;
-    min-width: 260px;
-    position: relative;
-  }
-  .search-input {
-    width: 100%;
-    padding: 10px 16px 10px 38px;
-    font-size: 14px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    background: var(--surface-input);
-    color: var(--text-primary);
-    transition: all 0.15s ease;
-  }
-  .search-input:focus {
-    border-color: var(--border-focus);
-    outline: none;
-  }
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    pointer-events: none;
-  }
-  .clear-search-btn {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 16px;
-    cursor: pointer;
-    display: none;
-  }
-
-  /* Chapter Cards Grid */
-  .chapter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 16px;
-  }
-  .chapter-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.15s ease;
-  }
-  .chapter-card:hover {
-    border-color: var(--border-subtle);
-    transform: translateY(-1px);
-  }
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .ch-subject-tag {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 2px 7px;
-    border-radius: var(--radius-sm);
-  }
-  .ch-subject-tag.maths {
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--accent-maths);
-  }
-  .ch-subject-tag.physics {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--accent-physics);
-  }
-  .ch-subject-tag.chemistry {
-    background: rgba(5, 150, 105, 0.1);
-    color: var(--accent-chem);
-  }
-  .ch-priority-tag {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: var(--radius-pill);
-    background: var(--warning-bg);
-    color: var(--warning);
-    border: 1px solid rgba(180, 83, 9, 0.2);
-  }
-  .chapter-title {
-    margin: 0 0 8px;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--text-primary);
-    line-height: 1.35;
-  }
-  .card-stats-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 14px;
-    font-size: 12px;
-  }
-  .ch-stat-badge {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    padding: 2px 7px;
-    border-radius: var(--radius-sm);
-    color: var(--text-muted);
-    font-variant-numeric: tabular-nums;
-  }
-  .ch-stat-badge.score {
-    color: var(--success);
-    font-weight: 700;
-  }
-  .ch-stat-badge.mistakes {
-    color: var(--error);
-    font-weight: 600;
-  }
-
-  /* Card Action Row */
-  .card-actions-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-  .act-btn {
-    padding: 7px 10px;
-    font-size: 13px;
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.15s ease;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-  }
-  .act-btn.primary {
-    background: var(--primary);
-    color: #ffffff !important; /* Crisp white text */
-    border: 1px solid transparent;
-  }
-  .act-btn.primary:hover {
-    background: var(--primary-hover);
-  }
-  .act-btn.secondary {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-  }
-  .act-btn.secondary:hover {
-    border-color: var(--border-subtle);
-  }
-
-  /* Study Material Chips (Item 11 / Pic 5) */
-  .card-study-material {
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .study-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .study-chips {
-    display: flex;
-    gap: 6px;
-  }
-  .study-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 8px;
-    font-size: 11.5px;
-    font-weight: 500;
-    border-radius: var(--radius-sm);
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all 0.15s ease;
-  }
-  .study-chip:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-
-  /* ==========================================================================
-     SIMULATE EXAM MODAL (User Item 4 - Custom Time)
-     ========================================================================== */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 100;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .modal-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    width: 100%;
-    max-width: 560px;
-    padding: 24px;
-  }
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-  }
-  .modal-header h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  .btn-close-modal {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 20px;
-    cursor: pointer;
-    padding: 4px;
-    line-height: 1;
-    border-radius: var(--radius-sm);
-  }
-  .btn-close-modal:hover {
-    color: var(--text-primary);
-  }
-  .modal-step {
-    margin-bottom: 16px;
-  }
-  .step-label {
-    font-size: 11.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-    display: block;
-  }
-  .modal-pill-group {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .modal-pill {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    padding: 6px 12px;
-    font-size: 13px;
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .modal-pill:hover {
-    border-color: var(--border-subtle);
-  }
-  .modal-pill.selected {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: #ffffff !important;
-  }
-  .modal-pill.selected div {
-    color: rgba(255, 255, 255, 0.96) !important;
-  }
-  .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 22px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-  }
-  .btn-modal-cancel {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    padding: 8px 16px;
-    font-size: 13.5px;
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-  }
-  .btn-modal-start {
-    background: var(--primary);
-    border: none;
-    color: #ffffff !important;
-    padding: 8px 20px;
-    font-size: 13.5px;
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .btn-modal-start:hover {
-    background: var(--primary-hover);
-  }
-
-  /* Custom Time Input in Modal (User Item 4 / Pic 2) */
-  .custom-time-wrap {
-    display: none;
-    margin-top: 8px;
-    align-items: center;
-    gap: 10px;
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 8px 12px;
-  }
-  .custom-time-input {
-    width: 80px;
-    padding: 6px 8px;
-    font-size: 14px;
-    font-weight: 700;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-subtle);
-    background: var(--surface-input);
-    color: var(--text-primary);
-  }
-  .custom-time-input:focus {
-    border-color: var(--primary);
-    outline: none;
-  }
-
-  /* ==========================================================================
-     TEST HISTORY DRAWER / SIDEBAR (User Item 19 & 20)
-     ========================================================================== */
-  .drawer-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 120;
-    display: none;
-  }
-  .drawer-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    max-width: 600px;
-    background: var(--surface);
-    border-left: 1px solid var(--border);
-    z-index: 130;
-    display: flex;
-    flex-direction: column;
-  }
-  .drawer-header {
-    padding: 18px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .drawer-header h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .drawer-content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 18px 20px;
-  }
-  .drawer-stats-summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-  .hist-stat-card {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 10px 12px;
-    text-align: center;
-  }
-  .hist-stat-val {
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--text-primary);
-    font-variant-numeric: tabular-nums;
-  }
-  .hist-stat-lbl {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  /* History Attempt Cards (Item 7, 8, 20 / Pic 4 & Pic 8) */
-  .att-card {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 12px 14px;
-    margin-bottom: 10px;
-    transition: all 0.15s ease;
-  }
-  .att-card:hover {
-    border-color: var(--border-subtle);
-  }
-  .att-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .att-badge {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: var(--radius-pill);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .att-badge.cbt {
-    background: rgba(147, 51, 234, 0.12);
-    color: var(--review-purple, #9333ea);
-    border: 1px solid rgba(147, 51, 234, 0.3);
-  }
-  .att-badge.practice {
-    background: rgba(37, 99, 235, 0.12);
-    color: var(--primary);
-    border: 1px solid rgba(37, 99, 235, 0.3);
-  }
-  .att-date {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-  .att-stats-row {
-    font-size: 12.5px;
-    color: var(--text-secondary);
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
-  .att-actions {
-    display: flex;
-    gap: 8px;
-    border-top: 1px solid var(--border);
-    padding-top: 8px;
-    flex-wrap: wrap;
-  }
-  .att-btn {
-    padding: 5px 10px;
-    font-size: 12px;
-    font-weight: 600;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text-primary);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    transition: all 0.15s ease;
-  }
-  .att-btn:hover {
-    border-color: var(--border-subtle);
-  }
-  .att-btn.review {
-    background: var(--primary-light);
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-  .att-btn.continue {
-    background: var(--success);
-    border-color: var(--success);
-    color: #ffffff !important;
-  }
-  .att-btn.delete {
-    color: #991b1b;
-  }
-  .att-btn.delete:hover {
-    background: var(--error-bg);
-    border-color: #dc2626;
-    color: #991b1b;
-  }
-  .drawer-footer {
-    padding: 14px 20px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    flex-wrap: wrap;
-    background: var(--surface-elevated);
-  }
-
-  @media (max-width: 640px) {
-    header { padding: 12px 16px; }
-    main { padding: 16px 14px 60px; }
-    .metrics-grid { grid-template-columns: 1fr 1fr; }
-    .chapter-grid { grid-template-columns: 1fr; }
-    .brand-desc { display: none; }
-  }
-  
-/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
 :root {
-  --bg-base: #f8fafc;
-  --surface-card: #ffffff;
+  --bg-page: #f8fafc;
+  --surface: #ffffff;
   --surface-elevated: #f1f5f9;
-  --border-subtle: #e2e8f0;
-  --border-input: #cbd5e1;
-  --text-main: #0f172a;
+  --border: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
   --text-muted: #475569;
-  --primary-blue: #2563eb;
-  --primary-blue-hover: #1d4ed8;
+  
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  
+  --accent-maths: #1d4ed8;
+  --accent-maths-subtle: #dbeafe;
+  --accent-physics: #4338ca;
+  --accent-physics-subtle: #ede9fe;
+  --accent-chem: #059669;
+  --accent-chem-text: #065f46;
+  --accent-chem-subtle: #d1fae5;
+  
+  --success: #16a34a;
+  --success-bg: #dcfce7;
+  --warning: #b45309;
+  --warning-bg: #fef3c7;
+  --error: #b91c1c;
+  --error-bg: #fee2e2;
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="dark"] {
-  --ink: #ffffff;
-  --mut: #a1a1aa;
-  --line: #222224;
-  --bg: #000000;
+  --bg-page: #000000;
   --surface: #0a0a0c;
-  --surface-card: #0a0a0c;
   --surface-elevated: #111114;
-  --accl: rgba(37, 99, 235, 0.2);
-  --accb: #3b82f6;
-  --hdr: #000000;
-  --hdrtx: #ffffff;
-  --tmbg: rgba(255, 255, 255, 0.08);
-  --hdrline: #222224;
-  --border-subtle: #222224;
-  --border-input: #2e2e34;
-  --text-muted: #a1a1aa !important;
-  --text-secondary: #e4e4e7 !important;
+  --border: #222224;
+  --border-subtle: #27272a;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #e4e4e7;
+  --text-muted: #a1a1aa;
+  
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  
+  --accent-maths: #3b82f6;
+  --accent-maths-subtle: rgba(59, 130, 246, 0.15);
+  --accent-physics: #818cf8;
+  --accent-physics-subtle: rgba(129, 140, 248, 0.15);
+  --accent-chem: #10b981;
+  --accent-chem-text: #34d399;
+  --accent-chem-subtle: rgba(16, 185, 129, 0.15);
+  
+  --success: #22c55e;
+  --success-bg: #052e16;
+  --warning: #f59e0b;
+  --warning-bg: #3b2003;
+  --error: #f87171;
+  --error-bg: #450a0a;
+  
+  --shadow-sm: none;
+  --shadow-md: none;
 }
 
-[data-theme="dark"] body {
-  background: #000000 !important;
-  color: #ffffff !important;
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
-[data-theme="dark"] a {
-  color: #60a5fa !important;
+/* Universal Anti-Underline: Never allow card descendants to render as blue raw links */
+a, a:hover, a:visited, a:active {
+  text-decoration: none;
+}
+a.subject-card,
+a.subject-card *,
+.subject-card,
+.subject-card * {
+  text-decoration: none !important;
 }
 
-/* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
-[data-theme="dark"] a.act-btn.primary,
-[data-theme="dark"] .act-btn.primary,
-[data-theme="dark"] a.btn.pri,
-[data-theme="dark"] .btn.pri,
-[data-theme="dark"] .btn-cbt-launch,
-[data-theme="dark"] .btn-modal-start,
-[data-theme="dark"] .start-exam-btn,
-[data-theme="dark"] button.pri {
-  color: #ffffff !important;
-  background: #2563eb !important;
-  border-color: #2563eb !important;
-  font-weight: 600 !important;
+/* Apple Glassmorphic Sticky Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-[data-theme="dark"] a.act-btn.primary:hover,
-[data-theme="dark"] .act-btn.primary:hover,
-[data-theme="dark"] a.btn.pri:hover,
-[data-theme="dark"] .btn.pri:hover,
-[data-theme="dark"] button.pri:hover {
-  background: #1d4ed8 !important;
-  color: #ffffff !important;
+[data-theme="dark"] header {
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid var(--border);
 }
 
-/* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
-.panel {
-  max-width: 1040px !important;
-  margin: 24px auto !important;
-  padding: 28px 36px !important;
-  border-radius: 12px !important;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-[data-theme="dark"] .panel {
-  background: #0a0a0c !important;
-  border: 1px solid #222224 !important;
-}
-.wrap {
-  max-width: 1140px !important;
+.header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
-/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
-[data-theme="dark"] .tc,
-[data-theme="dark"] .gf,
-[data-theme="dark"] .sec,
-[data-theme="dark"] .kc,
-[data-theme="dark"] .tbox,
-[data-theme="dark"] #done .sec {
-  background: #0a0a0c !important;
-  border-color: #222224 !important;
-  color: #ffffff !important;
+.brand-wrap {
+  display: flex;
+  flex-direction: column;
 }
-[data-theme="dark"] .tc.zero {
-  background: #060608 !important;
-  border-color: #1a1a1c !important;
-  opacity: 0.6;
+.brand-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-[data-theme="dark"] .selsum {
-  background: #081a36 !important;
-  border-color: #2563eb !important;
-  color: #ffffff !important;
+.brand-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  line-height: 1.3;
 }
-[data-theme="dark"] .selsum.warn {
-  background: #3b1111 !important;
-  border-color: #dc2626 !important;
-  color: #fca5a5 !important;
+.badge-portal {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-maths-subtle);
+  color: #1e40af;
+  line-height: 1.2;
 }
-[data-theme="dark"] #typelist label.pill input+span {
-  background: #111114 !important;
-  border: 1.5px solid #2e2e34 !important;
-  color: #93c5fd !important;
+[data-theme="dark"] .badge-portal {
+  color: #93c5fd;
 }
-[data-theme="dark"] #typelist label.pill input:checked+span {
-  background: #2563eb !important;
-  border-color: #2563eb !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] #typelist .pill .cc {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] #typelist .pill input:checked+span .cc {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .tc .tcnt,
-[data-theme="dark"] .gf .gfn,
-[data-theme="dark"] .cnt,
-[data-theme="dark"] label.rad,
-[data-theme="dark"] #typelist label.rad,
-[data-theme="dark"] #typelist .all span,
-[data-theme="dark"] .tnote,
-[data-theme="dark"] .note {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] #typelist .all span:hover {
-  color: #60a5fa !important;
-}
-[data-theme="dark"] label {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .banner {
-  background: #091a10 !important;
-  border-color: #059669 !important;
-  color: #d1fae5 !important;
-}
-[data-theme="dark"] .banner a {
-  color: #6ee7b7 !important;
-}
-[data-theme="dark"] .gp {
-  background: #111114 !important;
-  border-color: #222224 !important;
-  color: #e4e4e7 !important;
-}
-[data-theme="dark"] .gp b {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .lg {
-  background: #0a0a0c !important;
-  border-color: #222224 !important;
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .lg b {
-  color: #ffffff !important;
-}
-[data-theme="dark"] .strip {
-  background: #0a0a0c !important;
-  border-color: #222224 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .strip .no {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .strip .mid b {
-  color: #60a5fa !important;
-}
-[data-theme="dark"] .strip .mid span,
-[data-theme="dark"] .strip .gl {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .strip .gl b {
-  color: #e4e4e7 !important;
-}
-[data-theme="dark"] .tg em {
-  background: #111114 !important;
-  border-color: #222224 !important;
-  color: #d4d4d8 !important;
+.brand-sub {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
 }
 
-/* Overview Text Readability Fixes (solves Pic 2) */
-[data-theme="dark"] .metric-label {
-  color: #a1a1aa !important;
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-[data-theme="dark"] .metric-sub {
-  color: #d4d4d8 !important;
+
+/* Apple-style Tactile Buttons */
+.btn-apple {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  outline: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
 }
-[data-theme="dark"] .subj-meter-header {
-  color: #e4e4e7 !important;
+.btn-apple:hover {
+  border-color: var(--border-subtle);
+  background: var(--surface-elevated);
 }
-[data-theme="dark"] .subj-meter-count {
-  color: #a1a1aa !important;
+.btn-apple:active {
+  transform: scale(0.97);
 }
-[data-theme="dark"] .search-input {
+
+.btn-apple.primary {
+  background: var(--primary) !important;
   color: #ffffff !important;
-  background: #121215 !important;
-  border-color: #2e2e34 !important;
+  border-color: var(--primary) !important;
 }
-[data-theme="dark"] .search-input::placeholder {
-  color: #71717a !important;
-}
-[data-theme="dark"] .search-count {
-  color: #a1a1aa !important;
+.btn-apple.primary:hover {
+  background: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
 }
 
-/* Visible Typing Boxes in Dark Mode (solves Pic 6) */
-[data-theme="dark"] .ed,
-[data-theme="dark"] div[contenteditable="true"],
-[data-theme="dark"] textarea,
-[data-theme="dark"] input[type="text"],
-[data-theme="dark"] input[type="number"],
-[data-theme="dark"] input.num,
-[data-theme="dark"] .tin input,
-[data-theme="dark"] table.gt td[contenteditable="true"] {
-  background: #121215 !important;
-  border: 1.5px solid #2e2e34 !important;
-  color: #ffffff !important;
-  border-radius: 8px !important;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
-  padding: 8px 12px !important;
-}
-[data-theme="dark"] .ed:focus,
-[data-theme="dark"] div[contenteditable="true"]:focus,
-[data-theme="dark"] textarea:focus,
-[data-theme="dark"] input[type="text"]:focus,
-[data-theme="dark"] input[type="number"]:focus,
-[data-theme="dark"] input.num:focus {
-  border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
-  outline: none !important;
+/* Main Layout Container */
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
 }
 
-[data-theme="dark"] table,
-[data-theme="dark"] th,
-[data-theme="dark"] td,
-[data-theme="dark"] table.gt,
-[data-theme="dark"] table.gt td,
-[data-theme="dark"] table.gt th {
-  border-color: #222224 !important;
+/* ==========================================================================
+   SECTION 1: ACCURACY & PREPARATION OVERVIEW CARD (ASPIRANT DASHBOARD)
+   ========================================================================== */
+.overview-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 32px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+[data-theme="dark"] .overview-card {
+  background: var(--surface);
+  border-color: var(--border);
 }
 
-[data-theme="dark"] .o {
-  background: #0e0e11 !important;
-  border-color: #222224 !important;
-  color: #ffffff !important;
+.overview-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-[data-theme="dark"] .o:hover {
-  border-color: #3b82f6 !important;
+.overview-title {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
-[data-theme="dark"] .o.sel {
-  background: rgba(37, 99, 235, 0.18) !important;
-  border-color: #3b82f6 !important;
-}
-
-/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
-[data-theme="dark"] .att-card {
-  background: #0e0e11 !important;
-  border: 1px solid #222224 !important;
-}
-[data-theme="dark"] .att-card:hover {
-  border-color: #2c2c32 !important;
-}
-[data-theme="dark"] .att-badge.cbt {
-  background: rgba(147, 51, 234, 0.15) !important;
-  color: #c084fc !important;
-  border-color: rgba(147, 51, 234, 0.3) !important;
-}
-[data-theme="dark"] .att-badge.practice {
-  background: rgba(37, 99, 235, 0.15) !important;
-  color: #93c5fd !important;
-  border-color: rgba(37, 99, 235, 0.3) !important;
-}
-[data-theme="dark"] .att-date {
-  color: #a1a1aa !important;
-}
-[data-theme="dark"] .att-stats-row {
-  color: #d4d4d8 !important;
-}
-[data-theme="dark"] .att-actions {
-  border-top-color: #222224 !important;
-}
-[data-theme="dark"] .att-btn {
-  background: #141418 !important;
-  border-color: #24242a !important;
-  color: #f4f4f6 !important;
-}
-[data-theme="dark"] .att-btn:hover {
-  background: #1c1c22 !important;
-  border-color: #2e2e36 !important;
-}
-[data-theme="dark"] .att-btn.continue {
-  background: #16a34a !important;
-  border-color: #16a34a !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .att-btn.continue:hover {
-  background: #15803d !important;
-}
-[data-theme="dark"] .att-btn.review {
-  background: rgba(37, 99, 235, 0.15) !important;
-  border-color: rgba(37, 99, 235, 0.3) !important;
-  color: #93c5fd !important;
-}
-[data-theme="dark"] .att-btn.delete {
-  background: rgba(220, 38, 38, 0.1) !important;
-  border-color: rgba(220, 38, 38, 0.3) !important;
-  color: #f87171 !important;
-}
-[data-theme="dark"] .btn-export-all {
-  background: #141418 !important;
-  border-color: #24242a !important;
-  color: #f4f4f6 !important;
-}
-[data-theme="dark"] .btn-export-all:hover {
-  background: #1c1c22 !important;
-  border-color: #2e2e36 !important;
-}
-[data-theme="dark"] .sub-pill-btn {
-  color: #93c5fd !important;
-  background: #0e0e11 !important;
-  border: 1px solid #222224 !important;
-}
-[data-theme="dark"] .sub-pill-btn:hover {
-  background: #18181c !important;
-  border-color: #3b82f6 !important;
+.overview-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
 }
 
-/* Theme Toggle Button Outline Styling (solves Pic 17) */
-.theme-btn {
+.overview-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn-tool {
+  appearance: none;
+  -webkit-appearance: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #0f172a;
-  border-radius: 8px;
   padding: 6px 12px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.15s ease;
 }
-.theme-btn:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
+.btn-tool:hover {
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
 }
-.theme-btn:active {
-  transform: scale(0.98);
+.btn-tool:active {
+  transform: scale(0.97);
 }
-[data-theme="dark"] .theme-btn {
-  background: #111114 !important;
-  border-color: #2e2e34 !important;
-  color: #f4f4f6 !important;
+.btn-tool.export {
+  color: var(--primary);
+  border-color: var(--primary);
 }
-[data-theme="dark"] .theme-btn:hover {
-  background: #18181c !important;
-  border-color: #3b82f6 !important;
+.btn-tool.danger:hover {
+  color: #ffffff;
+  border-color: var(--error);
+  background: var(--error);
+}
+
+/* 4 Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.metric-box {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+[data-theme="dark"] .metric-box {
+  background: var(--surface-elevated);
+  border-color: var(--border);
+}
+.metric-lbl {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.metric-num {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+}
+.metric-subtext {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.metric-subtext .star { color: var(--warning); font-weight: 600; }
+.metric-subtext .mistake { color: var(--error); font-weight: 600; }
+
+/* Subject Completion Progress Bars */
+.progress-meters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.meter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.meter-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.meter-fraction {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.meter-bar {
+  height: 6px;
+  background: var(--border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+[data-theme="dark"] .meter-bar {
+  background: #1c1c20;
+}
+.meter-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.meter-fill.maths { background: var(--accent-maths); }
+.meter-fill.physics { background: var(--accent-physics); }
+.meter-fill.chemistry { background: var(--accent-chem); }
+
+/* ==========================================================================
+   SECTION 2: 3 BIG SUBJECT HERO BLOCKS (CLICK TO OPEN SUBJECT INDEX)
+   ========================================================================== */
+.subject-portals-section {
+  margin-bottom: 36px;
+}
+.portals-section-header {
+  margin-bottom: 16px;
+}
+.portals-section-header h2 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.portals-section-header p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 18px;
+}
+
+.subject-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease;
+}
+.subject-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-subtle);
+}
+.subject-card:active {
+  transform: scale(0.985);
+}
+
+[data-theme="dark"] .subject-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+[data-theme="dark"] .subject-card:hover {
+  border-color: var(--border-subtle);
+}
+
+/* Distinct Color Top Stripes */
+.subject-card.maths { border-top: 4px solid var(--accent-maths); }
+.subject-card.physics { border-top: 4px solid var(--accent-physics); }
+.subject-card.chemistry { border-top: 4px solid var(--accent-chem); }
+
+.subject-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.subject-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary) !important;
+}
+.subject-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.subject-card.maths .subject-badge { background: var(--accent-maths-subtle); color: var(--accent-maths); }
+.subject-card.physics .subject-badge { background: var(--accent-physics-subtle); color: var(--accent-physics); }
+.subject-card.chemistry .subject-badge { background: var(--accent-chem-subtle); color: var(--accent-chem-text); }
+
+.subject-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary) !important;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.subject-meta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.meta-chip {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary) !important;
+}
+
+.subject-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+}
+.subject-card.maths .subject-cta { background: var(--accent-maths-subtle); color: var(--accent-maths); }
+.subject-card.maths:hover .subject-cta { background: var(--accent-maths); color: #ffffff; }
+
+.subject-card.physics .subject-cta { background: var(--accent-physics-subtle); color: var(--accent-physics); }
+.subject-card.physics:hover .subject-cta { background: var(--accent-physics); color: #ffffff; }
+
+.subject-card.chemistry .subject-cta { background: var(--accent-chem-subtle); color: var(--accent-chem-text); }
+.subject-card.chemistry:hover .subject-cta { background: var(--accent-chem); color: #ffffff; }
+
+/* ==========================================================================
+   SECTION 3: CHAPTER PRACTICE BANKS (SEARCH & 27 CARDS)
+   ========================================================================== */
+.chapters-section {
+  margin-top: 10px;
+}
+.chapters-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.chapters-section-header h2 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Apple Segmented Filter Pills */
+.filter-pills-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pill-filter {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pill-filter:hover {
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+  background: var(--surface);
+}
+.pill-filter:active {
+  transform: scale(0.97);
+}
+.pill-filter.active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .pill-filter {
+  background: var(--surface-elevated);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+[data-theme="dark"] .pill-filter:hover {
+  color: #ffffff;
+  border-color: var(--border-subtle);
+}
+[data-theme="dark"] .pill-filter.active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+/* Search Toolbar */
+.search-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.search-input-wrap {
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+}
+.search-icon-svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.search-field {
+  width: 100%;
+  height: 42px;
+  padding: 0 38px 0 40px;
+  font-size: 14.5px;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+[data-theme="dark"] .search-field {
+  background: var(--surface-elevated);
+  border-color: var(--border);
+  color: #ffffff;
+}
+[data-theme="dark"] .search-field::placeholder {
+  color: var(--text-muted);
+}
+.search-field:focus {
+  border-color: var(--primary);
+}
+.btn-clear-search {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  display: none;
+}
+.search-count-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Chapter Grid */
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 16px;
+}
+.ch-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.ch-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-subtle);
+}
+[data-theme="dark"] .ch-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+[data-theme="dark"] .ch-card:hover {
+  border-color: var(--border-subtle);
+}
+
+.ch-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.ch-badges {
+  display: flex;
+  gap: 6px;
+}
+.subj-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+}
+.subj-tag.maths { background: var(--accent-maths-subtle); color: var(--accent-maths); }
+.subj-tag.physics { background: var(--accent-physics-subtle); color: var(--accent-physics); }
+.subj-tag.chem { background: var(--accent-chem-subtle); color: var(--accent-chem-text); }
+
+.class-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-elevated);
+  color: var(--text-muted);
+}
+
+.ch-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.ch-attempt-badge {
+  display: inline-block;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+.ch-attempt-badge.attempted {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Chapter Action Buttons */
+.ch-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.btn-cbt {
+  background: var(--primary);
+  color: #ffffff !important;
+  border: none;
+  padding: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+.btn-cbt:hover {
+  background: var(--primary-hover);
+}
+.btn-cbt:active {
+  transform: scale(0.97);
+}
+
+.btn-practice {
+  background: var(--surface-elevated);
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border);
+  padding: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+.btn-practice:hover {
+  border-color: var(--border-subtle);
+  background: var(--surface);
+}
+.btn-practice:active {
+  transform: scale(0.97);
+}
+
+.ch-materials {
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.btn-mat-chip {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+.btn-mat-chip:hover {
+  color: var(--primary) !important;
+  border-color: var(--primary);
+  background: var(--surface);
+}
+
+/* ==========================================================================
+   DRAWER: TEST HISTORY (WITH BOTH EXPORT & IMPORT)
+   ========================================================================== */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 100;
+  display: none;
+}
+.drawer-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 480px;
+  max-width: 90vw;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="dark"] .drawer-panel {
+  background: var(--surface);
+  border-color: var(--border);
+}
+.drawer-panel.open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.drawer-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.btn-close-drawer {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.drawer-body {
+  padding: 18px 22px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.drawer-filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.drawer-pill {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.drawer-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+[data-theme="dark"] .drawer-pill {
+  background: var(--surface-elevated);
+  border-color: var(--border);
+}
+
+.drawer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.att-card-drawer {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+[data-theme="dark"] .att-card-drawer {
+  background: var(--surface-elevated);
+  border-color: var(--border);
+}
+.att-drawer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.att-drawer-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+}
+.att-drawer-badge.cbt { background: rgba(99, 102, 241, 0.15); color: var(--accent-physics); }
+.att-drawer-badge.practice { background: var(--accent-maths-subtle); color: var(--primary); }
+
+.drawer-footer {
+  padding: 16px 22px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn-drawer-action {
+  flex: 1;
+  min-width: 130px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.btn-drawer-action:hover {
+  background: var(--surface);
+  border-color: var(--border-subtle);
+}
+
+/* ==========================================================================
+   MODAL: SIMULATE EXAM (WITH CUSTOM TIME & PRESETS)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open {
+  display: flex;
+}
+.modal-box {
+  width: 100%;
+  max-width: 520px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+[data-theme="dark"] .modal-box {
+  background: var(--surface);
+  border-color: var(--border);
+}
+.modal-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.modal-box-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.btn-close-modal {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.modal-step-group {
+  margin-bottom: 18px;
+}
+.step-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: block;
+}
+.pills-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.m-pill {
+  padding: 7px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.m-pill:hover {
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+}
+.m-pill.active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .m-pill {
+  background: var(--surface-elevated);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+[data-theme="dark"] .m-pill.active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+.custom-time-box {
+  display: none;
+  margin-top: 10px;
+  align-items: center;
+  gap: 10px;
+}
+.custom-time-in {
+  width: 70px;
+  padding: 6px 10px;
+  font-size: 14.5px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  text-align: center;
+}
+[data-theme="dark"] .custom-time-in {
+  background: var(--surface-elevated);
+  border-color: var(--border);
+  color: #ffffff;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 </style>
 </head>
 <body>
 
-<!-- Header with Unified Outline SVG Dark Mode & Controls -->
+<!-- Header -->
 <header>
   <div class="header-inner">
-    <div class="brand-group">
-      <h1 class="brand-title">
-        <span>JEE Main PYQ Portal</span>
-        <span class="brand-badge">2019&ndash;2025</span>
-      </h1>
-      <p class="brand-desc">Authentic NTA CBT Exam Simulation &amp; Chapter-wise Active Recall Banks</p>
+    <div class="brand-wrap">
+      <div class="brand-title-row">
+        <h1 class="brand-title">JEE Main PYQ Practice Portal</h1>
+        <span class="badge-portal">2019&ndash;2025 PYQs</span>
+      </div>
+      <span class="brand-sub">Authentic NTA Computer-Based Test Simulation &amp; Active Recall Question Banks</span>
     </div>
-    <div class="header-controls">
-      <button id="btnOpenHistory" class="btn-history-nav" type="button" title="View test history">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        <span>Test History</span>
-      </button>
-      <button id="btnOpenSimulateModal" class="btn-cbt-launch" type="button">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+    <div class="header-actions">
+      <button id="btnOpenSimModal" class="btn-apple primary" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
         <span>Simulate Exam</span>
       </button>
-      <!-- Single Clean Outline SVG Theme Toggle (Fixes Pic 1 & Point 17) -->
-      <button id="themeToggleBtn" class="theme-btn" type="button" aria-label="Toggle visual theme" title="Toggle dark / light mode">
-        <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-        <span id="themeBtnText">Dark</span>
+      <button id="btnOpenHistory" class="btn-apple" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Test History</span>
+      </button>
+      <button id="btnThemeToggle" class="btn-apple" type="button" title="Toggle theme">
+        <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <span id="themeText">Dark</span>
       </button>
     </div>
   </div>
 </header>
 
 <main>
-  <!-- Centralized Aspirant Dashboard -->
-  <section id="aspirantDashboard" class="dashboard-panel">
-    <div class="dash-top">
-      <div class="dash-title-wrap">
-        <h2>Preparation Overview</h2>
-        <p>Aggregated progress and mastery across all 27 chapters</p>
+  <!-- SECTION 1: ACCURACY & PREPARATION OVERVIEW CARD (ASPIRANT DASHBOARD) -->
+  <section class="overview-card aspirantDashboard" id="aspirantDashboard" aria-label="Preparation Overview">
+    <div class="overview-card-header">
+      <div>
+        <h2 class="overview-title">Preparation Overview</h2>
+        <p class="overview-desc">Aggregated progress, testing volume &amp; first-try accuracy across all 27 chapters</p>
       </div>
-      <div class="dash-buttons">
-        <button id="btnClearData" class="btn-clear-data" type="button" title="Clear attempt statistics">Reset Data</button>
-      </div>
-    </div>
-
-    <!-- Active Incomplete Test Recovery Banner -->
-    <div id="activeSessionBanner" style="display:none;" class="active-session-card">
-      <div class="session-info">
-        <div class="session-dot"></div>
-        <div>
-          <div class="session-title" id="activeSessionTitle">Incomplete Test In Progress</div>
-          <div class="session-meta" id="activeSessionMeta">Question 0 of 0 &bull; 0m elapsed</div>
-        </div>
-      </div>
-      <div class="session-actions">
-        <a id="btnResumeSession" href="#" class="btn-resume">Resume Test &rarr;</a>
-        <button id="btnDiscardSession" class="btn-discard-session" type="button">Discard</button>
+      <div class="overview-actions">
+        <button id="btnExportAllData" class="btn-tool export" type="button" title="Download backup of all test progress, attempts &amp; starred questions">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Export All Data</span>
+        </button>
+        <button id="btnImportAllData" class="btn-tool" type="button" title="Restore test progress from a previously saved backup file">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          <span>Import Data</span>
+        </button>
+        <input type="file" id="inputImportAllData" accept=".json" style="display:none">
+        <button id="btnResetData" class="btn-tool danger" type="button" title="Clear test progress and bookmarks">Reset</button>
       </div>
     </div>
 
-    <!-- 4 Aggregated Metric Cards -->
+    <!-- 4 Metric Counters -->
     <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-label">Questions Attempted</div>
-        <div class="metric-val" id="metricTotalQ">0</div>
-        <div class="metric-sub">Across 27 chapters</div>
+      <div class="metric-box">
+        <div class="metric-lbl">Questions Attempted</div>
+        <div class="metric-num" id="metricTotalQ">0</div>
+        <div class="metric-subtext">Across 27 chapters</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-label">First-Try Accuracy</div>
-        <div class="metric-val" id="metricAccuracy">0%</div>
-        <div class="metric-sub">Target: &ge; 80% for 99th %ile</div>
+      <div class="metric-box">
+        <div class="metric-lbl">First-Try Accuracy</div>
+        <div class="metric-num" id="metricAccuracy">0%</div>
+        <div class="metric-subtext">Target: &ge; 80% for 99th %ile</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-label">Study Time Logged</div>
-        <div class="metric-val" id="metricStudyTime">0h 0m</div>
-        <div class="metric-sub">Active testing time</div>
+      <div class="metric-box">
+        <div class="metric-lbl">Study Time Logged</div>
+        <div class="metric-num" id="metricStudyTime">0h 0m</div>
+        <div class="metric-subtext">Active testing time</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-label">Revision Bank</div>
-        <div class="metric-val" id="metricTotalRevision">0</div>
-        <div class="metric-sub" id="metricRevisionBreakdown">
-          <!-- Solves Pic 1 &middot; error with clean badges and WCAG AA contrast -->
-          <span class="badge-star">&starf; 0 Starred</span> &bull; <span class="badge-mistake">0 Mistakes</span>
+      <div class="metric-box">
+        <div class="metric-lbl">Revision Bank</div>
+        <div class="metric-num" id="metricTotalRevision">0</div>
+        <div class="metric-subtext" id="metricRevisionBreakdown">
+          <span class="star">&starf; 0 Starred</span> &bull; <span class="mistake">0 Mistakes</span>
         </div>
       </div>
     </div>
 
     <!-- Subject Completion Progress Meters -->
-    <div class="subject-progress-grid">
-      <div class="subj-meter-card">
-        <div class="subj-meter-header">
-          <span class="subj-name">Mathematics</span>
-          <span class="subj-fraction" id="mathsProgressFraction">0 / 5 Chapters (0%)</span>
+    <div class="progress-meters-grid">
+      <div class="meter-item">
+        <div class="meter-header">
+          <span>Mathematics</span>
+          <span class="meter-fraction" id="mathsFraction">0 / 5 Chapters (0%)</span>
         </div>
-        <div class="progress-bar-bg">
-          <div id="mathsProgressBar" class="progress-bar-fill maths" style="width: 0%;"></div>
-        </div>
-      </div>
-      <div class="subj-meter-card">
-        <div class="subj-meter-header">
-          <span class="subj-name">Physics</span>
-          <span class="subj-fraction" id="physicsProgressFraction">0 / 14 Chapters (0%)</span>
-        </div>
-        <div class="progress-bar-bg">
-          <div id="physicsProgressBar" class="progress-bar-fill physics" style="width: 0%;"></div>
+        <div class="meter-bar">
+          <div class="meter-fill maths" id="mathsBar" style="width: 0%;"></div>
         </div>
       </div>
-      <div class="subj-meter-card">
-        <div class="subj-meter-header">
-          <span class="subj-name">Chemistry</span>
-          <span class="subj-fraction" id="chemProgressFraction">0 / 8 Chapters (0%)</span>
+      <div class="meter-item">
+        <div class="meter-header">
+          <span>Physics</span>
+          <span class="meter-fraction" id="physicsFraction">0 / 14 Chapters (0%)</span>
         </div>
-        <div class="progress-bar-bg">
-          <div id="chemProgressBar" class="progress-bar-fill chem" style="width: 0%;"></div>
+        <div class="meter-bar">
+          <div class="meter-fill physics" id="physicsBar" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="meter-item">
+        <div class="meter-header">
+          <span>Chemistry</span>
+          <span class="meter-fraction" id="chemFraction">0 / 8 Chapters (0%)</span>
+        </div>
+        <div class="meter-bar">
+          <div class="meter-fill chemistry" id="chemBar" style="width: 0%;"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3 Big Subject Hero Cards (Lead to Chapter Indexes with Color Codes) -->
-  <section class="subject-portals-section" aria-label="Subject Syllabus Indexes">
-    <div class="subject-portals-header">
+  <!-- SECTION 2: 3 BIG HERO BLOCKS (CLICK TO OPEN SUBJECT INDEX) -->
+  <section class="subject-portals-section" aria-label="Subject Syllabus Portals">
+    <div class="portals-section-header">
       <h2>Subject Syllabus Portals</h2>
-      <span style="font-size:12.5px;color:var(--text-muted);">Dedicated chapter indexes with official class difficulty color codes</span>
+      <p>Official chapter indexes with Class A/B/C/D difficulty color codes, priority tags &amp; formula strips</p>
     </div>
 
-    <!-- 3 Big Boxes like the original implementation -->
-    <div class="subject-hero-grid">
+    <div class="subject-grid">
       <!-- 1. Mathematics -->
-      <a href="Maths/index.html" class="subject-hero-card maths">
+      <a class="subject-card maths" href="Maths/index.html">
         <div>
-          <div class="hero-card-header">
-            <h3 class="hero-subj-title">Mathematics</h3>
-            <span class="hero-card-badge maths">5 Chapters &bull; 580+ PYQs</span>
+          <div class="subject-header">
+            <h3 class="subject-card-title">Mathematics</h3>
+            <span class="subject-badge">5 Chapters Ready</span>
           </div>
-          <p class="hero-card-desc">Calculus, Matrices, Determinants, Limits &amp; Applications with official difficulty ratings.</p>
-          <div class="hero-card-chips">
-            <span class="hero-card-chip">Class A/B/C Color Codes</span>
-            <span class="hero-card-chip">Priority High/Med/Low</span>
-            <span class="hero-card-chip">Formula Strips</span>
+          <p class="subject-desc">Calculus, Vectors &amp; 3D Geometry, Matrices &amp; Determinants, Coordinate Geometry &amp; Limits.</p>
+          <div class="subject-meta-chips">
+            <span class="meta-chip">Class A/B/C/D Color Codes</span>
+            <span class="meta-chip">High Priority Markers</span>
+            <span class="meta-chip">580+ PYQs</span>
           </div>
         </div>
-        <div class="hero-card-cta maths">
+        <div class="subject-cta">
           <span>Explore Mathematics Index</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
 
       <!-- 2. Physics -->
-      <a href="Physics/index.html" class="subject-hero-card physics">
+      <a class="subject-card physics" href="Physics/index.html">
         <div>
-          <div class="hero-card-header">
-            <h3 class="hero-subj-title">Physics</h3>
-            <span class="hero-card-badge physics">14 Chapters &bull; 1,400+ PYQs</span>
+          <div class="subject-header">
+            <h3 class="subject-card-title">Physics</h3>
+            <span class="subject-badge">14 Chapters Ready</span>
           </div>
-          <p class="hero-card-desc">Mechanics, Electromagnetism, Optics, Modern Physics, Thermal &amp; Waves with diagrams.</p>
-          <div class="hero-card-chips">
-            <span class="hero-card-chip">Class A/B/C Color Codes</span>
-            <span class="hero-card-chip">Priority High/Med/Low</span>
-            <span class="hero-card-chip">Circuit &amp; Ray Diagrams</span>
+          <p class="subject-desc">Mechanics, Electromagnetism, Optics, Modern Physics, Thermodynamics, Waves &amp; Circuits.</p>
+          <div class="subject-meta-chips">
+            <span class="meta-chip">Class A/B/C/D Color Codes</span>
+            <span class="meta-chip">High Priority Markers</span>
+            <span class="meta-chip">1,400+ PYQs</span>
           </div>
         </div>
-        <div class="hero-card-cta physics">
+        <div class="subject-cta">
           <span>Explore Physics Index</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
 
       <!-- 3. Chemistry -->
-      <a href="Chemistry/index.html" class="subject-hero-card chemistry">
+      <a class="subject-card chemistry" href="Chemistry/index.html">
         <div>
-          <div class="hero-card-header">
-            <h3 class="hero-subj-title">Chemistry</h3>
-            <span class="hero-card-badge chemistry">8 Chapters &bull; 850+ PYQs</span>
+          <div class="subject-header">
+            <h3 class="subject-card-title">Chemistry</h3>
+            <span class="subject-badge">8 Chapters Ready</span>
           </div>
-          <p class="hero-card-desc">General Organic Chemistry, Kinetics, Coordination, Electrochemistry &amp; Solutions.</p>
-          <div class="hero-card-chips">
-            <span class="hero-card-chip">Class A/B/C Color Codes</span>
-            <span class="hero-card-chip">Priority High/Med/Low</span>
-            <span class="hero-card-chip">Reaction Mechanisms</span>
+          <p class="subject-desc">General Organic Chemistry, Kinetics, Coordination, Electrochemistry, Solutions &amp; Mechanisms.</p>
+          <div class="subject-meta-chips">
+            <span class="meta-chip">Class A/B/C/D Color Codes</span>
+            <span class="meta-chip">High Priority Markers</span>
+            <span class="meta-chip">850+ PYQs</span>
           </div>
         </div>
-        <div class="hero-card-cta chemistry">
+        <div class="subject-cta">
           <span>Explore Chemistry Index</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
     </div>
-
-    <!-- Long Box Underneath for All 3 Subjects -->
-    <div class="all-subjects-hero-box" id="allSubjectsHero">
-      <div class="all-hero-left">
-        <div class="all-hero-badge">All 3 Subjects &bull; Complete 27 Chapter Bank</div>
-        <h3 class="all-hero-title">Practice or Simulate Across Complete JEE Main Syllabus</h3>
-        <p class="all-hero-desc">Full active recall practice, question sampling, or an authentic NTA Computer-Based Test simulation across all 3 subjects.</p>
-      </div>
-      <div class="all-hero-actions">
-        <button type="button" class="btn-hero-sim" id="btnHeroSimulate">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span>Simulate All 3 Subjects Exam &rarr;</span>
-        </button>
-        <button type="button" class="btn-hero-browse" id="btnHeroBrowse">
-          <span>Browse 27 Chapters &darr;</span>
-        </button>
-      </div>
-    </div>
   </section>
 
-  <!-- Interactive Chapter Practice Banks Section -->
-  <section class="explorer-section" id="chapterBanksSection">
-    <div class="explorer-header">
+  <!-- SECTION 3: CHAPTER PRACTICE BANKS -->
+  <section class="chapters-section" id="chapterBanksSection">
+    <div class="chapters-section-header">
       <h2>Chapter Practice Banks</h2>
-      <div class="quick-filter-pills" id="subjectFilterPills">
-        <button type="button" class="qfilter-pill active" data-subject="all">All (27)</button>
-        <button type="button" class="qfilter-pill" data-subject="Maths">Mathematics (5)</button>
-        <button type="button" class="qfilter-pill" data-subject="Physics">Physics (14)</button>
-        <button type="button" class="qfilter-pill" data-subject="Chemistry">Chemistry (8)</button>
+      <div class="filter-pills-bar" id="subjectFilterBar">
+        <button type="button" class="pill-filter active" data-subject="all">All (27)</button>
+        <button type="button" class="pill-filter" data-subject="Maths">Mathematics (5)</button>
+        <button type="button" class="pill-filter" data-subject="Physics">Physics (14)</button>
+        <button type="button" class="pill-filter" data-subject="Chemistry">Chemistry (8)</button>
       </div>
     </div>
 
     <!-- Search Toolbar -->
-    <div class="toolbar-wrap">
-      <div class="search-box-wrap">
-        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="chapterSearchInput" class="search-input" placeholder="Search chapters, topics, formulas... (Press '/' to focus)">
-        <button id="btnClearSearch" class="clear-search-btn" type="button" title="Clear search">&times;</button>
+    <div class="search-toolbar">
+      <div class="search-input-wrap">
+        <svg class="search-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="chapterSearchInput" class="search-field" placeholder="Search chapters, topics, formulas... (Press '/' to focus)">
+        <button id="btnClearSearch" class="btn-clear-search" type="button" title="Clear search">&times;</button>
       </div>
-      <span id="resultsCountLabel" style="font-size:12.5px;color:var(--text-muted);font-weight:600;">Showing 27 chapters</span>
+      <span id="resultsCountLabel" class="search-count-label">Showing 27 chapters</span>
     </div>
 
-    <!-- Chapter Cards Grid -->
-    <div id="chapterGridContainer" class="chapter-grid">
-      <!-- Injected dynamically via JavaScript -->
-    </div>
+    <!-- Chapter Grid Container -->
+    <div id="chapterGridContainer" class="chapter-grid"></div>
   </section>
 </main>
 
-<!-- Simulate Exam Modal (User Item 4 - Custom Time) -->
+<!-- DRAWER: TEST HISTORY (WITH BOTH EXPORT & IMPORT) -->
+<div id="historyDrawerBackdrop" class="drawer-backdrop"></div>
+<div id="historyDrawer" class="drawer-panel" aria-label="Test History Drawer">
+  <div class="drawer-header">
+    <h3>Test History &amp; Scorecards</h3>
+    <button id="btnCloseHistory" class="btn-close-drawer" type="button">&times;</button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-filter-bar">
+      <button class="drawer-pill active" data-filter="all">All Tests</button>
+      <button class="drawer-pill" data-filter="cbt">CBT Exams</button>
+      <button class="drawer-pill" data-filter="practice">Practice Sets</button>
+    </div>
+    <div id="drawerHistoryList" class="drawer-list"></div>
+  </div>
+  <div class="drawer-footer">
+    <button id="btnExportAllHistory" class="btn-drawer-action" type="button" title="Download all test history across chapters as JSON">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      <span>Export All History (.json)</span>
+    </button>
+    <button id="btnImportAllHistory" class="btn-drawer-action" type="button" title="Import test history from a previously saved JSON file">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+      <span>Import History (.json)</span>
+    </button>
+    <input type="file" id="inputImportHistoryFile" accept=".json" style="display:none">
+    <button id="btnClearAllHistory" class="btn-drawer-action" type="button" style="color:var(--error);" title="Clear all past test attempts">
+      <span>Clear History</span>
+    </button>
+  </div>
+</div>
+
+<!-- MODAL: SIMULATE EXAM -->
 <div id="simulateExamModal" class="modal-overlay">
   <div class="modal-box">
-    <div class="modal-header">
+    <div class="modal-box-header">
       <h3>Simulate Examination or Practice Test</h3>
       <button id="btnCloseSimModal" class="btn-close-modal" type="button">&times;</button>
     </div>
 
     <!-- 1. Mode -->
-    <div class="modal-step">
-      <span class="step-label">1. Test Mode:</span>
-      <div class="modal-pill-group">
-        <div class="modal-pill selected" data-field="mode" data-val="cbt">
-          <b>Real CBT Exam Mode</b>
-          <div style="font-size:11.5px;color:rgba(255,255,255,0.96);margin-top:2px;">+4 / &minus;1 marking &bull; NTA palette &bull; No instant answers</div>
+    <div class="modal-step-group">
+      <span class="step-title">1. Test Mode</span>
+      <div class="pills-row">
+        <div class="m-pill active" data-field="mode" data-val="cbt">
+          <b>Real CBT Exam Mode</b> (+4 / &minus;1 marking &bull; NTA pattern)
         </div>
-        <div class="modal-pill" data-field="mode" data-val="practice">
-          <b>Practice &amp; Learn Mode</b>
-          <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Instant check &bull; retry &bull; solutions &bull; pause anytime</div>
+        <div class="m-pill" data-field="mode" data-val="practice">
+          <b>Practice &amp; Learn Mode</b> (Instant check &bull; Solutions)
         </div>
       </div>
     </div>
 
     <!-- 2. Subject Pool -->
-    <div class="modal-step">
-      <span class="step-label">2. Subject Pool:</span>
-      <div class="modal-pill-group">
-        <div class="modal-pill selected" data-field="subject" data-val="all">All Subjects (27)</div>
-        <div class="modal-pill" data-field="subject" data-val="Physics">Physics (14)</div>
-        <div class="modal-pill" data-field="subject" data-val="Chemistry">Chemistry (8)</div>
-        <div class="modal-pill" data-field="subject" data-val="Maths">Mathematics (5)</div>
+    <div class="modal-step-group">
+      <span class="step-title">2. Choose Subject Pool</span>
+      <div class="pills-row">
+        <div class="m-pill active" data-field="subject" data-val="all">All Subjects (27)</div>
+        <div class="m-pill" data-field="subject" data-val="Maths">Mathematics (5)</div>
+        <div class="m-pill" data-field="subject" data-val="Physics">Physics (14)</div>
+        <div class="m-pill" data-field="subject" data-val="Chemistry">Chemistry (8)</div>
       </div>
     </div>
 
     <!-- 3. Question Count -->
-    <div class="modal-step">
-      <span class="step-label">3. Number of Questions:</span>
-      <div class="modal-pill-group">
-        <div class="modal-pill" data-field="qcount" data-val="15">15 Questions</div>
-        <div class="modal-pill selected" data-field="qcount" data-val="25">25 Questions (Exam Sprint)</div>
-        <div class="modal-pill" data-field="qcount" data-val="30">30 Questions</div>
-        <div class="modal-pill" data-field="qcount" data-val="50">50 Questions</div>
-        <div class="modal-pill" data-field="qcount" data-val="all">All in Chapter</div>
+    <div class="modal-step-group">
+      <span class="step-title">3. Number of Questions</span>
+      <div class="pills-row">
+        <div class="m-pill" data-field="qcount" data-val="15">15 Questions</div>
+        <div class="m-pill active" data-field="qcount" data-val="25">25 Questions (Exam Sprint)</div>
+        <div class="m-pill" data-field="qcount" data-val="30">30 Questions</div>
+        <div class="m-pill" data-field="qcount" data-val="50">50 Questions</div>
+        <div class="m-pill" data-field="qcount" data-val="all">All in Chapter</div>
       </div>
     </div>
 
-    <!-- 4. Duration with Custom Option (User Item 4 / Pic 2) -->
-    <div class="modal-step">
-      <span class="step-label">4. Test Duration:</span>
-      <div class="modal-pill-group">
-        <div class="modal-pill" data-field="duration" data-val="30">30 Minutes</div>
-        <div class="modal-pill selected" data-field="duration" data-val="60">60 Minutes (Standard)</div>
-        <div class="modal-pill" data-field="duration" data-val="90">90 Minutes</div>
-        <div class="modal-pill" data-field="duration" data-val="180">180 Minutes (Full Exam)</div>
-        <div class="modal-pill" data-field="duration" data-val="custom">Custom Time &hellip;</div>
-        <div class="modal-pill" data-field="duration" data-val="untimed">Untimed</div>
+    <!-- 4. Duration -->
+    <div class="modal-step-group">
+      <span class="step-title">4. Test Duration</span>
+      <div class="pills-row">
+        <div class="m-pill" data-field="duration" data-val="30">30 Min</div>
+        <div class="m-pill active" data-field="duration" data-val="60">60 Min (Standard)</div>
+        <div class="m-pill" data-field="duration" data-val="90">90 Min</div>
+        <div class="m-pill" data-field="duration" data-val="180">180 Min (Full Exam)</div>
+        <div class="m-pill" data-field="duration" data-val="custom">Custom Time &hellip;</div>
+        <div class="m-pill" data-field="duration" data-val="untimed">Untimed</div>
       </div>
-      <!-- Custom minutes container -->
-      <div id="modalCustomTimeWrap" class="custom-time-wrap">
-        <label for="modalCustomMinutes" style="font-size:12.5px;font-weight:600;">Enter Duration:</label>
-        <input type="number" id="modalCustomMinutes" class="custom-time-input" min="5" max="360" value="45">
-        <span style="font-size:12px;color:var(--text-muted);">minutes (5 to 360)</span>
-      </div>
-    </div>
-
-    <div class="modal-footer">
-      <button id="btnCancelSimModal" class="btn-modal-cancel" type="button">Cancel</button>
-      <button id="btnLaunchSimExam" class="btn-modal-start" type="button">Start Examination &rarr;</button>
-    </div>
-  </div>
-</div>
-
-<!-- Test History Drawer / Sidebar (User Item 19 & 20) -->
-<div id="historyDrawerOverlay" class="drawer-overlay"></div>
-<div id="historyDrawer" class="drawer-panel" style="display:none;">
-  <div class="drawer-header">
-    <h3>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-      <span>Universal Test History</span>
-    </h3>
-    <button id="btnCloseHistoryDrawer" class="btn-close-modal" type="button" title="Close history">&times;</button>
-  </div>
-  
-  <div class="drawer-content">
-    <div class="drawer-stats-summary">
-      <div class="hist-stat-card">
-        <div class="hist-stat-val" id="histSummaryTotalTests">0</div>
-        <div class="hist-stat-lbl">Tests Given</div>
-      </div>
-      <div class="hist-stat-card">
-        <div class="hist-stat-val" id="histSummaryQuestions">0</div>
-        <div class="hist-stat-lbl">Questions Solved</div>
-      </div>
-      <div class="hist-stat-card">
-        <div class="hist-stat-val" id="histSummaryAvgAcc">0%</div>
-        <div class="hist-stat-lbl">Average Accuracy</div>
+      <div id="modalCustomTimeBox" class="custom-time-box">
+        <label for="modalCustomMin" style="font-size:12.5px;font-weight:600;">Minutes:</label>
+        <input type="number" id="modalCustomMin" class="custom-time-in" min="5" max="360" value="45">
+        <span style="font-size:12px;color:var(--text-muted);">(5 to 360 min)</span>
       </div>
     </div>
 
-    <!-- Filter Pills for History -->
-    <div style="display:flex;gap:8px;margin-bottom:16px;">
-      <button class="att-btn review" id="filterHistAll" type="button">All Tests</button>
-      <button class="att-btn" id="filterHistCBT" type="button">CBT Exams Only</button>
-      <button class="att-btn" id="filterHistPractice" type="button">Practice Only</button>
+    <div class="modal-actions">
+      <button id="btnCancelSimModal" class="btn-apple" type="button">Cancel</button>
+      <button id="btnLaunchSimExam" class="btn-apple primary" type="button">Start Examination &rarr;</button>
     </div>
-
-    <div id="historyAttemptsList">
-      <!-- Injected dynamically -->
-    </div>
-  </div>
-
-  <div class="drawer-footer">
-    <button id="btnExportFullHistory" class="att-btn" type="button">Export All History</button>
-    <button id="btnClearFullHistory" class="att-btn delete" type="button">Clear History</button>
   </div>
 </div>
 
 <script>
-(function(){
-  // 1. Chapter Master Database
-  var CHAPTER_POOL = [
+var CHAPTER_POOL = [
   {
     "name": "Application of Derivatives",
     "subject": "Maths",
-    "url": "Maths/Application of Derivatives PYQ Practice.html"
+    "url": "Maths/Application of Derivatives PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 183
   },
   {
     "name": "Continuity and Differentiability",
     "subject": "Maths",
-    "url": "Maths/Continuity and Differentiability PYQ Practice.html"
+    "url": "Maths/Continuity and Differentiability PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 139
   },
   {
     "name": "Determinants",
     "subject": "Maths",
-    "url": "Maths/Determinants PYQ Practice.html"
+    "url": "Maths/Determinants PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 68
   },
   {
     "name": "Limits",
     "subject": "Maths",
-    "url": "Maths/Limits PYQ Practice.html"
+    "url": "Maths/Limits PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 113
   },
   {
     "name": "Matrices",
     "subject": "Maths",
-    "url": "Maths/Matrices PYQ Practice.html"
+    "url": "Maths/Matrices PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 86
   },
   {
     "name": "Alternating Current",
     "subject": "Physics",
-    "url": "Physics/Alternating Current PYQ Practice.html"
+    "url": "Physics/Alternating Current PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 89
   },
   {
     "name": "Atomic Physics",
     "subject": "Physics",
-    "url": "Physics/Atomic Physics PYQ Practice.html"
+    "url": "Physics/Atomic Physics PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 103
   },
   {
     "name": "Capacitance",
     "subject": "Physics",
-    "url": "Physics/Capacitance PYQ Practice.html"
+    "url": "Physics/Capacitance PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 78
   },
   {
     "name": "Current Electricity",
     "subject": "Physics",
-    "url": "Physics/Current Electricity PYQ Practice.html"
+    "url": "Physics/Current Electricity PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 172
   },
   {
     "name": "Dual Nature of Matter",
     "subject": "Physics",
-    "url": "Physics/Dual Nature of Matter PYQ Practice.html"
+    "url": "Physics/Dual Nature of Matter PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 103
   },
   {
     "name": "Electromagnetic Induction",
     "subject": "Physics",
-    "url": "Physics/Electromagnetic Induction PYQ Practice.html"
+    "url": "Physics/Electromagnetic Induction PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 72
   },
   {
     "name": "Electromagnetic Waves",
     "subject": "Physics",
-    "url": "Physics/Electromagnetic Waves PYQ Practice.html"
+    "url": "Physics/Electromagnetic Waves PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 64
   },
   {
     "name": "Electrostatics",
     "subject": "Physics",
-    "url": "Physics/Electrostatics PYQ Practice.html"
+    "url": "Physics/Electrostatics PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 147
   },
   {
     "name": "Experimental Physics",
     "subject": "Physics",
-    "url": "Physics/Experimental Physics PYQ Practice.html"
+    "url": "Physics/Experimental Physics PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 61
   },
   {
     "name": "Magnetic Effects of Current",
     "subject": "Physics",
-    "url": "Physics/Magnetic Effects of Current PYQ Practice.html"
+    "url": "Physics/Magnetic Effects of Current PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 142
   },
   {
     "name": "Magnetic Properties of Matter",
     "subject": "Physics",
-    "url": "Physics/Magnetic Properties of Matter PYQ Practice.html"
+    "url": "Physics/Magnetic Properties of Matter PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 48
   },
   {
     "name": "Nuclear Physics",
     "subject": "Physics",
-    "url": "Physics/Nuclear Physics PYQ Practice.html"
+    "url": "Physics/Nuclear Physics PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 68
   },
   {
     "name": "Ray Optics",
     "subject": "Physics",
-    "url": "Physics/Ray Optics PYQ Practice.html"
+    "url": "Physics/Ray Optics PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 142
   },
   {
     "name": "Semiconductors",
     "subject": "Physics",
-    "url": "Physics/Semiconductors PYQ Practice.html"
+    "url": "Physics/Semiconductors PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 114
   },
   {
     "name": "Amines",
     "subject": "Chemistry",
-    "url": "Chemistry/Amines PYQ Practice.html"
+    "url": "Chemistry/Amines PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 112
   },
   {
     "name": "Biomolecules",
     "subject": "Chemistry",
-    "url": "Chemistry/Biomolecules PYQ Practice.html"
+    "url": "Chemistry/Biomolecules PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 92
   },
   {
     "name": "Chemical Kinetics",
     "subject": "Chemistry",
-    "url": "Chemistry/Chemical Kinetics PYQ Practice.html"
+    "url": "Chemistry/Chemical Kinetics PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 108
   },
   {
     "name": "Coordination Compounds",
     "subject": "Chemistry",
-    "url": "Chemistry/Coordination Compounds PYQ Practice.html"
-  },
-  {
-    "name": "Electrochemistry",
-    "subject": "Chemistry",
-    "url": "Chemistry/Electrochemistry PYQ Practice.html"
-  },
-  {
-    "name": "General Organic Chemistry",
-    "subject": "Chemistry",
-    "url": "Chemistry/General Organic Chemistry PYQ Practice.html"
-  },
-  {
-    "name": "Solutions",
-    "subject": "Chemistry",
-    "url": "Chemistry/Solutions PYQ Practice.html"
+    "url": "Chemistry/Coordination Compounds PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 136
   },
   {
     "name": "d and f Block Elements",
     "subject": "Chemistry",
-    "url": "Chemistry/d and f Block Elements PYQ Practice.html"
+    "url": "Chemistry/d and f Block Elements PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 105
+  },
+  {
+    "name": "Electrochemistry",
+    "subject": "Chemistry",
+    "url": "Chemistry/Electrochemistry PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 128
+  },
+  {
+    "name": "General Organic Chemistry",
+    "subject": "Chemistry",
+    "url": "Chemistry/General Organic Chemistry PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 164
+  },
+  {
+    "name": "Solutions",
+    "subject": "Chemistry",
+    "url": "Chemistry/Solutions PYQ Practice.html",
+    "cls": "Class B",
+    "qcount": 119
   }
 ];
 
-  // 2. Outline SVG Theme Toggle Handler (Fixes Pic 1, Point 3, Point 17)
-  var MOON_SVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-  var SUN_SVG = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+// 1. Theme Controller with Outline SVG Icons (No Emojis)
+(function(){
+  var MOON_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+  var SUN_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
 
-  function syncThemeUI(isDark) {
-    var icon = document.getElementById('themeIcon');
-    var txt = document.getElementById('themeBtnText');
-    if (icon) icon.innerHTML = isDark ? SUN_SVG : MOON_SVG;
-    if (txt) txt.textContent = isDark ? 'Light' : 'Dark';
-    var btn = document.getElementById('themeToggleBtn');
-    if (btn) btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-  }
+  var btn = document.getElementById('btnThemeToggle');
 
-  function toggleTheme() {
-    var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    var nextDark = !currentlyDark;
-    if (nextDark) {
+  function updateThemeUI(dark) {
+    if (dark) {
       document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('jee_theme', 'dark');
+      if (btn) btn.innerHTML = SUN_ICON + '<span>Light</span>';
     } else {
       document.documentElement.removeAttribute('data-theme');
       localStorage.setItem('jee_theme', 'light');
-    }
-    syncThemeUI(nextDark);
-  }
-
-  var initDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  syncThemeUI(initDark);
-
-  var themeBtn = document.getElementById('themeToggleBtn');
-  if (themeBtn) {
-    themeBtn.onclick = toggleTheme;
-  }
-
-  // 3. Centralized Dashboard Calculator
-  function updateDashboard() {
-    var totalAttempted = 0;
-    var totalEvaluated = 0;
-    var totalCorrect = 0;
-    var totalTimeSeconds = 0;
-    var totalStarred = 0;
-    var totalMistakes = 0;
-
-    var completedBySubj = { Maths: 0, Physics: 0, Chemistry: 0 };
-    var activeSession = null;
-
-    CHAPTER_POOL.forEach(function(ch) {
-      var baseKey = 'pyq_' + ch.name + ' PYQ Test';
-      var histKey = 'pyqh_' + ch.name + ' PYQ Test';
-      var starKey = 'pyqs_' + ch.name + ' PYQ Test';
-      var wrongKey = 'pyqw_' + ch.name + ' PYQ Test';
-
-      // Active session detection
-      var pendRaw = localStorage.getItem(baseKey);
-      if (pendRaw && !activeSession) {
-        try {
-          var p = JSON.parse(pendRaw);
-          if (p && p.started && p.NS && p.NS.length) {
-            activeSession = {
-              chapter: ch.name,
-              subject: ch.subject,
-              url: ch.url,
-              curQ: (p.cur != null ? p.cur + 1 : 1),
-              totalQ: p.NS.length,
-              timeTaken: p.total || 0,
-              limit: p.LIMIT || 0,
-              mode: p.isCBT ? 'cbt' : 'practice'
-            };
-          }
-        } catch(e){}
-      }
-
-      // History calculations
-      var histRaw = localStorage.getItem(histKey);
-      if (histRaw) {
-        try {
-          var hList = JSON.parse(histRaw);
-          if (Array.isArray(hList) && hList.length > 0) {
-            completedBySubj[ch.subject] = (completedBySubj[ch.subject] || 0) + 1;
-            hList.forEach(function(att) {
-              if (att.NS) totalAttempted += Object.keys(att.S || {}).length;
-              if (att.total) totalTimeSeconds += att.total;
-              if (att.C) {
-                Object.keys(att.C).forEach(function(qn) {
-                  totalEvaluated++;
-                  if (att.C[qn] === 'r') totalCorrect++;
-                });
-              }
-            });
-          }
-        } catch(e){}
-      }
-
-      // Starred questions
-      var starRaw = localStorage.getItem(starKey);
-      if (starRaw) {
-        try {
-          var sObj = JSON.parse(starRaw);
-          totalStarred += Object.keys(sObj).length;
-        } catch(e){}
-      }
-
-      // Wrong mistakes
-      var wrongRaw = localStorage.getItem(wrongKey);
-      if (wrongRaw) {
-        try {
-          var wObj = JSON.parse(wrongRaw);
-          totalMistakes += Object.keys(wObj).length;
-        } catch(e){}
-      }
-    });
-
-    // Update Metric Figures
-    var qEl = document.getElementById('metricTotalQ');
-    if (qEl) qEl.textContent = totalAttempted;
-
-    var accEl = document.getElementById('metricAccuracy');
-    var accVal = totalEvaluated > 0 ? Math.round((totalCorrect / totalEvaluated) * 100) : 0;
-    if (accEl) accEl.textContent = accVal + '%';
-
-    var timeEl = document.getElementById('metricStudyTime');
-    var hrs = Math.floor(totalTimeSeconds / 3600);
-    var mins = Math.floor((totalTimeSeconds % 3600) / 60);
-    if (timeEl) timeEl.textContent = hrs + 'h ' + mins + 'm';
-
-    var revEl = document.getElementById('metricTotalRevision');
-    if (revEl) revEl.textContent = (totalStarred + totalMistakes);
-
-    var revSub = document.getElementById('metricRevisionBreakdown');
-    if (revSub) {
-      revSub.innerHTML = '<span class="badge-star">&starf; ' + totalStarred + ' Starred</span> &bull; <span class="badge-mistake">' + totalMistakes + ' Mistakes</span>';
-    }
-
-    // Progress Bars
-    var mFraction = completedBySubj.Maths + ' / 5 Chapters (' + Math.round((completedBySubj.Maths / 5) * 100) + '%)';
-    var pFraction = completedBySubj.Physics + ' / 14 Chapters (' + Math.round((completedBySubj.Physics / 14) * 100) + '%)';
-    var cFraction = completedBySubj.Chemistry + ' / 8 Chapters (' + Math.round((completedBySubj.Chemistry / 8) * 100) + '%)';
-
-    var mf = document.getElementById('mathsProgressFraction');
-    var pf = document.getElementById('physicsProgressFraction');
-    var cf = document.getElementById('chemProgressFraction');
-    if (mf) mf.textContent = mFraction;
-    if (pf) pf.textContent = pFraction;
-    if (cf) cf.textContent = cFraction;
-
-    var mb = document.getElementById('mathsProgressBar');
-    var pb = document.getElementById('physicsProgressBar');
-    var cb = document.getElementById('chemProgressBar');
-    if (mb) mb.style.width = Math.round((completedBySubj.Maths / 5) * 100) + '%';
-    if (pb) pb.style.width = Math.round((completedBySubj.Physics / 14) * 100) + '%';
-    if (cb) cb.style.width = Math.round((completedBySubj.Chemistry / 8) * 100) + '%';
-
-    // Active Incomplete Session Banner
-    var sessBanner = document.getElementById('activeSessionBanner');
-    if (activeSession && sessBanner) {
-      sessBanner.style.display = 'flex';
-      var sTitle = document.getElementById('activeSessionTitle');
-      var sMeta = document.getElementById('activeSessionMeta');
-      var rBtn = document.getElementById('btnResumeSession');
-      var dBtn = document.getElementById('btnDiscardSession');
-
-      if (sTitle) sTitle.textContent = activeSession.chapter + ' (' + activeSession.subject + ')';
-      if (sMeta) sMeta.textContent = 'Question ' + activeSession.curQ + ' of ' + activeSession.totalQ + ' \u2022 Mode: ' + (activeSession.mode === 'cbt' ? 'CBT Exam' : 'Practice');
-      if (rBtn) rBtn.setAttribute('href', activeSession.url);
-      if (dBtn) {
-        dBtn.onclick = function() {
-          if (confirm('Discard this unfinished practice session?')) {
-            localStorage.removeItem('pyq_' + activeSession.chapter + ' PYQ Test');
-            sessBanner.style.display = 'none';
-          }
-        };
-      }
-    } else if (sessBanner) {
-      sessBanner.style.display = 'none';
+      if (btn) btn.innerHTML = MOON_ICON + '<span>Dark</span>';
     }
   }
 
-  // 4. Chapter Grid Renderer with Subject-First Filtering (User Item 15 / Pic 7)
-  var currentSelectedSubject = 'all';
-  var currentSearchQuery = '';
+  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
+    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  updateThemeUI(isDark);
 
-  function renderChapterGrid() {
-    var container = document.getElementById('chapterGridContainer');
-    if (!container) return;
-
-    var q = currentSearchQuery.trim().toLowerCase();
-    var filtered = CHAPTER_POOL.filter(function(ch) {
-      var matchSubj = (currentSelectedSubject === 'all') || (ch.subject.toLowerCase() === currentSelectedSubject.toLowerCase());
-      var matchQuery = !q || (ch.name.toLowerCase().indexOf(q) !== -1) || (ch.subject.toLowerCase().indexOf(q) !== -1);
-      return matchSubj && matchQuery;
-    });
-
-    var countLbl = document.getElementById('resultsCountLabel');
-    if (countLbl) {
-      countLbl.textContent = 'Showing ' + filtered.length + ' of ' + CHAPTER_POOL.length + ' chapters';
-    }
-
-    if (filtered.length === 0) {
-      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--text-muted);font-size:14.5px;">No chapters found matching &ldquo;' + currentSearchQuery + '&rdquo;.<br><span style="font-size:13px;opacity:0.8;">Try a different search or click &ldquo;All Subjects&rdquo;.</span></div>';
-      return;
-    }
-
-    var html = '';
-    filtered.forEach(function(ch) {
-      var histKey = 'pyqh_' + ch.name + ' PYQ Test';
-      var starKey = 'pyqs_' + ch.name + ' PYQ Test';
-      var wrongKey = 'pyqw_' + ch.name + ' PYQ Test';
-
-      var hist = [];
-      try { hist = JSON.parse(localStorage.getItem(histKey) || '[]'); } catch(e){}
-      var stars = {};
-      try { stars = JSON.parse(localStorage.getItem(starKey) || '{}'); } catch(e){}
-      var wrongs = {};
-      try { wrongs = JSON.parse(localStorage.getItem(wrongKey) || '{}'); } catch(e){}
-
-      var attempts = hist.length;
-      var lastAcc = (attempts > 0 && hist[0].accuracy != null) ? (hist[0].accuracy + '% acc') : '';
-      var starCount = Object.keys(stars).length;
-      var wrongCount = Object.keys(wrongs).length;
-
-      var subClass = ch.subject.toLowerCase();
-      var pClass = ch.pClass || 'B';
-
-      var statBadges = '';
-      if (attempts > 0) {
-        statBadges += '<span class="ch-stat-badge">' + attempts + ' attempt' + (attempts > 1 ? 's' : '') + '</span>';
-      } else {
-        statBadges += '<span class="ch-stat-badge">Unattempted</span>';
-      }
-      if (lastAcc) {
-        statBadges += '<span class="ch-stat-badge score">' + lastAcc + '</span>';
-      }
-      if (wrongCount > 0) {
-        statBadges += '<span class="ch-stat-badge mistakes">' + wrongCount + ' mistakes</span>';
-      }
-      if (starCount > 0) {
-        statBadges += '<span class="ch-stat-badge">&starf; ' + starCount + '</span>';
-      }
-
-      // Materials chips
-      var matTypes = ch.subject + '/materials/' + ch.name + ' Question Types.html';
-      var matNotes = ch.subject + '/materials/' + ch.name + ' Type Notes.html';
-
-      var studyChipsHtml = '';
-      if (ch.hasTypes || ch.hasNotes) {
-        studyChipsHtml += '<div class="card-study-material">' +
-          '<span class="study-label">Study Material:</span>' +
-          '<div class="study-chips">';
-        if (ch.hasTypes) {
-          studyChipsHtml += '<a href="' + matTypes + '" class="study-chip" title="View Question Types for ' + ch.name + '">' +
-            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>' +
-            '<span>Types</span></a>';
-        }
-        if (ch.hasNotes) {
-          studyChipsHtml += '<a href="' + matNotes + '" class="study-chip" title="View Type Notes for ' + ch.name + '">' +
-            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>' +
-            '<span>Notes</span></a>';
-        }
-        studyChipsHtml += '</div></div>';
-      }
-
-      html += '<div class="chapter-card">' +
-        '<div>' +
-          '<div class="card-top">' +
-            '<span class="ch-subject-tag ' + subClass + '">' + ch.subject + '</span>' +
-            '<span class="ch-priority-tag">Class ' + pClass + '</span>' +
-          '</div>' +
-          '<h3 class="chapter-title">' + ch.name + '</h3>' +
-          '<div class="card-stats-row">' + statBadges + '</div>' +
-        '</div>' +
-        '<div>' +
-          '<div class="card-actions-row">' +
-            '<a href="' + ch.url + '?mode=cbt" class="act-btn primary" title="Take NTA Computer-Based Test">' +
-              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>' +
-              '<span>CBT Exam</span>' +
-            '</a>' +
-            '<a href="' + ch.url + '?mode=practice" class="act-btn secondary" title="Practice with instant checking">' +
-              '<span>Practice</span>' +
-            '</a>' +
-          '</div>' +
-          studyChipsHtml +
-        '</div>' +
-      '</div>';
-    });
-
-    container.innerHTML = html;
-  }
-
-  // Subject First Selection Tabs (User Item 15 / Pic 7)
-  var subjectTabs = document.querySelectorAll('.subject-tab-card');
-  subjectTabs.forEach(function(tab) {
-    tab.onclick = function() {
-      subjectTabs.forEach(function(t){ t.classList.remove('active'); });
-      tab.classList.add('active');
-      currentSelectedSubject = tab.getAttribute('data-subject');
-      renderChapterGrid();
-    };
-  });
-
-  // Search input with '/' shortcut and clear button
-  var searchInput = document.getElementById('chapterSearchInput');
-  var clearSearchBtn = document.getElementById('btnClearSearch');
-
-  if (searchInput) {
-    searchInput.oninput = function() {
-      currentSearchQuery = this.value;
-      if (clearSearchBtn) clearSearchBtn.style.display = currentSearchQuery ? 'block' : 'none';
-      renderChapterGrid();
-    };
-    if (clearSearchBtn) {
-      clearSearchBtn.onclick = function() {
-        searchInput.value = '';
-        currentSearchQuery = '';
-        clearSearchBtn.style.display = 'none';
-        searchInput.focus();
-        renderChapterGrid();
-      };
-    }
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === '/' && document.activeElement !== searchInput && !document.querySelector('.modal-overlay:not([style*="display: none"])')) {
-      e.preventDefault();
-      if (searchInput) searchInput.focus();
-    }
-    if (e.key === 'Escape') {
-      closeSimulateModal();
-      closeHistoryDrawer();
-    }
-  });
-
-  // Reset Data Handler
-  var clearBtn = document.getElementById('btnClearData');
-  if (clearBtn) {
-    clearBtn.onclick = function() {
-      if (confirm('Are you sure you want to reset all test attempts, starred questions, and mistake banks? This action cannot be undone.')) {
-        var toRemove = [];
-        for (var i = 0; i < localStorage.length; i++) {
-          var k = localStorage.key(i);
-          if (k && (k.indexOf('pyqh_') === 0 || k.indexOf('pyqs_') === 0 || k.indexOf('pyqw_') === 0 || k.indexOf('pyq_') === 0)) {
-            toRemove.push(k);
-          }
-        }
-        toRemove.forEach(function(k){ localStorage.removeItem(k); });
-        updateDashboard();
-        renderChapterGrid();
-      }
+  if (btn) {
+    btn.onclick = function() {
+      var curDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      updateThemeUI(!curDark);
     };
   }
-
-  // ==========================================================================
-  // 5. SIMULATE EXAM MODAL (User Item 4 - Custom Duration)
-  // ==========================================================================
-  var simModal = document.getElementById('simulateExamModal');
-  var btnOpenSim = document.getElementById('btnOpenSimulateModal');
-  var btnCloseSim = document.getElementById('btnCloseSimModal');
-  var btnCancelSim = document.getElementById('btnCancelSimModal');
-  var btnLaunchSim = document.getElementById('btnLaunchSimExam');
-  var customTimeWrap = document.getElementById('modalCustomTimeWrap');
-  var customMinutesInput = document.getElementById('modalCustomMinutes');
-
-  var modalConfig = {
-    mode: 'cbt',
-    subject: 'all',
-    qcount: '25',
-    duration: '60'
-  };
-
-  function openSimulateModal() {
-    if (simModal) simModal.style.display = 'flex';
-  }
-  function closeSimulateModal() {
-    if (simModal) simModal.style.display = 'none';
-  }
-
-  if (btnOpenSim) btnOpenSim.onclick = openSimulateModal;
-  if (btnCloseSim) btnCloseSim.onclick = closeSimulateModal;
-  if (btnCancelSim) btnCancelSim.onclick = closeSimulateModal;
-
-  // Handle pill selections in modal
-  var modalPills = document.querySelectorAll('.modal-pill');
-  modalPills.forEach(function(pill) {
-    pill.onclick = function() {
-      var field = pill.getAttribute('data-field');
-      var val = pill.getAttribute('data-val');
-      if (!field || !val) return;
-
-      modalPills.forEach(function(p) {
-        if (p.getAttribute('data-field') === field) p.classList.remove('selected');
-      });
-      pill.classList.add('selected');
-      modalConfig[field] = val;
-
-      if (field === 'duration') {
-        if (val === 'custom') {
-          if (customTimeWrap) customTimeWrap.style.display = 'flex';
-          if (customMinutesInput) customMinutesInput.focus();
-        } else {
-          if (customTimeWrap) customTimeWrap.style.display = 'none';
-        }
-      }
-    };
-  });
-
-  if (btnLaunchSim) {
-    btnLaunchSim.onclick = function() {
-      // Pick random chapter from selected subject pool
-      var pool = CHAPTER_POOL.filter(function(ch) {
-        return (modalConfig.subject === 'all') || (ch.subject.toLowerCase() === modalConfig.subject.toLowerCase());
-      });
-      if (pool.length === 0) pool = CHAPTER_POOL;
-      var chosen = pool[Math.floor(Math.random() * pool.length)];
-
-      var durationMinutes = modalConfig.duration;
-      if (durationMinutes === 'custom') {
-        var customVal = parseInt(customMinutesInput ? customMinutesInput.value : '45', 10);
-        durationMinutes = (!isNaN(customVal) && customVal >= 5) ? customVal : 45;
-      }
-
-      var targetUrl = chosen.url + '?mode=' + modalConfig.mode +
-        '&qcount=' + modalConfig.qcount +
-        '&time=' + durationMinutes +
-        '&sim=1';
-
-      window.location.href = targetUrl;
-    };
-  }
-
-  // ==========================================================================
-  // 6. UNIVERSAL TEST HISTORY DRAWER (User Item 7, 8, 19, 20)
-  // ==========================================================================
-  var histDrawer = document.getElementById('historyDrawer');
-  var histOverlay = document.getElementById('historyDrawerOverlay');
-  var btnOpenHist = document.getElementById('btnOpenHistory');
-  var btnCloseHist = document.getElementById('btnCloseHistoryDrawer');
-  var histFilterMode = 'all';
-
-  function openHistoryDrawer() {
-    renderHistoryDrawer();
-    if (histOverlay) histOverlay.style.display = 'block';
-    if (histDrawer) histDrawer.style.display = 'flex';
-  }
-  function closeHistoryDrawer() {
-    if (histOverlay) histOverlay.style.display = 'none';
-    if (histDrawer) histDrawer.style.display = 'none';
-  }
-
-  if (btnOpenHist) btnOpenHist.onclick = openHistoryDrawer;
-  if (btnCloseHist) btnCloseHist.onclick = closeHistoryDrawer;
-  if (histOverlay) histOverlay.onclick = closeHistoryDrawer;
-
-  var filterBtnAll = document.getElementById('filterHistAll');
-  var filterBtnCBT = document.getElementById('filterHistCBT');
-  var filterBtnPrac = document.getElementById('filterHistPractice');
-
-  if (filterBtnAll) {
-    filterBtnAll.onclick = function() {
-      histFilterMode = 'all';
-      filterBtnAll.className = 'att-btn review';
-      if (filterBtnCBT) filterBtnCBT.className = 'att-btn';
-      if (filterBtnPrac) filterBtnPrac.className = 'att-btn';
-      renderHistoryDrawer();
-    };
-  }
-  if (filterBtnCBT) {
-    filterBtnCBT.onclick = function() {
-      histFilterMode = 'cbt';
-      if (filterBtnAll) filterBtnAll.className = 'att-btn';
-      filterBtnCBT.className = 'att-btn review';
-      if (filterBtnPrac) filterBtnPrac.className = 'att-btn';
-      renderHistoryDrawer();
-    };
-  }
-  if (filterBtnPrac) {
-    filterBtnPrac.onclick = function() {
-      histFilterMode = 'practice';
-      if (filterBtnAll) filterBtnAll.className = 'att-btn';
-      if (filterBtnCBT) filterBtnCBT.className = 'att-btn';
-      filterBtnPrac.className = 'att-btn review';
-      renderHistoryDrawer();
-    };
-  }
-
-  function renderHistoryDrawer() {
-    var listEl = document.getElementById('historyAttemptsList');
-    if (!listEl) return;
-
-    var allAttempts = [];
-    for (var k = 0; k < localStorage.length; k++) {
-      var key = localStorage.key(k);
-      if (key && key.indexOf('pyqh_') === 0) {
-        var raw = localStorage.getItem(key);
-        try {
-          var arr = JSON.parse(raw);
-          if (!Array.isArray(arr)) continue;
-          var chapterName = key.replace('pyqh_', '').replace(' PYQ Test', '');
-          var chObj = CHAPTER_POOL.find(function(c){ return c.name === chapterName; }) || { subject: 'JEE', url: '#' };
-
-          arr.forEach(function(att, idx) {
-            att._chapter = chapterName;
-            att._subject = chObj.subject;
-            att._url = chObj.url;
-            att._storageKey = key;
-            att._idx = idx;
-            allAttempts.push(att);
-          });
-        } catch(e){}
-      }
-    }
-
-    allAttempts.sort(function(a, b){ return (b.t || 0) - (a.t || 0); });
-
-    var totalTests = allAttempts.length;
-    var totalQuestions = 0;
-    var totalCorrect = 0;
-    allAttempts.forEach(function(a) {
-      var ans = (a.NS || []).filter(function(n){ return a.S && a.S[n]; }).length;
-      totalQuestions += ans;
-      totalCorrect += (a.correct || 0);
-    });
-    var avgAcc = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
-
-    var sTests = document.getElementById('histSummaryTotalTests');
-    var sQ = document.getElementById('histSummaryQuestions');
-    var sAcc = document.getElementById('histSummaryAvgAcc');
-    if (sTests) sTests.textContent = totalTests;
-    if (sQ) sQ.textContent = totalQuestions;
-    if (sAcc) sAcc.textContent = avgAcc + '%';
-
-    var displayList = allAttempts.filter(function(a) {
-      var isCBT = !!(a.isCBT || (a.mode === 'cbt') || (a.label && a.label.indexOf('CBT') !== -1));
-      if (histFilterMode === 'cbt') return isCBT;
-      if (histFilterMode === 'practice') return !isCBT;
-      return true;
-    });
-
-    if (displayList.length === 0) {
-      listEl.innerHTML = '<div style="padding:48px 20px;text-align:center;color:var(--text-muted);font-size:14px;">No test attempts recorded yet.<br><span style="font-size:12.5px;opacity:0.8;">Launch a CBT Exam or Practice Test to track your progress!</span></div>';
-      return;
-    }
-
-    var html = '';
-    displayList.forEach(function(a) {
-      var isCBT = !!(a.isCBT || (a.mode === 'cbt') || (a.label && a.label.indexOf('CBT') !== -1));
-      var badgeClass = isCBT ? 'cbt' : 'practice';
-      var badgeLabel = isCBT ? 'CBT Exam' : 'Practice Test';
-      var dateStr = a.t ? new Date(a.t).toLocaleString() : 'Recent';
-      var ansCount = (a.NS || []).filter(function(n){ return a.S && a.S[n]; }).length;
-      var totalQ = (a.NS || []).length;
-      var timeStr = Math.floor((a.total || 0) / 60) + 'm ' + ((a.total || 0) % 60) + 's';
-
-      var scoreBadge = '';
-      if (a.score !== undefined) {
-        scoreBadge = '<span style="font-weight:700;color:' + (a.score >= 0 ? '#16a34a' : '#dc2626') + ';">Marks: ' + a.score + ' / ' + (a.maxScore || (totalQ * 4)) + ' (' + (a.accuracy || 0) + '% Acc)</span>';
-      }
-
-      // Actions logic: CBT only review; Practice can continue even after submitting (User Items 7, 8, 20)
-      var actionButtons = '';
-      if (isCBT) {
-        actionButtons = '<a href="' + a._url + '?mode=cbt&review=' + a._idx + '" class="att-btn review">Review Mistakes &amp; Solutions</a>';
-      } else {
-        actionButtons = '<a href="' + a._url + '?mode=practice&resume=' + a._idx + '" class="att-btn continue">Continue Practice</a>' +
-          '<a href="' + a._url + '?mode=practice&review=' + a._idx + '" class="att-btn review">Review Questions</a>';
-      }
-
-      html += '<div class="att-card">' +
-        '<div class="att-header">' +
-          '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-            '<span class="ch-subject-tag ' + (a._subject || '').toLowerCase() + '">' + a._subject + '</span>' +
-            '<b style="font-size:14px;color:var(--text-primary);">' + a._chapter + '</b>' +
-            '<span class="att-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
-          '</div>' +
-          scoreBadge +
-        '</div>' +
-        '<div class="att-stats-row">' +
-          '<span>' + dateStr + '</span>' +
-          '<span><b>Answered:</b> ' + ansCount + ' / ' + totalQ + '</span>' +
-          '<span>' + timeStr + '</span>' +
-        '</div>' +
-        '<div class="att-actions">' +
-          actionButtons +
-          '<button type="button" class="att-btn" onclick="exportSingleAttempt(\'' + a._storageKey + '\',' + a._idx + ')">Save File</button>' +
-          '<button type="button" class="att-btn delete" onclick="deleteSingleAttempt(\'' + a._storageKey + '\',' + a._idx + ')">Delete</button>' +
-        '</div>' +
-      '</div>';
-    });
-
-    listEl.innerHTML = html;
-  }
-
-  window.exportSingleAttempt = function(key, idx) {
-    try {
-      var arr = JSON.parse(localStorage.getItem(key) || '[]');
-      var att = arr[idx];
-      if (!att) return;
-      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(att, null, 2));
-      var dl = document.createElement('a');
-      dl.setAttribute("href", dataStr);
-      dl.setAttribute("download", key.replace('pyqh_', '').replace(' PYQ Test', '') + "_Attempt_" + (idx + 1) + ".json");
-      document.body.appendChild(dl);
-      dl.click();
-      dl.remove();
-    } catch(e){}
-  };
-
-  window.deleteSingleAttempt = function(key, idx) {
-    if (confirm('Delete this attempt record? This cannot be undone.')) {
-      try {
-        var arr = JSON.parse(localStorage.getItem(key) || '[]');
-        arr.splice(idx, 1);
-        localStorage.setItem(key, JSON.stringify(arr));
-        renderHistoryDrawer();
-        updateDashboard();
-        renderChapterGrid();
-      } catch(e){}
-    }
-  };
-
-  var expAllBtn = document.getElementById('btnExportFullHistory');
-  if (expAllBtn) {
-    expAllBtn.onclick = function() {
-      var allData = {};
-      for (var k = 0; k < localStorage.length; k++) {
-        var key = localStorage.key(k);
-        if (key && (key.indexOf('pyqh_') === 0 || key.indexOf('pyqs_') === 0 || key.indexOf('pyqw_') === 0)) {
-          try { allData[key] = JSON.parse(localStorage.getItem(key)); } catch(e){}
-        }
-      }
-      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allData, null, 2));
-      var dlAnchor = document.createElement('a');
-      dlAnchor.setAttribute("href", dataStr);
-      dlAnchor.setAttribute("download", "JEE_Main_Full_Test_History_" + new Date().toISOString().slice(0,10) + ".json");
-      document.body.appendChild(dlAnchor);
-      dlAnchor.click();
-      dlAnchor.remove();
-    };
-  }
-
-  var clrAllBtn = document.getElementById('btnClearFullHistory');
-  if (clrAllBtn) {
-    clrAllBtn.onclick = function() {
-      if (confirm('Clear all test attempt history across all chapters? Your starred bookmarks and mistake records will be preserved.')) {
-        var toDel = [];
-        for (var k = 0; k < localStorage.length; k++) {
-          var key = localStorage.key(k);
-          if (key && key.indexOf('pyqh_') === 0) toDel.push(key);
-        }
-        toDel.forEach(function(k){ localStorage.removeItem(k); });
-        renderHistoryDrawer();
-        updateDashboard();
-        renderChapterGrid();
-      }
-    };
-  }
-
-  // Initialize
-  updateDashboard();
-  renderChapterGrid();
 })();
 
-  // Universal Export / Import All Progress Data
-  var btnExpAll = document.getElementById('btnExportAllData');
-  var btnImpAll = document.getElementById('btnImportAllData');
-  var fileInpAll = document.getElementById('inputImportAllData');
+// 2. Preparation Overview Dashboard Calculator
+function renderDashboard() {
+  var totalAttempted = 0;
+  var totalTimeSec = 0;
+  var totalCorrect = 0;
+  var totalEvaluated = 0;
+  var totalStarred = 0;
+  var totalMistakes = 0;
+  var completedBySubj = { Maths: 0, Physics: 0, Chemistry: 0 };
 
-  if (btnExpAll) {
-    btnExpAll.onclick = function() {
-      var backup = {
-        version: 2,
-        exportedAt: new Date().toISOString(),
-        platform: "JEE Main PYQ Practice Platform",
-        data: {}
-      };
-      var totalItems = 0;
-      for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        if (key && (key.indexOf('pyq_') === 0 || key.indexOf('pyqh_') === 0 || key.indexOf('pyqs_') === 0 || key.indexOf('pyqw_') === 0 || key === 'jee_theme')) {
-          try {
-            var raw = localStorage.getItem(key);
-            backup.data[key] = JSON.parse(raw);
-          } catch(e) {
-            backup.data[key] = localStorage.getItem(key);
-          }
-          totalItems++;
-        }
-      }
-      var dateStr = new Date().toISOString().slice(0, 10);
-      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backup, null, 2));
-      var a = document.createElement('a');
-      a.setAttribute('href', dataStr);
-      a.setAttribute('download', 'JEE_Main_PYQ_Complete_Backup_' + dateStr + '.json');
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    };
-  }
+  CHAPTER_POOL.forEach(function(ch) {
+    var title = ch.name + ' PYQ Test';
+    var histKey = 'pyqh_' + title;
+    var starKey = 'pyqs_' + title;
+    var wrongKey = 'pyqw_' + title;
 
-  if (btnImpAll && fileInpAll) {
-    btnImpAll.onclick = function() { fileInpAll.click(); };
-    fileInpAll.onchange = function(e) {
-      var file = e.target.files[0];
-      if (!file) return;
-      var reader = new FileReader();
-      reader.onload = function(evt) {
-        try {
-          var parsed = JSON.parse(evt.target.result);
-          var payload = parsed.data || parsed;
-          var count = 0;
-          Object.keys(payload).forEach(function(k) {
-            if (k.indexOf('pyq_') === 0 || k.indexOf('pyqh_') === 0 || k.indexOf('pyqs_') === 0 || k.indexOf('pyqw_') === 0 || k === 'jee_theme') {
-              var val = payload[k];
-              if (typeof val === 'object') {
-                localStorage.setItem(k, JSON.stringify(val));
-              } else {
-                localStorage.setItem(k, String(val));
-              }
-              count++;
+    var histRaw = localStorage.getItem(histKey);
+    if (histRaw) {
+      try {
+        var arr = JSON.parse(histRaw);
+        if (Array.isArray(arr) && arr.length > 0) {
+          completedBySubj[ch.subject] = (completedBySubj[ch.subject] || 0) + 1;
+          arr.forEach(function(att) {
+            totalAttempted += (att.NS ? att.NS.length : 0);
+            totalTimeSec += (att.total || 0);
+            if (att.NS && att.C) {
+              att.NS.forEach(function(qn) {
+                totalEvaluated++;
+                if (att.C[qn] === 'r') totalCorrect++;
+              });
             }
           });
-          alert('Backup restored successfully! Loaded ' + count + ' progress records across all chapters.');
-          renderDashboard();
-          renderChapters();
-        } catch(err) {
-          alert('Could not parse backup file. Please select a valid JSON backup file.');
         }
-      };
-      reader.readAsText(file);
-      fileInpAll.value = '';
-    };
-  }
+      } catch(e){}
+    }
 
-  // Hero Box Buttons
-  var btnHeroSim = document.getElementById('btnHeroSimulate');
-  if (btnHeroSim) {
-    btnHeroSim.onclick = function() {
-      if (typeof openSimulateModal === 'function') {
-        openSimulateModal();
-        var allPill = document.querySelector('.modal-pill[data-field="subject"][data-val="all"]');
-        if (allPill) allPill.click();
-      }
-    };
-  }
-  var btnHeroBr = document.getElementById('btnHeroBrowse');
-  if (btnHeroBr) {
-    btnHeroBr.onclick = function() {
-      var sec = document.getElementById('chapterBanksSection');
-      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
-    };
-  }
+    var sRaw = localStorage.getItem(starKey);
+    if (sRaw) {
+      try { totalStarred += Object.keys(JSON.parse(sRaw)).length; } catch(e){}
+    }
 
-  // Quick Subject Filter Pills
-  var qPills = document.querySelectorAll('.qfilter-pill');
-  qPills.forEach(function(p) {
-    p.onclick = function() {
-      qPills.forEach(function(x){ x.classList.remove('active'); });
-      p.classList.add('active');
-      activeSubjectFilter = p.getAttribute('data-subject') || 'all';
-      renderChapters();
-    };
+    var wRaw = localStorage.getItem(wrongKey);
+    if (wRaw) {
+      try { totalMistakes += Object.keys(JSON.parse(wRaw)).length; } catch(e){}
+    }
   });
 
-</script>
+  var qEl = document.getElementById('metricTotalQ');
+  if (qEl) qEl.textContent = totalAttempted;
 
+  var accEl = document.getElementById('metricAccuracy');
+  var accVal = totalEvaluated > 0 ? Math.round((totalCorrect / totalEvaluated) * 100) : 0;
+  if (accEl) accEl.textContent = accVal + '%';
+
+  var timeEl = document.getElementById('metricStudyTime');
+  var hrs = Math.floor(totalTimeSec / 3600);
+  var mins = Math.floor((totalTimeSec % 3600) / 60);
+  if (timeEl) timeEl.textContent = hrs + 'h ' + mins + 'm';
+
+  var revEl = document.getElementById('metricTotalRevision');
+  if (revEl) revEl.textContent = (totalStarred + totalMistakes);
+
+  var revSub = document.getElementById('metricRevisionBreakdown');
+  if (revSub) {
+    revSub.innerHTML = '<span class="star">&starf; ' + totalStarred + ' Starred</span> &bull; <span class="mistake">' + totalMistakes + ' Mistakes</span>';
+  }
+
+  // Update Progress Bars
+  var mBar = document.getElementById('mathsBar');
+  var pBar = document.getElementById('physicsBar');
+  var cBar = document.getElementById('chemBar');
+  var mf = document.getElementById('mathsFraction');
+  var pf = document.getElementById('physicsFraction');
+  var cf = document.getElementById('chemFraction');
+
+  var mPct = Math.round((completedBySubj.Maths / 5) * 100);
+  var pPct = Math.round((completedBySubj.Physics / 14) * 100);
+  var cPct = Math.round((completedBySubj.Chemistry / 8) * 100);
+
+  if (mBar) mBar.style.width = mPct + '%';
+  if (pBar) pBar.style.width = pPct + '%';
+  if (cBar) cBar.style.width = cPct + '%';
+
+  if (mf) mf.textContent = completedBySubj.Maths + ' / 5 Chapters (' + mPct + '%)';
+  if (pf) pf.textContent = completedBySubj.Physics + ' / 14 Chapters (' + pPct + '%)';
+  if (cf) cf.textContent = completedBySubj.Chemistry + ' / 8 Chapters (' + cPct + '%)';
+}
+
+// 3. Chapter Grid Renderer & Search Filter
+var activeSubject = 'all';
+
+function renderChapters() {
+  var grid = document.getElementById('chapterGridContainer');
+  if (!grid) return;
+
+  var qIn = document.getElementById('chapterSearchInput');
+  var q = qIn ? qIn.value.trim().toLowerCase() : '';
+
+  var filtered = CHAPTER_POOL.filter(function(ch) {
+    if (activeSubject !== 'all' && ch.subject !== activeSubject) return false;
+    if (q && ch.name.toLowerCase().indexOf(q) === -1 && ch.subject.toLowerCase().indexOf(q) === -1) return false;
+    return true;
+  });
+
+  var countLbl = document.getElementById('resultsCountLabel');
+  if (countLbl) countLbl.textContent = 'Showing ' + filtered.length + ' of ' + CHAPTER_POOL.length + ' chapters';
+
+  var html = '';
+  filtered.forEach(function(ch) {
+    var title = ch.name + ' PYQ Test';
+    var histRaw = localStorage.getItem('pyqh_' + title);
+    var attemptText = 'Unattempted';
+    var isAtt = false;
+
+    if (histRaw) {
+      try {
+        var arr = JSON.parse(histRaw);
+        if (Array.isArray(arr) && arr.length > 0) {
+          isAtt = true;
+          var latest = arr[0];
+          var acc = latest.accuracy !== undefined ? latest.accuracy : 0;
+          attemptText = arr.length + (arr.length === 1 ? ' attempt' : ' attempts') + ' &bull; ' + acc + '% Acc';
+        }
+      } catch(e){}
+    }
+
+    var subjClass = ch.subject.toLowerCase();
+    if (subjClass === 'chemistry') subjClass = 'chem';
+
+    var typesUrl = ch.subject + '/materials/' + encodeURIComponent(ch.name) + '%20Question%20Types.html';
+    var notesUrl = ch.subject + '/materials/' + encodeURIComponent(ch.name) + '%20Type%20Notes.html';
+
+    html += '<div class="ch-card">' +
+      '<div>' +
+        '<div class="ch-card-top">' +
+          '<div class="ch-badges">' +
+            '<span class="subj-tag ' + subjClass + '">' + ch.subject + '</span>' +
+            '<span class="class-tag">' + (ch.cls || 'Class B') + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<h3 class="ch-title">' + ch.name + '</h3>' +
+        '<span class="ch-attempt-badge' + (isAtt ? ' attempted' : '') + '">' + attemptText + '</span>' +
+      '</div>' +
+      '<div>' +
+        '<div class="ch-actions">' +
+          '<a href="' + encodeURI(ch.url) + '?mode=cbt&autostart=1" class="btn-cbt">CBT Exam</a>' +
+          '<a href="' + encodeURI(ch.url) + '?mode=practice" class="btn-practice">Practice</a>' +
+        '</div>' +
+        '<div class="ch-materials">' +
+          '<a href="' + typesUrl + '" class="btn-mat-chip">📄 Types</a>' +
+          '<a href="' + notesUrl + '" class="btn-mat-chip">📝 Notes</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  });
+
+  grid.innerHTML = html;
+}
+
+// 4. Search Listeners & Hotkeys
+var sIn = document.getElementById('chapterSearchInput');
+var sClr = document.getElementById('btnClearSearch');
+
+if (sIn) {
+  sIn.oninput = function() {
+    if (sClr) sClr.style.display = sIn.value ? 'block' : 'none';
+    renderChapters();
+  };
+}
+if (sClr && sIn) {
+  sClr.onclick = function() {
+    sIn.value = '';
+    sClr.style.display = 'none';
+    sIn.focus();
+    renderChapters();
+  };
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === '/' && document.activeElement !== sIn && sIn) {
+    e.preventDefault();
+    sIn.focus();
+    sIn.select();
+  }
+});
+
+// 5. Filter Pills Listener
+var filterBtns = document.querySelectorAll('.pill-filter');
+filterBtns.forEach(function(btn) {
+  btn.onclick = function() {
+    filterBtns.forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    activeSubject = btn.dataset.subject || 'all';
+    renderChapters();
+  };
+});
+
+// 6. Universal Export / Import All Data (Toolbar)
+var btnExp = document.getElementById('btnExportAllData');
+var btnImp = document.getElementById('btnImportAllData');
+var fileInp = document.getElementById('inputImportAllData');
+
+if (btnExp) {
+  btnExp.onclick = function() {
+    var backup = {
+      version: 2,
+      exportedAt: new Date().toISOString(),
+      platform: "JEE Main PYQ Practice Platform",
+      data: {}
+    };
+    for (var i = 0; i < localStorage.length; i++) {
+      var k = localStorage.key(i);
+      if (k && (k.indexOf('pyq_') === 0 || k.indexOf('pyqh_') === 0 || k.indexOf('pyqs_') === 0 || k.indexOf('pyqw_') === 0 || k === 'jee_theme')) {
+        try {
+          backup.data[k] = JSON.parse(localStorage.getItem(k));
+        } catch(e) {
+          backup.data[k] = localStorage.getItem(k);
+        }
+      }
+    }
+    var dateStr = new Date().toISOString().slice(0, 10);
+    var blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'JEE_Main_Complete_Backup_' + dateStr + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+}
+
+if (btnImp && fileInp) {
+  btnImp.onclick = function() { fileInp.click(); };
+  fileInp.onchange = function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(evt) {
+      try {
+        var json = JSON.parse(evt.target.result);
+        var payload = json.data || json;
+        var count = 0;
+        Object.keys(payload).forEach(function(k) {
+          if (k.indexOf('pyq_') === 0 || k.indexOf('pyqh_') === 0 || k.indexOf('pyqs_') === 0 || k.indexOf('pyqw_') === 0 || k === 'jee_theme') {
+            var val = payload[k];
+            localStorage.setItem(k, typeof val === 'object' ? JSON.stringify(val) : String(val));
+            count++;
+          }
+        });
+        alert('Backup restored! Loaded ' + count + ' progress records across all chapters.');
+        renderDashboard();
+        renderChapters();
+      } catch(err) {
+        alert('Invalid backup file. Could not parse JSON data.');
+      }
+    };
+    reader.readAsText(file);
+    fileInp.value = '';
+  };
+}
+
+// Reset Data
+var btnRst = document.getElementById('btnResetData');
+if (btnRst) {
+  btnRst.onclick = function() {
+    if (confirm('Are you sure you want to reset all progress, test history, and bookmarks?\n\nThis action cannot be undone.')) {
+      var toRemove = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && (k.indexOf('pyq_') === 0 || k.indexOf('pyqh_') === 0 || k.indexOf('pyqs_') === 0 || k.indexOf('pyqw_') === 0)) {
+          toRemove.push(k);
+        }
+      }
+      toRemove.forEach(function(k) { localStorage.removeItem(k); });
+      alert('All test progress has been reset.');
+      renderDashboard();
+      renderChapters();
+    }
+  };
+}
+
+// 7. Drawer: Test History with Both Export and Import
+var dBackdrop = document.getElementById('historyDrawerBackdrop');
+var dPanel = document.getElementById('historyDrawer');
+var btnOpenHist = document.getElementById('btnOpenHistory');
+var btnCloseHist = document.getElementById('btnCloseHistory');
+
+function openDrawer() {
+  if (dBackdrop) dBackdrop.style.display = 'block';
+  if (dPanel) dPanel.classList.add('open');
+  renderDrawerHistory('all');
+}
+function closeDrawer() {
+  if (dBackdrop) dBackdrop.style.display = 'none';
+  if (dPanel) dPanel.classList.remove('open');
+}
+
+if (btnOpenHist) btnOpenHist.onclick = openDrawer;
+if (btnCloseHist) btnCloseHist.onclick = closeDrawer;
+if (dBackdrop) dBackdrop.onclick = closeDrawer;
+
+var drawerFilterBtns = document.querySelectorAll('.drawer-pill');
+drawerFilterBtns.forEach(function(b) {
+  b.onclick = function() {
+    drawerFilterBtns.forEach(function(x) { x.classList.remove('active'); });
+    b.classList.add('active');
+    renderDrawerHistory(b.dataset.filter || 'all');
+  };
+});
+
+function renderDrawerHistory(filter) {
+  var container = document.getElementById('drawerHistoryList');
+  if (!container) return;
+
+  var allAttempts = [];
+  CHAPTER_POOL.forEach(function(ch) {
+    var title = ch.name + ' PYQ Test';
+    var histRaw = localStorage.getItem('pyqh_' + title);
+    if (histRaw) {
+      try {
+        var arr = JSON.parse(histRaw);
+        if (Array.isArray(arr)) {
+          arr.forEach(function(att, idx) {
+            att._chapterName = ch.name;
+            att._chapterUrl = ch.url;
+            att._storageKey = 'pyqh_' + title;
+            att._storageIdx = idx;
+            allAttempts.push(att);
+          });
+        }
+      } catch(e){}
+    }
+  });
+
+  allAttempts.sort(function(a, b) { return (b.t || 0) - (a.t || 0); });
+
+  if (filter === 'cbt') {
+    allAttempts = allAttempts.filter(function(a) { return !!(a.isCBT || a.mode === 'cbt' || (a.label && a.label.indexOf('CBT') !== -1)); });
+  } else if (filter === 'practice') {
+    allAttempts = allAttempts.filter(function(a) { return !(a.isCBT || a.mode === 'cbt' || (a.label && a.label.indexOf('CBT') !== -1)); });
+  }
+
+  if (allAttempts.length === 0) {
+    container.innerHTML = '<div style="text-align:center;padding:32px 16px;color:var(--text-muted);font-size:13.5px;">No test attempts found for this filter. Complete a practice or CBT test to see scorecards here!</div>';
+    return;
+  }
+
+  var html = '';
+  allAttempts.forEach(function(att) {
+    var isCBT = !!(att.isCBT || att.mode === 'cbt' || (att.label && att.label.indexOf('CBT') !== -1));
+    var dateStr = att.t ? new Date(att.t).toLocaleString() : 'Unknown';
+    var answered = (att.NS || []).filter(function(n) { return att.S && att.S[n]; }).length;
+    var totalQ = (att.NS || []).length;
+    var scoreText = att.score !== undefined ? ('Marks: <b>' + att.score + '</b> / ' + (att.maxScore || (totalQ * 4)) + ' (' + (att.accuracy || 0) + '% Acc)') : (answered + ' / ' + totalQ + ' answered');
+
+    html += '<div class="att-card-drawer">' +
+      '<div class="att-drawer-top">' +
+        '<span class="att-drawer-badge ' + (isCBT ? 'cbt' : 'practice') + '">' + (isCBT ? '🏛️ CBT Exam' : '📚 Practice') + '</span>' +
+        '<span style="font-size:11.5px;color:var(--text-muted);">' + dateStr + '</span>' +
+      '</div>' +
+      '<div style="font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text-primary);">' + att._chapterName + '</div>' +
+      '<div style="font-size:12.5px;color:var(--text-secondary);margin-bottom:10px;">' + scoreText + '</div>' +
+      '<div style="display:flex;gap:8px;">' +
+        '<a href="' + encodeURI(att._chapterUrl) + '" class="btn-apple" style="padding:4px 10px;font-size:11.5px;">View Chapter</a>' +
+      '</div>' +
+    '</div>';
+  });
+
+  container.innerHTML = html;
+}
+
+// Export All History JSON from Drawer
+var btnExpHist = document.getElementById('btnExportAllHistory');
+if (btnExpHist) {
+  btnExpHist.onclick = function() {
+    var historyData = {};
+    CHAPTER_POOL.forEach(function(ch) {
+      var key = 'pyqh_' + ch.name + ' PYQ Test';
+      var val = localStorage.getItem(key);
+      if (val) {
+        try { historyData[key] = JSON.parse(val); } catch(e){ historyData[key] = val; }
+      }
+    });
+    var blob = new Blob([JSON.stringify(historyData, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'JEE_Main_All_Test_History_' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+}
+
+// Import History JSON into Drawer
+var btnImpHist = document.getElementById('btnImportAllHistory');
+var fileInpHist = document.getElementById('inputImportHistoryFile');
+
+if (btnImpHist && fileInpHist) {
+  btnImpHist.onclick = function() { fileInpHist.click(); };
+  fileInpHist.onchange = function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(evt) {
+      try {
+        var parsed = JSON.parse(evt.target.result);
+        var payload = parsed.data || parsed;
+        var importedAttempts = 0;
+
+        Object.keys(payload).forEach(function(key) {
+          if (key.indexOf('pyqh_') === 0) {
+            var newArr = Array.isArray(payload[key]) ? payload[key] : [];
+            var curRaw = localStorage.getItem(key);
+            var curArr = [];
+            if (curRaw) {
+              try { curArr = JSON.parse(curRaw) || []; } catch(e){}
+            }
+            var seen = {};
+            curArr.forEach(function(a){ if (a && a.t) seen[a.t] = true; });
+            newArr.forEach(function(a){
+              if (a && a.t && !seen[a.t]) {
+                curArr.push(a);
+                seen[a.t] = true;
+                importedAttempts++;
+              }
+            });
+            curArr.sort(function(a, b){ return (b.t || 0) - (a.t || 0); });
+            localStorage.setItem(key, JSON.stringify(curArr.slice(0, 25)));
+          }
+        });
+
+        alert('Successfully imported ' + importedAttempts + ' test attempts into your Test History!');
+        renderDrawerHistory('all');
+        renderDashboard();
+        renderChapters();
+      } catch(err) {
+        alert('Invalid history file. Could not parse JSON data.');
+      }
+    };
+    reader.readAsText(file);
+    fileInpHist.value = '';
+  };
+}
+
+// Clear History Button
+var btnClrHist = document.getElementById('btnClearAllHistory');
+if (btnClrHist) {
+  btnClrHist.onclick = function() {
+    if (confirm('Are you sure you want to delete all historical test attempts across all chapters?\n\nThis cannot be undone.')) {
+      CHAPTER_POOL.forEach(function(ch) {
+        localStorage.removeItem('pyqh_' + ch.name + ' PYQ Test');
+      });
+      alert('All test history cleared.');
+      renderDrawerHistory('all');
+      renderDashboard();
+      renderChapters();
+    }
+  };
+}
+
+// 8. Simulate Exam Modal Logic
+var sModal = document.getElementById('simulateExamModal');
+var btnOpenModal = document.getElementById('btnOpenSimModal');
+var btnCloseModal = document.getElementById('btnCloseSimModal');
+var btnCancelModal = document.getElementById('btnCancelSimModal');
+var btnLaunchExam = document.getElementById('btnLaunchSimExam');
+var customTimeBox = document.getElementById('modalCustomTimeBox');
+var customTimeIn = document.getElementById('modalCustomMin');
+
+function openSimModal() {
+  if (sModal) sModal.classList.add('open');
+}
+function closeSimModal() {
+  if (sModal) sModal.classList.remove('open');
+}
+
+if (btnOpenModal) btnOpenModal.onclick = openSimModal;
+if (btnCloseModal) btnCloseModal.onclick = closeSimModal;
+if (btnCancelModal) btnCancelModal.onclick = closeSimModal;
+if (sModal) {
+  sModal.onclick = function(e) {
+    if (e.target === sModal) closeSimModal();
+  };
+}
+
+var mPills = document.querySelectorAll('.m-pill');
+mPills.forEach(function(pill) {
+  pill.onclick = function() {
+    var group = pill.parentElement;
+    group.querySelectorAll('.m-pill').forEach(function(p) { p.classList.remove('active'); });
+    pill.classList.add('active');
+
+    if (pill.dataset.field === 'duration') {
+      if (pill.dataset.val === 'custom') {
+        if (customTimeBox) customTimeBox.style.display = 'flex';
+      } else {
+        if (customTimeBox) customTimeBox.style.display = 'none';
+      }
+    }
+  };
+});
+
+if (btnLaunchExam) {
+  btnLaunchExam.onclick = function() {
+    var modePill = document.querySelector('.m-pill[data-field="mode"].active');
+    var subjPill = document.querySelector('.m-pill[data-field="subject"].active');
+    var qcPill = document.querySelector('.m-pill[data-field="qcount"].active');
+    var durPill = document.querySelector('.m-pill[data-field="duration"].active');
+
+    var mode = modePill ? modePill.dataset.val : 'cbt';
+    var subj = subjPill ? subjPill.dataset.val : 'all';
+    var qc = qcPill ? qcPill.dataset.val : '25';
+    var dur = durPill ? durPill.dataset.val : '60';
+
+    if (dur === 'custom' && customTimeIn) {
+      dur = customTimeIn.value || '45';
+    }
+
+    var pool = CHAPTER_POOL;
+    if (subj !== 'all') {
+      pool = CHAPTER_POOL.filter(function(ch) { return ch.subject === subj; });
+    }
+    if (!pool.length) pool = CHAPTER_POOL;
+    var picked = pool[Math.floor(Math.random() * pool.length)];
+
+    var targetUrl = encodeURI(picked.url) + '?mode=' + encodeURIComponent(mode) + '&q=' + encodeURIComponent(qc) + '&t=' + encodeURIComponent(dur) + '&autostart=1';
+    window.location.href = targetUrl;
+  };
+}
+
+// 9. Register Progressive Web App Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js').catch(function(){});
+  });
+}
+
+// Initial Render
+renderDashboard();
+renderChapters();
+</script>
 </body>
 </html>
