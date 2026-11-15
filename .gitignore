@@ -1,0 +1,11 @@
+# Local Impeccable Developer Config & Cache
+.impeccable/config.local.json
+.impeccable/*.cache.json
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS generated files
+.DS_Store
+Thumbs.db
