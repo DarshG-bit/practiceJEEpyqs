@@ -153,7 +153,7 @@ body.symon {
   padding-bottom: 96px !important;
 }
 
-/* =================== ELEVATED SLATE DARK THEME & MODERN DESIGN =================== */
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
 :root {
   --bg-base: #f8fafc;
   --surface-card: #ffffff;
@@ -161,32 +161,32 @@ body.symon {
   --border-subtle: #e2e8f0;
   --border-input: #cbd5e1;
   --text-main: #0f172a;
-  --text-muted: #64748b;
+  --text-muted: #475569;
   --primary-blue: #2563eb;
   --primary-blue-hover: #1d4ed8;
 }
 
 [data-theme="dark"] {
-  --ink: #f8fafc;
-  --mut: #94a3b8;
-  --line: #1e293b;
-  --bg: #090d16;
-  --surface: #0f172a;
-  --surface-card: #0f172a;
-  --surface-elevated: #141d2e;
-  --accl: #172554;
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
   --accb: #3b82f6;
-  --hdr: #090d16;
-  --hdrtx: #f8fafc;
-  --tmbg: rgba(255, 255, 255, 0.06);
-  --hdrline: #1e293b;
-  --border-subtle: #1e293b;
-  --border-input: #2d3c5e;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
 }
 
 [data-theme="dark"] body {
-  background: #090d16 !important;
-  color: #f1f5f9 !important;
+  background: #000000 !important;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] a {
@@ -200,7 +200,8 @@ body.symon {
 [data-theme="dark"] .btn.pri,
 [data-theme="dark"] .btn-cbt-launch,
 [data-theme="dark"] .btn-modal-start,
-[data-theme="dark"] .start-exam-btn {
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
   color: #ffffff !important;
   background: #2563eb !important;
   border-color: #2563eb !important;
@@ -209,317 +210,152 @@ body.symon {
 [data-theme="dark"] a.act-btn.primary:hover,
 [data-theme="dark"] .act-btn.primary:hover,
 [data-theme="dark"] a.btn.pri:hover,
-[data-theme="dark"] .btn.pri:hover {
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
   background: #1d4ed8 !important;
   color: #ffffff !important;
 }
 
 /* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
 .panel {
-  max-width: 960px !important;
-  margin: 28px auto !important;
+  max-width: 1040px !important;
+  margin: 24px auto !important;
   padding: 28px 36px !important;
-  border-radius: 16px !important;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 [data-theme="dark"] .panel {
-  background: #0f172a !important;
-  border: 1px solid #1e293b !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
 }
 
 /* Visible Typing Boxes in Dark Mode (solves Pic 6) */
 [data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
 [data-theme="dark"] textarea,
 [data-theme="dark"] input[type="text"],
 [data-theme="dark"] input[type="number"],
 [data-theme="dark"] input.num,
-[data-theme="dark"] .tin input {
-  background: #141d2e !important;
-  border: 1.5px solid #2d3c5e !important;
-  color: #f8fafc !important;
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
   border-radius: 8px !important;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
   padding: 8px 12px !important;
 }
 [data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
 [data-theme="dark"] textarea:focus,
 [data-theme="dark"] input[type="text"]:focus,
 [data-theme="dark"] input[type="number"]:focus,
-[data-theme="dark"] input.num:focus,
-[data-theme="dark"] .tin input:focus {
+[data-theme="dark"] input.num:focus {
   border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
   outline: none !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Table borders and cell styling */
 [data-theme="dark"] table,
 [data-theme="dark"] th,
-[data-theme="dark"] td {
-  border-color: #1e293b !important;
-}
-[data-theme="dark"] th {
-  background: #141d2e !important;
-  color: #94a3b8 !important;
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
 }
 
-/* Question stems and options */
-[data-theme="dark"] .stem {
-  color: #f8fafc !important;
-}
 [data-theme="dark"] .o {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
-  color: #e2e8f0 !important;
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .o:hover {
-  background: #141d2e !important;
   border-color: #3b82f6 !important;
 }
 [data-theme="dark"] .o.sel {
-  background: #172554 !important;
+  background: rgba(37, 99, 235, 0.18) !important;
   border-color: #3b82f6 !important;
-  color: #ffffff !important;
 }
 [data-theme="dark"] .tbox {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
 }
 
-/* Modern Attempt Cards (solves Pic 4 & Pic 8) */
-.attempts-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 14px;
-}
-.att-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 16px 18px;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  background: #ffffff;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.att-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
 [data-theme="dark"] .att-card {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
 }
 [data-theme="dark"] .att-card:hover {
-  border-color: #334155 !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.4) !important;
-}
-.att-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.att-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-.att-badge.cbt {
-  background: #dbeafe;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
+  border-color: #2c2c32 !important;
 }
 [data-theme="dark"] .att-badge.cbt {
-  background: #1e3a8a !important;
-  color: #93c5fa !important;
-  border-color: #2563eb !important;
-}
-.att-badge.practice {
-  background: #dcfce7;
-  color: #15803d;
-  border: 1px solid #bbf7d0;
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
 }
 [data-theme="dark"] .att-badge.practice {
-  background: #064e3b !important;
-  color: #86efac !important;
-  border-color: #059669 !important;
-}
-.att-date {
-  font-size: 13px;
-  color: #64748b;
-  font-weight: 500;
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
 }
 [data-theme="dark"] .att-date {
-  color: #94a3b8 !important;
-}
-.att-stats-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: 13.5px;
-  color: #334155;
-  padding: 6px 0;
+  color: #a1a1aa !important;
 }
 [data-theme="dark"] .att-stats-row {
-  color: #cbd5e1 !important;
-}
-.att-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding-top: 8px;
-  border-top: 1px solid #f1f5f9;
+  color: #d4d4d8 !important;
 }
 [data-theme="dark"] .att-actions {
-  border-top-color: #1e293b !important;
-}
-.att-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 7px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid #cbd5e1;
-  background: #f8fafc;
-  color: #334155;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.att-btn:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
+  border-top-color: #222224 !important;
 }
 [data-theme="dark"] .att-btn {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #e2e8f0 !important;
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .att-btn:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-.att-btn.continue {
-  background: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
-}
-.att-btn.continue:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
-  color: #ffffff;
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
 }
 [data-theme="dark"] .att-btn.continue {
-  background: #2563eb !important;
+  background: #16a34a !important;
+  border-color: #16a34a !important;
   color: #ffffff !important;
-  border-color: #3b82f6 !important;
 }
-.att-btn.review {
-  background: #eff6ff;
-  color: #1d4ed8;
-  border-color: #bfdbfe;
-}
-.att-btn.review:hover {
-  background: #dbeafe;
-  border-color: #93c5fd;
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
 }
 [data-theme="dark"] .att-btn.review {
-  background: #172554 !important;
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
   color: #93c5fd !important;
-  border-color: #1d4ed8 !important;
-}
-.att-btn.delete {
-  color: #dc2626;
-  border-color: #fca5a5;
-  background: #fff;
-  margin-left: auto;
-}
-.att-btn.delete:hover {
-  background: #fef2f2;
-  border-color: #ef4444;
 }
 [data-theme="dark"] .att-btn.delete {
-  background: #200f14 !important;
-  border-color: #7f1d1d !important;
-  color: #fca5a5 !important;
-}
-.btn-export-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 18px;
-  border-radius: 9px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #1e293b;
-  background: #f8fafc;
-  border: 1.5px solid #cbd5e1;
-  cursor: pointer;
-  margin-top: 14px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-export-all:hover {
-  background: #e2e8f0;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
 }
 [data-theme="dark"] .btn-export-all {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #f1f5f9 !important;
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .btn-export-all:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-}
-
-/* Question Types & Type Notes Pills (solves Pic 5) */
-.sub-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #2563eb;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.sub-pill-btn:hover {
-  background: #dbeafe;
-  border-color: #93c5fd;
-  color: #1d4ed8;
-  transform: translateY(-1px);
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
 }
 [data-theme="dark"] .sub-pill-btn {
   color: #93c5fd !important;
-  background: #141d2e !important;
-  border: 1px solid #2d3c5e !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
 }
 [data-theme="dark"] .sub-pill-btn:hover {
-  background: #1e293b !important;
+  background: #18181c !important;
   border-color: #3b82f6 !important;
-  color: #60a5fa !important;
 }
 
 /* Theme Toggle Button Outline Styling (solves Pic 17) */
@@ -528,67 +364,38 @@ body.symon {
   align-items: center;
   gap: 6px;
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  color: #334155;
-  border-radius: 20px;
-  padding: 6px 14px;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.15s ease;
 }
 .theme-btn:hover {
   background: #f1f5f9;
   border-color: #94a3b8;
   transform: translateY(-1px);
 }
+.theme-btn:active {
+  transform: scale(0.98);
+}
 [data-theme="dark"] .theme-btn {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #f1f5f9 !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .theme-btn:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-}
-
-/* CBT Answer Suppression (solves User Item 8: no instant answer in CBT mode) */
-.cbt-mode .chk,
-.cbt-mode .chkb,
-.cbt-mode .shb,
-.cbt-mode .chkres,
-.cbt-mode .show-sol,
-.cbt-mode .btn-check-all,
-.cbt-mode .sol-box {
-  display: none !important;
+  background: #18181c !important;
+  border-color: #2e2e34 !important;
 }
 
 /* Active Session Banner */
 [data-theme="dark"] #pend {
-  background: #172554 !important;
-  border-color: #2563eb !important;
-  color: #e2e8f0 !important;
-}
-
-::selection {
-  background: rgba(37, 99, 235, 0.25);
-  color: inherit;
-}
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
-}
-[data-theme="dark"] * {
-  scrollbar-color: #334155 transparent;
-}
-:focus-visible {
-  outline: 2px solid #3b82f6 !important;
-  outline-offset: 2px !important;
-}
-.tm, .btn, .o, .ol, .kbd-key, .cbt-metric-num, .cbt-big-score, .cbt-summary-table td b, .metric-value, .ch-stats-row {
-  font-variant-numeric: tabular-nums;
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
 }
 </style></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
 <h1>General Organic Chemistry &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../General%20Organic%20Chemistry%20PYQ%20Practice.html">Back to practice</a><a href="General%20Organic%20Chemistry%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> GENERAL ORGANIC CHEMISTRY – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Isomerism: structural, geometrical, optical and conformational</a></li><li><a href="#T2">Type 2. IUPAC naming, structures from names, classification and bond counting</a></li><li><a href="#T3">Type 3. Purification of organic compounds: chromatography and separation methods</a></li><li><a href="#T4">Type 4. Quantitative analysis: Dumas, Kjeldahl, Carius and sulphur estimation</a></li><li><a href="#T5">Type 5. Acidity and basicity orders</a></li><li><a href="#T6">Type 6. Aromaticity, resonance and reactivity of conjugated systems</a></li><li><a href="#T7">Type 7. Stability of carbocations, carbanions and radicals</a></li><li><a href="#T8">Type 8. Qualitative analysis: Lassaigne&#x27;s test</a></li><li><a href="#T9">Type 9. Electronic effects: inductive, mesomeric, hyperconjugation and directing groups</a></li><li><a href="#T10">Type 10. Nucleophiles and electrophiles (attacking reagents)</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Isomerism: structural, geometrical, optical and conformational <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">49 questions on the sheet (Q1–49)  ·  Sub-topics: A1 structural isomerism and enol content · A2 geometrical isomerism · A3 optical isomerism · A4 conformations</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Stereoisomers with <math displaystyle="true"><mrow><mi>n</mi></mrow></math> different chiral centres</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Geometrical isomers of <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>-</mo><mi mathvariant="normal">CH</mi><mo>=</mo><mi mathvariant="normal">CH</mi><mo>-</mo><mi mathvariant="normal">R</mi><mo>&#x27;</mo></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Optical purity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Dihedral angles in ethane</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Stability order of n-butane conformers</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Enol content</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count structural isomers without missing any?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>When is a molecule chiral?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>Why do some molecules with chiral centres have fewer than <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> stereoisomers?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>What decides the stability of a conformation?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr><tr><td><p>What do metamerism and functional group isomerism mean?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_13"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The question asks &#x27;how many isomers&#x27;, &#x27;how many stereoisomers&#x27; or &#x27;which shows geometrical (optical) isomerism&#x27;.</p><p style="padding-left:14px">•  A Newman projection or a name such as eclipsed, staggered, gauche, anti, skew is given and the stability or dihedral angle is asked.</p><p style="padding-left:14px">•  The structure has a carbonyl group and the &#x27;enol content&#x27; or tautomer is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Stereoisomers with <math displaystyle="true"><mrow><mi>n</mi></mrow></math> different chiral centres</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> (fewer if the molecule has a plane of symmetry: meso forms)</p></td></tr><tr><td><p>Geometrical isomers of <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mo>=</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mo>−</mo><mi mathvariant="normal">R</mi><mo>′</mo></mrow></math></p></td><td><p>2 (cis and trans) if <math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>≠</mo><mi mathvariant="normal">R</mi><mo>′</mo></mrow></math> at each end carbon</p></td></tr><tr><td><p>Optical purity</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mtext>observed&#160;rotation</mtext></mrow><mrow><mtext>specific&#160;rotation&#160;of&#160;the&#160;pure&#160;isomer</mtext></mrow></mfrac><mo>×</mo><mn>100</mn></mrow></math></p></td></tr><tr><td><p>Dihedral angles in ethane</p></td><td><p>staggered <math displaystyle="true"><mrow><msup><mrow><mn>60</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> (most stable); eclipsed <math displaystyle="true"><mrow><msup><mrow><mn>0</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> (least stable)</p></td></tr><tr><td><p>Stability order of n-butane conformers</p></td><td><p>anti &gt; gauche &gt; partially eclipsed &gt; fully eclipsed</p></td></tr><tr><td><p>Enol content</p></td><td><p>highest in <math displaystyle="true"><mrow><mi>β</mi></mrow></math>-diketones (hydrogen bonding and conjugation): <math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count structural isomers without missing any?</p></td><td><p>Start with the straight chain, then shorten it by one carbon and place the branch at every non-equivalent position; repeat for each shorter chain.</p></td></tr><tr><td><p>When is a molecule chiral?</p></td><td><p>When it has no plane or centre of symmetry; the usual sign is a carbon attached to four different groups.</p></td></tr><tr><td><p>Why do some molecules with chiral centres have fewer than <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> stereoisomers?</p></td><td><p>If the two ends of the molecule are identical, a meso form appears and the number drops (for example 1,2-dimethylcyclopropane has 3, not 4).</p></td></tr><tr><td><p>What decides the stability of a conformation?</p></td><td><p>Torsional strain (eclipsing) and steric strain (bulky groups close together); there is no angle strain in an acyclic compound.</p></td></tr><tr><td><p>What do metamerism and functional group isomerism mean?</p></td><td><p>Metamers differ in the groups on either side of a functional atom (ethers, ketones); functional group isomers have different functional groups (alcohol and ether of <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">C</mi></mrow><mrow><mn>2</mn></mrow></msub><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>6</mn></mrow></msub><mi mathvariant="normal">O</mi></mrow></math>).</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting a carbon with two identical groups as a chiral centre.</p><p style="padding-left:14px">•  Forgetting that a double bond shows geometrical isomerism only if both ends have two different groups.</p><p style="padding-left:14px">•  Counting an enantiomer pair twice, or missing the meso form.</p><p style="padding-left:14px">•  Missing isomers that differ only in the position of the double bond or substituent.</p></div></section>

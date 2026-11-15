@@ -76,6 +76,27 @@ Every file in the repository must strictly follow these rules:
 
 ---
 
+### D. Attempt Card Architecture & Lifecycle Rules
+- **Modern Attempt Cards (`.att-card`)**: Previous attempts are formatted into elevated cards with status badges, score, accuracy %, timestamp, question count, and elapsed time.
+- **Strict CBT vs Practice Lifecycle Invariants**:
+  1. **CBT Exam Attempts**:
+     - *Post-submission*: Strictly NOT continuable. Only reviewable via "Review Marks & Mistakes".
+     - *Mid-exam*: Instant check buttons and step-by-step solutions are completely disabled.
+     - *Cheating Prevention*: Leaving the page or closing the tab during an active CBT exam prompts a warning and forfeits/clears the active test session to maintain examination integrity.
+  2. **Practice Test Attempts**:
+     - *Post-submission*: Fully continuable anytime via "Continue Practice".
+     - *Mid-test*: Instant per-question answer check and solution toggle are enabled.
+     - *Persistence*: Can pause, leave, and resume freely.
+- **Export Capabilities**:
+  - Individual attempt export via "Save File" (.json).
+  - Whole chapter attempts export via "Export All Attempts (.json)" at the bottom of the attempts container.
+
+### E. Subject-First Exploration & Test History Drawer
+- **Subject-First Topic Explorer**: Home portal (`index.html`) organizes chapters into subject tabs (`All 27`, `Maths 5`, `Physics 14`, `Chemistry 8`) with dynamic chapter counters, search filtering, and clean study material chips (`[ 📄 Types ]` and `[ 📝 Notes ]`).
+- **Universal Test History Drawer**: A slide-out panel accessible from the header showing aggregated stats across all 27 chapters, filterable by CBT vs Practice, with individual attempt deletion/export and global history export.
+
+---
+
 ## 3. Aspirant Data & Storage Schema
 
 The portal stores student progress in browser `localStorage`. Do not rename or wipe these keys during script or sheet updates:
@@ -125,4 +146,20 @@ The portal stores student progress in browser `localStorage`. Do not rename or w
    git add -A
    git commit -m "feat: <customization description>"
    git push origin main
+```
+
+### Workflow 3: Upstream Synchronization (rupinderiitb/practicemakesperfect)
+To safely incorporate new questions and upstream fixes without breaking local CBT and AMOLED enhancements:
+1. **GitHub Actions (Automated)**: Trigger the **Sync Upstream & Auto-Patch** workflow under the Actions tab.
+2. **Terminal (Manual)**:
+   ```powershell
+   git fetch upstream main
+   git checkout upstream/main -- Chemistry Maths Physics
+   python patch_all.py
+   python .agents/skills/pyq-sheet-manager/scripts/verify_amoled.py
+   .\.agents\skills\impeccable\scripts\impeccable.cmd detect index.html
+   git add -A
+   git commit -m "chore: sync with upstream and re-patch all chapters"
+   git push origin main
+   ```
    ```

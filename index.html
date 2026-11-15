@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JEE Main PYQ Practice Portal — Authentic CBT &amp; Active Recall</title>
+  <title>JEE Main PYQ Practice Portal — Authentic CBT Exam &amp; Chapter Banks</title>
   
   <script>
     (function(){
@@ -16,8 +16,8 @@
 
   <style>
   /* ==========================================================================
-     IMPECCABLE DESIGN SYSTEM: JEE PYQ PRACTICE PORTAL
-     Mode: Operate | True AMOLED Black (#000000) | Zero Navy Blue
+     ELEVATED APPLE & IMPECCABLE DESIGN SYSTEM: JEE PYQ PRACTICE PORTAL
+     Mode: Operate | True AMOLED Black (#000000) Canvas | 0% Navy Blue
      ========================================================================== */
   *, *::before, *::after { box-sizing: border-box; }
 
@@ -25,8 +25,11 @@
     --bg-page: #f8fafc;
     --surface: #ffffff;
     --surface-elevated: #f1f5f9;
+    --surface-input: #ffffff;
     --border: #e2e8f0;
     --border-subtle: #cbd5e1;
+    --border-focus: #2563eb;
+    
     --text-primary: #0f172a;
     --text-secondary: #334155;
     --text-muted: #475569;
@@ -41,9 +44,9 @@
     
     --success: #16a34a;
     --success-bg: #dcfce7;
-    --warning: #d97706;
+    --warning: #b45309;
     --warning-bg: #fef3c7;
-    --error: #dc2626;
+    --error: #b91c1c;
     --error-bg: #fee2e2;
 
     --radius-sm: 4px;
@@ -51,22 +54,25 @@
     --radius-lg: 12px;
     --radius-pill: 9999px;
     
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
   }
 
   [data-theme="dark"] {
     --bg-page: #000000;
     --surface: #0a0a0c;
     --surface-elevated: #111114;
+    --surface-input: #121215;
     --border: #222224;
     --border-subtle: #27272a;
+    --border-focus: #3b82f6;
+    
     --text-primary: #ffffff;
     --text-secondary: #e4e4e7;
     --text-muted: #a1a1aa;
     
-    --primary: #3b82f6;
-    --primary-hover: #2563eb;
-    --primary-light: #081a36;
+    --primary: #2563eb;
+    --primary-hover: #3b82f6;
+    --primary-light: rgba(37, 99, 235, 0.15);
     
     --accent-maths: #3b82f6;
     --accent-physics: #818cf8;
@@ -80,7 +86,7 @@
     --error-bg: #450a0a;
   }
 
-  /* Browser Surface Defaults */
+  /* Browser Surfaces */
   ::selection {
     background: rgba(37, 99, 235, 0.25);
     color: inherit;
@@ -107,20 +113,24 @@
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    transition: background 0.2s ease, color 0.2s ease;
   }
 
-  /* Top Navigation & Brand Header */
+  /* Top Navigation & Glassmorphic Brand Header */
   header {
-    background: var(--surface);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    padding: 18px 24px;
+    padding: 16px 24px;
     position: sticky;
     top: 0;
     z-index: 50;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
   [data-theme="dark"] header {
-    background: #000000;
-    border-bottom: 1px solid #222224;
+    background: rgba(0, 0, 0, 0.92);
+    border-bottom: 1px solid var(--border);
   }
   .header-inner {
     max-width: 1080px;
@@ -141,6 +151,22 @@
     font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+  }
+  [data-theme="dark"] .brand-badge {
+    color: #93c5fd;
+    border-color: rgba(147, 197, 253, 0.3);
   }
   .brand-desc {
     margin: 0;
@@ -152,22 +178,68 @@
     align-items: center;
     gap: 10px;
   }
-  .theme-toggle-btn {
+  .btn-history-nav {
     background: var(--surface-elevated);
     border: 1px solid var(--border);
     color: var(--text-primary);
     border-radius: var(--radius-md);
-    padding: 7px 12px;
+    padding: 8px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.15s ease;
+  }
+  .btn-history-nav:hover {
+    border-color: var(--border-subtle);
+    transform: translateY(-1px);
+  }
+  .btn-history-nav:active {
+    transform: scale(0.98);
+  }
+  .btn-cbt-launch {
+    background: var(--primary);
+    color: #ffffff !important;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.15s ease;
+  }
+  .btn-cbt-launch:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+  .btn-cbt-launch:active {
+    transform: scale(0.98);
+  }
+  .theme-btn {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-radius: var(--radius-md);
+    padding: 8px 13px;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    transition: background 0.15s ease, border-color 0.15s ease;
+    gap: 7px;
+    transition: all 0.15s ease;
   }
-  .theme-toggle-btn:hover {
+  .theme-btn:hover {
     border-color: var(--border-subtle);
+    transform: translateY(-1px);
+  }
+  .theme-btn:active {
+    transform: scale(0.98);
   }
 
   /* Main Viewport Container */
@@ -184,12 +256,9 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 22px 24px;
+    padding: 24px 26px;
     margin-bottom: 28px;
-  }
-  [data-theme="dark"] .dashboard-panel {
-    background: #0a0a0c;
-    border-color: #222224;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
   .dash-top {
     display: flex;
@@ -214,108 +283,110 @@
     display: flex;
     gap: 8px;
   }
-  .btn-cbt-launch {
-    background: var(--primary);
-    color: #ffffff;
-    border: 1px solid transparent;
-    border-radius: var(--radius-md);
-    padding: 8px 16px;
-    font-size: 13.5px;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.15s ease, transform 0.15s ease;
-  }
-  .btn-cbt-launch:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
-  }
   .btn-clear-data {
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text-muted);
     border-radius: var(--radius-md);
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 7px 12px;
+    font-size: 12.5px;
     cursor: pointer;
     transition: all 0.15s ease;
   }
   .btn-clear-data:hover {
-    color: var(--error);
-    border-color: var(--error);
+    color: #991b1b;
+    border-color: #dc2626;
+    background: var(--error-bg);
   }
 
-  /* Active Session Resume Card */
+  /* Active Session Recovery Banner */
   .active-session-card {
-    background: #eff6ff;
-    border: 1.5px solid #2563eb;
+    background: var(--primary-light);
+    border: 1px solid var(--primary);
     border-radius: var(--radius-md);
     padding: 14px 18px;
     margin-bottom: 20px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 16px;
     flex-wrap: wrap;
   }
   [data-theme="dark"] .active-session-card {
-    background: #081a36;
+    background: rgba(37, 99, 235, 0.12);
     border-color: #3b82f6;
   }
   .session-info {
     display: flex;
-    flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    gap: 12px;
+  }
+  .session-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-pill);
+    background: #16a34a;
+    flex-shrink: 0;
   }
   .session-title {
-    font-weight: 700;
     font-size: 14px;
-    color: #1e40af;
-  }
-  [data-theme="dark"] .session-title {
-    color: #93c5fd;
+    font-weight: 600;
+    color: var(--text-primary);
   }
   .session-meta {
     font-size: 12.5px;
-    color: #475569;
+    color: var(--text-muted);
     font-variant-numeric: tabular-nums;
   }
-  [data-theme="dark"] .session-meta {
-    color: #cbd5e1;
+  .session-actions {
+    display: flex;
+    gap: 8px;
   }
   .btn-resume {
-    background: #2563eb;
-    color: #ffffff;
-    padding: 7px 16px;
+    background: var(--primary);
+    color: #ffffff !important;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 6px 14px;
     font-size: 13px;
-    font-weight: 700;
-    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    transition: background 0.15s ease;
   }
   .btn-resume:hover {
-    background: #1d4ed8;
+    background: var(--primary-hover);
+  }
+  .btn-discard-session {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .btn-discard-session:hover {
+    color: var(--error);
+    border-color: var(--error);
   }
 
-  /* 4-Stat Metric Strip */
-  .metrics-strip {
+  /* 4 Metric Stats Grid */
+  .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-    margin-bottom: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
   }
   .metric-card {
     background: var(--surface-elevated);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 14px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    padding: 16px 18px;
+    transition: all 0.15s ease;
+  }
+  .metric-card:hover {
+    border-color: var(--border-subtle);
   }
   .metric-label {
     font-size: 11.5px;
@@ -323,172 +394,205 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--text-muted);
+    margin-bottom: 6px;
   }
-  .metric-value {
+  .metric-val {
     font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.025em;
     color: var(--text-primary);
     font-variant-numeric: tabular-nums;
+    margin-bottom: 4px;
   }
   .metric-sub {
     font-size: 12px;
     color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .metric-sub .badge-star {
+    color: var(--warning);
+    font-weight: 600;
+  }
+  .metric-sub .badge-mistake {
+    color: var(--error);
+    font-weight: 600;
   }
 
-  /* Subject Progress Meters */
-  .progress-section {
-    border-top: 1px solid var(--border);
-    padding-top: 18px;
+  /* Subject Coverage Meters */
+  .subject-progress-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
   }
-  .subj-meter {
+  .subj-meter-card {
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
-  .meter-header {
+  .subj-meter-header {
     display: flex;
     justify-content: space-between;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 600;
+  }
+  .subj-meter-header .subj-name {
     color: var(--text-secondary);
+  }
+  .subj-meter-header .subj-fraction {
+    color: var(--text-muted);
     font-variant-numeric: tabular-nums;
   }
-  .meter-bar {
+  .progress-bar-bg {
     height: 6px;
     background: var(--border);
     border-radius: var(--radius-pill);
     overflow: hidden;
   }
-  .meter-fill {
+  .progress-bar-fill {
     height: 100%;
     border-radius: var(--radius-pill);
     transition: width 0.4s ease;
   }
-  .meter-fill.maths { background: var(--accent-maths); }
-  .meter-fill.physics { background: var(--accent-physics); }
-  .meter-fill.chemistry { background: var(--accent-chem); }
-
-  /* Priority Revision Box */
-  .revision-box {
-    margin-top: 18px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-  }
-  .revision-title {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--error);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .revision-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .rev-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--error-bg);
-    color: var(--error);
-    padding: 5px 11px;
-    border-radius: var(--radius-pill);
-    font-size: 12.5px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: opacity 0.15s ease;
-  }
-  .rev-link:hover {
-    opacity: 0.85;
-  }
+  .progress-bar-fill.maths { background: var(--accent-maths); }
+  .progress-bar-fill.physics { background: var(--accent-physics); }
+  .progress-bar-fill.chem { background: var(--accent-chem); }
 
   /* ==========================================================================
-     SYLLABUS EXPLORER & SEARCH
+     SUBJECT FIRST NAVIGATION & EXPLORER (User Item 15)
      ========================================================================== */
+  .explorer-section {
+    margin-top: 24px;
+  }
   .explorer-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    align-items: flex-end;
     margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
   }
-  .explorer-title h2 {
+  .explorer-header h2 {
     margin: 0;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
-  .explorer-controls {
+
+  /* Subject Selection Hero Tabs (Item 15) */
+  .subject-tabs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .subject-tab-card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+  .subject-tab-card:hover {
+    border-color: var(--border-subtle);
+    transform: translateY(-1px);
+  }
+  .subject-tab-card:active {
+    transform: scale(0.98);
+  }
+  .subject-tab-card.active {
+    border-color: var(--primary);
+  }
+  .tab-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tab-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    width: 100%;
+    gap: 8px;
   }
-  .search-input {
-    flex: 1;
-    min-width: 240px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 9px 14px;
-    font-size: 14px;
-    color: var(--text-primary);
-    transition: border-color 0.15s ease;
-  }
-  [data-theme="dark"] .search-input {
-    background: #0a0a0c;
-    border-color: #222224;
-  }
-  .search-input:focus {
-    border-color: var(--primary);
-  }
-  .filter-tabs {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .tab-btn {
-    background: var(--surface);
+  .tab-card-count {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-elevated);
     border: 1px solid var(--border);
     color: var(--text-secondary);
-    border-radius: var(--radius-md);
-    padding: 7px 13px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
     font-variant-numeric: tabular-nums;
+  }
+  .tab-card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Search & Toolbar */
+  .toolbar-wrap {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .search-box-wrap {
+    flex: 1;
+    min-width: 260px;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 10px 16px 10px 38px;
+    font-size: 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--surface-input);
+    color: var(--text-primary);
     transition: all 0.15s ease;
   }
-  [data-theme="dark"] .tab-btn {
-    background: #0a0a0c;
-    border-color: #222224;
+  .search-input:focus {
+    border-color: var(--border-focus);
+    outline: none;
   }
-  .tab-btn:hover {
-    border-color: var(--border-subtle);
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
   }
-  .tab-btn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: #ffffff;
+  .clear-search-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
   }
 
   /* Chapter Cards Grid */
-  .chapters-grid {
+  .chapter-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 14px;
-    margin-top: 14px;
+    gap: 16px;
   }
   .chapter-card {
     background: var(--surface);
@@ -498,11 +602,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: border-color 0.15s ease, transform 0.15s ease;
-  }
-  [data-theme="dark"] .chapter-card {
-    background: #0a0a0c;
-    border-color: #222224;
+    transition: all 0.15s ease;
   }
   .chapter-card:hover {
     border-color: var(--border-subtle);
@@ -512,7 +612,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 6px;
   }
   .ch-subject-tag {
@@ -520,86 +620,86 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-  }
-  .ch-subject-tag.maths { background: rgba(37, 99, 235, 0.1); color: var(--accent-maths); }
-  .ch-subject-tag.physics { background: rgba(99, 102, 241, 0.1); color: var(--accent-physics); }
-  .ch-subject-tag.chemistry { background: rgba(5, 150, 105, 0.1); color: var(--accent-chem); }
-
-  .ch-priority-tag {
-    font-size: 11px;
-    font-weight: 800;
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-  }
-  .ch-priority-tag.cA { background: rgba(22, 163, 74, 0.12); color: var(--success); }
-  .ch-priority-tag.cB { background: rgba(217, 119, 6, 0.12); color: var(--warning); }
-  .ch-priority-tag.cC { background: rgba(100, 116, 139, 0.12); color: var(--text-muted); }
-
-  .ch-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 4px 0 6px;
-    line-height: 1.35;
-  }
-  .ch-desc {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    line-height: 1.45;
-    margin: 0 0 14px;
-    flex: 1;
-  }
-  
-  /* Live Chapter Stat Badges */
-  .ch-stats-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-    font-size: 12px;
-    font-variant-numeric: tabular-nums;
-  }
-  .ch-stat-badge {
     padding: 2px 7px;
     border-radius: var(--radius-sm);
+  }
+  .ch-subject-tag.maths {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--accent-maths);
+  }
+  .ch-subject-tag.physics {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent-physics);
+  }
+  .ch-subject-tag.chemistry {
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--accent-chem);
+  }
+  .ch-priority-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--warning-bg);
+    color: var(--warning);
+    border: 1px solid rgba(180, 83, 9, 0.2);
+  }
+  .chapter-title {
+    margin: 0 0 8px;
+    font-size: 16px;
     font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    line-height: 1.35;
+  }
+  .card-stats-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+  .ch-stat-badge {
     background: var(--surface-elevated);
     border: 1px solid var(--border);
-    color: var(--text-secondary);
+    padding: 2px 7px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
   }
   .ch-stat-badge.score {
-    background: var(--primary-light);
-    color: var(--primary);
-    border-color: transparent;
+    color: var(--success);
+    font-weight: 700;
   }
   .ch-stat-badge.mistakes {
-    background: var(--error-bg);
     color: var(--error);
-    border-color: transparent;
+    font-weight: 600;
   }
 
-  /* Action Buttons Grid */
-  .ch-actions {
+  /* Card Action Row */
+  .card-actions-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    border-top: 1px solid var(--border);
-    padding-top: 12px;
+    margin-bottom: 10px;
   }
   .act-btn {
     padding: 7px 10px;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 600;
     border-radius: var(--radius-md);
     text-align: center;
     text-decoration: none;
     transition: all 0.15s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
   }
   .act-btn.primary {
     background: var(--primary);
-    color: #ffffff;
+    color: #ffffff !important; /* Crisp white text */
+    border: 1px solid transparent;
   }
   .act-btn.primary:hover {
     background: var(--primary-hover);
@@ -612,165 +712,379 @@
   .act-btn.secondary:hover {
     border-color: var(--border-subtle);
   }
-  .sub-links-row {
-    grid-column: span 2;
+
+  /* Study Material Chips (Item 11 / Pic 5) */
+  .card-study-material {
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    font-size: 12px;
-    margin-top: 4px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
-  .sub-link {
-    color: var(--primary);
-    text-decoration: none;
+  .study-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .study-chips {
+    display: flex;
+    gap: 6px;
+  }
+  .study-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    font-size: 11.5px;
     font-weight: 500;
+    border-radius: var(--radius-sm);
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.15s ease;
   }
-  .sub-link:hover {
-    text-decoration: underline;
+  .study-chip:hover {
+    border-color: var(--primary);
+    color: var(--primary);
   }
 
   /* ==========================================================================
-     MOCK TEST MODAL
+     SIMULATE EXAM MODAL (User Item 4 - Custom Time)
      ========================================================================== */
   .modal-overlay {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(4px);
-    z-index: 1000;
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
     align-items: center;
     justify-content: center;
-    padding: 16px;
-  }
-  .modal-overlay.active {
-    display: flex;
+    padding: 20px;
   }
   .modal-box {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    max-width: 520px;
     width: 100%;
+    max-width: 560px;
     padding: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  }
-  [data-theme="dark"] .modal-box {
-    background: #0a0a0c;
-    border-color: #222224;
   }
   .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .modal-header h3 {
     margin: 0;
     font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
-  .modal-close {
-    background: none;
+  .btn-close-modal {
+    background: transparent;
     border: none;
+    color: var(--text-muted);
     font-size: 20px;
     cursor: pointer;
-    color: var(--text-muted);
+    padding: 4px;
+    line-height: 1;
+    border-radius: var(--radius-sm);
   }
-  .modal-section-title {
-    display: block;
-    font-size: 12.5px;
+  .btn-close-modal:hover {
+    color: var(--text-primary);
+  }
+  .modal-step {
+    margin-bottom: 16px;
+  }
+  .step-label {
+    font-size: 11.5px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--text-muted);
-    margin: 16px 0 8px;
-  }
-  .modal-section-title:first-of-type {
-    margin-top: 0;
-  }
-  .modal-pills {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .pill-card {
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 10px 12px;
-    cursor: pointer;
-    background: var(--surface-elevated);
-    transition: all 0.15s ease;
-  }
-  .pill-card.active {
-    border-color: var(--primary);
-    background: var(--primary-light);
-  }
-  .pill-card input { display: none; }
-  .pill-card-title {
-    font-size: 13.5px;
-    font-weight: 700;
-    color: var(--text-primary);
+    margin-bottom: 8px;
     display: block;
   }
-  .pill-card.active .pill-card-title {
-    color: var(--primary);
-  }
-  .pill-card-sub {
-    font-size: 11.5px;
-    color: var(--text-muted);
-    margin-top: 2px;
-    display: block;
-  }
-  .modal-presets {
+  .modal-pill-group {
     display: flex;
+    gap: 8px;
     flex-wrap: wrap;
-    gap: 6px;
   }
-  .preset-btn {
+  .modal-pill {
     background: var(--surface-elevated);
     border: 1px solid var(--border);
-    color: var(--text-secondary);
-    border-radius: var(--radius-md);
+    color: var(--text-primary);
     padding: 6px 12px;
     font-size: 13px;
     font-weight: 600;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-variant-numeric: tabular-nums;
+    transition: all 0.15s ease;
   }
-  .preset-btn.active {
+  .modal-pill:hover {
+    border-color: var(--border-subtle);
+  }
+  .modal-pill.selected {
     background: var(--primary);
     border-color: var(--primary);
-    color: #ffffff;
+    color: #ffffff !important;
   }
-  .modal-actions {
+  .modal-pill.selected div {
+    color: rgba(255, 255, 255, 0.96) !important;
+  }
+  .modal-footer {
     display: flex;
+    justify-content: flex-end;
     gap: 10px;
-    margin-top: 24px;
-  }
-  .btn-modal-start {
-    flex: 1;
-    background: var(--primary);
-    color: #ffffff;
-    border: none;
-    border-radius: var(--radius-md);
-    padding: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
   }
   .btn-modal-cancel {
     background: transparent;
     border: 1px solid var(--border);
-    color: var(--text-primary);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    font-size: 13.5px;
+    font-weight: 600;
     border-radius: var(--radius-md);
-    padding: 10px 16px;
-    font-size: 14px;
     cursor: pointer;
   }
-  
+  .btn-modal-start {
+    background: var(--primary);
+    border: none;
+    color: #ffffff !important;
+    padding: 8px 20px;
+    font-size: 13.5px;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .btn-modal-start:hover {
+    background: var(--primary-hover);
+  }
 
-/* =================== ELEVATED SLATE DARK THEME & MODERN DESIGN =================== */
+  /* Custom Time Input in Modal (User Item 4 / Pic 2) */
+  .custom-time-wrap {
+    display: none;
+    margin-top: 8px;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+  }
+  .custom-time-input {
+    width: 80px;
+    padding: 6px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-input);
+    color: var(--text-primary);
+  }
+  .custom-time-input:focus {
+    border-color: var(--primary);
+    outline: none;
+  }
+
+  /* ==========================================================================
+     TEST HISTORY DRAWER / SIDEBAR (User Item 19 & 20)
+     ========================================================================== */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 120;
+    display: none;
+  }
+  .drawer-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 600px;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    z-index: 130;
+    display: flex;
+    flex-direction: column;
+  }
+  .drawer-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .drawer-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .drawer-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px 20px;
+  }
+  .drawer-stats-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .hist-stat-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .hist-stat-val {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+  }
+  .hist-stat-lbl {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* History Attempt Cards (Item 7, 8, 20 / Pic 4 & Pic 8) */
+  .att-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    transition: all 0.15s ease;
+  }
+  .att-card:hover {
+    border-color: var(--border-subtle);
+  }
+  .att-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .att-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .att-badge.cbt {
+    background: rgba(147, 51, 234, 0.12);
+    color: var(--review-purple, #9333ea);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+  }
+  .att-badge.practice {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+  }
+  .att-date {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .att-stats-row {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .att-actions {
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    flex-wrap: wrap;
+  }
+  .att-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.15s ease;
+  }
+  .att-btn:hover {
+    border-color: var(--border-subtle);
+  }
+  .att-btn.review {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  .att-btn.continue {
+    background: var(--success);
+    border-color: var(--success);
+    color: #ffffff !important;
+  }
+  .att-btn.delete {
+    color: #991b1b;
+  }
+  .att-btn.delete:hover {
+    background: var(--error-bg);
+    border-color: #dc2626;
+    color: #991b1b;
+  }
+  .drawer-footer {
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: var(--surface-elevated);
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 12px 16px; }
+    main { padding: 16px 14px 60px; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+    .chapter-grid { grid-template-columns: 1fr; }
+    .brand-desc { display: none; }
+  }
+  
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
 :root {
   --bg-base: #f8fafc;
   --surface-card: #ffffff;
@@ -778,32 +1092,32 @@
   --border-subtle: #e2e8f0;
   --border-input: #cbd5e1;
   --text-main: #0f172a;
-  --text-muted: #64748b;
+  --text-muted: #475569;
   --primary-blue: #2563eb;
   --primary-blue-hover: #1d4ed8;
 }
 
 [data-theme="dark"] {
-  --ink: #f8fafc;
-  --mut: #94a3b8;
-  --line: #1e293b;
-  --bg: #090d16;
-  --surface: #0f172a;
-  --surface-card: #0f172a;
-  --surface-elevated: #141d2e;
-  --accl: #172554;
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
   --accb: #3b82f6;
-  --hdr: #090d16;
-  --hdrtx: #f8fafc;
-  --tmbg: rgba(255, 255, 255, 0.06);
-  --hdrline: #1e293b;
-  --border-subtle: #1e293b;
-  --border-input: #2d3c5e;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
 }
 
 [data-theme="dark"] body {
-  background: #090d16 !important;
-  color: #f1f5f9 !important;
+  background: #000000 !important;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] a {
@@ -817,7 +1131,8 @@
 [data-theme="dark"] .btn.pri,
 [data-theme="dark"] .btn-cbt-launch,
 [data-theme="dark"] .btn-modal-start,
-[data-theme="dark"] .start-exam-btn {
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
   color: #ffffff !important;
   background: #2563eb !important;
   border-color: #2563eb !important;
@@ -826,317 +1141,152 @@
 [data-theme="dark"] a.act-btn.primary:hover,
 [data-theme="dark"] .act-btn.primary:hover,
 [data-theme="dark"] a.btn.pri:hover,
-[data-theme="dark"] .btn.pri:hover {
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
   background: #1d4ed8 !important;
   color: #ffffff !important;
 }
 
 /* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
 .panel {
-  max-width: 960px !important;
-  margin: 28px auto !important;
+  max-width: 1040px !important;
+  margin: 24px auto !important;
   padding: 28px 36px !important;
-  border-radius: 16px !important;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 [data-theme="dark"] .panel {
-  background: #0f172a !important;
-  border: 1px solid #1e293b !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
 }
 
 /* Visible Typing Boxes in Dark Mode (solves Pic 6) */
 [data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
 [data-theme="dark"] textarea,
 [data-theme="dark"] input[type="text"],
 [data-theme="dark"] input[type="number"],
 [data-theme="dark"] input.num,
-[data-theme="dark"] .tin input {
-  background: #141d2e !important;
-  border: 1.5px solid #2d3c5e !important;
-  color: #f8fafc !important;
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
   border-radius: 8px !important;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
   padding: 8px 12px !important;
 }
 [data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
 [data-theme="dark"] textarea:focus,
 [data-theme="dark"] input[type="text"]:focus,
 [data-theme="dark"] input[type="number"]:focus,
-[data-theme="dark"] input.num:focus,
-[data-theme="dark"] .tin input:focus {
+[data-theme="dark"] input.num:focus {
   border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
   outline: none !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Table borders and cell styling */
 [data-theme="dark"] table,
 [data-theme="dark"] th,
-[data-theme="dark"] td {
-  border-color: #1e293b !important;
-}
-[data-theme="dark"] th {
-  background: #141d2e !important;
-  color: #94a3b8 !important;
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
 }
 
-/* Question stems and options */
-[data-theme="dark"] .stem {
-  color: #f8fafc !important;
-}
 [data-theme="dark"] .o {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
-  color: #e2e8f0 !important;
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .o:hover {
-  background: #141d2e !important;
   border-color: #3b82f6 !important;
 }
 [data-theme="dark"] .o.sel {
-  background: #172554 !important;
+  background: rgba(37, 99, 235, 0.18) !important;
   border-color: #3b82f6 !important;
-  color: #ffffff !important;
 }
 [data-theme="dark"] .tbox {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
 }
 
-/* Modern Attempt Cards (solves Pic 4 & Pic 8) */
-.attempts-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 14px;
-}
-.att-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 16px 18px;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  background: #ffffff;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.att-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
 [data-theme="dark"] .att-card {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
 }
 [data-theme="dark"] .att-card:hover {
-  border-color: #334155 !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.4) !important;
-}
-.att-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.att-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-.att-badge.cbt {
-  background: #dbeafe;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
+  border-color: #2c2c32 !important;
 }
 [data-theme="dark"] .att-badge.cbt {
-  background: #1e3a8a !important;
-  color: #93c5fa !important;
-  border-color: #2563eb !important;
-}
-.att-badge.practice {
-  background: #dcfce7;
-  color: #15803d;
-  border: 1px solid #bbf7d0;
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
 }
 [data-theme="dark"] .att-badge.practice {
-  background: #064e3b !important;
-  color: #86efac !important;
-  border-color: #059669 !important;
-}
-.att-date {
-  font-size: 13px;
-  color: #64748b;
-  font-weight: 500;
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
 }
 [data-theme="dark"] .att-date {
-  color: #94a3b8 !important;
-}
-.att-stats-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: 13.5px;
-  color: #334155;
-  padding: 6px 0;
+  color: #a1a1aa !important;
 }
 [data-theme="dark"] .att-stats-row {
-  color: #cbd5e1 !important;
-}
-.att-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding-top: 8px;
-  border-top: 1px solid #f1f5f9;
+  color: #d4d4d8 !important;
 }
 [data-theme="dark"] .att-actions {
-  border-top-color: #1e293b !important;
-}
-.att-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 7px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid #cbd5e1;
-  background: #f8fafc;
-  color: #334155;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.att-btn:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
+  border-top-color: #222224 !important;
 }
 [data-theme="dark"] .att-btn {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #e2e8f0 !important;
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .att-btn:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-.att-btn.continue {
-  background: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
-}
-.att-btn.continue:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
-  color: #ffffff;
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
 }
 [data-theme="dark"] .att-btn.continue {
-  background: #2563eb !important;
+  background: #16a34a !important;
+  border-color: #16a34a !important;
   color: #ffffff !important;
-  border-color: #3b82f6 !important;
 }
-.att-btn.review {
-  background: #eff6ff;
-  color: #1d4ed8;
-  border-color: #bfdbfe;
-}
-.att-btn.review:hover {
-  background: #dbeafe;
-  border-color: #93c5fd;
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
 }
 [data-theme="dark"] .att-btn.review {
-  background: #172554 !important;
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
   color: #93c5fd !important;
-  border-color: #1d4ed8 !important;
-}
-.att-btn.delete {
-  color: #dc2626;
-  border-color: #fca5a5;
-  background: #fff;
-  margin-left: auto;
-}
-.att-btn.delete:hover {
-  background: #fef2f2;
-  border-color: #ef4444;
 }
 [data-theme="dark"] .att-btn.delete {
-  background: #200f14 !important;
-  border-color: #7f1d1d !important;
-  color: #fca5a5 !important;
-}
-.btn-export-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 18px;
-  border-radius: 9px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #1e293b;
-  background: #f8fafc;
-  border: 1.5px solid #cbd5e1;
-  cursor: pointer;
-  margin-top: 14px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-export-all:hover {
-  background: #e2e8f0;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
 }
 [data-theme="dark"] .btn-export-all {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #f1f5f9 !important;
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .btn-export-all:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-}
-
-/* Question Types & Type Notes Pills (solves Pic 5) */
-.sub-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #2563eb;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.sub-pill-btn:hover {
-  background: #dbeafe;
-  border-color: #93c5fd;
-  color: #1d4ed8;
-  transform: translateY(-1px);
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
 }
 [data-theme="dark"] .sub-pill-btn {
   color: #93c5fd !important;
-  background: #141d2e !important;
-  border: 1px solid #2d3c5e !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
 }
 [data-theme="dark"] .sub-pill-btn:hover {
-  background: #1e293b !important;
+  background: #18181c !important;
   border-color: #3b82f6 !important;
-  color: #60a5fa !important;
 }
 
 /* Theme Toggle Button Outline Styling (solves Pic 17) */
@@ -1145,86 +1295,68 @@
   align-items: center;
   gap: 6px;
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  color: #334155;
-  border-radius: 20px;
-  padding: 6px 14px;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.15s ease;
 }
 .theme-btn:hover {
   background: #f1f5f9;
   border-color: #94a3b8;
   transform: translateY(-1px);
 }
+.theme-btn:active {
+  transform: scale(0.98);
+}
 [data-theme="dark"] .theme-btn {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #f1f5f9 !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .theme-btn:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-}
-
-/* CBT Answer Suppression (solves User Item 8: no instant answer in CBT mode) */
-.cbt-mode .chk,
-.cbt-mode .chkb,
-.cbt-mode .shb,
-.cbt-mode .chkres,
-.cbt-mode .show-sol,
-.cbt-mode .btn-check-all,
-.cbt-mode .sol-box {
-  display: none !important;
+  background: #18181c !important;
+  border-color: #2e2e34 !important;
 }
 
 /* Active Session Banner */
 [data-theme="dark"] #pend {
-  background: #172554 !important;
-  border-color: #2563eb !important;
-  color: #e2e8f0 !important;
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
 }
 
-::selection {
-  background: rgba(37, 99, 235, 0.25);
-  color: inherit;
-}
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
-}
-[data-theme="dark"] * {
-  scrollbar-color: #334155 transparent;
-}
-:focus-visible {
-  outline: 2px solid #3b82f6 !important;
-  outline-offset: 2px !important;
-}
-.tm, .btn, .o, .ol, .kbd-key, .cbt-metric-num, .cbt-big-score, .cbt-summary-table td b, .metric-value, .ch-stats-row {
-  font-variant-numeric: tabular-nums;
-}
 </style>
 </head>
 <body>
 
+<!-- Header with Unified Outline SVG Dark Mode & Controls -->
 <header>
   <div class="header-inner">
     <div class="brand-group">
-      <h1 class="brand-title">JEE Main PYQ Practice Portal</h1>
+      <h1 class="brand-title">
+        <span>JEE Main PYQ Portal</span>
+        <span class="brand-badge">2019&ndash;2025</span>
+      </h1>
       <p class="brand-desc">Authentic NTA CBT Exam Simulation &amp; Chapter-wise Active Recall Banks</p>
     </div>
     <div class="header-controls">
-      <button id="btnOpenHistory" class="btn-history-nav" type="button" title="View complete test history">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <button id="btnOpenHistory" class="btn-history-nav" type="button" title="View test history">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
         <span>Test History</span>
       </button>
-      <button id="openRandomModal" class="btn-cbt-launch" type="button">Simulate Exam</button>
-      <button id="themeToggleBtn" class="theme-btn" type="button" aria-label="Toggle visual theme">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <button id="btnOpenSimulateModal" class="btn-cbt-launch" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span>Simulate Exam</span>
+      </button>
+      <!-- Single Clean Outline SVG Theme Toggle (Fixes Pic 1 & Point 17) -->
+      <button id="themeToggleBtn" class="theme-btn" type="button" aria-label="Toggle visual theme" title="Toggle dark / light mode">
+        <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
         <span id="themeBtnText">Dark</span>
       </button>
     </div>
@@ -1237,240 +1369,263 @@
     <div class="dash-top">
       <div class="dash-title-wrap">
         <h2>Preparation Overview</h2>
-        <p>Aggregated progress &amp; performance across all 27 chapters</p>
+        <p>Aggregated progress and mastery across all 27 chapters</p>
       </div>
       <div class="dash-buttons">
-        <button id="resetStatsBtn" class="btn-clear-data" type="button" title="Clear locally stored progress history">Reset Data</button>
+        <button id="btnClearData" class="btn-clear-data" type="button" title="Clear attempt statistics">Reset Data</button>
       </div>
     </div>
 
-    <!-- Active Session Resume Banner -->
+    <!-- Active Incomplete Test Recovery Banner -->
     <div id="activeSessionBanner" style="display:none;" class="active-session-card">
       <div class="session-info">
-        <div class="session-title" id="activeSessionTitle">Active Test Session Detected</div>
-        <div class="session-meta" id="activeSessionMeta">Question in progress &middot; Time remaining</div>
+        <div class="session-dot"></div>
+        <div>
+          <div class="session-title" id="activeSessionTitle">Incomplete Test In Progress</div>
+          <div class="session-meta" id="activeSessionMeta">Question 0 of 0 &bull; 0m elapsed</div>
+        </div>
       </div>
-      <a id="activeSessionLink" href="#" class="btn-resume">Resume Examination &rarr;</a>
-    </div>
-
-    <!-- 4 Key Preparation Metrics -->
-    <div class="metrics-strip">
-      <div class="metric-card">
-        <span class="metric-label">Questions Attempted</span>
-        <span class="metric-value" id="dashAttempted">0</span>
-        <span class="metric-sub" id="dashAttemptedSub">across 27 chapters</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-label">First-Try Accuracy</span>
-        <span class="metric-value" id="dashAccuracy" style="color:var(--success);">0%</span>
-        <span class="metric-sub">target: &gt; 80% for 99th %ile</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-label">Study Time Logged</span>
-        <span class="metric-value" id="dashTime">0h 0m</span>
-        <span class="metric-sub">active testing time</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-label">Revision Bank</span>
-        <span class="metric-value" id="dashRevision">0</span>
-        <span class="metric-sub" id="dashRevisionSub">starred &amp; mistakes</span>
+      <div class="session-actions">
+        <a id="btnResumeSession" href="#" class="btn-resume">Resume Test &rarr;</a>
+        <button id="btnDiscardSession" class="btn-discard-session" type="button">Discard</button>
       </div>
     </div>
 
-    <!-- Subject Progress Meters -->
-    <div class="progress-section">
-      <div class="subj-meter">
-        <div class="meter-header">
-          <span>Mathematics</span>
-          <span id="meterMathsTxt">0 / 5 Chapters</span>
-        </div>
-        <div class="meter-bar"><div class="meter-fill maths" id="meterMathsFill" style="width:0%;"></div></div>
+    <!-- 4 Aggregated Metric Cards -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Questions Attempted</div>
+        <div class="metric-val" id="metricTotalQ">0</div>
+        <div class="metric-sub">Across 27 chapters</div>
       </div>
-      <div class="subj-meter">
-        <div class="meter-header">
-          <span>Physics</span>
-          <span id="meterPhysicsTxt">0 / 14 Chapters</span>
-        </div>
-        <div class="meter-bar"><div class="meter-fill physics" id="meterPhysicsFill" style="width:0%;"></div></div>
+      <div class="metric-card">
+        <div class="metric-label">First-Try Accuracy</div>
+        <div class="metric-val" id="metricAccuracy">0%</div>
+        <div class="metric-sub">Target: &ge; 80% for 99th %ile</div>
       </div>
-      <div class="subj-meter">
-        <div class="meter-header">
-          <span>Chemistry</span>
-          <span id="meterChemTxt">0 / 8 Chapters</span>
+      <div class="metric-card">
+        <div class="metric-label">Study Time Logged</div>
+        <div class="metric-val" id="metricStudyTime">0h 0m</div>
+        <div class="metric-sub">Active testing time</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Revision Bank</div>
+        <div class="metric-val" id="metricTotalRevision">0</div>
+        <div class="metric-sub" id="metricRevisionBreakdown">
+          <!-- Solves Pic 1 &middot; error with clean badges and WCAG AA contrast -->
+          <span class="badge-star">&starf; 0 Starred</span> &bull; <span class="badge-mistake">0 Mistakes</span>
         </div>
-        <div class="meter-bar"><div class="meter-fill chemistry" id="meterChemFill" style="width:0%;"></div></div>
       </div>
     </div>
 
-    <!-- Priority Revision Areas -->
-    <div id="priorityRevisionBox" style="display:none;" class="revision-box">
-      <div class="revision-title">Priority Revision Needed (Highest Unresolved Mistakes)</div>
-      <div class="revision-pills" id="priorityRevisionPills"></div>
+    <!-- Subject Completion Progress Meters -->
+    <div class="subject-progress-grid">
+      <div class="subj-meter-card">
+        <div class="subj-meter-header">
+          <span class="subj-name">Mathematics</span>
+          <span class="subj-fraction" id="mathsProgressFraction">0 / 5 Chapters (0%)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="mathsProgressBar" class="progress-bar-fill maths" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="subj-meter-card">
+        <div class="subj-meter-header">
+          <span class="subj-name">Physics</span>
+          <span class="subj-fraction" id="physicsProgressFraction">0 / 14 Chapters (0%)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="physicsProgressBar" class="progress-bar-fill physics" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="subj-meter-card">
+        <div class="subj-meter-header">
+          <span class="subj-name">Chemistry</span>
+          <span class="subj-fraction" id="chemProgressFraction">0 / 8 Chapters (0%)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="chemProgressBar" class="progress-bar-fill chem" style="width: 0%;"></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Syllabus Explorer -->
+  <!-- Subject-First Chapter Navigation & Explorer (User Item 15 / Pic 7) -->
   <section class="explorer-section">
     <div class="explorer-header">
-      <div class="explorer-title">
-        <h2 id="explorerSectionHeading">Chapter Practice Banks</h2>
-        <p class="explorer-sub" id="explorerSectionSub">Select a subject to explore its chapters and question banks</p>
+      <h2>Chapter Practice Banks</h2>
+    </div>
+
+    <!-- Subject Selection Cards (User Item 15: choose subject then topic) -->
+    <div class="subject-tabs-container">
+      <div class="subject-tab-card active" data-subject="all">
+        <div class="tab-card-top">
+          <span class="tab-card-title">All Subjects</span>
+          <span class="tab-card-count">27 Chapters</span>
+        </div>
+        <div class="tab-card-desc">Complete JEE Main syllabus pool</div>
+      </div>
+      <div class="subject-tab-card" data-subject="Maths">
+        <div class="tab-card-top">
+          <span class="tab-card-title">Mathematics</span>
+          <span class="tab-card-count">5 Chapters</span>
+        </div>
+        <div class="tab-card-desc">Calculus, Matrices &amp; Determinants</div>
+      </div>
+      <div class="subject-tab-card" data-subject="Physics">
+        <div class="tab-card-top">
+          <span class="tab-card-title">Physics</span>
+          <span class="tab-card-count">14 Chapters</span>
+        </div>
+        <div class="tab-card-desc">Mechanics, Electromagnetism &amp; Optics</div>
+      </div>
+      <div class="subject-tab-card" data-subject="Chemistry">
+        <div class="tab-card-top">
+          <span class="tab-card-title">Chemistry</span>
+          <span class="tab-card-count">8 Chapters</span>
+        </div>
+        <div class="tab-card-desc">Organic, Physical &amp; Inorganic</div>
       </div>
     </div>
-    
-    <!-- Subject Selection Cards (Subject-First Architecture) -->
-    <div class="subject-hero-grid" id="subjectHeroGrid">
-      <button type="button" class="subject-hero-card maths active" data-sub="Maths">
-        <div class="sub-hero-icon">📐</div>
-        <div class="sub-hero-info">
-          <span class="sub-hero-title">Mathematics</span>
-          <span class="sub-hero-count">5 Chapters Ready</span>
-        </div>
-        <span class="sub-hero-arrow">&rarr;</span>
-      </button>
 
-      <button type="button" class="subject-hero-card physics" data-sub="Physics">
-        <div class="sub-hero-icon">⚡</div>
-        <div class="sub-hero-info">
-          <span class="sub-hero-title">Physics</span>
-          <span class="sub-hero-count">14 Chapters Ready</span>
-        </div>
-        <span class="sub-hero-arrow">&rarr;</span>
-      </button>
-
-      <button type="button" class="subject-hero-card chemistry" data-sub="Chemistry">
-        <div class="sub-hero-icon">🧪</div>
-        <div class="sub-hero-info">
-          <span class="sub-hero-title">Chemistry</span>
-          <span class="sub-hero-count">8 Chapters Ready</span>
-        </div>
-        <span class="sub-hero-arrow">&rarr;</span>
-      </button>
-
-      <button type="button" class="subject-hero-card all" data-sub="all">
-        <div class="sub-hero-icon">🌐</div>
-        <div class="sub-hero-info">
-          <span class="sub-hero-title">All Subjects</span>
-          <span class="sub-hero-count">27 Chapters</span>
-        </div>
-        <span class="sub-hero-arrow">&rarr;</span>
-      </button>
+    <!-- Search Toolbar -->
+    <div class="toolbar-wrap">
+      <div class="search-box-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="chapterSearchInput" class="search-input" placeholder="Search chapters, topics, formulas... (Press '/' to focus)">
+        <button id="btnClearSearch" class="clear-search-btn" type="button" title="Clear search">&times;</button>
+      </div>
+      <span id="resultsCountLabel" style="font-size:12.5px;color:var(--text-muted);font-weight:600;">Showing 27 chapters</span>
     </div>
 
-    <div class="explorer-controls">
-      <input type="text" id="chapterSearch" class="search-input" placeholder="Search chapters, topics, formulas..." aria-label="Search chapters">
+    <!-- Chapter Cards Grid -->
+    <div id="chapterGridContainer" class="chapter-grid">
+      <!-- Injected dynamically via JavaScript -->
     </div>
-
-    <!-- Dynamic Chapters Grid -->
-    <div class="chapters-grid" id="chaptersGrid"></div>
   </section>
 </main>
 
-<!-- Modal for Simulated Mock / Practice Test -->
-
-<!-- Universal Test History Modal -->
-<div id="testHistoryModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="histModalTitle">
-  <div class="modal-box history-modal-box" style="max-width:760px;max-height:85vh;display:flex;flex-direction:column;">
+<!-- Simulate Exam Modal (User Item 4 - Custom Time) -->
+<div id="simulateExamModal" class="modal-overlay">
+  <div class="modal-box">
     <div class="modal-header">
-      <div>
-        <h3 id="histModalTitle" style="margin:0;font-size:20px;font-weight:700;">Comprehensive Test History</h3>
-        <p style="margin:4px 0 0;font-size:13px;color:var(--text-muted);">All completed CBT exams &amp; practice sets across Mathematics, Physics, and Chemistry</p>
-      </div>
-      <button id="closeHistModal" class="modal-close" type="button" aria-label="Close dialog">&times;</button>
+      <h3>Simulate Examination or Practice Test</h3>
+      <button id="btnCloseSimModal" class="btn-close-modal" type="button">&times;</button>
     </div>
 
-    <!-- Stats Bar -->
-    <div class="hist-summary-bar" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;padding:12px;background:var(--surface-elevated);border-radius:10px;border:1px solid var(--border-subtle);text-align:center;">
-      <div>
-        <div style="font-size:22px;font-weight:800;color:var(--primary-blue);" id="uHistTotalTests">0</div>
-        <div style="font-size:12px;color:var(--text-muted);font-weight:600;margin-top:2px;">Tests Taken</div>
-      </div>
-      <div>
-        <div style="font-size:22px;font-weight:800;color:var(--text-main);" id="uHistTotalQuestions">0</div>
-        <div style="font-size:12px;color:var(--text-muted);font-weight:600;margin-top:2px;">Questions Answered</div>
-      </div>
-      <div>
-        <div style="font-size:22px;font-weight:800;color:#16a34a;" id="uHistAvgAcc">0%</div>
-        <div style="font-size:12px;color:var(--text-muted);font-weight:600;margin-top:2px;">Average Accuracy</div>
+    <!-- 1. Mode -->
+    <div class="modal-step">
+      <span class="step-label">1. Test Mode:</span>
+      <div class="modal-pill-group">
+        <div class="modal-pill selected" data-field="mode" data-val="cbt">
+          <b>Real CBT Exam Mode</b>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.96);margin-top:2px;">+4 / &minus;1 marking &bull; NTA palette &bull; No instant answers</div>
+        </div>
+        <div class="modal-pill" data-field="mode" data-val="practice">
+          <b>Practice &amp; Learn Mode</b>
+          <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Instant check &bull; retry &bull; solutions &bull; pause anytime</div>
+        </div>
       </div>
     </div>
 
-    <!-- Scrollable History List -->
-    <div class="hist-list-container" id="uHistList" style="flex:1;overflow-y:auto;padding-right:4px;display:flex;flex-direction:column;gap:10px;min-height:160px;max-height:48vh;"></div>
+    <!-- 2. Subject Pool -->
+    <div class="modal-step">
+      <span class="step-label">2. Subject Pool:</span>
+      <div class="modal-pill-group">
+        <div class="modal-pill selected" data-field="subject" data-val="all">All Subjects (27)</div>
+        <div class="modal-pill" data-field="subject" data-val="Physics">Physics (14)</div>
+        <div class="modal-pill" data-field="subject" data-val="Chemistry">Chemistry (8)</div>
+        <div class="modal-pill" data-field="subject" data-val="Maths">Mathematics (5)</div>
+      </div>
+    </div>
 
-    <div class="modal-actions" style="border-top:1px solid var(--border-subtle);padding-top:16px;margin-top:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-      <button type="button" id="btnExportFullHistory" class="btn-export-all" style="margin-top:0;">📥 Export All History (.json)</button>
-      <button type="button" id="btnClearFullHistory" class="att-btn delete" style="margin-left:0;">🗑️ Clear Test History</button>
+    <!-- 3. Question Count -->
+    <div class="modal-step">
+      <span class="step-label">3. Number of Questions:</span>
+      <div class="modal-pill-group">
+        <div class="modal-pill" data-field="qcount" data-val="15">15 Questions</div>
+        <div class="modal-pill selected" data-field="qcount" data-val="25">25 Questions (Exam Sprint)</div>
+        <div class="modal-pill" data-field="qcount" data-val="30">30 Questions</div>
+        <div class="modal-pill" data-field="qcount" data-val="50">50 Questions</div>
+        <div class="modal-pill" data-field="qcount" data-val="all">All in Chapter</div>
+      </div>
+    </div>
+
+    <!-- 4. Duration with Custom Option (User Item 4 / Pic 2) -->
+    <div class="modal-step">
+      <span class="step-label">4. Test Duration:</span>
+      <div class="modal-pill-group">
+        <div class="modal-pill" data-field="duration" data-val="30">30 Minutes</div>
+        <div class="modal-pill selected" data-field="duration" data-val="60">60 Minutes (Standard)</div>
+        <div class="modal-pill" data-field="duration" data-val="90">90 Minutes</div>
+        <div class="modal-pill" data-field="duration" data-val="180">180 Minutes (Full Exam)</div>
+        <div class="modal-pill" data-field="duration" data-val="custom">Custom Time &hellip;</div>
+        <div class="modal-pill" data-field="duration" data-val="untimed">Untimed</div>
+      </div>
+      <!-- Custom minutes container -->
+      <div id="modalCustomTimeWrap" class="custom-time-wrap">
+        <label for="modalCustomMinutes" style="font-size:12.5px;font-weight:600;">Enter Duration:</label>
+        <input type="number" id="modalCustomMinutes" class="custom-time-input" min="5" max="360" value="45">
+        <span style="font-size:12px;color:var(--text-muted);">minutes (5 to 360)</span>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button id="btnCancelSimModal" class="btn-modal-cancel" type="button">Cancel</button>
+      <button id="btnLaunchSimExam" class="btn-modal-start" type="button">Start Examination &rarr;</button>
     </div>
   </div>
 </div>
 
-<div id="randomModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h3 id="modalTitle">Simulate Examination or Practice Test</h3>
-      <button id="closeRandomModal" class="modal-close" type="button" aria-label="Close dialog">&times;</button>
-    </div>
-    
-    <!-- 1. Test Mode -->
-    <label class="modal-section-title">1. Test Mode:</label>
-    <div class="modal-pills" id="modalModePills">
-      <label class="pill-card active" id="modalCardCbt">
-        <input type="radio" name="modalTestMode" value="cbt" checked>
-        <span class="pill-card-title">Real CBT Exam Mode</span>
-        <span class="pill-card-sub">+4 / &minus;1 marking &middot; NTA palette &middot; no instant answers</span>
-      </label>
-      <label class="pill-card" id="modalCardPractice">
-        <input type="radio" name="modalTestMode" value="practice">
-        <span class="pill-card-title">Practice &amp; Learn Mode</span>
-        <span class="pill-card-sub">Instant check &middot; retry wrong options &middot; immediate solution</span>
-      </label>
-    </div>
-
-    <!-- 2. Subject Pool -->
-    <label class="modal-section-title">2. Choose Subject Pool:</label>
-    <div class="modal-presets" id="modalSubjectPresets">
-      <button type="button" class="preset-btn active" data-sub="all">All Subjects (27)</button>
-      <button type="button" class="preset-btn" data-sub="Physics">Physics (14)</button>
-      <button type="button" class="preset-btn" data-sub="Chemistry">Chemistry (8)</button>
-      <button type="button" class="preset-btn" data-sub="Maths">Mathematics (5)</button>
+<!-- Test History Drawer / Sidebar (User Item 19 & 20) -->
+<div id="historyDrawerOverlay" class="drawer-overlay"></div>
+<div id="historyDrawer" class="drawer-panel" style="display:none;">
+  <div class="drawer-header">
+    <h3>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <span>Universal Test History</span>
+    </h3>
+    <button id="btnCloseHistoryDrawer" class="btn-close-modal" type="button" title="Close history">&times;</button>
+  </div>
+  
+  <div class="drawer-content">
+    <div class="drawer-stats-summary">
+      <div class="hist-stat-card">
+        <div class="hist-stat-val" id="histSummaryTotalTests">0</div>
+        <div class="hist-stat-lbl">Tests Given</div>
+      </div>
+      <div class="hist-stat-card">
+        <div class="hist-stat-val" id="histSummaryQuestions">0</div>
+        <div class="hist-stat-lbl">Questions Solved</div>
+      </div>
+      <div class="hist-stat-card">
+        <div class="hist-stat-val" id="histSummaryAvgAcc">0%</div>
+        <div class="hist-stat-lbl">Average Accuracy</div>
+      </div>
     </div>
 
-    <!-- 3. Question Count -->
-    <label class="modal-section-title">3. Number of Questions:</label>
-    <div class="modal-presets" id="modalQPresetBtns">
-      <button type="button" class="preset-btn" data-q="15">15 Questions</button>
-      <button type="button" class="preset-btn active" data-q="25">25 Questions (Exam Sprint)</button>
-      <button type="button" class="preset-btn" data-q="30">30 Questions</button>
-      <button type="button" class="preset-btn" data-q="50">50 Questions</button>
-      <button type="button" class="preset-btn" data-q="all">All in Chapter</button>
+    <!-- Filter Pills for History -->
+    <div style="display:flex;gap:8px;margin-bottom:16px;">
+      <button class="att-btn review" id="filterHistAll" type="button">All Tests</button>
+      <button class="att-btn" id="filterHistCBT" type="button">CBT Exams Only</button>
+      <button class="att-btn" id="filterHistPractice" type="button">Practice Only</button>
     </div>
 
-    <!-- 4. Duration -->
-    <label class="modal-section-title">4. Test Duration:</label>
-    <div class="modal-presets" id="modalTPresetBtns">
-      <button type="button" class="preset-btn" data-t="30">30 Minutes</button>
-      <button type="button" class="preset-btn active" data-t="60">60 Minutes (Standard)</button>
-      <button type="button" class="preset-btn" data-t="90">90 Minutes</button>
-      <button type="button" class="preset-btn" data-t="180">180 Minutes (Full Exam)</button>
-      <button type="button" class="preset-btn" data-t="free">Untimed</button>
-      <button type="button" class="preset-btn" data-t="custom" id="btnCustomTimePreset">Custom Time</button>
+    <div id="historyAttemptsList">
+      <!-- Injected dynamically -->
     </div>
-    <div id="customDurationBox" style="display:none;align-items:center;gap:10px;margin-top:10px;padding:10px 14px;background:var(--surface-elevated);border-radius:10px;border:1.5px solid var(--border-subtle);">
-      <label for="customMinutesInput" style="font-size:13.5px;font-weight:600;color:var(--text-main);">Enter Custom Duration:</label>
-      <input type="number" id="customMinutesInput" min="1" max="600" value="45" style="width:90px;padding:6px 10px;border-radius:6px;border:1.5px solid var(--border-input);background:var(--surface-card);color:var(--text-main);font-size:14px;font-weight:700;text-align:center;">
-      <span style="font-size:13px;color:var(--text-muted);font-weight:500;">minutes</span>
-    </div>
+  </div>
 
-    <div class="modal-actions">
-      <button id="launchRandomTest" class="btn-modal-start" type="button">Start Examination &rarr;</button>
-      <button id="cancelRandomModal" class="btn-modal-cancel" type="button">Cancel</button>
-    </div>
+  <div class="drawer-footer">
+    <button id="btnExportFullHistory" class="att-btn" type="button">Export All History</button>
+    <button id="btnClearFullHistory" class="att-btn delete" type="button">Clear History</button>
   </div>
 </div>
 
 <script>
-var CHAPTER_POOL = [
+(function(){
+  // 1. Chapter Master Database
+  var CHAPTER_POOL = [
   {
     "name": "Application of Derivatives",
     "subject": "Maths",
@@ -1607,6 +1762,216 @@ var CHAPTER_POOL = [
     "url": "Chemistry/d and f Block Elements PYQ Practice.html"
   }
 ];
+
+  // 2. Outline SVG Theme Toggle Handler (Fixes Pic 1, Point 3, Point 17)
+  var MOON_SVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+  var SUN_SVG = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+
+  function syncThemeUI(isDark) {
+    var icon = document.getElementById('themeIcon');
+    var txt = document.getElementById('themeBtnText');
+    if (icon) icon.innerHTML = isDark ? SUN_SVG : MOON_SVG;
+    if (txt) txt.textContent = isDark ? 'Light' : 'Dark';
+    var btn = document.getElementById('themeToggleBtn');
+    if (btn) btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  function toggleTheme() {
+    var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var nextDark = !currentlyDark;
+    if (nextDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jee_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jee_theme', 'light');
+    }
+    syncThemeUI(nextDark);
+  }
+
+  var initDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  syncThemeUI(initDark);
+
+  var themeBtn = document.getElementById('themeToggleBtn');
+  if (themeBtn) {
+    themeBtn.onclick = toggleTheme;
+  }
+
+  // 3. Centralized Dashboard Calculator
+  function updateDashboard() {
+    var totalAttempted = 0;
+    var totalEvaluated = 0;
+    var totalCorrect = 0;
+    var totalTimeSeconds = 0;
+    var totalStarred = 0;
+    var totalMistakes = 0;
+
+    var completedBySubj = { Maths: 0, Physics: 0, Chemistry: 0 };
+    var activeSession = null;
+
+    CHAPTER_POOL.forEach(function(ch) {
+      var baseKey = 'pyq_' + ch.name + ' PYQ Test';
+      var histKey = 'pyqh_' + ch.name + ' PYQ Test';
+      var starKey = 'pyqs_' + ch.name + ' PYQ Test';
+      var wrongKey = 'pyqw_' + ch.name + ' PYQ Test';
+
+      // Active session detection
+      var pendRaw = localStorage.getItem(baseKey);
+      if (pendRaw && !activeSession) {
+        try {
+          var p = JSON.parse(pendRaw);
+          if (p && p.started && p.NS && p.NS.length) {
+            activeSession = {
+              chapter: ch.name,
+              subject: ch.subject,
+              url: ch.url,
+              curQ: (p.cur != null ? p.cur + 1 : 1),
+              totalQ: p.NS.length,
+              timeTaken: p.total || 0,
+              limit: p.LIMIT || 0,
+              mode: p.isCBT ? 'cbt' : 'practice'
+            };
+          }
+        } catch(e){}
+      }
+
+      // History calculations
+      var histRaw = localStorage.getItem(histKey);
+      if (histRaw) {
+        try {
+          var hList = JSON.parse(histRaw);
+          if (Array.isArray(hList) && hList.length > 0) {
+            completedBySubj[ch.subject] = (completedBySubj[ch.subject] || 0) + 1;
+            hList.forEach(function(att) {
+              if (att.NS) totalAttempted += Object.keys(att.S || {}).length;
+              if (att.total) totalTimeSeconds += att.total;
+              if (att.C) {
+                Object.keys(att.C).forEach(function(qn) {
+                  totalEvaluated++;
+                  if (att.C[qn] === 'r') totalCorrect++;
+                });
+              }
+            });
+          }
+        } catch(e){}
+      }
+
+      // Starred questions
+      var starRaw = localStorage.getItem(starKey);
+      if (starRaw) {
+        try {
+          var sObj = JSON.parse(starRaw);
+          totalStarred += Object.keys(sObj).length;
+        } catch(e){}
+      }
+
+      // Wrong mistakes
+      var wrongRaw = localStorage.getItem(wrongKey);
+      if (wrongRaw) {
+        try {
+          var wObj = JSON.parse(wrongRaw);
+          totalMistakes += Object.keys(wObj).length;
+        } catch(e){}
+      }
+    });
+
+    // Update Metric Figures
+    var qEl = document.getElementById('metricTotalQ');
+    if (qEl) qEl.textContent = totalAttempted;
+
+    var accEl = document.getElementById('metricAccuracy');
+    var accVal = totalEvaluated > 0 ? Math.round((totalCorrect / totalEvaluated) * 100) : 0;
+    if (accEl) accEl.textContent = accVal + '%';
+
+    var timeEl = document.getElementById('metricStudyTime');
+    var hrs = Math.floor(totalTimeSeconds / 3600);
+    var mins = Math.floor((totalTimeSeconds % 3600) / 60);
+    if (timeEl) timeEl.textContent = hrs + 'h ' + mins + 'm';
+
+    var revEl = document.getElementById('metricTotalRevision');
+    if (revEl) revEl.textContent = (totalStarred + totalMistakes);
+
+    var revSub = document.getElementById('metricRevisionBreakdown');
+    if (revSub) {
+      revSub.innerHTML = '<span class="badge-star">&starf; ' + totalStarred + ' Starred</span> &bull; <span class="badge-mistake">' + totalMistakes + ' Mistakes</span>';
+    }
+
+    // Progress Bars
+    var mFraction = completedBySubj.Maths + ' / 5 Chapters (' + Math.round((completedBySubj.Maths / 5) * 100) + '%)';
+    var pFraction = completedBySubj.Physics + ' / 14 Chapters (' + Math.round((completedBySubj.Physics / 14) * 100) + '%)';
+    var cFraction = completedBySubj.Chemistry + ' / 8 Chapters (' + Math.round((completedBySubj.Chemistry / 8) * 100) + '%)';
+
+    var mf = document.getElementById('mathsProgressFraction');
+    var pf = document.getElementById('physicsProgressFraction');
+    var cf = document.getElementById('chemProgressFraction');
+    if (mf) mf.textContent = mFraction;
+    if (pf) pf.textContent = pFraction;
+    if (cf) cf.textContent = cFraction;
+
+    var mb = document.getElementById('mathsProgressBar');
+    var pb = document.getElementById('physicsProgressBar');
+    var cb = document.getElementById('chemProgressBar');
+    if (mb) mb.style.width = Math.round((completedBySubj.Maths / 5) * 100) + '%';
+    if (pb) pb.style.width = Math.round((completedBySubj.Physics / 14) * 100) + '%';
+    if (cb) cb.style.width = Math.round((completedBySubj.Chemistry / 8) * 100) + '%';
+
+    // Active Incomplete Session Banner
+    var sessBanner = document.getElementById('activeSessionBanner');
+    if (activeSession && sessBanner) {
+      sessBanner.style.display = 'flex';
+      var sTitle = document.getElementById('activeSessionTitle');
+      var sMeta = document.getElementById('activeSessionMeta');
+      var rBtn = document.getElementById('btnResumeSession');
+      var dBtn = document.getElementById('btnDiscardSession');
+
+      if (sTitle) sTitle.textContent = activeSession.chapter + ' (' + activeSession.subject + ')';
+      if (sMeta) sMeta.textContent = 'Question ' + activeSession.curQ + ' of ' + activeSession.totalQ + ' \u2022 Mode: ' + (activeSession.mode === 'cbt' ? 'CBT Exam' : 'Practice');
+      if (rBtn) rBtn.setAttribute('href', activeSession.url);
+      if (dBtn) {
+        dBtn.onclick = function() {
+          if (confirm('Discard this unfinished practice session?')) {
+            localStorage.removeItem('pyq_' + activeSession.chapter + ' PYQ Test');
+            sessBanner.style.display = 'none';
+          }
+        };
+      }
+    } else if (sessBanner) {
+      sessBanner.style.display = 'none';
+    }
+  }
+
+  // 4. Chapter Grid Renderer with Subject-First Filtering (User Item 15 / Pic 7)
+  var currentSelectedSubject = 'all';
+  var currentSearchQuery = '';
+
+  function renderChapterGrid() {
+    var container = document.getElementById('chapterGridContainer');
+    if (!container) return;
+
+    var q = currentSearchQuery.trim().toLowerCase();
+    var filtered = CHAPTER_POOL.filter(function(ch) {
+      var matchSubj = (currentSelectedSubject === 'all') || (ch.subject.toLowerCase() === currentSelectedSubject.toLowerCase());
+      var matchQuery = !q || (ch.name.toLowerCase().indexOf(q) !== -1) || (ch.subject.toLowerCase().indexOf(q) !== -1);
+      return matchSubj && matchQuery;
+    });
+
+    var countLbl = document.getElementById('resultsCountLabel');
+    if (countLbl) {
+      countLbl.textContent = 'Showing ' + filtered.length + ' of ' + CHAPTER_POOL.length + ' chapters';
+    }
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--text-muted);font-size:14.5px;">No chapters found matching &ldquo;' + currentSearchQuery + '&rdquo;.<br><span style="font-size:13px;opacity:0.8;">Try a different search or click &ldquo;All Subjects&rdquo;.</span></div>';
+      return;
+    }
+
+    var html = '';
+    filtered.forEach(function(ch) {
+      var histKey = 'pyqh_' + ch.name + ' PYQ Test';
+      var starKey = 'pyqs_' + ch.name + ' PYQ Test';
+      var wrongKey = 'pyqw_' + ch.name + ' PYQ Test';
+
+      var hist = [];
       try { hist = JSON.parse(localStorage.getItem(histKey) || '[]'); } catch(e){}
       var stars = {};
       try { stars = JSON.parse(localStorage.getItem(starKey) || '{}'); } catch(e){}
@@ -1624,41 +1989,61 @@ var CHAPTER_POOL = [
       var statBadges = '';
       if (attempts > 0) {
         statBadges += '<span class="ch-stat-badge">' + attempts + ' attempt' + (attempts > 1 ? 's' : '') + '</span>';
+      } else {
+        statBadges += '<span class="ch-stat-badge">Unattempted</span>';
       }
       if (lastAcc) {
-        statBadges += '<span class="ch-stat-badge score" style="color:#16a34a;font-weight:700;">' + lastAcc + '</span>';
+        statBadges += '<span class="ch-stat-badge score">' + lastAcc + '</span>';
       }
       if (wrongCount > 0) {
-        statBadges += '<span class="ch-stat-badge mistakes" style="color:#dc2626;">' + wrongCount + ' mistakes</span>';
+        statBadges += '<span class="ch-stat-badge mistakes">' + wrongCount + ' mistakes</span>';
       }
       if (starCount > 0) {
-        statBadges += '<span class="ch-stat-badge">&#9733; ' + starCount + '</span>';
-      }
-      if (!statBadges) {
-        statBadges = '<span class="ch-stat-badge" style="opacity:0.6;">Unattempted</span>';
+        statBadges += '<span class="ch-stat-badge">&starf; ' + starCount + '</span>';
       }
 
-      // Materials URLs
+      // Materials chips
       var matTypes = ch.subject + '/materials/' + ch.name + ' Question Types.html';
       var matNotes = ch.subject + '/materials/' + ch.name + ' Type Notes.html';
+
+      var studyChipsHtml = '';
+      if (ch.hasTypes || ch.hasNotes) {
+        studyChipsHtml += '<div class="card-study-material">' +
+          '<span class="study-label">Study Material:</span>' +
+          '<div class="study-chips">';
+        if (ch.hasTypes) {
+          studyChipsHtml += '<a href="' + matTypes + '" class="study-chip" title="View Question Types for ' + ch.name + '">' +
+            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>' +
+            '<span>Types</span></a>';
+        }
+        if (ch.hasNotes) {
+          studyChipsHtml += '<a href="' + matNotes + '" class="study-chip" title="View Type Notes for ' + ch.name + '">' +
+            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>' +
+            '<span>Notes</span></a>';
+        }
+        studyChipsHtml += '</div></div>';
+      }
 
       html += '<div class="chapter-card">' +
         '<div>' +
           '<div class="card-top">' +
             '<span class="ch-subject-tag ' + subClass + '">' + ch.subject + '</span>' +
-            '<span class="ch-priority-tag c' + pClass + '">Class ' + pClass + '</span>' +
+            '<span class="ch-priority-tag">Class ' + pClass + '</span>' +
           '</div>' +
-          '<h3 class="ch-name">' + ch.name + '</h3>' +
-          '<p class="ch-desc">' + (ch.desc || '') + '</p>' +
-          '<div class="ch-stats-row">' + statBadges + '</div>' +
+          '<h3 class="chapter-title">' + ch.name + '</h3>' +
+          '<div class="card-stats-row">' + statBadges + '</div>' +
         '</div>' +
-        '<div class="ch-actions">' +
-          '<a href="' + ch.url + '?mode=cbt" class="act-btn primary" style="color:#ffffff !important;font-weight:700;">CBT Exam</a>' +
-          '<a href="' + ch.url + '?mode=practice" class="act-btn secondary">Practice</a>' +
-          '<div class="sub-links-row" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">' +
-            '<a href="' + matTypes + '" class="sub-pill-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>Question Types</a>' +
-            '<a href="' + matNotes + '" class="sub-pill-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Type Notes</a>' +
+        '<div>' +
+          '<div class="card-actions-row">' +
+            '<a href="' + ch.url + '?mode=cbt" class="act-btn primary" title="Take NTA Computer-Based Test">' +
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>' +
+              '<span>CBT Exam</span>' +
+            '</a>' +
+            '<a href="' + ch.url + '?mode=practice" class="act-btn secondary" title="Practice with instant checking">' +
+              '<span>Practice</span>' +
+            '</a>' +
           '</div>' +
+          studyChipsHtml +
         '</div>' +
       '</div>';
     });
@@ -1666,325 +2051,222 @@ var CHAPTER_POOL = [
     container.innerHTML = html;
   }
 
-  // Subject First Selection Cards (User Item 15)
-  var subjectCards = document.querySelectorAll('.subject-hero-card');
-  subjectCards.forEach(function(card){
-    card.onclick = function(){
-      subjectCards.forEach(function(c){ c.classList.remove('active'); });
-      card.classList.add('active');
-      currentFilter = card.dataset.sub;
-      var heading = document.getElementById('explorerSectionHeading');
-      var sub = document.getElementById('explorerSectionSub');
-      if (currentFilter === 'Maths') {
-        if (heading) heading.textContent = 'Mathematics Question Banks';
-        if (sub) sub.textContent = '5 ready chapters with verified previous-year question banks';
-      } else if (currentFilter === 'Physics') {
-        if (heading) heading.textContent = 'Physics Question Banks';
-        if (sub) sub.textContent = '14 ready chapters covering mechanics, electromagnetism & modern physics';
-      } else if (currentFilter === 'Chemistry') {
-        if (heading) heading.textContent = 'Chemistry Question Banks';
-        if (sub) sub.textContent = '8 ready chapters across physical, organic & inorganic chemistry';
-      } else {
-        if (heading) heading.textContent = 'All Chapter Practice Banks (27)';
-        if (sub) sub.textContent = 'Comprehensive syllabus coverage across all subjects';
-      }
-      renderGrid();
+  // Subject First Selection Tabs (User Item 15 / Pic 7)
+  var subjectTabs = document.querySelectorAll('.subject-tab-card');
+  subjectTabs.forEach(function(tab) {
+    tab.onclick = function() {
+      subjectTabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      currentSelectedSubject = tab.getAttribute('data-subject');
+      renderChapterGrid();
     };
   });
 
-  // Search input live filtering
-  var searchInput = document.getElementById('chapterSearch');
+  // Search input with '/' shortcut and clear button
+  var searchInput = document.getElementById('chapterSearchInput');
+  var clearSearchBtn = document.getElementById('btnClearSearch');
+
   if (searchInput) {
-    searchInput.oninput = function(){
-      currentSearch = searchInput.value;
-      renderGrid();
+    searchInput.oninput = function() {
+      currentSearchQuery = this.value;
+      if (clearSearchBtn) clearSearchBtn.style.display = currentSearchQuery ? 'block' : 'none';
+      renderChapterGrid();
     };
-  }
-
-  // 3. Centralized Preparation Dashboard Metrics
-  function updateDashboard() {
-    var totalAttempted = 0;
-    var totalCorrectFirst = 0;
-    var totalEvaluatedFirst = 0;
-    var totalTimeSeconds = 0;
-    var totalStarred = 0;
-    var totalMistakes = 0;
-    var completedChapters = { Maths: 0, Physics: 0, Chemistry: 0 };
-    var activeSession = null;
-    var priorityMistakes = [];
-
-    CHAPTER_POOL.forEach(function(ch){
-      var testKey = 'pyq_' + ch.name + ' PYQ Test';
-      var histKey = 'pyqh_' + ch.name + ' PYQ Test';
-      var starKey = 'pyqs_' + ch.name + ' PYQ Test';
-      var wrongKey = 'pyqw_' + ch.name + ' PYQ Test';
-
-      // Check for active unfinished session
-      var pendRaw = localStorage.getItem(testKey);
-      if (pendRaw && !activeSession) {
-        try {
-          var p = JSON.parse(pendRaw);
-          if (p && p.started && p.NS && p.NS.length) {
-            activeSession = {
-              chapter: ch.name,
-              subject: ch.subject,
-              url: ch.url,
-              curQ: (p.cur != null ? p.cur + 1 : 1),
-              totalQ: p.NS.length,
-              timeTaken: p.total || 0,
-              limit: p.LIMIT || 0
-            };
-          }
-        } catch(e){}
-      }
-
-      // History analysis
-      var histRaw = localStorage.getItem(histKey);
-      if (histRaw) {
-        try {
-          var hList = JSON.parse(histRaw);
-          if (Array.isArray(hList) && hList.length > 0) {
-            completedChapters[ch.subject] = (completedChapters[ch.subject] || 0) + 1;
-            hList.forEach(function(att){
-              if (att.NS) totalAttempted += Object.keys(att.S || {}).length;
-              if (att.total) totalTimeSeconds += att.total;
-              if (att.C) {
-                Object.keys(att.C).forEach(function(qn){
-                  totalEvaluatedFirst++;
-                  if (att.C[qn] === 'r') totalCorrectFirst++;
-                });
-              }
-            });
-          }
-        } catch(e){}
-      }
-
-      // Stars & Mistakes
-      try {
-        var sObj = JSON.parse(localStorage.getItem(starKey) || '{}');
-        totalStarred += Object.keys(sObj).length;
-      } catch(e){}
-      try {
-        var wObj = JSON.parse(localStorage.getItem(wrongKey) || '{}');
-        var wCount = Object.keys(wObj).length;
-        totalMistakes += wCount;
-        if (wCount > 0) {
-          priorityMistakes.push({ name: ch.name, count: wCount, url: ch.url });
-        }
-      } catch(e){}
-    });
-
-    // Update Banner
-    var banner = document.getElementById('activeSessionBanner');
-    if (activeSession && banner) {
-      banner.style.display = 'flex';
-      document.getElementById('activeSessionTitle').textContent = 'Resume: ' + activeSession.chapter;
-      var remTxt = activeSession.limit > 0 ? (Math.max(0, Math.round((activeSession.limit - activeSession.timeTaken)/60)) + 'm remaining') : 'Untimed';
-      document.getElementById('activeSessionMeta').textContent = 'Q ' + activeSession.curQ + ' of ' + activeSession.totalQ + ' &middot; ' + remTxt;
-      document.getElementById('activeSessionLink').href = activeSession.url;
-    } else if (banner) {
-      banner.style.display = 'none';
-    }
-
-    // Update Metrics
-    document.getElementById('dashAttempted').textContent = totalAttempted;
-    var accPct = totalEvaluatedFirst > 0 ? Math.round((totalCorrectFirst / totalEvaluatedFirst) * 100) : 0;
-    document.getElementById('dashAccuracy').textContent = accPct + '%';
-    
-    var h = Math.floor(totalTimeSeconds / 3600);
-    var m = Math.floor((totalTimeSeconds % 3600) / 60);
-    document.getElementById('dashTime').textContent = h + 'h ' + m + 'm';
-    document.getElementById('dashRevision').textContent = (totalStarred + totalMistakes);
-    document.getElementById('dashRevisionSub').textContent = totalStarred + ' starred &middot; ' + totalMistakes + ' mistakes';
-
-    // Update Progress Meters
-    var mPct = Math.round((completedChapters.Maths / 5) * 100);
-    var pPct = Math.round((completedChapters.Physics / 14) * 100);
-    var cPct = Math.round((completedChapters.Chemistry / 8) * 100);
-
-    document.getElementById('meterMathsFill').style.width = mPct + '%';
-    document.getElementById('meterMathsTxt').textContent = completedChapters.Maths + ' / 5 Chapters (' + mPct + '%)';
-
-    document.getElementById('meterPhysicsFill').style.width = pPct + '%';
-    document.getElementById('meterPhysicsTxt').textContent = completedChapters.Physics + ' / 14 Chapters (' + pPct + '%)';
-
-    document.getElementById('meterChemFill').style.width = cPct + '%';
-    document.getElementById('meterChemTxt').textContent = completedChapters.Chemistry + ' / 8 Chapters (' + cPct + '%)';
-
-    // Priority Revision
-    var revBox = document.getElementById('priorityRevisionBox');
-    var revPills = document.getElementById('priorityRevisionPills');
-    if (priorityMistakes.length > 0 && revBox && revPills) {
-      priorityMistakes.sort(function(a,b){ return b.count - a.count; });
-      var phtml = '';
-      priorityMistakes.slice(0, 6).forEach(function(item){
-        phtml += '<a href="' + item.url + '?filter=wrong" class="rev-link">' + item.name + ' (' + item.count + ')</a>';
-      });
-      revPills.innerHTML = phtml;
-      revBox.style.display = 'block';
-    } else if (revBox) {
-      revBox.style.display = 'none';
+    if (clearSearchBtn) {
+      clearSearchBtn.onclick = function() {
+        searchInput.value = '';
+        currentSearchQuery = '';
+        clearSearchBtn.style.display = 'none';
+        searchInput.focus();
+        renderChapterGrid();
+      };
     }
   }
 
-  updateDashboard();
-  renderGrid();
+  document.addEventListener('keydown', function(e) {
+    if (e.key === '/' && document.activeElement !== searchInput && !document.querySelector('.modal-overlay:not([style*="display: none"])')) {
+      e.preventDefault();
+      if (searchInput) searchInput.focus();
+    }
+    if (e.key === 'Escape') {
+      closeSimulateModal();
+      closeHistoryDrawer();
+    }
+  });
 
-  // Reset Progress Button
-  var rBtn = document.getElementById('resetStatsBtn');
-  if (rBtn) {
-    rBtn.onclick = function(){
-      if (confirm('Reset your entire local practice history, starred bookmarks, and mistake banks? This cannot be undone.')) {
-        var keysToRemove = [];
+  // Reset Data Handler
+  var clearBtn = document.getElementById('btnClearData');
+  if (clearBtn) {
+    clearBtn.onclick = function() {
+      if (confirm('Are you sure you want to reset all test attempts, starred questions, and mistake banks? This action cannot be undone.')) {
+        var toRemove = [];
         for (var i = 0; i < localStorage.length; i++) {
           var k = localStorage.key(i);
-          if (k && (k.startsWith('pyq_') || k.startsWith('pyqh_') || k.startsWith('pyqs_') || k.startsWith('pyqw_'))) {
-            keysToRemove.push(k);
+          if (k && (k.indexOf('pyqh_') === 0 || k.indexOf('pyqs_') === 0 || k.indexOf('pyqw_') === 0 || k.indexOf('pyq_') === 0)) {
+            toRemove.push(k);
           }
         }
-        keysToRemove.forEach(function(k){ localStorage.removeItem(k); });
+        toRemove.forEach(function(k){ localStorage.removeItem(k); });
         updateDashboard();
-        renderGrid();
+        renderChapterGrid();
       }
     };
   }
 
-  // 4. Modal Launcher Controller & Custom Duration
-  var modal = document.getElementById('randomModal');
-  var openBtn = document.getElementById('openRandomModal');
-  var closeBtn = document.getElementById('closeRandomModal');
-  var cancelBtn = document.getElementById('cancelRandomModal');
-  var launchBtn = document.getElementById('launchRandomTest');
+  // ==========================================================================
+  // 5. SIMULATE EXAM MODAL (User Item 4 - Custom Duration)
+  // ==========================================================================
+  var simModal = document.getElementById('simulateExamModal');
+  var btnOpenSim = document.getElementById('btnOpenSimulateModal');
+  var btnCloseSim = document.getElementById('btnCloseSimModal');
+  var btnCancelSim = document.getElementById('btnCancelSimModal');
+  var btnLaunchSim = document.getElementById('btnLaunchSimExam');
+  var customTimeWrap = document.getElementById('modalCustomTimeWrap');
+  var customMinutesInput = document.getElementById('modalCustomMinutes');
 
-  function openModal() {
-    if (modal) modal.classList.add('active');
+  var modalConfig = {
+    mode: 'cbt',
+    subject: 'all',
+    qcount: '25',
+    duration: '60'
+  };
+
+  function openSimulateModal() {
+    if (simModal) simModal.style.display = 'flex';
   }
-  function closeModal() {
-    if (modal) modal.classList.remove('active');
+  function closeSimulateModal() {
+    if (simModal) simModal.style.display = 'none';
   }
 
-  if (openBtn) openBtn.onclick = openModal;
-  if (closeBtn) closeBtn.onclick = closeModal;
-  if (cancelBtn) cancelBtn.onclick = closeModal;
+  if (btnOpenSim) btnOpenSim.onclick = openSimulateModal;
+  if (btnCloseSim) btnCloseSim.onclick = closeSimulateModal;
+  if (btnCancelSim) btnCancelSim.onclick = closeSimulateModal;
 
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') {
-      if (modal && modal.classList.contains('active')) closeModal();
-      if (histModal && histModal.classList.contains('active')) closeHistory();
-    }
-  });
+  // Handle pill selections in modal
+  var modalPills = document.querySelectorAll('.modal-pill');
+  modalPills.forEach(function(pill) {
+    pill.onclick = function() {
+      var field = pill.getAttribute('data-field');
+      var val = pill.getAttribute('data-val');
+      if (!field || !val) return;
 
-  // Mode Selection in Modal
-  var modeCards = document.querySelectorAll('.pill-card');
-  modeCards.forEach(function(card){
-    card.onclick = function(){
-      modeCards.forEach(function(c){ c.classList.remove('active'); });
-      card.classList.add('active');
-      var rad = card.querySelector('input[type=radio]');
-      if (rad) rad.checked = true;
-    };
-  });
+      modalPills.forEach(function(p) {
+        if (p.getAttribute('data-field') === field) p.classList.remove('selected');
+      });
+      pill.classList.add('selected');
+      modalConfig[field] = val;
 
-  function setupPresetGroup(groupId) {
-    var group = document.getElementById(groupId);
-    if (!group) return;
-    var btns = group.querySelectorAll('.preset-btn');
-    btns.forEach(function(btn){
-      btn.onclick = function(){
-        btns.forEach(function(b){ b.classList.remove('active'); });
-        btn.classList.add('active');
-        if (groupId === 'modalTPresetBtns') {
-          var customBox = document.getElementById('customDurationBox');
-          if (btn.dataset.t === 'custom') {
-            if (customBox) customBox.style.display = 'flex';
-            var cin = document.getElementById('customMinutesInput');
-            if (cin) cin.focus();
-          } else {
-            if (customBox) customBox.style.display = 'none';
-          }
+      if (field === 'duration') {
+        if (val === 'custom') {
+          if (customTimeWrap) customTimeWrap.style.display = 'flex';
+          if (customMinutesInput) customMinutesInput.focus();
+        } else {
+          if (customTimeWrap) customTimeWrap.style.display = 'none';
         }
-      };
-    });
-  }
-
-  setupPresetGroup('modalSubjectPresets');
-  setupPresetGroup('modalQPresetBtns');
-  setupPresetGroup('modalTPresetBtns');
-
-  if (launchBtn) {
-    launchBtn.onclick = function(){
-      var activeSubBtn = document.querySelector('#modalSubjectPresets .preset-btn.active');
-      var selSub = activeSubBtn ? activeSubBtn.dataset.sub : 'all';
-
-      var pool = CHAPTER_POOL;
-      if (selSub !== 'all') {
-        pool = pool.filter(function(c){ return c.subject === selSub; });
       }
+    };
+  });
 
-      if (!pool.length) return;
+  if (btnLaunchSim) {
+    btnLaunchSim.onclick = function() {
+      // Pick random chapter from selected subject pool
+      var pool = CHAPTER_POOL.filter(function(ch) {
+        return (modalConfig.subject === 'all') || (ch.subject.toLowerCase() === modalConfig.subject.toLowerCase());
+      });
+      if (pool.length === 0) pool = CHAPTER_POOL;
       var chosen = pool[Math.floor(Math.random() * pool.length)];
 
-      var modeRad = document.querySelector('input[name=modalTestMode]:checked');
-      var selMode = modeRad ? modeRad.value : 'cbt';
-
-      var activeQBtn = document.querySelector('#modalQPresetBtns .preset-btn.active');
-      var selQ = activeQBtn ? activeQBtn.dataset.q : '25';
-
-      var activeTBtn = document.querySelector('#modalTPresetBtns .preset-btn.active');
-      var selT = activeTBtn ? activeTBtn.dataset.t : '60';
-
-      if (selT === 'custom') {
-        var cIn = document.getElementById('customMinutesInput');
-        var cVal = cIn ? parseInt(cIn.value, 10) : 45;
-        selT = (cVal > 0 ? cVal : 45);
+      var durationMinutes = modalConfig.duration;
+      if (durationMinutes === 'custom') {
+        var customVal = parseInt(customMinutesInput ? customMinutesInput.value : '45', 10);
+        durationMinutes = (!isNaN(customVal) && customVal >= 5) ? customVal : 45;
       }
 
-      var targetUrl = chosen.url + '?mode=' + encodeURIComponent(selMode) +
-        '&q=' + encodeURIComponent(selQ) +
-        '&t=' + encodeURIComponent(selT) +
-        '&autostart=1';
+      var targetUrl = chosen.url + '?mode=' + modalConfig.mode +
+        '&qcount=' + modalConfig.qcount +
+        '&time=' + durationMinutes +
+        '&sim=1';
 
-      closeModal();
       window.location.href = targetUrl;
     };
   }
 
-  // 5. Universal Test History Controller (User Items 19 & 20)
-  var histModal = document.getElementById('testHistoryModal');
-  var openHistBtn = document.getElementById('btnOpenHistory');
-  var closeHistBtn = document.getElementById('closeHistModal');
+  // ==========================================================================
+  // 6. UNIVERSAL TEST HISTORY DRAWER (User Item 7, 8, 19, 20)
+  // ==========================================================================
+  var histDrawer = document.getElementById('historyDrawer');
+  var histOverlay = document.getElementById('historyDrawerOverlay');
+  var btnOpenHist = document.getElementById('btnOpenHistory');
+  var btnCloseHist = document.getElementById('btnCloseHistoryDrawer');
+  var histFilterMode = 'all';
 
-  function openHistory() {
-    if (histModal) {
-      histModal.classList.add('active');
-      renderUniversalHistory();
-    }
+  function openHistoryDrawer() {
+    renderHistoryDrawer();
+    if (histOverlay) histOverlay.style.display = 'block';
+    if (histDrawer) histDrawer.style.display = 'flex';
   }
-  function closeHistory() {
-    if (histModal) histModal.classList.remove('active');
+  function closeHistoryDrawer() {
+    if (histOverlay) histOverlay.style.display = 'none';
+    if (histDrawer) histDrawer.style.display = 'none';
   }
 
-  if (openHistBtn) openHistBtn.onclick = openHistory;
-  if (closeHistBtn) closeHistBtn.onclick = closeHistory;
+  if (btnOpenHist) btnOpenHist.onclick = openHistoryDrawer;
+  if (btnCloseHist) btnCloseHist.onclick = closeHistoryDrawer;
+  if (histOverlay) histOverlay.onclick = closeHistoryDrawer;
 
-  function renderUniversalHistory() {
-    var listEl = document.getElementById('uHistList');
+  var filterBtnAll = document.getElementById('filterHistAll');
+  var filterBtnCBT = document.getElementById('filterHistCBT');
+  var filterBtnPrac = document.getElementById('filterHistPractice');
+
+  if (filterBtnAll) {
+    filterBtnAll.onclick = function() {
+      histFilterMode = 'all';
+      filterBtnAll.className = 'att-btn review';
+      if (filterBtnCBT) filterBtnCBT.className = 'att-btn';
+      if (filterBtnPrac) filterBtnPrac.className = 'att-btn';
+      renderHistoryDrawer();
+    };
+  }
+  if (filterBtnCBT) {
+    filterBtnCBT.onclick = function() {
+      histFilterMode = 'cbt';
+      if (filterBtnAll) filterBtnAll.className = 'att-btn';
+      filterBtnCBT.className = 'att-btn review';
+      if (filterBtnPrac) filterBtnPrac.className = 'att-btn';
+      renderHistoryDrawer();
+    };
+  }
+  if (filterBtnPrac) {
+    filterBtnPrac.onclick = function() {
+      histFilterMode = 'practice';
+      if (filterBtnAll) filterBtnAll.className = 'att-btn';
+      if (filterBtnCBT) filterBtnCBT.className = 'att-btn';
+      filterBtnPrac.className = 'att-btn review';
+      renderHistoryDrawer();
+    };
+  }
+
+  function renderHistoryDrawer() {
+    var listEl = document.getElementById('historyAttemptsList');
     if (!listEl) return;
 
     var allAttempts = [];
     for (var k = 0; k < localStorage.length; k++) {
       var key = localStorage.key(k);
       if (key && key.indexOf('pyqh_') === 0) {
+        var raw = localStorage.getItem(key);
         try {
-          var arr = JSON.parse(localStorage.getItem(key) || '[]');
+          var arr = JSON.parse(raw);
+          if (!Array.isArray(arr)) continue;
           var chapterName = key.replace('pyqh_', '').replace(' PYQ Test', '');
-          var chObj = CHAPTER_POOL.find(function(c){ return c.name === chapterName; });
-          var subj = chObj ? chObj.subject : 'JEE';
-          var url = chObj ? chObj.url : '#';
-          arr.forEach(function(att) {
+          var chObj = CHAPTER_POOL.find(function(c){ return c.name === chapterName; }) || { subject: 'JEE', url: '#' };
+
+          arr.forEach(function(att, idx) {
             att._chapter = chapterName;
-            att._subject = subj;
-            att._url = url;
+            att._subject = chObj.subject;
+            att._url = chObj.url;
+            att._storageKey = key;
+            att._idx = idx;
             allAttempts.push(att);
           });
         } catch(e){}
@@ -1994,68 +2276,114 @@ var CHAPTER_POOL = [
     allAttempts.sort(function(a, b){ return (b.t || 0) - (a.t || 0); });
 
     var totalTests = allAttempts.length;
-    var totalAns = 0;
-    var accSum = 0;
-    allAttempts.forEach(function(a){
+    var totalQuestions = 0;
+    var totalCorrect = 0;
+    allAttempts.forEach(function(a) {
       var ans = (a.NS || []).filter(function(n){ return a.S && a.S[n]; }).length;
-      totalAns += ans;
-      var acc = a.accuracy !== undefined ? a.accuracy : (ans > 0 ? Math.round((a.correct || 0)/ans * 100) : 0);
-      accSum += acc;
+      totalQuestions += ans;
+      totalCorrect += (a.correct || 0);
     });
-    var avgAcc = totalTests > 0 ? Math.round(accSum / totalTests) : 0;
+    var avgAcc = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
 
-    var elTests = document.getElementById('uHistTotalTests');
-    var elQ = document.getElementById('uHistTotalQuestions');
-    var elAcc = document.getElementById('uHistAvgAcc');
-    if (elTests) elTests.textContent = totalTests;
-    if (elQ) elQ.textContent = totalAns;
-    if (elAcc) elAcc.textContent = avgAcc + '%';
+    var sTests = document.getElementById('histSummaryTotalTests');
+    var sQ = document.getElementById('histSummaryQuestions');
+    var sAcc = document.getElementById('histSummaryAvgAcc');
+    if (sTests) sTests.textContent = totalTests;
+    if (sQ) sQ.textContent = totalQuestions;
+    if (sAcc) sAcc.textContent = avgAcc + '%';
 
-    if (allAttempts.length === 0) {
-      listEl.innerHTML = '<div style="padding:48px 20px;text-align:center;color:var(--text-muted);font-size:14.5px;">No test attempts recorded yet.<br><span style="font-size:13px;opacity:0.8;">Take a CBT Exam or Practice Test from the chapters below to view your score history!</span></div>';
+    var displayList = allAttempts.filter(function(a) {
+      var isCBT = !!(a.isCBT || (a.mode === 'cbt') || (a.label && a.label.indexOf('CBT') !== -1));
+      if (histFilterMode === 'cbt') return isCBT;
+      if (histFilterMode === 'practice') return !isCBT;
+      return true;
+    });
+
+    if (displayList.length === 0) {
+      listEl.innerHTML = '<div style="padding:48px 20px;text-align:center;color:var(--text-muted);font-size:14px;">No test attempts recorded yet.<br><span style="font-size:12.5px;opacity:0.8;">Launch a CBT Exam or Practice Test to track your progress!</span></div>';
       return;
     }
 
     var html = '';
-    allAttempts.forEach(function(a) {
+    displayList.forEach(function(a) {
       var isCBT = !!(a.isCBT || (a.mode === 'cbt') || (a.label && a.label.indexOf('CBT') !== -1));
       var badgeClass = isCBT ? 'cbt' : 'practice';
-      var badgeLabel = isCBT ? '🏛️ CBT Exam' : '📚 Practice Test';
+      var badgeLabel = isCBT ? 'CBT Exam' : 'Practice Test';
       var dateStr = a.t ? new Date(a.t).toLocaleString() : 'Recent';
       var ansCount = (a.NS || []).filter(function(n){ return a.S && a.S[n]; }).length;
       var totalQ = (a.NS || []).length;
       var timeStr = Math.floor((a.total || 0) / 60) + 'm ' + ((a.total || 0) % 60) + 's';
 
-      var scoreHtml = '';
+      var scoreBadge = '';
       if (a.score !== undefined) {
-        scoreHtml = '<span style="font-weight:700;color:' + (a.score >= 0 ? '#16a34a' : '#dc2626') + ';">Marks: ' + a.score + ' / ' + (a.maxScore || (totalQ * 4)) + ' (' + (a.accuracy || 0) + '% Acc)</span>';
+        scoreBadge = '<span style="font-weight:700;color:' + (a.score >= 0 ? '#16a34a' : '#dc2626') + ';">Marks: ' + a.score + ' / ' + (a.maxScore || (totalQ * 4)) + ' (' + (a.accuracy || 0) + '% Acc)</span>';
       }
 
-      html += '<div class="att-card" style="margin-bottom:8px;">' +
+      // Actions logic: CBT only review; Practice can continue even after submitting (User Items 7, 8, 20)
+      var actionButtons = '';
+      if (isCBT) {
+        actionButtons = '<a href="' + a._url + '?mode=cbt&review=' + a._idx + '" class="att-btn review">Review Mistakes &amp; Solutions</a>';
+      } else {
+        actionButtons = '<a href="' + a._url + '?mode=practice&resume=' + a._idx + '" class="att-btn continue">Continue Practice</a>' +
+          '<a href="' + a._url + '?mode=practice&review=' + a._idx + '" class="att-btn review">Review Questions</a>';
+      }
+
+      html += '<div class="att-card">' +
         '<div class="att-header">' +
           '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
             '<span class="ch-subject-tag ' + (a._subject || '').toLowerCase() + '">' + a._subject + '</span>' +
-            '<b style="font-size:14px;color:var(--text-main);">' + a._chapter + '</b>' +
+            '<b style="font-size:14px;color:var(--text-primary);">' + a._chapter + '</b>' +
             '<span class="att-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
           '</div>' +
-          scoreHtml +
+          scoreBadge +
         '</div>' +
         '<div class="att-stats-row">' +
-          '<span>📅 ' + dateStr + '</span>' +
+          '<span>' + dateStr + '</span>' +
           '<span><b>Answered:</b> ' + ansCount + ' / ' + totalQ + '</span>' +
-          '<span>⏱️ ' + timeStr + '</span>' +
+          '<span>' + timeStr + '</span>' +
         '</div>' +
         '<div class="att-actions">' +
-          '<a href="' + a._url + '?mode=' + (isCBT ? 'cbt' : 'practice') + '" class="att-btn review" style="text-decoration:none;">Open Chapter &rarr;</a>' +
+          actionButtons +
+          '<button type="button" class="att-btn" onclick="exportSingleAttempt(\'' + a._storageKey + '\',' + a._idx + ')">Save File</button>' +
+          '<button type="button" class="att-btn delete" onclick="deleteSingleAttempt(\'' + a._storageKey + '\',' + a._idx + ')">Delete</button>' +
         '</div>' +
       '</div>';
     });
+
     listEl.innerHTML = html;
   }
 
-  var expHistBtn = document.getElementById('btnExportFullHistory');
-  if (expHistBtn) {
-    expHistBtn.onclick = function() {
+  window.exportSingleAttempt = function(key, idx) {
+    try {
+      var arr = JSON.parse(localStorage.getItem(key) || '[]');
+      var att = arr[idx];
+      if (!att) return;
+      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(att, null, 2));
+      var dl = document.createElement('a');
+      dl.setAttribute("href", dataStr);
+      dl.setAttribute("download", key.replace('pyqh_', '').replace(' PYQ Test', '') + "_Attempt_" + (idx + 1) + ".json");
+      document.body.appendChild(dl);
+      dl.click();
+      dl.remove();
+    } catch(e){}
+  };
+
+  window.deleteSingleAttempt = function(key, idx) {
+    if (confirm('Delete this attempt record? This cannot be undone.')) {
+      try {
+        var arr = JSON.parse(localStorage.getItem(key) || '[]');
+        arr.splice(idx, 1);
+        localStorage.setItem(key, JSON.stringify(arr));
+        renderHistoryDrawer();
+        updateDashboard();
+        renderChapterGrid();
+      } catch(e){}
+    }
+  };
+
+  var expAllBtn = document.getElementById('btnExportFullHistory');
+  if (expAllBtn) {
+    expAllBtn.onclick = function() {
       var allData = {};
       for (var k = 0; k < localStorage.length; k++) {
         var key = localStorage.key(k);
@@ -2073,23 +2401,28 @@ var CHAPTER_POOL = [
     };
   }
 
-  var clrHistBtn = document.getElementById('btnClearFullHistory');
-  if (clrHistBtn) {
-    clrHistBtn.onclick = function() {
-      if (confirm('Clear all test attempt histories across all chapters? Your starred bookmarks and mistake records will be preserved.')) {
+  var clrAllBtn = document.getElementById('btnClearFullHistory');
+  if (clrAllBtn) {
+    clrAllBtn.onclick = function() {
+      if (confirm('Clear all test attempt history across all chapters? Your starred bookmarks and mistake records will be preserved.')) {
         var toDel = [];
         for (var k = 0; k < localStorage.length; k++) {
           var key = localStorage.key(k);
           if (key && key.indexOf('pyqh_') === 0) toDel.push(key);
         }
         toDel.forEach(function(k){ localStorage.removeItem(k); });
-        renderUniversalHistory();
+        renderHistoryDrawer();
         updateDashboard();
-        renderGrid();
+        renderChapterGrid();
       }
     };
   }
+
+  // Initialize
+  updateDashboard();
+  renderChapterGrid();
 })();
 </script>
 
-</body></html>
+</body>
+</html>

@@ -91,6 +91,25 @@ The platform provides access to hundreds of real JEE Main previous year question
 
 ---
 
+### Step 9: UI/UX Modernization, Elevated AMOLED & Complete Exam Architecture Overhaul
+- **User Feedback & Attached Proofs (8 Screenshots & 20 Action Items)**:
+  - **Pic 1**: Removed duplicate dark mode toggle buttons and fixed raw `&middot;` in Revision Bank.
+  - **Pic 2**: Added Custom Time duration input (`[ 45 ] minutes`) alongside 30/60/90/180m and Untimed in Simulate Exam modal.
+  - **Pic 3**: Eliminated wasted desktop screen margins by widening chapter practice panels to `1040px` with generous padding.
+  - **Pic 4 & Pic 8**: Overhauled previous attempts table into modern structured cards (`.att-card`) with dedicated action buttons and full list JSON export.
+  - **Pic 5**: Replaced plain hyperlinks `Question Types ->` and `Type Notes ->` with sleek modern action chips (`.btn-mat`).
+  - **Pic 6**: Fixed invisible dark mode typing boxes (`.ed`, `textarea`, `input`) with elevated `#121215` background and `#2e2e34` borders.
+  - **Pic 7**: Fixed blue-on-blue text visibility on primary buttons (`color: #ffffff !important`).
+  - **Pic 7**: Re-introduced Subject-First Chapter Navigation tabs (`All 27`, `Maths 5`, `Physics 14`, `Chemistry 8`) with instant search filter.
+  - **CBT vs Practice Rules (Items 7, 8, 9)**:
+    - *CBT Exam*: Strict non-continuable mode. After submission, attempts are ONLY reviewable ('Review Marks & Mistakes'). Immediate question-level answer checking is completely blocked. Leaving/reloading during an active exam forfeits the session to prevent cheating.
+    - *Practice Mode*: Continuable anytime even after submission ('Continue Practice'). Per-question instant checking is allowed. Students can leave and resume anytime.
+  - **Theme Toggle Icon**: Replaced emojis (`🌙`/`☀️`) with clean Apple-style SVG stroke outlines.
+  - **Test History Drawer**: Added slide-out history drawer on `index.html` with aggregated stats across all 27 chapters, CBT vs Practice filters, and global JSON export/clear.
+  - **Upstream Sync**: Documented manual upstream sync runbook against `rupinderiitb/practicemakesperfect.git`.
+
+---
+
 ## 3. Repository Architecture & File Layout
 
 ```text
@@ -150,7 +169,42 @@ The application maintains state entirely in the client browser across several ke
 
 ---
 
-## 5. Invariants & Rules for Claude
+## 5. Upstream Sync Runbook (Original Repo: rupinderiitb/practicemakesperfect)
+
+The repository originates from `https://github.com/rupinderiitb/practicemakesperfect.git` (`upstream`).  
+Because local enhancements (CBT mode, AMOLED styles, dashboard, custom timers) modify all HTML files, a standard git merge would cause hundreds of merge conflicts. Instead, use the following clean sync workflows:
+
+### Method A: One-Click GitHub Actions (Recommended)
+1. Go to your GitHub repository: `https://github.com/DarshG-bit/practiceJEEpyqs/actions`.
+2. Click **Sync Upstream & Auto-Patch** in the left sidebar.
+3. Click **Run workflow** -> Select `main` branch -> Click green **Run workflow** button.
+4. The workflow fetches upstream changes, merges new questions, re-applies `patch_all.py`, runs tests, and pushes cleanly.
+
+### Method B: Manual Sync via Terminal (Powershell)
+Run the following commands in the repository root:
+```powershell
+# 1. Fetch latest upstream questions & assets
+git fetch upstream main
+
+# 2. Check out upstream subject files (preserves git history while pulling content)
+git checkout upstream/main -- Chemistry Maths Physics
+
+# 3. Re-run the automated patcher to re-inject AMOLED, CBT engine & UI modernizations
+python patch_all.py
+
+# 4. Verify 0 AMOLED violations & 0 Impeccable regressions
+python .agents/skills/pyq-sheet-manager/scripts/verify_amoled.py
+.\.agents\skills\impeccable\scripts\impeccable.cmd detect index.html
+
+# 5. Commit and push
+git add -A
+git commit -m "chore: sync with upstream and re-patch all chapters"
+git push origin main
+```
+
+---
+
+## 6. Invariants & Rules for Claude
 
 When editing, adding features, or maintaining this codebase, you **MUST** adhere strictly to the following rules:
 
@@ -184,7 +238,7 @@ When editing, adding features, or maintaining this codebase, you **MUST** adhere
 
 ---
 
-## 6. Verification Commands & Runbook
+## 7. Verification Commands & Runbook
 
 ### 1. Verify AMOLED Theme (0 Navy Blue Violations)
 ```powershell

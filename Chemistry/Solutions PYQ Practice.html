@@ -80,7 +80,7 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:5px 8px;b
 .dE,.dM,.dD{font-weight:700;border-radius:10px;padding:1px 8px;font-size:12px;white-space:nowrap}.dE{background:#e3f4e8;color:#1e6b34}.dM{background:#fff1d6;color:#8a5a00}.dD{background:#fde3e0;color:#a3241b}
 .acts .lnk{display:inline-block;padding:6px 14px 6px 0}.actr td{padding-top:0;border-top:0}.lnk.del{color:#b3261e}.actrow{display:flex;gap:10px;flex-wrap:wrap}
 
-/* =================== ELEVATED SLATE DARK THEME & MODERN DESIGN =================== */
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
 :root {
   --bg-base: #f8fafc;
   --surface-card: #ffffff;
@@ -88,32 +88,32 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:5px 8px;b
   --border-subtle: #e2e8f0;
   --border-input: #cbd5e1;
   --text-main: #0f172a;
-  --text-muted: #64748b;
+  --text-muted: #475569;
   --primary-blue: #2563eb;
   --primary-blue-hover: #1d4ed8;
 }
 
 [data-theme="dark"] {
-  --ink: #f8fafc;
-  --mut: #94a3b8;
-  --line: #1e293b;
-  --bg: #090d16;
-  --surface: #0f172a;
-  --surface-card: #0f172a;
-  --surface-elevated: #141d2e;
-  --accl: #172554;
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
   --accb: #3b82f6;
-  --hdr: #090d16;
-  --hdrtx: #f8fafc;
-  --tmbg: rgba(255, 255, 255, 0.06);
-  --hdrline: #1e293b;
-  --border-subtle: #1e293b;
-  --border-input: #2d3c5e;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
 }
 
 [data-theme="dark"] body {
-  background: #090d16 !important;
-  color: #f1f5f9 !important;
+  background: #000000 !important;
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] a {
@@ -127,7 +127,8 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:5px 8px;b
 [data-theme="dark"] .btn.pri,
 [data-theme="dark"] .btn-cbt-launch,
 [data-theme="dark"] .btn-modal-start,
-[data-theme="dark"] .start-exam-btn {
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
   color: #ffffff !important;
   background: #2563eb !important;
   border-color: #2563eb !important;
@@ -136,317 +137,152 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:5px 8px;b
 [data-theme="dark"] a.act-btn.primary:hover,
 [data-theme="dark"] .act-btn.primary:hover,
 [data-theme="dark"] a.btn.pri:hover,
-[data-theme="dark"] .btn.pri:hover {
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
   background: #1d4ed8 !important;
   color: #ffffff !important;
 }
 
 /* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
 .panel {
-  max-width: 960px !important;
-  margin: 28px auto !important;
+  max-width: 1040px !important;
+  margin: 24px auto !important;
   padding: 28px 36px !important;
-  border-radius: 16px !important;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 [data-theme="dark"] .panel {
-  background: #0f172a !important;
-  border: 1px solid #1e293b !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
 }
 
 /* Visible Typing Boxes in Dark Mode (solves Pic 6) */
 [data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
 [data-theme="dark"] textarea,
 [data-theme="dark"] input[type="text"],
 [data-theme="dark"] input[type="number"],
 [data-theme="dark"] input.num,
-[data-theme="dark"] .tin input {
-  background: #141d2e !important;
-  border: 1.5px solid #2d3c5e !important;
-  color: #f8fafc !important;
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
   border-radius: 8px !important;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
   padding: 8px 12px !important;
 }
 [data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
 [data-theme="dark"] textarea:focus,
 [data-theme="dark"] input[type="text"]:focus,
 [data-theme="dark"] input[type="number"]:focus,
-[data-theme="dark"] input.num:focus,
-[data-theme="dark"] .tin input:focus {
+[data-theme="dark"] input.num:focus {
   border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
   outline: none !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Table borders and cell styling */
 [data-theme="dark"] table,
 [data-theme="dark"] th,
-[data-theme="dark"] td {
-  border-color: #1e293b !important;
-}
-[data-theme="dark"] th {
-  background: #141d2e !important;
-  color: #94a3b8 !important;
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
 }
 
-/* Question stems and options */
-[data-theme="dark"] .stem {
-  color: #f8fafc !important;
-}
 [data-theme="dark"] .o {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
-  color: #e2e8f0 !important;
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .o:hover {
-  background: #141d2e !important;
   border-color: #3b82f6 !important;
 }
 [data-theme="dark"] .o.sel {
-  background: #172554 !important;
+  background: rgba(37, 99, 235, 0.18) !important;
   border-color: #3b82f6 !important;
-  color: #ffffff !important;
 }
 [data-theme="dark"] .tbox {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
 }
 
-/* Modern Attempt Cards (solves Pic 4 & Pic 8) */
-.attempts-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 14px;
-}
-.att-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 16px 18px;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  background: #ffffff;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.att-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
 [data-theme="dark"] .att-card {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
 }
 [data-theme="dark"] .att-card:hover {
-  border-color: #334155 !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.4) !important;
-}
-.att-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.att-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-.att-badge.cbt {
-  background: #dbeafe;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
+  border-color: #2c2c32 !important;
 }
 [data-theme="dark"] .att-badge.cbt {
-  background: #1e3a8a !important;
-  color: #93c5fa !important;
-  border-color: #2563eb !important;
-}
-.att-badge.practice {
-  background: #dcfce7;
-  color: #15803d;
-  border: 1px solid #bbf7d0;
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
 }
 [data-theme="dark"] .att-badge.practice {
-  background: #064e3b !important;
-  color: #86efac !important;
-  border-color: #059669 !important;
-}
-.att-date {
-  font-size: 13px;
-  color: #64748b;
-  font-weight: 500;
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
 }
 [data-theme="dark"] .att-date {
-  color: #94a3b8 !important;
-}
-.att-stats-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: 13.5px;
-  color: #334155;
-  padding: 6px 0;
+  color: #a1a1aa !important;
 }
 [data-theme="dark"] .att-stats-row {
-  color: #cbd5e1 !important;
-}
-.att-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding-top: 8px;
-  border-top: 1px solid #f1f5f9;
+  color: #d4d4d8 !important;
 }
 [data-theme="dark"] .att-actions {
-  border-top-color: #1e293b !important;
-}
-.att-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 7px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid #cbd5e1;
-  background: #f8fafc;
-  color: #334155;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.att-btn:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
+  border-top-color: #222224 !important;
 }
 [data-theme="dark"] .att-btn {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #e2e8f0 !important;
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .att-btn:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-.att-btn.continue {
-  background: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
-}
-.att-btn.continue:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
-  color: #ffffff;
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
 }
 [data-theme="dark"] .att-btn.continue {
-  background: #2563eb !important;
+  background: #16a34a !important;
+  border-color: #16a34a !important;
   color: #ffffff !important;
-  border-color: #3b82f6 !important;
 }
-.att-btn.review {
-  background: #eff6ff;
-  color: #1d4ed8;
-  border-color: #bfdbfe;
-}
-.att-btn.review:hover {
-  background: #dbeafe;
-  border-color: #93c5fd;
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
 }
 [data-theme="dark"] .att-btn.review {
-  background: #172554 !important;
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
   color: #93c5fd !important;
-  border-color: #1d4ed8 !important;
-}
-.att-btn.delete {
-  color: #dc2626;
-  border-color: #fca5a5;
-  background: #fff;
-  margin-left: auto;
-}
-.att-btn.delete:hover {
-  background: #fef2f2;
-  border-color: #ef4444;
 }
 [data-theme="dark"] .att-btn.delete {
-  background: #200f14 !important;
-  border-color: #7f1d1d !important;
-  color: #fca5a5 !important;
-}
-.btn-export-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 18px;
-  border-radius: 9px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #1e293b;
-  background: #f8fafc;
-  border: 1.5px solid #cbd5e1;
-  cursor: pointer;
-  margin-top: 14px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-export-all:hover {
-  background: #e2e8f0;
-  border-color: #94a3b8;
-  transform: translateY(-1px);
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
 }
 [data-theme="dark"] .btn-export-all {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #f1f5f9 !important;
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
 }
 [data-theme="dark"] .btn-export-all:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-}
-
-/* Question Types & Type Notes Pills (solves Pic 5) */
-.sub-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #2563eb;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.sub-pill-btn:hover {
-  background: #dbeafe;
-  border-color: #93c5fd;
-  color: #1d4ed8;
-  transform: translateY(-1px);
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
 }
 [data-theme="dark"] .sub-pill-btn {
   color: #93c5fd !important;
-  background: #141d2e !important;
-  border: 1px solid #2d3c5e !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
 }
 [data-theme="dark"] .sub-pill-btn:hover {
-  background: #1e293b !important;
+  background: #18181c !important;
   border-color: #3b82f6 !important;
-  color: #60a5fa !important;
 }
 
 /* Theme Toggle Button Outline Styling (solves Pic 17) */
@@ -455,67 +291,38 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:5px 8px;b
   align-items: center;
   gap: 6px;
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  color: #334155;
-  border-radius: 20px;
-  padding: 6px 14px;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.15s ease;
 }
 .theme-btn:hover {
   background: #f1f5f9;
   border-color: #94a3b8;
   transform: translateY(-1px);
 }
+.theme-btn:active {
+  transform: scale(0.98);
+}
 [data-theme="dark"] .theme-btn {
-  background: #141d2e !important;
-  border-color: #2d3c5e !important;
-  color: #f1f5f9 !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .theme-btn:hover {
-  background: #1e293b !important;
-  border-color: #3b82f6 !important;
-}
-
-/* CBT Answer Suppression (solves User Item 8: no instant answer in CBT mode) */
-.cbt-mode .chk,
-.cbt-mode .chkb,
-.cbt-mode .shb,
-.cbt-mode .chkres,
-.cbt-mode .show-sol,
-.cbt-mode .btn-check-all,
-.cbt-mode .sol-box {
-  display: none !important;
+  background: #18181c !important;
+  border-color: #2e2e34 !important;
 }
 
 /* Active Session Banner */
 [data-theme="dark"] #pend {
-  background: #172554 !important;
-  border-color: #2563eb !important;
-  color: #e2e8f0 !important;
-}
-
-::selection {
-  background: rgba(37, 99, 235, 0.25);
-  color: inherit;
-}
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
-}
-[data-theme="dark"] * {
-  scrollbar-color: #334155 transparent;
-}
-:focus-visible {
-  outline: 2px solid #3b82f6 !important;
-  outline-offset: 2px !important;
-}
-.tm, .btn, .o, .ol, .kbd-key, .cbt-metric-num, .cbt-big-score, .cbt-summary-table td b, .metric-value, .ch-stats-row {
-  font-variant-numeric: tabular-nums;
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
 }
 </style></head><body>
 <div id="start" class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><a href="index.html" style="font-size:14px;color:var(--acc);text-decoration:none">&lsaquo; All chapters</a><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div><h2>Solutions</h2><div style="color:var(--mut)">JEE Main previous-year questions &middot; Chemistry &middot; timed practice</div>
