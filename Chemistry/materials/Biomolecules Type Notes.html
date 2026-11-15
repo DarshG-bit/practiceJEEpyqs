@@ -1,4 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Biomolecules - Type Notes</title><style>
+<!DOCTYPE html><html lang="en"><head>
+<script>
+  (function(){
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Biomolecules - Type Notes</title><style>
 :root{--ink:#1d2433;--mut:#5a6478;--line:#dfe4ee;--bg:#eef1f7;--acc:#1f4e8c}*{box-sizing:border-box}
 body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.55}
 .top{background:var(--acc);color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}.top h1{margin:0;font-size:18px;flex:1;min-width:160px}.top a{color:#fff;font-size:14px}
@@ -115,215 +123,6 @@ p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
     border-radius: 6px !important;
   }
 }
-
-
-/* Responsive Wrapped Symbol Bar (#sym) */
-#sym {
-  position: fixed !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 1000 !important;
-  background: #1f4e8c;
-  padding: 8px 12px !important;
-  display: none;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  gap: 5px 6px !important;
-  max-height: 90px !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2) !important;
-}
-#sym.on {
-  display: flex !important;
-}
-body {
-  overflow-x: hidden !important;
-}
-body.symon {
-  padding-bottom: 96px !important;
-}
-
-/* =================== COMPREHENSIVE DARK MODE (TYPE NOTES) =================== */
-[data-theme="dark"] {
-  --ink: #f8fafc;
-  --mut: #94a3b8;
-  --line: #334155;
-  --bg: #0f172a;
-  --acc: #60a5fa;
-}
-
-[data-theme="dark"] body {
-  background: #0f172a !important;
-  color: #f8fafc !important;
-}
-
-[data-theme="dark"] a {
-  color: #93c5fd !important;
-}
-
-[data-theme="dark"] .page {
-  background: #1e293b !important;
-  border-color: #334155 !important;
-  color: #f8fafc !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-}
-
-[data-theme="dark"] .top {
-  background: #091e3a !important;
-  border-bottom: 1px solid #334155 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .top h1 {
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .top a {
-  color: #93c5fd !important;
-}
-
-[data-theme="dark"] h1.t,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3 {
-  color: #60a5fa !important;
-}
-
-[data-theme="dark"] .how {
-  background: #0f172a !important;
-  border: 1px solid #334155 !important;
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .how b {
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .how p,
-[data-theme="dark"] .how ol,
-[data-theme="dark"] .how li {
-  color: #cbd5e1 !important;
-}
-
-[data-theme="dark"] .sm {
-  color: #94a3b8 !important;
-}
-
-[data-theme="dark"] details {
-  background: #0f172a !important;
-  border: 1px solid #334155 !important;
-  border-radius: 6px !important;
-  padding: 8px 12px !important;
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] summary {
-  color: #60a5fa !important;
-  cursor: pointer;
-}
-
-[data-theme="dark"] .btn {
-  background: #1e293b !important;
-  border-color: #475569 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .btn:hover {
-  background: #334155 !important;
-}
-[data-theme="dark"] .btn.pri {
-  background: #2563eb !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
-}
-[data-theme="dark"] .btn.pri:hover {
-  background: #1d4ed8 !important;
-}
-
-[data-theme="dark"] .ed {
-  background: #0f172a !important;
-  border: 1px solid #475569 !important;
-  color: #f8fafc !important;
-}
-[data-theme="dark"] .ed:focus {
-  border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 2px #1e3a8a !important;
-}
-
-[data-theme="dark"] .gt {
-  border-color: #334155 !important;
-}
-[data-theme="dark"] .gt td {
-  border-color: #334155 !important;
-  color: #f8fafc !important;
-  background: #0f172a !important;
-}
-[data-theme="dark"] .gt tr:first-child td {
-  background: #1e293b !important;
-  color: #93c5fd !important;
-}
-[data-theme="dark"] .gt td:first-child {
-  background: #1e293b !important;
-  color: #f8fafc !important;
-}
-
-[data-theme="dark"] .rev {
-  background: #064e3b !important;
-  border-color: #10b981 !important;
-  color: #ecfdf5 !important;
-}
-[data-theme="dark"] .rev h4 {
-  color: #6ee7b7 !important;
-}
-
-[data-theme="dark"] math,
-[data-theme="dark"] math * {
-  color: #f8fafc !important;
-  fill: #f8fafc !important;
-}
-
-[data-theme="dark"] #sym {
-  background: #091e3a !important;
-  border-top: 1px solid #334155 !important;
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4) !important;
-}
-[data-theme="dark"] #sym > span {
-  color: #93c5fd !important;
-  font-weight: 700 !important;
-}
-[data-theme="dark"] #sym button {
-  background: #1e293b !important;
-  color: #f8fafc !important;
-  border: 1px solid #475569 !important;
-}
-[data-theme="dark"] #sym button:hover {
-  background: #334155 !important;
-  border-color: #60a5fa !important;
-  color: #60a5fa !important;
-}
-[data-theme="dark"] #sym button.w {
-  background: #1e3a8a !important;
-  color: #93c5fd !important;
-  border-color: #3b82f6 !important;
-}
-
-.theme-btn {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: inherit;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
-.theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
-[data-theme="dark"] .theme-btn {
-  background: #1e293b;
-  border: 1px solid #475569;
-  color: #f8fafc;
-}
-[data-theme="dark"] .theme-btn:hover { background: #334155; }
 
 
 /* =================== COMPREHENSIVE DARK MODE =================== */
@@ -1088,15 +887,8 @@ body {
   background: #334155;
 }
 
-</style><script>
-  (function() {
-    var t = localStorage.getItem('jee_theme');
-    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
-</script>
-</head><body><div class="top"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button><h1>Biomolecules &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Biomolecules%20PYQ%20Practice.html">Back to practice</a><a href="Biomolecules%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> BIOMOLECULES – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Disaccharides and polysaccharides: linkages, hydrolysis and reducing property</a></li><li><a href="#T2">Type 2. Monosaccharides: structure, configuration, reactions and tests</a></li><li><a href="#T3">Type 3. Proteins: structure levels, denaturation and identification tests</a></li><li><a href="#T4">Type 4. Amino acids: classification, structure, zwitterions and pKa</a></li><li><a href="#T5">Type 5. Peptides: linkage, sequence and counting</a></li><li><a href="#T6">Type 6. Nucleic acids: bases, nucleotides and base pairing</a></li><li><a href="#T7">Type 7. Vitamins: classification, deficiency diseases and structure</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Disaccharides and polysaccharides: linkages, hydrolysis and reducing property <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">31 questions on the sheet (Q1–31)  ·  Sub-topics: A1 maltose, lactose, sucrose · A2 reducing and non-reducing · A3 hydrolysis and enzymes · A4 starch, cellulose, glycogen</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Maltose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Lactose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Sucrose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Amylose, amylopectin</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Cellulose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Glycogen</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is sucrose non-reducing?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>What is invert sugar?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>How do you recognise the α-anomer of a disaccharide drawn as a ring?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>Which enzymes act on which sugar?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The words maltose, lactose, sucrose, starch, cellulose, glycogen, amylose or amylopectin appear in the stem.</p><p style="padding-left:14px">•  &#x27;Glycosidic linkage between C<sub>1</sub> of ... and C<sub>4</sub> of ...&#x27; or &#x27;two monomers of ...&#x27; is asked.</p><p style="padding-left:14px">•  A statement or assertion–reason question marked &#x27;incorrect&#x27; or &#x27;not true&#x27; about one sugar, often with a structure drawn.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Maltose</p></td><td><p>α-D-glucose + α-D-glucose, C<sub>1</sub>−C<sub>4</sub> (α); reducing</p></td></tr><tr><td><p>Lactose</p></td><td><p>β-D-galactose + β-D-glucose, C<sub>1</sub>−C<sub>4</sub> (β); reducing</p></td></tr><tr><td><p>Sucrose</p></td><td><p>α-D-glucose + β-D-fructose, C<sub>1</sub>−C<sub>2</sub>; non-reducing; invert sugar on hydrolysis</p></td></tr><tr><td><p>Amylose, amylopectin</p></td><td><p>α(1→4) chain; amylopectin has α(1→6) branches too</p></td></tr><tr><td><p>Cellulose</p></td><td><p>β(1→4) glucose, unbranched, not digested by humans</p></td></tr><tr><td><p>Glycogen</p></td><td><p>animal starch, highly branched α(1→4) and α(1→6)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is sucrose non-reducing?</p></td><td><p>Both anomeric carbons (glucose C<sub>1</sub> and fructose C<sub>2</sub>) are in the glycosidic bond, so no free hemiacetal exists.</p></td></tr><tr><td><p>What is invert sugar?</p></td><td><p>The equimolar glucose–fructose mixture from sucrose; it is laevorotatory because fructose (−92°) outweighs glucose (+52°).</p></td></tr><tr><td><p>How do you recognise the α-anomer of a disaccharide drawn as a ring?</p></td><td><p>Look at the free anomeric OH and the glycosidic O: both down (opposite to CH<sub>2</sub>OH) is α.</p></td></tr><tr><td><p>Which enzymes act on which sugar?</p></td><td><p>Invertase on sucrose, maltase on maltose, zymase on glucose (to ethanol), amylase on starch.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Writing the sucrose linkage as C<sub>1</sub>−C<sub>1</sub> or calling sucrose reducing.</p><p style="padding-left:14px">•  Calling lactose α-linked (it is β).</p><p style="padding-left:14px">•  Calling amylose branched or amylopectin unbranched.</p><p style="padding-left:14px">•  Treating invert sugar as another name for sucrose.</p></div></section>
+</style></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme">🌙 Dark</button></div>
+<h1>Biomolecules &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Biomolecules%20PYQ%20Practice.html">Back to practice</a><a href="Biomolecules%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> BIOMOLECULES – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Disaccharides and polysaccharides: linkages, hydrolysis and reducing property</a></li><li><a href="#T2">Type 2. Monosaccharides: structure, configuration, reactions and tests</a></li><li><a href="#T3">Type 3. Proteins: structure levels, denaturation and identification tests</a></li><li><a href="#T4">Type 4. Amino acids: classification, structure, zwitterions and pKa</a></li><li><a href="#T5">Type 5. Peptides: linkage, sequence and counting</a></li><li><a href="#T6">Type 6. Nucleic acids: bases, nucleotides and base pairing</a></li><li><a href="#T7">Type 7. Vitamins: classification, deficiency diseases and structure</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Disaccharides and polysaccharides: linkages, hydrolysis and reducing property <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">31 questions on the sheet (Q1–31)  ·  Sub-topics: A1 maltose, lactose, sucrose · A2 reducing and non-reducing · A3 hydrolysis and enzymes · A4 starch, cellulose, glycogen</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Maltose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Lactose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Sucrose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Amylose, amylopectin</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Cellulose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Glycogen</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is sucrose non-reducing?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>What is invert sugar?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>How do you recognise the α-anomer of a disaccharide drawn as a ring?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>Which enzymes act on which sugar?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The words maltose, lactose, sucrose, starch, cellulose, glycogen, amylose or amylopectin appear in the stem.</p><p style="padding-left:14px">•  &#x27;Glycosidic linkage between C<sub>1</sub> of ... and C<sub>4</sub> of ...&#x27; or &#x27;two monomers of ...&#x27; is asked.</p><p style="padding-left:14px">•  A statement or assertion–reason question marked &#x27;incorrect&#x27; or &#x27;not true&#x27; about one sugar, often with a structure drawn.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Maltose</p></td><td><p>α-D-glucose + α-D-glucose, C<sub>1</sub>−C<sub>4</sub> (α); reducing</p></td></tr><tr><td><p>Lactose</p></td><td><p>β-D-galactose + β-D-glucose, C<sub>1</sub>−C<sub>4</sub> (β); reducing</p></td></tr><tr><td><p>Sucrose</p></td><td><p>α-D-glucose + β-D-fructose, C<sub>1</sub>−C<sub>2</sub>; non-reducing; invert sugar on hydrolysis</p></td></tr><tr><td><p>Amylose, amylopectin</p></td><td><p>α(1→4) chain; amylopectin has α(1→6) branches too</p></td></tr><tr><td><p>Cellulose</p></td><td><p>β(1→4) glucose, unbranched, not digested by humans</p></td></tr><tr><td><p>Glycogen</p></td><td><p>animal starch, highly branched α(1→4) and α(1→6)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is sucrose non-reducing?</p></td><td><p>Both anomeric carbons (glucose C<sub>1</sub> and fructose C<sub>2</sub>) are in the glycosidic bond, so no free hemiacetal exists.</p></td></tr><tr><td><p>What is invert sugar?</p></td><td><p>The equimolar glucose–fructose mixture from sucrose; it is laevorotatory because fructose (−92°) outweighs glucose (+52°).</p></td></tr><tr><td><p>How do you recognise the α-anomer of a disaccharide drawn as a ring?</p></td><td><p>Look at the free anomeric OH and the glycosidic O: both down (opposite to CH<sub>2</sub>OH) is α.</p></td></tr><tr><td><p>Which enzymes act on which sugar?</p></td><td><p>Invertase on sucrose, maltase on maltose, zymase on glucose (to ethanol), amylase on starch.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Writing the sucrose linkage as C<sub>1</sub>−C<sub>1</sub> or calling sucrose reducing.</p><p style="padding-left:14px">•  Calling lactose α-linked (it is β).</p><p style="padding-left:14px">•  Calling amylose branched or amylopectin unbranched.</p><p style="padding-left:14px">•  Treating invert sugar as another name for sucrose.</p></div></section>
 <section class="typ" id="T2" data-k="2"><h2>Type 2. Monosaccharides: structure, configuration, reactions and tests <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">30 questions on the sheet (Q32–61)  ·  Sub-topics: B1 D/L and open chain · B2 pyranose, furanose, anomers · B3 reactions of glucose and fructose · B4 chemical tests</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_13"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>D/L</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_14"></div></td></tr><tr><td><p>Haworth</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div></td></tr><tr><td><p>Stereocentres of glucose</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>Glucose + Br<sub>2</sub>/H<sub>2</sub>O</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr><tr><td><p>Glucose + HNO<sub>3</sub></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></td></tr><tr><td><p>Glucose + HI, Δ</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_19"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does fructose reduce Tollens&#x27; reagent although it has no CHO?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_20"></div></td></tr><tr><td><p>Why does glucose pentaacetate not form an oxime?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_21"></div></td></tr><tr><td><p>What are epimers and anomers?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_22"></div></td></tr><tr><td><p>Which test separates a ketose?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_23"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_24"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  A Fischer projection (CHO at the top, OH on the right or left) or a Haworth ring is shown and the name, the D/L label or the correct structure is asked.</p><p style="padding-left:14px">•  &#x27;Glucose with Br<sub>2</sub> water, HNO<sub>3</sub>, HI, acetic anhydride&#x27; is given in a list to be matched.</p><p style="padding-left:14px">•  Molisch, Barfoed, Seliwanoff, Fehling or Tollens appears in the options.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>D/L</p></td><td><p>D: OH on the right at the last stereocentre; L: mirror image (every centre inverted)</p></td></tr><tr><td><p>Haworth</p></td><td><p>right in Fischer = down; left = up; D: CH<sub>2</sub>OH up; α: anomeric OH down, β: up</p></td></tr><tr><td><p>Stereocentres of glucose</p></td><td><p>4 (open chain), 5 (ring); chiral carbons in sucrose: 9</p></td></tr><tr><td><p>Glucose + Br<sub>2</sub>/H<sub>2</sub>O</p></td><td><p>gluconic acid (CHO → COOH)</p></td></tr><tr><td><p>Glucose + HNO<sub>3</sub></p></td><td><p>saccharic acid (CHO and CH<sub>2</sub>OH both oxidised)</p></td></tr><tr><td><p>Glucose + HI, Δ</p></td><td><p>n-hexane; with acetic anhydride, the pentaacetate (5 OH)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does fructose reduce Tollens&#x27; reagent although it has no CHO?</p></td><td><p>In base it forms an enediol and rearranges to glucose and mannose, which have the aldehyde.</p></td></tr><tr><td><p>Why does glucose pentaacetate not form an oxime?</p></td><td><p>The ring (hemiacetal) form has no free CHO and all OH groups are acetylated.</p></td></tr><tr><td><p>What are epimers and anomers?</p></td><td><p>Epimers differ at one carbon other than C<sub>1</sub> (glucose/galactose at C<sub>4</sub>); anomers differ only at C<sub>1</sub> (α/β glucose).</p></td></tr><tr><td><p>Which test separates a ketose?</p></td><td><p>Seliwanoff (resorcinol/HCl): ketoses give red colour quickly.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Reading Fischer right/left as Haworth up/down the wrong way round.</p><p style="padding-left:14px">•  Counting the ring oxygen&#x27;s carbon wrongly when naming pyranose and furanose.</p><p style="padding-left:14px">•  Using Barfoed&#x27;s test for a disaccharide (it detects monosaccharides).</p><p style="padding-left:14px">•  Saying glucose gives Schiff&#x27;s test (it does not).</p></div></section>
 <section class="typ" id="T3" data-k="3"><h2>Type 3. Proteins: structure levels, denaturation and identification tests <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">22 questions on the sheet (Q62–83)  ·  Sub-topics: C1 levels of structure and denaturation · C2 tests for proteins and amino acids</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_25"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Primary</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_26"></div></td></tr><tr><td><p>Secondary</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_27"></div></td></tr><tr><td><p>Tertiary</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_28"></div></td></tr><tr><td><p>Biuret</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_29"></div></td></tr><tr><td><p>Ninhydrin</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_30"></div></td></tr><tr><td><p>Xanthoproteic</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_31"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What does denaturation change?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_32"></div></td></tr><tr><td><p>Fibrous or globular?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_33"></div></td></tr><tr><td><p>Does a dipeptide give the Biuret test?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_34"></div></td></tr><tr><td><p>Which peptide gives carbylamine and ceric ammonium nitrate tests?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_35"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_36"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 3</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Primary / secondary / tertiary / quaternary&#x27; appears in the options, or α-helix and β-pleated sheet.</p><p style="padding-left:14px">•  A heating, boiling or egg-coagulation situation is described.</p><p style="padding-left:14px">•  A positive test (Biuret, ninhydrin, Xanthoproteic, carbylamine) is asked for a list of compounds.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Primary</p></td><td><p>amino acid sequence; peptide bonds; survives denaturation</p></td></tr><tr><td><p>Secondary</p></td><td><p>α-helix, β-sheet; hydrogen bonds</p></td></tr><tr><td><p>Tertiary</p></td><td><p>folding; disulphide, ionic, hydrogen, van der Waals</p></td></tr><tr><td><p>Biuret</p></td><td><p>violet with Cu<sup>2+</sup>/OH<sup>−</sup>: at least two peptide bonds</p></td></tr><tr><td><p>Ninhydrin</p></td><td><p>purple (Ruhemann&#x27;s purple) with free α-amino acids and proteins</p></td></tr><tr><td><p>Xanthoproteic</p></td><td><p>yellow-orange with aromatic amino acids (Tyr, Phe, Trp)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What does denaturation change?</p></td><td><p>Secondary, tertiary (and quaternary) structure; the primary structure remains.</p></td></tr><tr><td><p>Fibrous or globular?</p></td><td><p>Fibrous (keratin, collagen, myosin) is insoluble; globular (albumin, enzymes) is water soluble.</p></td></tr><tr><td><p>Does a dipeptide give the Biuret test?</p></td><td><p>No: it has one peptide bond; a tripeptide does.</p></td></tr><tr><td><p>Which peptide gives carbylamine and ceric ammonium nitrate tests?</p></td><td><p>One with a free primary amine and an alcoholic OH (for example Ser–Lys).</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Saying denaturation breaks peptide bonds.</p><p style="padding-left:14px">•  Assigning the α-helix to the tertiary structure.</p><p style="padding-left:14px">•  Using Biuret for a single amino acid or a dipeptide.</p><p style="padding-left:14px">•  Confusing the Barfoed test with a test for amino acids.</p></div></section>
 <section class="typ" id="T4" data-k="4"><h2>Type 4. Amino acids: classification, structure, zwitterions and pKa <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">20 questions on the sheet (Q84–103)  ·  Sub-topics: D1 essential, one-letter codes, acidic and basic · D2 structure, chirality, zwitterion, pKa</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_37"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Essential</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_38"></div></td></tr><tr><td><p>Codes</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_39"></div></td></tr><tr><td><p>Zwitterion</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_40"></div></td></tr><tr><td><p>Charge by pH</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_41"></div></td></tr><tr><td><p>Chirality</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_42"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why do amino acids have high melting points and dissolve in water but not in benzene?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_43"></div></td></tr><tr><td><p>Which amino acid has only one basic group?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_44"></div></td></tr><tr><td><p>Which amino acids contain sulphur?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_45"></div></td></tr><tr><td><p>How many negative charges at pH 12.5 for Gly–Glu–Asp–Tyr?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_46"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_47"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 4</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Essential&#x27;, &#x27;basic&#x27;, &#x27;sulphur containing&#x27; or a one-letter code is asked.</p><p style="padding-left:14px">•  The structure of an amino acid (tyrosine, histidine, valine) is to be chosen, often at a stated pH.</p><p style="padding-left:14px">•  A count of chiral centres, carbon atoms or negative charges is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Essential</p></td><td><p>Val, Leu, Ile, Lys, Thr, Met, Phe, Trp, His, Arg</p></td></tr><tr><td><p>Codes</p></td><td><p>R Arg, D Asp, N Asn, A Ala, E Glu, Q Gln, Y Tyr, W Trp</p></td></tr><tr><td><p>Zwitterion</p></td><td><p>H<sub>3</sub>N<sup>+</sup>−CHR−COO<sup>−</sup> at the isoelectric point</p></td></tr><tr><td><p>Charge by pH</p></td><td><p>acidic pH: cation; basic pH: anion</p></td></tr><tr><td><p>Chirality</p></td><td><p>all except glycine have a chiral α-carbon; Ile and Thr have two</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why do amino acids have high melting points and dissolve in water but not in benzene?</p></td><td><p>They exist as zwitterions, which are ionic.</p></td></tr><tr><td><p>Which amino acid has only one basic group?</p></td><td><p>Asparagine: the amide is not basic; Lys, Arg, His have a second basic group.</p></td></tr><tr><td><p>Which amino acids contain sulphur?</p></td><td><p>Cysteine and methionine; cysteine dimerises to cystine through the SH group.</p></td></tr><tr><td><p>How many negative charges at pH 12.5 for Gly–Glu–Asp–Tyr?</p></td><td><p>Three COO⁻ (C-terminal, Glu, Asp) and the phenoxide of Tyr: 4.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting arginine as non-essential (NCERT lists it as essential).</p><p style="padding-left:14px">•  Forgetting the side-chain COOH of Asp and Glu when counting charges.</p><p style="padding-left:14px">•  Drawing the cation instead of the zwitterion at the isoelectric point.</p><p style="padding-left:14px">•  Confusing the one-letter codes of Asp (D), Asn (N), Glu (E), Gln (Q).</p></div></section>
@@ -1190,7 +982,8 @@ function hide(e){if(!e.target.closest('.ed')&&!e.target.closest('#sym')){bar.cla
 document.addEventListener('mousedown',hide);document.addEventListener('touchstart',hide,{passive:true});
 apply();
 })();
-</script><script>
+</script>
+<script>
 function initThemeToggle() {
   function applyTheme(dark) {
     if (dark) {
@@ -1222,4 +1015,5 @@ if (document.readyState === 'loading') {
   initThemeToggle();
 }
 </script>
+
 </body></html>

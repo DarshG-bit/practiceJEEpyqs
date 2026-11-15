@@ -1390,41 +1390,7 @@ $('impf').onchange=function(){var f=this.files[0];if(!f)return;this.value='';var
  var msg='Progress loaded.';if(d.pend){if(!PEND){PEND=d.pend;sv(KS,PEND)}else if(PEND.t!==d.pend.t){if(confirm('This device already has an unfinished attempt. Replace it with the unfinished attempt in the file?\n\nOK = use the attempt from the file\nCancel = keep the attempt on this device')){PEND=d.pend;sv(KS,PEND);msg='Progress loaded. The unfinished attempt from the file replaced the one on this device. Press Resume to continue it.'}else msg='Progress loaded. Your current unfinished attempt was kept.'}}if(d.pend&&PEND&&PEND.t===d.pend.t&&msg=='Progress loaded.')msg='Progress loaded. Press Resume at the top to continue the unfinished attempt.';if(added)msg+=' '+added+' earlier attempt'+(added>1?'s were':' was')+' added to "Your earlier attempts". Press Continue next to it to carry on.';renderStart();alert(msg)}catch(e){alert('That file could not be read.')}};r.readAsText(f)};
 renderStart();
 setInterval(tick,1000);
-</script>
-<script>
-function initThemeToggle() {
-  function applyTheme(dark) {
-    if (dark) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('jee_theme', 'dark');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('jee_theme', 'light');
-    }
-    var btns = document.querySelectorAll('.theme-btn');
-    btns.forEach(function(b) {
-      b.innerHTML = dark ? '☀️ Light' : '🌙 Dark';
-    });
-  }
-  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
-    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  applyTheme(isDark);
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.theme-btn');
-    if (btn) {
-      var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      applyTheme(!currentlyDark);
-    }
-  });
-}
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initThemeToggle);
-} else {
-  initThemeToggle();
-}
-</script>
-
-<script>
+</script><script>
 (function(){
   function initQCount(){
     var qcRadios = document.querySelectorAll('input[name=qc_mode]');
@@ -1534,4 +1500,38 @@ if (document.readyState === 'loading') {
   }
 })();
 </script>
+
+<script>
+function initThemeToggle() {
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jee_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jee_theme', 'light');
+    }
+    var btns = document.querySelectorAll('.theme-btn');
+    btns.forEach(function(b) {
+      b.innerHTML = dark ? '☀️ Light' : '🌙 Dark';
+    });
+  }
+  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
+    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  applyTheme(isDark);
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.theme-btn');
+    if (btn) {
+      var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      applyTheme(!currentlyDark);
+    }
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
+}
+</script>
+
 </body></html>
