@@ -44,18 +44,15 @@ export const SubjectPortals: React.FC<SubjectPortalsProps> = ({
           <div className="absolute top-0 left-0 right-0 h-1 bg-blue-600 dark:bg-blue-500 rounded-t-xl" />
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 Mathematics
-              </span>
+              </h3>
               <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/40 tabular-nums">
                 {chapterCounts.maths} Chapters
               </span>
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              Calculus & Algebra
-            </h3>
             <p className="text-xs text-slate-600 dark:text-zinc-300 mt-1.5 leading-relaxed">
-              Calculus, Matrices, Determinants, Limits & Applications with official difficulty ratings.
+              Calculus, Matrices, Determinants, Limits, Functions &amp; Definite Integration with official difficulty ratings.
             </p>
             <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-slate-500 dark:text-zinc-400">
               <span className="inline-block w-2 h-2 rounded-full bg-blue-500" />
@@ -76,18 +73,15 @@ export const SubjectPortals: React.FC<SubjectPortalsProps> = ({
           <div className="absolute top-0 left-0 right-0 h-1 bg-indigo-600 dark:bg-indigo-500 rounded-t-xl" />
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                 Physics
-              </span>
+              </h3>
               <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900/40 tabular-nums">
                 {chapterCounts.physics} Chapters
               </span>
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-              Mechanics & Electrodynamics
-            </h3>
             <p className="text-xs text-slate-600 dark:text-zinc-300 mt-1.5 leading-relaxed">
-              Mechanics, Electromagnetism, Optics, Modern Physics, Thermal & Waves with ray & circuit diagrams.
+              Mechanics, Electromagnetism, Optics, Modern Physics, Thermal &amp; Waves with ray &amp; circuit diagrams.
             </p>
             <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-slate-500 dark:text-zinc-400">
               <span className="inline-block w-2 h-2 rounded-full bg-indigo-500" />
@@ -108,18 +102,15 @@ export const SubjectPortals: React.FC<SubjectPortalsProps> = ({
           <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600 dark:bg-emerald-500 rounded-t-xl" />
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                 Chemistry
-              </span>
+              </h3>
               <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/40 tabular-nums">
                 {chapterCounts.chemistry} Chapters
               </span>
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-              Organic, Physical & Inorganic
-            </h3>
             <p className="text-xs text-slate-600 dark:text-zinc-300 mt-1.5 leading-relaxed">
-              General Organic Chemistry, Kinetics, Coordination, Electrochemistry & Solutions with mechanisms.
+              General Organic Chemistry, Kinetics, Coordination, Electrochemistry, Ionic Equilibrium, Mole Concept &amp; Solutions.
             </p>
             <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-slate-500 dark:text-zinc-400">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />
@@ -164,7 +155,7 @@ export const SubjectPortals: React.FC<SubjectPortalsProps> = ({
             onClick={onScrollToChapters}
             className="px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-medium bg-white dark:bg-[#111114] hover:bg-slate-50 dark:hover:bg-[#18181c] border border-slate-200 dark:border-[#27272a] text-slate-700 dark:text-zinc-200 transition-colors min-h-[44px] cursor-pointer"
           >
-            Browse 27 Chapters &darr;
+            Browse 33 Chapters &darr;
           </button>
         </div>
       </div>

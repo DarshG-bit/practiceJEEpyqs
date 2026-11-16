@@ -9,11 +9,16 @@ CHAPTERS_DIR = os.path.join(DATA_DIR, "chapters")
 os.makedirs(CHAPTERS_DIR, exist_ok=True)
 
 CHAPTER_SOURCES = [
+  # Maths (7 Chapters)
   {"name": "Application of Derivatives", "subject": "Maths", "rel": "Maths/Application of Derivatives PYQ Practice.html", "cls": "Class B"},
   {"name": "Continuity and Differentiability", "subject": "Maths", "rel": "Maths/Continuity and Differentiability PYQ Practice.html", "cls": "Class B"},
+  {"name": "Definite Integration", "subject": "Maths", "rel": "Maths/Definite Integration PYQ Practice.html", "cls": "Class B"},
   {"name": "Determinants", "subject": "Maths", "rel": "Maths/Determinants PYQ Practice.html", "cls": "Class B"},
+  {"name": "Functions", "subject": "Maths", "rel": "Maths/Functions PYQ Practice.html", "cls": "Class B"},
   {"name": "Limits", "subject": "Maths", "rel": "Maths/Limits PYQ Practice.html", "cls": "Class B"},
   {"name": "Matrices", "subject": "Maths", "rel": "Maths/Matrices PYQ Practice.html", "cls": "Class B"},
+
+  # Physics (15 Chapters)
   {"name": "Alternating Current", "subject": "Physics", "rel": "Physics/Alternating Current PYQ Practice.html", "cls": "Class B"},
   {"name": "Atomic Physics", "subject": "Physics", "rel": "Physics/Atomic Physics PYQ Practice.html", "cls": "Class B"},
   {"name": "Capacitance", "subject": "Physics", "rel": "Physics/Capacitance PYQ Practice.html", "cls": "Class B"},
@@ -28,6 +33,9 @@ CHAPTER_SOURCES = [
   {"name": "Nuclear Physics", "subject": "Physics", "rel": "Physics/Nuclear Physics PYQ Practice.html", "cls": "Class B"},
   {"name": "Ray Optics", "subject": "Physics", "rel": "Physics/Ray Optics PYQ Practice.html", "cls": "Class B"},
   {"name": "Semiconductors", "subject": "Physics", "rel": "Physics/Semiconductors PYQ Practice.html", "cls": "Class B"},
+  {"name": "Wave Optics", "subject": "Physics", "rel": "Physics/Wave Optics PYQ Practice.html", "cls": "Class B"},
+
+  # Chemistry (11 Chapters)
   {"name": "Amines", "subject": "Chemistry", "rel": "Chemistry/Amines PYQ Practice.html", "cls": "Class B"},
   {"name": "Biomolecules", "subject": "Chemistry", "rel": "Chemistry/Biomolecules PYQ Practice.html", "cls": "Class B"},
   {"name": "Chemical Kinetics", "subject": "Chemistry", "rel": "Chemistry/Chemical Kinetics PYQ Practice.html", "cls": "Class B"},
@@ -35,6 +43,9 @@ CHAPTER_SOURCES = [
   {"name": "d and f Block Elements", "subject": "Chemistry", "rel": "Chemistry/d and f Block Elements PYQ Practice.html", "cls": "Class B"},
   {"name": "Electrochemistry", "subject": "Chemistry", "rel": "Chemistry/Electrochemistry PYQ Practice.html", "cls": "Class B"},
   {"name": "General Organic Chemistry", "subject": "Chemistry", "rel": "Chemistry/General Organic Chemistry PYQ Practice.html", "cls": "Class B"},
+  {"name": "Ionic Equilibrium", "subject": "Chemistry", "rel": "Chemistry/Ionic Equilibrium PYQ Practice.html", "cls": "Class B"},
+  {"name": "Mole Concept", "subject": "Chemistry", "rel": "Chemistry/Mole Concept PYQ Practice.html", "cls": "Class B"},
+  {"name": "Redox Reactions", "subject": "Chemistry", "rel": "Chemistry/Redox Reactions PYQ Practice.html", "cls": "Class B"},
   {"name": "Solutions", "subject": "Chemistry", "rel": "Chemistry/Solutions PYQ Practice.html", "cls": "Class B"}
 ]
 
@@ -83,6 +94,7 @@ for item in CHAPTER_SOURCES:
     
     diff_counts = {"E": 0, "M": 0, "D": 0}
     fmt_counts = {"MCQ": 0, "Numerical": 0}
+    slug = slugify(item["name"])
     
     for n_str, dn_str, kind, type_id_str, inner in matches:
         n = int(n_str)
@@ -120,11 +132,14 @@ for item in CHAPTER_SOURCES:
                 
         # Correct answer
         ans_val = str(answers.get(str(n), "")).strip()
-        
         exp_sec = expected_times.get(diff, 180)
         
         questions.append({
             "id": n,
+            "uid": f"{slug}-{n}",
+            "chapter_slug": slug,
+            "chapter_name": item["name"],
+            "subject": item["subject"],
             "type_id": t_id,
             "type_name": t_name,
             "kind": "single" if (kind == "single" or fmt_letter == "Q") else "int",
@@ -136,7 +151,6 @@ for item in CHAPTER_SOURCES:
             "answer": ans_val
         })
         
-    slug = slugify(item["name"])
     subj_slug = item["subject"].lower()
     out_dir = os.path.join(CHAPTERS_DIR, subj_slug)
     os.makedirs(out_dir, exist_ok=True)
@@ -186,7 +200,7 @@ with open(catalog_file, "w", encoding="utf-8") as f:
 
 print("\n" + "=" * 60)
 print(f"DATA EXTRACTION COMPLETE!")
-print(f"Total Chapters Processed : {len(catalog)} / 27")
+print(f"Total Chapters Processed : {len(catalog)} / {len(CHAPTER_SOURCES)}")
 print(f"Total Questions Extracted : {total_all_questions}")
 print(f"Master Catalog Saved To   : {catalog_file}")
 print("=" * 60)

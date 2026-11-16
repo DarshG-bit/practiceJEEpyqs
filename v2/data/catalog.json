@@ -1,7 +1,7 @@
 {
   "platform": "JEE Main PYQ Practice Platform",
-  "total_chapters": 27,
-  "total_questions": 4207,
+  "total_chapters": 33,
+  "total_questions": 5038,
   "chapters": [
     {
       "name": "Application of Derivatives",
@@ -42,6 +42,25 @@
       "legacy_url": "Maths/Continuity and Differentiability PYQ Practice.html"
     },
     {
+      "name": "Definite Integration",
+      "subject": "Maths",
+      "slug": "definite-integration",
+      "class_tier": "Class B",
+      "total_questions": 225,
+      "difficulty_counts": {
+        "E": 31,
+        "M": 130,
+        "D": 64
+      },
+      "format_counts": {
+        "MCQ": 164,
+        "Numerical": 61
+      },
+      "types_count": 7,
+      "data_path": "data/chapters/maths/definite-integration.json",
+      "legacy_url": "Maths/Definite Integration PYQ Practice.html"
+    },
+    {
       "name": "Determinants",
       "subject": "Maths",
       "slug": "determinants",
@@ -59,6 +78,25 @@
       "types_count": 7,
       "data_path": "data/chapters/maths/determinants.json",
       "legacy_url": "Maths/Determinants PYQ Practice.html"
+    },
+    {
+      "name": "Functions",
+      "subject": "Maths",
+      "slug": "functions",
+      "class_tier": "Class B",
+      "total_questions": 170,
+      "difficulty_counts": {
+        "E": 17,
+        "M": 118,
+        "D": 35
+      },
+      "format_counts": {
+        "MCQ": 133,
+        "Numerical": 37
+      },
+      "types_count": 7,
+      "data_path": "data/chapters/maths/functions.json",
+      "legacy_url": "Maths/Functions PYQ Practice.html"
     },
     {
       "name": "Limits",
@@ -365,6 +403,25 @@
       "legacy_url": "Physics/Semiconductors PYQ Practice.html"
     },
     {
+      "name": "Wave Optics",
+      "subject": "Physics",
+      "slug": "wave-optics",
+      "class_tier": "Class B",
+      "total_questions": 117,
+      "difficulty_counts": {
+        "E": 43,
+        "M": 69,
+        "D": 5
+      },
+      "format_counts": {
+        "MCQ": 75,
+        "Numerical": 42
+      },
+      "types_count": 7,
+      "data_path": "data/chapters/physics/wave-optics.json",
+      "legacy_url": "Physics/Wave Optics PYQ Practice.html"
+    },
+    {
       "name": "Amines",
       "subject": "Chemistry",
       "slug": "amines",
@@ -496,6 +553,63 @@
       "types_count": 10,
       "data_path": "data/chapters/chemistry/general-organic-chemistry.json",
       "legacy_url": "Chemistry/General Organic Chemistry PYQ Practice.html"
+    },
+    {
+      "name": "Ionic Equilibrium",
+      "subject": "Chemistry",
+      "slug": "ionic-equilibrium",
+      "class_tier": "Class B",
+      "total_questions": 94,
+      "difficulty_counts": {
+        "E": 19,
+        "M": 64,
+        "D": 11
+      },
+      "format_counts": {
+        "MCQ": 50,
+        "Numerical": 44
+      },
+      "types_count": 8,
+      "data_path": "data/chapters/chemistry/ionic-equilibrium.json",
+      "legacy_url": "Chemistry/Ionic Equilibrium PYQ Practice.html"
+    },
+    {
+      "name": "Mole Concept",
+      "subject": "Chemistry",
+      "slug": "mole-concept",
+      "class_tier": "Class B",
+      "total_questions": 139,
+      "difficulty_counts": {
+        "E": 39,
+        "M": 90,
+        "D": 10
+      },
+      "format_counts": {
+        "MCQ": 53,
+        "Numerical": 86
+      },
+      "types_count": 5,
+      "data_path": "data/chapters/chemistry/mole-concept.json",
+      "legacy_url": "Chemistry/Mole Concept PYQ Practice.html"
+    },
+    {
+      "name": "Redox Reactions",
+      "subject": "Chemistry",
+      "slug": "redox-reactions",
+      "class_tier": "Class B",
+      "total_questions": 86,
+      "difficulty_counts": {
+        "E": 23,
+        "M": 55,
+        "D": 8
+      },
+      "format_counts": {
+        "MCQ": 49,
+        "Numerical": 37
+      },
+      "types_count": 7,
+      "data_path": "data/chapters/chemistry/redox-reactions.json",
+      "legacy_url": "Chemistry/Redox Reactions PYQ Practice.html"
     },
     {
       "name": "Solutions",

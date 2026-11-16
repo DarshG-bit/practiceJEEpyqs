@@ -157,11 +157,9 @@ export function App() {
       targetChapters = catalog.chapters.filter((c) => c.slug === config.subjectPool);
     }
 
-    // Load questions from target chapters
-    for (const chap of targetChapters) {
-      const qs = await loadChapterQuestions(chap);
-      candidateQuestions.push(...qs);
-    }
+    // Load questions from target chapters in parallel
+    const chaptersQs = await Promise.all(targetChapters.map(loadChapterQuestions));
+    candidateQuestions = chaptersQs.flat();
 
     if (candidateQuestions.length === 0) {
       alert('No questions found for the selected subject pool.');
@@ -208,8 +206,12 @@ export function App() {
 
   // Finish CBT Exam
   const handleFinishCbtExam = async (attempt: TestAttempt) => {
-    await saveAttempt(attempt);
-    await refreshStatsAndAttempts();
+    try {
+      await saveAttempt(attempt);
+      await refreshStatsAndAttempts();
+    } catch (err) {
+      console.error('Failed to save attempt:', err);
+    }
     setActiveAttempt(attempt);
     setActiveView('cbt_result');
   };

@@ -293,7 +293,7 @@ MODAL_LIGHT_CSS = """/* Modal Sections & Pills */
   display: block;
   font-size: 14px;
   font-weight: 700;
-  color: #1e293b;
+  color: #0f172a;
   margin: 12px 0 6px;
 }
 .modal-pills {
@@ -370,6 +370,37 @@ DARK_MODE_CSS = """
 
 [data-theme="dark"] a {
   color: #60a5fa !important;
+}
+
+/* Card descendant links must preserve card layout & colors, never default link style */
+a.subject-card,
+a.subject-card *,
+a.ch-card,
+a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] a.subject-card,
+[data-theme="dark"] a.subject-card *,
+[data-theme="dark"] a.ch-card,
+[data-theme="dark"] a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] .subject-card-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .subject-desc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .meta-chip {
+  background: #111114 !important;
+  border: 1px solid #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .ch-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .ch-meta {
+  color: #a1a1aa !important;
 }
 
 /* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
@@ -697,6 +728,169 @@ DARK_MODE_CSS = """
   border-color: #3b82f6 !important;
 }
 
+/* Question Sheet Container & Dark Mode (Pic 4) */
+[data-theme="dark"] .main,
+[data-theme="dark"] .side,
+[data-theme="dark"] .qhead,
+[data-theme="dark"] .qbody,
+[data-theme="dark"] .foot,
+[data-theme="dark"] .wrap {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead b,
+[data-theme="dark"] #qno,
+[data-theme="dark"] .stem,
+[data-theme="dark"] .stem p {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .src,
+[data-theme="dark"] .qhead .qt,
+[data-theme="dark"] #qtime {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .starbtn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #fbbf24 !important;
+}
+[data-theme="dark"] .top {
+  background: #0a0a0c !important;
+  border-bottom: 1px solid #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+/* Materials & Type Notes (Light + Dark Mode Fixes - Pic 2 & Pic 7) */
+.how {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.how p, .how b {
+  color: #0f172a !important;
+}
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt td,
+[data-theme="dark"] .gt th {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #18181c !important;
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #111114 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] details {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .work h3,
+[data-theme="dark"] .work p,
+[data-theme="dark"] .work i {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .rev {
+  background: #061c0d !important;
+  border-color: #16a34a !important;
+  color: #dcfce7 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #4ade80 !important;
+}
+[data-theme="dark"] .typ h2 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* CBT Mode Answer Checking & Solutions Suppressor (Pic 3) */
+body.cbt-mode .chk,
+body.cbt-mode .chkb,
+body.cbt-mode .shb,
+body.cbt-mode .chkres,
+body.cbt-mode #savecur,
+.cbt-mode .chk,
+.cbt-mode .chkb,
+.cbt-mode .shb,
+.cbt-mode .chkres {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Header Top Back Button */
+.top-back-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-right: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.top-back-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="dark"] .top-back-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .top-back-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #3b82f6 !important;
+}
+
 """
 
 THEME_TOGGLE_JS = """
@@ -881,6 +1075,15 @@ ENHANCED_PRACTICE_SCRIPT = '<script>\n(function(){\n  // 1. Mode and Q-Count Con
 def patch_practice_sheet(content):
     modified = False
     
+    # 0. Inject Back button into <div class="top">
+    if 'id="examBackBtn"' not in content and '<div class="top">' in content:
+        content = content.replace(
+            '<div class="top">',
+            '<div class="top"><a href="index.html" class="top-back-btn" id="examBackBtn" title="Back to chapter index">&larr; Back</a>',
+            1
+        )
+        modified = True
+
     # 1. Inject or update TEST_MODE_AND_QCOUNT_HTML before <label>Practice time</label>
     if 'id="test_mode_box"' not in content:
         pattern_qc = r'<label>Number of questions</label>\s*<div class="tbox" id="qcount_box">.*?</div>\s*(?=<label>Practice time</label>)'
@@ -908,6 +1111,45 @@ def patch_practice_sheet(content):
             pos_b = content.rfind('</body>')
             content = content[:pos_b] + ENHANCED_PRACTICE_SCRIPT + '\n</body>' + content[pos_b+7:]
             modified = True
+
+    # 3. CBT Interceptor & Back button prompt handler
+    cbt_interceptor_code = """<script>
+(function(){
+  var bBtn = document.getElementById('examBackBtn');
+  if (bBtn) {
+    bBtn.onclick = function(e) {
+      if (document.body.classList.contains('cbt-mode') || (window.isCBT && !window.submitted)) {
+        if (confirm('Leaving CBT examination will automatically submit your test and finalize your score. Are you sure you want to submit and exit?')) {
+          var submitBtn = document.getElementById('submit');
+          if (submitBtn) submitBtn.click();
+          window.location.href = 'index.html';
+        } else {
+          e.preventDefault();
+          return false;
+        }
+      } else {
+        if (typeof sv === 'function' && typeof KS !== 'undefined' && typeof S !== 'undefined') {
+          try { sv(KS, S); } catch(err){}
+        }
+        window.location.href = 'index.html';
+      }
+    };
+  }
+  document.addEventListener('click', function(e) {
+    if (document.body.classList.contains('cbt-mode') || (window.isCBT && !window.submitted)) {
+      if (e.target.closest('.chk, .chkb, .shb, .chkres, button.chk, button.shb')) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        return false;
+      }
+    }
+  }, true);
+})();
+</script>"""
+    if '<!-- cbt_interceptor -->' not in content and '</body>' in content:
+        pos_b = content.rfind('</body>')
+        content = content[:pos_b] + cbt_interceptor_code + '\n<!-- cbt_interceptor -->\n' + content[pos_b:]
+        modified = True
             
     return content, modified
 
@@ -939,15 +1181,22 @@ def update_index_portal():
             counts[s] = 0
             
     # Update badges on subject cards
-    html = re.sub(r'(<a class="subject-card maths".*?<div class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Maths", 0)} Chapters Ready', html, flags=re.DOTALL)
-    html = re.sub(r'(<a class="subject-card physics".*?<div class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Physics", 0)} Chapters Ready', html, flags=re.DOTALL)
-    html = re.sub(r'(<a class="subject-card chemistry".*?<div class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Chemistry", 0)} Chapters Ready', html, flags=re.DOTALL)
+    html = re.sub(r'(<a class="subject-card maths".*?<span class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Maths", 0)} Chapters Ready', html, flags=re.DOTALL)
+    html = re.sub(r'(<a class="subject-card physics".*?<span class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Physics", 0)} Chapters Ready', html, flags=re.DOTALL)
+    html = re.sub(r'(<a class="subject-card chemistry".*?<span class="subject-badge">)\d+ Chapters Ready', rf'\g<1>{counts.get("Chemistry", 0)} Chapters Ready', html, flags=re.DOTALL)
+    
+    # Update filter pills on homepage
+    html = re.sub(r'data-subject="all">All \(\d+\)', f'data-subject="all">All ({len(all_chapters)})', html)
+    html = re.sub(r'data-subject="Maths">Mathematics \(\d+\)', f'data-subject="Maths">Mathematics ({counts.get("Maths", 0)})', html)
+    html = re.sub(r'data-subject="Physics">Physics \(\d+\)', f'data-subject="Physics">Physics ({counts.get("Physics", 0)})', html)
+    html = re.sub(r'data-subject="Chemistry">Chemistry \(\d+\)', f'data-subject="Chemistry">Chemistry ({counts.get("Chemistry", 0)})', html)
     
     # Update modal pill counts
     html = re.sub(r'All Subjects \(\d+\)', f'All Subjects ({len(all_chapters)})', html)
     html = re.sub(r'Physics \(\d+\)', f'Physics ({counts.get("Physics", 0)})', html)
     html = re.sub(r'Chemistry \(\d+\)', f'Chemistry ({counts.get("Chemistry", 0)})', html)
-    html = re.sub(r'Maths \(\d+\)', f'Maths ({counts.get("Maths", 0)})', html)
+    html = re.sub(r'Mathematics \(\d+\)', f'Mathematics ({counts.get("Maths", 0)})', html)
+    html = re.sub(r'Browse \d+ Chapters', f'Browse {len(all_chapters)} Chapters', html)
     
     # Update CHAPTER_POOL array
     pool_json = json.dumps(all_chapters, indent=2)
@@ -957,6 +1206,19 @@ def update_index_portal():
         f.write(html)
         
     print(f"  [Portal Updated]  index.html (Maths: {counts.get('Maths',0)}, Physics: {counts.get('Physics',0)}, Chemistry: {counts.get('Chemistry',0)}, Total: {len(all_chapters)})")
+
+logo_a_pattern = re.compile(r'<a\s+id=["\']aiit-logo["\'][^>]*>.*?</a>', re.DOTALL | re.IGNORECASE)
+logo_img_pattern = re.compile(r'<img[^>]*alt=["\']Adventure\s+IIT["\'][^>]*>', re.IGNORECASE)
+logo_link_pattern = re.compile(r'<a[^>]*href=["\'][^"\']*["\'][^>]*>\s*<img[^>]*alt=["\']Adventure\s+IIT["\'][^>]*>\s*</a>', re.DOTALL | re.IGNORECASE)
+script_aiit_pattern = re.compile(r'<script id=["\']aiit-fit["\']>.*?</script>', re.DOTALL | re.IGNORECASE)
+
+def strip_logos_from_content(content):
+    orig = content
+    content = logo_a_pattern.sub('', content)
+    content = logo_link_pattern.sub('', content)
+    content = logo_img_pattern.sub('', content)
+    content = script_aiit_pattern.sub('', content)
+    return content, (content != orig)
 
 def run_all_patches():
     print("=" * 60)
@@ -1007,6 +1269,12 @@ def run_all_patches():
             if dark_mod:
                 file_changed = True
                 print(f"  [Dark Mode]       {os.path.relpath(file_path, ROOT_DIR)}")
+
+            # 4. Strip Logos across all HTML files
+            content, logo_mod = strip_logos_from_content(content)
+            if logo_mod:
+                file_changed = True
+                print(f"  [Logos Stripped]  {os.path.relpath(file_path, ROOT_DIR)}")
                 
             if file_changed:
                 make_backup(file_path)

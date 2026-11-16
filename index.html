@@ -1199,6 +1199,37 @@ main {
   color: #60a5fa !important;
 }
 
+/* Card descendant links must preserve card layout & colors, never default link style */
+a.subject-card,
+a.subject-card *,
+a.ch-card,
+a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] a.subject-card,
+[data-theme="dark"] a.subject-card *,
+[data-theme="dark"] a.ch-card,
+[data-theme="dark"] a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] .subject-card-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .subject-desc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .meta-chip {
+  background: #111114 !important;
+  border: 1px solid #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .ch-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .ch-meta {
+  color: #a1a1aa !important;
+}
+
 /* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
 [data-theme="dark"] a.act-btn.primary,
 [data-theme="dark"] .act-btn.primary,
@@ -1524,7 +1555,168 @@ main {
   border-color: #3b82f6 !important;
 }
 
+/* Question Sheet Container & Dark Mode (Pic 4) */
+[data-theme="dark"] .main,
+[data-theme="dark"] .side,
+[data-theme="dark"] .qhead,
+[data-theme="dark"] .qbody,
+[data-theme="dark"] .foot,
+[data-theme="dark"] .wrap {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead b,
+[data-theme="dark"] #qno,
+[data-theme="dark"] .stem,
+[data-theme="dark"] .stem p {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .src,
+[data-theme="dark"] .qhead .qt,
+[data-theme="dark"] #qtime {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .starbtn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #fbbf24 !important;
+}
+[data-theme="dark"] .top {
+  background: #0a0a0c !important;
+  border-bottom: 1px solid #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
 
+/* Materials & Type Notes (Light + Dark Mode Fixes - Pic 2 & Pic 7) */
+.how {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.how p, .how b {
+  color: #0f172a !important;
+}
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt td,
+[data-theme="dark"] .gt th {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #18181c !important;
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #111114 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] details {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .work h3,
+[data-theme="dark"] .work p,
+[data-theme="dark"] .work i {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .rev {
+  background: #061c0d !important;
+  border-color: #16a34a !important;
+  color: #dcfce7 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #4ade80 !important;
+}
+[data-theme="dark"] .typ h2 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* CBT Mode Answer Checking & Solutions Suppressor (Pic 3) */
+body.cbt-mode .chk,
+body.cbt-mode .chkb,
+body.cbt-mode .shb,
+body.cbt-mode .chkres,
+body.cbt-mode #savecur,
+.cbt-mode .chk,
+.cbt-mode .chkb,
+.cbt-mode .shb,
+.cbt-mode .chkres {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Header Top Back Button */
+.top-back-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-right: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.top-back-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="dark"] .top-back-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .top-back-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #3b82f6 !important;
+}
 </style>
 </head>
 <body>
@@ -1589,7 +1781,7 @@ main {
       <div class="metric-box">
         <div class="metric-lbl">Questions Attempted</div>
         <div class="metric-num" id="metricTotalQ">0</div>
-        <div class="metric-subtext">Across 27 chapters</div>
+        <div class="metric-subtext">Across 33 chapters</div>
       </div>
       <div class="metric-box">
         <div class="metric-lbl">First-Try Accuracy</div>
@@ -1615,7 +1807,7 @@ main {
       <div class="meter-item">
         <div class="meter-header">
           <span>Mathematics</span>
-          <span class="meter-fraction" id="mathsFraction">0 / 5 Chapters (0%)</span>
+          <span class="meter-fraction" id="mathsFraction">0 / 7 Chapters (0%)</span>
         </div>
         <div class="meter-bar">
           <div class="meter-fill maths" id="mathsBar" style="width: 0%;"></div>
@@ -1624,7 +1816,7 @@ main {
       <div class="meter-item">
         <div class="meter-header">
           <span>Physics</span>
-          <span class="meter-fraction" id="physicsFraction">0 / 14 Chapters (0%)</span>
+          <span class="meter-fraction" id="physicsFraction">0 / 15 Chapters (0%)</span>
         </div>
         <div class="meter-bar">
           <div class="meter-fill physics" id="physicsBar" style="width: 0%;"></div>
@@ -1633,7 +1825,7 @@ main {
       <div class="meter-item">
         <div class="meter-header">
           <span>Chemistry</span>
-          <span class="meter-fraction" id="chemFraction">0 / 8 Chapters (0%)</span>
+          <span class="meter-fraction" id="chemFraction">0 / 11 Chapters (0%)</span>
         </div>
         <div class="meter-bar">
           <div class="meter-fill chemistry" id="chemBar" style="width: 0%;"></div>
@@ -1655,7 +1847,7 @@ main {
         <div>
           <div class="subject-header">
             <h3 class="subject-card-title">Mathematics</h3>
-            <span class="subject-badge">5 Chapters Ready</span>
+            <span class="subject-badge">7 Chapters Ready</span>
           </div>
           <p class="subject-desc">Calculus, Vectors &amp; 3D Geometry, Matrices &amp; Determinants, Coordinate Geometry &amp; Limits.</p>
           <div class="subject-meta-chips">
@@ -1675,7 +1867,7 @@ main {
         <div>
           <div class="subject-header">
             <h3 class="subject-card-title">Physics</h3>
-            <span class="subject-badge">14 Chapters Ready</span>
+            <span class="subject-badge">15 Chapters Ready</span>
           </div>
           <p class="subject-desc">Mechanics, Electromagnetism, Optics, Modern Physics, Thermodynamics, Waves &amp; Circuits.</p>
           <div class="subject-meta-chips">
@@ -1695,7 +1887,7 @@ main {
         <div>
           <div class="subject-header">
             <h3 class="subject-card-title">Chemistry</h3>
-            <span class="subject-badge">8 Chapters Ready</span>
+            <span class="subject-badge">11 Chapters Ready</span>
           </div>
           <p class="subject-desc">General Organic Chemistry, Kinetics, Coordination, Electrochemistry, Solutions &amp; Mechanisms.</p>
           <div class="subject-meta-chips">
@@ -1724,7 +1916,7 @@ main {
           <span>Simulate All 3 Subjects Exam &rarr;</span>
         </button>
         <button id="btnScrollChapters" type="button" class="btn-apple">
-          Browse 27 Chapters &darr;
+          Browse 33 Chapters &darr;
         </button>
       </div>
     </div>
@@ -1735,8 +1927,8 @@ main {
     <div class="chapters-section-header">
       <h2>Chapter Practice Banks</h2>
       <div class="filter-pills-bar" id="subjectFilterBar">
-        <button type="button" class="pill-filter active" data-subject="all">All (27)</button>
-        <button type="button" class="pill-filter" data-subject="Maths">Mathematics (5)</button>
+        <button type="button" class="pill-filter active" data-subject="all">All (33)</button>
+        <button type="button" class="pill-filter" data-subject="Maths">Mathematics (7)</button>
         <button type="button" class="pill-filter" data-subject="Physics">Physics (15)</button>
         <button type="button" class="pill-filter" data-subject="Chemistry">Chemistry (11)</button>
       </div>
@@ -1814,7 +2006,7 @@ main {
       <span class="step-title">2. Choose Subject Pool</span>
       <div class="pills-row">
         <div class="m-pill active" data-field="subject" data-val="all">All Subjects (33)</div>
-        <div class="m-pill" data-field="subject" data-val="Maths">Mathematics (5)</div>
+        <div class="m-pill" data-field="subject" data-val="Maths">Mathematics (7)</div>
         <div class="m-pill" data-field="subject" data-val="Physics">Physics (15)</div>
         <div class="m-pill" data-field="subject" data-val="Chemistry">Chemistry (11)</div>
       </div>
@@ -2132,17 +2324,21 @@ function renderDashboard() {
   var pf = document.getElementById('physicsFraction');
   var cf = document.getElementById('chemFraction');
 
-  var mPct = Math.round((completedBySubj.Maths / 5) * 100);
-  var pPct = Math.round((completedBySubj.Physics / 14) * 100);
-  var cPct = Math.round((completedBySubj.Chemistry / 8) * 100);
+  var totalMaths = CHAPTER_POOL.filter(function(c){ return c.subject === 'Maths'; }).length || 7;
+  var totalPhys = CHAPTER_POOL.filter(function(c){ return c.subject === 'Physics'; }).length || 15;
+  var totalChem = CHAPTER_POOL.filter(function(c){ return c.subject === 'Chemistry'; }).length || 11;
+
+  var mPct = Math.round((completedBySubj.Maths / totalMaths) * 100);
+  var pPct = Math.round((completedBySubj.Physics / totalPhys) * 100);
+  var cPct = Math.round((completedBySubj.Chemistry / totalChem) * 100);
 
   if (mBar) mBar.style.width = mPct + '%';
   if (pBar) pBar.style.width = pPct + '%';
   if (cBar) cBar.style.width = cPct + '%';
 
-  if (mf) mf.textContent = completedBySubj.Maths + ' / 5 Chapters (' + mPct + '%)';
-  if (pf) pf.textContent = completedBySubj.Physics + ' / 14 Chapters (' + pPct + '%)';
-  if (cf) cf.textContent = completedBySubj.Chemistry + ' / 8 Chapters (' + cPct + '%)';
+  if (mf) mf.textContent = completedBySubj.Maths + ' / ' + totalMaths + ' Chapters (' + mPct + '%)';
+  if (pf) pf.textContent = completedBySubj.Physics + ' / ' + totalPhys + ' Chapters (' + pPct + '%)';
+  if (cf) cf.textContent = completedBySubj.Chemistry + ' / ' + totalChem + ' Chapters (' + cPct + '%)';
 }
 
 // 3. Chapter Grid Renderer & Search Filter

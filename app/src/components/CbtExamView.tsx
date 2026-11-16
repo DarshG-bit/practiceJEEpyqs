@@ -7,7 +7,8 @@ import {
   CheckCircle,
   Menu,
   X,
-  Bookmark
+  Bookmark,
+  ArrowLeft
 } from 'lucide-react';
 import type { Question, QuestionSessionState, TestAttempt } from '../types';
 import { toggleStar, isStarred } from '../db/db';
@@ -45,6 +46,7 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
   );
   const [isPaletteOpenMobile, setIsPaletteOpenMobile] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [showExitModal, setShowExitModal] = useState(false);
   const [isQuestionStarred, setIsQuestionStarred] = useState(false);
 
   const currentQ = questions[currentIndex];
@@ -305,6 +307,15 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
       {/* Top NTA Examination Header */}
       <header className="sticky top-0 z-30 bg-white dark:bg-[#0a0a0c] border-b border-slate-200 dark:border-[#222224] px-4 py-2.5 sm:px-6 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => setShowExitModal(true)}
+            className="p-2 rounded-lg border border-slate-200 dark:border-[#27272a] text-slate-700 dark:text-zinc-200 hover:bg-slate-100 dark:hover:bg-[#18181c] transition-colors flex items-center gap-1.5 min-h-[40px] cursor-pointer"
+            title="Exit CBT Exam"
+            aria-label="Exit CBT Exam"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span className="text-xs font-semibold hidden sm:inline">Back</span>
+          </button>
           <div className="px-2.5 py-1 rounded bg-blue-600 text-white font-bold text-xs">
             NTA CBT
           </div>
@@ -657,6 +668,38 @@ export const CbtExamView: React.FC<CbtExamViewProps> = ({
                 className="px-5 py-2.5 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-all min-h-[44px] cursor-pointer"
               >
                 Yes, Final Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Exit Modal (Leaving CBT exam warning) */}
+      {showExitModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-150">
+          <div className="bg-white dark:bg-[#0a0a0c] border border-slate-200 dark:border-[#222224] rounded-2xl w-full max-w-md p-6 shadow-2xl">
+            <div className="flex items-center gap-3 text-amber-500 mb-3">
+              <AlertTriangle className="w-6 h-6" />
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Exit CBT Examination?</h3>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-300 mb-5 leading-relaxed">
+              Leaving the CBT examination will automatically submit your test, finalize your score, and record your performance in Test History. Are you sure you want to submit and exit?
+            </p>
+            <div className="flex items-center justify-end gap-3">
+              <button
+                onClick={() => setShowExitModal(false)}
+                className="px-4 py-2.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#18181c] transition-colors min-h-[44px] cursor-pointer"
+              >
+                Cancel (Stay in Exam)
+              </button>
+              <button
+                onClick={() => {
+                  setShowExitModal(false);
+                  handleSubmitFinal();
+                }}
+                className="px-5 py-2.5 rounded-lg text-xs font-bold bg-red-600 hover:bg-red-700 text-white shadow-md transition-all min-h-[44px] cursor-pointer"
+              >
+                Submit &amp; Exit Exam
               </button>
             </div>
           </div>
