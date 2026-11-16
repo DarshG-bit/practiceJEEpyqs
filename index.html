@@ -1082,6 +1082,375 @@ main {
   padding-top: 16px;
   border-top: 1px solid var(--border);
 }
+
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
+:root {
+  --bg-base: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-input: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+}
+
+[data-theme="dark"] {
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
+  --accb: #3b82f6;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
+}
+
+[data-theme="dark"] body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] a {
+  color: #60a5fa !important;
+}
+
+/* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
+[data-theme="dark"] a.act-btn.primary,
+[data-theme="dark"] .act-btn.primary,
+[data-theme="dark"] a.btn.pri,
+[data-theme="dark"] .btn.pri,
+[data-theme="dark"] .btn-cbt-launch,
+[data-theme="dark"] .btn-modal-start,
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
+  color: #ffffff !important;
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] a.act-btn.primary:hover,
+[data-theme="dark"] .act-btn.primary:hover,
+[data-theme="dark"] a.btn.pri:hover,
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
+.panel {
+  max-width: 1040px !important;
+  margin: 24px auto !important;
+  padding: 28px 36px !important;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+[data-theme="dark"] .panel {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
+}
+
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
+/* Visible Typing Boxes in Dark Mode (solves Pic 6) */
+[data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input.num,
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 12px !important;
+}
+[data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] input[type="number"]:focus,
+[data-theme="dark"] input.num:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+}
+
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
+}
+
+[data-theme="dark"] .o {
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .o:hover {
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .o.sel {
+  background: rgba(37, 99, 235, 0.18) !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
+[data-theme="dark"] .att-card {
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .att-card:hover {
+  border-color: #2c2c32 !important;
+}
+[data-theme="dark"] .att-badge.cbt {
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
+}
+[data-theme="dark"] .att-badge.practice {
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+[data-theme="dark"] .att-date {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .att-stats-row {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .att-actions {
+  border-top-color: #222224 !important;
+}
+[data-theme="dark"] .att-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .att-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .att-btn.continue {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
+}
+[data-theme="dark"] .att-btn.review {
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .att-btn.delete {
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
+}
+[data-theme="dark"] .btn-export-all {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn-export-all:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .sub-pill-btn {
+  color: #93c5fd !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .sub-pill-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Theme Toggle Button Outline Styling (solves Pic 17) */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.theme-btn:active {
+  transform: scale(0.98);
+}
+[data-theme="dark"] .theme-btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+
 </style>
 </head>
 <body>
@@ -1270,8 +1639,8 @@ main {
       <div class="filter-pills-bar" id="subjectFilterBar">
         <button type="button" class="pill-filter active" data-subject="all">All (27)</button>
         <button type="button" class="pill-filter" data-subject="Maths">Mathematics (5)</button>
-        <button type="button" class="pill-filter" data-subject="Physics">Physics (14)</button>
-        <button type="button" class="pill-filter" data-subject="Chemistry">Chemistry (8)</button>
+        <button type="button" class="pill-filter" data-subject="Physics">Physics (15)</button>
+        <button type="button" class="pill-filter" data-subject="Chemistry">Chemistry (11)</button>
       </div>
     </div>
 
@@ -1346,10 +1715,10 @@ main {
     <div class="modal-step-group">
       <span class="step-title">2. Choose Subject Pool</span>
       <div class="pills-row">
-        <div class="m-pill active" data-field="subject" data-val="all">All Subjects (27)</div>
+        <div class="m-pill active" data-field="subject" data-val="all">All Subjects (33)</div>
         <div class="m-pill" data-field="subject" data-val="Maths">Mathematics (5)</div>
-        <div class="m-pill" data-field="subject" data-val="Physics">Physics (14)</div>
-        <div class="m-pill" data-field="subject" data-val="Chemistry">Chemistry (8)</div>
+        <div class="m-pill" data-field="subject" data-val="Physics">Physics (15)</div>
+        <div class="m-pill" data-field="subject" data-val="Chemistry">Chemistry (11)</div>
       </div>
     </div>
 
@@ -1395,191 +1764,167 @@ var CHAPTER_POOL = [
   {
     "name": "Application of Derivatives",
     "subject": "Maths",
-    "url": "Maths/Application of Derivatives PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 183
+    "url": "Maths/Application of Derivatives PYQ Practice.html"
   },
   {
     "name": "Continuity and Differentiability",
     "subject": "Maths",
-    "url": "Maths/Continuity and Differentiability PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 139
+    "url": "Maths/Continuity and Differentiability PYQ Practice.html"
+  },
+  {
+    "name": "Definite Integration",
+    "subject": "Maths",
+    "url": "Maths/Definite Integration PYQ Practice.html"
   },
   {
     "name": "Determinants",
     "subject": "Maths",
-    "url": "Maths/Determinants PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 68
+    "url": "Maths/Determinants PYQ Practice.html"
+  },
+  {
+    "name": "Functions",
+    "subject": "Maths",
+    "url": "Maths/Functions PYQ Practice.html"
   },
   {
     "name": "Limits",
     "subject": "Maths",
-    "url": "Maths/Limits PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 113
+    "url": "Maths/Limits PYQ Practice.html"
   },
   {
     "name": "Matrices",
     "subject": "Maths",
-    "url": "Maths/Matrices PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 86
+    "url": "Maths/Matrices PYQ Practice.html"
   },
   {
     "name": "Alternating Current",
     "subject": "Physics",
-    "url": "Physics/Alternating Current PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 89
+    "url": "Physics/Alternating Current PYQ Practice.html"
   },
   {
     "name": "Atomic Physics",
     "subject": "Physics",
-    "url": "Physics/Atomic Physics PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 103
+    "url": "Physics/Atomic Physics PYQ Practice.html"
   },
   {
     "name": "Capacitance",
     "subject": "Physics",
-    "url": "Physics/Capacitance PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 78
+    "url": "Physics/Capacitance PYQ Practice.html"
   },
   {
     "name": "Current Electricity",
     "subject": "Physics",
-    "url": "Physics/Current Electricity PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 172
+    "url": "Physics/Current Electricity PYQ Practice.html"
   },
   {
     "name": "Dual Nature of Matter",
     "subject": "Physics",
-    "url": "Physics/Dual Nature of Matter PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 103
+    "url": "Physics/Dual Nature of Matter PYQ Practice.html"
   },
   {
     "name": "Electromagnetic Induction",
     "subject": "Physics",
-    "url": "Physics/Electromagnetic Induction PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 72
+    "url": "Physics/Electromagnetic Induction PYQ Practice.html"
   },
   {
     "name": "Electromagnetic Waves",
     "subject": "Physics",
-    "url": "Physics/Electromagnetic Waves PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 64
+    "url": "Physics/Electromagnetic Waves PYQ Practice.html"
   },
   {
     "name": "Electrostatics",
     "subject": "Physics",
-    "url": "Physics/Electrostatics PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 147
+    "url": "Physics/Electrostatics PYQ Practice.html"
   },
   {
     "name": "Experimental Physics",
     "subject": "Physics",
-    "url": "Physics/Experimental Physics PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 61
+    "url": "Physics/Experimental Physics PYQ Practice.html"
   },
   {
     "name": "Magnetic Effects of Current",
     "subject": "Physics",
-    "url": "Physics/Magnetic Effects of Current PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 142
+    "url": "Physics/Magnetic Effects of Current PYQ Practice.html"
   },
   {
     "name": "Magnetic Properties of Matter",
     "subject": "Physics",
-    "url": "Physics/Magnetic Properties of Matter PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 48
+    "url": "Physics/Magnetic Properties of Matter PYQ Practice.html"
   },
   {
     "name": "Nuclear Physics",
     "subject": "Physics",
-    "url": "Physics/Nuclear Physics PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 68
+    "url": "Physics/Nuclear Physics PYQ Practice.html"
   },
   {
     "name": "Ray Optics",
     "subject": "Physics",
-    "url": "Physics/Ray Optics PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 142
+    "url": "Physics/Ray Optics PYQ Practice.html"
   },
   {
     "name": "Semiconductors",
     "subject": "Physics",
-    "url": "Physics/Semiconductors PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 114
+    "url": "Physics/Semiconductors PYQ Practice.html"
+  },
+  {
+    "name": "Wave Optics",
+    "subject": "Physics",
+    "url": "Physics/Wave Optics PYQ Practice.html"
   },
   {
     "name": "Amines",
     "subject": "Chemistry",
-    "url": "Chemistry/Amines PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 112
+    "url": "Chemistry/Amines PYQ Practice.html"
   },
   {
     "name": "Biomolecules",
     "subject": "Chemistry",
-    "url": "Chemistry/Biomolecules PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 92
+    "url": "Chemistry/Biomolecules PYQ Practice.html"
   },
   {
     "name": "Chemical Kinetics",
     "subject": "Chemistry",
-    "url": "Chemistry/Chemical Kinetics PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 108
+    "url": "Chemistry/Chemical Kinetics PYQ Practice.html"
   },
   {
     "name": "Coordination Compounds",
     "subject": "Chemistry",
-    "url": "Chemistry/Coordination Compounds PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 136
-  },
-  {
-    "name": "d and f Block Elements",
-    "subject": "Chemistry",
-    "url": "Chemistry/d and f Block Elements PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 105
+    "url": "Chemistry/Coordination Compounds PYQ Practice.html"
   },
   {
     "name": "Electrochemistry",
     "subject": "Chemistry",
-    "url": "Chemistry/Electrochemistry PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 128
+    "url": "Chemistry/Electrochemistry PYQ Practice.html"
   },
   {
     "name": "General Organic Chemistry",
     "subject": "Chemistry",
-    "url": "Chemistry/General Organic Chemistry PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 164
+    "url": "Chemistry/General Organic Chemistry PYQ Practice.html"
+  },
+  {
+    "name": "Ionic Equilibrium",
+    "subject": "Chemistry",
+    "url": "Chemistry/Ionic Equilibrium PYQ Practice.html"
+  },
+  {
+    "name": "Mole Concept",
+    "subject": "Chemistry",
+    "url": "Chemistry/Mole Concept PYQ Practice.html"
+  },
+  {
+    "name": "Redox Reactions",
+    "subject": "Chemistry",
+    "url": "Chemistry/Redox Reactions PYQ Practice.html"
   },
   {
     "name": "Solutions",
     "subject": "Chemistry",
-    "url": "Chemistry/Solutions PYQ Practice.html",
-    "cls": "Class B",
-    "qcount": 119
+    "url": "Chemistry/Solutions PYQ Practice.html"
+  },
+  {
+    "name": "d and f Block Elements",
+    "subject": "Chemistry",
+    "url": "Chemistry/d and f Block Elements PYQ Practice.html"
   }
 ];
 
