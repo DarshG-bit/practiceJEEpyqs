@@ -446,6 +446,269 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:5px 8px;b
   background: #18181c !important;
   border-color: #3b82f6 !important;
 }
+
+/* =================== REAL CBT EXAM MODE RESTRICTIONS =================== */
+/* In CBT Mode: Never show instant check answer, show solution, or mid-exam export */
+body.cbt-mode .chk,
+body.cbt-mode .chkb,
+body.cbt-mode .shb,
+body.cbt-mode .chkres,
+body.cbt-mode #savecur {
+  display: none !important;
+}
+
+/* =================== QUESTION & ANSWER DARK MODE REFINEMENT =================== */
+[data-theme="dark"] .main {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead {
+  background: #111114 !important;
+  border-bottom-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead b {
+  color: #3b82f6 !important;
+}
+[data-theme="dark"] .qhead small {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .qbody {
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .src {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .stem {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .foot {
+  background: #111114 !important;
+  border-top-color: #222224 !important;
+}
+[data-theme="dark"] .side {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .side h3 {
+  color: #a1a1aa !important;
+}
+
+/* Options Dark Mode */
+[data-theme="dark"] .o {
+  background: #111114 !important;
+  border: 1.5px solid #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .o:hover {
+  border-color: #3b82f6 !important;
+  background: #15151a !important;
+}
+[data-theme="dark"] .o.sel {
+  border-color: #3b82f6 !important;
+  background: rgba(37, 99, 235, 0.18) !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .ol {
+  background: #18181c !important;
+  border-color: #3f3f46 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .o.sel .ol {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .o.dead {
+  opacity: 0.35 !important;
+  border-color: #27272a !important;
+}
+
+/* Checked Answers in Practice Mode (High Contrast Dark Badges) */
+[data-theme="dark"] .o.ok {
+  border-color: #16a34a !important;
+  background: #052e16 !important;
+  color: #bbf7d0 !important;
+}
+[data-theme="dark"] .o.ok .ol {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .o.bad {
+  border-color: #dc2626 !important;
+  background: #450a0a !important;
+  color: #fecaca !important;
+}
+[data-theme="dark"] .o.bad .ol {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+/* Numerical Answer Inputs in Dark Mode */
+[data-theme="dark"] .num {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .num:focus {
+  border-color: #3b82f6 !important;
+  outline: none;
+}
+[data-theme="dark"] .num.ok {
+  border-color: #16a34a !important;
+  background: #052e16 !important;
+  color: #bbf7d0 !important;
+}
+[data-theme="dark"] .num.bad {
+  border-color: #dc2626 !important;
+  background: #450a0a !important;
+  color: #fecaca !important;
+}
+
+/* Check Result Text */
+[data-theme="dark"] .chkres.r {
+  color: #4ade80 !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] .chkres.w {
+  color: #f87171 !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] .chkres.h {
+  color: #a1a1aa !important;
+}
+
+/* Star Button & Palette Buttons */
+[data-theme="dark"] .starbtn {
+  background: #111114 !important;
+  border-color: #a16207 !important;
+  color: #facc15 !important;
+}
+[data-theme="dark"] .starbtn.on {
+  background: #3b2a05 !important;
+  border-color: #eab308 !important;
+  color: #fde047 !important;
+}
+[data-theme="dark"] #nav button {
+  background: #1c1c20 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #nav .nv {
+  background: #141418 !important;
+  color: #a1a1aa !important;
+  border: 1px solid #222224 !important;
+}
+
+/* Test Summary / Scorecard Screen Dark Mode */
+[data-theme="dark"] #done {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tw table {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tw th {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tw td {
+  border-color: #222224 !important;
+}
+[data-theme="dark"] tr:hover td {
+  background: #0f0f13 !important;
+}
+[data-theme="dark"] .tg {
+  background: #052e16 !important;
+  color: #86efac !important;
+}
+[data-theme="dark"] .ta {
+  background: #3b2003 !important;
+  color: #fde047 !important;
+}
+[data-theme="dark"] .tr {
+  background: #450a0a !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] .tn {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .flt select {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #ffffff !important;
+}
+
+/* =================== MOBILE RESPONSIVENESS (360PX TO 768PX) =================== */
+@media (max-width: 768px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 0 10px !important;
+    margin: 8px auto !important;
+  }
+  .side {
+    position: static !important;
+    order: -1 !important;
+    max-height: none !important;
+    padding: 10px !important;
+    margin-bottom: 12px !important;
+  }
+  #palh { display: none !important; }
+  #palbtn {
+    display: block !important;
+    min-height: 44px !important;
+    font-size: 15px !important;
+  }
+  .opts {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+  .o {
+    min-height: 52px !important;
+    padding: 12px 14px !important;
+  }
+  .num {
+    width: 100% !important;
+    max-width: 280px !important;
+    min-height: 44px !important;
+  }
+  .btn, .starbtn {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .foot {
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 10 !important;
+    padding: 10px 12px !important;
+    padding-bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    gap: 8px !important;
+  }
+  .qbody {
+    padding: 14px 14px 140px !important;
+  }
+  math {
+    max-width: 100% !important;
+  }
+  .stem p.mp {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  #nav button {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 14px !important;
+  }
+}
+
 </style></head><body>
 <div id="start" class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><a href="index.html" style="font-size:14px;color:var(--acc);text-decoration:none">&lsaquo; All chapters</a><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div><h2>Application of Derivatives</h2><div style="color:var(--mut)">JEE Main previous-year questions &middot; Maths &middot; timed practice</div>
 <div class="banner" style="border-color:#2e9b4f;background:#f2fbf5"><b>Study material</b> (do these before the practice)<br><a href="materials/Application%20of%20Derivatives%20Question%20Types.html">1. Question Types</a> &nbsp;&middot;&nbsp; <a href="materials/Application%20of%20Derivatives%20Type%20Notes.html">2. Type Notes</a></div><div id="pend" class="banner" hidden></div>
@@ -811,13 +1074,13 @@ function build(){$('nav').innerHTML='';qvs.forEach(function(q){q.hidden=true});v
 qvs.forEach(function(q){var n=q.dataset.n;q.querySelectorAll('.o').forEach(function(x){x.onclick=function(){if(locked(n)||(X[n]&&X[n].w.indexOf(x.dataset.l)>=0))return;if(S[n]==x.dataset.l)delete S[n];else S[n]=x.dataset.l;delete C[n];paint();save()}});
  var i=q.querySelector('.num');if(i)i.oninput=function(){if(locked(n)){i.value=S[n]||'';return}var v=i.value.trim();if(v)S[n]=v;else delete S[n];delete C[n];paint();save()}});
 qvs.forEach(function(q){var n=q.dataset.n,b=q.querySelector('.chkb'),sb=q.querySelector('.shb');
- if(b)b.onclick=function(){var rs=q.querySelector('.chkres');if(locked(n)||C[n])return;
+ if(b)b.onclick=function(){var rs=q.querySelector('.chkres');if(window.isCBT||locked(n)||C[n])return;
   if(!S[n]){rs.className='chkres h';rs.textContent=q.dataset.kind=='single'?'Choose an option first, then press Check answer.':'Type your answer first, then press Check answer.';return}
   var x=xs(n),ok=same(n,S[n]);x.k++;C[n]=ok?'r':'w';if(!x.f)x.f=C[n];
   if(x.k==1){if(ok)delete WR[n];else WR[n]=1;sv(KW,WR)}
   if(!ok&&q.dataset.kind=='single'&&x.w.indexOf(S[n])<0)x.w.push(S[n]);
   paint();save()};
- if(sb)sb.onclick=function(){if(C[n]!='w'||locked(n))return;if(!confirm('Show the answer?\n\nYou will not be able to change your answer to this question after this.'))return;xs(n).r=1;paint();save()}});
+ if(sb)sb.onclick=function(){if(window.isCBT||C[n]!='w'||locked(n))return;if(!confirm('Show the answer?\n\nYou will not be able to change your answer to this question after this.'))return;xs(n).r=1;paint();save()}});
 function go(n){qvs.forEach(function(q){q.hidden=(q.dataset.n!=n)});cur=n;V[n]=1;var i=NS.indexOf(n);
  var tt=TY[n];$('typeln').textContent=tt?('Type '+tt.id+': '+tt.name):'';$('qno').innerHTML='Q.'+n+'<small>('+(i+1)+' of '+NS.length+')</small>';$('qtime').textContent=fmt(T[n]||0);$('prev').disabled=i==0;paint();save();document.querySelector('.qbody').scrollTop=0;window.scrollTo(0,0)}
 function next(){var i=NS.indexOf(cur);if(i<NS.length-1)go(NS[i+1]);else paint()}
@@ -1222,6 +1485,10 @@ setInterval(tick,1000);
     var modeRad = document.querySelector('input[name=test_mode]:checked');
     window.isCBT = !modeRad || modeRad.value === 'cbt';
     document.body.classList.toggle('cbt-mode', window.isCBT);
+    var chkBoxes = document.querySelectorAll('.chk');
+    chkBoxes.forEach(function(el) { el.style.display = window.isCBT ? 'none' : ''; });
+    var sc = document.getElementById('savecur');
+    if (sc) sc.style.display = window.isCBT ? 'none' : '';
 
     var badge = document.getElementById('examModeBadge');
     if (badge) {
