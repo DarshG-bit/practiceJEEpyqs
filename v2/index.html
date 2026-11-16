@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="manifest.json" />
+    <title>JEE Main PYQ Practice Portal | Authentic NTA CBT Simulation</title>
+    <script type="module" crossorigin src="./assets/index-ORgA8C1Y.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BcPkq_QO.css">
+  </head>
+  <body class="bg-slate-50 dark:bg-black">
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(err => {
+            console.log('ServiceWorker registration error:', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

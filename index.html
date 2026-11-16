@@ -522,6 +522,80 @@ main {
 .subject-card.chemistry .subject-cta { background: var(--accent-chem-subtle); color: var(--accent-chem-text); }
 .subject-card.chemistry:hover .subject-cta { background: var(--accent-chem); color: #ffffff; }
 
+/* V2 Launch Banner */
+.v2-banner {
+  background: linear-gradient(90deg, #1e3a8a 0%, #312e81 50%, #064e3b 100%);
+  color: #ffffff;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.btn-v2-launch {
+  background: #ffffff;
+  color: #0f172a !important;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.15s ease;
+}
+.btn-v2-launch:hover {
+  transform: scale(1.04);
+}
+
+/* Underneath: Long Box with Option for All 3 */
+.full-exam-hero-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+  background-image: linear-gradient(to right, rgba(37,99,235,0.04), rgba(99,102,241,0.04), rgba(5,150,105,0.04));
+}
+[data-theme="dark"] .full-exam-hero-box {
+  background: var(--surface);
+  border-color: var(--border);
+  background-image: linear-gradient(to right, rgba(59,130,246,0.06), rgba(129,140,248,0.06), rgba(16,185,129,0.06));
+}
+.full-exam-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+.full-exam-info p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.full-exam-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+}
+.full-exam-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 /* ==========================================================================
    SECTION 3: CHAPTER PRACTICE BANKS (SEARCH & 27 CARDS)
    ========================================================================== */
@@ -1455,6 +1529,12 @@ main {
 </head>
 <body>
 
+<!-- V2 Launch Announcement Banner -->
+<div class="v2-banner">
+  <span>✨ <strong>Modern Web App (V2)</strong> with Full Offline PWA, Dexie DB &amp; NTA CBT Engine is live!</span>
+  <a href="v2/" class="btn-v2-launch">Open V2 Web App &rarr;</a>
+</div>
+
 <!-- Header -->
 <header>
   <div class="header-inner">
@@ -1629,6 +1709,24 @@ main {
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
+    </div>
+
+    <!-- Long Box Underneath: Option for All 3 Subjects (Simulate Full Exam) -->
+    <div class="full-exam-hero-box">
+      <div class="full-exam-info">
+        <span class="full-exam-tag">Full Syllabus Mock Exam</span>
+        <h3>Simulate All 3 Subjects Full CBT Exam</h3>
+        <p>Complete mock examination across Maths, Physics, and Chemistry (+4/−1 NTA scoring &bull; 75 Questions &bull; 180 Minutes)</p>
+      </div>
+      <div class="full-exam-actions">
+        <button id="btnLaunchFullExam" type="button" class="btn-apple primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Simulate All 3 Subjects Exam &rarr;</span>
+        </button>
+        <button id="btnScrollChapters" type="button" class="btn-apple">
+          Browse 27 Chapters &darr;
+        </button>
+      </div>
     </div>
   </section>
 
@@ -2493,6 +2591,28 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('./sw.js').catch(function(){});
   });
+}
+
+// Wire 3-Subject Full Exam Hero Button & Browse Button
+var btnFullEx = document.getElementById('btnLaunchFullExam');
+if (btnFullEx) {
+  btnFullEx.onclick = function() {
+    openSimModal();
+    // Select All subjects and 75 questions in modal
+    var allSubjPill = document.querySelector('.m-pill[data-field="subject"][data-val="all"]');
+    if (allSubjPill) allSubjPill.click();
+    var fullQcPill = document.querySelector('.m-pill[data-field="qcount"][data-val="50"]');
+    if (fullQcPill) fullQcPill.click();
+    var fullDurPill = document.querySelector('.m-pill[data-field="duration"][data-val="180"]');
+    if (fullDurPill) fullDurPill.click();
+  };
+}
+var btnScrollCh = document.getElementById('btnScrollChapters');
+if (btnScrollCh) {
+  btnScrollCh.onclick = function() {
+    var sec = document.getElementById('chapterBanksSection');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+  };
 }
 
 // Initial Render
