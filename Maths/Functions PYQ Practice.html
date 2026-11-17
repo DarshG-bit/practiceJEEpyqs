@@ -640,8 +640,10 @@ body.cbt-mode #savecur,
   background: #1c1c22 !important;
   border-color: #3b82f6 !important;
 }
+
+
 </style></head><body>
-<div id="start" class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><a href="index.html" style="font-size:14px;color:var(--acc);text-decoration:none">&lsaquo; All chapters</a><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div><h2>Functions</h2><div style="color:var(--mut)">JEE Main previous-year questions &middot; Maths &middot; timed practice</div>
+<div id="start" class="panel"><a href="index.html" style="font-size:14px;color:var(--acc);text-decoration:none">&lsaquo; All chapters</a><h2>Functions</h2><div style="color:var(--mut)">JEE Main previous-year questions &middot; Maths &middot; timed practice</div>
 <div class="banner" style="border-color:#2e9b4f;background:#f2fbf5"><b>Study material</b> (do these before the practice)<br><a href="materials/Functions%20Question%20Types.html">1. Question Types</a> &nbsp;&middot;&nbsp; <a href="materials/Functions%20Type%20Notes.html">2. Type Notes</a></div><div id="pend" class="banner" hidden></div>
 <label>Which question types do you want to practise?</label><div class="tbox" id="typelist"></div>
 <label>Test &amp; Practice Mode</label>
@@ -699,7 +701,8 @@ body.cbt-mode #savecur,
 <div class="tools2">Your attempts and starred questions are saved in this browser on this device. <button class="btn" id="exp">Save all progress to a file</button><button class="btn" id="imp">Load a progress file</button><input type="file" id="impf" accept=".json" hidden></div></div>
 
 <div id="exam" hidden>
-<div class="top"><a href="index.html" class="top-back-btn" id="examBackBtn" title="Back to chapter index">&larr; Back</a><h1>Functions</h1><span class="tm" id="tot"></span><button class="btn" id="submit">Submit</button></div>
+<div class="top"><a href="index.html" class="top-back-btn" id="examBackBtn" title="Back to chapter index">&larr; Back</a><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
+<h1>Functions</h1><span class="tm" id="tot"></span><button class="btn" id="submit">Submit</button></div>
 <div class="wrap"><div class="main">
 <div class="qhead"><b id="qno"></b><div class="qt"><button class="starbtn" id="star">&#9734; Star for later</button> &nbsp; Time on this question: <span id="qtime">00:00</span></div></div>
 <div class="qbody">
@@ -1812,6 +1815,40 @@ setInterval(tick,1000);
 
 })();
 </script>
+<script>
+(function(){
+  var bBtn = document.getElementById('examBackBtn');
+  if (bBtn) {
+    bBtn.onclick = function(e) {
+      if (document.body.classList.contains('cbt-mode') || (window.isCBT && !window.submitted)) {
+        if (confirm('Leaving CBT examination will automatically submit your test and finalize your score. Are you sure you want to submit and exit?')) {
+          var submitBtn = document.getElementById('submit');
+          if (submitBtn) submitBtn.click();
+          window.location.href = 'index.html';
+        } else {
+          e.preventDefault();
+          return false;
+        }
+      } else {
+        if (typeof sv === 'function' && typeof KS !== 'undefined' && typeof S !== 'undefined') {
+          try { sv(KS, S); } catch(err){}
+        }
+        window.location.href = 'index.html';
+      }
+    };
+  }
+  document.addEventListener('click', function(e) {
+    if (document.body.classList.contains('cbt-mode') || (window.isCBT && !window.submitted)) {
+      if (e.target.closest('.chk, .chkb, .shb, .chkres, button.chk, button.shb')) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        return false;
+      }
+    }
+  }, true);
+})();
+</script>
+<!-- cbt_interceptor -->
 
 <script>
 function initThemeToggle() {
@@ -1854,38 +1891,4 @@ if (document.readyState === 'loading') {
 }
 </script>
 
-<script>
-(function(){
-  var bBtn = document.getElementById('examBackBtn');
-  if (bBtn) {
-    bBtn.onclick = function(e) {
-      if (document.body.classList.contains('cbt-mode') || (window.isCBT && !window.submitted)) {
-        if (confirm('Leaving CBT examination will automatically submit your test and finalize your score. Are you sure you want to submit and exit?')) {
-          var submitBtn = document.getElementById('submit');
-          if (submitBtn) submitBtn.click();
-          window.location.href = 'index.html';
-        } else {
-          e.preventDefault();
-          return false;
-        }
-      } else {
-        if (typeof sv === 'function' && typeof KS !== 'undefined' && typeof S !== 'undefined') {
-          try { sv(KS, S); } catch(err){}
-        }
-        window.location.href = 'index.html';
-      }
-    };
-  }
-  document.addEventListener('click', function(e) {
-    if (document.body.classList.contains('cbt-mode') || (window.isCBT && !window.submitted)) {
-      if (e.target.closest('.chk, .chkb, .shb, .chkres, button.chk, button.shb')) {
-        e.stopImmediatePropagation();
-        e.preventDefault();
-        return false;
-      }
-    }
-  }, true);
-})();
-</script>
-<!-- cbt_interceptor -->
 </body></html>
