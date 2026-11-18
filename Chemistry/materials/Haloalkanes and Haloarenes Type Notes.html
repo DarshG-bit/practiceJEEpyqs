@@ -1,0 +1,827 @@
+<!DOCTYPE html><html lang="en"><head>
+<script>
+  (function(){
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Haloalkanes and Haloarenes - Type Notes</title><style>
+:root{--ink:#1d2433;--mut:#5a6478;--line:#dfe4ee;--bg:#eef1f7;--acc:#1f4e8c}*{box-sizing:border-box}
+body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.55}
+.top{background:var(--acc);color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}.top h1{margin:0;font-size:18px;flex:1;min-width:160px}.top a{color:#fff;font-size:14px}
+.page{max-width:900px;margin:14px auto;padding:16px 20px;background:#fff;border:1px solid var(--line);border-radius:10px}
+h1.t{font-size:22px;margin:4px 0 6px}h2{font-size:20px;color:var(--acc);margin:22px 0 6px}h3{font-size:18px;margin:16px 0 4px}
+p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
+.gt{border-collapse:collapse;width:100%;margin:8px 0;font-size:16px}.gt td{border:1px solid #c5ccda;padding:6px 8px;vertical-align:top}.gt tr:first-child td{background:#f1f5fb}
+.tw{overflow-x:auto}.btn{border:1px solid var(--acc);background:#fff;color:var(--acc);border-radius:6px;padding:7px 14px;font-size:14px;cursor:pointer;margin:4px 6px 4px 0}.btn.pri{background:var(--acc);color:#fff}
+.sm{font-size:14px;color:var(--mut)}a{color:var(--acc)}
+.typ{border-top:3px solid var(--acc);margin-top:26px;padding-top:4px}
+.ed{width:100%;min-height:54px;font-size:16px;border:1px solid #b9c3d6;border-radius:6px;padding:6px 8px;background:#fffef6;outline:none;white-space:pre-wrap;word-break:break-word;line-height:1.7}.ed.tall{min-height:130px}.gt .ed{min-height:120px}.gt td:first-child{width:36%}.gt td:first-child .ed{min-height:0}.ed:focus{border-color:#1f4e8c;box-shadow:0 0 0 2px #cfe0fa}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.3}.fr>span{display:block;min-width:.9em;padding:0 3px;min-height:1.2em}.fr>.n{border-bottom:1.5px solid #1d2433}.ed sub,.ed sup{line-height:0}
+#sym button.act{background:#ffd54a}#sym small{font-size:12px;font-weight:600;margin-left:2px}#sym .mf{display:inline-flex;flex-direction:column;vertical-align:middle;line-height:1;font-style:normal;font-size:12px}#sym .mf i{font-style:normal;padding:0 3px}#sym .mf i:first-child{border-bottom:1px solid #1d2433}#sym .w{min-width:52px;font-weight:700;background:#e8f0fc}
+.rev{display:none;border:2px solid #2e9b4f;background:#f2fbf5;border-radius:10px;padding:6px 14px;margin:12px 0}.rev.on{display:block}.rev h4{margin:6px 0;color:#1f7a3b}
+.how{background:#f7f9fd;border:1px solid var(--line);border-radius:8px;padding:6px 14px}
+@media(max-width:640px){.gt td:first-child{width:100%}.gt .ed{min-height:110px}.gt,.gt tbody,.gt tr,.gt td{display:block;width:100%}.gt tr{border:1px solid #c5ccda;margin:8px 0;border-radius:6px;overflow:hidden}.gt td{border:0;border-bottom:1px solid #e3e8f1}.gt td:first-child{background:#f1f5fb;font-weight:600}.gt tr:first-child td{background:inherit}.gt tr:first-child td:first-child{background:#f1f5fb}.page{padding:12px}}
+#sym{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#1f4e8c;padding:6px 8px;display:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}#sym.on{display:block}#sym button.w{padding:0 10px}#sym button{display:inline-block;min-width:40px;height:40px;margin:0 3px 0 0;font-size:18px;border:0;border-radius:6px;background:#fff;color:#1d2433;cursor:pointer}#sym>span{color:#cfe0fa;font-size:12px;margin-right:8px}@media(max-width:480px){#sym>span{display:none}}body.symon{padding-bottom:60px}
+
+/* --- Clean Print & Save as PDF Styling (Workbook layout) --- */
+@media print {
+  @page {
+    margin: 8mm 10mm;
+    size: A4 portrait;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 13.5pt !important;
+    line-height: 1.55 !important;
+    padding-bottom: 0 !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
+  .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
+  .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
+    display: none !important;
+  }
+
+  /* HEADINGS */
+  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
+  h2 { font-size: 15.5pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
+  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
+
+  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
+  body.one section.typ:not(.pick) {
+    display: none !important;
+  }
+  
+  /* CREATOR SKIP CLASS FOR MAIN PDF */
+  section.typ.pr-skip {
+    display: none !important;
+  }
+
+  /* EACH TYPE STARTS ON A NEW PAGE */
+  section.typ {
+    border-top: 2.5px solid #1f4e8c !important;
+    padding-top: 10px !important;
+    margin-top: 14px !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+  section.typ ~ section.typ {
+    break-before: page !important;
+    page-break-before: page !important;
+  }
+
+  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
+  .gt, table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin: 8px 0 !important;
+    font-size: 12.5pt !important;
+  }
+  .gt tr, tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .gt td, td, th {
+    border: 1.5px solid #64748b !important;
+    padding: 8px 10px !important;
+    font-size: 12.5pt !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .gt tr:first-child td, .gt td:first-child {
+    background: #f1f5fb !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+  }
+
+  /* EDITABLE BOXES / USER WRITTEN NOTES: SPACIOUS WORKBOOK FEEL */
+  .ed {
+    border: 1.5px solid #64748b !important;
+    background: #fff !important;
+    color: #000 !important;
+    min-height: 85px !important;
+    font-size: 13pt !important;
+    line-height: 1.6 !important;
+    padding: 10px 12px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    white-space: pre-wrap !important;
+    border-radius: 6px !important;
+  }
+}
+
+
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
+:root {
+  --bg-base: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-input: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+}
+
+[data-theme="dark"] {
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
+  --accb: #3b82f6;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
+}
+
+[data-theme="dark"] body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] a {
+  color: #60a5fa !important;
+}
+
+/* Card descendant links must preserve card layout & colors, never default link style */
+a.subject-card,
+a.subject-card *,
+a.ch-card,
+a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] a.subject-card,
+[data-theme="dark"] a.subject-card *,
+[data-theme="dark"] a.ch-card,
+[data-theme="dark"] a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] .subject-card-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .subject-desc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .meta-chip {
+  background: #111114 !important;
+  border: 1px solid #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .ch-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .ch-meta {
+  color: #a1a1aa !important;
+}
+
+/* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
+[data-theme="dark"] a.act-btn.primary,
+[data-theme="dark"] .act-btn.primary,
+[data-theme="dark"] a.btn.pri,
+[data-theme="dark"] .btn.pri,
+[data-theme="dark"] .btn-cbt-launch,
+[data-theme="dark"] .btn-modal-start,
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
+  color: #ffffff !important;
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] a.act-btn.primary:hover,
+[data-theme="dark"] .act-btn.primary:hover,
+[data-theme="dark"] a.btn.pri:hover,
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
+.panel {
+  max-width: 1040px !important;
+  margin: 24px auto !important;
+  padding: 28px 36px !important;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+[data-theme="dark"] .panel {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
+}
+
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
+/* Visible Typing Boxes in Dark Mode (solves Pic 6) */
+[data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input.num,
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 12px !important;
+}
+[data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] input[type="number"]:focus,
+[data-theme="dark"] input.num:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+}
+
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
+}
+
+[data-theme="dark"] .o {
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .o:hover {
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .o.sel {
+  background: rgba(37, 99, 235, 0.18) !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
+[data-theme="dark"] .att-card {
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .att-card:hover {
+  border-color: #2c2c32 !important;
+}
+[data-theme="dark"] .att-badge.cbt {
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
+}
+[data-theme="dark"] .att-badge.practice {
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+[data-theme="dark"] .att-date {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .att-stats-row {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .att-actions {
+  border-top-color: #222224 !important;
+}
+[data-theme="dark"] .att-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .att-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .att-btn.continue {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
+}
+[data-theme="dark"] .att-btn.review {
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .att-btn.delete {
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
+}
+[data-theme="dark"] .btn-export-all {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn-export-all:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .sub-pill-btn {
+  color: #93c5fd !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .sub-pill-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Theme Toggle Button Outline Styling (solves Pic 17) */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.theme-btn:active {
+  transform: scale(0.98);
+}
+[data-theme="dark"] .theme-btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Question Sheet Container & Dark Mode (Pic 4) */
+[data-theme="dark"] .main,
+[data-theme="dark"] .side,
+[data-theme="dark"] .qhead,
+[data-theme="dark"] .qbody,
+[data-theme="dark"] .foot,
+[data-theme="dark"] .wrap {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead b,
+[data-theme="dark"] #qno,
+[data-theme="dark"] .stem,
+[data-theme="dark"] .stem p {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .src,
+[data-theme="dark"] .qhead .qt,
+[data-theme="dark"] #qtime {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .starbtn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #fbbf24 !important;
+}
+[data-theme="dark"] .top {
+  background: #0a0a0c !important;
+  border-bottom: 1px solid #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+/* Materials & Type Notes (Light + Dark Mode Fixes - Pic 2 & Pic 7) */
+.how {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.how p, .how b {
+  color: #0f172a !important;
+}
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt td,
+[data-theme="dark"] .gt th {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #18181c !important;
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #111114 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] details {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .work h3,
+[data-theme="dark"] .work p,
+[data-theme="dark"] .work i {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .rev {
+  background: #061c0d !important;
+  border-color: #16a34a !important;
+  color: #dcfce7 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #4ade80 !important;
+}
+[data-theme="dark"] .typ h2 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* CBT Mode Answer Checking & Solutions Suppressor (Pic 3) */
+body.cbt-mode .chk,
+body.cbt-mode .chkb,
+body.cbt-mode .shb,
+body.cbt-mode .chkres,
+body.cbt-mode #savecur,
+.cbt-mode .chk,
+.cbt-mode .chkb,
+.cbt-mode .shb,
+.cbt-mode .chkres {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Header Top Back Button */
+.top-back-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-right: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.top-back-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="dark"] .top-back-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .top-back-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #3b82f6 !important;
+}
+
+
+</style></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
+<h1>Haloalkanes and Haloarenes &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Haloalkanes%20and%20Haloarenes%20PYQ%20Practice.html">Back to practice</a><a href="Haloalkanes%20and%20Haloarenes%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> HALOALKANES AND HALOARENES – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Nucleophilic substitution: SN1 and SN2 reactivity, mechanism, kinetics and stereochemistry</a></li><li><a href="#T2">Type 2. Preparation of haloalkanes: halogenation, addition of HX/X₂ and counting isomers</a></li><li><a href="#T3">Type 3. Substitution by nucleophiles: ambident ions (CN⁻/NC⁻, NO₂⁻), ethers, multi-step products</a></li><li><a href="#T4">Type 4. Elimination: dehydrohalogenation, Zaitsev product and substitution versus elimination</a></li><li><a href="#T5">Type 5. Grignard reagents, Wurtz–Fittig and named reactions</a></li><li><a href="#T6">Type 6. Haloarenes: electrophilic substitution and Friedel–Crafts reactions</a></li><li><a href="#T7">Type 7. Haloarenes: nucleophilic substitution, Sandmeyer and synthesis</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Nucleophilic substitution: SN1 and SN2 reactivity, mechanism, kinetics and stereochemistry <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">30 questions on the sheet (Q1–30)  ·  Sub-topics: A1 reactivity orders and the AgNO<sub>3</sub> test · A2 statements on mechanism, solvent and nucleophile · A3 stereochemistry</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>S<sub>N</sub>2</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>S<sub>N</sub>1</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Leaving group</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Solvent</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Not reactive</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Precipitate test</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why do 3° halides fail in S<sub>N</sub>2?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>Why is benzyl chloride reactive in both S<sub>N</sub>1 and S<sub>N</sub>2?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>How does an EWG (NO<sub>2</sub>) or EDG (OMe) on the ring change the S<sub>N</sub>1 rate of a benzyl chloride?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>Why does a lone pair on N next to the C–Cl bond speed up hydrolysis?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Fastest S<sub>N</sub>2&#x27;, &#x27;decreasing order towards S<sub>N</sub>1&#x27; or &#x27;will not show S<sub>N</sub>1&#x27; is written in the stem.</p><p style="padding-left:14px">•  A halide is treated with AgNO<sub>3</sub> and the one that gives a precipitate (most readily) is asked.</p><p style="padding-left:14px">•  Two statements or an assertion and a reason are given on solvent, nucleophile, racemisation or inversion.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>S<sub>N</sub>2</p></td><td><p>rate =<i>k</i>[RX][Nu], one step, inversion;  <math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub><mi mathvariant="normal">X</mi><mo>&gt;</mo><msup><mrow><mn>1</mn></mrow><mrow><mo>∘</mo></mrow></msup><mo>&gt;</mo><msup><mrow><mn>2</mn></mrow><mrow><mo>∘</mo></mrow></msup><mo>≫</mo><msup><mrow><mn>3</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math></p></td></tr><tr><td><p>S<sub>N</sub>1</p></td><td><p>rate =<i>k</i>[RX], two steps, carbocation, racemisation;  3°&gt;2°&gt;1°; allyl, benzyl high</p></td></tr><tr><td><p>Leaving group</p></td><td><p>I<sup>−</sup>&gt;Br<sup>−</sup>&gt;Cl<sup>−</sup>&gt;F<sup>−</sup> (weaker base = better leaving group)</p></td></tr><tr><td><p>Solvent</p></td><td><p>polar protic favours S<sub>N</sub>1;  polar aprotic (acetone, DMF) favours S<sub>N</sub>2</p></td></tr><tr><td><p>Not reactive</p></td><td><p>vinyl, aryl and bridgehead halides give no S<sub>N</sub>1 or S<sub>N</sub>2</p></td></tr><tr><td><p>Precipitate test</p></td><td><p>RX + AgNO<sub>3</sub> → AgX: fast when a stable carbocation forms</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why do 3° halides fail in S<sub>N</sub>2?</p></td><td><p>Three alkyl groups block back-side attack on the carbon, so the transition state is too crowded.</p></td></tr><tr><td><p>Why is benzyl chloride reactive in both S<sub>N</sub>1 and S<sub>N</sub>2?</p></td><td><p>The benzyl cation is stabilised by resonance, and the sp<sup>2</sup>-like transition state is stabilised by the ring.</p></td></tr><tr><td><p>How does an EWG (NO<sub>2</sub>) or EDG (OMe) on the ring change the S<sub>N</sub>1 rate of a benzyl chloride?</p></td><td><p>EDG at para stabilises the cation (faster); EWG destabilises it (slower).</p></td></tr><tr><td><p>Why does a lone pair on N next to the C–Cl bond speed up hydrolysis?</p></td><td><p>The lone pair attacks intramolecularly (neighbouring-group participation) to form a cyclic ion, which water then opens.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using the S<sub>N</sub>2 order for an S<sub>N</sub>1 question.</p><p style="padding-left:14px">•  Treating a vinyl or aryl chloride as an alkyl halide.</p><p style="padding-left:14px">•  Saying S<sub>N</sub>1 always gives complete racemisation (ion pairs give some inversion).</p><p style="padding-left:14px">•  Choosing a polar protic solvent for S<sub>N</sub>2 speed.</p></div></section>
+<section class="typ" id="T2" data-k="2"><h2>Type 2. Preparation of haloalkanes: halogenation, addition of HX/X₂ and counting isomers <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">19 questions on the sheet (Q31–49)  ·  Sub-topics: B1 free-radical halogenation and counting · B2 reagents and sequences · B3 addition and other conversions</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_13"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Radical halogenation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_14"></div></td></tr><tr><td><p>Counting isomers</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div></td></tr><tr><td><p>Markovnikov</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>From alcohols</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr><tr><td><p>Toluene</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></td></tr><tr><td><p>Boiling point</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_19"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is bromination more selective than chlorination?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_20"></div></td></tr><tr><td><p>How many monochloro derivatives does 2,2,5,5-tetramethylhexane give?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_21"></div></td></tr><tr><td><p>Why does a peroxide reverse the addition of HBr only?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_22"></div></td></tr><tr><td><p>Why is side-chain halogenation done with light, ring halogenation with Fe?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_23"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_24"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  <math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">l</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>/</mo><mi>h</mi><mi>ν</mi></mrow></math> or <math displaystyle="true"><mrow><mi mathvariant="normal">B</mi><msub><mrow><mi mathvariant="normal">r</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>/</mo><mi>h</mi><mi>ν</mi></mrow></math> is used and &#x27;major product&#x27; or &#x27;number of monochloro derivatives&#x27; is asked.</p><p style="padding-left:14px">•  An alkene is treated with HX, HOX or X<sub>2</sub>, or an alcohol with SOCl<sub>2</sub>, PCl<sub>5</sub> or HX.</p><p style="padding-left:14px">•  A multi-step sequence starts from toluene or an alkane and ends at a halo-acid or halo-compound.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Radical halogenation</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>−</mo><mi mathvariant="normal">H</mi><mo>+</mo><msub><mrow><mi mathvariant="normal">X</mi></mrow><mrow><mn>2</mn></mrow></msub><mover><mrow><mo>→</mo></mrow><mrow><mi mathvariant="normal">h</mi><mi mathvariant="normal">ν</mi></mrow></mover><mi mathvariant="normal">R</mi><mo>−</mo><mi mathvariant="normal">X</mi><mo>+</mo><mi mathvariant="normal">H</mi><mi mathvariant="normal">X</mi></mrow></math>;  Br<sub>2</sub>: 3°&gt;2°&gt;1° (selective), Cl<sub>2</sub> less selective</p></td></tr><tr><td><p>Counting isomers</p></td><td><p>number of non-equivalent H sets, then add enantiomers and cis/trans of each product</p></td></tr><tr><td><p>Markovnikov</p></td><td><p>CH<sub>3</sub>CH=CH<sub>2</sub>+HBr→ CH<sub>3</sub>CHBrCH<sub>3</sub>; with peroxide: CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Br</p></td></tr><tr><td><p>From alcohols</p></td><td><p>ROH+SOCl<sub>2</sub>→ RCl+SO<sub>2</sub>+HCl;  HX/ZnCl<sub>2</sub> (Lucas): 3°&gt;2°&gt;1°</p></td></tr><tr><td><p>Toluene</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">l</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>/</mo><mi>h</mi><mi>ν</mi></mrow></math> → benzyl chloride;  Cl<sub>2</sub>/Fe → o/p chlorotoluene</p></td></tr><tr><td><p>Boiling point</p></td><td><p>RI &gt; RBr &gt; RCl &gt; RF;  straight chain &gt; branched</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is bromination more selective than chlorination?</p></td><td><p>The H-abstraction by Br· is endothermic and has a late transition state, so it follows the stability of the radical.</p></td></tr><tr><td><p>How many monochloro derivatives does 2,2,5,5-tetramethylhexane give?</p></td><td><p>Find the sets of equivalent H: terminal CH<sub>3</sub> groups and the ring of CH<sub>2</sub> groups; then check for chirality.</p></td></tr><tr><td><p>Why does a peroxide reverse the addition of HBr only?</p></td><td><p>The radical chain adds Br· first to give the more stable radical; HCl and HI do not sustain the chain.</p></td></tr><tr><td><p>Why is side-chain halogenation done with light, ring halogenation with Fe?</p></td><td><p>Light gives radicals that attack the benzylic C–H; FeCl<sub>3</sub> makes an electrophile that attacks the ring.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Forgetting stereoisomers when counting monochloro products.</p><p style="padding-left:14px">•  Applying Markovnikov addition when a peroxide is present.</p><p style="padding-left:14px">•  Halogenating the ring when light and heat are given (it is the side chain).</p><p style="padding-left:14px">•  Using Cl<sub>2</sub> selectivity where Br<sub>2</sub> is given.</p></div></section>
+<section class="typ" id="T3" data-k="3"><h2>Type 3. Substitution by nucleophiles: ambident ions (CN⁻/NC⁻, NO₂⁻), ethers, multi-step products <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">16 questions on the sheet (Q50–65)  ·  Sub-topics: C1 ambident nucleophiles · C2 multi-step substitution sequences</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_25"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>KCN</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_26"></div></td></tr><tr><td><p>AgCN</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_27"></div></td></tr><tr><td><p>KNO<sub>2</sub></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_28"></div></td></tr><tr><td><p>AgNO<sub>2</sub></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_29"></div></td></tr><tr><td><p>Williamson</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_30"></div></td></tr><tr><td><p>Nitrile hydrolysis</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_31"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does KCN give R–CN but AgCN gives R–NC?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_32"></div></td></tr><tr><td><p>Why are 3° halides unsuitable for Williamson ether synthesis?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_33"></div></td></tr><tr><td><p>What does excess NH<sub>3</sub> do with an alkyl halide?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_34"></div></td></tr><tr><td><p>How is a ring formed from a halo-compound with a nucleophilic site?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_35"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_36"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 3</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  KCN, AgCN, KNO<sub>2</sub> or AgNO<sub>2</sub> appears with an alkyl halide, or &#x27;isocyanide&#x27; is mentioned.</p><p style="padding-left:14px">•  An alkyl halide reacts with an alkoxide, ammonia or an anion and the structure of the product is asked.</p><p style="padding-left:14px">•  A dihalide or halo-compound is converted in two or three steps, and a count (π electrons, atoms) is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>KCN</p></td><td><p>RX+KCN→ R−CN (nitrile, ionic salt attacks by C)</p></td></tr><tr><td><p>AgCN</p></td><td><p>RX+AgCN→ R−NC (isocyanide, covalent salt attacks by N)</p></td></tr><tr><td><p>KNO<sub>2</sub></p></td><td><p>RX+KNO<sub>2</sub>→ R−ONO (alkyl nitrite)</p></td></tr><tr><td><p>AgNO<sub>2</sub></p></td><td><p>RX+AgNO<sub>2</sub>→ R−NO<sub>2</sub> (nitroalkane)</p></td></tr><tr><td><p>Williamson</p></td><td><p>RX+R&#x27;ONa→ R−O−R&#x27; (1° RX only; 3° RX eliminates)</p></td></tr><tr><td><p>Nitrile hydrolysis</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mo>−</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">N</mi><mover><mrow><mo>→</mo></mrow><mrow><msub><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mn>3</mn></mrow></msub><msup><mrow><mi mathvariant="normal">O</mi></mrow><mrow><mo>+</mo></mrow></msup></mrow></mover><mi mathvariant="normal">R</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">H</mi></mrow></math> (one more carbon than RX)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does KCN give R–CN but AgCN gives R–NC?</p></td><td><p>KCN is ionic, so the carbon (more nucleophilic site) attacks. AgCN is covalent, so only the N lone pair is free to attack.</p></td></tr><tr><td><p>Why are 3° halides unsuitable for Williamson ether synthesis?</p></td><td><p>The alkoxide is a strong base and removes a β-H, so the alkene forms by E2.</p></td></tr><tr><td><p>What does excess NH<sub>3</sub> do with an alkyl halide?</p></td><td><p>It suppresses further alkylation, so the primary amine is the main product.</p></td></tr><tr><td><p>How is a ring formed from a halo-compound with a nucleophilic site?</p></td><td><p>Intramolecular S<sub>N</sub>2 closes 5- and 6-membered rings fastest.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Swapping the products of KCN and AgCN.</p><p style="padding-left:14px">•  Writing nitroalkane for KNO<sub>2</sub> (it is the nitrite ester) and nitrite ester for AgNO<sub>2</sub>.</p><p style="padding-left:14px">•  Forgetting the extra carbon of the nitrile in counting questions.</p><p style="padding-left:14px">•  Using a 3° halide in an ether synthesis.</p></div></section>
+<section class="typ" id="T4" data-k="4"><h2>Type 4. Elimination: dehydrohalogenation, Zaitsev product and substitution versus elimination <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">15 questions on the sheet (Q66–80)  ·  Sub-topics: D1 Zaitsev product, E1/E2 orders and counting alkenes · D2 substitution versus elimination</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_37"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>E2</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_38"></div></td></tr><tr><td><p>E1</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_39"></div></td></tr><tr><td><p>Zaitsev</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_40"></div></td></tr><tr><td><p>Hofmann</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_41"></div></td></tr><tr><td><p>Conditions</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_42"></div></td></tr><tr><td><p>Ratio</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_43"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does alcoholic KOH favour elimination?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_44"></div></td></tr><tr><td><p>Why does t-BuOK give the less substituted alkene?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_45"></div></td></tr><tr><td><p>How do you count alkenes from a halide?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_46"></div></td></tr><tr><td><p>Why does a 3° halide with a weak base still eliminate?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_47"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_48"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 4</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  Alcoholic KOH, NaOEt or t-BuOK is given with a halide and &#x27;major product&#x27; is asked.</p><p style="padding-left:14px">•  Aqueous and alcoholic KOH are contrasted, or <i>k</i><i><sub>s</sub></i>/<i>k</i><i><sub>e</sub></i> (the ratio of substitution to elimination) is mentioned.</p><p style="padding-left:14px">•  &#x27;Maximum number of alkenes&#x27; or &#x27;order of reactivity towards dehydrohalogenation&#x27; is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>E2</p></td><td><p>one step, rate =<i>k</i>[RX][B], anti-periplanar H and X</p></td></tr><tr><td><p>E1</p></td><td><p>two steps via carbocation, rate =<i>k</i>[RX];  3°&gt;2°&gt;1°</p></td></tr><tr><td><p>Zaitsev</p></td><td><p>the more substituted alkene is the major product (small bases)</p></td></tr><tr><td><p>Hofmann</p></td><td><p>the less substituted alkene with bulky bases (t-BuOK) or when F is the leaving group</p></td></tr><tr><td><p>Conditions</p></td><td><p>aq. KOH → ROH;  alc. KOH, Δ → alkene</p></td></tr><tr><td><p>Ratio</p></td><td><p>μ=<i>k</i><i><sub>s</sub></i>/<i>k</i><i><sub>e</sub></i> is larger for a small nucleophile (EtO⁻) than for a bulky one (t-BuO⁻)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does alcoholic KOH favour elimination?</p></td><td><p>In alcohol, RO⁻ is a stronger base and is less solvated than OH⁻ in water, so it removes the β-H.</p></td></tr><tr><td><p>Why does t-BuOK give the less substituted alkene?</p></td><td><p>The bulky base reaches the more accessible, less hindered β-H.</p></td></tr><tr><td><p>How do you count alkenes from a halide?</p></td><td><p>List every β-carbon with H, draw each alkene and add cis/trans isomers.</p></td></tr><tr><td><p>Why does a 3° halide with a weak base still eliminate?</p></td><td><p>The carbocation (E1) loses a β-H easily, and substitution is blocked by steric crowding.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Giving the substitution product with alcoholic KOH.</p><p style="padding-left:14px">•  Applying Zaitsev when a bulky base is used.</p><p style="padding-left:14px">•  Missing cis/trans isomers when counting alkenes.</p><p style="padding-left:14px">•  Forgetting that fluoride as the leaving group gives the Hofmann product.</p></div></section>
+<section class="typ" id="T5" data-k="5"><h2>Type 5. Grignard reagents, Wurtz–Fittig and named reactions <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">12 questions on the sheet (Q81–92)  ·  Sub-topics: E1 Grignard reagents · E2 Wurtz, Fittig, Sandmeyer, Finkelstein and Swarts reactions</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_49"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Grignard</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_50"></div></td></tr><tr><td><p>With carbonyls</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_51"></div></td></tr><tr><td><p>Wurtz</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_52"></div></td></tr><tr><td><p>Fittig</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_53"></div></td></tr><tr><td><p>Finkelstein</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_54"></div></td></tr><tr><td><p>Sandmeyer</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_55"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why must a Grignard reagent be made in dry ether?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_56"></div></td></tr><tr><td><p>Why do compounds with –OH, –COOH or –NH₂ not form a Grignard reagent?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_57"></div></td></tr><tr><td><p>How many halides RBr give 2-methylbutane through Mg and H<sub>2</sub>O?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_58"></div></td></tr><tr><td><p>Why does a dihalide with excess Mg give a di-Grignard?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_59"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_60"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 5</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  Mg in dry ether or THF is the first reagent, or D<sub>2</sub>O / H<sub>2</sub>O follows an organometallic step.</p><p style="padding-left:14px">•  Na in dry ether is used with one or two halides.</p><p style="padding-left:14px">•  A List I – List II match of reactions with their names is given.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Grignard</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">X</mi><mo>+</mo><mi mathvariant="normal">M</mi><mi mathvariant="normal">g</mi><mover><mrow><mo>→</mo></mrow><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">y</mi><mspace width="0.3em"></mspace><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi></mrow></mover><mi mathvariant="normal">R</mi><mi mathvariant="normal">M</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">X</mi></mrow></math>;  RMgX+H<sub>2</sub>O→ RH (D<sub>2</sub>O gives RD)</p></td></tr><tr><td><p>With carbonyls</p></td><td><p>HCHO → 1° alcohol;  RCHO → 2° alcohol;  ketone or ester → 3° alcohol;  CO<sub>2</sub> → RCOOH</p></td></tr><tr><td><p>Wurtz</p></td><td><p>2RX+2Na→ R−R+2NaX</p></td></tr><tr><td><p>Fittig</p></td><td><p>2ArX+2Na→ Ar−Ar+2NaX;  Wurtz–Fittig: ArX+RX+2Na→ Ar−R</p></td></tr><tr><td><p>Finkelstein</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mo>+</mo><mi mathvariant="normal">N</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">I</mi><mover><mrow><mo>→</mo></mrow><mrow><mi mathvariant="normal">a</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi></mrow></mover><mi mathvariant="normal">R</mi><mi mathvariant="normal">I</mi><mo>+</mo><mi mathvariant="normal">N</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi></mrow></math></p></td></tr><tr><td><p>Sandmeyer</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><msubsup><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mn>2</mn></mrow><mrow><mo>+</mo></mrow></msubsup><msup><mrow><mi mathvariant="normal">X</mi></mrow><mrow><mo>−</mo></mrow></msup><mover><mrow><mo>→</mo></mrow><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">X</mi></mrow></mover><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">X</mi><mo>+</mo><msub><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math>;  Gattermann: Cu powder + HX</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why must a Grignard reagent be made in dry ether?</p></td><td><p>RMgX is a strong base and is destroyed by water or any acidic H, giving the alkane.</p></td></tr><tr><td><p>Why do compounds with –OH, –COOH or –NH₂ not form a Grignard reagent?</p></td><td><p>The acidic H protonates the carbanion as soon as it forms.</p></td></tr><tr><td><p>How many halides RBr give 2-methylbutane through Mg and H<sub>2</sub>O?</p></td><td><p>Each RBr whose carbon skeleton equals 2-methylbutane: place Br on every non-equivalent carbon.</p></td></tr><tr><td><p>Why does a dihalide with excess Mg give a di-Grignard?</p></td><td><p>Each C–X bond reacts separately, so two equivalents of Mg are used.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using aqueous conditions for a Grignard reaction.</p><p style="padding-left:14px">•  Mixing up Wurtz (alkyl) and Fittig (aryl) coupling.</p><p style="padding-left:14px">•  Forgetting that D₂O puts D on the carbon that carried Mg.</p><p style="padding-left:14px">•  Writing the Sandmeyer product as ArH.</p></div></section>
+<section class="typ" id="T6" data-k="6"><h2>Type 6. Haloarenes: electrophilic substitution and Friedel–Crafts reactions <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">10 questions on the sheet (Q93–102)  ·  Sub-topics: F1 reactivity orders · F2 Friedel–Crafts and other electrophilic reactions</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_61"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Directing effect</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_62"></div></td></tr><tr><td><p>Reactivity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_63"></div></td></tr><tr><td><p>Friedel–Crafts</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_64"></div></td></tr><tr><td><p>Fails when</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_65"></div></td></tr><tr><td><p>Product</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_66"></div></td></tr><tr><td><p>Intramolecular</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_67"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does Cl deactivate the ring yet direct o/p?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_68"></div></td></tr><tr><td><p>Why does Friedel–Crafts fail on aniline and nitrobenzene?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_69"></div></td></tr><tr><td><p>How do you decide which ring position closes in an intramolecular reaction?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_70"></div></td></tr><tr><td><p>Why is p- favoured over o- in the acylation of chlorobenzene?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_71"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_72"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 6</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Order of reactivity in electrophilic substitution&#x27; of chlorobenzene, toluene, nitrobenzene and benzene is asked.</p><p style="padding-left:14px">•  AlCl<sub>3</sub> with an alkyl or acyl halide is used on a substituted benzene ring.</p><p style="padding-left:14px">•  A halo-arene bearing a side chain with a halide is heated with AlCl<sub>3</sub> (intramolecular ring closure).</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Directing effect</p></td><td><p>–X: deactivating but o/p directing (−<i>I</i>&gt;+<i>M</i>)</p></td></tr><tr><td><p>Reactivity</p></td><td><p>OMe, CH<sub>3</sub>&gt; benzene &gt;Cl&gt;NO<sub>2</sub>, COR</p></td></tr><tr><td><p>Friedel–Crafts</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">H</mi><mo>+</mo><mi mathvariant="normal">R</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mover><mrow><mo>→</mo></mrow><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">l</mi></mrow><mrow><mn>3</mn></mrow></msub></mrow></mover><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">R</mi></mrow></math>;  <math displaystyle="true"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">H</mi><mo>+</mo><mi mathvariant="normal">R</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mover><mrow><mo>→</mo></mrow><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">C</mi><msub><mrow><mi mathvariant="normal">l</mi></mrow><mrow><mn>3</mn></mrow></msub></mrow></mover><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">R</mi></mrow></math></p></td></tr><tr><td><p>Fails when</p></td><td><p>the ring has NO<sub>2</sub>, CONH<sub>2</sub>, NH<sub>2</sub> or other strongly deactivating groups</p></td></tr><tr><td><p>Product</p></td><td><p>para is major; ortho is hindered</p></td></tr><tr><td><p>Intramolecular</p></td><td><p>RCl on a side chain + AlCl<sub>3</sub> closes a 5- or 6-membered ring</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does Cl deactivate the ring yet direct o/p?</p></td><td><p>Its inductive pull makes the ring electron-poor overall, but its lone pair stabilises the o/p intermediate by resonance.</p></td></tr><tr><td><p>Why does Friedel–Crafts fail on aniline and nitrobenzene?</p></td><td><p>The NH₂ group binds AlCl<sub>3</sub> and NO<sub>2</sub> deactivates the ring too strongly.</p></td></tr><tr><td><p>How do you decide which ring position closes in an intramolecular reaction?</p></td><td><p>Count the atoms: 5- and 6-membered rings form, and the cation formed from the more substituted C–Cl is attacked.</p></td></tr><tr><td><p>Why is p- favoured over o- in the acylation of chlorobenzene?</p></td><td><p>The bulky acylium ion avoids the crowded position next to Cl.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Treating Cl as an activating group.</p><p style="padding-left:14px">•  Placing the acyl group meta in chlorobenzene.</p><p style="padding-left:14px">•  Forgetting carbocation rearrangement in Friedel–Crafts alkylation.</p><p style="padding-left:14px">•  Using Friedel–Crafts on a strongly deactivated ring.</p></div></section>
+<section class="typ" id="T7" data-k="7"><h2>Type 7. Haloarenes: nucleophilic substitution, Sandmeyer and synthesis <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">9 questions on the sheet (Q103–111)  ·  Sub-topics: G1 reactivity, assertion–reason and statements · G2 Sandmeyer, Dow process and mole calculations</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_73"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>SNAr</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_74"></div></td></tr><tr><td><p>Dow process</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_75"></div></td></tr><tr><td><p>Sandmeyer</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_76"></div></td></tr><tr><td><p>Phenol + Br<sub>2</sub></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_77"></div></td></tr><tr><td><p>Benzyne</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_78"></div></td></tr><tr><td><p>Moles</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_79"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is chlorobenzene inert to S<sub>N</sub> under ordinary conditions?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_80"></div></td></tr><tr><td><p>Why does a meta NO<sub>2</sub> not help?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_81"></div></td></tr><tr><td><p>Why are halobenzenes made through the diazonium route and not directly?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_82"></div></td></tr><tr><td><p>How is the mass of a final product found in a sequence?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_83"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_84"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 7</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Reactivity towards nucleophilic substitution with aq. NaOH&#x27; of nitro-chlorobenzenes is asked.</p><p style="padding-left:14px">•  A halobenzene is converted to a phenol or a diazonium salt is converted to ArX.</p><p style="padding-left:14px">•  A reaction of phenol with Br<sub>2</sub> is asked, or a mass is asked from a sequence of reactions.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>SNAr</p></td><td><p>o/p NO<sub>2</sub> groups make ArCl react with OH<sup>−</sup>;  rate rises with the number of o/p NO<sub>2</sub></p></td></tr><tr><td><p>Dow process</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mo>+</mo><mi mathvariant="normal">N</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">H</mi><mspace width="0.3em"></mspace><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>623</mn><mspace width="0.3em"></mspace><mi mathvariant="normal">K</mi><mo>,</mo><mspace width="0.3em"></mspace><mn>300</mn><mspace width="0.3em"></mspace><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">m</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>→</mo><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">N</mi><mi mathvariant="normal">a</mi><mover><mrow><mo>→</mo></mrow><mrow><msup><mrow><mi mathvariant="normal">H</mi></mrow><mrow><mo>+</mo></mrow></msup></mrow></mover><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">H</mi></mrow></math></p></td></tr><tr><td><p>Sandmeyer</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><msubsup><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mn>2</mn></mrow><mrow><mo>+</mo></mrow></msubsup><mover><mrow><mo>→</mo></mrow><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">X</mi></mrow></mover><mi mathvariant="normal">A</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">X</mi><mspace width="0.3em"></mspace><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">X</mi><mo>=</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mo>,</mo><mi mathvariant="normal">B</mi><mi mathvariant="normal">r</mi><mo>,</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">N</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>;  F, I and At are not made this way</p></td></tr><tr><td><p>Phenol + Br<sub>2</sub></p></td><td><p>water → 2,4,6-tribromophenol;  CS<sub>2</sub>, low T → p-bromophenol</p></td></tr><tr><td><p>Benzyne</p></td><td><p>ArCl+NaNH<sub>2</sub>→ ArNH<sub>2</sub> (elimination–addition)</p></td></tr><tr><td><p>Moles</p></td><td><p><i>n</i>=<i>m</i>/<i>M</i> and the ratio of the equation, then convert back to mass</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why is chlorobenzene inert to S<sub>N</sub> under ordinary conditions?</p></td><td><p>The C–Cl bond has partial double-bond character (resonance) and the carbon is sp<sup>2</sup>, so back-side attack is impossible.</p></td></tr><tr><td><p>Why does a meta NO<sub>2</sub> not help?</p></td><td><p>It cannot delocalise the negative charge of the Meisenheimer intermediate onto its oxygen.</p></td></tr><tr><td><p>Why are halobenzenes made through the diazonium route and not directly?</p></td><td><p>The ring is deactivated and the position is controlled by the amine, so Sandmeyer places the halogen exactly.</p></td></tr><tr><td><p>How is the mass of a final product found in a sequence?</p></td><td><p>Convert the given mass to moles, follow the 1:1 steps, then multiply by the molar mass of the final product.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Assuming meta nitro groups activate the ring.</p><p style="padding-left:14px">•  Writing Sandmeyer products for iodine and fluorine.</p><p style="padding-left:14px">•  Using the molar mass of the wrong compound in a mass calculation.</p><p style="padding-left:14px">•  Forgetting that phenol with Br<sub>2</sub> water gives the tribromo product.</p></div></section></div><div id="sym" class="noprint"><span>Insert:</span></div><script>
+(function(){var KEY="tn_Haloalkanes and Haloarenes";var S={ta:{},rev:{}};
+try{S=JSON.parse(localStorage.getItem(KEY))||S}catch(e){}
+S.ta=S.ta||{};S.rev=S.rev||{};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function san(n){var o='';[].forEach.call(n.childNodes,function(c){if(c.nodeType==3)o+=esc(c.textContent);else if(c.nodeType==1){var t=c.tagName.toLowerCase();
+ if(t=='br')o+='<br>';else if(t=='sub'||t=='sup')o+='<'+t+'>'+san(c)+'</'+t+'>';
+ else if(t=='span'&&/^(fr|n|d)$/.test(c.className))o+='<span class="'+c.className+'">'+san(c)+'</span>';
+ else if(t=='div'||t=='p')o+=(o?'<br>':'')+san(c);else o+=san(c)}});return o}
+function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'</body>','text/html').body)}
+var eds=[].slice.call(document.querySelectorAll('.ed'));
+function txt(e){return e.textContent.replace(/​/g,'').trim()}
+function apply(){eds.forEach(function(t){t.innerHTML=clean(S.ta[t.dataset.id]||'')});
+ [].forEach.call(document.querySelectorAll('section.typ'),function(s){setRev(s,!!S.rev[s.dataset.k])})}
+function setRev(s,on){s.querySelector('.rev').classList.toggle('on',on);s.querySelector('.sh').style.display=on?'none':'';s.querySelector('.hd').style.display=on?'':'none'}
+function store(t){var h=clean(t.innerHTML);if(txt(t)||/<span class="fr"/.test(h))S.ta[t.dataset.id]=h;else delete S.ta[t.dataset.id];save()}
+eds.forEach(function(t){t.addEventListener('input',function(){store(t)});
+ t.addEventListener('paste',function(e){e.preventDefault();var x=(e.clipboardData||window.clipboardData).getData('text');document.execCommand('insertText',false,x)});
+ t.addEventListener('keydown',function(e){
+  if(e.key=='Enter'){e.preventDefault();document.execCommand('insertLineBreak');return}
+  if(e.ctrlKey&&!e.altKey&&!e.metaKey){last=t;var k=e.key,done2=true;
+   if(k=='h'||k=='H')fmt('superscript');else if(k=='l'||k=='L')fmt('subscript');
+   else if(k=='i'||k=='I')insText('\u222b');else if(k=='s'||k=='S')insText('\u03a3');
+   else if(k=='f'||k=='F')frac();else if(k=='r'||k=='R')insText('\u221a');
+   else if(k=='p'||k=='P')insText('\u03c0');else if(k=='e'||k=='E')insText('\u221e');
+   else if(k==' ')normal();else if(k=='>'||k=='.')arrow();else done2=false;
+   if(done2){e.preventDefault();return}}
+  if(e.key=='ArrowRight'&&!e.shiftKey){var s0=getSelection();if(s0.rangeCount&&s0.isCollapsed){var n0=s0.anchorNode,o0=s0.anchorOffset;var el=n0&&(n0.nodeType==3?n0.parentNode:n0);var sb=el&&el.closest?el.closest('sub,sup'):null;
+    if(sb&&t.contains(sb)&&n0.nodeType==3&&o0==n0.length&&sb.lastChild===n0){e.preventDefault();var z=sb.nextSibling;if(!(z&&z.nodeType==3)){z=document.createTextNode('\u200b');sb.parentNode.insertBefore(z,sb.nextSibling)}var rr=document.createRange();rr.setStart(z,z.length>0?1:0);rr.collapse(true);s0.removeAllRanges();s0.addRange(rr);return}}}
+  if(e.key=='Tab'){var sel=getSelection();if(!sel.rangeCount)return;var nd=sel.anchorNode;nd=nd&&nd.nodeType==3?nd.parentNode:nd;var sp=nd&&nd.closest?nd.closest('.fr>span'):null;
+   if(sp&&t.contains(sp)){e.preventDefault();var r=document.createRange();
+    if(sp.className=='n'){var d=sp.parentNode.querySelector('.d');r.selectNodeContents(d);r.collapse(false)}
+    else{var fr=sp.parentNode;r.setStartAfter(fr);r.collapse(true)}
+    sel.removeAllRanges();sel.addRange(r)}}})});
+[].forEach.call(document.querySelectorAll('section.typ'),function(s){var k=s.dataset.k;
+ s.querySelector('.sh').onclick=function(){var any=[].some.call(s.querySelectorAll('.ed'),function(t){return txt(t)||t.querySelector('.fr')});
+  /* unblocked show */
+  S.rev[k]=1;save();setRev(s,true);s.querySelector('.rev').scrollIntoView({behavior:'smooth',block:'nearest'})};
+ s.querySelector('.hd').onclick=function(){S.rev[k]=0;save();setRev(s,false)};
+ s.querySelector('.rs').onclick=function(){if(!confirm('Clear your answers for this type and hide its completed notes?'))return;
+  [].forEach.call(s.querySelectorAll('.ed'),function(t){t.innerHTML='';delete S.ta[t.dataset.id]});S.rev[k]=0;save();setRev(s,false)}});
+
+var oldTitle=document.title;
+function hasWork(s){var any=false;[].forEach.call(s.querySelectorAll('.ed'),function(t){if((t.textContent||'').trim())any=true});return any||!!S.rev[s.dataset.k]}
+function endPrint(){document.body.classList.remove('one');[].forEach.call(document.querySelectorAll('section.typ'),function(s){s.classList.remove('pick','pr-skip')});document.title=oldTitle}
+window.addEventListener('afterprint',endPrint);
+function doPrint(){setTimeout(function(){window.print()},50)}
+document.getElementById('pdf').onclick=function(){var secs=[].slice.call(document.querySelectorAll('section.typ')),n=0;
+ secs.forEach(function(s){if(hasWork(s))n++;else s.classList.add('pr-skip')});
+ /* unblocked pdf */ if(!n){secs.forEach(function(s){s.classList.remove('pr-skip')});}
+ document.title=KEY.replace(/^tn_/,'')+' - my Type Notes';doPrint()};
+[].forEach.call(document.querySelectorAll('section.typ'),function(s){s.querySelector('.tpdf').onclick=function(){
+ /* unblocked tpdf */
+ document.body.classList.add('one');s.classList.add('pick');document.title=KEY.replace(/^tn_/,'')+' - my Type Notes - Type '+s.dataset.k;doPrint()}});
+document.getElementById('sv').onclick=function(){var b=new Blob([JSON.stringify({v:2,notes:KEY,data:S})],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=KEY.replace(/[^A-Za-z0-9]+/g,'_')+'.json';document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},500)};
+document.getElementById('ld').onclick=function(){document.getElementById('lf').click()};
+document.getElementById('lf').onchange=function(){var f=this.files[0];var inp=this;if(!f)return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(o.notes!==KEY||!o.data)throw 0;S=o.data;S.ta=S.ta||{};S.rev=S.rev||{};save();apply();alert('Notes loaded.')}catch(e){alert('This file is not a Type Notes file for this chapter.')}inp.value=''};r.readAsText(f)};
+/* symbol bar */
+var bar=document.getElementById('sym'),last=null;
+function ed(){if(!last)return false;if(document.activeElement!==last)last.focus();return true}
+function done(){store(last);setTimeout(function(){if(typeof upd=='function')upd()},0)}
+function insText(c){if(!ed())return;document.execCommand('insertText',false,c);done()}
+function fmt(cmd){if(!ed())return;document.execCommand(cmd);done()}
+function normal(){if(!ed())return;if(document.queryCommandState('subscript'))document.execCommand('subscript');if(document.queryCommandState('superscript'))document.execCommand('superscript');done()}
+function arrow(){if(!ed())return;var sel=getSelection();if(sel.rangeCount&&sel.isCollapsed){var n=sel.anchorNode,o=sel.anchorOffset;if(n&&n.nodeType==3&&o>0&&n.textContent.charAt(o-1)=='\u2192'){sel.setBaseAndExtent(n,o-1,n,o);document.execCommand('insertText',false,'\u21d2');done();return}}insText('\u2192')}
+function frac(){if(!ed())return;var sel=getSelection();if(!sel.rangeCount)return;var r=sel.getRangeAt(0);if(!last.contains(r.commonAncestorContainer))return;
+ var tx=r.toString();r.deleteContents();var fr=document.createElement('span');fr.className='fr';
+ var n=document.createElement('span');n.className='n';n.textContent=tx||'​';var d=document.createElement('span');d.className='d';d.textContent='​';fr.appendChild(n);fr.appendChild(d);
+ var z=document.createTextNode('​');r.insertNode(z);r.insertNode(fr);
+ var nr=document.createRange();if(tx){nr.selectNodeContents(d);nr.collapse(false)}else{nr.selectNodeContents(n);nr.collapse(false)}sel.removeAllRanges();sel.addRange(nr);done()}
+var BT=[['a/b','Fraction: type the top, press Tab, type the bottom, press Tab again to continue',frac],['Aa','Back to normal text after a subscript or superscript (Ctrl+Space, or press the right arrow at the end)',normal],['x₂','Subscript (select text, or tap then type)',function(){fmt('subscript')}],['xⁿ','Superscript (select text, or tap then type)',function(){fmt('superscript')}]];
+var SY=['√','π','θ','α','β','λ','ω','∞','∫','Σ','≤','≥','≠','±','×','÷','→','⇒','°'];
+var lastT=0,lastK='';
+function guard(k,f){var n=Date.now();if(n-lastT<300&&k===lastK)return;lastT=n;lastK=k;f()}
+function mk(label,title,f){var b=document.createElement('button');b.type='button';b.textContent=label;if(title)b.title=title;
+ b.addEventListener('mousedown',function(e){e.preventDefault()});
+ b.addEventListener('touchstart',function(e){e.preventDefault();guard(label,f)},{passive:false});
+ b.addEventListener('click',function(){guard(label,f)});return b}
+BT.forEach(function(x){var b=mk(x[0],x[1],x[2]);b.className='w';if(x[0]=='x\u2082')b.dataset.c='subscript';if(x[0]=='x\u207f')b.dataset.c='superscript';var LB={'Aa':'Aa <small>Normal</small>','x₂':'x₂ <small>Sub</small>','xⁿ':'xⁿ <small>Super</small>','a/b':'<span class="mf"><i>a</i><i>b</i></span> <small>Fraction</small>'};if(LB[x[0]])b.innerHTML=LB[x[0]];bar.appendChild(b)});
+function upd(){if(!bar.classList.contains('on'))return;[].forEach.call(bar.querySelectorAll('button[data-c]'),function(b){var on=false;try{on=document.queryCommandState(b.dataset.c)}catch(e){}b.classList.toggle('act',on)})}
+document.addEventListener('selectionchange',upd);
+SY.forEach(function(c){bar.appendChild(mk(c,'',function(){insText(c)}))});
+eds.forEach(function(t){t.addEventListener('focus',function(){last=t;bar.classList.add('on');document.body.classList.add('symon')})});
+function hide(e){if(!e.target.closest('.ed')&&!e.target.closest('#sym')){bar.classList.remove('on');document.body.classList.remove('symon')}}
+document.addEventListener('mousedown',hide);document.addEventListener('touchstart',hide,{passive:true});
+apply();
+})();
+</script>
+<script>
+function initThemeToggle() {
+  var MOON_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+  var SUN_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jee_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jee_theme', 'light');
+    }
+    var btns = document.querySelectorAll('.theme-btn');
+    btns.forEach(function(b) {
+      b.innerHTML = dark ? (SUN_ICON + '<span>Light</span>') : (MOON_ICON + '<span>Dark</span>');
+      b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
+    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  applyTheme(isDark);
+
+  if (!window._themeToggleAttached) {
+    window._themeToggleAttached = true;
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.theme-btn');
+      if (btn) {
+        var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        applyTheme(!currentlyDark);
+      }
+    });
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
+}
+</script>
+
+</body></html>
