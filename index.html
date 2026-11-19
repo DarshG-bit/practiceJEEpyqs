@@ -1760,7 +1760,7 @@ body.cbt-mode #savecur,
     <div class="overview-card-header">
       <div>
         <h2 class="overview-title">Preparation Overview</h2>
-        <p class="overview-desc">Aggregated progress, testing volume &amp; first-try accuracy across all 37 chapters</p>
+        <p class="overview-desc">Aggregated progress, testing volume &amp; first-try accuracy across all 39 chapters</p>
       </div>
       <div class="overview-actions">
         <button id="btnExportAllData" class="btn-tool export" type="button" title="Download backup of all test progress, attempts &amp; starred questions">
@@ -1781,7 +1781,7 @@ body.cbt-mode #savecur,
       <div class="metric-box">
         <div class="metric-lbl">Questions Attempted</div>
         <div class="metric-num" id="metricTotalQ">0</div>
-        <div class="metric-subtext">Across 37 chapters</div>
+        <div class="metric-subtext">Across 39 chapters</div>
       </div>
       <div class="metric-box">
         <div class="metric-lbl">First-Try Accuracy</div>
@@ -1807,7 +1807,7 @@ body.cbt-mode #savecur,
       <div class="meter-item">
         <div class="meter-header">
           <span>Mathematics</span>
-          <span class="meter-fraction" id="mathsFraction">0 / 10 Chapters (0%)</span>
+          <span class="meter-fraction" id="mathsFraction">0 / 12 Chapters (0%)</span>
         </div>
         <div class="meter-bar">
           <div class="meter-fill maths" id="mathsBar" style="width: 0%;"></div>
@@ -1847,7 +1847,7 @@ body.cbt-mode #savecur,
         <div>
           <div class="subject-header">
             <h3 class="subject-card-title">Mathematics</h3>
-            <span class="subject-badge">10 Chapters Ready</span>
+            <span class="subject-badge">12 Chapters Ready</span>
           </div>
           <p class="subject-desc">Calculus, Vectors &amp; 3D Geometry, Matrices &amp; Determinants, Coordinate Geometry &amp; Limits.</p>
           <div class="subject-meta-chips">
@@ -1916,7 +1916,7 @@ body.cbt-mode #savecur,
           <span>Simulate All 3 Subjects Exam &rarr;</span>
         </button>
         <button id="btnScrollChapters" type="button" class="btn-apple">
-          Browse 37 Chapters &darr;
+          Browse 39 Chapters &darr;
         </button>
       </div>
     </div>
@@ -1927,8 +1927,8 @@ body.cbt-mode #savecur,
     <div class="chapters-section-header">
       <h2>Chapter Practice Banks</h2>
       <div class="filter-pills-bar" id="subjectFilterBar">
-        <button type="button" class="pill-filter active" data-subject="all">All (37)</button>
-        <button type="button" class="pill-filter" data-subject="Maths">Mathematics (10)</button>
+        <button type="button" class="pill-filter active" data-subject="all">All (39)</button>
+        <button type="button" class="pill-filter" data-subject="Maths">Mathematics (12)</button>
         <button type="button" class="pill-filter" data-subject="Physics">Physics (15)</button>
         <button type="button" class="pill-filter" data-subject="Chemistry">Chemistry (12)</button>
       </div>
@@ -1941,7 +1941,7 @@ body.cbt-mode #savecur,
         <input type="text" id="chapterSearchInput" class="search-field" placeholder="Search chapters, topics, formulas... (Press '/' to focus)">
         <button id="btnClearSearch" class="btn-clear-search" type="button" title="Clear search">&times;</button>
       </div>
-      <span id="resultsCountLabel" class="search-count-label">Showing 37 chapters</span>
+      <span id="resultsCountLabel" class="search-count-label">Showing 39 chapters</span>
     </div>
 
     <!-- Chapter Grid Container -->
@@ -2005,8 +2005,8 @@ body.cbt-mode #savecur,
     <div class="modal-step-group">
       <span class="step-title">2. Choose Subject Pool</span>
       <div class="pills-row">
-        <div class="m-pill active" data-field="subject" data-val="all">All Subjects (37)</div>
-        <div class="m-pill" data-field="subject" data-val="Maths">Mathematics (10)</div>
+        <div class="m-pill active" data-field="subject" data-val="all">All Subjects (39)</div>
+        <div class="m-pill" data-field="subject" data-val="Maths">Mathematics (12)</div>
         <div class="m-pill" data-field="subject" data-val="Physics">Physics (15)</div>
         <div class="m-pill" data-field="subject" data-val="Chemistry">Chemistry (12)</div>
       </div>
@@ -2057,6 +2057,11 @@ var CHAPTER_POOL = [
     "url": "Maths/Application of Derivatives PYQ Practice.html"
   },
   {
+    "name": "Area Under Curves",
+    "subject": "Maths",
+    "url": "Maths/Area Under Curves PYQ Practice.html"
+  },
+  {
     "name": "Continuity and Differentiability",
     "subject": "Maths",
     "url": "Maths/Continuity and Differentiability PYQ Practice.html"
@@ -2095,6 +2100,11 @@ var CHAPTER_POOL = [
     "name": "Probability",
     "subject": "Maths",
     "url": "Maths/Probability PYQ Practice.html"
+  },
+  {
+    "name": "Three Dimensional Geometry",
+    "subject": "Maths",
+    "url": "Maths/Three Dimensional Geometry PYQ Practice.html"
   },
   {
     "name": "Vector Algebra",
