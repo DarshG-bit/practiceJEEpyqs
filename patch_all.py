@@ -1198,6 +1198,14 @@ def update_index_portal():
     html = re.sub(r'Mathematics \(\d+\)', f'Mathematics ({counts.get("Maths", 0)})', html)
     html = re.sub(r'Browse \d+ Chapters', f'Browse {len(all_chapters)} Chapters', html)
     
+    # Update overview progress metrics
+    html = re.sub(r'across all \d+ chapters', f'across all {len(all_chapters)} chapters', html)
+    html = re.sub(r'Across \d+ chapters', f'Across {len(all_chapters)} chapters', html)
+    html = re.sub(r'id="mathsFraction">0\s*/\s*\d+\s*Chapters\s*\(0%\)', f'id="mathsFraction">0 / {counts.get("Maths", 0)} Chapters (0%)', html)
+    html = re.sub(r'id="physicsFraction">0\s*/\s*\d+\s*Chapters\s*\(0%\)', f'id="physicsFraction">0 / {counts.get("Physics", 0)} Chapters (0%)', html)
+    html = re.sub(r'id="chemFraction">0\s*/\s*\d+\s*Chapters\s*\(0%\)', f'id="chemFraction">0 / {counts.get("Chemistry", 0)} Chapters (0%)', html)
+    html = re.sub(r'Showing \d+ chapters', f'Showing {len(all_chapters)} chapters', html)
+    
     # Update CHAPTER_POOL array
     pool_json = json.dumps(all_chapters, indent=2)
     html = re.sub(r'var CHAPTER_POOL = \[.*?\];', f'var CHAPTER_POOL = {pool_json};', html, flags=re.DOTALL)
@@ -1206,6 +1214,34 @@ def update_index_portal():
         f.write(html)
         
     print(f"  [Portal Updated]  index.html (Maths: {counts.get('Maths',0)}, Physics: {counts.get('Physics',0)}, Chemistry: {counts.get('Chemistry',0)}, Total: {len(all_chapters)})")
+
+    # Ensure Amines is in Chemistry/index.html
+    chem_idx = os.path.join(ROOT_DIR, "Chemistry", "index.html")
+    if os.path.exists(chem_idx):
+        with open(chem_idx, "r", encoding="utf-8", errors="ignore") as f:
+            chem_html = f.read()
+        if 'data-t="amines"' not in chem_html:
+            amines_strip = '<div class="strip pH cB" data-t="amines"><div class="no">#4</div><div class="mid"><b>Amines</b><span>175 questions &middot; Organic Chemistry</span></div><div class="chips"><div class="tg"><em class="pr pH" title="Priority by JEE Main PYQs 2019-25: 175 PYQs">High priority</em><em title="Effort needed: Medium">Effort ●●○ Medium</em><em title="Marks yield: High">Yield ★★★ High</em><em title="Class B: Core scorer">B &middot; Core scorer</em></div></div><div class="lk"><a class="go" href="Amines%20PYQ%20Practice.html">Start practice &rsaquo;</a></div></div>'
+            if 'data-t="solutions"' in chem_html:
+                chem_html = chem_html.replace('<div class="strip pH cA" data-t="solutions">', amines_strip + '<div class="strip pH cA" data-t="solutions">')
+            elif '<div class="list">' in chem_html:
+                chem_html = chem_html.replace('<div class="list">', '<div class="list">' + amines_strip)
+            with open(chem_idx, "w", encoding="utf-8") as f:
+                f.write(chem_html)
+            print("  [Injected Amines] Chemistry/index.html")
+
+    # Update cross-subject drawer badges in each subject index
+    for s_name in ["Maths", "Physics", "Chemistry"]:
+        s_idx = os.path.join(ROOT_DIR, s_name, "index.html")
+        if os.path.exists(s_idx):
+            with open(s_idx, "r", encoding="utf-8", errors="ignore") as f:
+                s_html = f.read()
+            s_html = re.sub(r'(<b>Maths</b><span>)\d+ chapters ready', rf'\g<1>{counts.get("Maths", 0)} chapters ready', s_html)
+            s_html = re.sub(r'(<b>Physics</b><span>)\d+ chapters ready', rf'\g<1>{counts.get("Physics", 0)} chapters ready', s_html)
+            s_html = re.sub(r'(<b>Chemistry</b><span>)\d+ chapters ready', rf'\g<1>{counts.get("Chemistry", 0)} chapters ready', s_html)
+            with open(s_idx, "w", encoding="utf-8") as f:
+                f.write(s_html)
+
 
 logo_a_pattern = re.compile(r'<a\s+id=["\']aiit-logo["\'][^>]*>.*?</a>', re.DOTALL | re.IGNORECASE)
 logo_img_pattern = re.compile(r'<img[^>]*alt=["\']Adventure\s+IIT["\'][^>]*>', re.IGNORECASE)

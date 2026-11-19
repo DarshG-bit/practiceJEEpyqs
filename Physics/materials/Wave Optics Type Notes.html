@@ -1,0 +1,827 @@
+<!DOCTYPE html><html lang="en"><head>
+<script>
+  (function(){
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Wave Optics - Type Notes</title><style>
+:root{--ink:#1d2433;--mut:#5a6478;--line:#dfe4ee;--bg:#eef1f7;--acc:#1f4e8c}*{box-sizing:border-box}
+body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.55}
+.top{background:var(--acc);color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}.top h1{margin:0;font-size:18px;flex:1;min-width:160px}.top a{color:#fff;font-size:14px}
+.page{max-width:900px;margin:14px auto;padding:16px 20px;background:#fff;border:1px solid var(--line);border-radius:10px}
+h1.t{font-size:22px;margin:4px 0 6px}h2{font-size:20px;color:var(--acc);margin:22px 0 6px}h3{font-size:18px;margin:16px 0 4px}
+p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
+.gt{border-collapse:collapse;width:100%;margin:8px 0;font-size:16px}.gt td{border:1px solid #c5ccda;padding:6px 8px;vertical-align:top}.gt tr:first-child td{background:#f1f5fb}
+.tw{overflow-x:auto}.btn{border:1px solid var(--acc);background:#fff;color:var(--acc);border-radius:6px;padding:7px 14px;font-size:14px;cursor:pointer;margin:4px 6px 4px 0}.btn.pri{background:var(--acc);color:#fff}
+.sm{font-size:14px;color:var(--mut)}a{color:var(--acc)}
+.typ{border-top:3px solid var(--acc);margin-top:26px;padding-top:4px}
+.ed{width:100%;min-height:54px;font-size:16px;border:1px solid #b9c3d6;border-radius:6px;padding:6px 8px;background:#fffef6;outline:none;white-space:pre-wrap;word-break:break-word;line-height:1.7}.ed.tall{min-height:130px}.gt .ed{min-height:120px}.gt td:first-child{width:36%}.gt td:first-child .ed{min-height:0}.ed:focus{border-color:#1f4e8c;box-shadow:0 0 0 2px #cfe0fa}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.3}.fr>span{display:block;min-width:.9em;padding:0 3px;min-height:1.2em}.fr>.n{border-bottom:1.5px solid #1d2433}.ed sub,.ed sup{line-height:0}
+#sym button.act{background:#ffd54a}#sym small{font-size:12px;font-weight:600;margin-left:2px}#sym .mf{display:inline-flex;flex-direction:column;vertical-align:middle;line-height:1;font-style:normal;font-size:12px}#sym .mf i{font-style:normal;padding:0 3px}#sym .mf i:first-child{border-bottom:1px solid #1d2433}#sym .w{min-width:52px;font-weight:700;background:#e8f0fc}
+.rev{display:none;border:2px solid #2e9b4f;background:#f2fbf5;border-radius:10px;padding:6px 14px;margin:12px 0}.rev.on{display:block}.rev h4{margin:6px 0;color:#1f7a3b}
+.how{background:#f7f9fd;border:1px solid var(--line);border-radius:8px;padding:6px 14px}
+@media(max-width:640px){.gt td:first-child{width:100%}.gt .ed{min-height:110px}.gt,.gt tbody,.gt tr,.gt td{display:block;width:100%}.gt tr{border:1px solid #c5ccda;margin:8px 0;border-radius:6px;overflow:hidden}.gt td{border:0;border-bottom:1px solid #e3e8f1}.gt td:first-child{background:#f1f5fb;font-weight:600}.gt tr:first-child td{background:inherit}.gt tr:first-child td:first-child{background:#f1f5fb}.page{padding:12px}}
+#sym{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#1f4e8c;padding:6px 8px;display:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}#sym.on{display:block}#sym button.w{padding:0 10px}#sym button{display:inline-block;min-width:40px;height:40px;margin:0 3px 0 0;font-size:18px;border:0;border-radius:6px;background:#fff;color:#1d2433;cursor:pointer}#sym>span{color:#cfe0fa;font-size:12px;margin-right:8px}@media(max-width:480px){#sym>span{display:none}}body.symon{padding-bottom:60px}
+
+/* --- Clean Print & Save as PDF Styling (Workbook layout) --- */
+@media print {
+  @page {
+    margin: 8mm 10mm;
+    size: A4 portrait;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 13.5pt !important;
+    line-height: 1.55 !important;
+    padding-bottom: 0 !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
+  .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
+  .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
+    display: none !important;
+  }
+
+  /* HEADINGS */
+  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
+  h2 { font-size: 15.5pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
+  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
+
+  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
+  body.one section.typ:not(.pick) {
+    display: none !important;
+  }
+  
+  /* CREATOR SKIP CLASS FOR MAIN PDF */
+  section.typ.pr-skip {
+    display: none !important;
+  }
+
+  /* EACH TYPE STARTS ON A NEW PAGE */
+  section.typ {
+    border-top: 2.5px solid #1f4e8c !important;
+    padding-top: 10px !important;
+    margin-top: 14px !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+  section.typ ~ section.typ {
+    break-before: page !important;
+    page-break-before: page !important;
+  }
+
+  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
+  .gt, table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin: 8px 0 !important;
+    font-size: 12.5pt !important;
+  }
+  .gt tr, tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .gt td, td, th {
+    border: 1.5px solid #64748b !important;
+    padding: 8px 10px !important;
+    font-size: 12.5pt !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .gt tr:first-child td, .gt td:first-child {
+    background: #f1f5fb !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+  }
+
+  /* EDITABLE BOXES / USER WRITTEN NOTES: SPACIOUS WORKBOOK FEEL */
+  .ed {
+    border: 1.5px solid #64748b !important;
+    background: #fff !important;
+    color: #000 !important;
+    min-height: 85px !important;
+    font-size: 13pt !important;
+    line-height: 1.6 !important;
+    padding: 10px 12px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    white-space: pre-wrap !important;
+    border-radius: 6px !important;
+  }
+}
+
+
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
+:root {
+  --bg-base: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-input: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+}
+
+[data-theme="dark"] {
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
+  --accb: #3b82f6;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
+}
+
+[data-theme="dark"] body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] a {
+  color: #60a5fa !important;
+}
+
+/* Card descendant links must preserve card layout & colors, never default link style */
+a.subject-card,
+a.subject-card *,
+a.ch-card,
+a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] a.subject-card,
+[data-theme="dark"] a.subject-card *,
+[data-theme="dark"] a.ch-card,
+[data-theme="dark"] a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] .subject-card-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .subject-desc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .meta-chip {
+  background: #111114 !important;
+  border: 1px solid #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .ch-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .ch-meta {
+  color: #a1a1aa !important;
+}
+
+/* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
+[data-theme="dark"] a.act-btn.primary,
+[data-theme="dark"] .act-btn.primary,
+[data-theme="dark"] a.btn.pri,
+[data-theme="dark"] .btn.pri,
+[data-theme="dark"] .btn-cbt-launch,
+[data-theme="dark"] .btn-modal-start,
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
+  color: #ffffff !important;
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] a.act-btn.primary:hover,
+[data-theme="dark"] .act-btn.primary:hover,
+[data-theme="dark"] a.btn.pri:hover,
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
+.panel {
+  max-width: 1040px !important;
+  margin: 24px auto !important;
+  padding: 28px 36px !important;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+[data-theme="dark"] .panel {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
+}
+
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
+/* Visible Typing Boxes in Dark Mode (solves Pic 6) */
+[data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input.num,
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 12px !important;
+}
+[data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] input[type="number"]:focus,
+[data-theme="dark"] input.num:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+}
+
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
+}
+
+[data-theme="dark"] .o {
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .o:hover {
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .o.sel {
+  background: rgba(37, 99, 235, 0.18) !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
+[data-theme="dark"] .att-card {
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .att-card:hover {
+  border-color: #2c2c32 !important;
+}
+[data-theme="dark"] .att-badge.cbt {
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
+}
+[data-theme="dark"] .att-badge.practice {
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+[data-theme="dark"] .att-date {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .att-stats-row {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .att-actions {
+  border-top-color: #222224 !important;
+}
+[data-theme="dark"] .att-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .att-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .att-btn.continue {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
+}
+[data-theme="dark"] .att-btn.review {
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .att-btn.delete {
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
+}
+[data-theme="dark"] .btn-export-all {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn-export-all:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .sub-pill-btn {
+  color: #93c5fd !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .sub-pill-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Theme Toggle Button Outline Styling (solves Pic 17) */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.theme-btn:active {
+  transform: scale(0.98);
+}
+[data-theme="dark"] .theme-btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Question Sheet Container & Dark Mode (Pic 4) */
+[data-theme="dark"] .main,
+[data-theme="dark"] .side,
+[data-theme="dark"] .qhead,
+[data-theme="dark"] .qbody,
+[data-theme="dark"] .foot,
+[data-theme="dark"] .wrap {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead b,
+[data-theme="dark"] #qno,
+[data-theme="dark"] .stem,
+[data-theme="dark"] .stem p {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .src,
+[data-theme="dark"] .qhead .qt,
+[data-theme="dark"] #qtime {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .starbtn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #fbbf24 !important;
+}
+[data-theme="dark"] .top {
+  background: #0a0a0c !important;
+  border-bottom: 1px solid #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+/* Materials & Type Notes (Light + Dark Mode Fixes - Pic 2 & Pic 7) */
+.how {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.how p, .how b {
+  color: #0f172a !important;
+}
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt td,
+[data-theme="dark"] .gt th {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #18181c !important;
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #111114 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] details {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .work h3,
+[data-theme="dark"] .work p,
+[data-theme="dark"] .work i {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .rev {
+  background: #061c0d !important;
+  border-color: #16a34a !important;
+  color: #dcfce7 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #4ade80 !important;
+}
+[data-theme="dark"] .typ h2 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* CBT Mode Answer Checking & Solutions Suppressor (Pic 3) */
+body.cbt-mode .chk,
+body.cbt-mode .chkb,
+body.cbt-mode .shb,
+body.cbt-mode .chkres,
+body.cbt-mode #savecur,
+.cbt-mode .chk,
+.cbt-mode .chkb,
+.cbt-mode .shb,
+.cbt-mode .chkres {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Header Top Back Button */
+.top-back-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-right: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.top-back-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="dark"] .top-back-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .top-back-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #3b82f6 !important;
+}
+
+
+</style><link id="aiit-fav-16" rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB5klEQVR42p1TMU9TURg957uvIkUjiBKMiYlDGwUlxsFVB0yMJi0pttHJ2cW/8GBxdfEXuNmaJuBLJE4YN424oFTiQhyQOGhEjaXv3uNQnwGFiJ7hG+69555zvnwf8J+QQADdshvEMWx0tPu+WkUgoV2R6nW47e6S5PSABHI7a40GrFaDz87qdTjXWzgV0YoiBkOqc95jrlpZbnAn0uzskby3gSK8PyNgjGQfoXcgRrxH/uCB4avz8xcCf1dvJoUxBjdC6BBMQ/Jsk1oV7BsQHMlhByWl0nIrFowA+CApHI+CnYexH0GfJOYA7QexatKKjINB/K4ofc1ONFEpt+5KMBLBJMDBhkk7bCE8F5QC2jDYnDmtyFm/Q3hRKbUeI3XXHGwOAKamuq63RGg+LN6k8CVnPUlbnaNRb/ShPL64BgDNpHBSgZcmS8t3MnUAsKzLcQxLc9F9iC7VxmVnOFseX1yTYBJowS7KNAOAmfoWB/U6XK0G35w5cQPSUGR8BuOx3p727Mdor3ef/a3J8pvbcQybnu6q/3Lwc7oEgIy0QOKKJ/vksbD+NXc9Wg9TQf7R5ux/fABAANShfx+gpfye3JNyeelVZPvuQeFpdeLtSwDIsu+IzaMbx1sE/hlZf7jTPuyG/Ff8AHJN0tvJodC7AAAAAElFTkSuQmCC"><link id="aiit-fav-32" rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFXklEQVR42u1WXWyTVRh+3nParutggIKEQCSgrGUDA4KKGm0rGFnZT2Hpp1EvFEUDEhPREEOQb73wJ8iFMUZdSCR4QfQrrGzdYKCyFRIMhoBGux+HGkyMGIiiMAbtOef1YqsbMH5ECBfy3n3vOfme57zv8/4AN+x/aMQMyn/Ia4nUDyRCIVBbGwgApdPgePwagto2RGtr0MUMMdR5Xd0s9+bNUybno0FXC7SsLEaWldCD/du3B8Zls8ZrJI8Ai5Eqi9nShUrBZmU02r3PtiHov4CGQkERDqc1AM77k02lM9xS35NTKJGCCo3hGSTojFbmFyFEhdb8fk20a5XjQFoWNP3bnCYSEJkMOB6HGQD13yeJZmpt7vQUiFu1wnHDGCUFupl5D2ua6/WJ6lM9+quF1V0Rx4lJy0oYAOy6HNU6DgQQA1FCA9AAkNoRmAaDx4zBA1KSUUq3ul3iezYYYTQO9wj3cz6dvRugKGBO9PZy7vQp9TwAZDIJzkeNLgU6OK9OS+lNRdDz2dDTzFxEJOqzWu2GkRN8PnpCKfYKlrW//Xby25tHF641hAdNFktJmogBCmqqv1+ZD/0/QINRHQfyPFCn1OMt4oVEXGUMpgtB3yltNv7Y27PbP3xYOQMRrdjjctGnFeWdzU5DySQ3aIN0iV9PsGvZcHNmrGLaMar4tL+t7XC2thZMNKCZISOwd++EwiPHfCEpxCMAHiLBh43Bvuwp+Y5ltZ9sbpn6KIOXC8Aog9erIp07AaC+0b/a7aKHleY3FlZ27QCALVsDjRC8u6aqa11/7s+qFMqTcJzJxYXDCu7XxpQT4y4m6hGMjBH8cXRB134AaG4pfZoNL4HAMc7h7crKjj0AkNrur1IK9wrgmFvq9yKRQ2daW4OuP08eiRiDl7850BUeqkwBwMX9wWje6Z0kYJYYQ9MZ/Gq0onNz/lJzi79Ga1rNMD8rQy9FIx37AKCpyR9WTBFjMNYj+N0F/UTr6ma5w+F0LtkQWMPMb8XjMH3pHUJs5zpSqSnjhVvOlZJ7lJY9bHgFEVgp9WG0sjsJAA2fTxuL0+opBrtN1mxZtKi7I6+hMWOCFA6nVbLR/7gxWFwT7Zp3rvDOisA5fZuIun8B8HFDS+ntUGaXYXyysLJzZf5lo8b0zDa9uWKSYmc00nkwD5zJgC0LxrbTtGHDRC8z1grBy/v+HgOQuPxm4zilnj5RBdbUN/g39nW+oCuZ8tcmkyVzB1fN4MnmODEJAA1N/liy0Z9ihrBtiIuU+/kDgwgci7XnbBuC3VhPhJJUasr4eDytBNEcT6GYatsQzKBM5uySymQSbNsQWmEFg9YRwZSVgQa36ksSyJMoK4tRTXnnr8z8Q47FKwCglPHmsqxmzQksTiQmeAeLy3Ega2vBd9wZmMuEYnVafGnbEBfK/UUJ5F/DDNKQb4K5vK5xnI+IcjmD/UKL/QVFw1Y5zuQRlgXd2hp09bVqMIGfIcImy2rPhkJBcamUX/BCftjEqjsyAB2/RRbfBuAPKaiooqL9awE6VuBzb0om/dPD4bQCEkg2+6cDmOPzyA8AUCiU1ldMAADa2oKSGUSEXaz4WRD1ELG3aUdgmfRgNxl6DRKb6htKnrQsaGgsBWH9/PntvztOTAzWxxUROHo03S8y/gKgIAwHhKCI6uWtkYc7DlZVdR6ARiWBXkxtC3zEBvMgTH2fQBN8sX5zyYN8SRKBk8mJIzV5fwLQ7fPoeZHIob/y4rMsaMcp9XiH8XqVMycXVXe9YDNEnAb2hatiyUb/Z1u3TZ05MDUHNqMhFtGrvt2KxsaS0RcCYAZdaAm9Fmv29bHrCn7DrqX9DWIToNUS4fECAAAAAElFTkSuQmCC"><link id="aiit-fav-180" rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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"></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
+<h1>Wave Optics &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Wave%20Optics%20PYQ%20Practice.html">Back to practice</a><a href="Wave%20Optics%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> WAVE OPTICS – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Intensity of interference: ratios and the intensity at a point</a></li><li><a href="#T2">Type 2. Young&#x27;s double slit: fringe width and position</a></li><li><a href="#T3">Type 3. Polarisation: Malus&#x27; law, polaroids and Brewster&#x27;s angle</a></li><li><a href="#T4">Type 4. Single-slit diffraction and resolution</a></li><li><a href="#T5">Type 5. Path difference and phase: geometry, thin sheets and slabs</a></li><li><a href="#T6">Type 6. Wave theory of light: wavefronts and wave properties</a></li><li><a href="#T7">Type 7. Overlapping fringes and fringe counts for two wavelengths</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Intensity of interference: ratios and the intensity at a point <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">27 questions on the sheet (Q1–27)  ·  Sub-topics: B1 Imax/Imin from intensity, amplitude or slit-width ratios · B2 intensity at a point from the phase or path difference · B3 incoherent against coherent waves</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Resultant intensity</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Maximum and minimum</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Ratio from the amplitudes</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Phase from the path difference</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Equal slits</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Slit width</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>When do I add intensities?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>What does a ratio of intensities <math displaystyle="true"><mrow><mn>9</mn><mo>:</mo><mn>1</mn></mrow></math> mean for the amplitudes?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>Why is <math displaystyle="true"><mrow><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow></math> for equal slits?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>How do I find the intensity at a path difference <math displaystyle="true"><mrow><mi>λ</mi><mo>/</mo><mi>n</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Two coherent beams of intensities <math displaystyle="true"><mrow><mi>I</mi></mrow></math> and <math displaystyle="true"><mrow><mn>4</mn><mi>I</mi></mrow></math>: the difference of the maximum and minimum intensities is <math displaystyle="true"><mrow><mi>x</mi><mi>I</mi></mrow></math>.&#x27;</p><p style="padding-left:14px">•  &#x27;The width of one slit is three times the other: the ratio of the minimum to the maximum intensity.&#x27;</p><p style="padding-left:14px">•  &#x27;The path difference at a point is <math displaystyle="true"><mrow><mi>λ</mi><mo>/</mo><mn>8</mn></mrow></math>: the ratio of the intensity to that at the centre of a bright fringe.&#x27;</p><p style="padding-left:14px">•  &#x27;The intensity of light at a point where the path difference is <math displaystyle="true"><mrow><mi>λ</mi></mrow></math> is <math displaystyle="true"><mrow><mi>K</mi></mrow></math>: the intensity where it is <math displaystyle="true"><mrow><mi>λ</mi><mo>/</mo><mn>6</mn></mrow></math>.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Resultant intensity</p></td><td><p><math displaystyle="true"><mrow><mi>I</mi><mo>=</mo><msub><mrow><mi>I</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>+</mo><msub><mrow><mi>I</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>+</mo><mn>2</mn><msqrt><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>1</mn></mrow></msub><msub><mrow><mi>I</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></msqrt><mi mathvariant="normal">cos</mi><mi>ϕ</mi></mrow></math></p></td></tr><tr><td><p>Maximum and minimum</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msqrt><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></msqrt><mo>+</mo><msqrt><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></msqrt></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mn>2</mn></mrow></msup><mo>,</mo><mspace width="0.3em"></mspace><mspace width="0.3em"></mspace><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msqrt><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></msqrt><mo>−</mo><msqrt><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></msqrt></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mn>2</mn></mrow></msup></mrow></math></p></td></tr><tr><td><p>Ratio from the amplitudes</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><mrow><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow></mfrac><mo>=</mo><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>+</mo><msub><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>−</mo><msub><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mn>2</mn></mrow></msup></mrow></math></p></td></tr><tr><td><p>Phase from the path difference</p></td><td><p><math displaystyle="true"><mrow><mi>ϕ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mrow><mi>λ</mi></mrow></mfrac><mi>Δ</mi></mrow></math></p></td></tr><tr><td><p>Equal slits</p></td><td><p><math displaystyle="true"><mrow><mi>I</mi><mo>=</mo><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>2</mn></mrow></msup><mfrac><mrow><mi>ϕ</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><mspace width="0.3em"></mspace><mi>I</mi><mo>=</mo><mn>4</mn><msub><mrow><mi>I</mi></mrow><mrow><mn>0</mn></mrow></msub><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>2</mn></mrow></msup><mfrac><mrow><mi>ϕ</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Slit width</p></td><td><p>width ratio = intensity ratio (amplitude ratio if the question says so)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>When do I add intensities?</p></td><td><p>When the waves are incoherent. Coherent waves add amplitudes and include the <math displaystyle="true"><mrow><mi mathvariant="normal">cos</mi><mi>ϕ</mi></mrow></math> term.</p></td></tr><tr><td><p>What does a ratio of intensities <math displaystyle="true"><mrow><mn>9</mn><mo>:</mo><mn>1</mn></mrow></math> mean for the amplitudes?</p></td><td><p>The amplitudes are in the ratio <math displaystyle="true"><mrow><mn>3</mn><mo>:</mo><mn>1</mn></mrow></math>, so <math displaystyle="true"><mrow><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>/</mo><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>4</mn><mo>/</mo><mn>2</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mn>2</mn></mrow></msup><mo>=</mo><mn>4</mn></mrow></math>.</p></td></tr><tr><td><p>Why is <math displaystyle="true"><mrow><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow></math> for equal slits?</p></td><td><p>The amplitudes are equal, so <math displaystyle="true"><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>−</mo><msub><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math> at the minima.</p></td></tr><tr><td><p>How do I find the intensity at a path difference <math displaystyle="true"><mrow><mi>λ</mi><mo>/</mo><mi>n</mi></mrow></math>?</p></td><td><p>Put <math displaystyle="true"><mrow><mi>ϕ</mi><mo>=</mo><mn>2</mn><mi>π</mi><mo>/</mo><mi>n</mi></mrow></math> in <math displaystyle="true"><mrow><msub><mrow><mi>I</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>2</mn></mrow></msup><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>ϕ</mi><mo>/</mo><mn>2</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Taking the intensity ratio as the amplitude ratio (square root first).</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>+</mo><msub><mrow><mi>I</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> for the maximum of coherent waves.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>ϕ</mi><mo>=</mo><mi>Δ</mi><mo>/</mo><mi>λ</mi></mrow></math> without the <math displaystyle="true"><mrow><mn>2</mn><mi>π</mi></mrow></math>.</p><p style="padding-left:14px">•  Reading the slit-width ratio as the amplitude ratio when the question gives the intensity ratio.</p><p style="padding-left:14px">•  Mixing up <math displaystyle="true"><mrow><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>2</mn></mrow></msup><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>ϕ</mi><mo>/</mo><mn>2</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> with <math displaystyle="true"><mrow><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>ϕ</mi></mrow></math>.</p></div></section>
+<section class="typ" id="T2" data-k="2"><h2>Type 2. Young&#x27;s double slit: fringe width and position <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">26 questions on the sheet (Q28–53)  ·  Sub-topics: A1 direct formulas · A2 changing <math displaystyle="true"><mrow><mi>λ</mi></mrow></math>, <math displaystyle="true"><mrow><mi>d</mi></mrow></math>, <math displaystyle="true"><mrow><mi>D</mi></mrow></math> or the medium · A3 statements and conceptual effects</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_13"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Fringe width</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_14"></div></td></tr><tr><td><p>Bright fringe</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div></td></tr><tr><td><p>Dark fringe</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>Angular fringe width</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr><tr><td><p>In a medium</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></td></tr><tr><td><p>Screen moved</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_19"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What happens to the pattern when the source changes from red to blue?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_20"></div></td></tr><tr><td><p>Why is there no pattern with a red and a green filter?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_21"></div></td></tr><tr><td><p>What happens to <math displaystyle="true"><mrow><mi>β</mi></mrow></math> in a liquid?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_22"></div></td></tr><tr><td><p>How do I compare two set-ups?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_23"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_24"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;A fringe width of <math displaystyle="true"><mrow><mn>6</mn></mrow></math> mm for slits <math displaystyle="true"><mrow><mn>1</mn></mrow></math> mm apart and a screen at <math displaystyle="true"><mrow><mn>10</mn></mrow></math> m: the wavelength.&#x27;</p><p style="padding-left:14px">•  &#x27;The fifth bright fringe is <math displaystyle="true"><mrow><mn>5</mn></mrow></math> cm from the centre: the slit separation.&#x27;</p><p style="padding-left:14px">•  &#x27;The set-up is placed in a liquid of index <math displaystyle="true"><mrow><mn>1.44</mn></mrow></math>: the new fringe width.&#x27;</p><p style="padding-left:14px">•  &#x27;The slit separation is doubled: the percentage change of the fringe width.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Fringe width</p></td><td><p><math displaystyle="true"><mrow><mi>β</mi><mo>=</mo><mfrac><mrow><mi>λ</mi><mi>D</mi></mrow><mrow><mi>d</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Bright fringe</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>y</mi></mrow><mrow><mi>n</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>n</mi><mi>λ</mi><mi>D</mi></mrow><mrow><mi>d</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Dark fringe</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>y</mi></mrow><mrow><mi>n</mi></mrow></msub><mo>=</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>n</mi><mo>−</mo><mrow><mrow><mn>1</mn></mrow><mo>/</mo><mrow><mn>2</mn></mrow></mrow></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mfrac><mrow><mi>λ</mi><mi>D</mi></mrow><mrow><mi>d</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Angular fringe width</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>λ</mi></mrow><mrow><mi>d</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>In a medium</p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>′</mo><mo>=</mo><mfrac><mrow><mi>λ</mi></mrow><mrow><mi>n</mi></mrow></mfrac><mo>,</mo><mspace width="0.3em"></mspace><mspace width="0.3em"></mspace><mi>β</mi><mo>′</mo><mo>=</mo><mfrac><mrow><mi>β</mi></mrow><mrow><mi>n</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Screen moved</p></td><td><p><math displaystyle="true"><mrow><mi>Δ</mi><mi>β</mi><mo>=</mo><mfrac><mrow><mi>λ</mi><mspace width="0.3em"></mspace><mi>Δ</mi><mi>D</mi></mrow><mrow><mi>d</mi></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What happens to the pattern when the source changes from red to blue?</p></td><td><p>The wavelength decreases, so the fringes come closer; the central fringe stays bright.</p></td></tr><tr><td><p>Why is there no pattern with a red and a green filter?</p></td><td><p>The two beams have different frequencies, so they are not coherent.</p></td></tr><tr><td><p>What happens to <math displaystyle="true"><mrow><mi>β</mi></mrow></math> in a liquid?</p></td><td><p>It decreases by the factor <math displaystyle="true"><mrow><mi>n</mi></mrow></math> because the wavelength decreases.</p></td></tr><tr><td><p>How do I compare two set-ups?</p></td><td><p>Write <math displaystyle="true"><mrow><mi>β</mi><mo>∝</mo><mi>λ</mi><mi>D</mi><mo>/</mo><mi>d</mi></mrow></math> and multiply by the ratios of the changed quantities.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Leaving <math displaystyle="true"><mrow><mi>d</mi></mrow></math> in mm and <math displaystyle="true"><mrow><mi>D</mi></mrow></math> in m.</p><p style="padding-left:14px">•  Using the position of the <math displaystyle="true"><mrow><mi>n</mi></mrow></math>th dark fringe as <math displaystyle="true"><mrow><mi>n</mi><mi>λ</mi><mi>D</mi><mo>/</mo><mi>d</mi></mrow></math>.</p><p style="padding-left:14px">•  Using the wavelength in air inside a liquid.</p><p style="padding-left:14px">•  Treating <math displaystyle="true"><mrow><mi>β</mi></mrow></math> as the distance from the centre to the first fringe on one side only when the question gives both sides.</p><p style="padding-left:14px">•  Forgetting that <math displaystyle="true"><mrow><mi>β</mi></mrow></math> decreases when <math displaystyle="true"><mrow><mi>d</mi></mrow></math> increases.</p></div></section>
+<section class="typ" id="T3" data-k="3"><h2>Type 3. Polarisation: Malus&#x27; law, polaroids and Brewster&#x27;s angle <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">19 questions on the sheet (Q54–72)  ·  Sub-topics: C1 Malus&#x27; law and polaroid sequences · C2 Brewster&#x27;s angle · C3 polarisers with a double slit</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_25"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Unpolarised light</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_26"></div></td></tr><tr><td><p>Malus&#x27; law</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_27"></div></td></tr><tr><td><p>Brewster&#x27;s law</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_28"></div></td></tr><tr><td><p><math displaystyle="true"><mrow><mi>n</mi></mrow></math> sheets at <math displaystyle="true"><mrow><msup><mrow><mn>45</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_29"></div></td></tr><tr><td><p>Maximum between crossed polaroids</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_30"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does the first polaroid give half the intensity?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_31"></div></td></tr><tr><td><p>What is special at Brewster&#x27;s angle?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_32"></div></td></tr><tr><td><p>Which angle goes into Malus&#x27; law with three polaroids?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_33"></div></td></tr><tr><td><p>Is the light polarised in the plane of incidence reflected at <math displaystyle="true"><mrow><msub><mrow><mi>i</mi></mrow><mrow><mi>B</mi></mrow></msub></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_34"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_35"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 3</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Unpolarised light of intensity <math displaystyle="true"><mrow><mn>2</mn><msub><mrow><mi>I</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> passes through a polaroid and then one at <math displaystyle="true"><mrow><msup><mrow><mn>30</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math>: the emergent intensity.&#x27;</p><p style="padding-left:14px">•  &#x27;Three polaroids, the last perpendicular to the first: the angle of the first two for a given output.&#x27;</p><p style="padding-left:14px">•  &#x27;Reflected light is completely polarised at <math displaystyle="true"><mrow><msup><mrow><mn>60</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math>: the angle of refraction.&#x27;</p><p style="padding-left:14px">•  &#x27;<math displaystyle="true"><mrow><mi>n</mi></mrow></math> sheets each at <math displaystyle="true"><mrow><msup><mrow><mn>45</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> to the previous give <math displaystyle="true"><mrow><mi>I</mi><mo>/</mo><mn>64</mn></mrow></math>: find <math displaystyle="true"><mrow><mi>n</mi></mrow></math>.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Unpolarised light</p></td><td><p><math displaystyle="true"><mrow><mi>I</mi><mo>=</mo><mfrac><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math> after the first polaroid</p></td></tr><tr><td><p>Malus&#x27; law</p></td><td><p><math displaystyle="true"><mrow><mi>I</mi><mo>=</mo><msub><mrow><mi>I</mi></mrow><mrow><mn>1</mn></mrow></msub><msup><mrow><mi mathvariant="normal">cos</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>θ</mi></mrow></math></p></td></tr><tr><td><p>Brewster&#x27;s law</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">tan</mi><msub><mrow><mi>i</mi></mrow><mrow><mi>B</mi></mrow></msub><mo>=</mo><mfrac><mrow><msub><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mrow><mi>n</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><mspace width="0.3em"></mspace><msub><mrow><mi>i</mi></mrow><mrow><mi>B</mi></mrow></msub><mo>+</mo><mi>r</mi><mo>=</mo><msup><mrow><mn>90</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math></p></td></tr><tr><td><p><math displaystyle="true"><mrow><mi>n</mi></mrow></math> sheets at <math displaystyle="true"><mrow><msup><mrow><mn>45</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>I</mi><mo>=</mo><mfrac><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow><mrow><mn>2</mn></mrow></mfrac><mo>⋅</mo><mfrac><mrow><mn>1</mn></mrow><mrow><msup><mrow><mn>2</mn></mrow><mrow><mspace width="0.3em"></mspace><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Maximum between crossed polaroids</p></td><td><p>the middle one at <math displaystyle="true"><mrow><msup><mrow><mn>45</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math>: <math displaystyle="true"><mrow><mi>I</mi><mo>=</mo><msub><mrow><mi>I</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>/</mo><mn>8</mn></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Why does the first polaroid give half the intensity?</p></td><td><p>Unpolarised light has all directions equally, so half passes.</p></td></tr><tr><td><p>What is special at Brewster&#x27;s angle?</p></td><td><p>The reflected ray is completely polarised, perpendicular to the plane of incidence, and the refracted ray is at <math displaystyle="true"><mrow><msup><mrow><mn>90</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> to it.</p></td></tr><tr><td><p>Which angle goes into Malus&#x27; law with three polaroids?</p></td><td><p>The angle between neighbouring pass axes, not the angle with the first.</p></td></tr><tr><td><p>Is the light polarised in the plane of incidence reflected at <math displaystyle="true"><mrow><msub><mrow><mi>i</mi></mrow><mrow><mi>B</mi></mrow></msub></mrow></math>?</p></td><td><p>No. There is no reflection and total transmission.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Applying the factor <math displaystyle="true"><mrow><mrow><mrow><mn>1</mn></mrow><mo>/</mo><mrow><mn>2</mn></mrow></mrow></mrow></math> at every polaroid.</p><p style="padding-left:14px">•  Using the angle with the first polaroid for the third.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi mathvariant="normal">tan</mi><msub><mrow><mi>i</mi></mrow><mrow><mi>B</mi></mrow></msub><mo>=</mo><msub><mrow><mi>n</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>/</mo><msub><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math> the wrong way round.</p><p style="padding-left:14px">•  Taking the angle with the surface as the angle of incidence.</p><p style="padding-left:14px">•  Forgetting that the intensity after a rotating polaroid is averaged over the cycle.</p></div></section>
+<section class="typ" id="T4" data-k="4"><h2>Type 4. Single-slit diffraction and resolution <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">17 questions on the sheet (Q73–89)  ·  Sub-topics: D1 single-slit minima, maxima and width · D2 resolving power · D3 double slit with a single-slit envelope</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_36"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Minima</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_37"></div></td></tr><tr><td><p>Position on the screen</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_38"></div></td></tr><tr><td><p>Central maximum</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_39"></div></td></tr><tr><td><p>Secondary maximum</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_40"></div></td></tr><tr><td><p>Resolution</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_41"></div></td></tr><tr><td><p>Fringes in the central maximum</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_42"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What limits the number of minima?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_43"></div></td></tr><tr><td><p>Why does the central maximum get wider for a narrower slit?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_44"></div></td></tr><tr><td><p>What is the Rayleigh criterion?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_45"></div></td></tr><tr><td><p>What does the single slit do to a double-slit pattern?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_46"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_47"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 4</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;The first minimum is at <math displaystyle="true"><mrow><msup><mrow><mn>30</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> for a <math displaystyle="true"><mrow><mn>628</mn></mrow></math> nm wavelength: the slit width.&#x27;</p><p style="padding-left:14px">•  &#x27;A lens of focal length <math displaystyle="true"><mrow><mn>20</mn></mrow></math> cm: the linear width of the central maximum.&#x27;</p><p style="padding-left:14px">•  &#x27;The maximum number of diffraction minima for <math displaystyle="true"><mrow><mi>a</mi><mo>=</mo><mn>100</mn><mi>λ</mi></mrow></math>.&#x27;</p><p style="padding-left:14px">•  &#x27;Ten double-slit maxima within the central maximum of the single slit: the slit width.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Minima</p></td><td><p><math displaystyle="true"><mrow><mi>a</mi><mi mathvariant="normal">sin</mi><mi>θ</mi><mo>=</mo><mi>n</mi><mi>λ</mi></mrow></math></p></td></tr><tr><td><p>Position on the screen</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>y</mi></mrow><mrow><mi>n</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>n</mi><mi>λ</mi><mi>D</mi></mrow><mrow><mi>a</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Central maximum</p></td><td><p>width <math displaystyle="true"><mrow><mo>=</mo><mfrac><mrow><mn>2</mn><mi>λ</mi><mi>D</mi></mrow><mrow><mi>a</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Secondary maximum</p></td><td><p>width <math displaystyle="true"><mrow><mo>=</mo><mfrac><mrow><mi>λ</mi><mi>D</mi></mrow><mrow><mi>a</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Resolution</p></td><td><p><math displaystyle="true"><mrow><mi>Δ</mi><mi>θ</mi><mo>=</mo><mfrac><mrow><mn>1.22</mn><mi>λ</mi></mrow><mrow><mi>D</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Fringes in the central maximum</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mn>2</mn><mi>λ</mi><mi>D</mi></mrow><mrow><mi>a</mi></mrow></mfrac><mo>=</mo><mi>N</mi><mfrac><mrow><mi>λ</mi><mi>D</mi></mrow><mrow><mi>d</mi></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What limits the number of minima?</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mi>θ</mi><mo>≤</mo><mn>1</mn></mrow></math>, so <math displaystyle="true"><mrow><mi>n</mi><mo>&lt;</mo><mi>a</mi><mo>/</mo><mi>λ</mi></mrow></math> on each side.</p></td></tr><tr><td><p>Why does the central maximum get wider for a narrower slit?</p></td><td><p>Its width is <math displaystyle="true"><mrow><mn>2</mn><mi>λ</mi><mi>D</mi><mo>/</mo><mi>a</mi></mrow></math>.</p></td></tr><tr><td><p>What is the Rayleigh criterion?</p></td><td><p>Two sources are just resolved when the central maximum of one falls on the first minimum of the other.</p></td></tr><tr><td><p>What does the single slit do to a double-slit pattern?</p></td><td><p>It gives an envelope: the fringes inside the central maximum are bright, the ones at its minima are missing.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>β</mi><mo>=</mo><mi>λ</mi><mi>D</mi><mo>/</mo><mi>a</mi></mrow></math> for the whole central maximum (it is twice that).</p><p style="padding-left:14px">•  Counting the <math displaystyle="true"><mrow><mi>n</mi><mo>=</mo><mi>a</mi><mo>/</mo><mi>λ</mi></mrow></math> minimum, which is at <math displaystyle="true"><mrow><msup><mrow><mn>90</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math>.</p><p style="padding-left:14px">•  Using the angular width of the central maximum as <math displaystyle="true"><mrow><mi>λ</mi><mo>/</mo><mi>a</mi></mrow></math> instead of <math displaystyle="true"><mrow><mn>2</mn><mi>λ</mi><mo>/</mo><mi>a</mi></mrow></math>.</p><p style="padding-left:14px">•  Forgetting the 1.22 for a circular aperture.</p><p style="padding-left:14px">•  Mixing up the slit width <math displaystyle="true"><mrow><mi>a</mi></mrow></math> and the slit separation <math displaystyle="true"><mrow><mi>d</mi></mrow></math>.</p></div></section>
+<section class="typ" id="T5" data-k="5"><h2>Type 5. Path difference and phase: geometry, thin sheets and slabs <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">15 questions on the sheet (Q90–104)  ·  Sub-topics: E1 path difference from the geometry · E2 thin sheet or slab: shift of the central fringe</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_48"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Path difference</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_49"></div></td></tr><tr><td><p>Phase difference</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_50"></div></td></tr><tr><td><p>Maximum and minimum</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_51"></div></td></tr><tr><td><p>Optical path</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_52"></div></td></tr><tr><td><p>Shift of the fringes</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_53"></div></td></tr><tr><td><p>Source off axis</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_54"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Which way does the central maximum move when a sheet covers one slit?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_55"></div></td></tr><tr><td><p>How many fringes does the pattern shift?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_56"></div></td></tr><tr><td><p>What if one source leads in phase?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_57"></div></td></tr><tr><td><p>What is the largest possible path difference?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_58"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_59"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 5</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;Sound sources <math displaystyle="true"><mrow><mn>1.5</mn></mrow></math> m apart and a listener <math displaystyle="true"><mrow><mn>2</mn></mrow></math> m from one of them: the next maximum.&#x27;</p><p style="padding-left:14px">•  &#x27;P leads Q by <math displaystyle="true"><mrow><msup><mrow><mn>90</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> and <math displaystyle="true"><mrow><mi>P</mi><mi>Q</mi><mo>=</mo><mi>λ</mi><mo>/</mo><mn>4</mn></mrow></math>: the ratio of the intensities at three points.&#x27;</p><p style="padding-left:14px">•  &#x27;A glass plate in front of a slit shifts the central maximum to the position of the 4th bright fringe: the thickness.&#x27;</p><p style="padding-left:14px">•  &#x27;Two slabs of index <math displaystyle="true"><mrow><mn>1.51</mn></mrow></math> and <math displaystyle="true"><mrow><mn>1.55</mn></mrow></math>, <math displaystyle="true"><mrow><mn>0.1</mn></mrow></math> mm thick: the shift in fringes.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Path difference</p></td><td><p><math displaystyle="true"><mrow><mi>Δ</mi><mo>=</mo><msub><mrow><mi>S</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>P</mi><mo>−</mo><msub><mrow><mi>S</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>P</mi></mrow></math></p></td></tr><tr><td><p>Phase difference</p></td><td><p><math displaystyle="true"><mrow><mi>ϕ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mrow><mi>λ</mi></mrow></mfrac><mi>Δ</mi><mo>+</mo><mi>δ</mi></mrow></math> (<math displaystyle="true"><mrow><mi>δ</mi></mrow></math> = phase lead of the source)</p></td></tr><tr><td><p>Maximum and minimum</p></td><td><p><math displaystyle="true"><mrow><mi>Δ</mi><mo>=</mo><mi>n</mi><mi>λ</mi></mrow></math>; <math displaystyle="true"><mrow><mspace width="0.3em"></mspace><mi>Δ</mi><mo>=</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>n</mi><mo>−</mo><mrow><mrow><mn>1</mn></mrow><mo>/</mo><mrow><mn>2</mn></mrow></mrow></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>λ</mi></mrow></math></p></td></tr><tr><td><p>Optical path</p></td><td><p><math displaystyle="true"><mrow><mi>n</mi><mi>L</mi></mrow></math>; a sheet adds <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>μ</mi><mo>−</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>t</mi></mrow></math></p></td></tr><tr><td><p>Shift of the fringes</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>μ</mi><mo>−</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>t</mi><mi>D</mi></mrow><mrow><mi>d</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>μ</mi><mo>−</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>t</mi></mrow><mrow><mi>λ</mi></mrow></mfrac><mi>β</mi></mrow></math></p></td></tr><tr><td><p>Source off axis</p></td><td><p>add the path from the source to each slit</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Which way does the central maximum move when a sheet covers one slit?</p></td><td><p>Towards the covered slit.</p></td></tr><tr><td><p>How many fringes does the pattern shift?</p></td><td><p><math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>μ</mi><mo>−</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>t</mi><mo>/</mo><mi>λ</mi></mrow></math>.</p></td></tr><tr><td><p>What if one source leads in phase?</p></td><td><p>Add its lead to the phase difference from the path: on one side they cancel and on the other they add.</p></td></tr><tr><td><p>What is the largest possible path difference?</p></td><td><p>The distance between the sources.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>μ</mi><mi>t</mi></mrow></math> instead of <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>μ</mi><mo>−</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>t</mi></mrow></math>.</p><p style="padding-left:14px">•  Forgetting the path from the source to the slits.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>ϕ</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>Δ</mi><mo>/</mo><mi>λ</mi></mrow></math> and ignoring the phase lead of the source.</p><p style="padding-left:14px">•  Taking a distance larger than the geometry allows as the answer.</p><p style="padding-left:14px">•  Shifting the pattern away from the covered slit.</p></div></section>
+<section class="typ" id="T6" data-k="6"><h2>Type 6. Wave theory of light: wavefronts and wave properties <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">7 questions on the sheet (Q105–111)  ·  Sub-topics: G1 wavefronts, Huygens&#x27; principle and wave properties</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_60"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Wavelength in a medium</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_61"></div></td></tr><tr><td><p>Direction of a plane wave</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_62"></div></td></tr><tr><td><p>Plane front from a point at the focus</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_63"></div></td></tr><tr><td><p>Scattering</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_64"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What is a wavefront?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_65"></div></td></tr><tr><td><p>What does a point source give?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_66"></div></td></tr><tr><td><p>What stays constant when light enters a medium?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_67"></div></td></tr><tr><td><p>Which effects need the photon picture?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_68"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_69"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 6</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;A source at the focus of a convex lens: the shape of the wavefront.&#x27;</p><p style="padding-left:14px">•  &#x27;A plane wave with wavefronts <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo></mrow></math> constant: the angle with the <math displaystyle="true"><mrow><mi>x</mi></mrow></math>-axis.&#x27;</p><p style="padding-left:14px">•  &#x27;Light of <math displaystyle="true"><mrow><mn>5</mn><mo>×</mo><msup><mrow><mn>10</mn></mrow><mrow><mn>14</mn></mrow></msup></mrow></math> Hz enters a medium of index <math displaystyle="true"><mrow><mn>2</mn></mrow></math>: the wavelength.&#x27;</p><p style="padding-left:14px">•  &#x27;Which phenomenon cannot be explained by the wave theory?&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Wavelength in a medium</p></td><td><p><math displaystyle="true"><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow><mrow><mi>n</mi></mrow></mfrac></mrow></math>, frequency unchanged</p></td></tr><tr><td><p>Direction of a plane wave</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">cos</mi><mi>α</mi><mo>=</mo><mfrac><mrow><mi>l</mi></mrow><mrow><msqrt><mrow><msup><mrow><mi>l</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>m</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></msqrt></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Plane front from a point at the focus</p></td><td><p>after a convex lens the front is plane</p></td></tr><tr><td><p>Scattering</p></td><td><p>a particle much smaller than <math displaystyle="true"><mrow><mi>λ</mi></mrow></math> scatters</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What is a wavefront?</p></td><td><p>The surface of equal phase; the ray is normal to it.</p></td></tr><tr><td><p>What does a point source give?</p></td><td><p>A spherical wavefront, becoming plane far away.</p></td></tr><tr><td><p>What stays constant when light enters a medium?</p></td><td><p>The frequency.</p></td></tr><tr><td><p>Which effects need the photon picture?</p></td><td><p>The photoelectric and Compton effects.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Taking the plane <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mi>c</mi></mrow></math> to give an angle of <math displaystyle="true"><mrow><msup><mrow><mn>45</mn></mrow><mrow><mo>∘</mo></mrow></msup></mrow></math> with the axes.</p><p style="padding-left:14px">•  Changing the frequency in a medium.</p><p style="padding-left:14px">•  Calling the wavefront of a lens with a source at the focus spherical.</p></div></section>
+<section class="typ" id="T7" data-k="7"><h2>Type 7. Overlapping fringes and fringe counts for two wavelengths <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">6 questions on the sheet (Q112–117)  ·  Sub-topics: F1 coincidence of bright fringes · F2 number of fringes in a fixed segment</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_70"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Coincidence</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_71"></div></td></tr><tr><td><p>Position</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_72"></div></td></tr><tr><td><p>Fringes in a segment</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_73"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I find the first coincidence?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_74"></div></td></tr><tr><td><p>Why is <math displaystyle="true"><mrow><mi>N</mi><mo>∝</mo><mn>1</mn><mo>/</mo><mi>λ</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_75"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_76"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 7</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;<math displaystyle="true"><mrow><mn>480</mn></mrow></math> nm and <math displaystyle="true"><mrow><mn>600</mn></mrow></math> nm: the least number of bright fringes of <math displaystyle="true"><mrow><mn>480</mn></mrow></math> nm for the first coincidence.&#x27;</p><p style="padding-left:14px">•  &#x27;<math displaystyle="true"><mrow><mn>450</mn></mrow></math> nm and <math displaystyle="true"><mrow><mn>650</mn></mrow></math> nm: the minimum order of the fringe produced by <math displaystyle="true"><mrow><mn>650</mn></mrow></math> nm.&#x27;</p><p style="padding-left:14px">•  &#x27;<math displaystyle="true"><mrow><mn>800</mn></mrow></math> nm and <math displaystyle="true"><mrow><mn>600</mn></mrow></math> nm, <math displaystyle="true"><mrow><mi>D</mi><mo>=</mo><mn>7</mn></mrow></math> m: the shortest distance of the coincidence.&#x27;</p><p style="padding-left:14px">•  &#x27;<math displaystyle="true"><mrow><mn>16</mn></mrow></math> fringes at <math displaystyle="true"><mrow><mn>700</mn></mrow></math> nm: the number at <math displaystyle="true"><mrow><mn>400</mn></mrow></math> nm in the same segment.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Coincidence</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>n</mi></mrow><mrow><mn>1</mn></mrow></msub><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><msub><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></msub><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math> with the smallest integers</p></td></tr><tr><td><p>Position</p></td><td><p><math displaystyle="true"><mrow><mi>y</mi><mo>=</mo><mfrac><mrow><msub><mrow><mi>n</mi></mrow><mrow><mn>1</mn></mrow></msub><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>D</mi></mrow><mrow><mi>d</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Fringes in a segment</p></td><td><p><math displaystyle="true"><mrow><mi>N</mi><mo>∝</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>λ</mi></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I find the first coincidence?</p></td><td><p>Reduce <math displaystyle="true"><mrow><msub><mrow><mi>λ</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>:</mo><msub><mrow><mi>λ</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></math> to the lowest integers; the orders are the reverse.</p></td></tr><tr><td><p>Why is <math displaystyle="true"><mrow><mi>N</mi><mo>∝</mo><mn>1</mn><mo>/</mo><mi>λ</mi></mrow></math>?</p></td><td><p>The fringe width is <math displaystyle="true"><mrow><mo>∝</mo><mi>λ</mi></mrow></math> and the segment is fixed.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Giving the order of the wrong wavelength.</p><p style="padding-left:14px">•  Not reducing the ratio to the lowest terms.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>N</mi><mo>∝</mo><mi>λ</mi></mrow></math>.</p></div></section></div><div id="sym" class="noprint"><span>Insert:</span></div><script>
+(function(){var KEY="tn_Wave Optics";var S={ta:{},rev:{}};
+try{S=JSON.parse(localStorage.getItem(KEY))||S}catch(e){}
+S.ta=S.ta||{};S.rev=S.rev||{};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function san(n){var o='';[].forEach.call(n.childNodes,function(c){if(c.nodeType==3)o+=esc(c.textContent);else if(c.nodeType==1){var t=c.tagName.toLowerCase();
+ if(t=='br')o+='<br>';else if(t=='sub'||t=='sup')o+='<'+t+'>'+san(c)+'</'+t+'>';
+ else if(t=='span'&&/^(fr|n|d)$/.test(c.className))o+='<span class="'+c.className+'">'+san(c)+'</span>';
+ else if(t=='div'||t=='p')o+=(o?'<br>':'')+san(c);else o+=san(c)}});return o}
+function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'</body>','text/html').body)}
+var eds=[].slice.call(document.querySelectorAll('.ed'));
+function txt(e){return e.textContent.replace(/​/g,'').trim()}
+function apply(){eds.forEach(function(t){t.innerHTML=clean(S.ta[t.dataset.id]||'')});
+ [].forEach.call(document.querySelectorAll('section.typ'),function(s){setRev(s,!!S.rev[s.dataset.k])})}
+function setRev(s,on){s.querySelector('.rev').classList.toggle('on',on);s.querySelector('.sh').style.display=on?'none':'';s.querySelector('.hd').style.display=on?'':'none'}
+function store(t){var h=clean(t.innerHTML);if(txt(t)||/<span class="fr"/.test(h))S.ta[t.dataset.id]=h;else delete S.ta[t.dataset.id];save()}
+eds.forEach(function(t){t.addEventListener('input',function(){store(t)});
+ t.addEventListener('paste',function(e){e.preventDefault();var x=(e.clipboardData||window.clipboardData).getData('text');document.execCommand('insertText',false,x)});
+ t.addEventListener('keydown',function(e){
+  if(e.key=='Enter'){e.preventDefault();document.execCommand('insertLineBreak');return}
+  if(e.ctrlKey&&!e.altKey&&!e.metaKey){last=t;var k=e.key,done2=true;
+   if(k=='h'||k=='H')fmt('superscript');else if(k=='l'||k=='L')fmt('subscript');
+   else if(k=='i'||k=='I')insText('\u222b');else if(k=='s'||k=='S')insText('\u03a3');
+   else if(k=='f'||k=='F')frac();else if(k=='r'||k=='R')insText('\u221a');
+   else if(k=='p'||k=='P')insText('\u03c0');else if(k=='e'||k=='E')insText('\u221e');
+   else if(k==' ')normal();else if(k=='>'||k=='.')arrow();else done2=false;
+   if(done2){e.preventDefault();return}}
+  if(e.key=='ArrowRight'&&!e.shiftKey){var s0=getSelection();if(s0.rangeCount&&s0.isCollapsed){var n0=s0.anchorNode,o0=s0.anchorOffset;var el=n0&&(n0.nodeType==3?n0.parentNode:n0);var sb=el&&el.closest?el.closest('sub,sup'):null;
+    if(sb&&t.contains(sb)&&n0.nodeType==3&&o0==n0.length&&sb.lastChild===n0){e.preventDefault();var z=sb.nextSibling;if(!(z&&z.nodeType==3)){z=document.createTextNode('\u200b');sb.parentNode.insertBefore(z,sb.nextSibling)}var rr=document.createRange();rr.setStart(z,z.length>0?1:0);rr.collapse(true);s0.removeAllRanges();s0.addRange(rr);return}}}
+  if(e.key=='Tab'){var sel=getSelection();if(!sel.rangeCount)return;var nd=sel.anchorNode;nd=nd&&nd.nodeType==3?nd.parentNode:nd;var sp=nd&&nd.closest?nd.closest('.fr>span'):null;
+   if(sp&&t.contains(sp)){e.preventDefault();var r=document.createRange();
+    if(sp.className=='n'){var d=sp.parentNode.querySelector('.d');r.selectNodeContents(d);r.collapse(false)}
+    else{var fr=sp.parentNode;r.setStartAfter(fr);r.collapse(true)}
+    sel.removeAllRanges();sel.addRange(r)}}})});
+[].forEach.call(document.querySelectorAll('section.typ'),function(s){var k=s.dataset.k;
+ s.querySelector('.sh').onclick=function(){var any=[].some.call(s.querySelectorAll('.ed'),function(t){return txt(t)||t.querySelector('.fr')});
+  /* unblocked show */
+  S.rev[k]=1;save();setRev(s,true);s.querySelector('.rev').scrollIntoView({behavior:'smooth',block:'nearest'})};
+ s.querySelector('.hd').onclick=function(){S.rev[k]=0;save();setRev(s,false)};
+ s.querySelector('.rs').onclick=function(){if(!confirm('Clear your answers for this type and hide its completed notes?'))return;
+  [].forEach.call(s.querySelectorAll('.ed'),function(t){t.innerHTML='';delete S.ta[t.dataset.id]});S.rev[k]=0;save();setRev(s,false)}});
+
+var oldTitle=document.title;
+function hasWork(s){var any=false;[].forEach.call(s.querySelectorAll('.ed'),function(t){if((t.textContent||'').trim())any=true});return any||!!S.rev[s.dataset.k]}
+function endPrint(){document.body.classList.remove('one');[].forEach.call(document.querySelectorAll('section.typ'),function(s){s.classList.remove('pick','pr-skip')});document.title=oldTitle}
+window.addEventListener('afterprint',endPrint);
+function doPrint(){setTimeout(function(){window.print()},50)}
+document.getElementById('pdf').onclick=function(){var secs=[].slice.call(document.querySelectorAll('section.typ')),n=0;
+ secs.forEach(function(s){if(hasWork(s))n++;else s.classList.add('pr-skip')});
+ /* unblocked pdf */ if(!n){secs.forEach(function(s){s.classList.remove('pr-skip')});}
+ document.title=KEY.replace(/^tn_/,'')+' - my Type Notes';doPrint()};
+[].forEach.call(document.querySelectorAll('section.typ'),function(s){s.querySelector('.tpdf').onclick=function(){
+ /* unblocked tpdf */
+ document.body.classList.add('one');s.classList.add('pick');document.title=KEY.replace(/^tn_/,'')+' - my Type Notes - Type '+s.dataset.k;doPrint()}});
+document.getElementById('sv').onclick=function(){var b=new Blob([JSON.stringify({v:2,notes:KEY,data:S})],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=KEY.replace(/[^A-Za-z0-9]+/g,'_')+'.json';document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},500)};
+document.getElementById('ld').onclick=function(){document.getElementById('lf').click()};
+document.getElementById('lf').onchange=function(){var f=this.files[0];var inp=this;if(!f)return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(o.notes!==KEY||!o.data)throw 0;S=o.data;S.ta=S.ta||{};S.rev=S.rev||{};save();apply();alert('Notes loaded.')}catch(e){alert('This file is not a Type Notes file for this chapter.')}inp.value=''};r.readAsText(f)};
+/* symbol bar */
+var bar=document.getElementById('sym'),last=null;
+function ed(){if(!last)return false;if(document.activeElement!==last)last.focus();return true}
+function done(){store(last);setTimeout(function(){if(typeof upd=='function')upd()},0)}
+function insText(c){if(!ed())return;document.execCommand('insertText',false,c);done()}
+function fmt(cmd){if(!ed())return;document.execCommand(cmd);done()}
+function normal(){if(!ed())return;if(document.queryCommandState('subscript'))document.execCommand('subscript');if(document.queryCommandState('superscript'))document.execCommand('superscript');done()}
+function arrow(){if(!ed())return;var sel=getSelection();if(sel.rangeCount&&sel.isCollapsed){var n=sel.anchorNode,o=sel.anchorOffset;if(n&&n.nodeType==3&&o>0&&n.textContent.charAt(o-1)=='\u2192'){sel.setBaseAndExtent(n,o-1,n,o);document.execCommand('insertText',false,'\u21d2');done();return}}insText('\u2192')}
+function frac(){if(!ed())return;var sel=getSelection();if(!sel.rangeCount)return;var r=sel.getRangeAt(0);if(!last.contains(r.commonAncestorContainer))return;
+ var tx=r.toString();r.deleteContents();var fr=document.createElement('span');fr.className='fr';
+ var n=document.createElement('span');n.className='n';n.textContent=tx||'​';var d=document.createElement('span');d.className='d';d.textContent='​';fr.appendChild(n);fr.appendChild(d);
+ var z=document.createTextNode('​');r.insertNode(z);r.insertNode(fr);
+ var nr=document.createRange();if(tx){nr.selectNodeContents(d);nr.collapse(false)}else{nr.selectNodeContents(n);nr.collapse(false)}sel.removeAllRanges();sel.addRange(nr);done()}
+var BT=[['a/b','Fraction: type the top, press Tab, type the bottom, press Tab again to continue',frac],['Aa','Back to normal text after a subscript or superscript (Ctrl+Space, or press the right arrow at the end)',normal],['x₂','Subscript (select text, or tap then type)',function(){fmt('subscript')}],['xⁿ','Superscript (select text, or tap then type)',function(){fmt('superscript')}]];
+var SY=['√','π','θ','α','β','λ','ω','∞','∫','Σ','≤','≥','≠','±','×','÷','→','⇒','°'];
+var lastT=0,lastK='';
+function guard(k,f){var n=Date.now();if(n-lastT<300&&k===lastK)return;lastT=n;lastK=k;f()}
+function mk(label,title,f){var b=document.createElement('button');b.type='button';b.textContent=label;if(title)b.title=title;
+ b.addEventListener('mousedown',function(e){e.preventDefault()});
+ b.addEventListener('touchstart',function(e){e.preventDefault();guard(label,f)},{passive:false});
+ b.addEventListener('click',function(){guard(label,f)});return b}
+BT.forEach(function(x){var b=mk(x[0],x[1],x[2]);b.className='w';if(x[0]=='x\u2082')b.dataset.c='subscript';if(x[0]=='x\u207f')b.dataset.c='superscript';var LB={'Aa':'Aa <small>Normal</small>','x₂':'x₂ <small>Sub</small>','xⁿ':'xⁿ <small>Super</small>','a/b':'<span class="mf"><i>a</i><i>b</i></span> <small>Fraction</small>'};if(LB[x[0]])b.innerHTML=LB[x[0]];bar.appendChild(b)});
+function upd(){if(!bar.classList.contains('on'))return;[].forEach.call(bar.querySelectorAll('button[data-c]'),function(b){var on=false;try{on=document.queryCommandState(b.dataset.c)}catch(e){}b.classList.toggle('act',on)})}
+document.addEventListener('selectionchange',upd);
+SY.forEach(function(c){bar.appendChild(mk(c,'',function(){insText(c)}))});
+eds.forEach(function(t){t.addEventListener('focus',function(){last=t;bar.classList.add('on');document.body.classList.add('symon')})});
+function hide(e){if(!e.target.closest('.ed')&&!e.target.closest('#sym')){bar.classList.remove('on');document.body.classList.remove('symon')}}
+document.addEventListener('mousedown',hide);document.addEventListener('touchstart',hide,{passive:true});
+apply();
+})();
+</script>
+<script>
+function initThemeToggle() {
+  var MOON_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+  var SUN_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jee_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jee_theme', 'light');
+    }
+    var btns = document.querySelectorAll('.theme-btn');
+    btns.forEach(function(b) {
+      b.innerHTML = dark ? (SUN_ICON + '<span>Light</span>') : (MOON_ICON + '<span>Dark</span>');
+      b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
+    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  applyTheme(isDark);
+
+  if (!window._themeToggleAttached) {
+    window._themeToggleAttached = true;
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.theme-btn');
+      if (btn) {
+        var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        applyTheme(!currentlyDark);
+      }
+    });
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
+}
+</script>
+
+</body></html>

@@ -1,7 +1,7 @@
 {
   "platform": "JEE Main PYQ Practice Platform",
-  "total_chapters": 33,
-  "total_questions": 5038,
+  "total_chapters": 37,
+  "total_questions": 5596,
   "chapters": [
     {
       "name": "Application of Derivatives",
@@ -99,6 +99,25 @@
       "legacy_url": "Maths/Functions PYQ Practice.html"
     },
     {
+      "name": "Indefinite Integration",
+      "subject": "Maths",
+      "slug": "indefinite-integration",
+      "class_tier": "Class B",
+      "total_questions": 64,
+      "difficulty_counts": {
+        "E": 6,
+        "M": 42,
+        "D": 16
+      },
+      "format_counts": {
+        "MCQ": 51,
+        "Numerical": 13
+      },
+      "types_count": 6,
+      "data_path": "data/chapters/maths/indefinite-integration.json",
+      "legacy_url": "Maths/Indefinite Integration PYQ Practice.html"
+    },
+    {
       "name": "Limits",
       "subject": "Maths",
       "slug": "limits",
@@ -135,6 +154,44 @@
       "types_count": 7,
       "data_path": "data/chapters/maths/matrices.json",
       "legacy_url": "Maths/Matrices PYQ Practice.html"
+    },
+    {
+      "name": "Probability",
+      "subject": "Maths",
+      "slug": "probability",
+      "class_tier": "Class B",
+      "total_questions": 176,
+      "difficulty_counts": {
+        "E": 31,
+        "M": 129,
+        "D": 16
+      },
+      "format_counts": {
+        "MCQ": 147,
+        "Numerical": 29
+      },
+      "types_count": 7,
+      "data_path": "data/chapters/maths/probability.json",
+      "legacy_url": "Maths/Probability PYQ Practice.html"
+    },
+    {
+      "name": "Vector Algebra",
+      "subject": "Maths",
+      "slug": "vector-algebra",
+      "class_tier": "Class B",
+      "total_questions": 204,
+      "difficulty_counts": {
+        "E": 26,
+        "M": 137,
+        "D": 41
+      },
+      "format_counts": {
+        "MCQ": 152,
+        "Numerical": 52
+      },
+      "types_count": 9,
+      "data_path": "data/chapters/maths/vector-algebra.json",
+      "legacy_url": "Maths/Vector Algebra PYQ Practice.html"
     },
     {
       "name": "Alternating Current",
@@ -498,25 +555,6 @@
       "legacy_url": "Chemistry/Coordination Compounds PYQ Practice.html"
     },
     {
-      "name": "d and f Block Elements",
-      "subject": "Chemistry",
-      "slug": "d-and-f-block-elements",
-      "class_tier": "Class B",
-      "total_questions": 181,
-      "difficulty_counts": {
-        "E": 81,
-        "M": 96,
-        "D": 4
-      },
-      "format_counts": {
-        "MCQ": 142,
-        "Numerical": 39
-      },
-      "types_count": 8,
-      "data_path": "data/chapters/chemistry/d-and-f-block-elements.json",
-      "legacy_url": "Chemistry/d and f Block Elements PYQ Practice.html"
-    },
-    {
       "name": "Electrochemistry",
       "subject": "Chemistry",
       "slug": "electrochemistry",
@@ -553,6 +591,25 @@
       "types_count": 10,
       "data_path": "data/chapters/chemistry/general-organic-chemistry.json",
       "legacy_url": "Chemistry/General Organic Chemistry PYQ Practice.html"
+    },
+    {
+      "name": "Haloalkanes and Haloarenes",
+      "subject": "Chemistry",
+      "slug": "haloalkanes-and-haloarenes",
+      "class_tier": "Class B",
+      "total_questions": 114,
+      "difficulty_counts": {
+        "E": 27,
+        "M": 67,
+        "D": 20
+      },
+      "format_counts": {
+        "MCQ": 103,
+        "Numerical": 11
+      },
+      "types_count": 7,
+      "data_path": "data/chapters/chemistry/haloalkanes-and-haloarenes.json",
+      "legacy_url": "Chemistry/Haloalkanes and Haloarenes PYQ Practice.html"
     },
     {
       "name": "Ionic Equilibrium",
@@ -629,6 +686,25 @@
       "types_count": 9,
       "data_path": "data/chapters/chemistry/solutions.json",
       "legacy_url": "Chemistry/Solutions PYQ Practice.html"
+    },
+    {
+      "name": "d and f Block Elements",
+      "subject": "Chemistry",
+      "slug": "d-and-f-block-elements",
+      "class_tier": "Class B",
+      "total_questions": 181,
+      "difficulty_counts": {
+        "E": 81,
+        "M": 96,
+        "D": 4
+      },
+      "format_counts": {
+        "MCQ": 142,
+        "Numerical": 39
+      },
+      "types_count": 8,
+      "data_path": "data/chapters/chemistry/d-and-f-block-elements.json",
+      "legacy_url": "Chemistry/d and f Block Elements PYQ Practice.html"
     }
   ]
 }
