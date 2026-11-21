@@ -1,7 +1,7 @@
 {
   "platform": "JEE Main PYQ Practice Platform",
-  "total_chapters": 37,
-  "total_questions": 5596,
+  "total_chapters": 40,
+  "total_questions": 6221,
   "chapters": [
     {
       "name": "Application of Derivatives",
@@ -21,6 +21,25 @@
       "types_count": 9,
       "data_path": "data/chapters/maths/application-of-derivatives.json",
       "legacy_url": "Maths/Application of Derivatives PYQ Practice.html"
+    },
+    {
+      "name": "Area Under Curves",
+      "subject": "Maths",
+      "slug": "area-under-curves",
+      "class_tier": "Class B",
+      "total_questions": 129,
+      "difficulty_counts": {
+        "E": 23,
+        "M": 82,
+        "D": 24
+      },
+      "format_counts": {
+        "MCQ": 87,
+        "Numerical": 42
+      },
+      "types_count": 6,
+      "data_path": "data/chapters/maths/area-under-curves.json",
+      "legacy_url": "Maths/Area Under Curves PYQ Practice.html"
     },
     {
       "name": "Continuity and Differentiability",
@@ -78,6 +97,25 @@
       "types_count": 7,
       "data_path": "data/chapters/maths/determinants.json",
       "legacy_url": "Maths/Determinants PYQ Practice.html"
+    },
+    {
+      "name": "Differential Equations",
+      "subject": "Maths",
+      "slug": "differential-equations",
+      "class_tier": "Class B",
+      "total_questions": 197,
+      "difficulty_counts": {
+        "E": 32,
+        "M": 105,
+        "D": 60
+      },
+      "format_counts": {
+        "MCQ": 153,
+        "Numerical": 44
+      },
+      "types_count": 7,
+      "data_path": "data/chapters/maths/differential-equations.json",
+      "legacy_url": "Maths/Differential Equations PYQ Practice.html"
     },
     {
       "name": "Functions",
@@ -173,6 +211,25 @@
       "types_count": 7,
       "data_path": "data/chapters/maths/probability.json",
       "legacy_url": "Maths/Probability PYQ Practice.html"
+    },
+    {
+      "name": "Three Dimensional Geometry",
+      "subject": "Maths",
+      "slug": "three-dimensional-geometry",
+      "class_tier": "Class B",
+      "total_questions": 299,
+      "difficulty_counts": {
+        "E": 59,
+        "M": 205,
+        "D": 35
+      },
+      "format_counts": {
+        "MCQ": 217,
+        "Numerical": 82
+      },
+      "types_count": 10,
+      "data_path": "data/chapters/maths/three-dimensional-geometry.json",
+      "legacy_url": "Maths/Three Dimensional Geometry PYQ Practice.html"
     },
     {
       "name": "Vector Algebra",

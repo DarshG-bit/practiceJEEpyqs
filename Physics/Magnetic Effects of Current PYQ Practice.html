@@ -642,6 +642,299 @@ body.cbt-mode #savecur,
 }
 
 
+
+/* =================== FIXES FOR USER FEEDBACK (PICS 1-11) =================== */
+
+/* 1. Prevent Option and Question Scrollbars (Pic 5) */
+.o, .oc, .opts, .stem, .qbody, .wrap, .main {
+  overflow: visible !important;
+  overflow-y: visible !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.o::-webkit-scrollbar,
+.oc::-webkit-scrollbar,
+.opts::-webkit-scrollbar,
+.stem::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.o {
+  min-height: 48px !important;
+  height: auto !important;
+  max-height: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2. Top Header Navigation & Button Alignment (Pic 8) */
+.top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 8px 16px !important;
+  min-height: 52px !important;
+  box-sizing: border-box !important;
+}
+.top-left-controls,
+.top-right-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.top .btn,
+.top .theme-btn,
+.top .top-back-btn,
+.top button {
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  font-size: 13px !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 3. Subject Index Action Buttons in Dark Mode (Pic 2) */
+[data-theme="dark"] .lk a {
+  background: #18181c !important;
+  border: 1px solid #2e2e34 !important;
+  color: #60a5fa !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] .lk a:hover {
+  background: #24242a !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #15803d !important;
+  border: 1px solid #22c55e !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #16a34a !important;
+}
+
+/* 4. Mode Cards in Dark Mode (Pic 3) */
+[data-theme="dark"] .mode-card {
+  background: #111114 !important;
+  border: 1.5px solid #27272a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .mode-card div,
+[data-theme="dark"] .mode-card span,
+[data-theme="dark"] .mode-card p {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .mode-card.active {
+  background: #0d1e38 !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .mode-card.active span {
+  color: #93c5fd !important;
+}
+
+/* 5. Question Type Pill & Stem Contrast in Dark Mode (Pic 4) */
+[data-theme="dark"] .qt,
+[data-theme="dark"] .qtype-badge {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+  border: 1px solid #334155 !important;
+}
+[data-theme="dark"] .stem {
+  color: #f1f5f9 !important;
+}
+
+/* 6. Chapter Card Action Buttons in Dark Mode (Pic 6) */
+[data-theme="dark"] .btn-cbt {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border: 1px solid #2563eb !important;
+}
+[data-theme="dark"] .btn-cbt:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .btn-practice {
+  background: #14532d !important;
+  color: #86efac !important;
+  border: 1px solid #16a34a !important;
+}
+[data-theme="dark"] .btn-practice:hover {
+  background: #16a34a !important;
+  color: #ffffff !important;
+}
+
+/* 7. Subject Index Color Codes, Priority Borders & Class Tints (Pic 11) */
+[data-theme="dark"] .strip.pH { border-left: 5px solid #22c55e !important; }
+[data-theme="dark"] .strip.pM { border-left: 5px solid #f59e0b !important; }
+[data-theme="dark"] .strip.pL { border-left: 5px solid #94a3b8 !important; }
+
+[data-theme="dark"] .strip.cA { background: rgba(34, 197, 94, 0.08) !important; }
+[data-theme="dark"] .strip.cB { background: rgba(59, 130, 246, 0.08) !important; }
+[data-theme="dark"] .strip.cC { background: rgba(245, 158, 11, 0.08) !important; }
+[data-theme="dark"] .strip.cD { background: rgba(239, 68, 68, 0.08) !important; }
+
+/* 8. Sized & Centered CBT Scorecard and Compact Donut Chart (Pic 1 & Pic 10) */
+.cbt-scorecard {
+  max-width: 680px !important;
+  margin: 24px auto !important;
+  padding: 24px !important;
+  background: var(--surface-card, #ffffff) !important;
+  border: 1px solid var(--border-subtle, #e2e8f0) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+[data-theme="dark"] .cbt-scorecard {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+}
+.cbt-score-hero {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  flex-wrap: wrap !important;
+}
+.cbt-score-left {
+  flex: 1 !important;
+  min-width: 240px !important;
+}
+.cbt-donut-wrap {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+}
+.cbt-donut-svg {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  flex-shrink: 0 !important;
+  transform: rotate(-90deg) !important;
+}
+.cbt-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+}
+[data-theme="dark"] .cbt-donut-legend {
+  color: #a1a1aa;
+}
+.cbt-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cbt-donut-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cbt-donut-dot.correct { background: #16a34a; }
+.cbt-donut-dot.wrong { background: #dc2626; }
+.cbt-donut-dot.unatt { background: #64748b; }
+.cbt-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.cbt-metric-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+[data-theme="dark"] .cbt-metric-item {
+  background: #111114 !important;
+  border-color: #222224 !important;
+}
+.cbt-metric-lbl {
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+[data-theme="dark"] .cbt-metric-lbl {
+  color: #94a3b8 !important;
+}
+.cbt-metric-num {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0f172a;
+}
+[data-theme="dark"] .cbt-metric-num {
+  color: #ffffff !important;
+}
+
+/* 9. Dark Mode Fixes for Type Notes & Question Types (Materials) */
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+}
+[data-theme="dark"] .gt td {
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #141418 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .ed {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .rev {
+  background: #0a1f10 !important;
+  border-color: #16a34a !important;
+  color: #86efac !important;
+}
+
+
 </style></head><body>
 <div id="start" class="panel"><a href="index.html" style="font-size:14px;color:var(--acc);text-decoration:none">&lsaquo; All chapters</a><h2>Magnetic Effects of Current</h2><div style="color:var(--mut)">JEE Main previous-year questions &middot; Physics &middot; timed practice</div>
 <div class="banner" style="border-color:#2e9b4f;background:#f2fbf5"><b>Study material</b> (do these before the practice)<br><a href="materials/Magnetic%20Effects%20of%20Current%20Question%20Types.html">1. Question Types</a> &nbsp;&middot;&nbsp; <a href="materials/Magnetic%20Effects%20of%20Current%20Type%20Notes.html">2. Type Notes</a></div><div id="pend" class="banner" hidden></div>
@@ -649,24 +942,24 @@ body.cbt-mode #savecur,
 <label>Test &amp; Practice Mode</label>
 <div class="tbox" id="test_mode_box" style="margin-bottom:14px;">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;">
-    <label class="mode-card active" id="mode_card_cbt" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid #2563eb;border-radius:10px;background:#eff6ff;cursor:pointer;transition:all 0.15s ease;">
-      <input type="radio" name="test_mode" value="cbt" checked style="margin-top:3px;">
+    <label class="mode-card active" id="mode_card_practice" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid #2563eb;border-radius:10px;background:#eff6ff;cursor:pointer;transition:all 0.15s ease;">
+      <input type="radio" name="test_mode" value="practice" checked style="margin-top:3px;">
       <div>
         <div style="display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:#1e40af;">
-          <span>Real CBT Exam Mode</span>
-          <span style="font-size:11px;background:#2563eb;color:#ffffff;padding:1px 6px;border-radius:4px;font-weight:600;">NTA Pattern</span>
-        </div>
-        <div style="font-size:12.5px;color:#475569;margin-top:3px;line-height:1.4;">Official test conditions. No instant answers or solutions. Marking: +4 / &minus;1. Full score breakdown post-submission.</div>
-      </div>
-    </label>
-    <label class="mode-card" id="mode_card_practice" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid #cbd5e1;border-radius:10px;background:#f8fafc;cursor:pointer;transition:all 0.15s ease;">
-      <input type="radio" name="test_mode" value="practice" style="margin-top:3px;">
-      <div>
-        <div style="display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:#334155;">
           <span>Practice &amp; Learn Mode</span>
-          <span style="font-size:11px;background:#64748b;color:#ffffff;padding:1px 6px;border-radius:4px;font-weight:600;">Interactive</span>
+          <span style="font-size:11px;background:#2563eb;color:#ffffff;padding:1px 6px;border-radius:4px;font-weight:600;">Interactive</span>
         </div>
         <div style="font-size:12.5px;color:#475569;margin-top:3px;line-height:1.4;">Check answers per question instantly, retry wrong options, and inspect solutions anytime during practice.</div>
+      </div>
+    </label>
+    <label class="mode-card" id="mode_card_cbt" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid #cbd5e1;border-radius:10px;background:#f8fafc;cursor:pointer;transition:all 0.15s ease;">
+      <input type="radio" name="test_mode" value="cbt" style="margin-top:3px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:#334155;">
+          <span>Real CBT Exam Mode</span>
+          <span style="font-size:11px;background:#64748b;color:#ffffff;padding:1px 6px;border-radius:4px;font-weight:600;">NTA Pattern</span>
+        </div>
+        <div style="font-size:12.5px;color:#475569;margin-top:3px;line-height:1.4;">Official test conditions. No instant answers or solutions. Marking: +4 / &minus;1. Full score breakdown post-submission.</div>
       </div>
     </label>
   </div>
@@ -676,15 +969,16 @@ body.cbt-mode #savecur,
   <label class="rad"><input type="radio" name="qc_mode" value="all" checked> <span>All selected questions (<span id="total_q_avail">0</span> available)</span></label>
   <label class="rad" style="margin-top:6px;"><input type="radio" name="qc_mode" value="custom"> <span>Random sample of:</span></label>
   <div class="tin" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0 6px 26px;">
-    <input type="number" id="custom_qc" min="1" max="500" value="25" style="width:65px;padding:3px 6px;font-size:14px;border-radius:6px;border:1.5px solid #cbd5e1;text-align:center"> questions randomly picked from your selection
+    <input type="number" id="custom_qc" min="1" max="500" value="25" style="width:75px;padding:4px 8px;font-size:15px;border:1.5px solid #cbd5e1;border-radius:6px;">
+    <span style="color:#64748b;font-size:13.5px;">questions randomly picked from your selection</span>
   </div>
-  <div style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px 26px;">
-    <button type="button" class="qpreset" data-q="15">15 qs (~30 min)</button>
-    <button type="button" class="qpreset active" data-q="25">25 qs (Exam Sprint)</button>
-    <button type="button" class="qpreset" data-q="30">30 qs (~60 min)</button>
-    <button type="button" class="qpreset" data-q="50">50 qs</button>
+  <div class="qpresets" style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px 26px;">
+    <button type="button" class="qpreset btn" data-q="15" style="padding:3px 10px;font-size:12.5px;">15 qs (~30 min)</button>
+    <button type="button" class="qpreset btn active" data-q="25" style="padding:3px 10px;font-size:12.5px;">25 qs (Exam Sprint)</button>
+    <button type="button" class="qpreset btn" data-q="30" style="padding:3px 10px;font-size:12.5px;">30 qs (~60 min)</button>
+    <button type="button" class="qpreset btn" data-q="50" style="padding:3px 10px;font-size:12.5px;">50 qs</button>
   </div>
-  <div class="tnote" id="qc_note" style="margin-left:26px;margin-top:4px;">Questions will be picked uniformly at random from your selected types/filters.</div>
+  <p class="hint" style="margin:8px 0 0;font-size:13px;color:#64748b;">Questions will be picked uniformly at random from your selected types/filters.</p>
 </div>
 <label>Practice time</label>
 <div class="tbox"><label class="rad"><input type="radio" name="tm" value="timed" checked> <span>Timed practice</span></label>
@@ -1077,6 +1371,11 @@ renderStart();
 setInterval(tick,1000);
 </script><script>
 (function(){
+  // Ensure finish function is preserved
+  if (typeof window.finish === 'function' && !window.origFinish) {
+    window.origFinish = window.finish;
+  }
+
   // 1. Mode and Q-Count Controller
   var modeCards = document.querySelectorAll('.mode-card');
   var qcRadios = document.querySelectorAll('input[name=qc_mode]');
@@ -1144,12 +1443,12 @@ setInterval(tick,1000);
   function handleUrlParams() {
     var params = new URLSearchParams(window.location.search);
     var mode = params.get('mode');
-    if (mode === 'practice') {
-      var pCard = document.getElementById('mode_card_practice');
-      if (pCard) pCard.click();
-    } else if (mode === 'cbt') {
+    if (mode === 'cbt') {
       var cCard = document.getElementById('mode_card_cbt');
       if (cCard) cCard.click();
+    } else {
+      var pCard = document.getElementById('mode_card_practice');
+      if (pCard) pCard.click();
     }
 
     var filter = params.get('filter');
@@ -1208,6 +1507,10 @@ setInterval(tick,1000);
   // 2. Fullscreen & Header Controls Setup
   var examEl = document.getElementById('exam');
   if (examEl) {
+    if (typeof window.finish === 'function' && !window.origFinish) {
+      window.origFinish = window.finish;
+    }
+
     // Inject Progress Bar
     var pBar = document.createElement('div');
     pBar.id = 'examProgressBar';
@@ -1219,16 +1522,15 @@ setInterval(tick,1000);
 
       var badge = document.createElement('span');
       badge.id = 'examModeBadge';
-      badge.style.cssText = 'font-size:12px;font-weight:700;padding:3px 8px;border-radius:4px;background:#2563eb;color:#ffffff;margin-left:12px;white-space:nowrap;';
-      badge.textContent = 'CBT Mode';
-      topEl.insertBefore(badge, topEl.querySelector('.tm'));
+      badge.style.cssText = 'font-size:12px;font-weight:700;padding:3px 8px;border-radius:4px;background:#2563eb;color:#ffffff;white-space:nowrap;';
+      badge.textContent = 'Practice Mode';
 
       var fsBtn = document.createElement('button');
       fsBtn.className = 'btn';
       fsBtn.id = 'btnFullscreen';
       fsBtn.type = 'button';
       fsBtn.title = 'Toggle Fullscreen Mode (Hotkey: F)';
-      fsBtn.style.cssText = 'margin-left:auto;margin-right:8px;font-size:13px;padding:5px 10px;';
+      fsBtn.style.cssText = 'font-size:13px;padding:5px 10px;';
       fsBtn.textContent = 'Fullscreen';
       fsBtn.onclick = function() {
         if (!document.fullscreenElement) {
@@ -1239,20 +1541,76 @@ setInterval(tick,1000);
           fsBtn.textContent = 'Fullscreen';
         }
       };
-      topEl.insertBefore(fsBtn, topEl.querySelector('#submit'));
 
       var hkBtn = document.createElement('button');
       hkBtn.className = 'btn';
       hkBtn.id = 'btnHotkeys';
       hkBtn.type = 'button';
       hkBtn.title = 'Keyboard Shortcuts (Hotkey: ?)';
-      hkBtn.style.cssText = 'font-size:13px;padding:5px 9px;margin-right:8px;';
+      hkBtn.style.cssText = 'font-size:13px;padding:5px 9px;';
       hkBtn.textContent = '⌨';
       hkBtn.onclick = function() {
         var modal = document.getElementById('hotkeysModal');
         if (modal) modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
       };
-      topEl.insertBefore(hkBtn, topEl.querySelector('#submit'));
+
+      // Wire header submit button (Pic 7)
+      var subBtn = topEl.querySelector('#submit');
+      if (subBtn) {
+        subBtn.onclick = function() {
+          if (document.body.classList.contains('cbt-mode') || window.isCBT) {
+            var sModal = document.getElementById('cbtSubmitModal');
+            if (sModal) {
+              var ansCount = 0, notAnsCount = 0, markCount = 0;
+              if (typeof NS !== 'undefined' && Array.isArray(NS)) {
+                NS.forEach(function(n) {
+                  if (typeof S !== 'undefined' && S[n]) ansCount++; else notAnsCount++;
+                  if (typeof M !== 'undefined' && M[n]) markCount++;
+                });
+                var totEl = document.getElementById('cbtSumTot'); if (totEl) totEl.textContent = NS.length;
+                var aEl = document.getElementById('cbtSumAns'); if (aEl) aEl.textContent = ansCount;
+                var naEl = document.getElementById('cbtSumNotAns'); if (naEl) naEl.textContent = notAnsCount;
+                var mEl = document.getElementById('cbtSumMark'); if (mEl) mEl.textContent = markCount;
+              }
+              sModal.style.display = 'flex';
+            } else {
+              if (confirm('Are you sure you want to submit your examination?')) {
+                if (typeof window.origFinish === 'function') window.origFinish();
+                else if (typeof finish === 'function') finish();
+              }
+            }
+          } else {
+            if (confirm('Finish this practice session and view your results summary?')) {
+              if (typeof window.origFinish === 'function') window.origFinish();
+              else if (typeof finish === 'function') finish();
+            }
+          }
+        };
+      }
+
+      // Group controls into aligned containers (Pic 8)
+      var bBtn = document.getElementById('examBackBtn');
+      var tBtn = topEl.querySelector('.theme-btn');
+      var h1El = topEl.querySelector('h1');
+      var totEl = topEl.querySelector('#tot');
+
+      var leftBox = document.createElement('div');
+      leftBox.className = 'top-left-controls';
+      if (bBtn) leftBox.appendChild(bBtn);
+      if (tBtn) leftBox.appendChild(tBtn);
+      if (h1El) leftBox.appendChild(h1El);
+
+      var rightBox = document.createElement('div');
+      rightBox.className = 'top-right-controls';
+      rightBox.appendChild(badge);
+      if (totEl) rightBox.appendChild(totEl);
+      rightBox.appendChild(fsBtn);
+      rightBox.appendChild(hkBtn);
+      if (subBtn) rightBox.appendChild(subBtn);
+
+      topEl.innerHTML = '';
+      topEl.appendChild(leftBox);
+      topEl.appendChild(rightBox);
     }
 
     // Inject Hotkeys Dialog
@@ -1307,7 +1665,8 @@ setInterval(tick,1000);
     };
     document.getElementById('cbtConfirmSubmit').onclick = function(){
       submitModal.style.display = 'none';
-      if (typeof origFinish === 'function') origFinish();
+      if (typeof window.origFinish === 'function') window.origFinish();
+      else if (typeof finish === 'function') finish();
     };
   }
 
@@ -1523,13 +1882,29 @@ setInterval(tick,1000);
     doneDiv.hidden = false;
 
     var ns = A.NS || [];
-    var corr = A.correct || 0;
-    var wrong = A.wrong || 0;
-    var unatt = A.unattempted || 0;
+    var ansMap = (typeof ANS !== 'undefined' ? ANS : (typeof META !== 'undefined' && META.ans ? META.ans : {}));
+    var corr = 0, wrong = 0, unatt = 0;
+    ns.forEach(function(n) {
+      var userAns = (A.S && A.S[n] !== undefined && A.S[n] !== null) ? String(A.S[n]).trim() : '';
+      var correctAns = (ansMap[n] !== undefined && ansMap[n] !== null) ? String(ansMap[n]).trim() : '';
+      if (userAns !== '') {
+        if (correctAns !== '' && userAns.toLowerCase() === correctAns.toLowerCase()) {
+          corr++;
+        } else {
+          wrong++;
+        }
+      } else {
+        unatt++;
+      }
+    });
     var totalQ = ns.length;
     var score = typeof A.score === 'number' ? A.score : ((corr * 4) - wrong);
     var maxScore = A.maxScore || (totalQ * 4);
-    var acc = A.accuracy || (corr + wrong > 0 ? Math.round((corr / (corr + wrong)) * 100) : 0);
+    var acc = (corr + wrong > 0) ? Math.round((corr / (corr + wrong)) * 100) : 0;
+    A.correct = corr; A.wrong = wrong; A.unattempted = unatt; A.score = score; A.maxScore = maxScore; A.accuracy = acc;
+    if (window.HIST && window.HIST[0]) {
+      try { Object.assign(window.HIST[0], { correct: corr, wrong: wrong, unattempted: unatt, score: score, maxScore: maxScore, accuracy: acc }); if (typeof sv === 'function' && typeof KH !== 'undefined') sv(KH, window.HIST); } catch(e){}
+    }
 
     // SVG Donut calculation
     var R = 44;
@@ -1567,7 +1942,7 @@ setInterval(tick,1000);
           '</div>' +
         '</div>' +
         '<div class="cbt-donut-wrap">' +
-          '<svg class="cbt-donut-svg" viewBox="0 0 100 100">' +
+          '<svg class="cbt-donut-svg" width="95" height="95" viewBox="0 0 100 100" style="width:95px;height:95px;min-width:95px;min-height:95px;max-width:95px;max-height:95px;flex-shrink:0;">' +
             '<circle cx="50" cy="50" r="' + R + '" fill="none" stroke="#222224" stroke-width="12"/>' +
             (lCorr > 0 ? '<circle cx="50" cy="50" r="' + R + '" fill="none" stroke="#16a34a" stroke-width="12" stroke-dasharray="' + lCorr + ' ' + C_circ + '" stroke-dashoffset="' + oCorr + '"/>' : '') +
             (lWrong > 0 ? '<circle cx="50" cy="50" r="' + R + '" fill="none" stroke="#ef4444" stroke-width="12" stroke-dasharray="' + lWrong + ' ' + C_circ + '" stroke-dashoffset="' + oWrong + '"/>' : '') +

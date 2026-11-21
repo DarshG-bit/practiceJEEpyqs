@@ -1,0 +1,1007 @@
+<!DOCTYPE html><html lang="en"><head>
+<script>
+  (function(){
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Area Under Curves - Question Types</title><style>
+:root{--ink:#1d2433;--mut:#5a6478;--line:#dfe4ee;--bg:#eef1f7;--acc:#1f4e8c}*{box-sizing:border-box}
+body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.55}
+.top{background:var(--acc);color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}.top h1{margin:0;font-size:18px;flex:1;min-width:160px}.top a{color:#fff;font-size:14px}
+.page{max-width:900px;margin:14px auto;padding:16px 20px;background:#fff;border:1px solid var(--line);border-radius:10px}
+h1.t{font-size:22px;margin:4px 0 6px}h2{font-size:20px;color:var(--acc);margin:22px 0 6px}h3{font-size:18px;margin:16px 0 4px}
+p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
+.gt{border-collapse:collapse;width:100%;margin:8px 0;font-size:16px}.gt td{border:1px solid #c5ccda;padding:6px 8px;vertical-align:top}.gt tr:first-child td{background:#f1f5fb}
+.tw{overflow-x:auto}.btn{border:1px solid var(--acc);background:#fff;color:var(--acc);border-radius:6px;padding:7px 14px;font-size:14px;cursor:pointer;margin:4px 6px 4px 0}.btn.pri{background:var(--acc);color:#fff}
+.sm{font-size:14px;color:var(--mut)}a{color:var(--acc)}
+.typ{border-top:3px solid var(--acc);margin-top:26px;padding-top:4px}
+.ed{width:100%;min-height:54px;font-size:16px;border:1px solid #b9c3d6;border-radius:6px;padding:6px 8px;background:#fffef6;outline:none;white-space:pre-wrap;word-break:break-word;line-height:1.7}.ed.tall{min-height:130px}.gt .ed{min-height:120px}.gt td:first-child{width:36%}.gt td:first-child .ed{min-height:0}.ed:focus{border-color:#1f4e8c;box-shadow:0 0 0 2px #cfe0fa}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.3}.fr>span{display:block;min-width:.9em;padding:0 3px;min-height:1.2em}.fr>.n{border-bottom:1.5px solid #1d2433}.ed sub,.ed sup{line-height:0}
+#sym button.act{background:#ffd54a}#sym small{font-size:12px;font-weight:600;margin-left:2px}#sym .mf{display:inline-flex;flex-direction:column;vertical-align:middle;line-height:1;font-style:normal;font-size:12px}#sym .mf i{font-style:normal;padding:0 3px}#sym .mf i:first-child{border-bottom:1px solid #1d2433}#sym .w{min-width:52px;font-weight:700;background:#e8f0fc}
+.rev{display:none;border:2px solid #2e9b4f;background:#f2fbf5;border-radius:10px;padding:6px 14px;margin:12px 0}.rev.on{display:block}.rev h4{margin:6px 0;color:#1f7a3b}
+.how{background:#f7f9fd;border:1px solid var(--line);border-radius:8px;padding:6px 14px}
+@media(max-width:640px){.gt td:first-child{width:100%}.gt .ed{min-height:110px}.gt,.gt tbody,.gt tr,.gt td{display:block;width:100%}.gt tr{border:1px solid #c5ccda;margin:8px 0;border-radius:6px;overflow:hidden}.gt td{border:0;border-bottom:1px solid #e3e8f1}.gt td:first-child{background:#f1f5fb;font-weight:600}.gt tr:first-child td{background:inherit}.gt tr:first-child td:first-child{background:#f1f5fb}.page{padding:12px}}
+#sym{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#1f4e8c;padding:6px 8px;display:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}#sym.on{display:block}#sym button.w{padding:0 10px}#sym button{display:inline-block;min-width:40px;height:40px;margin:0 3px 0 0;font-size:18px;border:0;border-radius:6px;background:#fff;color:#1d2433;cursor:pointer}#sym>span{color:#cfe0fa;font-size:12px;margin-right:8px}@media(max-width:480px){#sym>span{display:none}}body.symon{padding-bottom:60px}
+@media print{#sym{display:none!important}.top,.btn,.noprint,.how,details,#types,#types+ul{display:none!important}body{background:#fff}.page{border:0}.ed{border:1px solid #999;min-height:60px!important}.typ{break-inside:auto}.typ h2{break-after:avoid}.typ.pr-skip{display:none!important}body.one .typ:not(.pick){display:none!important}}
+
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
+:root {
+  --bg-base: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-input: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+}
+
+[data-theme="dark"] {
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
+  --accb: #3b82f6;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
+}
+
+[data-theme="dark"] body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] a {
+  color: #60a5fa !important;
+}
+
+/* Card descendant links must preserve card layout & colors, never default link style */
+a.subject-card,
+a.subject-card *,
+a.ch-card,
+a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] a.subject-card,
+[data-theme="dark"] a.subject-card *,
+[data-theme="dark"] a.ch-card,
+[data-theme="dark"] a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] .subject-card-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .subject-desc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .meta-chip {
+  background: #111114 !important;
+  border: 1px solid #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .ch-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .ch-meta {
+  color: #a1a1aa !important;
+}
+
+/* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
+[data-theme="dark"] a.act-btn.primary,
+[data-theme="dark"] .act-btn.primary,
+[data-theme="dark"] a.btn.pri,
+[data-theme="dark"] .btn.pri,
+[data-theme="dark"] .btn-cbt-launch,
+[data-theme="dark"] .btn-modal-start,
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
+  color: #ffffff !important;
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] a.act-btn.primary:hover,
+[data-theme="dark"] .act-btn.primary:hover,
+[data-theme="dark"] a.btn.pri:hover,
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
+.panel {
+  max-width: 1040px !important;
+  margin: 24px auto !important;
+  padding: 28px 36px !important;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+[data-theme="dark"] .panel {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
+}
+
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
+/* Visible Typing Boxes in Dark Mode (solves Pic 6) */
+[data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input.num,
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 12px !important;
+}
+[data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] input[type="number"]:focus,
+[data-theme="dark"] input.num:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+}
+
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
+}
+
+[data-theme="dark"] .o {
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .o:hover {
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .o.sel {
+  background: rgba(37, 99, 235, 0.18) !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
+[data-theme="dark"] .att-card {
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .att-card:hover {
+  border-color: #2c2c32 !important;
+}
+[data-theme="dark"] .att-badge.cbt {
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
+}
+[data-theme="dark"] .att-badge.practice {
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+[data-theme="dark"] .att-date {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .att-stats-row {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .att-actions {
+  border-top-color: #222224 !important;
+}
+[data-theme="dark"] .att-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .att-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .att-btn.continue {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
+}
+[data-theme="dark"] .att-btn.review {
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .att-btn.delete {
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
+}
+[data-theme="dark"] .btn-export-all {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn-export-all:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .sub-pill-btn {
+  color: #93c5fd !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .sub-pill-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Theme Toggle Button Outline Styling (solves Pic 17) */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.theme-btn:active {
+  transform: scale(0.98);
+}
+[data-theme="dark"] .theme-btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Question Sheet Container & Dark Mode (Pic 4) */
+[data-theme="dark"] .main,
+[data-theme="dark"] .side,
+[data-theme="dark"] .qhead,
+[data-theme="dark"] .qbody,
+[data-theme="dark"] .foot,
+[data-theme="dark"] .wrap {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead b,
+[data-theme="dark"] #qno,
+[data-theme="dark"] .stem,
+[data-theme="dark"] .stem p {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .src,
+[data-theme="dark"] .qhead .qt,
+[data-theme="dark"] #qtime {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .starbtn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #fbbf24 !important;
+}
+[data-theme="dark"] .top {
+  background: #0a0a0c !important;
+  border-bottom: 1px solid #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+/* Materials & Type Notes (Light + Dark Mode Fixes - Pic 2 & Pic 7) */
+.how {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.how p, .how b {
+  color: #0f172a !important;
+}
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt td,
+[data-theme="dark"] .gt th {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #18181c !important;
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #111114 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] details {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .work h3,
+[data-theme="dark"] .work p,
+[data-theme="dark"] .work i {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .rev {
+  background: #061c0d !important;
+  border-color: #16a34a !important;
+  color: #dcfce7 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #4ade80 !important;
+}
+[data-theme="dark"] .typ h2 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* CBT Mode Answer Checking & Solutions Suppressor (Pic 3) */
+body.cbt-mode .chk,
+body.cbt-mode .chkb,
+body.cbt-mode .shb,
+body.cbt-mode .chkres,
+body.cbt-mode #savecur,
+.cbt-mode .chk,
+.cbt-mode .chkb,
+.cbt-mode .shb,
+.cbt-mode .chkres {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Header Top Back Button */
+.top-back-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-right: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.top-back-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="dark"] .top-back-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .top-back-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #3b82f6 !important;
+}
+
+
+
+/* =================== FIXES FOR USER FEEDBACK (PICS 1-11) =================== */
+
+/* 1. Prevent Option and Question Scrollbars (Pic 5) */
+.o, .oc, .opts, .stem, .qbody, .wrap, .main {
+  overflow: visible !important;
+  overflow-y: visible !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.o::-webkit-scrollbar,
+.oc::-webkit-scrollbar,
+.opts::-webkit-scrollbar,
+.stem::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.o {
+  min-height: 48px !important;
+  height: auto !important;
+  max-height: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2. Top Header Navigation & Button Alignment (Pic 8) */
+.top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 8px 16px !important;
+  min-height: 52px !important;
+  box-sizing: border-box !important;
+}
+.top-left-controls,
+.top-right-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.top .btn,
+.top .theme-btn,
+.top .top-back-btn,
+.top button {
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  font-size: 13px !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 3. Subject Index Action Buttons in Dark Mode (Pic 2) */
+[data-theme="dark"] .lk a {
+  background: #18181c !important;
+  border: 1px solid #2e2e34 !important;
+  color: #60a5fa !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] .lk a:hover {
+  background: #24242a !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #15803d !important;
+  border: 1px solid #22c55e !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #16a34a !important;
+}
+
+/* 4. Mode Cards in Dark Mode (Pic 3) */
+[data-theme="dark"] .mode-card {
+  background: #111114 !important;
+  border: 1.5px solid #27272a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .mode-card div,
+[data-theme="dark"] .mode-card span,
+[data-theme="dark"] .mode-card p {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .mode-card.active {
+  background: #0d1e38 !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .mode-card.active span {
+  color: #93c5fd !important;
+}
+
+/* 5. Question Type Pill & Stem Contrast in Dark Mode (Pic 4) */
+[data-theme="dark"] .qt,
+[data-theme="dark"] .qtype-badge {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+  border: 1px solid #334155 !important;
+}
+[data-theme="dark"] .stem {
+  color: #f1f5f9 !important;
+}
+
+/* 6. Chapter Card Action Buttons in Dark Mode (Pic 6) */
+[data-theme="dark"] .btn-cbt {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border: 1px solid #2563eb !important;
+}
+[data-theme="dark"] .btn-cbt:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .btn-practice {
+  background: #14532d !important;
+  color: #86efac !important;
+  border: 1px solid #16a34a !important;
+}
+[data-theme="dark"] .btn-practice:hover {
+  background: #16a34a !important;
+  color: #ffffff !important;
+}
+
+/* 7. Subject Index Color Codes, Priority Borders & Class Tints (Pic 11) */
+[data-theme="dark"] .strip.pH { border-left: 5px solid #22c55e !important; }
+[data-theme="dark"] .strip.pM { border-left: 5px solid #f59e0b !important; }
+[data-theme="dark"] .strip.pL { border-left: 5px solid #94a3b8 !important; }
+
+[data-theme="dark"] .strip.cA { background: rgba(34, 197, 94, 0.08) !important; }
+[data-theme="dark"] .strip.cB { background: rgba(59, 130, 246, 0.08) !important; }
+[data-theme="dark"] .strip.cC { background: rgba(245, 158, 11, 0.08) !important; }
+[data-theme="dark"] .strip.cD { background: rgba(239, 68, 68, 0.08) !important; }
+
+/* 8. Sized & Centered CBT Scorecard and Compact Donut Chart (Pic 1 & Pic 10) */
+.cbt-scorecard {
+  max-width: 680px !important;
+  margin: 24px auto !important;
+  padding: 24px !important;
+  background: var(--surface-card, #ffffff) !important;
+  border: 1px solid var(--border-subtle, #e2e8f0) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+[data-theme="dark"] .cbt-scorecard {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+}
+.cbt-score-hero {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  flex-wrap: wrap !important;
+}
+.cbt-score-left {
+  flex: 1 !important;
+  min-width: 240px !important;
+}
+.cbt-donut-wrap {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+}
+.cbt-donut-svg {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  flex-shrink: 0 !important;
+  transform: rotate(-90deg) !important;
+}
+.cbt-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+}
+[data-theme="dark"] .cbt-donut-legend {
+  color: #a1a1aa;
+}
+.cbt-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cbt-donut-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cbt-donut-dot.correct { background: #16a34a; }
+.cbt-donut-dot.wrong { background: #dc2626; }
+.cbt-donut-dot.unatt { background: #64748b; }
+.cbt-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.cbt-metric-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+[data-theme="dark"] .cbt-metric-item {
+  background: #111114 !important;
+  border-color: #222224 !important;
+}
+.cbt-metric-lbl {
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+[data-theme="dark"] .cbt-metric-lbl {
+  color: #94a3b8 !important;
+}
+.cbt-metric-num {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0f172a;
+}
+[data-theme="dark"] .cbt-metric-num {
+  color: #ffffff !important;
+}
+
+/* 9. Dark Mode Fixes for Type Notes & Question Types (Materials) */
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+}
+[data-theme="dark"] .gt td {
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #141418 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .ed {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .rev {
+  background: #0a1f10 !important;
+  border-color: #16a34a !important;
+  color: #86efac !important;
+}
+
+
+</style><link id="aiit-fav-16" rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB5klEQVR42p1TMU9TURg957uvIkUjiBKMiYlDGwUlxsFVB0yMJi0pttHJ2cW/8GBxdfEXuNmaJuBLJE4YN424oFTiQhyQOGhEjaXv3uNQnwGFiJ7hG+69555zvnwf8J+QQADdshvEMWx0tPu+WkUgoV2R6nW47e6S5PSABHI7a40GrFaDz87qdTjXWzgV0YoiBkOqc95jrlpZbnAn0uzskby3gSK8PyNgjGQfoXcgRrxH/uCB4avz8xcCf1dvJoUxBjdC6BBMQ/Jsk1oV7BsQHMlhByWl0nIrFowA+CApHI+CnYexH0GfJOYA7QexatKKjINB/K4ofc1ONFEpt+5KMBLBJMDBhkk7bCE8F5QC2jDYnDmtyFm/Q3hRKbUeI3XXHGwOAKamuq63RGg+LN6k8CVnPUlbnaNRb/ShPL64BgDNpHBSgZcmS8t3MnUAsKzLcQxLc9F9iC7VxmVnOFseX1yTYBJowS7KNAOAmfoWB/U6XK0G35w5cQPSUGR8BuOx3p727Mdor3ef/a3J8pvbcQybnu6q/3Lwc7oEgIy0QOKKJ/vksbD+NXc9Wg9TQf7R5ux/fABAANShfx+gpfye3JNyeelVZPvuQeFpdeLtSwDIsu+IzaMbx1sE/hlZf7jTPuyG/Ff8AHJN0tvJodC7AAAAAElFTkSuQmCC"><link id="aiit-fav-32" rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFXklEQVR42u1WXWyTVRh+3nParutggIKEQCSgrGUDA4KKGm0rGFnZT2Hpp1EvFEUDEhPREEOQb73wJ8iFMUZdSCR4QfQrrGzdYKCyFRIMhoBGux+HGkyMGIiiMAbtOef1YqsbMH5ECBfy3n3vOfme57zv8/4AN+x/aMQMyn/Ia4nUDyRCIVBbGwgApdPgePwagto2RGtr0MUMMdR5Xd0s9+bNUybno0FXC7SsLEaWldCD/du3B8Zls8ZrJI8Ai5Eqi9nShUrBZmU02r3PtiHov4CGQkERDqc1AM77k02lM9xS35NTKJGCCo3hGSTojFbmFyFEhdb8fk20a5XjQFoWNP3bnCYSEJkMOB6HGQD13yeJZmpt7vQUiFu1wnHDGCUFupl5D2ua6/WJ6lM9+quF1V0Rx4lJy0oYAOy6HNU6DgQQA1FCA9AAkNoRmAaDx4zBA1KSUUq3ul3iezYYYTQO9wj3cz6dvRugKGBO9PZy7vQp9TwAZDIJzkeNLgU6OK9OS+lNRdDz2dDTzFxEJOqzWu2GkRN8PnpCKfYKlrW//Xby25tHF641hAdNFktJmogBCmqqv1+ZD/0/QINRHQfyPFCn1OMt4oVEXGUMpgtB3yltNv7Y27PbP3xYOQMRrdjjctGnFeWdzU5DySQ3aIN0iV9PsGvZcHNmrGLaMar4tL+t7XC2thZMNKCZISOwd++EwiPHfCEpxCMAHiLBh43Bvuwp+Y5ltZ9sbpn6KIOXC8Aog9erIp07AaC+0b/a7aKHleY3FlZ27QCALVsDjRC8u6aqa11/7s+qFMqTcJzJxYXDCu7XxpQT4y4m6hGMjBH8cXRB134AaG4pfZoNL4HAMc7h7crKjj0AkNrur1IK9wrgmFvq9yKRQ2daW4OuP08eiRiDl7850BUeqkwBwMX9wWje6Z0kYJYYQ9MZ/Gq0onNz/lJzi79Ga1rNMD8rQy9FIx37AKCpyR9WTBFjMNYj+N0F/UTr6ma5w+F0LtkQWMPMb8XjMH3pHUJs5zpSqSnjhVvOlZJ7lJY9bHgFEVgp9WG0sjsJAA2fTxuL0+opBrtN1mxZtKi7I6+hMWOCFA6nVbLR/7gxWFwT7Zp3rvDOisA5fZuIun8B8HFDS+ntUGaXYXyysLJzZf5lo8b0zDa9uWKSYmc00nkwD5zJgC0LxrbTtGHDRC8z1grBy/v+HgOQuPxm4zilnj5RBdbUN/g39nW+oCuZ8tcmkyVzB1fN4MnmODEJAA1N/liy0Z9ihrBtiIuU+/kDgwgci7XnbBuC3VhPhJJUasr4eDytBNEcT6GYatsQzKBM5uySymQSbNsQWmEFg9YRwZSVgQa36ksSyJMoK4tRTXnnr8z8Q47FKwCglPHmsqxmzQksTiQmeAeLy3Ega2vBd9wZmMuEYnVafGnbEBfK/UUJ5F/DDNKQb4K5vK5xnI+IcjmD/UKL/QVFw1Y5zuQRlgXd2hp09bVqMIGfIcImy2rPhkJBcamUX/BCftjEqjsyAB2/RRbfBuAPKaiooqL9awE6VuBzb0om/dPD4bQCEkg2+6cDmOPzyA8AUCiU1ldMAADa2oKSGUSEXaz4WRD1ELG3aUdgmfRgNxl6DRKb6htKnrQsaGgsBWH9/PntvztOTAzWxxUROHo03S8y/gKgIAwHhKCI6uWtkYc7DlZVdR6ARiWBXkxtC3zEBvMgTH2fQBN8sX5zyYN8SRKBk8mJIzV5fwLQ7fPoeZHIob/y4rMsaMcp9XiH8XqVMycXVXe9YDNEnAb2hatiyUb/Z1u3TZ05MDUHNqMhFtGrvt2KxsaS0RcCYAZdaAm9Fmv29bHrCn7DrqX9DWIToNUS4fECAAAAAElFTkSuQmCC"><link id="aiit-fav-180" rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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"></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
+<h1>Area Under Curves &middot; Question Types</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Area%20Under%20Curves%20PYQ%20Practice.html">Back to practice</a><a href="Area%20Under%20Curves%20Type%20Notes.html">Type Notes &rsaquo;</a></div><div class="page"><p>JEE Main Maths – Area Under Curves</p>
+<p><b>Types of questions asked in JEE Main 2019–2025 (129 questions)</b></p>
+<p>Key message: these 129 questions fall into only 6 repeating types. The three biggest types (Types 1, 2, 3) account for 93 questions (72%). The two types of regions between curves and of modulus/min/max functions (Types 1 and 2) alone are 75 questions (58%). About 33% of the questions ask for a numerical (integer) answer, so there are no options to guess from.</p>
+<p>How to read this: a “type” is the formula, law or technique that decides the answer. So every type below tells you what the question looks like and which formula or method to use.</p>
+<h2>1. Summary table</h2>
+<div class="tw"><table class="gt"><tr><td><p><b>Type</b></p></td><td><p><b>What the question tests</b></p></td><td><p><b>No. of Qs</b></p></td><td><p><b>% of chapter</b></p></td><td><p><b>Years seen (of 7)</b></p></td><td><p><b>Difficulty E / M / D</b></p></td></tr><tr><td><p>1</p></td><td><p>Region between curves: parabola, line, tangent</p></td><td><p>42</p></td><td><p>32.6%</p></td><td><p>7</p></td><td><p>19 / 21 / 2</p></td></tr><tr><td><p>2</p></td><td><p>Modulus, minimum/maximum and piecewise functions</p></td><td><p>33</p></td><td><p>25.6%</p></td><td><p>7</p></td><td><p>2 / 26 / 5</p></td></tr><tr><td><p>3</p></td><td><p>Circle, ellipse and hyperbola</p></td><td><p>18</p></td><td><p>14.0%</p></td><td><p>6</p></td><td><p>0 / 14 / 4</p></td></tr><tr><td><p>4</p></td><td><p>Parameter, bisecting and optimising problems</p></td><td><p>16</p></td><td><p>12.4%</p></td><td><p>7</p></td><td><p>1 / 9 / 6</p></td></tr><tr><td><p>5</p></td><td><p>Trigonometric, exponential, logarithmic and special curves</p></td><td><p>13</p></td><td><p>10.1%</p></td><td><p>6</p></td><td><p>1 / 10 / 2</p></td></tr><tr><td><p>6</p></td><td><p>Find the curve first, then the area</p></td><td><p>6</p></td><td><p>4.7%</p></td><td><p>5</p></td><td><p>0 / 2 / 4</p></td></tr><tr><td><p>–</p></td><td><p>Other: one-off questions</p></td><td><p>1</p></td><td><p>0.8%</p></td><td><p>1</p></td><td><p>0 / 0 / 1</p></td></tr><tr><td></td><td><p><b>Total</b></p></td><td><p><b>129</b></p></td><td><p><b>100%</b></p></td><td></td><td><p><b>23 / 82 / 24</b></p></td></tr></table></div>
+<h3>2. Questions per year</h3>
+<p>2019: 14, 2020: 11, 2021: 17, 2022: 20, 2023: 27, 2024: 21, 2025: 19.  (All papers and shifts.)</p>
+<p>Questions asking for an integer answer: 2019: 0, 2020: 0, 2021: 8, 2022: 6, 2023: 13, 2024: 10, 2025: 5.</p>
+<h2>3. Type-by-type detail</h2>
+<h3>Type 1: Region between curves: parabola, line, tangent  –  42 questions</h3>
+<p><b>What is asked: </b>Find the area of a region enclosed by two or more standard curves (lines, parabolas, a cubic) with no special function, or with a tangent as one boundary.</p>
+<p><b>What to master: </b>Intersection points; upper and lower curve; integrating in x or in y; splitting the region; the equation of a tangent.</p>
+<p><b>Forms that appear: </b>y = x² − 4x + 4 with y² = 16 − 8x, y² ≤ 2x with y ≥ 4x − 1, y² = 4(x − 2) with y = 2x − 8, x² ≤ y ≤ 8 − x² with y ≤ 7, the area of the larger region of y² = 8x and y = x, the tangent to y = x² − 1 at (2, 3), y = x³ with its tangent at (−1, −1).</p>
+<p><b>Asked in: </b>2019 (8), 2020 (3), 2021 (7), 2022 (6), 2023 (8), 2024 (7), 2025 (3)</p>
+<p><b>Which form was asked:</b></p>
+<p>Region between a parabola and a line, or two curves (standard two-curve regions): 23 questions</p>
+<p>Larger or smaller region, three or more bounding curves, extra conditions: 14 questions</p>
+<p>Tangent (or normal) as one of the boundaries: 5 questions</p>
+<h3>Type 2: Modulus, minimum/maximum and piecewise functions  –  33 questions</h3>
+<p><b>What is asked: </b>Find the area of a region in which the boundary contains |x|, min or max of two functions, or a greatest-integer or piecewise function.</p>
+<p><b>What to master: </b>Where the modulus changes sign; where two functions cross; the graph of each piece; symmetry in x and y.</p>
+<p><b>Forms that appear: </b>|x − y| ≤ y ≤ 4√x, y = |x − 1| + |x − 2| with y = 3, y = x|x − 3| with the x-axis for −1 ≤ x ≤ 2, y = min(sin x, cos x) with the x-axis, 0 ≤ y ≤ min(2x, 6x − x²), (x − 1)[x] ≤ y ≤ 2√x.</p>
+<p><b>Asked in: </b>2019 (2), 2020 (4), 2021 (2), 2022 (4), 2023 (9), 2024 (4), 2025 (8)</p>
+<p><b>Which form was asked:</b></p>
+<p>Modulus functions and regions given by several inequalities: 20 questions</p>
+<p>Minimum and maximum of two functions: 9 questions</p>
+<p>Piecewise and greatest-integer functions: 4 questions</p>
+<h3>Type 3: Circle, ellipse and hyperbola  –  18 questions</h3>
+<p><b>What is asked: </b>Find the area of the part of a circle, ellipse or hyperbola that lies inside or outside a parabola, a line or another curve.</p>
+<p><b>What to master: </b>Intersection points; area of a sector or a segment; ∫√(a² − x²) dx; the area of an ellipse πab; symmetry.</p>
+<p><b>Forms that appear: </b>inside (x − 2√3)² + y² = 12 and outside a parabola, the part of x² + y² = 36 outside y² = 9x, the larger part of x² + y² = 25 cut by y = x − 1, 2y − y² ≤ x² ≤ 2y with x ≥ y, the part of x² + 3y² = 18 below a line, the region inside an ellipse and outside a line.</p>
+<p><b>Asked in: </b>2020 (2), 2021 (1), 2022 (2), 2023 (6), 2024 (4), 2025 (3)</p>
+<p><b>Which form was asked:</b></p>
+<p>Circle with a parabola or a line: 15 questions</p>
+<p>Ellipse and hyperbola: 3 questions</p>
+<h3>Type 4: Parameter, bisecting and optimising problems  –  16 questions</h3>
+<p><b>What is asked: </b>Use a given area to find an unknown constant, find a line that divides the area, or find the largest or smallest area.</p>
+<p><b>What to master: </b>Area in terms of a parameter; setting it equal to the given value; half or the given ratio of the total area; differentiation for a maximum or a minimum.</p>
+<p><b>Forms that appear: </b>x = y^a with y = 1, y = 3 and area given, y² = 4λx and y = λx, two parabolas with equal areas, y = mx bisects the area, y = α divides x² ≤ y ≤ 2x into two equal parts, the largest rectangle in a region.</p>
+<p><b>Asked in: </b>2019 (3), 2020 (2), 2021 (1), 2022 (4), 2023 (2), 2024 (3), 2025 (1)</p>
+<p><b>Which form was asked:</b></p>
+<p>Find the unknown parameter or value from a given area: 8 questions</p>
+<p>A line or a curve divides the area (bisects, or in a given ratio): 5 questions</p>
+<p>Maximum or minimum area, largest rectangle: 3 questions</p>
+<h3>Type 5: Trigonometric, exponential, logarithmic and special curves  –  13 questions</h3>
+<p><b>What is asked: </b>Find the area bounded by sin x, cos x, eˣ, aˣ, ln x, a rational curve or a special curve such as the astroid.</p>
+<p><b>What to master: </b>Intersection points; standard integrals of sin, cos, eˣ, ln x; partial fractions; symmetry; the values of x for the intersections within one period.</p>
+<p><b>Forms that appear: </b>y = sin x and y = cos x with the y-axis, y = eˣ and y = eˣ − 1 with the y-axis, y = 2ˣ and y = x + 1 in the first quadrant, max(0, ln x) ≤ y ≤ 2ˣ, x(1 + y²) = 1 with y² = 2x, xy ≤ 8 with 1 ≤ y ≤ x², x^(2/3) + y^(2/3) ≤ 1.</p>
+<p><b>Asked in: </b>2019 (1), 2021 (5), 2022 (2), 2023 (1), 2024 (1), 2025 (3)</p>
+<p><b>Which form was asked:</b></p>
+<p>Trigonometric curves (sin x, cos x, tan x): 3 questions</p>
+<p>Exponential and logarithmic curves: 5 questions</p>
+<p>Rational and special curves (xy = c, astroid, y² = x²(...)): 5 questions</p>
+<h3>Type 6: Find the curve first, then the area  –  6 questions</h3>
+<p><b>What is asked: </b>The curve is not given directly: it comes from a condition on areas or tangents, or from a functional or differential equation. Find it and then find the area.</p>
+<p><b>What to master: </b>Integral equation ∫₀ˣ y dx = f(x), differentiate; solving a differential equation; f(x + y) = f(x)f(y); the tangent and triangle conditions.</p>
+<p><b>Forms that appear: </b>a curve with A₁ = 2A₂ in the first quadrant (figure), dy/dx = 2(x + 1) with a given area, a curve through (3, 3) with an area condition, Y = Y(X) with a tangent triangle of fixed area, f(x + y) = f(x)f(y), the closed curve of a differential equation.</p>
+<p><b>Asked in: </b>2021 (1), 2022 (2), 2023 (1), 2024 (1), 2025 (1)</p>
+<p><b>Which form was asked:</b></p>
+<p>The curve is found from a condition on areas or tangents: 3 questions</p>
+<p>The curve is given by a functional or a differential equation: 3 questions</p>
+<h3>Other: one-off questions  –  1 questions</h3>
+<p><b>What is asked: </b>–</p>
+<p><b>What to master: </b>–</p>
+<p><b>Forms that appear: </b>–</p>
+<p><b>Asked in: </b>2024 (1)</p>
+<h2>4. The same patterns keep coming back</h2>
+<p>Number of questions (out of 129) built on each stock pattern:</p>
+<div class="tw"><table class="gt"><tr><td><p><b>Pattern</b></p></td><td><p><b>No. of questions</b></p></td></tr><tr><td><p>Parabola, line or two curves (standard region)</p></td><td><p>37</p></td></tr><tr><td><p>Tangent given as a boundary</p></td><td><p>5</p></td></tr><tr><td><p>Modulus, min/max, greatest integer or piecewise</p></td><td><p>33</p></td></tr><tr><td><p>Circle, ellipse or hyperbola</p></td><td><p>18</p></td></tr><tr><td><p>Parameter, bisect or maximise</p></td><td><p>16</p></td></tr><tr><td><p>Trigonometric, exponential or special curve</p></td><td><p>13</p></td></tr><tr><td><p>Curve to be found first</p></td><td><p>6</p></td></tr></table></div>
+<p>A student who has practised each of these patterns until the first step is automatic can handle a large share of the chapter.</p>
+<h2>5. Suggested study order for students</h2>
+<p>Start with the standard regions and the modulus, min/max and piecewise functions (Types 1 and 2): 75 questions (58%). Master sketching, the intersection points and the upper-minus-lower integral.</p>
+<p>Then circles, ellipses and hyperbolas, and the parameter, bisecting and optimising problems (Types 3 and 4): 34 questions (26%).</p>
+<p>Then trigonometric, exponential and special curves (Type 5): 13 questions (10%), and finding the curve first (Type 6): 6 questions.</p>
+<h2>6. A routine to follow for every question</h2>
+<p>Read what bounds the region and sketch it: mark every curve, the axes and the intersection points before integrating.</p>
+<p>Find the intersection points by solving the equations together, and check which ones lie inside the region.</p>
+<p>Decide whether to integrate in x or in y (choose the one that needs fewer pieces) and which curve is the upper (or right) one on each piece.</p>
+<p>For modulus, min/max or [x] split at the points where the expression changes; for symmetric regions integrate one part and multiply.</p>
+<p>Check the answer: the area is positive, and its size agrees with the rough size of the sketch.</p></div>
+<script>
+function initThemeToggle() {
+  var MOON_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+  var SUN_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jee_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jee_theme', 'light');
+    }
+    var btns = document.querySelectorAll('.theme-btn');
+    btns.forEach(function(b) {
+      b.innerHTML = dark ? (SUN_ICON + '<span>Light</span>') : (MOON_ICON + '<span>Dark</span>');
+      b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
+    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  applyTheme(isDark);
+
+  if (!window._themeToggleAttached) {
+    window._themeToggleAttached = true;
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.theme-btn');
+      if (btn) {
+        var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        applyTheme(!currentlyDark);
+      }
+    });
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
+}
+</script>
+
+</body></html>

@@ -1717,6 +1717,299 @@ body.cbt-mode #savecur,
   background: #1c1c22 !important;
   border-color: #3b82f6 !important;
 }
+
+
+
+/* =================== FIXES FOR USER FEEDBACK (PICS 1-11) =================== */
+
+/* 1. Prevent Option and Question Scrollbars (Pic 5) */
+.o, .oc, .opts, .stem, .qbody, .wrap, .main {
+  overflow: visible !important;
+  overflow-y: visible !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.o::-webkit-scrollbar,
+.oc::-webkit-scrollbar,
+.opts::-webkit-scrollbar,
+.stem::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.o {
+  min-height: 48px !important;
+  height: auto !important;
+  max-height: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2. Top Header Navigation & Button Alignment (Pic 8) */
+.top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 8px 16px !important;
+  min-height: 52px !important;
+  box-sizing: border-box !important;
+}
+.top-left-controls,
+.top-right-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.top .btn,
+.top .theme-btn,
+.top .top-back-btn,
+.top button {
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  font-size: 13px !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 3. Subject Index Action Buttons in Dark Mode (Pic 2) */
+[data-theme="dark"] .lk a {
+  background: #18181c !important;
+  border: 1px solid #2e2e34 !important;
+  color: #60a5fa !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] .lk a:hover {
+  background: #24242a !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #15803d !important;
+  border: 1px solid #22c55e !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #16a34a !important;
+}
+
+/* 4. Mode Cards in Dark Mode (Pic 3) */
+[data-theme="dark"] .mode-card {
+  background: #111114 !important;
+  border: 1.5px solid #27272a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .mode-card div,
+[data-theme="dark"] .mode-card span,
+[data-theme="dark"] .mode-card p {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .mode-card.active {
+  background: #0d1e38 !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .mode-card.active span {
+  color: #93c5fd !important;
+}
+
+/* 5. Question Type Pill & Stem Contrast in Dark Mode (Pic 4) */
+[data-theme="dark"] .qt,
+[data-theme="dark"] .qtype-badge {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+  border: 1px solid #334155 !important;
+}
+[data-theme="dark"] .stem {
+  color: #f1f5f9 !important;
+}
+
+/* 6. Chapter Card Action Buttons in Dark Mode (Pic 6) */
+[data-theme="dark"] .btn-cbt {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border: 1px solid #2563eb !important;
+}
+[data-theme="dark"] .btn-cbt:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .btn-practice {
+  background: #14532d !important;
+  color: #86efac !important;
+  border: 1px solid #16a34a !important;
+}
+[data-theme="dark"] .btn-practice:hover {
+  background: #16a34a !important;
+  color: #ffffff !important;
+}
+
+/* 7. Subject Index Color Codes, Priority Borders & Class Tints (Pic 11) */
+[data-theme="dark"] .strip.pH { border-left: 5px solid #22c55e !important; }
+[data-theme="dark"] .strip.pM { border-left: 5px solid #f59e0b !important; }
+[data-theme="dark"] .strip.pL { border-left: 5px solid #94a3b8 !important; }
+
+[data-theme="dark"] .strip.cA { background: rgba(34, 197, 94, 0.08) !important; }
+[data-theme="dark"] .strip.cB { background: rgba(59, 130, 246, 0.08) !important; }
+[data-theme="dark"] .strip.cC { background: rgba(245, 158, 11, 0.08) !important; }
+[data-theme="dark"] .strip.cD { background: rgba(239, 68, 68, 0.08) !important; }
+
+/* 8. Sized & Centered CBT Scorecard and Compact Donut Chart (Pic 1 & Pic 10) */
+.cbt-scorecard {
+  max-width: 680px !important;
+  margin: 24px auto !important;
+  padding: 24px !important;
+  background: var(--surface-card, #ffffff) !important;
+  border: 1px solid var(--border-subtle, #e2e8f0) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+[data-theme="dark"] .cbt-scorecard {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+}
+.cbt-score-hero {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  flex-wrap: wrap !important;
+}
+.cbt-score-left {
+  flex: 1 !important;
+  min-width: 240px !important;
+}
+.cbt-donut-wrap {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+}
+.cbt-donut-svg {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  flex-shrink: 0 !important;
+  transform: rotate(-90deg) !important;
+}
+.cbt-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+}
+[data-theme="dark"] .cbt-donut-legend {
+  color: #a1a1aa;
+}
+.cbt-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cbt-donut-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cbt-donut-dot.correct { background: #16a34a; }
+.cbt-donut-dot.wrong { background: #dc2626; }
+.cbt-donut-dot.unatt { background: #64748b; }
+.cbt-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.cbt-metric-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+[data-theme="dark"] .cbt-metric-item {
+  background: #111114 !important;
+  border-color: #222224 !important;
+}
+.cbt-metric-lbl {
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+[data-theme="dark"] .cbt-metric-lbl {
+  color: #94a3b8 !important;
+}
+.cbt-metric-num {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0f172a;
+}
+[data-theme="dark"] .cbt-metric-num {
+  color: #ffffff !important;
+}
+
+/* 9. Dark Mode Fixes for Type Notes & Question Types (Materials) */
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+}
+[data-theme="dark"] .gt td {
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #141418 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .ed {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .rev {
+  background: #0a1f10 !important;
+  border-color: #16a34a !important;
+  color: #86efac !important;
+}
 </style>
 </head>
 <body>
@@ -1760,7 +2053,7 @@ body.cbt-mode #savecur,
     <div class="overview-card-header">
       <div>
         <h2 class="overview-title">Preparation Overview</h2>
-        <p class="overview-desc">Aggregated progress, testing volume &amp; first-try accuracy across all 37 chapters</p>
+        <p class="overview-desc">Aggregated progress, testing volume &amp; first-try accuracy across all 40 chapters</p>
       </div>
       <div class="overview-actions">
         <button id="btnExportAllData" class="btn-tool export" type="button" title="Download backup of all test progress, attempts &amp; starred questions">
@@ -1781,7 +2074,7 @@ body.cbt-mode #savecur,
       <div class="metric-box">
         <div class="metric-lbl">Questions Attempted</div>
         <div class="metric-num" id="metricTotalQ">0</div>
-        <div class="metric-subtext">Across 37 chapters</div>
+        <div class="metric-subtext">Across 40 chapters</div>
       </div>
       <div class="metric-box">
         <div class="metric-lbl">First-Try Accuracy</div>
@@ -1807,7 +2100,7 @@ body.cbt-mode #savecur,
       <div class="meter-item">
         <div class="meter-header">
           <span>Mathematics</span>
-          <span class="meter-fraction" id="mathsFraction">0 / 10 Chapters (0%)</span>
+          <span class="meter-fraction" id="mathsFraction">0 / 13 Chapters (0%)</span>
         </div>
         <div class="meter-bar">
           <div class="meter-fill maths" id="mathsBar" style="width: 0%;"></div>
@@ -1847,7 +2140,7 @@ body.cbt-mode #savecur,
         <div>
           <div class="subject-header">
             <h3 class="subject-card-title">Mathematics</h3>
-            <span class="subject-badge">10 Chapters Ready</span>
+            <span class="subject-badge">13 Chapters Ready</span>
           </div>
           <p class="subject-desc">Calculus, Vectors &amp; 3D Geometry, Matrices &amp; Determinants, Coordinate Geometry &amp; Limits.</p>
           <div class="subject-meta-chips">
@@ -1915,38 +2208,12 @@ body.cbt-mode #savecur,
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
           <span>Simulate All 3 Subjects Exam &rarr;</span>
         </button>
-        <button id="btnScrollChapters" type="button" class="btn-apple">
-          Browse 37 Chapters &darr;
-        </button>
+        
       </div>
     </div>
   </section>
 
-  <!-- SECTION 3: CHAPTER PRACTICE BANKS -->
-  <section class="chapters-section" id="chapterBanksSection">
-    <div class="chapters-section-header">
-      <h2>Chapter Practice Banks</h2>
-      <div class="filter-pills-bar" id="subjectFilterBar">
-        <button type="button" class="pill-filter active" data-subject="all">All (37)</button>
-        <button type="button" class="pill-filter" data-subject="Maths">Mathematics (10)</button>
-        <button type="button" class="pill-filter" data-subject="Physics">Physics (15)</button>
-        <button type="button" class="pill-filter" data-subject="Chemistry">Chemistry (12)</button>
-      </div>
-    </div>
-
-    <!-- Search Toolbar -->
-    <div class="search-toolbar">
-      <div class="search-input-wrap">
-        <svg class="search-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="chapterSearchInput" class="search-field" placeholder="Search chapters, topics, formulas... (Press '/' to focus)">
-        <button id="btnClearSearch" class="btn-clear-search" type="button" title="Clear search">&times;</button>
-      </div>
-      <span id="resultsCountLabel" class="search-count-label">Showing 37 chapters</span>
-    </div>
-
-    <!-- Chapter Grid Container -->
-    <div id="chapterGridContainer" class="chapter-grid"></div>
-  </section>
+  
 </main>
 
 <!-- DRAWER: TEST HISTORY (WITH BOTH EXPORT & IMPORT) -->
@@ -2005,8 +2272,8 @@ body.cbt-mode #savecur,
     <div class="modal-step-group">
       <span class="step-title">2. Choose Subject Pool</span>
       <div class="pills-row">
-        <div class="m-pill active" data-field="subject" data-val="all">All Subjects (37)</div>
-        <div class="m-pill" data-field="subject" data-val="Maths">Mathematics (10)</div>
+        <div class="m-pill active" data-field="subject" data-val="all">All Subjects (40)</div>
+        <div class="m-pill" data-field="subject" data-val="Maths">Mathematics (13)</div>
         <div class="m-pill" data-field="subject" data-val="Physics">Physics (15)</div>
         <div class="m-pill" data-field="subject" data-val="Chemistry">Chemistry (12)</div>
       </div>
@@ -2057,6 +2324,11 @@ var CHAPTER_POOL = [
     "url": "Maths/Application of Derivatives PYQ Practice.html"
   },
   {
+    "name": "Area Under Curves",
+    "subject": "Maths",
+    "url": "Maths/Area Under Curves PYQ Practice.html"
+  },
+  {
     "name": "Continuity and Differentiability",
     "subject": "Maths",
     "url": "Maths/Continuity and Differentiability PYQ Practice.html"
@@ -2070,6 +2342,11 @@ var CHAPTER_POOL = [
     "name": "Determinants",
     "subject": "Maths",
     "url": "Maths/Determinants PYQ Practice.html"
+  },
+  {
+    "name": "Differential Equations",
+    "subject": "Maths",
+    "url": "Maths/Differential Equations PYQ Practice.html"
   },
   {
     "name": "Functions",
@@ -2095,6 +2372,11 @@ var CHAPTER_POOL = [
     "name": "Probability",
     "subject": "Maths",
     "url": "Maths/Probability PYQ Practice.html"
+  },
+  {
+    "name": "Three Dimensional Geometry",
+    "subject": "Maths",
+    "url": "Maths/Three Dimensional Geometry PYQ Practice.html"
   },
   {
     "name": "Vector Algebra",
@@ -2292,9 +2574,13 @@ function renderDashboard() {
         if (Array.isArray(arr) && arr.length > 0) {
           completedBySubj[ch.subject] = (completedBySubj[ch.subject] || 0) + 1;
           arr.forEach(function(att) {
-            totalAttempted += (att.NS ? att.NS.length : 0);
-            totalTimeSec += (att.total || 0);
-            if (att.NS && att.C) {
+            var qCount = (att.NS ? att.NS.length : (att.totalQ || 0));
+            totalAttempted += qCount;
+            totalTimeSec += (att.total || att.timeSpent || 0);
+            if (typeof att.correct === 'number') {
+              totalCorrect += att.correct;
+              totalEvaluated += (att.correct + (att.wrong || 0));
+            } else if (att.NS && att.C) {
               att.NS.forEach(function(qn) {
                 totalEvaluated++;
                 if (att.C[qn] === 'r') totalCorrect++;
@@ -2344,9 +2630,9 @@ function renderDashboard() {
   var pf = document.getElementById('physicsFraction');
   var cf = document.getElementById('chemFraction');
 
-  var totalMaths = CHAPTER_POOL.filter(function(c){ return c.subject === 'Maths'; }).length || 7;
-  var totalPhys = CHAPTER_POOL.filter(function(c){ return c.subject === 'Physics'; }).length || 15;
-  var totalChem = CHAPTER_POOL.filter(function(c){ return c.subject === 'Chemistry'; }).length || 11;
+  var totalMaths = 13; }).length || 7;
+  var totalPhys = 15; }).length || 15;
+  var totalChem = 12; }).length || 11;
 
   var mPct = Math.round((completedBySubj.Maths / totalMaths) * 100);
   var pPct = Math.round((completedBySubj.Physics / totalPhys) * 100);
@@ -2823,17 +3109,7 @@ if (btnFullEx) {
     if (fullDurPill) fullDurPill.click();
   };
 }
-var btnScrollCh = document.getElementById('btnScrollChapters');
-if (btnScrollCh) {
-  btnScrollCh.onclick = function() {
-    var sec = document.getElementById('chapterBanksSection');
-    if (sec) sec.scrollIntoView({ behavior: 'smooth' });
-  };
-}
-
-// Initial Render
 renderDashboard();
-renderChapters();
 </script>
 </body>
 </html>

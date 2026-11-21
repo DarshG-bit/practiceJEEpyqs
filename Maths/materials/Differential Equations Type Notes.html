@@ -1,0 +1,1120 @@
+<!DOCTYPE html><html lang="en"><head>
+<script>
+  (function(){
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Differential Equations - Type Notes</title><style>
+:root{--ink:#1d2433;--mut:#5a6478;--line:#dfe4ee;--bg:#eef1f7;--acc:#1f4e8c}*{box-sizing:border-box}
+body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.55}
+.top{background:var(--acc);color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}.top h1{margin:0;font-size:18px;flex:1;min-width:160px}.top a{color:#fff;font-size:14px}
+.page{max-width:900px;margin:14px auto;padding:16px 20px;background:#fff;border:1px solid var(--line);border-radius:10px}
+h1.t{font-size:22px;margin:4px 0 6px}h2{font-size:20px;color:var(--acc);margin:22px 0 6px}h3{font-size:18px;margin:16px 0 4px}
+p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
+.gt{border-collapse:collapse;width:100%;margin:8px 0;font-size:16px}.gt td{border:1px solid #c5ccda;padding:6px 8px;vertical-align:top}.gt tr:first-child td{background:#f1f5fb}
+.tw{overflow-x:auto}.btn{border:1px solid var(--acc);background:#fff;color:var(--acc);border-radius:6px;padding:7px 14px;font-size:14px;cursor:pointer;margin:4px 6px 4px 0}.btn.pri{background:var(--acc);color:#fff}
+.sm{font-size:14px;color:var(--mut)}a{color:var(--acc)}
+.typ{border-top:3px solid var(--acc);margin-top:26px;padding-top:4px}
+.ed{width:100%;min-height:54px;font-size:16px;border:1px solid #b9c3d6;border-radius:6px;padding:6px 8px;background:#fffef6;outline:none;white-space:pre-wrap;word-break:break-word;line-height:1.7}.ed.tall{min-height:130px}.gt .ed{min-height:120px}.gt td:first-child{width:36%}.gt td:first-child .ed{min-height:0}.ed:focus{border-color:#1f4e8c;box-shadow:0 0 0 2px #cfe0fa}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.3}.fr>span{display:block;min-width:.9em;padding:0 3px;min-height:1.2em}.fr>.n{border-bottom:1.5px solid #1d2433}.ed sub,.ed sup{line-height:0}
+#sym button.act{background:#ffd54a}#sym small{font-size:12px;font-weight:600;margin-left:2px}#sym .mf{display:inline-flex;flex-direction:column;vertical-align:middle;line-height:1;font-style:normal;font-size:12px}#sym .mf i{font-style:normal;padding:0 3px}#sym .mf i:first-child{border-bottom:1px solid #1d2433}#sym .w{min-width:52px;font-weight:700;background:#e8f0fc}
+.rev{display:none;border:2px solid #2e9b4f;background:#f2fbf5;border-radius:10px;padding:6px 14px;margin:12px 0}.rev.on{display:block}.rev h4{margin:6px 0;color:#1f7a3b}
+.how{background:#f7f9fd;border:1px solid var(--line);border-radius:8px;padding:6px 14px}
+@media(max-width:640px){.gt td:first-child{width:100%}.gt .ed{min-height:110px}.gt,.gt tbody,.gt tr,.gt td{display:block;width:100%}.gt tr{border:1px solid #c5ccda;margin:8px 0;border-radius:6px;overflow:hidden}.gt td{border:0;border-bottom:1px solid #e3e8f1}.gt td:first-child{background:#f1f5fb;font-weight:600}.gt tr:first-child td{background:inherit}.gt tr:first-child td:first-child{background:#f1f5fb}.page{padding:12px}}
+#sym{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#1f4e8c;padding:6px 8px;display:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}#sym.on{display:block}#sym button.w{padding:0 10px}#sym button{display:inline-block;min-width:40px;height:40px;margin:0 3px 0 0;font-size:18px;border:0;border-radius:6px;background:#fff;color:#1d2433;cursor:pointer}#sym>span{color:#cfe0fa;font-size:12px;margin-right:8px}@media(max-width:480px){#sym>span{display:none}}body.symon{padding-bottom:60px}
+
+/* --- Clean Print & Save as PDF Styling (Workbook layout) --- */
+@media print {
+  @page {
+    margin: 8mm 10mm;
+    size: A4 portrait;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 13.5pt !important;
+    line-height: 1.55 !important;
+    padding-bottom: 0 !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
+  .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
+  .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
+    display: none !important;
+  }
+
+  /* HEADINGS */
+  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
+  h2 { font-size: 15.5pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
+  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
+
+  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
+  body.one section.typ:not(.pick) {
+    display: none !important;
+  }
+  
+  /* CREATOR SKIP CLASS FOR MAIN PDF */
+  section.typ.pr-skip {
+    display: none !important;
+  }
+
+  /* EACH TYPE STARTS ON A NEW PAGE */
+  section.typ {
+    border-top: 2.5px solid #1f4e8c !important;
+    padding-top: 10px !important;
+    margin-top: 14px !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+  section.typ ~ section.typ {
+    break-before: page !important;
+    page-break-before: page !important;
+  }
+
+  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
+  .gt, table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin: 8px 0 !important;
+    font-size: 12.5pt !important;
+  }
+  .gt tr, tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .gt td, td, th {
+    border: 1.5px solid #64748b !important;
+    padding: 8px 10px !important;
+    font-size: 12.5pt !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .gt tr:first-child td, .gt td:first-child {
+    background: #f1f5fb !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+  }
+
+  /* EDITABLE BOXES / USER WRITTEN NOTES: SPACIOUS WORKBOOK FEEL */
+  .ed {
+    border: 1.5px solid #64748b !important;
+    background: #fff !important;
+    color: #000 !important;
+    min-height: 85px !important;
+    font-size: 13pt !important;
+    line-height: 1.6 !important;
+    padding: 10px 12px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    white-space: pre-wrap !important;
+    border-radius: 6px !important;
+  }
+}
+
+
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
+:root {
+  --bg-base: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-input: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+}
+
+[data-theme="dark"] {
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
+  --accb: #3b82f6;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
+}
+
+[data-theme="dark"] body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] a {
+  color: #60a5fa !important;
+}
+
+/* Card descendant links must preserve card layout & colors, never default link style */
+a.subject-card,
+a.subject-card *,
+a.ch-card,
+a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] a.subject-card,
+[data-theme="dark"] a.subject-card *,
+[data-theme="dark"] a.ch-card,
+[data-theme="dark"] a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] .subject-card-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .subject-desc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .meta-chip {
+  background: #111114 !important;
+  border: 1px solid #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .ch-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .ch-meta {
+  color: #a1a1aa !important;
+}
+
+/* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
+[data-theme="dark"] a.act-btn.primary,
+[data-theme="dark"] .act-btn.primary,
+[data-theme="dark"] a.btn.pri,
+[data-theme="dark"] .btn.pri,
+[data-theme="dark"] .btn-cbt-launch,
+[data-theme="dark"] .btn-modal-start,
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
+  color: #ffffff !important;
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] a.act-btn.primary:hover,
+[data-theme="dark"] .act-btn.primary:hover,
+[data-theme="dark"] a.btn.pri:hover,
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
+.panel {
+  max-width: 1040px !important;
+  margin: 24px auto !important;
+  padding: 28px 36px !important;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+[data-theme="dark"] .panel {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
+}
+
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
+/* Visible Typing Boxes in Dark Mode (solves Pic 6) */
+[data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input.num,
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 12px !important;
+}
+[data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] input[type="number"]:focus,
+[data-theme="dark"] input.num:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+}
+
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
+}
+
+[data-theme="dark"] .o {
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .o:hover {
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .o.sel {
+  background: rgba(37, 99, 235, 0.18) !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
+[data-theme="dark"] .att-card {
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .att-card:hover {
+  border-color: #2c2c32 !important;
+}
+[data-theme="dark"] .att-badge.cbt {
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
+}
+[data-theme="dark"] .att-badge.practice {
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+[data-theme="dark"] .att-date {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .att-stats-row {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .att-actions {
+  border-top-color: #222224 !important;
+}
+[data-theme="dark"] .att-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .att-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .att-btn.continue {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
+}
+[data-theme="dark"] .att-btn.review {
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .att-btn.delete {
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
+}
+[data-theme="dark"] .btn-export-all {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn-export-all:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .sub-pill-btn {
+  color: #93c5fd !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .sub-pill-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Theme Toggle Button Outline Styling (solves Pic 17) */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.theme-btn:active {
+  transform: scale(0.98);
+}
+[data-theme="dark"] .theme-btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Question Sheet Container & Dark Mode (Pic 4) */
+[data-theme="dark"] .main,
+[data-theme="dark"] .side,
+[data-theme="dark"] .qhead,
+[data-theme="dark"] .qbody,
+[data-theme="dark"] .foot,
+[data-theme="dark"] .wrap {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead b,
+[data-theme="dark"] #qno,
+[data-theme="dark"] .stem,
+[data-theme="dark"] .stem p {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .src,
+[data-theme="dark"] .qhead .qt,
+[data-theme="dark"] #qtime {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .starbtn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #fbbf24 !important;
+}
+[data-theme="dark"] .top {
+  background: #0a0a0c !important;
+  border-bottom: 1px solid #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+/* Materials & Type Notes (Light + Dark Mode Fixes - Pic 2 & Pic 7) */
+.how {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.how p, .how b {
+  color: #0f172a !important;
+}
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt td,
+[data-theme="dark"] .gt th {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #18181c !important;
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #111114 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] details {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .work h3,
+[data-theme="dark"] .work p,
+[data-theme="dark"] .work i {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .rev {
+  background: #061c0d !important;
+  border-color: #16a34a !important;
+  color: #dcfce7 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #4ade80 !important;
+}
+[data-theme="dark"] .typ h2 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* CBT Mode Answer Checking & Solutions Suppressor (Pic 3) */
+body.cbt-mode .chk,
+body.cbt-mode .chkb,
+body.cbt-mode .shb,
+body.cbt-mode .chkres,
+body.cbt-mode #savecur,
+.cbt-mode .chk,
+.cbt-mode .chkb,
+.cbt-mode .shb,
+.cbt-mode .chkres {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Header Top Back Button */
+.top-back-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-right: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.top-back-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="dark"] .top-back-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .top-back-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #3b82f6 !important;
+}
+
+
+
+/* =================== FIXES FOR USER FEEDBACK (PICS 1-11) =================== */
+
+/* 1. Prevent Option and Question Scrollbars (Pic 5) */
+.o, .oc, .opts, .stem, .qbody, .wrap, .main {
+  overflow: visible !important;
+  overflow-y: visible !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.o::-webkit-scrollbar,
+.oc::-webkit-scrollbar,
+.opts::-webkit-scrollbar,
+.stem::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.o {
+  min-height: 48px !important;
+  height: auto !important;
+  max-height: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2. Top Header Navigation & Button Alignment (Pic 8) */
+.top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 8px 16px !important;
+  min-height: 52px !important;
+  box-sizing: border-box !important;
+}
+.top-left-controls,
+.top-right-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.top .btn,
+.top .theme-btn,
+.top .top-back-btn,
+.top button {
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  font-size: 13px !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 3. Subject Index Action Buttons in Dark Mode (Pic 2) */
+[data-theme="dark"] .lk a {
+  background: #18181c !important;
+  border: 1px solid #2e2e34 !important;
+  color: #60a5fa !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] .lk a:hover {
+  background: #24242a !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #15803d !important;
+  border: 1px solid #22c55e !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #16a34a !important;
+}
+
+/* 4. Mode Cards in Dark Mode (Pic 3) */
+[data-theme="dark"] .mode-card {
+  background: #111114 !important;
+  border: 1.5px solid #27272a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .mode-card div,
+[data-theme="dark"] .mode-card span,
+[data-theme="dark"] .mode-card p {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .mode-card.active {
+  background: #0d1e38 !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .mode-card.active span {
+  color: #93c5fd !important;
+}
+
+/* 5. Question Type Pill & Stem Contrast in Dark Mode (Pic 4) */
+[data-theme="dark"] .qt,
+[data-theme="dark"] .qtype-badge {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+  border: 1px solid #334155 !important;
+}
+[data-theme="dark"] .stem {
+  color: #f1f5f9 !important;
+}
+
+/* 6. Chapter Card Action Buttons in Dark Mode (Pic 6) */
+[data-theme="dark"] .btn-cbt {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border: 1px solid #2563eb !important;
+}
+[data-theme="dark"] .btn-cbt:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .btn-practice {
+  background: #14532d !important;
+  color: #86efac !important;
+  border: 1px solid #16a34a !important;
+}
+[data-theme="dark"] .btn-practice:hover {
+  background: #16a34a !important;
+  color: #ffffff !important;
+}
+
+/* 7. Subject Index Color Codes, Priority Borders & Class Tints (Pic 11) */
+[data-theme="dark"] .strip.pH { border-left: 5px solid #22c55e !important; }
+[data-theme="dark"] .strip.pM { border-left: 5px solid #f59e0b !important; }
+[data-theme="dark"] .strip.pL { border-left: 5px solid #94a3b8 !important; }
+
+[data-theme="dark"] .strip.cA { background: rgba(34, 197, 94, 0.08) !important; }
+[data-theme="dark"] .strip.cB { background: rgba(59, 130, 246, 0.08) !important; }
+[data-theme="dark"] .strip.cC { background: rgba(245, 158, 11, 0.08) !important; }
+[data-theme="dark"] .strip.cD { background: rgba(239, 68, 68, 0.08) !important; }
+
+/* 8. Sized & Centered CBT Scorecard and Compact Donut Chart (Pic 1 & Pic 10) */
+.cbt-scorecard {
+  max-width: 680px !important;
+  margin: 24px auto !important;
+  padding: 24px !important;
+  background: var(--surface-card, #ffffff) !important;
+  border: 1px solid var(--border-subtle, #e2e8f0) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+[data-theme="dark"] .cbt-scorecard {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+}
+.cbt-score-hero {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  flex-wrap: wrap !important;
+}
+.cbt-score-left {
+  flex: 1 !important;
+  min-width: 240px !important;
+}
+.cbt-donut-wrap {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+}
+.cbt-donut-svg {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  flex-shrink: 0 !important;
+  transform: rotate(-90deg) !important;
+}
+.cbt-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+}
+[data-theme="dark"] .cbt-donut-legend {
+  color: #a1a1aa;
+}
+.cbt-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cbt-donut-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cbt-donut-dot.correct { background: #16a34a; }
+.cbt-donut-dot.wrong { background: #dc2626; }
+.cbt-donut-dot.unatt { background: #64748b; }
+.cbt-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.cbt-metric-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+[data-theme="dark"] .cbt-metric-item {
+  background: #111114 !important;
+  border-color: #222224 !important;
+}
+.cbt-metric-lbl {
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+[data-theme="dark"] .cbt-metric-lbl {
+  color: #94a3b8 !important;
+}
+.cbt-metric-num {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0f172a;
+}
+[data-theme="dark"] .cbt-metric-num {
+  color: #ffffff !important;
+}
+
+/* 9. Dark Mode Fixes for Type Notes & Question Types (Materials) */
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+}
+[data-theme="dark"] .gt td {
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #141418 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .ed {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .rev {
+  background: #0a1f10 !important;
+  border-color: #16a34a !important;
+  color: #86efac !important;
+}
+
+
+</style><link id="aiit-fav-16" rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB5klEQVR42p1TMU9TURg957uvIkUjiBKMiYlDGwUlxsFVB0yMJi0pttHJ2cW/8GBxdfEXuNmaJuBLJE4YN424oFTiQhyQOGhEjaXv3uNQnwGFiJ7hG+69555zvnwf8J+QQADdshvEMWx0tPu+WkUgoV2R6nW47e6S5PSABHI7a40GrFaDz87qdTjXWzgV0YoiBkOqc95jrlpZbnAn0uzskby3gSK8PyNgjGQfoXcgRrxH/uCB4avz8xcCf1dvJoUxBjdC6BBMQ/Jsk1oV7BsQHMlhByWl0nIrFowA+CApHI+CnYexH0GfJOYA7QexatKKjINB/K4ofc1ONFEpt+5KMBLBJMDBhkk7bCE8F5QC2jDYnDmtyFm/Q3hRKbUeI3XXHGwOAKamuq63RGg+LN6k8CVnPUlbnaNRb/ShPL64BgDNpHBSgZcmS8t3MnUAsKzLcQxLc9F9iC7VxmVnOFseX1yTYBJowS7KNAOAmfoWB/U6XK0G35w5cQPSUGR8BuOx3p727Mdor3ef/a3J8pvbcQybnu6q/3Lwc7oEgIy0QOKKJ/vksbD+NXc9Wg9TQf7R5ux/fABAANShfx+gpfye3JNyeelVZPvuQeFpdeLtSwDIsu+IzaMbx1sE/hlZf7jTPuyG/Ff8AHJN0tvJodC7AAAAAElFTkSuQmCC"><link id="aiit-fav-32" rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFXklEQVR42u1WXWyTVRh+3nParutggIKEQCSgrGUDA4KKGm0rGFnZT2Hpp1EvFEUDEhPREEOQb73wJ8iFMUZdSCR4QfQrrGzdYKCyFRIMhoBGux+HGkyMGIiiMAbtOef1YqsbMH5ECBfy3n3vOfme57zv8/4AN+x/aMQMyn/Ia4nUDyRCIVBbGwgApdPgePwagto2RGtr0MUMMdR5Xd0s9+bNUybno0FXC7SsLEaWldCD/du3B8Zls8ZrJI8Ai5Eqi9nShUrBZmU02r3PtiHov4CGQkERDqc1AM77k02lM9xS35NTKJGCCo3hGSTojFbmFyFEhdb8fk20a5XjQFoWNP3bnCYSEJkMOB6HGQD13yeJZmpt7vQUiFu1wnHDGCUFupl5D2ua6/WJ6lM9+quF1V0Rx4lJy0oYAOy6HNU6DgQQA1FCA9AAkNoRmAaDx4zBA1KSUUq3ul3iezYYYTQO9wj3cz6dvRugKGBO9PZy7vQp9TwAZDIJzkeNLgU6OK9OS+lNRdDz2dDTzFxEJOqzWu2GkRN8PnpCKfYKlrW//Xby25tHF641hAdNFktJmogBCmqqv1+ZD/0/QINRHQfyPFCn1OMt4oVEXGUMpgtB3yltNv7Y27PbP3xYOQMRrdjjctGnFeWdzU5DySQ3aIN0iV9PsGvZcHNmrGLaMar4tL+t7XC2thZMNKCZISOwd++EwiPHfCEpxCMAHiLBh43Bvuwp+Y5ltZ9sbpn6KIOXC8Aog9erIp07AaC+0b/a7aKHleY3FlZ27QCALVsDjRC8u6aqa11/7s+qFMqTcJzJxYXDCu7XxpQT4y4m6hGMjBH8cXRB134AaG4pfZoNL4HAMc7h7crKjj0AkNrur1IK9wrgmFvq9yKRQ2daW4OuP08eiRiDl7850BUeqkwBwMX9wWje6Z0kYJYYQ9MZ/Gq0onNz/lJzi79Ga1rNMD8rQy9FIx37AKCpyR9WTBFjMNYj+N0F/UTr6ma5w+F0LtkQWMPMb8XjMH3pHUJs5zpSqSnjhVvOlZJ7lJY9bHgFEVgp9WG0sjsJAA2fTxuL0+opBrtN1mxZtKi7I6+hMWOCFA6nVbLR/7gxWFwT7Zp3rvDOisA5fZuIun8B8HFDS+ntUGaXYXyysLJzZf5lo8b0zDa9uWKSYmc00nkwD5zJgC0LxrbTtGHDRC8z1grBy/v+HgOQuPxm4zilnj5RBdbUN/g39nW+oCuZ8tcmkyVzB1fN4MnmODEJAA1N/liy0Z9ihrBtiIuU+/kDgwgci7XnbBuC3VhPhJJUasr4eDytBNEcT6GYatsQzKBM5uySymQSbNsQWmEFg9YRwZSVgQa36ksSyJMoK4tRTXnnr8z8Q47FKwCglPHmsqxmzQksTiQmeAeLy3Ega2vBd9wZmMuEYnVafGnbEBfK/UUJ5F/DDNKQb4K5vK5xnI+IcjmD/UKL/QVFw1Y5zuQRlgXd2hp09bVqMIGfIcImy2rPhkJBcamUX/BCftjEqjsyAB2/RRbfBuAPKaiooqL9awE6VuBzb0om/dPD4bQCEkg2+6cDmOPzyA8AUCiU1ldMAADa2oKSGUSEXaz4WRD1ELG3aUdgmfRgNxl6DRKb6htKnrQsaGgsBWH9/PntvztOTAzWxxUROHo03S8y/gKgIAwHhKCI6uWtkYc7DlZVdR6ARiWBXkxtC3zEBvMgTH2fQBN8sX5zyYN8SRKBk8mJIzV5fwLQ7fPoeZHIob/y4rMsaMcp9XiH8XqVMycXVXe9YDNEnAb2hatiyUb/Z1u3TZ05MDUHNqMhFtGrvt2KxsaS0RcCYAZdaAm9Fmv29bHrCn7DrqX9DWIToNUS4fECAAAAAElFTkSuQmCC"><link id="aiit-fav-180" rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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"></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
+<h1>Differential Equations &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Differential%20Equations%20PYQ%20Practice.html">Back to practice</a><a href="Differential%20Equations%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> DIFFERENTIAL EQUATIONS – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. First-order linear equations (integrating factor)</a></li><li><a href="#T2">Type 2. Variable separable equations and simple substitutions</a></li><li><a href="#T3">Type 3. Applications, curve problems and integral equations</a></li><li><a href="#T4">Type 4. Homogeneous equations and those reducible to them</a></li><li><a href="#T5">Type 5. Linear in x (dx/dy) and Bernoulli-type equations</a></li><li><a href="#T6">Type 6. Exact equations and product-rule forms</a></li><li><a href="#T7">Type 7. Forming a differential equation; order and degree</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. First-order linear equations (integrating factor) <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">79 questions on the sheet (Q1–79)  ·  Sub-topics: A1 linear with algebraic, exponential or logarithmic coefficients · A2 linear with trigonometric coefficients</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Standard form</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Integrating factor</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>General solution</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Common integrating factors</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Useful integral</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr><tr><td><p>Trigonometric identities</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr><tr><td><p>Constant coefficients</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What is the first step in every linear equation?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>How do I find the integrating factor quickly when <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mi mathvariant="normal">tan</mi><mi>x</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr><tr><td><p>When the right-hand side is <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mn>2</mn><mi>x</mi></mrow></math> or <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mi>x</mi><mi mathvariant="normal">cos</mi><mi>x</mi></mrow></math>, how do I integrate <math displaystyle="true"><mrow><mi>Q</mi><mo>⋅</mo><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></td></tr><tr><td><p>How do I use the initial condition?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_12"></div></td></tr><tr><td><p>How are maximum and limit questions solved?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_13"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_14"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The equation can be written as <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mi>P</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>y</mi><mo>=</mo><mi>Q</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, often after dividing by the coefficient of <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math> (for example <math displaystyle="true"><mrow><mi>x</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mn>2</mn><mi>y</mi><mo>=</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math>).</p><p style="padding-left:14px">•  <math displaystyle="true"><mrow><mi>y</mi></mrow></math> appears only to the first power and is not multiplied by <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math>; typical terms are <math displaystyle="true"><mrow><mi>y</mi><mi mathvariant="normal">tan</mi><mi>x</mi></mrow></math>, <math displaystyle="true"><mrow><mi>y</mi><mi mathvariant="normal">cot</mi><mi>x</mi></mrow></math>, <math displaystyle="true"><mrow><mfrac><mrow><mn>2</mn><mi>x</mi><mi>y</mi></mrow><mrow><mn>1</mn><mo>+</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac></mrow></math>.</p><p style="padding-left:14px">•  An initial condition such as <math displaystyle="true"><mrow><mi>y</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>0</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mn>1</mn></mrow></math> is given and <math displaystyle="true"><mrow><mi>y</mi></mrow></math> at another point, a limit, a maximum or an area is asked.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Standard form</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mi>P</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>y</mi><mo>=</mo><mi>Q</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Integrating factor</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mo>∫</mo><mi>P</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow></msup></mrow></math></p></td></tr><tr><td><p>General solution</p></td><td><p><math displaystyle="true"><mrow><mi>y</mi><mo>⋅</mo><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi><mo>=</mo><mo>∫</mo><mi>Q</mi><mo>⋅</mo><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>+</mo><mi>C</mi></mrow></math></p></td></tr><tr><td><p>Common integrating factors</p></td><td><p><math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mi mathvariant="normal">tan</mi><mi>x</mi><mo>⇒</mo><mi mathvariant="normal">sec</mi><mi>x</mi></mrow></math>; <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mi mathvariant="normal">cot</mi><mi>x</mi><mo>⇒</mo><mi mathvariant="normal">sin</mi><mi>x</mi></mrow></math>; <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>x</mi></mrow></mfrac><mo>⇒</mo><mi>x</mi></mrow></math>; <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mrow><mn>1</mn><mo>+</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac><mo>⇒</mo><mn>1</mn><mo>+</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math>; <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mn>2</mn><mi mathvariant="normal">tan</mi><mi>x</mi><mo>⇒</mo><msup><mrow><mi mathvariant="normal">sec</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>x</mi></mrow></math></p></td></tr><tr><td><p>Useful integral</p></td><td><p><math displaystyle="true"><mrow><mo>∫</mo><mfrac><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac><mi>d</mi><mi>x</mi><mo>=</mo><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow><mo>+</mo><mi>C</mi></mrow></math>, so <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi mathvariant="normal">ln</mi><mi>f</mi></mrow></msup><mo>=</mo><mi>f</mi></mrow></math></p></td></tr><tr><td><p>Trigonometric identities</p></td><td><p><math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mn>2</mn><mi>x</mi><mo>=</mo><mn>2</mn><mi mathvariant="normal">sin</mi><mi>x</mi><mi mathvariant="normal">cos</mi><mi>x</mi></mrow></math>; <math displaystyle="true"><mrow><msup><mrow><mi mathvariant="normal">sec</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>x</mi><mo>=</mo><mn>1</mn><mo>+</mo><msup><mrow><mi mathvariant="normal">tan</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>x</mi></mrow></math></p></td></tr><tr><td><p>Constant coefficients</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mi>k</mi><mi>y</mi><mo>=</mo><mi>Q</mi></mrow></math>: <math displaystyle="true"><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mi>k</mi><mi>x</mi></mrow></msup></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What is the first step in every linear equation?</p></td><td><p>Divide by the coefficient of <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math> so that the equation is exactly <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mi>P</mi><mi>y</mi><mo>=</mo><mi>Q</mi></mrow></math>; the sign of <math displaystyle="true"><mrow><mi>P</mi></mrow></math> matters.</p></td></tr><tr><td><p>How do I find the integrating factor quickly when <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mi mathvariant="normal">tan</mi><mi>x</mi></mrow></math>?</p></td><td><p><math displaystyle="true"><mrow><mo>∫</mo><mi mathvariant="normal">tan</mi><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mi mathvariant="normal">sec</mi><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow></mrow></math>, so <math displaystyle="true"><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi><mo>=</mo><mi mathvariant="normal">sec</mi><mi>x</mi></mrow></math> (and for <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mn>2</mn><mi mathvariant="normal">tan</mi><mi>x</mi></mrow></math> it is <math displaystyle="true"><mrow><msup><mrow><mi mathvariant="normal">sec</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>x</mi></mrow></math>).</p></td></tr><tr><td><p>When the right-hand side is <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mn>2</mn><mi>x</mi></mrow></math> or <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mi>x</mi><mi mathvariant="normal">cos</mi><mi>x</mi></mrow></math>, how do I integrate <math displaystyle="true"><mrow><mi>Q</mi><mo>⋅</mo><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi></mrow></math>?</p></td><td><p>Write <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mn>2</mn><mi>x</mi><mo>=</mo><mn>2</mn><mi mathvariant="normal">sin</mi><mi>x</mi><mi mathvariant="normal">cos</mi><mi>x</mi></mrow></math> and cancel with the integrating factor before integrating.</p></td></tr><tr><td><p>How do I use the initial condition?</p></td><td><p>Find <math displaystyle="true"><mrow><mi>C</mi></mrow></math> after integrating, then put in the point asked; do not substitute before the constant is found.</p></td></tr><tr><td><p>How are maximum and limit questions solved?</p></td><td><p>After finding <math displaystyle="true"><mrow><mi>y</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, differentiate for the maximum or take the limit using the dominant term.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Forgetting to divide by the coefficient of <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math> before reading <math displaystyle="true"><mrow><mi>P</mi></mrow></math> and <math displaystyle="true"><mrow><mi>Q</mi></mrow></math>.</p><p style="padding-left:14px">•  Dropping the constant of integration or the modulus in <math displaystyle="true"><mrow><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mo>…</mo></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow></mrow></math>.</p><p style="padding-left:14px">•  Integrating <math displaystyle="true"><mrow><mi>Q</mi></mrow></math> instead of <math displaystyle="true"><mrow><mi>Q</mi><mo>⋅</mo><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi></mrow></math>.</p><p style="padding-left:14px">•  Using the point condition before <math displaystyle="true"><mrow><mi>C</mi></mrow></math> has been found, or at the wrong variable (<math displaystyle="true"><mrow><mi>x</mi></mrow></math> versus <math displaystyle="true"><mrow><mi>y</mi></mrow></math>).</p></div></section>
+<section class="typ" id="T2" data-k="2"><h2>Type 2. Variable separable equations and simple substitutions <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">35 questions on the sheet (Q80–114)  ·  Sub-topics: B1 variable separable · B2 reducible to separable by a substitution</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Separation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>Exponent laws</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr><tr><td><p>Substitution <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mi>t</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></td></tr><tr><td><p>Substitution <math displaystyle="true"><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>+</mo><mi>c</mi><mo>=</mo><mi>t</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_19"></div></td></tr><tr><td><p>Substitution <math displaystyle="true"><mrow><mi>x</mi><mi>y</mi><mo>=</mo><mi>t</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_20"></div></td></tr><tr><td><p>Standard integrals</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_21"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I know that an equation is variable separable?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_22"></div></td></tr><tr><td><p>What if <math displaystyle="true"><mrow><mi>x</mi></mrow></math> and <math displaystyle="true"><mrow><mi>y</mi></mrow></math> occur as the combination <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_23"></div></td></tr><tr><td><p>How are logarithms handled, as in <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">log</mi></mrow><mrow><mi>e</mi></mrow></msub><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>4</mn><mi>y</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_24"></div></td></tr><tr><td><p>When do I need partial fractions?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_25"></div></td></tr><tr><td><p>Why is the sign of <math displaystyle="true"><mrow><mi>C</mi></mrow></math> not important?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_26"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_27"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The equation can be rearranged so that all <math displaystyle="true"><mrow><mi>y</mi></mrow></math> terms are with <math displaystyle="true"><mrow><mi>d</mi><mi>y</mi></mrow></math> and all <math displaystyle="true"><mrow><mi>x</mi></mrow></math> terms are with <math displaystyle="true"><mrow><mi>d</mi><mi>x</mi></mrow></math>, such as <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>y</mi></mrow></msup><mo>+</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi mathvariant="normal">cos</mi><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>+</mo><msup><mrow><mi>e</mi></mrow><mrow><mi>y</mi></mrow></msup><mi mathvariant="normal">sin</mi><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mn>0</mn></mrow></math>.</p><p style="padding-left:14px">•  A combination such as <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></math>, <math displaystyle="true"><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn><mi>y</mi></mrow></math> or <math displaystyle="true"><mrow><mi>x</mi><mi>y</mi></mrow></math> repeats in the equation.</p><p style="padding-left:14px">•  <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>⋅</mo><mi>g</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> with exponentials like <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup></mrow></math> or <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mn>4</mn><mi>y</mi></mrow></msup></mrow></math>.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Separation</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>g</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac><mo>=</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>⇒</mo><mo>∫</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>g</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></mfrac><mo>=</mo><mo>∫</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>+</mo><mi>C</mi></mrow></math></p></td></tr><tr><td><p>Exponent laws</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mi>x</mi></mrow></msup><msup><mrow><mi>e</mi></mrow><mrow><mi>y</mi></mrow></msup></mrow></math>; <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup><mo>=</mo><msup><mrow><mn>2</mn></mrow><mrow><mi>x</mi></mrow></msup><msup><mrow><mn>2</mn></mrow><mrow><mi>y</mi></mrow></msup></mrow></math></p></td></tr><tr><td><p>Substitution <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mi>t</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mn>1</mn></mrow></math></p></td></tr><tr><td><p>Substitution <math displaystyle="true"><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>+</mo><mi>c</mi><mo>=</mo><mi>t</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>b</mi></mrow></mfrac><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Substitution <math displaystyle="true"><mrow><mi>x</mi><mi>y</mi><mo>=</mo><mi>t</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>+</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>d</mi><mi>t</mi></mrow></math></p></td></tr><tr><td><p>Standard integrals</p></td><td><p><math displaystyle="true"><mrow><mo>∫</mo><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>−</mo><msup><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mfrac><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mrow><mi>x</mi><mo>+</mo><mi>a</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow></mrow></math>; <math displaystyle="true"><mrow><mo>∫</mo><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mn>1</mn><mo>+</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac><mo>=</mo><msup><mrow><mi mathvariant="normal">tan</mi></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>x</mi></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I know that an equation is variable separable?</p></td><td><p>Factorise the right-hand side; if it splits as <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>g</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> the variables can be separated.</p></td></tr><tr><td><p>What if <math displaystyle="true"><mrow><mi>x</mi></mrow></math> and <math displaystyle="true"><mrow><mi>y</mi></mrow></math> occur as the combination <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></math>?</p></td><td><p>Put <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mi>t</mi></mrow></math>; then <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mn>1</mn></mrow></math> and the equation becomes separable in <math displaystyle="true"><mrow><mi>t</mi></mrow></math> and <math displaystyle="true"><mrow><mi>x</mi></mrow></math>.</p></td></tr><tr><td><p>How are logarithms handled, as in <math displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">log</mi></mrow><mrow><mi>e</mi></mrow></msub><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>4</mn><mi>y</mi></mrow></math>?</p></td><td><p>Remove the logarithm first: <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mn>4</mn><mi>y</mi></mrow></msup><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mn>3</mn><mi>x</mi></mrow></msup><msup><mrow><mi>e</mi></mrow><mrow><mn>4</mn><mi>y</mi></mrow></msup></mrow></math>.</p></td></tr><tr><td><p>When do I need partial fractions?</p></td><td><p>When one side is <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>−</mo><mn>3</mn><mi>y</mi></mrow></mfrac></mrow></math> or <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>−</mo><mn>4</mn></mrow></mfrac></mrow></math>, split it before integrating.</p></td></tr><tr><td><p>Why is the sign of <math displaystyle="true"><mrow><mi>C</mi></mrow></math> not important?</p></td><td><p>Only its value through the initial condition matters; keep it on one side and find it from the given point.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Dividing by a factor that can be zero and losing a solution (such as <math displaystyle="true"><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow></math> or <math displaystyle="true"><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow></math>).</p><p style="padding-left:14px">•  Missing the modulus after integrating <math displaystyle="true"><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mi>x</mi></mrow></mfrac></mrow></math>-type terms.</p><p style="padding-left:14px">•  Substituting <math displaystyle="true"><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mi>t</mi></mrow></math> and forgetting the <math displaystyle="true"><mrow><mo>−</mo><mn>1</mn></mrow></math> in <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mn>1</mn></mrow></math>.</p><p style="padding-left:14px">•  Wrong sign when integrating <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi></mrow></math> and <math displaystyle="true"><mrow><mi mathvariant="normal">cos</mi></mrow></math> terms.</p></div></section>
+<section class="typ" id="T3" data-k="3"><h2>Type 3. Applications, curve problems and integral equations <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">26 questions on the sheet (Q115–140)  ·  Sub-topics: C1 rate problems (growth, decay, population, cooling) · C2 curves with a given slope, normal or area · C3 integral and functional equations</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_28"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Growth and decay</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_29"></div></td></tr><tr><td><p>Newton&#x27;s law of cooling</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_30"></div></td></tr><tr><td><p>Slope of tangent</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_31"></div></td></tr><tr><td><p>Slope of normal</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_32"></div></td></tr><tr><td><p>Sub-tangent and sub-normal</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_33"></div></td></tr><tr><td><p>Area function</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_34"></div></td></tr><tr><td><p>Integral equation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_35"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I translate &#x27;proportional&#x27; into an equation?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_36"></div></td></tr><tr><td><p>How do I find the equation of a curve from its slope?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_37"></div></td></tr><tr><td><p>What do I do with a normal instead of a tangent?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_38"></div></td></tr><tr><td><p>How do I solve <math displaystyle="true"><mrow><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mi>x</mi></mrow></msubsup><mrow><mi>t</mi></mrow></mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>t</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_39"></div></td></tr><tr><td><p>What is the first thing to do with a time-dependent word problem?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_40"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_41"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 3</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  A sentence says that a quantity changes at a rate proportional to itself, such as bacteria, population or the temperature of a body.</p><p style="padding-left:14px">•  A curve passes through a point and the slope of its tangent or normal is given at every point.</p><p style="padding-left:14px">•  The unknown function <math displaystyle="true"><mrow><mi>f</mi></mrow></math> appears inside an integral, <math displaystyle="true"><mrow><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mi>x</mi></mrow></msubsup><mrow><mi>f</mi></mrow></mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>t</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mo>…</mo></mrow></math>, or satisfies <math displaystyle="true"><mrow><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Growth and decay</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>y</mi><mo>⇒</mo><mi>y</mi><mo>=</mo><msub><mrow><mi>y</mi></mrow><mrow><mn>0</mn></mrow></msub><msup><mrow><mi>e</mi></mrow><mrow><mi>k</mi><mi>t</mi></mrow></msup></mrow></math></p></td></tr><tr><td><p>Newton&#x27;s law of cooling</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo>−</mo><mi>k</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>T</mi><mo>−</mo><msub><mrow><mi>T</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>⇒</mo><mi>T</mi><mo>=</mo><msub><mrow><mi>T</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msub><mrow><mi>T</mi></mrow><mrow><mi>i</mi></mrow></msub><mo>−</mo><msub><mrow><mi>T</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><msup><mrow><mi>e</mi></mrow><mrow><mo>−</mo><mi>k</mi><mi>t</mi></mrow></msup></mrow></math></p></td></tr><tr><td><p>Slope of tangent</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo></mrow></math> the given slope at <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Slope of normal</p></td><td><p>slope of normal <math displaystyle="true"><mrow><mo>=</mo><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>d</mi><mi>y</mi><mo>/</mo><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Sub-tangent and sub-normal</p></td><td><p>sub-tangent <math displaystyle="true"><mrow><mo>=</mo><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mfrac><mrow><mi>y</mi></mrow><mrow><mi>d</mi><mi>y</mi><mo>/</mo><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow></mrow></math>; sub-normal <math displaystyle="true"><mrow><mo>=</mo><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow></mrow></math></p></td></tr><tr><td><p>Area function</p></td><td><p><math displaystyle="true"><mrow><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mi>a</mi></mrow></msubsup><mrow><mi>f</mi></mrow></mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>A</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>⇒</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>A</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Integral equation</p></td><td><p>Differentiate: <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mi>x</mi></mrow></msubsup><mrow><mi>g</mi></mrow></mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>t</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mi>g</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I translate &#x27;proportional&#x27; into an equation?</p></td><td><p>Write <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>y</mi></mrow></math> with a constant <math displaystyle="true"><mrow><mi>k</mi></mrow></math>; use the two conditions given to find <math displaystyle="true"><mrow><mi>k</mi></mrow></math> and <math displaystyle="true"><mrow><msub><mrow><mi>y</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math>.</p></td></tr><tr><td><p>How do I find the equation of a curve from its slope?</p></td><td><p>Write <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo></mrow></math> the slope expression, solve, and use the point(s) the curve passes through to find the constants.</p></td></tr><tr><td><p>What do I do with a normal instead of a tangent?</p></td><td><p>Use <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><msub><mrow><mi>m</mi></mrow><mrow><mtext>normal</mtext></mrow></msub></mrow></mfrac></mrow></math>.</p></td></tr><tr><td><p>How do I solve <math displaystyle="true"><mrow><mrow><msubsup><mo>∫</mo><mrow><mn>0</mn></mrow><mrow><mi>x</mi></mrow></msubsup><mrow><mi>t</mi></mrow></mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>t</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><p>Differentiate both sides: <math displaystyle="true"><mrow><mi>x</mi><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mn>2</mn><mi>x</mi><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>+</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>f</mi><mo>′</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, which is separable.</p></td></tr><tr><td><p>What is the first thing to do with a time-dependent word problem?</p></td><td><p>List the conditions (initial value and one later value) and note the units.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using the slope of the tangent when the normal is given (and the reverse).</p><p style="padding-left:14px">•  Forgetting that the integral of the area condition must be differentiated first.</p><p style="padding-left:14px">•  Not using both given conditions to find <math displaystyle="true"><mrow><mi>k</mi></mrow></math> and <math displaystyle="true"><mrow><mi>C</mi></mrow></math>.</p><p style="padding-left:14px">•  Taking <math displaystyle="true"><mrow><msub><mrow><mi>T</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></math> (the surrounding temperature) with the wrong sign in cooling problems.</p></div></section>
+<section class="typ" id="T4" data-k="4"><h2>Type 4. Homogeneous equations and those reducible to them <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">23 questions on the sheet (Q141–163)  ·  Sub-topics: D1 homogeneous <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> · D2 reducible to homogeneous (lines that meet at a point)</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_42"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Homogeneous equation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_43"></div></td></tr><tr><td><p>Separated form</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_44"></div></td></tr><tr><td><p>Other form</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_45"></div></td></tr><tr><td><p>Two lines meeting at a point</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_46"></div></td></tr><tr><td><p>Parallel lines</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_47"></div></td></tr><tr><td><p>Standard integrals</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_48"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I test that an equation is homogeneous?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_49"></div></td></tr><tr><td><p>Which substitution is used?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_50"></div></td></tr><tr><td><p>What if the lines <math displaystyle="true"><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>x</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>y</mi><mo>+</mo><msub><mrow><mi>c</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math> and <math displaystyle="true"><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>x</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>y</mi><mo>+</mo><msub><mrow><mi>c</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math> meet at <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>h</mi><mo>,</mo><mi>k</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_51"></div></td></tr><tr><td><p>How is a solution that represents a circle used?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_52"></div></td></tr><tr><td><p>What do I do after integrating in <math displaystyle="true"><mrow><mi>v</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_53"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_54"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 4</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  Every term in the numerator and denominator has the same total degree, as in <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn><mi>x</mi><mi>y</mi></mrow></mfrac></mrow></math>.</p><p style="padding-left:14px">•  The equation contains <math displaystyle="true"><mrow><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow></math> or <math displaystyle="true"><mrow><mfrac><mrow><mi>x</mi></mrow><mrow><mi>y</mi></mrow></mfrac></mrow></math> inside a function, such as <math displaystyle="true"><mrow><mi>x</mi><mi mathvariant="normal">tan</mi><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mo>…</mo></mrow></math> or <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>y</mi><mo>/</mo><mi>x</mi></mrow></msup></mrow></math>.</p><p style="padding-left:14px">•  <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>x</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>y</mi><mo>+</mo><msub><mrow><mi>c</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>x</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>y</mi><mo>+</mo><msub><mrow><mi>c</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac></mrow></math> with constants in both lines.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Homogeneous equation</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>; put <math displaystyle="true"><mrow><mi>y</mi><mo>=</mo><mi>v</mi><mi>x</mi></mrow></math>, <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>v</mi><mo>+</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Separated form</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>v</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mi>v</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Other form</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>y</mi></mrow></mfrac><mo>=</mo><mi>g</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>x</mi></mrow><mrow><mi>y</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>: put <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>v</mi><mi>y</mi></mrow></math></p></td></tr><tr><td><p>Two lines meeting at a point</p></td><td><p><math displaystyle="true"><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>h</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>k</mi><mo>+</mo><msub><mrow><mi>c</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="0.3em"></mspace><msub><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>h</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>k</mi><mo>+</mo><msub><mrow><mi>c</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math>; put <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>X</mi><mo>+</mo><mi>h</mi></mrow></math>, <math displaystyle="true"><mrow><mi>y</mi><mo>=</mo><mi>Y</mi><mo>+</mo><mi>k</mi></mrow></math></p></td></tr><tr><td><p>Parallel lines</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><msub><mrow><mi>b</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow><mrow><msub><mrow><mi>b</mi></mrow><mrow><mn>2</mn></mrow></msub></mrow></mfrac></mrow></math>: put <math displaystyle="true"><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>x</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>y</mi><mo>=</mo><mi>t</mi></mrow></math></p></td></tr><tr><td><p>Standard integrals</p></td><td><p><math displaystyle="true"><mrow><mo>∫</mo><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mn>1</mn><mo>+</mo><msup><mrow><mi>v</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac><mo>=</mo><msup><mrow><mi mathvariant="normal">tan</mi></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>v</mi></mrow></math>; <math displaystyle="true"><mrow><mo>∫</mo><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><msqrt><mrow><mn>1</mn><mo>+</mo><msup><mrow><mi>v</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></msqrt></mrow></mfrac><mo>=</mo><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mi>v</mi><mo>+</mo><msqrt><mrow><mn>1</mn><mo>+</mo><msup><mrow><mi>v</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></msqrt></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I test that an equation is homogeneous?</p></td><td><p>Replace <math displaystyle="true"><mrow><mi>x</mi><mo>→</mo><mi>λ</mi><mi>x</mi></mrow></math> and <math displaystyle="true"><mrow><mi>y</mi><mo>→</mo><mi>λ</mi><mi>y</mi></mrow></math>; if <math displaystyle="true"><mrow><mi>λ</mi></mrow></math> cancels, the equation is homogeneous.</p></td></tr><tr><td><p>Which substitution is used?</p></td><td><p><math displaystyle="true"><mrow><mi>y</mi><mo>=</mo><mi>v</mi><mi>x</mi></mrow></math> when the equation is written as <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mo>…</mo></mrow></math> and <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>v</mi><mi>y</mi></mrow></math> if the terms in <math displaystyle="true"><mrow><mi>x</mi></mrow></math> are simpler.</p></td></tr><tr><td><p>What if the lines <math displaystyle="true"><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>x</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>1</mn></mrow></msub><mi>y</mi><mo>+</mo><msub><mrow><mi>c</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math> and <math displaystyle="true"><mrow><msub><mrow><mi>a</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>x</mi><mo>+</mo><msub><mrow><mi>b</mi></mrow><mrow><mn>2</mn></mrow></msub><mi>y</mi><mo>+</mo><msub><mrow><mi>c</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math> meet at <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>h</mi><mo>,</mo><mi>k</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><p>Shift the origin to <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>h</mi><mo>,</mo><mi>k</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> with <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>X</mi><mo>+</mo><mi>h</mi></mrow></math>, <math displaystyle="true"><mrow><mi>y</mi><mo>=</mo><mi>Y</mi><mo>+</mo><mi>k</mi></mrow></math> to get a homogeneous equation in <math displaystyle="true"><mrow><mi>X</mi></mrow></math> and <math displaystyle="true"><mrow><mi>Y</mi></mrow></math>.</p></td></tr><tr><td><p>How is a solution that represents a circle used?</p></td><td><p>Find the form by solving, compare with <math displaystyle="true"><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><mn>2</mn><mi>g</mi><mi>x</mi><mo>+</mo><mn>2</mn><mi>f</mi><mi>y</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow></math>, and read the centre and radius.</p></td></tr><tr><td><p>What do I do after integrating in <math displaystyle="true"><mrow><mi>v</mi></mrow></math>?</p></td><td><p>Put <math displaystyle="true"><mrow><mi>v</mi><mo>=</mo><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow></math> back and then use the initial condition.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Forgetting the term <math displaystyle="true"><mrow><mi>x</mi><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math> in <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>v</mi><mo>+</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math>.</p><p style="padding-left:14px">•  Not checking whether the equation is really homogeneous (equal degrees).</p><p style="padding-left:14px">•  Losing the modulus in <math displaystyle="true"><mrow><mi mathvariant="normal">ln</mi><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow></mrow></math>.</p><p style="padding-left:14px">•  Not changing back to <math displaystyle="true"><mrow><mi>x</mi></mrow></math> and <math displaystyle="true"><mrow><mi>y</mi></mrow></math> before using the given point.</p></div></section>
+<section class="typ" id="T5" data-k="5"><h2>Type 5. Linear in x (dx/dy) and Bernoulli-type equations <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">20 questions on the sheet (Q164–183)  ·  Sub-topics: E1 linear in <math displaystyle="true"><mrow><mi>x</mi></mrow></math>: <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>y</mi></mrow></mfrac><mo>+</mo><mi>P</mi><mi>x</mi><mo>=</mo><mi>Q</mi></mrow></math> · E2 Bernoulli-type and other equations reduced to linear</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_55"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Linear in <math displaystyle="true"><mrow><mi>x</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_56"></div></td></tr><tr><td><p>Bernoulli equation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_57"></div></td></tr><tr><td><p>After the substitution</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_58"></div></td></tr><tr><td><p>Other substitutions</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_59"></div></td></tr><tr><td><p>Common integrating factors in <math displaystyle="true"><mrow><mi>y</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_60"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I decide between linear in <math displaystyle="true"><mrow><mi>y</mi></mrow></math> and linear in <math displaystyle="true"><mrow><mi>x</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_61"></div></td></tr><tr><td><p>How are Bernoulli equations recognised?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_62"></div></td></tr><tr><td><p>What if the right side has <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>y</mi></mrow></msup></mrow></math> or <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mi>y</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_63"></div></td></tr><tr><td><p>How is the initial condition given for <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_64"></div></td></tr><tr><td><p>Why is the solution sometimes written as <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mo>…</mo></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_65"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_66"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 5</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The equation is not linear in <math displaystyle="true"><mrow><mi>y</mi></mrow></math> but becomes linear if <math displaystyle="true"><mrow><mi>x</mi></mrow></math> is taken as the dependent variable, such as <math displaystyle="true"><mrow><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>d</mi><mi>x</mi><mo>+</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>y</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>d</mi><mi>y</mi><mo>=</mo><mn>0</mn></mrow></math> or <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>−</mo><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>1</mn></mrow></math>.</p><p style="padding-left:14px">•  The question asks about <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, for example <math displaystyle="true"><mrow><mi>x</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>e</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mo>…</mo></mrow></math> or the value of <math displaystyle="true"><mrow><mi>x</mi></mrow></math> at a given <math displaystyle="true"><mrow><mi>y</mi></mrow></math>.</p><p style="padding-left:14px">•  An equation has <math displaystyle="true"><mrow><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math>, <math displaystyle="true"><mrow><msup><mrow><mi>y</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow></math>, <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>y</mi></mrow></msup></mrow></math> or <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mi>y</mi></mrow></math> on the right and the left side is linear in <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math>, for example <math displaystyle="true"><mrow><mi mathvariant="normal">sec</mi><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mn>2</mn><mi>x</mi><mi mathvariant="normal">sin</mi><mi>y</mi><mo>=</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>3</mn></mrow></msup><mi mathvariant="normal">cos</mi><mi>y</mi></mrow></math>.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Linear in <math displaystyle="true"><mrow><mi>x</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>y</mi></mrow></mfrac><mo>+</mo><mi>P</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>x</mi><mo>=</mo><mi>Q</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>; <math displaystyle="true"><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mo>∫</mo><mi>P</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi></mrow></msup></mrow></math>; <math displaystyle="true"><mrow><mi>x</mi><mo>⋅</mo><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi><mo>=</mo><mo>∫</mo><mi>Q</mi><mo>⋅</mo><mi mathvariant="normal">I</mi><mi mathvariant="normal">F</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>+</mo><mi>C</mi></mrow></math></p></td></tr><tr><td><p>Bernoulli equation</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mi>P</mi><mi>y</mi><mo>=</mo><mi>Q</mi><msup><mrow><mi>y</mi></mrow><mrow><mi>n</mi></mrow></msup></mrow></math>; divide by <math displaystyle="true"><mrow><msup><mrow><mi>y</mi></mrow><mrow><mi>n</mi></mrow></msup></mrow></math>, put <math displaystyle="true"><mrow><mi>v</mi><mo>=</mo><msup><mrow><mi>y</mi></mrow><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow></msup></mrow></math></p></td></tr><tr><td><p>After the substitution</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>P</mi><mi>v</mi><mo>=</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>Q</mi></mrow></math> (linear in <math displaystyle="true"><mrow><mi>v</mi></mrow></math>)</p></td></tr><tr><td><p>Other substitutions</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mo>…</mo><msup><mrow><mi>e</mi></mrow><mrow><mi>y</mi></mrow></msup></mrow></math>: <math displaystyle="true"><mrow><mi>v</mi><mo>=</mo><msup><mrow><mi>e</mi></mrow><mrow><mo>−</mo><mi>y</mi></mrow></msup></mrow></math>; <math displaystyle="true"><mrow><mi mathvariant="normal">sec</mi><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math>: <math displaystyle="true"><mrow><mi>v</mi><mo>=</mo><mi mathvariant="normal">sin</mi><mi>y</mi></mrow></math>; <math displaystyle="true"><mrow><msup><mrow><mi mathvariant="normal">sec</mi></mrow><mrow><mn>2</mn></mrow></msup><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math>: <math displaystyle="true"><mrow><mi>v</mi><mo>=</mo><mi mathvariant="normal">tan</mi><mi>y</mi></mrow></math></p></td></tr><tr><td><p>Common integrating factors in <math displaystyle="true"><mrow><mi>y</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>y</mi></mrow></mfrac><mo>⇒</mo><mi>y</mi></mrow></math>; <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>y</mi></mrow></mfrac><mo>⇒</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>y</mi></mrow></mfrac></mrow></math>; <math displaystyle="true"><mrow><mi>P</mi><mo>=</mo><mfrac><mrow><mn>2</mn></mrow><mrow><mi>y</mi></mrow></mfrac><mo>⇒</mo><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I decide between linear in <math displaystyle="true"><mrow><mi>y</mi></mrow></math> and linear in <math displaystyle="true"><mrow><mi>x</mi></mrow></math>?</p></td><td><p>Rewrite the equation as <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mo>…</mo></mrow></math>; if there is a power of <math displaystyle="true"><mrow><mi>y</mi></mrow></math> in the way, try <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>y</mi></mrow></mfrac><mo>=</mo><mo>…</mo></mrow></math> instead.</p></td></tr><tr><td><p>How are Bernoulli equations recognised?</p></td><td><p>They look like <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mi>P</mi><mi>y</mi><mo>=</mo><mi>Q</mi><msup><mrow><mi>y</mi></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> with <math displaystyle="true"><mrow><mi>n</mi><mo>≠</mo><mn>0</mn><mo>,</mo><mn>1</mn></mrow></math>.</p></td></tr><tr><td><p>What if the right side has <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mi>y</mi></mrow></msup></mrow></math> or <math displaystyle="true"><mrow><mi mathvariant="normal">sin</mi><mi>y</mi></mrow></math>?</p></td><td><p>Divide through so that <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow></math> multiplies a function of <math displaystyle="true"><mrow><mi>y</mi></mrow></math> only, then put that function equal to <math displaystyle="true"><mrow><mi>v</mi></mrow></math>.</p></td></tr><tr><td><p>How is the initial condition given for <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><p>Often as <math displaystyle="true"><mrow><mi>x</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mn>0</mn></mrow></math> meaning <math displaystyle="true"><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow></math>, <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>; put <math displaystyle="true"><mrow><mi>y</mi></mrow></math> first.</p></td></tr><tr><td><p>Why is the solution sometimes written as <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mo>…</mo></mrow></math>?</p></td><td><p>Because it is linear in <math displaystyle="true"><mrow><mi>x</mi></mrow></math> and the answer is asked at a given <math displaystyle="true"><mrow><mi>y</mi></mrow></math>.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Trying the standard <math displaystyle="true"><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mi>P</mi><mi>y</mi><mo>=</mo><mi>Q</mi></mrow></math> method on an equation that is linear in <math displaystyle="true"><mrow><mi>x</mi></mrow></math>.</p><p style="padding-left:14px">•  Wrong power in <math displaystyle="true"><mrow><mi>v</mi><mo>=</mo><msup><mrow><mi>y</mi></mrow><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow></msup></mrow></math>.</p><p style="padding-left:14px">•  Forgetting the factor <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> when converting to the linear form.</p><p style="padding-left:14px">•  Swapping the roles of <math displaystyle="true"><mrow><mi>x</mi></mrow></math> and <math displaystyle="true"><mrow><mi>y</mi></mrow></math> in the initial condition.</p></div></section>
+<section class="typ" id="T6" data-k="6"><h2>Type 6. Exact equations and product-rule forms <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">8 questions on the sheet (Q184–191)  ·  Sub-topics: F1 exact equations and perfect differentials</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_67"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Perfect differentials</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_68"></div></td></tr><tr><td><p>Other forms</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_69"></div></td></tr><tr><td><p>Exactness test</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_70"></div></td></tr><tr><td><p>Solution of an exact equation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_71"></div></td></tr><tr><td><p>Integrating factors</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_72"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I find a perfect differential?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_73"></div></td></tr><tr><td><p>What if the equation is not exact?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_74"></div></td></tr><tr><td><p>How are exponentials of <math displaystyle="true"><mrow><mfrac><mrow><mi>x</mi></mrow><mrow><mi>y</mi></mrow></mfrac></mrow></math> handled?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_75"></div></td></tr><tr><td><p>What is a quick check of the final answer?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_76"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t6_77"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 6</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The equation contains a group like <math displaystyle="true"><mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>+</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow></math> or <math displaystyle="true"><mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>−</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow></math> that is a perfect differential.</p><p style="padding-left:14px">•  It is of the form <math displaystyle="true"><mrow><mi>M</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>+</mo><mi>N</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mn>0</mn></mrow></math> with <math displaystyle="true"><mrow><mfrac><mrow><mo>∂</mo><mi>M</mi></mrow><mrow><mo>∂</mo><mi>y</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>∂</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mi>x</mi></mrow></mfrac></mrow></math>.</p><p style="padding-left:14px">•  An exponential of <math displaystyle="true"><mrow><mfrac><mrow><mi>x</mi></mrow><mrow><mi>y</mi></mrow></mfrac></mrow></math> or <math displaystyle="true"><mrow><mfrac><mrow><mi>y</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow></math> occurs, suggesting a substitution after grouping.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Perfect differentials</p></td><td><p><math displaystyle="true"><mrow><mi>d</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>+</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow></math>; <math displaystyle="true"><mrow><mi>d</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>−</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac></mrow></math>; <math displaystyle="true"><mrow><mi>d</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>x</mi></mrow><mrow><mi>y</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>−</mo><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi></mrow><mrow><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Other forms</p></td><td><p><math displaystyle="true"><mrow><mi>d</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msup><mrow><mi mathvariant="normal">tan</mi></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>−</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfrac></mrow></math>; <math displaystyle="true"><mrow><mi>d</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi mathvariant="normal">ln</mi><mi>x</mi><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>+</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow><mrow><mi>x</mi><mi>y</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Exactness test</p></td><td><p><math displaystyle="true"><mrow><mi>M</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>+</mo><mi>N</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mn>0</mn></mrow></math> is exact if <math displaystyle="true"><mrow><mfrac><mrow><mo>∂</mo><mi>M</mi></mrow><mrow><mo>∂</mo><mi>y</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>∂</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mi>x</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Solution of an exact equation</p></td><td><p><math displaystyle="true"><mrow><mo>∫</mo><mi>M</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mspace width="0.3em"></mspace><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi><mtext>&#160;constant</mtext></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>+</mo><mo>∫</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mtext>terms&#160;of&#160;</mtext><mi>N</mi><mtext>&#160;free&#160;of&#160;</mtext><mi>x</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mi>C</mi></mrow></math></p></td></tr><tr><td><p>Integrating factors</p></td><td><p><math displaystyle="true"><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mi>x</mi><mi>M</mi><mo>+</mo><mi>y</mi><mi>N</mi></mrow></mfrac></mrow></math> if homogeneous; <math displaystyle="true"><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mi>x</mi><mi>M</mi><mo>−</mo><mi>y</mi><mi>N</mi></mrow></mfrac></mrow></math> if of the form <math displaystyle="true"><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi><mo>+</mo><mi>g</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mi>y</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I find a perfect differential?</p></td><td><p>Group the terms with <math displaystyle="true"><mrow><mi>d</mi><mi>x</mi></mrow></math> and <math displaystyle="true"><mrow><mi>d</mi><mi>y</mi></mrow></math> and look for <math displaystyle="true"><mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>+</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow></math> or <math displaystyle="true"><mrow><mi>x</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>y</mi><mo>−</mo><mi>y</mi><mspace width="0.3em"></mspace><mi>d</mi><mi>x</mi></mrow></math>, then divide by the factor that completes the form.</p></td></tr><tr><td><p>What if the equation is not exact?</p></td><td><p>Try an integrating factor <math displaystyle="true"><mrow><msup><mrow><mi>e</mi></mrow><mrow><mo>∫</mo><mfrac><mrow><msub><mrow><mi>M</mi></mrow><mrow><mi>y</mi></mrow></msub><mo>−</mo><msub><mrow><mi>N</mi></mrow><mrow><mi>x</mi></mrow></msub></mrow><mrow><mi>N</mi></mrow></mfrac><mi>d</mi><mi>x</mi></mrow></msup></mrow></math> if that is a function of <math displaystyle="true"><mrow><mi>x</mi></mrow></math> only.</p></td></tr><tr><td><p>How are exponentials of <math displaystyle="true"><mrow><mfrac><mrow><mi>x</mi></mrow><mrow><mi>y</mi></mrow></mfrac></mrow></math> handled?</p></td><td><p>Put <math displaystyle="true"><mrow><mi>x</mi><mo>=</mo><mi>v</mi><mi>y</mi></mrow></math>; the equation becomes separable in <math displaystyle="true"><mrow><mi>v</mi></mrow></math> and <math displaystyle="true"><mrow><mi>y</mi></mrow></math>.</p></td></tr><tr><td><p>What is a quick check of the final answer?</p></td><td><p>Differentiate the solution implicitly; it must reproduce the original equation.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Mixing up <math displaystyle="true"><mrow><mi>d</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>y</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> and <math displaystyle="true"><mrow><mi>d</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mfrac><mrow><mi>x</mi></mrow><mrow><mi>y</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> (the sign and the denominator).</p><p style="padding-left:14px">•  Dividing by the wrong factor and losing the perfect differential.</p><p style="padding-left:14px">•  Not checking the exactness condition before integrating.</p><p style="padding-left:14px">•  Forgetting the constant when integrating the <math displaystyle="true"><mrow><mi>y</mi></mrow></math> terms.</p></div></section>
+<section class="typ" id="T7" data-k="7"><h2>Type 7. Forming a differential equation; order and degree <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">6 questions on the sheet (Q192–197)  ·  Sub-topics: G1 differential equation of a family of curves · G2 order and degree</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_78"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Order of the equation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_79"></div></td></tr><tr><td><p>Procedure</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_80"></div></td></tr><tr><td><p>Order and degree</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_81"></div></td></tr><tr><td><p>Family of parabolas</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_82"></div></td></tr><tr><td><p>Family of circles</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_83"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How many times do I differentiate?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_84"></div></td></tr><tr><td><p>How do I eliminate the constants?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_85"></div></td></tr><tr><td><p>How do I find the degree?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_86"></div></td></tr><tr><td><p>What if a constant appears as <math displaystyle="true"><mrow><mi>a</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mo>+</mo><mfrac><mrow><msqrt><mrow><mi>a</mi></mrow></msqrt></mrow><mrow><mn>2</mn></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_87"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t7_88"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 7</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  A family of curves (<math displaystyle="true"><mrow><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>=</mo><mn>4</mn><mi>a</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mo>+</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, <math displaystyle="true"><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>=</mo><mn>4</mn><mi>b</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>y</mi><mo>+</mo><mi>b</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, circles through given points) is given and the differential equation is asked.</p><p style="padding-left:14px">•  A question asks for the difference between the degree and the order of the equation of a family.</p><p style="padding-left:14px">•  The number of arbitrary constants is given (or has to be counted).</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Order of the equation</p></td><td><p>order <math displaystyle="true"><mrow><mo>=</mo></mrow></math> number of independent arbitrary constants</p></td></tr><tr><td><p>Procedure</p></td><td><p>Differentiate once for each constant and eliminate the constants</p></td></tr><tr><td><p>Order and degree</p></td><td><p>order <math displaystyle="true"><mrow><mo>=</mo></mrow></math> highest derivative; degree <math displaystyle="true"><mrow><mo>=</mo></mrow></math> its power after removing radicals and fractions</p></td></tr><tr><td><p>Family of parabolas</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>=</mo><mn>4</mn><mi>a</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mo>+</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>: differentiate once, eliminate <math displaystyle="true"><mrow><mi>a</mi></mrow></math> using <math displaystyle="true"><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mi>y</mi><mi>y</mi><mo>′</mo></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Family of circles</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>y</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><mn>2</mn><mi>g</mi><mi>x</mi><mo>+</mo><mn>2</mn><mi>f</mi><mi>y</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow></math> has three constants (order 3)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How many times do I differentiate?</p></td><td><p>As many times as there are independent arbitrary constants.</p></td></tr><tr><td><p>How do I eliminate the constants?</p></td><td><p>Solve for the constant from the first derivative and substitute it back into the original equation.</p></td></tr><tr><td><p>How do I find the degree?</p></td><td><p>Clear radicals and fractional powers of derivatives first, then read the power of the highest derivative.</p></td></tr><tr><td><p>What if a constant appears as <math displaystyle="true"><mrow><mi>a</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>x</mi><mo>+</mo><mfrac><mrow><msqrt><mrow><mi>a</mi></mrow></msqrt></mrow><mrow><mn>2</mn></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>?</p></td><td><p>Square the equation to remove the radical before differentiating.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting a constant twice (for example <math displaystyle="true"><mrow><mi>a</mi></mrow></math> and <math displaystyle="true"><mrow><mi>b</mi></mrow></math> that can be combined).</p><p style="padding-left:14px">•  Not rationalising before reading the degree.</p><p style="padding-left:14px">•  Differentiating once too few times and leaving a constant in the final equation.</p><p style="padding-left:14px">•  Giving a power of <math displaystyle="true"><mrow><mi>y</mi></mrow></math> instead of a power of the highest derivative as the degree.</p></div></section></div><div id="sym" class="noprint"><span>Insert:</span></div><script>
+(function(){var KEY="tn_Differential Equations";var S={ta:{},rev:{}};
+try{S=JSON.parse(localStorage.getItem(KEY))||S}catch(e){}
+S.ta=S.ta||{};S.rev=S.rev||{};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function san(n){var o='';[].forEach.call(n.childNodes,function(c){if(c.nodeType==3)o+=esc(c.textContent);else if(c.nodeType==1){var t=c.tagName.toLowerCase();
+ if(t=='br')o+='<br>';else if(t=='sub'||t=='sup')o+='<'+t+'>'+san(c)+'</'+t+'>';
+ else if(t=='span'&&/^(fr|n|d)$/.test(c.className))o+='<span class="'+c.className+'">'+san(c)+'</span>';
+ else if(t=='div'||t=='p')o+=(o?'<br>':'')+san(c);else o+=san(c)}});return o}
+function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'</body>','text/html').body)}
+var eds=[].slice.call(document.querySelectorAll('.ed'));
+function txt(e){return e.textContent.replace(/​/g,'').trim()}
+function apply(){eds.forEach(function(t){t.innerHTML=clean(S.ta[t.dataset.id]||'')});
+ [].forEach.call(document.querySelectorAll('section.typ'),function(s){setRev(s,!!S.rev[s.dataset.k])})}
+function setRev(s,on){s.querySelector('.rev').classList.toggle('on',on);s.querySelector('.sh').style.display=on?'none':'';s.querySelector('.hd').style.display=on?'':'none'}
+function store(t){var h=clean(t.innerHTML);if(txt(t)||/<span class="fr"/.test(h))S.ta[t.dataset.id]=h;else delete S.ta[t.dataset.id];save()}
+eds.forEach(function(t){t.addEventListener('input',function(){store(t)});
+ t.addEventListener('paste',function(e){e.preventDefault();var x=(e.clipboardData||window.clipboardData).getData('text');document.execCommand('insertText',false,x)});
+ t.addEventListener('keydown',function(e){
+  if(e.key=='Enter'){e.preventDefault();document.execCommand('insertLineBreak');return}
+  if(e.ctrlKey&&!e.altKey&&!e.metaKey){last=t;var k=e.key,done2=true;
+   if(k=='h'||k=='H')fmt('superscript');else if(k=='l'||k=='L')fmt('subscript');
+   else if(k=='i'||k=='I')insText('\u222b');else if(k=='s'||k=='S')insText('\u03a3');
+   else if(k=='f'||k=='F')frac();else if(k=='r'||k=='R')insText('\u221a');
+   else if(k=='p'||k=='P')insText('\u03c0');else if(k=='e'||k=='E')insText('\u221e');
+   else if(k==' ')normal();else if(k=='>'||k=='.')arrow();else done2=false;
+   if(done2){e.preventDefault();return}}
+  if(e.key=='ArrowRight'&&!e.shiftKey){var s0=getSelection();if(s0.rangeCount&&s0.isCollapsed){var n0=s0.anchorNode,o0=s0.anchorOffset;var el=n0&&(n0.nodeType==3?n0.parentNode:n0);var sb=el&&el.closest?el.closest('sub,sup'):null;
+    if(sb&&t.contains(sb)&&n0.nodeType==3&&o0==n0.length&&sb.lastChild===n0){e.preventDefault();var z=sb.nextSibling;if(!(z&&z.nodeType==3)){z=document.createTextNode('\u200b');sb.parentNode.insertBefore(z,sb.nextSibling)}var rr=document.createRange();rr.setStart(z,z.length>0?1:0);rr.collapse(true);s0.removeAllRanges();s0.addRange(rr);return}}}
+  if(e.key=='Tab'){var sel=getSelection();if(!sel.rangeCount)return;var nd=sel.anchorNode;nd=nd&&nd.nodeType==3?nd.parentNode:nd;var sp=nd&&nd.closest?nd.closest('.fr>span'):null;
+   if(sp&&t.contains(sp)){e.preventDefault();var r=document.createRange();
+    if(sp.className=='n'){var d=sp.parentNode.querySelector('.d');r.selectNodeContents(d);r.collapse(false)}
+    else{var fr=sp.parentNode;r.setStartAfter(fr);r.collapse(true)}
+    sel.removeAllRanges();sel.addRange(r)}}})});
+[].forEach.call(document.querySelectorAll('section.typ'),function(s){var k=s.dataset.k;
+ s.querySelector('.sh').onclick=function(){var any=[].some.call(s.querySelectorAll('.ed'),function(t){return txt(t)||t.querySelector('.fr')});
+  /* unblocked show */
+  S.rev[k]=1;save();setRev(s,true);s.querySelector('.rev').scrollIntoView({behavior:'smooth',block:'nearest'})};
+ s.querySelector('.hd').onclick=function(){S.rev[k]=0;save();setRev(s,false)};
+ s.querySelector('.rs').onclick=function(){if(!confirm('Clear your answers for this type and hide its completed notes?'))return;
+  [].forEach.call(s.querySelectorAll('.ed'),function(t){t.innerHTML='';delete S.ta[t.dataset.id]});S.rev[k]=0;save();setRev(s,false)}});
+
+var oldTitle=document.title;
+function hasWork(s){var any=false;[].forEach.call(s.querySelectorAll('.ed'),function(t){if((t.textContent||'').trim())any=true});return any||!!S.rev[s.dataset.k]}
+function endPrint(){document.body.classList.remove('one');[].forEach.call(document.querySelectorAll('section.typ'),function(s){s.classList.remove('pick','pr-skip')});document.title=oldTitle}
+window.addEventListener('afterprint',endPrint);
+function doPrint(){setTimeout(function(){window.print()},50)}
+document.getElementById('pdf').onclick=function(){var secs=[].slice.call(document.querySelectorAll('section.typ')),n=0;
+ secs.forEach(function(s){if(hasWork(s))n++;else s.classList.add('pr-skip')});
+ /* unblocked pdf */ if(!n){secs.forEach(function(s){s.classList.remove('pr-skip')});}
+ document.title=KEY.replace(/^tn_/,'')+' - my Type Notes';doPrint()};
+[].forEach.call(document.querySelectorAll('section.typ'),function(s){s.querySelector('.tpdf').onclick=function(){
+ /* unblocked tpdf */
+ document.body.classList.add('one');s.classList.add('pick');document.title=KEY.replace(/^tn_/,'')+' - my Type Notes - Type '+s.dataset.k;doPrint()}});
+document.getElementById('sv').onclick=function(){var b=new Blob([JSON.stringify({v:2,notes:KEY,data:S})],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=KEY.replace(/[^A-Za-z0-9]+/g,'_')+'.json';document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},500)};
+document.getElementById('ld').onclick=function(){document.getElementById('lf').click()};
+document.getElementById('lf').onchange=function(){var f=this.files[0];var inp=this;if(!f)return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(o.notes!==KEY||!o.data)throw 0;S=o.data;S.ta=S.ta||{};S.rev=S.rev||{};save();apply();alert('Notes loaded.')}catch(e){alert('This file is not a Type Notes file for this chapter.')}inp.value=''};r.readAsText(f)};
+/* symbol bar */
+var bar=document.getElementById('sym'),last=null;
+function ed(){if(!last)return false;if(document.activeElement!==last)last.focus();return true}
+function done(){store(last);setTimeout(function(){if(typeof upd=='function')upd()},0)}
+function insText(c){if(!ed())return;document.execCommand('insertText',false,c);done()}
+function fmt(cmd){if(!ed())return;document.execCommand(cmd);done()}
+function normal(){if(!ed())return;if(document.queryCommandState('subscript'))document.execCommand('subscript');if(document.queryCommandState('superscript'))document.execCommand('superscript');done()}
+function arrow(){if(!ed())return;var sel=getSelection();if(sel.rangeCount&&sel.isCollapsed){var n=sel.anchorNode,o=sel.anchorOffset;if(n&&n.nodeType==3&&o>0&&n.textContent.charAt(o-1)=='\u2192'){sel.setBaseAndExtent(n,o-1,n,o);document.execCommand('insertText',false,'\u21d2');done();return}}insText('\u2192')}
+function frac(){if(!ed())return;var sel=getSelection();if(!sel.rangeCount)return;var r=sel.getRangeAt(0);if(!last.contains(r.commonAncestorContainer))return;
+ var tx=r.toString();r.deleteContents();var fr=document.createElement('span');fr.className='fr';
+ var n=document.createElement('span');n.className='n';n.textContent=tx||'​';var d=document.createElement('span');d.className='d';d.textContent='​';fr.appendChild(n);fr.appendChild(d);
+ var z=document.createTextNode('​');r.insertNode(z);r.insertNode(fr);
+ var nr=document.createRange();if(tx){nr.selectNodeContents(d);nr.collapse(false)}else{nr.selectNodeContents(n);nr.collapse(false)}sel.removeAllRanges();sel.addRange(nr);done()}
+var BT=[['a/b','Fraction: type the top, press Tab, type the bottom, press Tab again to continue',frac],['Aa','Back to normal text after a subscript or superscript (Ctrl+Space, or press the right arrow at the end)',normal],['x₂','Subscript (select text, or tap then type)',function(){fmt('subscript')}],['xⁿ','Superscript (select text, or tap then type)',function(){fmt('superscript')}]];
+var SY=['√','π','θ','α','β','λ','ω','∞','∫','Σ','≤','≥','≠','±','×','÷','→','⇒','°'];
+var lastT=0,lastK='';
+function guard(k,f){var n=Date.now();if(n-lastT<300&&k===lastK)return;lastT=n;lastK=k;f()}
+function mk(label,title,f){var b=document.createElement('button');b.type='button';b.textContent=label;if(title)b.title=title;
+ b.addEventListener('mousedown',function(e){e.preventDefault()});
+ b.addEventListener('touchstart',function(e){e.preventDefault();guard(label,f)},{passive:false});
+ b.addEventListener('click',function(){guard(label,f)});return b}
+BT.forEach(function(x){var b=mk(x[0],x[1],x[2]);b.className='w';if(x[0]=='x\u2082')b.dataset.c='subscript';if(x[0]=='x\u207f')b.dataset.c='superscript';var LB={'Aa':'Aa <small>Normal</small>','x₂':'x₂ <small>Sub</small>','xⁿ':'xⁿ <small>Super</small>','a/b':'<span class="mf"><i>a</i><i>b</i></span> <small>Fraction</small>'};if(LB[x[0]])b.innerHTML=LB[x[0]];bar.appendChild(b)});
+function upd(){if(!bar.classList.contains('on'))return;[].forEach.call(bar.querySelectorAll('button[data-c]'),function(b){var on=false;try{on=document.queryCommandState(b.dataset.c)}catch(e){}b.classList.toggle('act',on)})}
+document.addEventListener('selectionchange',upd);
+SY.forEach(function(c){bar.appendChild(mk(c,'',function(){insText(c)}))});
+eds.forEach(function(t){t.addEventListener('focus',function(){last=t;bar.classList.add('on');document.body.classList.add('symon')})});
+function hide(e){if(!e.target.closest('.ed')&&!e.target.closest('#sym')){bar.classList.remove('on');document.body.classList.remove('symon')}}
+document.addEventListener('mousedown',hide);document.addEventListener('touchstart',hide,{passive:true});
+apply();
+})();
+</script>
+<script>
+function initThemeToggle() {
+  var MOON_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+  var SUN_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jee_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jee_theme', 'light');
+    }
+    var btns = document.querySelectorAll('.theme-btn');
+    btns.forEach(function(b) {
+      b.innerHTML = dark ? (SUN_ICON + '<span>Light</span>') : (MOON_ICON + '<span>Dark</span>');
+      b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
+    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  applyTheme(isDark);
+
+  if (!window._themeToggleAttached) {
+    window._themeToggleAttached = true;
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.theme-btn');
+      if (btn) {
+        var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        applyTheme(!currentlyDark);
+      }
+    });
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
+}
+</script>
+
+</body></html>
