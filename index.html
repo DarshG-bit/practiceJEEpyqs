@@ -2630,9 +2630,9 @@ function renderDashboard() {
   var pf = document.getElementById('physicsFraction');
   var cf = document.getElementById('chemFraction');
 
-  var totalMaths = 13; }).length || 7;
-  var totalPhys = 15; }).length || 15;
-  var totalChem = 12; }).length || 11;
+  var totalMaths = CHAPTER_POOL.filter(function(c){ return c.subject === 'Maths'; }).length || 13;
+  var totalPhys = CHAPTER_POOL.filter(function(c){ return c.subject === 'Physics'; }).length || 15;
+  var totalChem = CHAPTER_POOL.filter(function(c){ return c.subject === 'Chemistry'; }).length || 12;
 
   var mPct = Math.round((completedBySubj.Maths / totalMaths) * 100);
   var pPct = Math.round((completedBySubj.Physics / totalPhys) * 100);
