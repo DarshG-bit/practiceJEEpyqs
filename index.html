@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>JEE Main PYQ Practice Portal &mdash; Authentic CBT Exam &amp; Chapter Banks</title>
-<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#000000">
 <script>
   (function(){
@@ -522,34 +521,7 @@ main {
 .subject-card.chemistry .subject-cta { background: var(--accent-chem-subtle); color: var(--accent-chem-text); }
 .subject-card.chemistry:hover .subject-cta { background: var(--accent-chem); color: #ffffff; }
 
-/* V2 Launch Banner */
-.v2-banner {
-  background: linear-gradient(90deg, #1e3a8a 0%, #312e81 50%, #064e3b 100%);
-  color: #ffffff;
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  text-align: center;
-}
-.btn-v2-launch {
-  background: #ffffff;
-  color: #0f172a !important;
-  padding: 5px 14px;
-  border-radius: var(--radius-pill);
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  transition: transform 0.15s ease;
-}
-.btn-v2-launch:hover {
-  transform: scale(1.04);
-}
+
 
 /* Underneath: Long Box with Option for All 3 */
 .full-exam-hero-box {
@@ -2014,11 +1986,7 @@ body.cbt-mode #savecur,
 </head>
 <body>
 
-<!-- V2 Launch Announcement Banner -->
-<div class="v2-banner">
-  <span>✨ <strong>Modern Web App (V2)</strong> with Full Offline PWA, Dexie DB &amp; NTA CBT Engine is live!</span>
-  <a href="v2/" class="btn-v2-launch">Open V2 Web App &rarr;</a>
-</div>
+
 
 <!-- Header -->
 <header>
@@ -3088,12 +3056,7 @@ if (btnLaunchExam) {
   };
 }
 
-// 9. Register Progressive Web App Service Worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('./sw.js').catch(function(){});
-  });
-}
+
 
 // Wire 3-Subject Full Exam Hero Button & Browse Button
 var btnFullEx = document.getElementById('btnLaunchFullExam');
