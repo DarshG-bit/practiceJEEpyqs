@@ -520,11 +520,14 @@ a.ch-card * {
 /* Materials & Type Notes (Light + Dark Mode Fixes - Pic 2 & Pic 7) */
 .how {
   background: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 10px !important;
+  padding: 14px 18px !important;
   color: #0f172a !important;
 }
-.how p, .how b {
-  color: #0f172a !important;
+.how p, .how b, .how span, .how li {
+  color: #1e293b !important;
+  line-height: 1.6 !important;
 }
 [data-theme="dark"] .page {
   background: #000000 !important;
@@ -532,13 +535,18 @@ a.ch-card * {
   color: #ffffff !important;
 }
 [data-theme="dark"] .how {
-  background: #111114 !important;
-  border-color: #222224 !important;
-  color: #e4e4e7 !important;
+  background: #141418 !important;
+  border: 1px solid #27272a !important;
+  border-radius: 10px !important;
+  padding: 14px 18px !important;
+  color: #f1f5f9 !important;
 }
 [data-theme="dark"] .how p,
-[data-theme="dark"] .how b {
-  color: #ffffff !important;
+[data-theme="dark"] .how b,
+[data-theme="dark"] .how span,
+[data-theme="dark"] .how li {
+  color: #f1f5f9 !important;
+  line-height: 1.6 !important;
 }
 [data-theme="dark"] .gt {
   border-color: #222224 !important;
@@ -903,13 +911,18 @@ body.cbt-mode #savecur,
   color: #ffffff !important;
 }
 [data-theme="dark"] .how {
-  background: #111114 !important;
-  border-color: #222224 !important;
-  color: #e4e4e7 !important;
+  background: #141418 !important;
+  border: 1px solid #27272a !important;
+  border-radius: 10px !important;
+  padding: 14px 18px !important;
+  color: #f1f5f9 !important;
 }
 [data-theme="dark"] .how p,
-[data-theme="dark"] .how b {
-  color: #ffffff !important;
+[data-theme="dark"] .how b,
+[data-theme="dark"] .how span,
+[data-theme="dark"] .how li {
+  color: #f1f5f9 !important;
+  line-height: 1.6 !important;
 }
 [data-theme="dark"] .gt {
   border-color: #222224 !important;
@@ -938,6 +951,7 @@ body.cbt-mode #savecur,
 
 /* =================== CBT POPUP MODAL STYLING (FIX PIC 2) =================== */
 .cbt-modal-backdrop {
+  display: none;
   position: fixed !important;
   inset: 0 !important;
   top: 0 !important;
@@ -947,12 +961,20 @@ body.cbt-mode #savecur,
   background: rgba(0, 0, 0, 0.75) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   z-index: 10000 !important;
   padding: 16px !important;
   box-sizing: border-box !important;
+}
+
+.cbt-modal-backdrop[style*="display: none"] {
+  display: none !important;
+}
+
+.cbt-modal-backdrop[style*="display: flex"],
+.cbt-modal-backdrop.open {
+  display: flex !important;
   animation: cbtFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
@@ -1022,6 +1044,124 @@ body.cbt-mode #savecur,
 [data-theme="dark"] .cbt-summary-table td {
   color: #e4e4e7 !important;
 }
+
+/* CBT Modal Action Buttons (Fix Pic 9 black-on-black button) */
+#cbtConfirmSubmit {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+  font-weight: 700 !important;
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: all 0.15s ease !important;
+}
+#cbtConfirmSubmit:hover {
+  background: #1d4ed8 !important;
+  border-color: #2563eb !important;
+}
+[data-theme="dark"] #cbtConfirmSubmit {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+}
+[data-theme="dark"] #cbtConfirmSubmit:hover {
+  background: #1d4ed8 !important;
+}
+
+#cbtCancelSubmit {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+  font-weight: 600 !important;
+  padding: 10px 16px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: all 0.15s ease !important;
+}
+#cbtCancelSubmit:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+[data-theme="dark"] #cbtCancelSubmit {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #f1f5f9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+[data-theme="dark"] #cbtCancelSubmit:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Subject Portal Action Button Pills (Fix Pic 5) */
+.lk {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+  margin-top: 10px !important;
+}
+.lk a.go {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  padding: 0 14px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2) !important;
+  transition: all 0.15s ease !important;
+}
+.lk a.go:hover {
+  background: #1d4ed8 !important;
+  border-color: #2563eb !important;
+}
+.lk a:not(.go) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+  transition: all 0.15s ease !important;
+}
+.lk a:not(.go):hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #1d4ed8 !important;
+}
+[data-theme="dark"] .lk a:not(.go) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #f1f5f9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+[data-theme="dark"] .lk a:not(.go):hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
 
 .cbt-dot {
   display: inline-block !important;
@@ -1708,7 +1848,15 @@ setInterval(tick,1000);
       hkBtn.textContent = '⌨';
       hkBtn.onclick = function() {
         var modal = document.getElementById('hotkeysModal');
-        if (modal) modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        if (modal) {
+          if (modal.classList.contains('open') || modal.style.display === 'flex') {
+            modal.style.setProperty('display', 'none', 'important');
+            modal.classList.remove('open');
+          } else {
+            modal.style.setProperty('display', 'flex', 'important');
+            modal.classList.add('open');
+          }
+        }
       };
 
       // Wire header submit button (Pic 7)
@@ -1718,27 +1866,36 @@ setInterval(tick,1000);
           if (document.body.classList.contains('cbt-mode') || window.isCBT) {
             var sModal = document.getElementById('cbtSubmitModal');
             if (sModal) {
-              var ansCount = 0, notAnsCount = 0, markCount = 0;
+              var ansCount = 0, notAnsCount = 0, markCount = 0, ansMarkCount = 0, notVisCount = 0;
               if (typeof NS !== 'undefined' && Array.isArray(NS)) {
                 NS.forEach(function(n) {
-                  if (typeof S !== 'undefined' && S[n]) ansCount++; else notAnsCount++;
-                  if (typeof M !== 'undefined' && M[n]) markCount++;
+                  var hasAns = typeof S !== 'undefined' && S[n] !== undefined && S[n] !== null && String(S[n]).trim() !== '';
+                  var isMark = typeof M !== 'undefined' && !!M[n];
+                  var isVis = typeof V !== 'undefined' && !!V[n];
+                  if (hasAns && isMark) ansMarkCount++;
+                  else if (hasAns) ansCount++;
+                  else if (isMark) markCount++;
+                  else if (isVis) notAnsCount++;
+                  else notVisCount++;
                 });
                 var totEl = document.getElementById('cbtSumTot'); if (totEl) totEl.textContent = NS.length;
                 var aEl = document.getElementById('cbtSumAns'); if (aEl) aEl.textContent = ansCount;
                 var naEl = document.getElementById('cbtSumNotAns'); if (naEl) naEl.textContent = notAnsCount;
                 var mEl = document.getElementById('cbtSumMark'); if (mEl) mEl.textContent = markCount;
+                var amEl = document.getElementById('cbtSumAnsMark'); if (amEl) amEl.textContent = ansMarkCount;
+                var nvEl = document.getElementById('cbtSumNotVis'); if (nvEl) nvEl.textContent = notVisCount;
               }
-              sModal.style.display = 'flex';
+              sModal.style.setProperty('display', 'flex', 'important');
+              sModal.classList.add('open');
             } else {
               if (confirm('Are you sure you want to submit your examination?')) {
-                if (typeof window.origFinish === 'function') window.origFinish();
+                if (typeof window.finish === 'function') window.finish();
                 else if (typeof finish === 'function') finish();
               }
             }
           } else {
             if (confirm('Finish this practice session and view your results summary?')) {
-              if (typeof window.origFinish === 'function') window.origFinish();
+              if (typeof window.finish === 'function') window.finish();
               else if (typeof finish === 'function') finish();
             }
           }
@@ -1818,11 +1975,13 @@ setInterval(tick,1000);
     document.body.appendChild(submitModal);
 
     document.getElementById('cbtCancelSubmit').onclick = function(){
-      submitModal.style.display = 'none';
+      submitModal.style.setProperty('display', 'none', 'important');
+      submitModal.classList.remove('open');
     };
     document.getElementById('cbtConfirmSubmit').onclick = function(){
-      submitModal.style.display = 'none';
-      if (typeof window.origFinish === 'function') window.origFinish();
+      submitModal.style.setProperty('display', 'none', 'important');
+      submitModal.classList.remove('open');
+      if (typeof window.finish === 'function') window.finish();
       else if (typeof finish === 'function') finish();
     };
   }
@@ -2180,29 +2339,25 @@ setInterval(tick,1000);
           var letCode = o.dataset.l || '';
           var isThisCorrect = (letCode.toUpperCase() === correctAns.toUpperCase());
           var isThisUser = (letCode.toUpperCase() === String(userAns).toUpperCase());
-          var border = '1px solid #cbd5e1';
-          var bg = '#f8fafc';
+          var optClass = '';
           var badge = '';
-
           if (isThisCorrect) {
-            border = '2px solid #16a34a';
-            bg = '#dcfce7';
-            badge = '<span style="margin-left:auto;font-size:11px;font-weight:700;color:#15803d;background:#bbf7d0;padding:1px 6px;border-radius:3px;">Correct Key</span>';
+            optClass = ' correct-key';
+            badge = '<span class="review-opt-badge correct">Correct Key</span>';
           }
           if (isThisUser && !isThisCorrect) {
-            border = '2px solid #ef4444';
-            bg = '#fee2e2';
-            badge = '<span style="margin-left:auto;font-size:11px;font-weight:700;color:#b91c1c;background:#fecaca;padding:1px 6px;border-radius:3px;">Your Choice</span>';
+            optClass = ' user-wrong';
+            badge = '<span class="review-opt-badge wrong">Your Choice</span>';
           } else if (isThisUser && isThisCorrect) {
-            badge = '<span style="margin-left:auto;font-size:11px;font-weight:700;color:#15803d;background:#bbf7d0;padding:1px 6px;border-radius:3px;">Your Choice (Correct)</span>';
+            badge = '<span class="review-opt-badge correct">Your Choice (Correct)</span>';
           }
 
           var oc = o.querySelector('.oc');
           var ocHtml = oc ? oc.innerHTML : '';
 
-          optsHtml += '<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;border:' + border + ';background:' + bg + ';">' +
-            '<span style="font-weight:800;font-size:13px;width:20px;">' + letCode + '</span>' +
-            '<div style="flex:1;font-size:13.5px;">' + ocHtml + '</div>' +
+          optsHtml += '<div class="review-opt' + optClass + '">' +
+            '<span class="review-opt-letter">' + letCode + '</span>' +
+            '<div class="review-opt-text">' + ocHtml + '</div>' +
             badge +
           '</div>';
         });
@@ -2217,7 +2372,7 @@ setInterval(tick,1000);
         (typeName ? '<div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:8px;">Type: ' + typeName + '</div>' : '') +
         '<div class="stem-content" style="margin-bottom:12px;">' + stemHtml + '</div>' +
         optsHtml +
-        '<div class="review-answers-box" style="margin-top:12px;padding:10px 12px;background:#f1f5f9;border-radius:6px;font-size:13.5px;">' +
+        '<div class="review-answers-box">' +
           '<div><b>Your Response:</b> ' + (userAns ? '<span style="color:' + (isOk ? '#16a34a' : '#ef4444') + ';font-weight:700">' + userAns + '</span>' : '<span style="color:#64748b;font-style:italic">Not Attempted</span>') + '</div>' +
           '<div style="margin-top:4px;"><b>Official Key / Correct Answer:</b> <span style="color:#16a34a;font-weight:700">' + correctAns + '</span></div>' +
         '</div>' +
@@ -2354,6 +2509,8 @@ setInterval(tick,1000);
   };
 
   // 7. CBT Session Exit & Continuation Prevention (User Item 9)
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { var sm = document.getElementById('cbtSubmitModal'); if (sm) { sm.style.setProperty('display', 'none', 'important'); sm.classList.remove('open'); } var hm = document.getElementById('hotkeysModal'); if (hm) { hm.style.setProperty('display', 'none', 'important'); hm.classList.remove('open'); } } });
+
   window.addEventListener('beforeunload', function(e) {
     if (window.started && window.isCBT && !window.examFinished) {
       try { if (typeof KS !== 'undefined') localStorage.removeItem(KS); } catch(err){}
