@@ -980,6 +980,242 @@ body.cbt-mode #savecur,
 }
 
 
+
+/* =================== CBT POPUP MODAL STYLING (FIX PIC 2) =================== */
+.cbt-modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+  animation: cbtFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes cbtFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cbtModalPop {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.cbt-modal-box {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 24px 28px !important;
+  max-width: 480px !important;
+  width: 100% !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35) !important;
+  box-sizing: border-box !important;
+  animation: cbtModalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+}
+
+[data-theme="dark"] .cbt-modal-box {
+  background: #111114 !important;
+  color: #f1f5f9 !important;
+  border-color: #27272a !important;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="dark"] .cbt-modal-box h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .cbt-modal-box p {
+  color: #94a3b8 !important;
+}
+
+.cbt-summary-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 16px 0 20px !important;
+  font-size: 14px !important;
+}
+
+.cbt-summary-table tr {
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+[data-theme="dark"] .cbt-summary-table tr {
+  border-bottom-color: #222224 !important;
+}
+
+.cbt-summary-table td {
+  padding: 10px 4px !important;
+  vertical-align: middle !important;
+}
+
+.cbt-summary-table td:last-child {
+  text-align: right !important;
+}
+
+[data-theme="dark"] .cbt-summary-table td {
+  color: #e4e4e7 !important;
+}
+
+.cbt-dot {
+  display: inline-block !important;
+  width: 9px !important;
+  height: 9px !important;
+  border-radius: 50% !important;
+  margin-right: 8px !important;
+  vertical-align: middle !important;
+}
+.cbt-dot.green { background: #16a34a !important; }
+.cbt-dot.red { background: #ef4444 !important; }
+.cbt-dot.purple { background: #9333ea !important; }
+.cbt-dot.purple-green { background: #7c3aed !important; }
+.cbt-dot.gray { background: #64748b !important; }
+
+/* =================== REVIEW CARDS & DARK MODE OPTIONS (FIX PIC 1) =================== */
+.review-card {
+  background: var(--surface-card, #ffffff) !important;
+  border: 1px solid var(--border-subtle, #e2e8f0) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  margin-bottom: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+}
+[data-theme="dark"] .review-card {
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #f1f5f9 !important;
+}
+
+.review-opt {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  margin-bottom: 6px !important;
+  transition: all 0.15s ease !important;
+}
+[data-theme="dark"] .review-opt {
+  background: #141418 !important;
+  border-color: #27272a !important;
+  color: #e4e4e7 !important;
+}
+
+.review-opt.correct-key {
+  border: 1.5px solid #22c55e !important;
+  background: #f0fdf4 !important;
+  color: #15803d !important;
+}
+[data-theme="dark"] .review-opt.correct-key {
+  border-color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #86efac !important;
+}
+
+.review-opt.user-wrong {
+  border: 1.5px solid #ef4444 !important;
+  background: #fef2f2 !important;
+  color: #b91c1c !important;
+}
+[data-theme="dark"] .review-opt.user-wrong {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #fca5a5 !important;
+}
+
+.review-opt-letter {
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  width: 22px !important;
+  flex-shrink: 0 !important;
+}
+[data-theme="dark"] .review-opt-letter {
+  color: #ffffff !important;
+}
+
+.review-opt-text {
+  flex: 1 !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+}
+[data-theme="dark"] .review-opt-text {
+  color: #f1f5f9 !important;
+}
+[data-theme="dark"] .review-opt.correct-key .review-opt-text {
+  color: #86efac !important;
+}
+[data-theme="dark"] .review-opt.user-wrong .review-opt-text {
+  color: #fca5a5 !important;
+}
+
+.review-opt-badge {
+  margin-left: auto !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+}
+.review-opt-badge.correct {
+  color: #15803d !important;
+  background: #bbf7d0 !important;
+}
+[data-theme="dark"] .review-opt-badge.correct {
+  color: #86efac !important;
+  background: #14532d !important;
+  border: 1px solid #22c55e !important;
+}
+.review-opt-badge.wrong {
+  color: #b91c1c !important;
+  background: #fecaca !important;
+}
+[data-theme="dark"] .review-opt-badge.wrong {
+  color: #fca5a5 !important;
+  background: #450a0a !important;
+  border: 1px solid #ef4444 !important;
+}
+
+.review-answers-box {
+  margin-top: 14px !important;
+  padding: 12px 16px !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-size: 13.5px !important;
+  color: #0f172a !important;
+}
+[data-theme="dark"] .review-answers-box {
+  background: #141418 !important;
+  border-color: #27272a !important;
+  color: #e4e4e7 !important;
+}
+
+/* Image diagrams inside questions & review cards in dark mode */
+[data-theme="dark"] .stem img,
+[data-theme="dark"] .stem-content img,
+[data-theme="dark"] .review-card img,
+[data-theme="dark"] .opts img {
+  background: #ffffff !important;
+  padding: 6px !important;
+  border-radius: 8px !important;
+  border: 1px solid #334155 !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+}
 </style><link id="aiit-fav-16" rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB5klEQVR42p1TMU9TURg957uvIkUjiBKMiYlDGwUlxsFVB0yMJi0pttHJ2cW/8GBxdfEXuNmaJuBLJE4YN424oFTiQhyQOGhEjaXv3uNQnwGFiJ7hG+69555zvnwf8J+QQADdshvEMWx0tPu+WkUgoV2R6nW47e6S5PSABHI7a40GrFaDz87qdTjXWzgV0YoiBkOqc95jrlpZbnAn0uzskby3gSK8PyNgjGQfoXcgRrxH/uCB4avz8xcCf1dvJoUxBjdC6BBMQ/Jsk1oV7BsQHMlhByWl0nIrFowA+CApHI+CnYexH0GfJOYA7QexatKKjINB/K4ofc1ONFEpt+5KMBLBJMDBhkk7bCE8F5QC2jDYnDmtyFm/Q3hRKbUeI3XXHGwOAKamuq63RGg+LN6k8CVnPUlbnaNRb/ShPL64BgDNpHBSgZcmS8t3MnUAsKzLcQxLc9F9iC7VxmVnOFseX1yTYBJowS7KNAOAmfoWB/U6XK0G35w5cQPSUGR8BuOx3p727Mdor3ef/a3J8pvbcQybnu6q/3Lwc7oEgIy0QOKKJ/vksbD+NXc9Wg9TQf7R5ux/fABAANShfx+gpfye3JNyeelVZPvuQeFpdeLtSwDIsu+IzaMbx1sE/hlZf7jTPuyG/Ff8AHJN0tvJodC7AAAAAElFTkSuQmCC"><link id="aiit-fav-32" rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFXklEQVR42u1WXWyTVRh+3nParutggIKEQCSgrGUDA4KKGm0rGFnZT2Hpp1EvFEUDEhPREEOQb73wJ8iFMUZdSCR4QfQrrGzdYKCyFRIMhoBGux+HGkyMGIiiMAbtOef1YqsbMH5ECBfy3n3vOfme57zv8/4AN+x/aMQMyn/Ia4nUDyRCIVBbGwgApdPgePwagto2RGtr0MUMMdR5Xd0s9+bNUybno0FXC7SsLEaWldCD/du3B8Zls8ZrJI8Ai5Eqi9nShUrBZmU02r3PtiHov4CGQkERDqc1AM77k02lM9xS35NTKJGCCo3hGSTojFbmFyFEhdb8fk20a5XjQFoWNP3bnCYSEJkMOB6HGQD13yeJZmpt7vQUiFu1wnHDGCUFupl5D2ua6/WJ6lM9+quF1V0Rx4lJy0oYAOy6HNU6DgQQA1FCA9AAkNoRmAaDx4zBA1KSUUq3ul3iezYYYTQO9wj3cz6dvRugKGBO9PZy7vQp9TwAZDIJzkeNLgU6OK9OS+lNRdDz2dDTzFxEJOqzWu2GkRN8PnpCKfYKlrW//Xby25tHF641hAdNFktJmogBCmqqv1+ZD/0/QINRHQfyPFCn1OMt4oVEXGUMpgtB3yltNv7Y27PbP3xYOQMRrdjjctGnFeWdzU5DySQ3aIN0iV9PsGvZcHNmrGLaMar4tL+t7XC2thZMNKCZISOwd++EwiPHfCEpxCMAHiLBh43Bvuwp+Y5ltZ9sbpn6KIOXC8Aog9erIp07AaC+0b/a7aKHleY3FlZ27QCALVsDjRC8u6aqa11/7s+qFMqTcJzJxYXDCu7XxpQT4y4m6hGMjBH8cXRB134AaG4pfZoNL4HAMc7h7crKjj0AkNrur1IK9wrgmFvq9yKRQ2daW4OuP08eiRiDl7850BUeqkwBwMX9wWje6Z0kYJYYQ9MZ/Gq0onNz/lJzi79Ga1rNMD8rQy9FIx37AKCpyR9WTBFjMNYj+N0F/UTr6ma5w+F0LtkQWMPMb8XjMH3pHUJs5zpSqSnjhVvOlZJ7lJY9bHgFEVgp9WG0sjsJAA2fTxuL0+opBrtN1mxZtKi7I6+hMWOCFA6nVbLR/7gxWFwT7Zp3rvDOisA5fZuIun8B8HFDS+ntUGaXYXyysLJzZf5lo8b0zDa9uWKSYmc00nkwD5zJgC0LxrbTtGHDRC8z1grBy/v+HgOQuPxm4zilnj5RBdbUN/g39nW+oCuZ8tcmkyVzB1fN4MnmODEJAA1N/liy0Z9ihrBtiIuU+/kDgwgci7XnbBuC3VhPhJJUasr4eDytBNEcT6GYatsQzKBM5uySymQSbNsQWmEFg9YRwZSVgQa36ksSyJMoK4tRTXnnr8z8Q47FKwCglPHmsqxmzQksTiQmeAeLy3Ega2vBd9wZmMuEYnVafGnbEBfK/UUJ5F/DDNKQb4K5vK5xnI+IcjmD/UKL/QVFw1Y5zuQRlgXd2hp09bVqMIGfIcImy2rPhkJBcamUX/BCftjEqjsyAB2/RRbfBuAPKaiooqL9awE6VuBzb0om/dPD4bQCEkg2+6cDmOPzyA8AUCiU1ldMAADa2oKSGUSEXaz4WRD1ELG3aUdgmfRgNxl6DRKb6htKnrQsaGgsBWH9/PntvztOTAzWxxUROHo03S8y/gKgIAwHhKCI6uWtkYc7DlZVdR6ARiWBXkxtC3zEBvMgTH2fQBN8sX5zyYN8SRKBk8mJIzV5fwLQ7fPoeZHIob/y4rMsaMcp9XiH8XqVMycXVXe9YDNEnAb2hatiyUb/Z1u3TZ05MDUHNqMhFtGrvt2KxsaS0RcCYAZdaAm9Fmv29bHrCn7DrqX9DWIToNUS4fECAAAAAElFTkSuQmCC"><link id="aiit-fav-180" rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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"></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
 <h1>Magnetic Effects of Current &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Magnetic%20Effects%20of%20Current%20PYQ%20Practice.html">Back to practice</a><a href="Magnetic%20Effects%20of%20Current%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> MAGNETIC EFFECTS OF CURRENT – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Charged particle in a magnetic field: radius, period and force on a moving charge</a></li><li><a href="#T2">Type 2. Field of circular loops, arcs and coils</a></li><li><a href="#T3">Type 3. Ampere&#x27;s law: solenoid, wire cross-section and cables</a></li><li><a href="#T4">Type 4. Force on current-carrying conductors and between parallel wires</a></li><li><a href="#T5">Type 5. Charge in combined electric and magnetic fields, helix and cyclotron</a></li><li><a href="#T6">Type 6. Magnetic moment and magnetic dipole</a></li><li><a href="#T7">Type 7. Field of straight wires and of polygons</a></li><li><a href="#T8">Type 8. Torque on a current loop and the moving coil galvanometer</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Charged particle in a magnetic field: radius, period and force on a moving charge <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">38 questions on the sheet (Q1–38)  ·  Sub-topics: A1 radius, period and ratios for different particles · A2 force on a moving charge: direction, vector form and statements</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Radius of the circle</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>After acceleration through <math displaystyle="true"><mrow><mi>V</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Period and frequency</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Magnetic force</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Same <math displaystyle="true"><mrow><mi>K</mi></mrow></math>, same <math displaystyle="true"><mrow><mi>V</mi></mrow></math>, same <math displaystyle="true"><mrow><mi>p</mi></mrow></math>, same <math displaystyle="true"><mrow><mi>v</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Does the magnetic force change the speed?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr><tr><td><p>How do I compare two particles?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>What happens if the velocity is along <math displaystyle="true"><mrow><mover accent="true"><mrow><mi>B</mi></mrow><mo>⃗</mo></mover></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>Which sign for the electron?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;A proton and an <math displaystyle="true"><mrow><mi>α</mi></mrow></math> particle enter the field with the same velocity: the ratio of the radii.&#x27;</p><p style="padding-left:14px">•  &#x27;Two particles with the same kinetic energy: the radii are in the ratio <math displaystyle="true"><mrow><mn>6</mn><mo>:</mo><mn>5</mn></mrow></math> and the masses <math displaystyle="true"><mrow><mn>9</mn><mo>:</mo><mn>4</mn></mrow></math>; find the ratio of the charges.&#x27;</p><p style="padding-left:14px">•  &#x27;An electron is accelerated through <math displaystyle="true"><mrow><mn>500</mn></mrow></math> V and enters a field of <math displaystyle="true"><mrow><mn>100</mn></mrow></math> mT: find the radius.&#x27;</p><p style="padding-left:14px">•  &#x27;A charge of <math displaystyle="true"><mrow><mn>4</mn><mspace width="0.3em"></mspace><mi>μ</mi></mrow></math>C moves along <math displaystyle="true"><mrow><mi>y</mi></mrow></math> in a field <math displaystyle="true"><mrow><mn>2</mn><mover accent="true"><mrow><mi>k</mi></mrow><mo>̂</mo></mover></mrow></math> T: find the force.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Radius of the circle</p></td><td><p><math displaystyle="true"><mrow><mi>r</mi><mo>=</mo><mfrac><mrow><mi>m</mi><mi>v</mi></mrow><mrow><mi>q</mi><mi>B</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>p</mi></mrow><mrow><mi>q</mi><mi>B</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msqrt><mrow><mn>2</mn><mi>m</mi><mi>K</mi></mrow></msqrt></mrow><mrow><mi>q</mi><mi>B</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>After acceleration through <math displaystyle="true"><mrow><mi>V</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>r</mi><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>B</mi></mrow></mfrac><msqrt><mrow><mfrac><mrow><mn>2</mn><mi>m</mi><mi>V</mi></mrow><mrow><mi>q</mi></mrow></mfrac></mrow></msqrt></mrow></math></p></td></tr><tr><td><p>Period and frequency</p></td><td><p><math displaystyle="true"><mrow><mi>T</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>m</mi></mrow><mrow><mi>q</mi><mi>B</mi></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><mi>f</mi><mo>=</mo><mfrac><mrow><mi>q</mi><mi>B</mi></mrow><mrow><mn>2</mn><mi>π</mi><mi>m</mi></mrow></mfrac></mrow></math> (independent of <math displaystyle="true"><mrow><mi>v</mi></mrow></math> and <math displaystyle="true"><mrow><mi>r</mi></mrow></math>)</p></td></tr><tr><td><p>Magnetic force</p></td><td><p><math displaystyle="true"><mrow><mover accent="true"><mrow><mi>F</mi></mrow><mo>⃗</mo></mover><mo>=</mo><mi>q</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mover accent="true"><mrow><mi>v</mi></mrow><mo>⃗</mo></mover><mo>×</mo><mover accent="true"><mrow><mi>B</mi></mrow><mo>⃗</mo></mover></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>, <math displaystyle="true"><mrow><mi>F</mi><mo>=</mo><mi>q</mi><mi>v</mi><mi>B</mi><mi mathvariant="normal">sin</mi><mi>θ</mi></mrow></math></p></td></tr><tr><td><p>Same <math displaystyle="true"><mrow><mi>K</mi></mrow></math>, same <math displaystyle="true"><mrow><mi>V</mi></mrow></math>, same <math displaystyle="true"><mrow><mi>p</mi></mrow></math>, same <math displaystyle="true"><mrow><mi>v</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>r</mi><mo>∝</mo><mfrac><mrow><msqrt><mrow><mi>m</mi></mrow></msqrt></mrow><mrow><mi>q</mi></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><msqrt><mrow><mi>m</mi><mo>/</mo><mi>q</mi></mrow></msqrt></mrow></math>, <math displaystyle="true"><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mi>q</mi></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><mfrac><mrow><mi>m</mi></mrow><mrow><mi>q</mi></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>Does the magnetic force change the speed?</p></td><td><p>No. It is perpendicular to the velocity, does no work, and changes only the direction of motion.</p></td></tr><tr><td><p>How do I compare two particles?</p></td><td><p>Write <math displaystyle="true"><mrow><mi>r</mi></mrow></math> in terms of the quantity that is the same for both (the kinetic energy, the potential or the momentum) and cancel it.</p></td></tr><tr><td><p>What happens if the velocity is along <math displaystyle="true"><mrow><mover accent="true"><mrow><mi>B</mi></mrow><mo>⃗</mo></mover></mrow></math>?</p></td><td><p>The force is zero and the particle goes straight.</p></td></tr><tr><td><p>Which sign for the electron?</p></td><td><p>Put <math displaystyle="true"><mrow><mi>q</mi><mo>=</mo><mo>−</mo><mi>e</mi></mrow></math> in <math displaystyle="true"><mrow><mi>q</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mover accent="true"><mrow><mi>v</mi></mrow><mo>⃗</mo></mover><mo>×</mo><mover accent="true"><mrow><mi>B</mi></mrow><mo>⃗</mo></mover></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>; the force on the electron is opposite to that on a proton.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mi>r</mi><mo>∝</mo><mi>m</mi><mo>/</mo><mi>q</mi></mrow></math> when the kinetic energy (not the speed) is the same.</p><p style="padding-left:14px">•  Forgetting that the alpha particle has charge <math displaystyle="true"><mrow><mn>2</mn><mi>e</mi></mrow></math> and mass <math displaystyle="true"><mrow><mn>4</mn><msub><mrow><mi>m</mi></mrow><mrow><mi>p</mi></mrow></msub></mrow></math>.</p><p style="padding-left:14px">•  Forgetting the minus sign of the electron&#x27;s charge in the cross product.</p><p style="padding-left:14px">•  Taking the period to depend on the speed.</p></div></section>
 <section class="typ" id="T2" data-k="2"><h2>Type 2. Field of circular loops, arcs and coils <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">32 questions on the sheet (Q39–70)  ·  Sub-topics: B1 centre and axis of a circular loop or coil · B2 arcs and semicircles with straight leads</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_12"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Centre of a coil</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_13"></div></td></tr><tr><td><p>On the axis</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_14"></div></td></tr><tr><td><p>Arc of angle <math displaystyle="true"><mrow><mi>θ</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div></td></tr><tr><td><p>Fixed length of wire <math displaystyle="true"><mrow><mi>L</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>Rotating ring of charge <math displaystyle="true"><mrow><mi>q</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What does a straight lead contribute at the centre of an arc?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></td></tr><tr><td><p>How do I add the fields of two arcs?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_19"></div></td></tr><tr><td><p>What changes when a wire is rewound into more turns?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_20"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_21"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;A coil of <math displaystyle="true"><mrow><mn>100</mn></mrow></math> turns and radius <math displaystyle="true"><mrow><mn>5</mn></mrow></math> cm carries a current: find the field at the centre.&#x27;</p><p style="padding-left:14px">•  &#x27;The ratio of the field at the centre of a loop to that on the axis at a distance <math displaystyle="true"><mrow><mi>R</mi></mrow></math>.&#x27;</p><p style="padding-left:14px">•  &#x27;Two semicircles of radii <math displaystyle="true"><mrow><mn>2</mn><mi>π</mi></mrow></math> m and <math displaystyle="true"><mrow><mn>4</mn><mi>π</mi></mrow></math> m carry <math displaystyle="true"><mrow><mn>4</mn></mrow></math> A: the field at <math displaystyle="true"><mrow><mi>O</mi></mrow></math>.&#x27;</p><p style="padding-left:14px">•  &#x27;A wire is bent first into <math displaystyle="true"><mrow><mi>N</mi></mrow></math> turns and then into <math displaystyle="true"><mrow><mi>n</mi></mrow></math> turns: the ratio of the fields.&#x27;</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Centre of a coil</p></td><td><p><math displaystyle="true"><mrow><mi>B</mi><mo>=</mo><mfrac><mrow><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>N</mi><mi>I</mi></mrow><mrow><mn>2</mn><mi>R</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>On the axis</p></td><td><p><math displaystyle="true"><mrow><mi>B</mi><mo>=</mo><mfrac><mrow><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>N</mi><mi>I</mi><msup><mrow><mi>R</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn><msup><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><msup><mrow><mi>R</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>+</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Arc of angle <math displaystyle="true"><mrow><mi>θ</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>B</mi><mo>=</mo><mfrac><mrow><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>I</mi><mi>θ</mi></mrow><mrow><mn>4</mn><mi>π</mi><mi>R</mi></mrow></mfrac></mrow></math></p></td></tr><tr><td><p>Fixed length of wire <math displaystyle="true"><mrow><mi>L</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>N</mi><mo>⋅</mo><mn>2</mn><mi>π</mi><mi>R</mi><mo>=</mo><mi>L</mi></mrow></math>, so <math displaystyle="true"><mrow><mi>B</mi><mo>∝</mo><msup><mrow><mi>N</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math></p></td></tr><tr><td><p>Rotating ring of charge <math displaystyle="true"><mrow><mi>q</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mi>I</mi><mo>=</mo><mfrac><mrow><mi>q</mi><mi>ω</mi></mrow><mrow><mn>2</mn><mi>π</mi></mrow></mfrac></mrow></math>, <math displaystyle="true"><mrow><mi>B</mi><mo>=</mo><mfrac><mrow><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>q</mi><mi>ω</mi></mrow><mrow><mn>4</mn><mi>π</mi><mi>R</mi></mrow></mfrac></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>What does a straight lead contribute at the centre of an arc?</p></td><td><p>Nothing if the lead lies along a radius (the angle between <math displaystyle="true"><mrow><mi>d</mi><mover accent="true"><mrow><mi>l</mi></mrow><mo>⃗</mo></mover></mrow></math> and <math displaystyle="true"><mrow><mover accent="true"><mrow><mi>r</mi></mrow><mo>⃗</mo></mover></mrow></math> is <math displaystyle="true"><mrow><mn>0</mn></mrow></math>).</p></td></tr><tr><td><p>How do I add the fields of two arcs?</p></td><td><p>Find the direction of each by the right-hand rule: the same sense add, opposite senses subtract.</p></td></tr><tr><td><p>What changes when a wire is rewound into more turns?</p></td><td><p>The radius becomes <math displaystyle="true"><mrow><mn>1</mn><mo>/</mo><mi>N</mi></mrow></math> of the original, so <math displaystyle="true"><mrow><mi>B</mi><mo>=</mo><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>N</mi><mi>I</mi><mo>/</mo><mn>2</mn><mi>R</mi><mo>∝</mo><msup><mrow><mi>N</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math>.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>I</mi><mo>/</mo><mn>2</mn><mi>R</mi></mrow></math> for an arc instead of <math displaystyle="true"><mrow><msub><mrow><mi>μ</mi></mrow><mrow><mn>0</mn></mrow></msub><mi>I</mi><mi>θ</mi><mo>/</mo><mn>4</mn><mi>π</mi><mi>R</mi></mrow></math>.</p><p style="padding-left:14px">•  Adding the fields of two arcs without checking their directions.</p><p style="padding-left:14px">•  Forgetting the number of turns <math displaystyle="true"><mrow><mi>N</mi></mrow></math>.</p><p style="padding-left:14px">•  Putting the radius equal to the length of the arc.</p></div></section>
