@@ -1,0 +1,1496 @@
+<!DOCTYPE html><html lang="en"><head>
+<script>
+  (function(){
+    var t = localStorage.getItem('jee_theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Sets and Relations - Type Notes</title><style>
+:root{--ink:#1d2433;--mut:#5a6478;--line:#dfe4ee;--bg:#eef1f7;--acc:#1f4e8c}*{box-sizing:border-box}
+body{margin:0;font-family:Calibri,"Segoe UI",Arial,sans-serif;font-size:18px;color:var(--ink);background:var(--bg);line-height:1.55}
+.top{background:var(--acc);color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}.top h1{margin:0;font-size:18px;flex:1;min-width:160px}.top a{color:#fff;font-size:14px}
+.page{max-width:900px;margin:14px auto;padding:16px 20px;background:#fff;border:1px solid var(--line);border-radius:10px}
+h1.t{font-size:22px;margin:4px 0 6px}h2{font-size:20px;color:var(--acc);margin:22px 0 6px}h3{font-size:18px;margin:16px 0 4px}
+p{margin:6px 0}math{font-size:1.15em}ul{margin:4px 0 8px;padding-left:24px}
+.gt{border-collapse:collapse;width:100%;margin:8px 0;font-size:16px}.gt td{border:1px solid #c5ccda;padding:6px 8px;vertical-align:top}.gt tr:first-child td{background:#f1f5fb}
+.tw{overflow-x:auto}.btn{border:1px solid var(--acc);background:#fff;color:var(--acc);border-radius:6px;padding:7px 14px;font-size:14px;cursor:pointer;margin:4px 6px 4px 0}.btn.pri{background:var(--acc);color:#fff}
+.sm{font-size:14px;color:var(--mut)}a{color:var(--acc)}
+.typ{border-top:3px solid var(--acc);margin-top:26px;padding-top:4px}
+.ed{width:100%;min-height:54px;font-size:16px;border:1px solid #b9c3d6;border-radius:6px;padding:6px 8px;background:#fffef6;outline:none;white-space:pre-wrap;word-break:break-word;line-height:1.7}.ed.tall{min-height:130px}.gt .ed{min-height:120px}.gt td:first-child{width:36%}.gt td:first-child .ed{min-height:0}.ed:focus{border-color:#1f4e8c;box-shadow:0 0 0 2px #cfe0fa}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.3}.fr>span{display:block;min-width:.9em;padding:0 3px;min-height:1.2em}.fr>.n{border-bottom:1.5px solid #1d2433}.ed sub,.ed sup{line-height:0}
+#sym button.act{background:#ffd54a}#sym small{font-size:12px;font-weight:600;margin-left:2px}#sym .mf{display:inline-flex;flex-direction:column;vertical-align:middle;line-height:1;font-style:normal;font-size:12px}#sym .mf i{font-style:normal;padding:0 3px}#sym .mf i:first-child{border-bottom:1px solid #1d2433}#sym .w{min-width:52px;font-weight:700;background:#e8f0fc}
+.rev{display:none;border:2px solid #2e9b4f;background:#f2fbf5;border-radius:10px;padding:6px 14px;margin:12px 0}.rev.on{display:block}.rev h4{margin:6px 0;color:#1f7a3b}
+.how{background:#f7f9fd;border:1px solid var(--line);border-radius:8px;padding:6px 14px}
+@media(max-width:640px){.gt td:first-child{width:100%}.gt .ed{min-height:110px}.gt,.gt tbody,.gt tr,.gt td{display:block;width:100%}.gt tr{border:1px solid #c5ccda;margin:8px 0;border-radius:6px;overflow:hidden}.gt td{border:0;border-bottom:1px solid #e3e8f1}.gt td:first-child{background:#f1f5fb;font-weight:600}.gt tr:first-child td{background:inherit}.gt tr:first-child td:first-child{background:#f1f5fb}.page{padding:12px}}
+#sym{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#1f4e8c;padding:6px 8px;display:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}#sym.on{display:block}#sym button.w{padding:0 10px}#sym button{display:inline-block;min-width:40px;height:40px;margin:0 3px 0 0;font-size:18px;border:0;border-radius:6px;background:#fff;color:#1d2433;cursor:pointer}#sym>span{color:#cfe0fa;font-size:12px;margin-right:8px}@media(max-width:480px){#sym>span{display:none}}body.symon{padding-bottom:60px}
+
+/* --- Clean Print & Save as PDF Styling (Workbook layout) --- */
+@media print {
+  @page {
+    margin: 8mm 10mm;
+    size: A4 portrait;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 13.5pt !important;
+    line-height: 1.55 !important;
+    padding-bottom: 0 !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* HIDE ALL NAVIGATION, BUTTONS, INSTRUCTIONS */
+  .top, #back, .btn, button, .noprint, .how, details, #types, #types+ul, #sym,
+  .theme-btn, .top-links, a[href="#top"], .tpdf, .rev, .sm, .back, header {
+    display: none !important;
+  }
+
+  /* HEADINGS */
+  h1.t { font-size: 20pt !important; margin: 0 0 10px !important; color: #1f4e8c !important; }
+  h2 { font-size: 15.5pt !important; margin: 14px 0 6px !important; color: #1f4e8c !important; break-after: avoid !important; page-break-after: avoid !important; }
+  h3 { font-size: 13.5pt !important; margin: 10px 0 4px !important; break-after: avoid !important; page-break-after: avoid !important; }
+  p { font-size: 12.5pt !important; margin: 4px 0 !important; }
+
+  /* SPECIFIC TYPE PRINTING: HIDE UNSELECTED TYPES WHEN BODY HAS .one */
+  body.one section.typ:not(.pick) {
+    display: none !important;
+  }
+  
+  /* CREATOR SKIP CLASS FOR MAIN PDF */
+  section.typ.pr-skip {
+    display: none !important;
+  }
+
+  /* EACH TYPE STARTS ON A NEW PAGE */
+  section.typ {
+    border-top: 2.5px solid #1f4e8c !important;
+    padding-top: 10px !important;
+    margin-top: 14px !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+  section.typ ~ section.typ {
+    break-before: page !important;
+    page-break-before: page !important;
+  }
+
+  /* TABLES: ROW-LEVEL BREAKING SO NO SPACE IS WASTED ON PREVIOUS PAGE */
+  .gt, table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin: 8px 0 !important;
+    font-size: 12.5pt !important;
+  }
+  .gt tr, tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .gt td, td, th {
+    border: 1.5px solid #64748b !important;
+    padding: 8px 10px !important;
+    font-size: 12.5pt !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .gt tr:first-child td, .gt td:first-child {
+    background: #f1f5fb !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+  }
+
+  /* EDITABLE BOXES / USER WRITTEN NOTES: SPACIOUS WORKBOOK FEEL */
+  .ed {
+    border: 1.5px solid #64748b !important;
+    background: #fff !important;
+    color: #000 !important;
+    min-height: 85px !important;
+    font-size: 13pt !important;
+    line-height: 1.6 !important;
+    padding: 10px 12px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    white-space: pre-wrap !important;
+    border-radius: 6px !important;
+  }
+}
+
+
+/* =================== ELEVATED TRUE AMOLED BLACK DARK MODE =================== */
+:root {
+  --bg-base: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-input: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+}
+
+[data-theme="dark"] {
+  --ink: #ffffff;
+  --mut: #a1a1aa;
+  --line: #222224;
+  --bg: #000000;
+  --surface: #0a0a0c;
+  --surface-card: #0a0a0c;
+  --surface-elevated: #111114;
+  --accl: rgba(37, 99, 235, 0.2);
+  --accb: #3b82f6;
+  --hdr: #000000;
+  --hdrtx: #ffffff;
+  --tmbg: rgba(255, 255, 255, 0.08);
+  --hdrline: #222224;
+  --border-subtle: #222224;
+  --border-input: #2e2e34;
+  --text-muted: #a1a1aa !important;
+  --text-secondary: #e4e4e7 !important;
+}
+
+[data-theme="dark"] body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] a {
+  color: #60a5fa !important;
+}
+
+/* Card descendant links must preserve card layout & colors, never default link style */
+a.subject-card,
+a.subject-card *,
+a.ch-card,
+a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] a.subject-card,
+[data-theme="dark"] a.subject-card *,
+[data-theme="dark"] a.ch-card,
+[data-theme="dark"] a.ch-card * {
+  text-decoration: none !important;
+}
+[data-theme="dark"] .subject-card-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .subject-desc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .meta-chip {
+  background: #111114 !important;
+  border: 1px solid #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .ch-title {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .ch-meta {
+  color: #a1a1aa !important;
+}
+
+/* Fix primary action buttons so text is ALWAYS crisp white (solves Pic 7 invisible words) */
+[data-theme="dark"] a.act-btn.primary,
+[data-theme="dark"] .act-btn.primary,
+[data-theme="dark"] a.btn.pri,
+[data-theme="dark"] .btn.pri,
+[data-theme="dark"] .btn-cbt-launch,
+[data-theme="dark"] .btn-modal-start,
+[data-theme="dark"] .start-exam-btn,
+[data-theme="dark"] button.pri {
+  color: #ffffff !important;
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] a.act-btn.primary:hover,
+[data-theme="dark"] .act-btn.primary:hover,
+[data-theme="dark"] a.btn.pri:hover,
+[data-theme="dark"] .btn.pri:hover,
+[data-theme="dark"] button.pri:hover {
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Eliminate Wasted Screen Space on Chapter Pages (solves Pic 3) */
+.panel {
+  max-width: 1040px !important;
+  margin: 24px auto !important;
+  padding: 28px 36px !important;
+  border-radius: 12px !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+[data-theme="dark"] .panel {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+}
+.wrap {
+  max-width: 1140px !important;
+}
+
+/* Question Type Cards, Selectors & Practice Controls in Dark Mode (solves Pic 3 white box error) */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .gf,
+[data-theme="dark"] .sec,
+[data-theme="dark"] .kc,
+[data-theme="dark"] .tbox,
+[data-theme="dark"] #done .sec {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc.zero {
+  background: #060608 !important;
+  border-color: #1a1a1c !important;
+  opacity: 0.6;
+}
+[data-theme="dark"] .selsum {
+  background: #081a36 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .selsum.warn {
+  background: #3b1111 !important;
+  border-color: #dc2626 !important;
+  color: #fca5a5 !important;
+}
+[data-theme="dark"] #typelist label.pill input+span {
+  background: #111114 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] #typelist label.pill input:checked+span {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] #typelist .pill .cc {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .pill input:checked+span .cc {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .tc .tcnt,
+[data-theme="dark"] .gf .gfn,
+[data-theme="dark"] .cnt,
+[data-theme="dark"] label.rad,
+[data-theme="dark"] #typelist label.rad,
+[data-theme="dark"] #typelist .all span,
+[data-theme="dark"] .tnote,
+[data-theme="dark"] .note {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] #typelist .all span:hover {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] label {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .banner {
+  background: #091a10 !important;
+  border-color: #059669 !important;
+  color: #d1fae5 !important;
+}
+[data-theme="dark"] .banner a {
+  color: #6ee7b7 !important;
+}
+[data-theme="dark"] .gp {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gp b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lg {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .lg b {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .strip .no {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .mid b {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .strip .mid span,
+[data-theme="dark"] .strip .gl {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .strip .gl b {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .tg em {
+  background: #111114 !important;
+  border-color: #222224 !important;
+  color: #d4d4d8 !important;
+}
+
+/* Overview Text Readability Fixes (solves Pic 2) */
+[data-theme="dark"] .metric-label {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .metric-sub {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .subj-meter-header {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .subj-meter-count {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .search-input {
+  color: #ffffff !important;
+  background: #121215 !important;
+  border-color: #2e2e34 !important;
+}
+[data-theme="dark"] .search-input::placeholder {
+  color: #71717a !important;
+}
+[data-theme="dark"] .search-count {
+  color: #a1a1aa !important;
+}
+
+/* Visible Typing Boxes in Dark Mode (solves Pic 6) */
+[data-theme="dark"] .ed,
+[data-theme="dark"] div[contenteditable="true"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input.num,
+[data-theme="dark"] .tin input,
+[data-theme="dark"] table.gt td[contenteditable="true"] {
+  background: #121215 !important;
+  border: 1.5px solid #2e2e34 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 12px !important;
+}
+[data-theme="dark"] .ed:focus,
+[data-theme="dark"] div[contenteditable="true"]:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] input[type="number"]:focus,
+[data-theme="dark"] input.num:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+}
+
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td,
+[data-theme="dark"] table.gt,
+[data-theme="dark"] table.gt td,
+[data-theme="dark"] table.gt th {
+  border-color: #222224 !important;
+}
+
+[data-theme="dark"] .o {
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .o:hover {
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .o.sel {
+  background: rgba(37, 99, 235, 0.18) !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Attempt Cards in Dark Mode (solves Pic 4 & Pic 8) */
+[data-theme="dark"] .att-card {
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .att-card:hover {
+  border-color: #2c2c32 !important;
+}
+[data-theme="dark"] .att-badge.cbt {
+  background: rgba(147, 51, 234, 0.15) !important;
+  color: #c084fc !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
+}
+[data-theme="dark"] .att-badge.practice {
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #93c5fd !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+[data-theme="dark"] .att-date {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .att-stats-row {
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] .att-actions {
+  border-top-color: #222224 !important;
+}
+[data-theme="dark"] .att-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .att-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .att-btn.continue {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .att-btn.continue:hover {
+  background: #15803d !important;
+}
+[data-theme="dark"] .att-btn.review {
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .att-btn.delete {
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #f87171 !important;
+}
+[data-theme="dark"] .btn-export-all {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn-export-all:hover {
+  background: #1c1c22 !important;
+  border-color: #2e2e36 !important;
+}
+[data-theme="dark"] .sub-pill-btn {
+  color: #93c5fd !important;
+  background: #0e0e11 !important;
+  border: 1px solid #222224 !important;
+}
+[data-theme="dark"] .sub-pill-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Theme Toggle Button Outline Styling (solves Pic 17) */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.theme-btn:active {
+  transform: scale(0.98);
+}
+[data-theme="dark"] .theme-btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .theme-btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Question Sheet Container & Dark Mode (Pic 4) */
+[data-theme="dark"] .main,
+[data-theme="dark"] .side,
+[data-theme="dark"] .qhead,
+[data-theme="dark"] .qbody,
+[data-theme="dark"] .foot,
+[data-theme="dark"] .wrap {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .qhead b,
+[data-theme="dark"] #qno,
+[data-theme="dark"] .stem,
+[data-theme="dark"] .stem p {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .src,
+[data-theme="dark"] .qhead .qt,
+[data-theme="dark"] #qtime {
+  color: #a1a1aa !important;
+}
+[data-theme="dark"] .starbtn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #fbbf24 !important;
+}
+[data-theme="dark"] .top {
+  background: #0a0a0c !important;
+  border-bottom: 1px solid #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top h1 {
+  color: #ffffff !important;
+}
+[data-theme="dark"] .top a {
+  color: #93c5fd !important;
+}
+
+/* Materials & Type Notes (Light + Dark Mode Fixes - Pic 2 & Pic 7) */
+.how {
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 10px !important;
+  padding: 14px 18px !important;
+  color: #0f172a !important;
+}
+.how p, .how b, .how span, .how li {
+  color: #1e293b !important;
+  line-height: 1.6 !important;
+}
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #141418 !important;
+  border: 1px solid #27272a !important;
+  border-radius: 10px !important;
+  padding: 14px 18px !important;
+  color: #f1f5f9 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b,
+[data-theme="dark"] .how span,
+[data-theme="dark"] .how li {
+  color: #f1f5f9 !important;
+  line-height: 1.6 !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt td,
+[data-theme="dark"] .gt th {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #18181c !important;
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .gt td:first-child {
+  background: #111114 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] details {
+  background: #0a0a0c !important;
+  border: 1px solid #222224 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: #d4d4d8 !important;
+}
+[data-theme="dark"] summary {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .work h3,
+[data-theme="dark"] .work p,
+[data-theme="dark"] .work i {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .rev {
+  background: #061c0d !important;
+  border-color: #16a34a !important;
+  color: #dcfce7 !important;
+}
+[data-theme="dark"] .rev h4 {
+  color: #4ade80 !important;
+}
+[data-theme="dark"] .typ h2 {
+  color: #60a5fa !important;
+}
+[data-theme="dark"] .btn {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .btn:hover {
+  background: #18181c !important;
+  border-color: #3b82f6 !important;
+}
+
+/* CBT Mode Answer Checking & Solutions Suppressor (Pic 3) */
+body.cbt-mode .chk,
+body.cbt-mode .chkb,
+body.cbt-mode .shb,
+body.cbt-mode .chkres,
+body.cbt-mode #savecur,
+.cbt-mode .chk,
+.cbt-mode .chkb,
+.cbt-mode .shb,
+.cbt-mode .chkres {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Header Top Back Button */
+.top-back-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-right: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.top-back-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="dark"] .top-back-btn {
+  background: #141418 !important;
+  border-color: #24242a !important;
+  color: #f4f4f6 !important;
+}
+[data-theme="dark"] .top-back-btn:hover {
+  background: #1c1c22 !important;
+  border-color: #3b82f6 !important;
+}
+
+
+
+/* =================== FIXES FOR USER FEEDBACK (PICS 1-11) =================== */
+
+/* 1. Prevent Option and Question Scrollbars (Pic 5) */
+.o, .oc, .opts, .stem, .qbody, .wrap, .main {
+  overflow: visible !important;
+  overflow-y: visible !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.o::-webkit-scrollbar,
+.oc::-webkit-scrollbar,
+.opts::-webkit-scrollbar,
+.stem::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.o {
+  min-height: 48px !important;
+  height: auto !important;
+  max-height: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2. Top Header Navigation & Button Alignment (Pic 8) */
+.top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 8px 16px !important;
+  min-height: 52px !important;
+  box-sizing: border-box !important;
+}
+.top-left-controls,
+.top-right-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.top .btn,
+.top .theme-btn,
+.top .top-back-btn,
+.top button {
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  font-size: 13px !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 3. Subject Index Action Buttons in Dark Mode (Pic 2) */
+[data-theme="dark"] .lk a {
+  background: #18181c !important;
+  border: 1px solid #2e2e34 !important;
+  color: #60a5fa !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+[data-theme="dark"] .lk a:hover {
+  background: #24242a !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #15803d !important;
+  border: 1px solid #22c55e !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #16a34a !important;
+}
+
+/* 4. Mode Cards in Dark Mode (Pic 3) */
+[data-theme="dark"] .mode-card {
+  background: #111114 !important;
+  border: 1.5px solid #27272a !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .mode-card div,
+[data-theme="dark"] .mode-card span,
+[data-theme="dark"] .mode-card p {
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .mode-card.active {
+  background: #0d1e38 !important;
+  border-color: #3b82f6 !important;
+}
+[data-theme="dark"] .mode-card.active span {
+  color: #93c5fd !important;
+}
+
+/* 5. Question Type Pill & Stem Contrast in Dark Mode (Pic 4) */
+[data-theme="dark"] .qt,
+[data-theme="dark"] .qtype-badge {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+  border: 1px solid #334155 !important;
+}
+[data-theme="dark"] .stem {
+  color: #f1f5f9 !important;
+}
+
+/* 6. Chapter Card Action Buttons in Dark Mode (Pic 6) */
+[data-theme="dark"] .btn-cbt {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border: 1px solid #2563eb !important;
+}
+[data-theme="dark"] .btn-cbt:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .btn-practice {
+  background: #14532d !important;
+  color: #86efac !important;
+  border: 1px solid #16a34a !important;
+}
+[data-theme="dark"] .btn-practice:hover {
+  background: #16a34a !important;
+  color: #ffffff !important;
+}
+
+/* 7. Subject Index Color Codes, Priority Borders & Class Tints (Pic 11) */
+[data-theme="dark"] .strip.pH { border-left: 5px solid #22c55e !important; }
+[data-theme="dark"] .strip.pM { border-left: 5px solid #f59e0b !important; }
+[data-theme="dark"] .strip.pL { border-left: 5px solid #94a3b8 !important; }
+
+[data-theme="dark"] .strip.cA { background: rgba(34, 197, 94, 0.08) !important; }
+[data-theme="dark"] .strip.cB { background: rgba(59, 130, 246, 0.08) !important; }
+[data-theme="dark"] .strip.cC { background: rgba(245, 158, 11, 0.08) !important; }
+[data-theme="dark"] .strip.cD { background: rgba(239, 68, 68, 0.08) !important; }
+
+/* 8. Sized & Centered CBT Scorecard and Compact Donut Chart (Pic 1 & Pic 10) */
+.cbt-scorecard {
+  max-width: 680px !important;
+  margin: 24px auto !important;
+  padding: 24px !important;
+  background: var(--surface-card, #ffffff) !important;
+  border: 1px solid var(--border-subtle, #e2e8f0) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+[data-theme="dark"] .cbt-scorecard {
+  background: #0a0a0c !important;
+  border-color: #222224 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+}
+.cbt-score-hero {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  flex-wrap: wrap !important;
+}
+.cbt-score-left {
+  flex: 1 !important;
+  min-width: 240px !important;
+}
+.cbt-donut-wrap {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+}
+.cbt-donut-svg {
+  width: 95px !important;
+  height: 95px !important;
+  min-width: 95px !important;
+  min-height: 95px !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  flex-shrink: 0 !important;
+  transform: rotate(-90deg) !important;
+}
+.cbt-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+}
+[data-theme="dark"] .cbt-donut-legend {
+  color: #a1a1aa;
+}
+.cbt-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cbt-donut-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cbt-donut-dot.correct { background: #16a34a; }
+.cbt-donut-dot.wrong { background: #dc2626; }
+.cbt-donut-dot.unatt { background: #64748b; }
+.cbt-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.cbt-metric-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+[data-theme="dark"] .cbt-metric-item {
+  background: #111114 !important;
+  border-color: #222224 !important;
+}
+.cbt-metric-lbl {
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+[data-theme="dark"] .cbt-metric-lbl {
+  color: #94a3b8 !important;
+}
+.cbt-metric-num {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0f172a;
+}
+[data-theme="dark"] .cbt-metric-num {
+  color: #ffffff !important;
+}
+
+/* 9. Dark Mode Fixes for Type Notes & Question Types (Materials) */
+[data-theme="dark"] .page {
+  background: #000000 !important;
+  border-color: #222224 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .how {
+  background: #141418 !important;
+  border: 1px solid #27272a !important;
+  border-radius: 10px !important;
+  padding: 14px 18px !important;
+  color: #f1f5f9 !important;
+}
+[data-theme="dark"] .how p,
+[data-theme="dark"] .how b,
+[data-theme="dark"] .how span,
+[data-theme="dark"] .how li {
+  color: #f1f5f9 !important;
+  line-height: 1.6 !important;
+}
+[data-theme="dark"] .gt {
+  border-color: #222224 !important;
+  background: #0a0a0c !important;
+}
+[data-theme="dark"] .gt td {
+  border-color: #222224 !important;
+  color: #e4e4e7 !important;
+}
+[data-theme="dark"] .gt tr:first-child td {
+  background: #141418 !important;
+  color: #93c5fd !important;
+}
+[data-theme="dark"] .ed {
+  background: #111114 !important;
+  border-color: #2e2e34 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .rev {
+  background: #0a1f10 !important;
+  border-color: #16a34a !important;
+  color: #86efac !important;
+}
+
+
+
+/* =================== CBT POPUP MODAL STYLING (FIX PIC 2) =================== */
+.cbt-modal-backdrop {
+  display: none;
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+}
+
+.cbt-modal-backdrop[style*="display: none"] {
+  display: none !important;
+}
+
+.cbt-modal-backdrop[style*="display: flex"],
+.cbt-modal-backdrop.open {
+  display: flex !important;
+  animation: cbtFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes cbtFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cbtModalPop {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.cbt-modal-box {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 24px 28px !important;
+  max-width: 480px !important;
+  width: 100% !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35) !important;
+  box-sizing: border-box !important;
+  animation: cbtModalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+}
+
+[data-theme="dark"] .cbt-modal-box {
+  background: #111114 !important;
+  color: #f1f5f9 !important;
+  border-color: #27272a !important;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="dark"] .cbt-modal-box h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .cbt-modal-box p {
+  color: #94a3b8 !important;
+}
+
+.cbt-summary-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 16px 0 20px !important;
+  font-size: 14px !important;
+}
+
+.cbt-summary-table tr {
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+[data-theme="dark"] .cbt-summary-table tr {
+  border-bottom-color: #222224 !important;
+}
+
+.cbt-summary-table td {
+  padding: 10px 4px !important;
+  vertical-align: middle !important;
+}
+
+.cbt-summary-table td:last-child {
+  text-align: right !important;
+}
+
+[data-theme="dark"] .cbt-summary-table td {
+  color: #e4e4e7 !important;
+}
+
+/* CBT Modal Action Buttons (Fix Pic 9 black-on-black button) */
+#cbtConfirmSubmit {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+  font-weight: 700 !important;
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: all 0.15s ease !important;
+}
+#cbtConfirmSubmit:hover {
+  background: #1d4ed8 !important;
+  border-color: #2563eb !important;
+}
+[data-theme="dark"] #cbtConfirmSubmit {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+}
+[data-theme="dark"] #cbtConfirmSubmit:hover {
+  background: #1d4ed8 !important;
+}
+
+#cbtCancelSubmit {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+  font-weight: 600 !important;
+  padding: 10px 16px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: all 0.15s ease !important;
+}
+#cbtCancelSubmit:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+[data-theme="dark"] #cbtCancelSubmit {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #f1f5f9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+[data-theme="dark"] #cbtCancelSubmit:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Subject Portal Action Button Pills (Fix Pic 5) */
+.lk {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+  margin-top: 10px !important;
+}
+.lk a.go {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  padding: 0 14px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2) !important;
+  transition: all 0.15s ease !important;
+}
+.lk a.go:hover {
+  background: #1d4ed8 !important;
+  border-color: #2563eb !important;
+}
+.lk a:not(.go) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+  transition: all 0.15s ease !important;
+}
+.lk a:not(.go):hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+[data-theme="dark"] .lk a.go {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+}
+[data-theme="dark"] .lk a.go:hover {
+  background: #1d4ed8 !important;
+}
+[data-theme="dark"] .lk a:not(.go) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #f1f5f9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+[data-theme="dark"] .lk a:not(.go):hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+
+.cbt-dot {
+  display: inline-block !important;
+  width: 9px !important;
+  height: 9px !important;
+  border-radius: 50% !important;
+  margin-right: 8px !important;
+  vertical-align: middle !important;
+}
+.cbt-dot.green { background: #16a34a !important; }
+.cbt-dot.red { background: #ef4444 !important; }
+.cbt-dot.purple { background: #9333ea !important; }
+.cbt-dot.purple-green { background: #7c3aed !important; }
+.cbt-dot.gray { background: #64748b !important; }
+
+/* =================== REVIEW CARDS & DARK MODE OPTIONS (FIX PIC 1) =================== */
+.review-card {
+  background: var(--surface-card, #ffffff) !important;
+  border: 1px solid var(--border-subtle, #e2e8f0) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  margin-bottom: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+}
+[data-theme="dark"] .review-card {
+  background: #0e0e11 !important;
+  border-color: #222224 !important;
+  color: #f1f5f9 !important;
+}
+
+.review-opt {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  margin-bottom: 6px !important;
+  transition: all 0.15s ease !important;
+}
+[data-theme="dark"] .review-opt {
+  background: #141418 !important;
+  border-color: #27272a !important;
+  color: #e4e4e7 !important;
+}
+
+.review-opt.correct-key {
+  border: 1.5px solid #22c55e !important;
+  background: #f0fdf4 !important;
+  color: #15803d !important;
+}
+[data-theme="dark"] .review-opt.correct-key {
+  border-color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #86efac !important;
+}
+
+.review-opt.user-wrong {
+  border: 1.5px solid #ef4444 !important;
+  background: #fef2f2 !important;
+  color: #b91c1c !important;
+}
+[data-theme="dark"] .review-opt.user-wrong {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #fca5a5 !important;
+}
+
+.review-opt-letter {
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  width: 22px !important;
+  flex-shrink: 0 !important;
+}
+[data-theme="dark"] .review-opt-letter {
+  color: #ffffff !important;
+}
+
+.review-opt-text {
+  flex: 1 !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+}
+[data-theme="dark"] .review-opt-text {
+  color: #f1f5f9 !important;
+}
+[data-theme="dark"] .review-opt.correct-key .review-opt-text {
+  color: #86efac !important;
+}
+[data-theme="dark"] .review-opt.user-wrong .review-opt-text {
+  color: #fca5a5 !important;
+}
+
+.review-opt-badge {
+  margin-left: auto !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+}
+.review-opt-badge.correct {
+  color: #15803d !important;
+  background: #bbf7d0 !important;
+}
+[data-theme="dark"] .review-opt-badge.correct {
+  color: #86efac !important;
+  background: #14532d !important;
+  border: 1px solid #22c55e !important;
+}
+.review-opt-badge.wrong {
+  color: #b91c1c !important;
+  background: #fecaca !important;
+}
+[data-theme="dark"] .review-opt-badge.wrong {
+  color: #fca5a5 !important;
+  background: #450a0a !important;
+  border: 1px solid #ef4444 !important;
+}
+
+.review-answers-box {
+  margin-top: 14px !important;
+  padding: 12px 16px !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-size: 13.5px !important;
+  color: #0f172a !important;
+}
+[data-theme="dark"] .review-answers-box {
+  background: #141418 !important;
+  border-color: #27272a !important;
+  color: #e4e4e7 !important;
+}
+
+/* Image diagrams inside questions & review cards in dark mode */
+[data-theme="dark"] .stem img,
+[data-theme="dark"] .stem-content img,
+[data-theme="dark"] .review-card img,
+[data-theme="dark"] .opts img {
+  background: #ffffff !important;
+  padding: 6px !important;
+  border-radius: 8px !important;
+  border: 1px solid #334155 !important;
+  display: inline-block !important;
+  max-width: 100% !important;
+}
+
+
+</style><link id="aiit-fav-16" rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB5klEQVR42p1TMU9TURg957uvIkUjiBKMiYlDGwUlxsFVB0yMJi0pttHJ2cW/8GBxdfEXuNmaJuBLJE4YN424oFTiQhyQOGhEjaXv3uNQnwGFiJ7hG+69555zvnwf8J+QQADdshvEMWx0tPu+WkUgoV2R6nW47e6S5PSABHI7a40GrFaDz87qdTjXWzgV0YoiBkOqc95jrlpZbnAn0uzskby3gSK8PyNgjGQfoXcgRrxH/uCB4avz8xcCf1dvJoUxBjdC6BBMQ/Jsk1oV7BsQHMlhByWl0nIrFowA+CApHI+CnYexH0GfJOYA7QexatKKjINB/K4ofc1ONFEpt+5KMBLBJMDBhkk7bCE8F5QC2jDYnDmtyFm/Q3hRKbUeI3XXHGwOAKamuq63RGg+LN6k8CVnPUlbnaNRb/ShPL64BgDNpHBSgZcmS8t3MnUAsKzLcQxLc9F9iC7VxmVnOFseX1yTYBJowS7KNAOAmfoWB/U6XK0G35w5cQPSUGR8BuOx3p727Mdor3ef/a3J8pvbcQybnu6q/3Lwc7oEgIy0QOKKJ/vksbD+NXc9Wg9TQf7R5ux/fABAANShfx+gpfye3JNyeelVZPvuQeFpdeLtSwDIsu+IzaMbx1sE/hlZf7jTPuyG/Ff8AHJN0tvJodC7AAAAAElFTkSuQmCC"><link id="aiit-fav-32" rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFXklEQVR42u1WXWyTVRh+3nParutggIKEQCSgrGUDA4KKGm0rGFnZT2Hpp1EvFEUDEhPREEOQb73wJ8iFMUZdSCR4QfQrrGzdYKCyFRIMhoBGux+HGkyMGIiiMAbtOef1YqsbMH5ECBfy3n3vOfme57zv8/4AN+x/aMQMyn/Ia4nUDyRCIVBbGwgApdPgePwagto2RGtr0MUMMdR5Xd0s9+bNUybno0FXC7SsLEaWldCD/du3B8Zls8ZrJI8Ai5Eqi9nShUrBZmU02r3PtiHov4CGQkERDqc1AM77k02lM9xS35NTKJGCCo3hGSTojFbmFyFEhdb8fk20a5XjQFoWNP3bnCYSEJkMOB6HGQD13yeJZmpt7vQUiFu1wnHDGCUFupl5D2ua6/WJ6lM9+quF1V0Rx4lJy0oYAOy6HNU6DgQQA1FCA9AAkNoRmAaDx4zBA1KSUUq3ul3iezYYYTQO9wj3cz6dvRugKGBO9PZy7vQp9TwAZDIJzkeNLgU6OK9OS+lNRdDz2dDTzFxEJOqzWu2GkRN8PnpCKfYKlrW//Xby25tHF641hAdNFktJmogBCmqqv1+ZD/0/QINRHQfyPFCn1OMt4oVEXGUMpgtB3yltNv7Y27PbP3xYOQMRrdjjctGnFeWdzU5DySQ3aIN0iV9PsGvZcHNmrGLaMar4tL+t7XC2thZMNKCZISOwd++EwiPHfCEpxCMAHiLBh43Bvuwp+Y5ltZ9sbpn6KIOXC8Aog9erIp07AaC+0b/a7aKHleY3FlZ27QCALVsDjRC8u6aqa11/7s+qFMqTcJzJxYXDCu7XxpQT4y4m6hGMjBH8cXRB134AaG4pfZoNL4HAMc7h7crKjj0AkNrur1IK9wrgmFvq9yKRQ2daW4OuP08eiRiDl7850BUeqkwBwMX9wWje6Z0kYJYYQ9MZ/Gq0onNz/lJzi79Ga1rNMD8rQy9FIx37AKCpyR9WTBFjMNYj+N0F/UTr6ma5w+F0LtkQWMPMb8XjMH3pHUJs5zpSqSnjhVvOlZJ7lJY9bHgFEVgp9WG0sjsJAA2fTxuL0+opBrtN1mxZtKi7I6+hMWOCFA6nVbLR/7gxWFwT7Zp3rvDOisA5fZuIun8B8HFDS+ntUGaXYXyysLJzZf5lo8b0zDa9uWKSYmc00nkwD5zJgC0LxrbTtGHDRC8z1grBy/v+HgOQuPxm4zilnj5RBdbUN/g39nW+oCuZ8tcmkyVzB1fN4MnmODEJAA1N/liy0Z9ihrBtiIuU+/kDgwgci7XnbBuC3VhPhJJUasr4eDytBNEcT6GYatsQzKBM5uySymQSbNsQWmEFg9YRwZSVgQa36ksSyJMoK4tRTXnnr8z8Q47FKwCglPHmsqxmzQksTiQmeAeLy3Ega2vBd9wZmMuEYnVafGnbEBfK/UUJ5F/DDNKQb4K5vK5xnI+IcjmD/UKL/QVFw1Y5zuQRlgXd2hp09bVqMIGfIcImy2rPhkJBcamUX/BCftjEqjsyAB2/RRbfBuAPKaiooqL9awE6VuBzb0om/dPD4bQCEkg2+6cDmOPzyA8AUCiU1ldMAADa2oKSGUSEXaz4WRD1ELG3aUdgmfRgNxl6DRKb6htKnrQsaGgsBWH9/PntvztOTAzWxxUROHo03S8y/gKgIAwHhKCI6uWtkYc7DlZVdR6ARiWBXkxtC3zEBvMgTH2fQBN8sX5zyYN8SRKBk8mJIzV5fwLQ7fPoeZHIob/y4rMsaMcp9XiH8XqVMycXVXe9YDNEnAb2hatiyUb/Z1u3TZ05MDUHNqMhFtGrvt2KxsaS0RcCYAZdaAm9Fmv29bHrCn7DrqX9DWIToNUS4fECAAAAAElFTkSuQmCC"><link id="aiit-fav-180" rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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"></head><body><div class="top"><div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="theme-btn" type="button" title="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark</span></button></div>
+<h1>Sets and Relations &middot; Type Notes</h1><a href="../index.html">&lsaquo; All chapters</a><a href="../Sets%20and%20Relations%20PYQ%20Practice.html">Back to practice</a><a href="Sets%20and%20Relations%20Question%20Types.html">Question Types &rsaquo;</a></div><div class="page"><h1 class="t"><b> SETS AND RELATIONS – TYPE NOTES</b></h1><p class="sm">JEE Main PYQ 2019–2025 · companion to the Practice Sheet</p><div class="how"><p><b> How to use these notes</b></p><p>1. Do these pages BEFORE the practice sheet, one type at a time.</p><p>2. Close all books and notes. Fill the blanks from memory; leave a gap if you cannot recall.</p><p>3. Then press &ldquo;Show completed notes&rdquo; under that type, correct your answers in a different colour (or your own notes), and note what you missed.</p><p>4. Now do that type&#x27;s questions on the sheet. Come back to the notes after the sheet to add anything new.</p><p>5. Re-fill the same page a week later with the prompts covered – this is what makes it stick.</p></div><div class="noprint sm"><button class="btn pri" id="pdf">Save my notes as PDF</button> <span class="sm">Opens the print screen: choose &ldquo;Save as PDF&rdquo;. Only the types you have written in are included.</span></div><details class="noprint sm"><summary>Move my notes to another device (advanced)</summary><p>The PDF is for reading and printing. To carry your notes to another phone or computer so you can keep editing them, save a notes file here and load it on the other device.</p><button class="btn" id="sv">Save my notes to a file</button><button class="btn" id="ld">Load notes from a file</button><input type="file" id="lf" accept=".json,application/json" hidden></details><details class="noprint sm"><summary>Typing in the notes boxes</summary><ul><li>Your answers are saved on this device only. Use &ldquo;Save my notes as PDF&rdquo; to keep a copy. To move your notes to another device, use the advanced option under the buttons.</li><li>Tap a box and use the bar at the bottom of the screen.</li><li>Subscript or superscript: select the text and press x&#8322; or x&#8319;, or press the button, type, and press it again.</li><li>Back to normal text: press Aa, or press the right arrow at the end of the subscript or superscript.</li><li>Fraction: press a/b, type the top, press Tab, type the bottom, press Tab again to continue.</li><li>You can also just type 1/2 or sqrt(x).</li></ul></details><details class="noprint sm"><summary>Keyboard shortcuts (computer keyboard)</summary><ul><li>Ctrl+H: superscript</li><li>Ctrl+L: subscript</li><li>Ctrl+Space: back to normal text</li><li>Ctrl+F: fraction (Tab moves from top to bottom to out)</li><li>Ctrl+I: integral &#8747;</li><li>Ctrl+S: sigma &#931;</li><li>Ctrl+R: square root &#8730;</li><li>Ctrl+P: pi &#960;</li><li>Ctrl+E: infinity &#8734;</li><li>Ctrl+&gt; (Ctrl+Shift+. on most keyboards): arrow &#8594;; press again for the &ldquo;implies&rdquo; arrow &#8658;</li><li>These work only while you are typing in a notes box. On a phone use the bar at the bottom.</li></ul></details><h3 id="types">Types</h3><ul><li><a href="#T1">Type 1. Reflexive, symmetric, transitive and equivalence relations: properties of a given relation</a></li><li><a href="#T2">Type 2. Counting the elements of a relation or a set defined by conditions</a></li><li><a href="#T3">Type 3. Minimum elements to add to a relation to make it reflexive, symmetric or an equivalence relation</a></li><li><a href="#T4">Type 4. Venn diagrams, inclusion–exclusion and set identities</a></li><li><a href="#T5">Type 5. Counting relations, subsets and partitions</a></li></ul><section class="typ" id="T1" data-k="1"><h2>Type 1. Reflexive, symmetric, transitive and equivalence relations: properties of a given relation <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">25 questions on the sheet (Q1–25)  ·  Sub-topics: A1 properties on a small finite set · A2 relations on numbers and ordered pairs · A3 relations on sets, functions and matrices</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_1"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Reflexive</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_2"></div></td></tr><tr><td><p>Symmetric</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_3"></div></td></tr><tr><td><p>Transitive</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_4"></div></td></tr><tr><td><p>Equivalence relation</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_5"></div></td></tr><tr><td><p>Same remainder</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_6"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I test a property quickly?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_7"></div></td></tr><tr><td><p>How do I reject a property?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_8"></div></td></tr><tr><td><p>What if the relation is on ordered pairs?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_9"></div></td></tr><tr><td><p>What if the rule has &#x27;or&#x27;?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_10"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t1_11"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 1</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  A relation <math displaystyle="true"><mrow><mi>R</mi></mrow></math> is defined by a rule or a list of pairs and you must say whether it is reflexive, symmetric, transitive or an equivalence relation.</p><p style="padding-left:14px">•  The elements are numbers, ordered pairs, subsets, functions or matrices, and the rule is an equation, a divisibility condition or an inequality.</p><p style="padding-left:14px">•  The options are combinations such as &#x27;symmetric but not transitive&#x27;.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Reflexive</p></td><td><p><math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>∈</mo><mi>R</mi></mrow></math> for every <math displaystyle="true"><mrow><mi>a</mi></mrow></math></p></td></tr><tr><td><p>Symmetric</p></td><td><p><math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>∈</mo><mi>R</mi><mo>⇒</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>b</mi><mo>,</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>∈</mo><mi>R</mi></mrow></math></p></td></tr><tr><td><p>Transitive</p></td><td><p><math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>,</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>b</mi><mo>,</mo><mi>c</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>∈</mo><mi>R</mi><mo>⇒</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>c</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>∈</mo><mi>R</mi></mrow></math></p></td></tr><tr><td><p>Equivalence relation</p></td><td><p>reflexive, symmetric and transitive</p></td></tr><tr><td><p>Same remainder</p></td><td><p><math displaystyle="true"><mrow><mi>a</mi><mo>≡</mo><mi>b</mi><mspace width="0.3em"></mspace><mo lspace="0" rspace="0">(</mo><mi mathvariant="normal">mod</mi><mspace width="0.3em"></mspace><mi>n</mi><mo lspace="0" rspace="0">)</mo><mo>⇔</mo><mi>n</mi><mo>∣</mo><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I test a property quickly?</p></td><td><p>Put <math displaystyle="true"><mrow><mi>b</mi><mo>=</mo><mi>a</mi></mrow></math> for reflexive, swap <math displaystyle="true"><mrow><mi>a</mi></mrow></math> and <math displaystyle="true"><mrow><mi>b</mi></mrow></math> for symmetric, and chain two pairs for transitive.</p></td></tr><tr><td><p>How do I reject a property?</p></td><td><p>One counter-example with small numbers is enough.</p></td></tr><tr><td><p>What if the relation is on ordered pairs?</p></td><td><p>Treat each ordered pair as a single element and write the condition for <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mi>R</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>c</mi><mo>,</mo><mi>d</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>.</p></td></tr><tr><td><p>What if the rule has &#x27;or&#x27;?</p></td><td><p>Symmetry usually holds, transitivity usually fails: try three pairs that break the chain.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Testing symmetry with only one pair instead of the general rule.</p><p style="padding-left:14px">•  Forgetting that an empty condition makes transitivity true.</p><p style="padding-left:14px">•  Checking reflexive only for some elements of the set.</p><p style="padding-left:14px">•  Reading &#x27;not reflexive&#x27; as &#x27;not symmetric&#x27;.</p></div></section>
+<section class="typ" id="T2" data-k="2"><h2>Type 2. Counting the elements of a relation or a set defined by conditions <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">23 questions on the sheet (Q26–48)  ·  Sub-topics: B1 elements of a relation on a product set · B2 integers, divisibility, primes and remainders · B3 subsets and sets defined by equations</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_12"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Size of product</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_13"></div></td></tr><tr><td><p>Subsets of a set</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_14"></div></td></tr><tr><td><p>A.P. sum</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_15"></div></td></tr><tr><td><p>Multiples of <math displaystyle="true"><mrow><mi>k</mi></mrow></math> up to <math displaystyle="true"><mrow><mi>N</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_16"></div></td></tr><tr><td><p>Powers mod 7</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_17"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count pairs without missing any?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_18"></div></td></tr><tr><td><p>How do I handle <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>n</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow><mo>&lt;</mo><mi>k</mi></mrow></math>?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_19"></div></td></tr><tr><td><p>How do I count subsets that meet a set?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_20"></div></td></tr><tr><td><p>How do I add the elements of a set of multiples?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_21"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t2_22"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 2</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  The question asks &#x27;the number of elements in <math displaystyle="true"><mrow><mi>R</mi></mrow></math>&#x27; or &#x27;in the set&#x27; and the relation or set is defined by an equation or inequality.</p><p style="padding-left:14px">•  Divisibility, gcd, prime or remainder conditions on integers in a range, and a count or a sum is asked.</p><p style="padding-left:14px">•  A set of subsets (such as <math displaystyle="true"><mrow><mo lspace="0" rspace="0">{</mo><mi>C</mi><mo>⊆</mo><mi>A</mi><mo>:</mo><mi>C</mi><mo>∩</mo><mi>B</mi><mo>≠</mo><mi>ϕ</mi><mo lspace="0" rspace="0">}</mo></mrow></math>) is to be counted.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Size of product</p></td><td><p><math displaystyle="true"><mrow><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>×</mo><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mspace width="0.3em"></mspace><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Subsets of a set</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math></p></td></tr><tr><td><p>A.P. sum</p></td><td><p><math displaystyle="true"><mrow><mi>S</mi><mo>=</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>+</mo><mi>l</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Multiples of <math displaystyle="true"><mrow><mi>k</mi></mrow></math> up to <math displaystyle="true"><mrow><mi>N</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">⌊</mo><mrow><mfrac><mrow><mi>N</mi></mrow><mrow><mi>k</mi></mrow></mfrac></mrow><mo fence="true" lspace="0" rspace="0">⌋</mo></mrow></mrow></math></p></td></tr><tr><td><p>Powers mod 7</p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>3</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> repeats with period <math displaystyle="true"><mrow><mn>6</mn></mrow></math>: <math displaystyle="true"><mrow><mn>3</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>1</mn></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count pairs without missing any?</p></td><td><p>Fix the first element, find the allowed second elements, and add over all first elements.</p></td></tr><tr><td><p>How do I handle <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">|</mo><mrow><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>n</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow><mo fence="true" lspace="0" rspace="0">|</mo></mrow><mo>&lt;</mo><mi>k</mi></mrow></math>?</p></td><td><p>Solve <math displaystyle="true"><mrow><mo>−</mo><mi>k</mi><mo>&lt;</mo><mi>f</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>n</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>&lt;</mo><mi>k</mi></mrow></math> for <math displaystyle="true"><mrow><mi>n</mi></mrow></math> and list the integers in the range.</p></td></tr><tr><td><p>How do I count subsets that meet a set?</p></td><td><p>Use the complement: total subsets minus the subsets that avoid the set.</p></td></tr><tr><td><p>How do I add the elements of a set of multiples?</p></td><td><p>Write them as an A.P. and use the formula, or use inclusion–exclusion on the excluded multiples.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting ordered pairs twice or forgetting the pair <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math>.</p><p style="padding-left:14px">•  Ignoring the domain (natural numbers, <math displaystyle="true"><mrow><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math>).</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mo>⌊</mo><mi>N</mi><mo>/</mo><mi>k</mi><mo>⌋</mo></mrow></math> for numbers that must lie in <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">[</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" lspace="0" rspace="0">]</mo></mrow></mrow></math> without subtracting the lower part.</p><p style="padding-left:14px">•  Forgetting the empty set when counting subsets.</p></div></section>
+<section class="typ" id="T3" data-k="3"><h2>Type 3. Minimum elements to add to a relation to make it reflexive, symmetric or an equivalence relation <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">13 questions on the sheet (Q49–61)  ·  Sub-topics: C1 reflexive or symmetric · C2 equivalence or transitive</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_23"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Missing diagonal pairs</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_24"></div></td></tr><tr><td><p>Symmetric</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_25"></div></td></tr><tr><td><p>Equivalence class of size <math displaystyle="true"><mrow><mi>k</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_26"></div></td></tr><tr><td><p>To add</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_27"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count for symmetric?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_28"></div></td></tr><tr><td><p>How do I find the smallest equivalence relation?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_29"></div></td></tr><tr><td><p>Do the required additions overlap?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_30"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t3_31"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 3</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  A small relation is given and the least number of ordered pairs to be added is asked.</p><p style="padding-left:14px">•  The wording is &#x27;minimum number of elements to be added so that <math displaystyle="true"><mrow><mi>R</mi></mrow></math> becomes symmetric (or reflexive, equivalence)&#x27;.</p><p style="padding-left:14px">•  Two numbers <math displaystyle="true"><mrow><mi>m</mi></mrow></math> and <math displaystyle="true"><mrow><mi>n</mi></mrow></math> are asked together, for example <math displaystyle="true"><mrow><mi>l</mi><mo>+</mo><mi>m</mi><mo>+</mo><mi>n</mi></mrow></math>.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Missing diagonal pairs</p></td><td><p>number of <math displaystyle="true"><mrow><mi>a</mi></mrow></math> with <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>∉</mo><mi>R</mi></mrow></math></p></td></tr><tr><td><p>Symmetric</p></td><td><p>add <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>b</mi><mo>,</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> for each <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>∈</mo><mi>R</mi></mrow></math> whose reverse is absent</p></td></tr><tr><td><p>Equivalence class of size <math displaystyle="true"><mrow><mi>k</mi></mrow></math></p></td><td><p>has <math displaystyle="true"><mrow><msup><mrow><mi>k</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></math> ordered pairs</p></td></tr><tr><td><p>To add</p></td><td><p>(pairs of the required relation) <math displaystyle="true"><mrow><mo>−</mo></mrow></math> (pairs already in <math displaystyle="true"><mrow><mi>R</mi></mrow></math>)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count for symmetric?</p></td><td><p>List the pairs; a pair <math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>a</mi><mo>,</mo><mi>a</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math> needs nothing; for <math displaystyle="true"><mrow><mi>a</mi><mo>≠</mo><mi>b</mi></mrow></math> add the reverse if absent.</p></td></tr><tr><td><p>How do I find the smallest equivalence relation?</p></td><td><p>Join the elements that are connected into classes; elements alone form a class of size 1.</p></td></tr><tr><td><p>Do the required additions overlap?</p></td><td><p>Count each property separately when <math displaystyle="true"><mrow><mi>m</mi></mrow></math> and <math displaystyle="true"><mrow><mi>n</mi></mrow></math> are asked separately.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting a missing reverse pair twice.</p><p style="padding-left:14px">•  Forgetting the diagonal pairs when asked for an equivalence relation.</p><p style="padding-left:14px">•  Stopping before closing under transitivity.</p><p style="padding-left:14px">•  Adding pairs that are already present.</p></div></section>
+<section class="typ" id="T4" data-k="4"><h2>Type 4. Venn diagrams, inclusion–exclusion and set identities <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">11 questions on the sheet (Q62–72)  ·  Sub-topics: D1 exact data · D2 least and greatest overlap · D3 Venn diagram choice and identities</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_32"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Two sets</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_33"></div></td></tr><tr><td><p>Three sets</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_34"></div></td></tr><tr><td><p>Exactly two</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_35"></div></td></tr><tr><td><p>Least overlap</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_36"></div></td></tr><tr><td><p>De Morgan</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_37"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I fill a three-set Venn diagram?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_38"></div></td></tr><tr><td><p>How do I find the greatest overlap?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_39"></div></td></tr><tr><td><p>How do I use data with &#x27;at least&#x27; and &#x27;at most&#x27;?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_40"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t4_41"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 4</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  Numbers or percentages of people who like, read or study two or three things are given.</p><p style="padding-left:14px">•  The question asks for &#x27;exactly two&#x27;, &#x27;none&#x27; or the possible values of the overlap.</p><p style="padding-left:14px">•  A Venn diagram is to be chosen to justify a statement, or a set identity is to be shown false.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>Two sets</p></td><td><p><math displaystyle="true"><mrow><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∪</mo><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>+</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∩</mo><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Three sets</p></td><td><p><math displaystyle="true"><mrow><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∪</mo><mi>B</mi><mo>∪</mo><mi>C</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>=</mo><mo>∑</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mo>∑</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∩</mo><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>+</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∩</mo><mi>B</mi><mo>∩</mo><mi>C</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Exactly two</p></td><td><p><math displaystyle="true"><mrow><mo>∑</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∩</mo><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mn>3</mn><mspace width="0.3em"></mspace><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∩</mo><mi>B</mi><mo>∩</mo><mi>C</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>Least overlap</p></td><td><p><math displaystyle="true"><mrow><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∩</mo><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>≥</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>+</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>−</mo><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>U</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow></mrow></math></p></td></tr><tr><td><p>De Morgan</p></td><td><p><math displaystyle="true"><mrow><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>A</mi><mo>∪</mo><mi>B</mi></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>′</mo><mo>=</mo><mi>A</mi><mo>′</mo><mo>∩</mo><mi>B</mi><mo>′</mo></mrow></math></p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I fill a three-set Venn diagram?</p></td><td><p>Start from the centre <math displaystyle="true"><mrow><mi>A</mi><mo>∩</mo><mi>B</mi><mo>∩</mo><mi>C</mi></mrow></math>, then the pairs, then the single regions.</p></td></tr><tr><td><p>How do I find the greatest overlap?</p></td><td><p>It cannot exceed the smaller of the two sets.</p></td></tr><tr><td><p>How do I use data with &#x27;at least&#x27; and &#x27;at most&#x27;?</p></td><td><p>Compute the extreme values of the unknown from each limit and take the common range.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting the middle region more than once.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><mo>≤</mo></mrow></math> and <math displaystyle="true"><mrow><mo>≥</mo></mrow></math> the wrong way round for bounds.</p><p style="padding-left:14px">•  Forgetting those who belong to none of the sets.</p><p style="padding-left:14px">•  Mixing percentages and numbers of people.</p></div></section>
+<section class="typ" id="T5" data-k="5"><h2>Type 5. Counting relations, subsets and partitions <a class="sm noprint" href="#types" style="font-weight:400;white-space:nowrap">&#9666; Types menu</a></h2><p class="sm">10 questions on the sheet (Q73–82)  ·  Sub-topics: E1 number of relations with given properties · E2 subsets and partitions</p><div class="work"><h3><b> 1.  How do I spot this type?</b></h3><p><i>Write 2–3 clues from the question wording:</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_42"></div><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>All relations on <math displaystyle="true"><mrow><mi>A</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_43"></div></td></tr><tr><td><p>Symmetric relations on <math displaystyle="true"><mrow><mi>A</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_44"></div></td></tr><tr><td><p>Reflexive relations on <math displaystyle="true"><mrow><mi>A</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_45"></div></td></tr><tr><td><p>Subsets of <math displaystyle="true"><mrow><mi>A</mi><mo>×</mo><mi>B</mi></mrow></math> of size <math displaystyle="true"><mrow><mi>r</mi></mrow></math></p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_46"></div></td></tr><tr><td><p>Equivalence relations</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_47"></div></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count relations with fixed pairs?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_48"></div></td></tr><tr><td><p>How do I count equivalence relations?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_49"></div></td></tr><tr><td><p>How do I split a set into equal groups?</p></td><td><div class="ed" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_50"></div></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p><i>Add after you attempt the sheet (what went wrong, what to watch for):</i></p><div class="ed tall" contenteditable="true" role="textbox" aria-multiline="true" data-id="t5_51"></div></div><div class="noprint"><button class="btn pri sh">Show completed notes</button><button class="btn hd" style="display:none">Hide completed notes</button><button class="btn rs">Start this type again</button><button class="btn tpdf">Save this type as PDF</button></div><div class="rev"><h4>Completed notes &ndash; Type 5</h4><h3><b> 1.  How do I spot this type?</b></h3><p style="padding-left:14px">•  &#x27;The number of relations on the set <math displaystyle="true"><mrow><mo lspace="0" rspace="0">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo lspace="0" rspace="0">}</mo></mrow></math> which are...&#x27; or &#x27;the number of equivalence relations&#x27;.</p><p style="padding-left:14px">•  The number of subsets of <math displaystyle="true"><mrow><mi>A</mi><mo>×</mo><mi>B</mi></mrow></math> with a given size, or the number of ways to partition a set into equal groups.</p><h3><b> 2.  Formulae and laws</b></h3><div class="tw"><table class="gt"><tr><td><p>All relations on <math displaystyle="true"><mrow><mi>A</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><msup><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></msup></mrow></math></p></td></tr><tr><td><p>Symmetric relations on <math displaystyle="true"><mrow><mi>A</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi><mrow><mo fence="true" lspace="0" rspace="0">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo fence="true" lspace="0" rspace="0">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></msup></mrow></math></p></td></tr><tr><td><p>Reflexive relations on <math displaystyle="true"><mrow><mi>A</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><msup><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>−</mo><mi>n</mi></mrow></msup></mrow></math></p></td></tr><tr><td><p>Subsets of <math displaystyle="true"><mrow><mi>A</mi><mo>×</mo><mi>B</mi></mrow></math> of size <math displaystyle="true"><mrow><mi>r</mi></mrow></math></p></td><td><p><math displaystyle="true"><mrow><msup><mrow><mo>​</mo></mrow><mrow><mi>m</mi><mi>n</mi></mrow></msup><msub><mrow><mi>C</mi></mrow><mrow><mi>r</mi></mrow></msub></mrow></math></p></td></tr><tr><td><p>Equivalence relations</p></td><td><p>= number of partitions (Bell numbers: <math displaystyle="true"><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>15</mn><mo>,</mo><mo>…</mo></mrow></math>)</p></td></tr></table></div><h3><b> 3.  Concepts and skills</b></h3><div class="tw"><table class="gt"><tr><td><p>How do I count relations with fixed pairs?</p></td><td><p>Remove the compulsory pairs; each remaining pair is free (in or out) unless the property forces it.</p></td></tr><tr><td><p>How do I count equivalence relations?</p></td><td><p>Count the partitions of the set into non-empty classes.</p></td></tr><tr><td><p>How do I split a set into equal groups?</p></td><td><p>Choose the groups in turn, then divide by the factorial of the number of equal groups.</p></td></tr></table></div><h3><b> 4.  Mistakes to avoid</b></h3><p style="padding-left:14px">•  Counting the same partition several times because the groups are unlabelled.</p><p style="padding-left:14px">•  Forgetting that the empty relation is also a relation.</p><p style="padding-left:14px">•  Using <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>n</mi></mrow></msup></mrow></math> instead of <math displaystyle="true"><mrow><msup><mrow><mn>2</mn></mrow><mrow><mi>m</mi><mi>n</mi></mrow></msup></mrow></math> for subsets of a product.</p><p style="padding-left:14px">•  Missing a pair forced by transitivity.</p></div></section></div><div id="sym" class="noprint"><span>Insert:</span></div><script>
+(function(){var KEY="tn_Sets and Relations";var S={ta:{},rev:{}};
+try{S=JSON.parse(localStorage.getItem(KEY))||S}catch(e){}
+S.ta=S.ta||{};S.rev=S.rev||{};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function san(n){var o='';[].forEach.call(n.childNodes,function(c){if(c.nodeType==3)o+=esc(c.textContent);else if(c.nodeType==1){var t=c.tagName.toLowerCase();
+ if(t=='br')o+='<br>';else if(t=='sub'||t=='sup')o+='<'+t+'>'+san(c)+'</'+t+'>';
+ else if(t=='span'&&/^(fr|n|d)$/.test(c.className))o+='<span class="'+c.className+'">'+san(c)+'</span>';
+ else if(t=='div'||t=='p')o+=(o?'<br>':'')+san(c);else o+=san(c)}});return o}
+function clean(h){return san(new DOMParser().parseFromString('<body>'+h+'</body>','text/html').body)}
+var eds=[].slice.call(document.querySelectorAll('.ed'));
+function txt(e){return e.textContent.replace(/​/g,'').trim()}
+function apply(){eds.forEach(function(t){t.innerHTML=clean(S.ta[t.dataset.id]||'')});
+ [].forEach.call(document.querySelectorAll('section.typ'),function(s){setRev(s,!!S.rev[s.dataset.k])})}
+function setRev(s,on){s.querySelector('.rev').classList.toggle('on',on);s.querySelector('.sh').style.display=on?'none':'';s.querySelector('.hd').style.display=on?'':'none'}
+function store(t){var h=clean(t.innerHTML);if(txt(t)||/<span class="fr"/.test(h))S.ta[t.dataset.id]=h;else delete S.ta[t.dataset.id];save()}
+eds.forEach(function(t){t.addEventListener('input',function(){store(t)});
+ t.addEventListener('paste',function(e){e.preventDefault();var x=(e.clipboardData||window.clipboardData).getData('text');document.execCommand('insertText',false,x)});
+ t.addEventListener('keydown',function(e){
+  if(e.key=='Enter'){e.preventDefault();document.execCommand('insertLineBreak');return}
+  if(e.ctrlKey&&!e.altKey&&!e.metaKey){last=t;var k=e.key,done2=true;
+   if(k=='h'||k=='H')fmt('superscript');else if(k=='l'||k=='L')fmt('subscript');
+   else if(k=='i'||k=='I')insText('\u222b');else if(k=='s'||k=='S')insText('\u03a3');
+   else if(k=='f'||k=='F')frac();else if(k=='r'||k=='R')insText('\u221a');
+   else if(k=='p'||k=='P')insText('\u03c0');else if(k=='e'||k=='E')insText('\u221e');
+   else if(k==' ')normal();else if(k=='>'||k=='.')arrow();else done2=false;
+   if(done2){e.preventDefault();return}}
+  if(e.key=='ArrowRight'&&!e.shiftKey){var s0=getSelection();if(s0.rangeCount&&s0.isCollapsed){var n0=s0.anchorNode,o0=s0.anchorOffset;var el=n0&&(n0.nodeType==3?n0.parentNode:n0);var sb=el&&el.closest?el.closest('sub,sup'):null;
+    if(sb&&t.contains(sb)&&n0.nodeType==3&&o0==n0.length&&sb.lastChild===n0){e.preventDefault();var z=sb.nextSibling;if(!(z&&z.nodeType==3)){z=document.createTextNode('\u200b');sb.parentNode.insertBefore(z,sb.nextSibling)}var rr=document.createRange();rr.setStart(z,z.length>0?1:0);rr.collapse(true);s0.removeAllRanges();s0.addRange(rr);return}}}
+  if(e.key=='Tab'){var sel=getSelection();if(!sel.rangeCount)return;var nd=sel.anchorNode;nd=nd&&nd.nodeType==3?nd.parentNode:nd;var sp=nd&&nd.closest?nd.closest('.fr>span'):null;
+   if(sp&&t.contains(sp)){e.preventDefault();var r=document.createRange();
+    if(sp.className=='n'){var d=sp.parentNode.querySelector('.d');r.selectNodeContents(d);r.collapse(false)}
+    else{var fr=sp.parentNode;r.setStartAfter(fr);r.collapse(true)}
+    sel.removeAllRanges();sel.addRange(r)}}})});
+[].forEach.call(document.querySelectorAll('section.typ'),function(s){var k=s.dataset.k;
+ s.querySelector('.sh').onclick=function(){var any=[].some.call(s.querySelectorAll('.ed'),function(t){return txt(t)||t.querySelector('.fr')});
+  /* unblocked show */
+  S.rev[k]=1;save();setRev(s,true);s.querySelector('.rev').scrollIntoView({behavior:'smooth',block:'nearest'})};
+ s.querySelector('.hd').onclick=function(){S.rev[k]=0;save();setRev(s,false)};
+ s.querySelector('.rs').onclick=function(){if(!confirm('Clear your answers for this type and hide its completed notes?'))return;
+  [].forEach.call(s.querySelectorAll('.ed'),function(t){t.innerHTML='';delete S.ta[t.dataset.id]});S.rev[k]=0;save();setRev(s,false)}});
+
+var oldTitle=document.title;
+function hasWork(s){var any=false;[].forEach.call(s.querySelectorAll('.ed'),function(t){if((t.textContent||'').trim())any=true});return any||!!S.rev[s.dataset.k]}
+function endPrint(){document.body.classList.remove('one');[].forEach.call(document.querySelectorAll('section.typ'),function(s){s.classList.remove('pick','pr-skip')});document.title=oldTitle}
+window.addEventListener('afterprint',endPrint);
+function doPrint(){setTimeout(function(){window.print()},50)}
+document.getElementById('pdf').onclick=function(){var secs=[].slice.call(document.querySelectorAll('section.typ')),n=0;
+ secs.forEach(function(s){if(hasWork(s))n++;else s.classList.add('pr-skip')});
+ /* unblocked pdf */ if(!n){secs.forEach(function(s){s.classList.remove('pr-skip')});}
+ document.title=KEY.replace(/^tn_/,'')+' - my Type Notes';doPrint()};
+[].forEach.call(document.querySelectorAll('section.typ'),function(s){s.querySelector('.tpdf').onclick=function(){
+ /* unblocked tpdf */
+ document.body.classList.add('one');s.classList.add('pick');document.title=KEY.replace(/^tn_/,'')+' - my Type Notes - Type '+s.dataset.k;doPrint()}});
+document.getElementById('sv').onclick=function(){var b=new Blob([JSON.stringify({v:2,notes:KEY,data:S})],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=KEY.replace(/[^A-Za-z0-9]+/g,'_')+'.json';document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},500)};
+document.getElementById('ld').onclick=function(){document.getElementById('lf').click()};
+document.getElementById('lf').onchange=function(){var f=this.files[0];var inp=this;if(!f)return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(o.notes!==KEY||!o.data)throw 0;S=o.data;S.ta=S.ta||{};S.rev=S.rev||{};save();apply();alert('Notes loaded.')}catch(e){alert('This file is not a Type Notes file for this chapter.')}inp.value=''};r.readAsText(f)};
+/* symbol bar */
+var bar=document.getElementById('sym'),last=null;
+function ed(){if(!last)return false;if(document.activeElement!==last)last.focus();return true}
+function done(){store(last);setTimeout(function(){if(typeof upd=='function')upd()},0)}
+function insText(c){if(!ed())return;document.execCommand('insertText',false,c);done()}
+function fmt(cmd){if(!ed())return;document.execCommand(cmd);done()}
+function normal(){if(!ed())return;if(document.queryCommandState('subscript'))document.execCommand('subscript');if(document.queryCommandState('superscript'))document.execCommand('superscript');done()}
+function arrow(){if(!ed())return;var sel=getSelection();if(sel.rangeCount&&sel.isCollapsed){var n=sel.anchorNode,o=sel.anchorOffset;if(n&&n.nodeType==3&&o>0&&n.textContent.charAt(o-1)=='\u2192'){sel.setBaseAndExtent(n,o-1,n,o);document.execCommand('insertText',false,'\u21d2');done();return}}insText('\u2192')}
+function frac(){if(!ed())return;var sel=getSelection();if(!sel.rangeCount)return;var r=sel.getRangeAt(0);if(!last.contains(r.commonAncestorContainer))return;
+ var tx=r.toString();r.deleteContents();var fr=document.createElement('span');fr.className='fr';
+ var n=document.createElement('span');n.className='n';n.textContent=tx||'​';var d=document.createElement('span');d.className='d';d.textContent='​';fr.appendChild(n);fr.appendChild(d);
+ var z=document.createTextNode('​');r.insertNode(z);r.insertNode(fr);
+ var nr=document.createRange();if(tx){nr.selectNodeContents(d);nr.collapse(false)}else{nr.selectNodeContents(n);nr.collapse(false)}sel.removeAllRanges();sel.addRange(nr);done()}
+var BT=[['a/b','Fraction: type the top, press Tab, type the bottom, press Tab again to continue',frac],['Aa','Back to normal text after a subscript or superscript (Ctrl+Space, or press the right arrow at the end)',normal],['x₂','Subscript (select text, or tap then type)',function(){fmt('subscript')}],['xⁿ','Superscript (select text, or tap then type)',function(){fmt('superscript')}]];
+var SY=['√','π','θ','α','β','λ','ω','∞','∫','Σ','≤','≥','≠','±','×','÷','→','⇒','°'];
+var lastT=0,lastK='';
+function guard(k,f){var n=Date.now();if(n-lastT<300&&k===lastK)return;lastT=n;lastK=k;f()}
+function mk(label,title,f){var b=document.createElement('button');b.type='button';b.textContent=label;if(title)b.title=title;
+ b.addEventListener('mousedown',function(e){e.preventDefault()});
+ b.addEventListener('touchstart',function(e){e.preventDefault();guard(label,f)},{passive:false});
+ b.addEventListener('click',function(){guard(label,f)});return b}
+BT.forEach(function(x){var b=mk(x[0],x[1],x[2]);b.className='w';if(x[0]=='x\u2082')b.dataset.c='subscript';if(x[0]=='x\u207f')b.dataset.c='superscript';var LB={'Aa':'Aa <small>Normal</small>','x₂':'x₂ <small>Sub</small>','xⁿ':'xⁿ <small>Super</small>','a/b':'<span class="mf"><i>a</i><i>b</i></span> <small>Fraction</small>'};if(LB[x[0]])b.innerHTML=LB[x[0]];bar.appendChild(b)});
+function upd(){if(!bar.classList.contains('on'))return;[].forEach.call(bar.querySelectorAll('button[data-c]'),function(b){var on=false;try{on=document.queryCommandState(b.dataset.c)}catch(e){}b.classList.toggle('act',on)})}
+document.addEventListener('selectionchange',upd);
+SY.forEach(function(c){bar.appendChild(mk(c,'',function(){insText(c)}))});
+eds.forEach(function(t){t.addEventListener('focus',function(){last=t;bar.classList.add('on');document.body.classList.add('symon')})});
+function hide(e){if(!e.target.closest('.ed')&&!e.target.closest('#sym')){bar.classList.remove('on');document.body.classList.remove('symon')}}
+document.addEventListener('mousedown',hide);document.addEventListener('touchstart',hide,{passive:true});
+apply();
+})();
+</script>
+<script>
+function initThemeToggle() {
+  var MOON_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+  var SUN_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+  function applyTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jee_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jee_theme', 'light');
+    }
+    var btns = document.querySelectorAll('.theme-btn');
+    btns.forEach(function(b) {
+      b.innerHTML = dark ? (SUN_ICON + '<span>Light</span>') : (MOON_ICON + '<span>Dark</span>');
+      b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+  var isDark = localStorage.getItem('jee_theme') === 'dark' || 
+    (!localStorage.getItem('jee_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  applyTheme(isDark);
+
+  if (!window._themeToggleAttached) {
+    window._themeToggleAttached = true;
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.theme-btn');
+      if (btn) {
+        var currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        applyTheme(!currentlyDark);
+      }
+    });
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
+}
+</script>
+
+</body></html>
